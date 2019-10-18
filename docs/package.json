@@ -1,0 +1,18 @@
+{
+  "name": "docs",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "next build",
+    "server": "next start",
+    "start": "node -r esm --no-warnings src/server.js"
+  },
+  "dependencies": {
+    "address": "^1.1.2",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "next": "^9.1.1",
+    "raw-loader": "^3.1.0",
+    "react-dom": "^16.10.2",
+    "webpack": "^4.41.2"
+  }
+}

@@ -1,0 +1,85 @@
+.progressBar {
+  -webkit-appearance: none;
+  -moz-appearence: none;
+  background: var(--color-bg-default);
+  border: none;
+  border-radius: var(--border-radius-large);
+  height: 8px;
+  margin: 0;
+  width: 100%;
+}
+
+/* Webkit */
+
+.progressBar::-webkit-progress-bar {
+  background: var(--color-bg-default);
+  border-radius: var(--border-radius-large);
+}
+
+.progressBar::-webkit-progress-value {
+  border-radius: var(--border-radius-large);
+}
+
+/* Firefox */
+
+.progressBar[value]::-moz-progress-bar {
+  border-radius: var(--border-radius-large);
+}
+
+/* Variants */
+
+.primary::-webkit-progress-value {
+  background: var(--color-bg-primary);
+}
+
+.primary[value]::-moz-progress-bar {
+  background: var(--color-bg-primary);
+}
+
+.secondary::-webkit-progress-value {
+  background: var(--color-bg-secondary);
+}
+
+.secondary[value]::-moz-progress-bar {
+  background: var(--color-bg-secondary);
+}
+
+.tertiary::-webkit-progress-value {
+  background: var(--color-bg-tertiary);
+}
+
+.tertiary[value]::-moz-progress-bar {
+  background: var(--color-bg-tertiary);
+}
+
+.muted::-webkit-progress-value {
+  background: var(--color-card-gray-light);
+}
+
+.muted[value]::-moz-progress-bar {
+  background: var(--color-card-gray-light);
+}
+
+.positive::-webkit-progress-value {
+  background: var(--color-bg-positive);
+}
+
+.positive[value]::-moz-progress-bar {
+  background: var(--color-bg-positive);
+}
+
+.negative::-webkit-progress-value {
+  background: var(--color-font-negative);
+}
+
+.negative[value]::-moz-progress-bar {
+  background: var(--color-font-negative);
+}
+
+.inactive::-webkit-progress-value {
+  background: var(--color-card-gray-dark);
+}
+
+.inactive[value]::-moz-progress-bar {
+  background: var(--color-card-gray-dark);
+}
