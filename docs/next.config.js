@@ -6,6 +6,12 @@ const workspaceRoot = path.join(__dirname, '../');
 module.exports = {
   webpack: (config, options) => {
     return Object.assign({}, config, {
+      resolve: {
+        alias: {
+          src: path.resolve(__dirname, 'src/'),
+        },
+        extensions: ['.js', '.jsx'],
+      },
       node: {
         fs: 'empty',
       },
