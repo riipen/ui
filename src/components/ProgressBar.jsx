@@ -1,7 +1,8 @@
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { ThemeContext } from '../ThemeContext';
+import withStyles from '../decorators/withStyles';
 
 export const styles = (theme) => ({
   root: {
@@ -13,12 +14,12 @@ export const styles = (theme) => ({
     MozAppearence: 'none',
     WebkitAppearance: 'none',
     width: '100%',
-    '&::-webkit-progress-bar' {
+    '&::-webkit-progress-bar': {
       background: theme.palette.background.default,
-      borderRadius: borderRadius: theme.shape.borderRadius.large,
+      borderRadius: theme.shape.borderRadius.large,
     },
-    '&::-webkit-progress-value' {
-      borderRadius: borderRadius: theme.shape.borderRadius.large,
+    '&::-webkit-progress-value': {
+      borderRadius: theme.shape.borderRadius.large,
     }
   },
 });
@@ -36,6 +37,11 @@ class ProgressBar extends React.Component {
     progress: PropTypes.number,
 
     /**
+     * A themed styles object to apply to the component.
+     */
+    styles: PropTypes.object.isRequired,
+
+    /**
      * The variant to use.
      */
     variant: PropTypes.oneOf([
@@ -50,19 +56,22 @@ class ProgressBar extends React.Component {
 
   static defaultProps = {
     classes: [],
+    progress: 0,
     variant: 'primary',
   };
 
   render() {
-    const { classes, completion, variant } = this.props;
+    const {
+      classes,
+      completion,
+      styles: styleProp,
+      variant,
+     } = this.props;
 
-    const className = [
-      css.progressBar,
-      css[variant],
-    ]
-      .concat(classes)
-      .filter(Boolean)
-      .join(' ');
+     const className = clsx(
+      styleProp.root,
+      classes,
+    );
 
     return (
       <progress className={className} style={{ opacity }} value={completion} />
@@ -70,6 +79,4 @@ class ProgressBar extends React.Component {
   }
 }
 
-ProgressBar.contextType = ThemeContext;
-
-export default ProgressBar;
+export default withStyles(styles)(ProgressBar);

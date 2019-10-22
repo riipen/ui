@@ -9,6 +9,7 @@ module.exports = {
       resolve: {
         alias: {
           src: path.resolve(__dirname, 'src/'),
+          '@riipen-ui': path.resolve(__dirname, '../src/components'),
         },
         extensions: ['.js', '.jsx'],
       },
@@ -30,7 +31,7 @@ module.exports = {
           },
           // required to transpile ../packages/
           {
-            test: /\.(js|mjs|jsx)$/,
+            test: /\.(js|jsx)$/,
             include: [workspaceRoot],
             exclude: /node_modules/,
             use: options.defaultLoaders.babel,

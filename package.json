@@ -15,18 +15,31 @@
   "scripts": {
     "ci:audit": "audit-ci --moderate",
     "ci:test:coverage": "NODE_ENV=test NODE_PATH=./ nyc mocha --opts ./test/unit/ci.mocha.opts",
+    "docs": "next ./docs",
+    "docs:build": "next build ./docs",
+    "docs:server": "next start ./docs",
     "format:check": "prettier --check \"**/*.{js,jsx}\"",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint \"src/**/*.css\"",
     "lint:js": "eslint ."
   },
   "dependencies": {
+    "clsx": "^1.0.4",
+    "lodash": "4.17.15",
     "react": "16.10.2"
   },
   "devDependencies": {
+    "address": "^1.1.2",
     "eslint": "6.5.1",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
     "lerna": "3.18.1",
+    "marked": "^0.7.0",
+    "next": "^9.1.1",
     "prettier": "1.18.2",
-    "stylelint": "11.1.1"
+    "raw-loader": "^3.1.0",
+    "react-dom": "^16.10.2",
+    "stylelint": "11.1.1",
+    "webpack": "^4.41.2"
   }
 }

@@ -10,7 +10,7 @@ export default {
       }
     },
     shape: {
-      borderRadius {
+      borderRadius: {
         large: '4px',
       },
     },
