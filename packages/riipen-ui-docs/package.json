@@ -1,0 +1,27 @@
+{
+  "name": "riipen-ui-docs",
+  "version": "0.0.1",
+  "author": {
+    "name": "Riipen",
+    "email": "admin@riipen.com",
+    "url": "https://riipen.com",
+    "directory": "packages/riipen-ui-docs"
+  },
+  "repository": "https://github.com/riipen/ui",
+  "private": true,
+  "engines": {
+    "npm": ">=6.12.0"
+  },
+  "scripts": {
+    "build": "next build",
+    "server": "next start",
+    "start": "next"
+  },
+  "dependencies": {
+    "babel-plugin-module-resolver": "^3.2.0",
+    "marked": "^0.7.0",
+    "next": "^9.1.1",
+    "raw-loader": "^3.1.0"
+  },
+  "devDependencies": {}
+}

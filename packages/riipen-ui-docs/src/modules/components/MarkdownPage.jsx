@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import constants from 'src/constants';
 import Demo from 'src/modules/components/Demo';
@@ -45,7 +45,6 @@ class MarkdownPage extends React.Component {
 
     return (
       <div>
-        <Head title={`${title} - Material-UI`} />
         {sections.map((section, index) => {
           if (demos && constants.REGEX.DEMO.test(section)) {
             let options;

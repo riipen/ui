@@ -2,26 +2,45 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import withStyles from '../decorators/withStyles';
+import withStyles from '../styles/withStyles';
 
 export const styles = (theme) => ({
   root: {
     background: theme.palette.background.default,
-    border: none,
+    border: 'none',
     borderRadius: theme.shape.borderRadius.large,
     height: '8px',
     margin: 0,
-    MozAppearence: 'none',
+    MozAppearance: 'none',
     WebkitAppearance: 'none',
-    width: '100%',
+    width: '100%'
+    ,
     '&::-webkit-progress-bar': {
       background: theme.palette.background.default,
       borderRadius: theme.shape.borderRadius.large,
     },
+
     '&::-webkit-progress-value': {
       borderRadius: theme.shape.borderRadius.large,
-    }
+    },
+
+    '&[value]::moz-progress-bar': {
+      borderRadius: theme.shape.borderRadius.large,
+    },
   },
+
+  // Variants
+
+  primary: {
+    '&::-webkit-progress-value': {
+      background: theme.palette.primary.main,
+    },
+
+    '&[value]::-moz-progress-bar': {
+      background: theme.palette.primary.main,
+    },
+
+  }
 });
 
 class ProgressBar extends React.Component {
@@ -29,7 +48,7 @@ class ProgressBar extends React.Component {
     /**
      * List of additional classes to apply to this component.
      */
-    classes: PropTypes.arrayOf(PropTypes.string),
+    classes: PropTypes.array.isRequired,
 
     /**
      * The percentage of the progress between 0 and 1.
@@ -64,17 +83,20 @@ class ProgressBar extends React.Component {
     const {
       classes,
       completion,
-      styles: styleProp,
+      styles,
       variant,
      } = this.props;
 
+     console.log(styles);
+
      const className = clsx(
-      styleProp.root,
+      styles.root,
+      styles[variant],
       classes,
     );
 
     return (
-      <progress className={className} style={{ opacity }} value={completion} />
+      <progress className={className} value={completion} />
     );
   }
 }

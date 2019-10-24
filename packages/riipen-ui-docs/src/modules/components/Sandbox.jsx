@@ -20,7 +20,7 @@ class Sandbox extends React.Component {
   };
 
   render() {
-    const { component: Component, name } = props;
+    const { component: Component, name } = this.props;
 
     return (
       <ErrorBoundary>

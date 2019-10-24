@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import withStyles from '@riipen-ui/styles/withStyles';
+
 import MarkdownElement from 'src/modules/components/MarkdownElement';
 import Sandbox from 'src/modules/components/Sandbox';
 
@@ -49,26 +51,27 @@ class Demo extends React.Component {
   static propTypes = {
     demo: PropTypes.object.isRequired,
     options: PropTypes.object.isRequired,
+    styles: PropTypes.object.isRequired,
   };
 
   render() {
-    const { demo, options } = this.props;
+    const { demo, options, styles } = this.props;
 
     return (
-      <div className={classes.root}>
-        <div className={classes.demo}>
+      <div className={styles.root}>
+        <div className={styles.demo}>
           <Sandbox
             component={demo.jsx}
             name={demo.name}
           />
         </div>
         <MarkdownElement
-          className={classes.code}
-          text={`\`\`\`${demoData.sourceLanguage}\n${codeOpen ? demoData.raw : jsx}\n\`\`\``}
+          className={styles.code}
+          text={`\`\`\`jsx\n${demo.rawJS}\n\`\`\``}
         />
       </div>
     );
   }
 }
 
-export default Demo;
+export default withStyles(styles)(Demo);

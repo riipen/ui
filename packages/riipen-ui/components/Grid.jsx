@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import withStyles from '../decorators/withStyles';
+import withStyles from '../styles/withStyles';
 import flexbox from '../styles/flexbox';
 
 const styles = (theme) => ({
