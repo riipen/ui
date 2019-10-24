@@ -2,76 +2,87 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import withStyles from '@riipen-ui/styles/withStyles';
+import ThemeContext from '@riipen-ui/styles/ThemeContext';
 
 import MarkdownElement from 'src/modules/components/MarkdownElement';
 import Sandbox from 'src/modules/components/Sandbox';
-
-const styles = (theme) => ({
-  root: {
-    marginBottom: 40,
-    marginLeft: -theme.spacing(2),
-    marginRight: -theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(0, 1),
-      marginLeft: 0,
-      marginRight: 0,
-    },
-  },
-  demo: {
-    position: 'relative',
-    outline: 0,
-    margin: 'auto',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: theme.palette.background.level2,
-    display: 'flex',
-    justifyContent: 'center',
-    padding: 20,
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(3),
-    },
-  },
-  code: {
-    display: 'none',
-    padding: 0,
-    marginBottom: theme.spacing(1),
-    marginRight: 0,
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-    '& pre': {
-      overflow: 'auto',
-      margin: '0px !important',
-      maxHeight: 1000,
-    },
-  },
-});
 
 class Demo extends React.Component {
   static propTypes = {
     demo: PropTypes.object.isRequired,
     options: PropTypes.object.isRequired,
-    styles: PropTypes.object.isRequired,
   };
+
+  static contextType = ThemeContext;
 
   render() {
     const { demo, options, styles } = this.props;
 
+    const theme = this.context;
+
     return (
-      <div className={styles.root}>
-        <div className={styles.demo}>
+      <div className="root">
+        <div className="demo">
           <Sandbox
             component={demo.jsx}
             name={demo.name}
           />
         </div>
-        <MarkdownElement
-          className={styles.code}
-          text={`\`\`\`jsx\n${demo.rawJS}\n\`\`\``}
-        />
+        <div className="code">
+          <MarkdownElement text={`\`\`\`jsx\n${demo.rawJS}\n\`\`\``} />
+        </div>
+
+        <style jsx>{`
+          .root {
+            margin-bottom: 40px;
+            margin-left: -${theme.spacing(2)};
+            margin-right: -${theme.spacing(2)};
+          }
+          @media (min-width: ${theme.breakpoints.sm}px) {
+            .root {
+              padding: ${theme.spacing(0, 1)};
+              margin-left: 0;
+              margin-right: 0;
+            }
+          }
+          .demo {
+            position: relative;
+            outline: 0;
+            margin: auto;
+            border-radius: ${theme.shape.borderRadius.large};
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+          }
+          @media (min-width: ${theme.breakpoints.sm}px) {
+            .demo {
+              padding: ${theme.spacing(3)};
+            }
+          }
+          .code {
+            padding: 0;
+            margin-bottom: ${theme.spacing(1)};
+            margin-right: 0;
+          }
+          .code :global(code) {
+            background-color: rgba(255,229,100,0.1);
+            border-radius: 2px;
+            color: ${theme.palette.text.primary};
+            display: block;
+            font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 14px;
+            padding: 18px 12px;
+            overflow: auto;
+          }
+          .code :global(code[class*="language-"]) {
+            background-color: #333;
+            color: #fff;
+          }
+        `}</style>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(Demo);
+export default Demo;

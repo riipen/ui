@@ -1,23 +1,15 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import {JssProvider, SheetsRegistry} from 'react-jss'
+import flush from 'styled-jsx/server'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    const sheets = new SheetsRegistry();
-
     const page = ctx.renderPage((App) => (props) =>
-      <JssProvider registry={sheets}>
-        <App {...props} />
-      </JssProvider>
+      <App {...props} />
     );
 
-    console.log('server page', page);
-
-    const styles = sheets.toString();
-
-    console.log('server styles', styles);
+    const styles = flush();
 
     const initialProps = await Document.getInitialProps(ctx)
 
@@ -30,9 +22,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <style type="text/css" id="jss-server-side">
-            {styles.toString()}
-          </style>
+          {styles}
         </Head>
         <body>
           <Main />

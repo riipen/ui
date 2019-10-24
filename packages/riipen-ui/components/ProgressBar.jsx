@@ -2,46 +2,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import withStyles from '../styles/withStyles';
-
-export const styles = (theme) => ({
-  root: {
-    background: theme.palette.background.default,
-    border: 'none',
-    borderRadius: theme.shape.borderRadius.large,
-    height: '8px',
-    margin: 0,
-    MozAppearance: 'none',
-    WebkitAppearance: 'none',
-    width: '100%'
-    ,
-    '&::-webkit-progress-bar': {
-      background: theme.palette.background.default,
-      borderRadius: theme.shape.borderRadius.large,
-    },
-
-    '&::-webkit-progress-value': {
-      borderRadius: theme.shape.borderRadius.large,
-    },
-
-    '&[value]::moz-progress-bar': {
-      borderRadius: theme.shape.borderRadius.large,
-    },
-  },
-
-  // Variants
-
-  primary: {
-    '&::-webkit-progress-value': {
-      background: theme.palette.primary.main,
-    },
-
-    '&[value]::-moz-progress-bar': {
-      background: theme.palette.primary.main,
-    },
-
-  }
-});
+import ThemeContext from '../styles/ThemeContext';
 
 class ProgressBar extends React.Component {
   static propTypes = {
@@ -51,19 +12,9 @@ class ProgressBar extends React.Component {
     classes: PropTypes.array.isRequired,
 
     /**
-     * The percentage of the progress between 0 and 1.
+     * The color to use.
      */
-    progress: PropTypes.number,
-
-    /**
-     * A themed styles object to apply to the component.
-     */
-    styles: PropTypes.object.isRequired,
-
-    /**
-     * The variant to use.
-     */
-    variant: PropTypes.oneOf([
+    color: PropTypes.oneOf([
       'disabled',
       'negative',
       'positive',
@@ -71,34 +22,73 @@ class ProgressBar extends React.Component {
       'secondary',
       'tertiary',
     ]),
+
+    /**
+     * The percentage of the progress between 0 and 1.
+     */
+    progress: PropTypes.number,
   };
 
   static defaultProps = {
     classes: [],
+    color: 'primary',
     progress: 0,
-    variant: 'primary',
   };
+
+  static contextType = ThemeContext;
 
   render() {
     const {
       classes,
+      color,
       completion,
-      styles,
-      variant,
      } = this.props;
 
-     console.log(styles);
+     const theme = this.context;
 
      const className = clsx(
-      styles.root,
-      styles[variant],
-      classes,
+      color,
     );
 
     return (
-      <progress className={className} value={completion} />
+      <div>
+        <progress value={completion} />
+        <style jsx>{`
+          progress {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            background: ${theme.palette.background.default};
+            border: none;
+            border-radius: ${theme.shape.borderRadius.large};
+            height: 8px;
+            margin: 0;
+            width: 100%;
+          }
+
+          progress::-webkit-progress-bar {
+            background: ${theme.palette.background.default};
+            border-radius: ${theme.shape.borderRadius.large};
+          }
+
+          progress::-webkit-progress-value {
+            border-radius: ${theme.shape.borderRadius.large};
+          }
+
+          progress::-moz-progress-bar {
+            border-radius: ${theme.shape.borderRadius.large};
+          }
+
+          .primary::-webkit-progress-value {
+            background: ${theme.palette.primary.main};
+          }
+
+          .primary::-moz-progress-bar {
+            background: ${theme.palette.primary.main};
+          }
+        `}</style>
+      </div>
     );
   }
 }
 
-export default withStyles(styles)(ProgressBar);
+export default ProgressBar;

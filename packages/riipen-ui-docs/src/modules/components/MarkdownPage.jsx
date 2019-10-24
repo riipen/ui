@@ -36,7 +36,7 @@ class MarkdownPage extends React.Component {
         demos[demoName] = {
           name: demoName,
           jsx: req(filename).default,
-          rawJS: reqSource(filename),
+          rawJS: reqSource(filename).default,
         };
       }
     });
