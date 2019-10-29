@@ -14,6 +14,9 @@
   },
   "scripts": {
     "build": "next build",
+    "ci:audit": "audit-ci --moderate",
+    "format": "prettier --write",
+    "lint": "eslint .",
     "server": "next start",
     "start": "next"
   },

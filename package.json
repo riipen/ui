@@ -1,5 +1,14 @@
 {
-  "scripts": {},
+  "scripts": {
+    "ci:audit": "lerna run ci:audit",
+    "format": "lerna run format",
+    "lint": "lerna run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "clsx": "1.0.4",
     "lodash": "4.17.15",
@@ -9,8 +18,17 @@
   },
   "devDependencies": {
     "@babel/runtime-corejs2": "7.6.3",
+    "babel-eslint": "10.0.3",
     "eslint": "6.5.1",
+    "eslint-config-prettier": "6.5.0",
+    "eslint-config-riipen": "2.0.1",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "3.1.1",
+    "eslint-plugin-react": "7.16.0",
+    "husky": "3.0.9",
     "lerna": "^3.18.1",
+    "lint-staged": "9.4.2",
     "prettier": "1.18.2"
   }
 }

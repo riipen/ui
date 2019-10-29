@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "eslint-config-riipen",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "babel-eslint",
+  "plugins": ["prettier", "react"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "max-len": "off",
+    "no-underscore-dangle": "off",
+    "no-return-assign": "off",
+    "import/imports-first": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "react/prefer-stateless-function": "off"
+  }
+}
