@@ -1,4 +1,6 @@
 import clsx from 'clsx';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import prismTheme from "prism-react-renderer/themes/oceanicNext"
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -29,7 +31,19 @@ class Demo extends React.Component {
           />
         </div>
         <div className="code">
-          <MarkdownElement text={`\`\`\`jsx\n${demo.rawJS}\n\`\`\``} />
+          <Highlight {...defaultProps} code={demo.rawJS} language="jsx" theme={prismTheme}>
+            {({ className, style, tokens, getLineProps, getTokenProps }) => (
+              <pre className={className} style={style}>
+                {tokens.map((line, i) => (
+                  <div {...getLineProps({ line, key: i })}>
+                    {line.map((token, key) => (
+                      <span {...getTokenProps({ token, key })} />
+                    ))}
+                  </div>
+                ))}
+              </pre>
+            )}
+          </Highlight>
         </div>
 
         <style jsx>{`
@@ -46,14 +60,13 @@ class Demo extends React.Component {
             }
           }
           .demo {
-            position: relative;
-            outline: 0;
-            margin: auto;
-            border-radius: ${theme.shape.borderRadius.large};
             background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
+            border-radius: ${theme.shape.borderRadius.large};
+            margin: auto;
+            outline: 0;
+            overflow: auto;
             padding: 20px;
+            position: relative;
           }
           @media (min-width: ${theme.breakpoints.sm}px) {
             .demo {
@@ -65,7 +78,7 @@ class Demo extends React.Component {
             margin-bottom: ${theme.spacing(1)};
             margin-right: 0;
           }
-          .code :global(code) {
+          .code :global(pre) {
             background-color: rgba(255,229,100,0.1);
             border-radius: 2px;
             color: ${theme.palette.text.primary};
@@ -74,10 +87,6 @@ class Demo extends React.Component {
             font-size: 14px;
             padding: 18px 12px;
             overflow: auto;
-          }
-          .code :global(code[class*="language-"]) {
-            background-color: #333;
-            color: #fff;
           }
         `}</style>
       </div>

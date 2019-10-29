@@ -15,7 +15,6 @@ class ProgressBar extends React.Component {
      * The color to use.
      */
     color: PropTypes.oneOf([
-      'disabled',
       'negative',
       'positive',
       'primary',
@@ -24,15 +23,15 @@ class ProgressBar extends React.Component {
     ]),
 
     /**
-     * The percentage of the progress between 0 and 1.
+     * The percentage of the completion between 0 and 1.
      */
-    progress: PropTypes.number,
+    completion: PropTypes.number,
   };
 
   static defaultProps = {
     classes: [],
     color: 'primary',
-    progress: 0,
+    completion: 0,
   };
 
   static contextType = ThemeContext;
@@ -44,15 +43,16 @@ class ProgressBar extends React.Component {
       completion,
      } = this.props;
 
-     const theme = this.context;
+    const theme = this.context;
 
-     const className = clsx(
+    const className = clsx(
       color,
+      classes,
     );
 
     return (
       <div>
-        <progress value={completion} />
+        <progress className={className} value={completion} />
         <style jsx>{`
           progress {
             -moz-appearance: none;
@@ -84,6 +84,38 @@ class ProgressBar extends React.Component {
 
           .primary::-moz-progress-bar {
             background: ${theme.palette.primary.main};
+          }
+
+          .secondary::-webkit-progress-value {
+            background: ${theme.palette.secondary.main};
+          }
+
+          .secondary::-moz-progress-bar {
+            background: ${theme.palette.secondary.main};
+          }
+
+          .tertiary::-webkit-progress-value {
+            background: ${theme.palette.tertiary.main};
+          }
+
+          .tertiary::-moz-progress-bar {
+            background: ${theme.palette.tertiary.main};
+          }
+
+          .positive::-webkit-progress-value {
+            background: ${theme.palette.positive.main};
+          }
+
+          .positive::-moz-progress-bar {
+            background: ${theme.palette.positive.main};
+          }
+
+          .negative::-webkit-progress-value {
+            background: ${theme.palette.negative.main};
+          }
+
+          .negative::-moz-progress-bar {
+            background: ${theme.palette.negative.main};
           }
         `}</style>
       </div>

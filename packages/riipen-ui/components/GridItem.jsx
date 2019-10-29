@@ -1,14 +1,11 @@
-import throttle from 'lodash/throttle';
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const styles = (theme) => ({
-  root: {
-    display: 'inline-block';
-    paddingLeft: '20px';
-    verticalAlign: 'top';
-  },
-});
+import ThemeContext from '../styles/ThemeContext';
+
+const COLUMNS = 12;
+const SPACINGS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 class GridItem extends React.Component {
   static propTypes = {
@@ -23,98 +20,75 @@ class GridItem extends React.Component {
     classes: PropTypes.array,
 
     /**
-     * The fractional width to use at the desktop resolution.
+     * The columns use at the large resolution. Can also be 'hidden'.
      */
-    desktop: PropTypes.string,
+    lg: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
     /**
-     * The fractional width to use at the mobile resolution.
+     * The columns use at the medium resolution. Can also be 'hidden'.
      */
-    mobile: PropTypes.string,
+    md: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
     /**
-     * The fractional width to use at the tablet resolution.
+     * The columns use at the small resolution. Can also be 'hidden'.
      */
-    tablet: PropTypes.string,
+    sm: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+
+    /**
+     * Defines the space between this grid item and other items.
+     */
+    spacing: PropTypes.oneOf(SPACINGS),
   };
 
   static defaultProps = {
     classes: [],
+    lg: 12,
+    spacing: 1,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      onWindowResize: throttle(this.handleWindowResize, 500),
-      width: window.innerWidth,
-    };
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.state.onWindowResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.state.onWindowResize);
-  }
-
-  setItemRef = (ref) => {
-    this.item = ref;
-  };
-
-  handleWindowResize = () => {
-    this.setState({
-      width: window.innerWidth,
-    });
-  };
+  static contextType = ThemeContext;
 
   render() {
-    // The width of the browser window
-    const windowWidth = window.innerWidth;
+    const {
+      children,
+      classes,
+      lg,
+      md,
+      sm,
+      spacing,
+    } = this.props;
 
-    const style = {};
+    const theme = this.context;
 
-    // Calculate which resolution we should render the item at
-    let width;
-
-    // Default to desktop resolution
-    if (this.props.desktop === 'hidden') {
-      style.display = 'none';
-    } else {
-      width = this.props.desktop;
-    }
-
-    if (windowWidth <= RESOLUTIONS_TABLET && this.props.tablet) {
-      if (this.props.tablet === 'hidden') {
-        style.display = 'none';
-      } else {
-        width = this.props.tablet;
-      }
-    }
-
-    if (windowWidth <= RESOLUTIONS_MOBILE && this.props.mobile) {
-      if (this.props.mobile === 'hidden') {
-        style.display = 'none';
-      } else {
-        width = this.props.mobile;
-      }
-    }
-
-    if (width) {
-      // Convert the string fraction into a numeric percentage
-      const columns = width.split('/');
-      const percent = (columns[0] / columns[1]) * 100;
-
-      style.width = `${percent}%`;
-    }
-
-    const classNames = this.props.classes.join(' ');
+    const className = clsx(
+      classes,
+    );
 
     return (
-      <div ref={this.setItemRef} style={style} className={classNames}>
-        {this.props.children}
-      </div>
+      <React.Fragment>
+        <div className={className}>
+          {children}
+        </div>
+        <style jsx>{`
+          div {
+            margin-bottom: ${theme.spacing(spacing)}px;
+            padding-left: ${theme.spacing(spacing)}px;
+            width: calc(${(+lg / COLUMNS * 100) || 0}% - ${theme.spacing(spacing)}px);
+          }
+          @media (max-width: ${theme.breakpoints.md}px) {
+            div {
+              display: ${md === 'hidden' ? 'none' : 'initial'};
+              width: calc(${((+md || +lg) / COLUMNS * 100) || 0}% - ${theme.spacing(spacing)}px);
+            }
+          }
+          @media (max-width: ${theme.breakpoints.sm}px) {
+            div {
+              display: ${[sm, md].includes('hidden') ? 'none' : 'initial'};
+              width: calc(${((+sm || +md || +lg) / COLUMNS * 100) || 0}% - ${theme.spacing(spacing)}px);
+            }
+          }
+        `}</style>
+      </React.Fragment>
     );
   }
 }

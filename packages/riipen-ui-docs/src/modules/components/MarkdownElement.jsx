@@ -89,6 +89,16 @@ class MarkdownElement extends React.Component {
             font-weight: ${theme.typography.fontWeight.medium};
             margin-bottom: 40px;
           }
+          div :global(pre) {
+            background-color: #333;
+            border-radius: 2px;
+            color: #fff;
+            display: block;
+            font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 14px;
+            padding: 18px 12px;
+            overflow: auto;
+          }
         `}</style>
       </React.Fragment>
     );

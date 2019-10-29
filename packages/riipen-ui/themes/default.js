@@ -14,11 +14,20 @@ export default {
       black: "#000",
       white: "#fff",
     },
+    negative: {
+      main: '#e95353',
+    },
+    positive: {
+      main: '#4cc88d',
+    },
     primary: {
       main: '#3f51b5',
     },
     secondary: {
-      main: "#f50057",
+      main: '#f58632',
+    },
+    tertiary: {
+      main: '#3caabb',
     },
     text: {
       primary: "rgba(0, 0, 0, 0.87)",
