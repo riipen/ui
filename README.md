@@ -8,10 +8,10 @@ Riipen-UI is available as an [npm package](https://www.npmjs.com/package/riipen-
 
 ```sh
 // with npm
-$ npm install @material-ui/core
+$ npm install @riipen-ui
 
 // with yarn
-$ yarn add @material-ui/core
+$ yarn add @riipen-ui
 ```
 
 ## Usage
