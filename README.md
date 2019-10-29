@@ -39,6 +39,46 @@ ReactDOM.render(<App />, document.querySelector('#app'));
 
 Check out our [documentation website](#).
 
+## Development
+
+### Node
+
+1. Install `nvm` via the instructions [here](https://github.com/nvm-sh/nvm#installation-and-update), something like:
+
+```bash
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/${VERSION}/install.sh | bash
+```
+
+2. Install the latest node LTS release:
+
+```bash
+$ nvm install --lts
+$ nvm use --lts
+```
+
+3. Upgrade npm and install local dependencies:
+```bash
+$ npm install npm@latest -g
+$ npm install
+```
+
+4. Install lerna and bootstrap:
+```bash
+$ npm install lerna -g
+$ lerna bootstrap
+```
+
+### Documentation server
+
+To run the documentation server:
+
+```bash
+$ cd packages/riipen-ui-docs
+$ npm start
+```
+
+You can visit the server locally at `http://localhost:3000`.
+
 ## License
 
 This project is licensed under the terms of the [MIT license](/LICENSE).
