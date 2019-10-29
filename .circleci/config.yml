@@ -12,6 +12,7 @@ jobs:
       - run:
           name: Update NPM
           command: |
+            sudo npm install -g lerna
             sudo npm install -g npm
 
       - restore_cache:
@@ -20,6 +21,7 @@ jobs:
             - v1-cache-
 
       - run: npm install
+      - run: lerna bootstrap
 
       - save_cache:
           paths:
@@ -62,70 +64,7 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      - run: npm run format:check
-
-  reporter:
-    docker:
-      - image: circleci/node:10.15.3
-
-    steps:
-      - attach_workspace:
-          at: ~/
-
-      # Download CodeClimate reporter
-      - run:
-          name: Download cc-test-reporter
-          command: |
-            mkdir -p tmp/
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
-            chmod +x ./tmp/cc-test-reporter
-
-      - persist_to_workspace:
-          root: tmp
-          paths:
-            - cc-test-reporter
-
-  test:
-    docker:
-      - image: circleci/node:10.15.3
-
-    parallelism: 4
-
-    steps:
-      - attach_workspace:
-          at: ~/
-
-      - run:
-          name: Run unit tests
-          command: |
-            circleci tests glob "test/unit/**/*.js" | circleci tests split > /tmp/tests-to-run
-            npm run ci:test:coverage -- $(cat /tmp/tests-to-run)
-            ~/cc-test-reporter format-coverage -t lcov -o "coverage/codeclimate.$CIRCLE_NODE_INDEX.json" coverage/lcov.info
-
-      - persist_to_workspace:
-          root: coverage
-          paths:
-            - codeclimate.*.json
-
-  coverage:
-    docker:
-      - image: circleci/node:10.15.3
-
-    steps:
-      - attach_workspace:
-          at: ~/
-
-      # Upload results to CodeClimate
-      - run:
-          name: Upload coverage results to Code Climate
-          command: |
-            ~/cc-test-reporter sum-coverage --output - ~/codeclimate.*.json | ~/cc-test-reporter upload-coverage --input -
-
-test_branches: &test_branches
-  filters:
-    branches:
-      ignore:
-        - production
+      - run: npm run format
 
 workflows:
   version: 2
@@ -133,33 +72,12 @@ workflows:
   test:
     jobs:
       - checkout:
-          <<: *test_branches
       - audit:
-          <<: *test_branches
           requires:
             - checkout
       - lint:
-          <<: *test_branches
           requires:
             - checkout
       - format:
-          <<: *test_branches
           requires:
             - checkout
-      - reporter:
-          <<: *test_branches
-          requires:
-            - checkout
-      - test:
-          <<: *test_branches
-          filters:
-            branches:
-              ignore:
-                - staging
-                - production
-          requires:
-            - checkout
-            - reporter
-      - coverage:
-          <<: *test_branches
-          requires:
