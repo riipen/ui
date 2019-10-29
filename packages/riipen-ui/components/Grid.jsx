@@ -1,8 +1,8 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React from 'react';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 
-import ThemeContext from '../styles/ThemeContext';
+import ThemeContext from "../styles/ThemeContext";
 
 const SPACINGS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -11,7 +11,13 @@ class Grid extends React.Component {
     /**
      * A whitelisted set of align items options for the grid.
      */
-    alignItems: PropTypes.oneOf(['flex-start', 'center', 'flex-end', 'stretch', 'baseline']),
+    alignItems: PropTypes.oneOf([
+      "flex-start",
+      "center",
+      "flex-end",
+      "stretch",
+      "baseline"
+    ]),
 
     /**
      * The content of the grid.
@@ -27,25 +33,25 @@ class Grid extends React.Component {
      * A whitelisted set of justify content options for the grid.
      */
     justifyContent: PropTypes.oneOf([
-      'flex-start',
-      'center',
-      'flex-end',
-      'space-between',
-      'space-around',
-      'space-evenly',
+      "flex-start",
+      "center",
+      "flex-end",
+      "space-between",
+      "space-around",
+      "space-evenly"
     ]),
 
     /**
      * Defines the space between grid items in the grid.
      */
-    spacing: PropTypes.oneOf(SPACINGS),
+    spacing: PropTypes.oneOf(SPACINGS)
   };
 
   static defaultProps = {
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
     classes: [],
-    justifyContent: 'flex-start',
-    spacing: 1,
+    justifyContent: "flex-start",
+    spacing: 1
   };
 
   static contextType = ThemeContext;
@@ -56,24 +62,20 @@ class Grid extends React.Component {
       children,
       classes,
       justifyContent,
-      spacing,
+      spacing
     } = this.props;
 
     const theme = this.context;
 
-    const className = clsx(
-      classes,
-    );
+    const className = clsx(classes);
 
-    const childrenWithProps = React.Children.map(children, (child) =>
+    const childrenWithProps = React.Children.map(children, child =>
       React.cloneElement(child, { spacing })
     );
 
     return (
       <React.Fragment>
-        <div className={className}>
-          {childrenWithProps}
-        </div>
+        <div className={className}>{childrenWithProps}</div>
         <style jsx>{`
           div {
             align-items: ${alignItems};

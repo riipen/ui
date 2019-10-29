@@ -1,18 +1,16 @@
 const pages = [
   {
-    pathname: '/getting-started',
+    pathname: "/getting-started"
   },
   {
-    pathname: '/components',
+    pathname: "/components",
     children: [
       {
-        pathname: '/components',
-        children: [
-          { pathname: '/components/progress-bar' },
-        ],
-      },
-    ],
-  },
+        pathname: "/components",
+        children: [{ pathname: "/components/progress-bar" }]
+      }
+    ]
+  }
 ];
 
 export default pages;

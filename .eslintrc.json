@@ -16,6 +16,7 @@
     "import/imports-first": "off",
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
+    "import/no-unresolved": "off",
     "react/prefer-stateless-function": "off"
   }
 }

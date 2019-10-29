@@ -1,14 +1,9 @@
-import NextLink from 'next/link';
-import React from 'react';
+import NextLink from "next/link";
+import React from "react";
 
-import {
-  Grid,
-  GridItem,
-  Headline,
-  Text,
-} from '@riipen-ui/components';
+import { Grid, GridItem, Headline, Text } from "@riipen-ui/components";
 
-import MarkdownElement from 'src/modules/components/MarkdownElement';
+import MarkdownElement from "src/modules/components/MarkdownElement";
 
 class Index extends React.Component {
   render() {
@@ -25,8 +20,8 @@ class Index extends React.Component {
               Riipen-UI
             </Headline>
             <Headline variant="h2" color="primary">
-              React components for easier web development. Build your applications
-              to spec with Riipen-UI.
+              React components for easier web development. Build your
+              applications to spec with Riipen-UI.
             </Headline>
           </div>
         </div>
@@ -37,7 +32,8 @@ class Index extends React.Component {
                 Installation
               </Headline>
               <Text>
-                Install Riipen-UI's source files via npm. We take care of injecting the CSS needed.
+                Install Riipen-UI's source files via npm. We take care of
+                injecting the CSS needed.
               </Text>
               <MarkdownElement
                 text={`
@@ -46,9 +42,7 @@ $ npm install @riipen-ui
 \`\`\`
                 `}
               />
-              <Text>
-                Load the default Roboto font.
-              </Text>
+              <Text>Load the default Roboto font.</Text>
               <MarkdownElement
                 text={`
 \`\`\`html
@@ -67,9 +61,10 @@ $ npm install @riipen-ui
                 Usage
               </Headline>
               <Text>
-                Riipen-UI components work without any additional setup, and don't pollute the global scope.
+                Riipen-UI components work without any additional setup, and
+                don't pollute the global scope.
               </Text>
-               <MarkdownElement
+              <MarkdownElement
                 text={`
 \`\`\`jsx
 import React from 'react';
@@ -84,9 +79,7 @@ const App = () => (
 \`\`\`
                 `}
               />
-              <NextLink href="/getting-started/usage">
-                Usage Docs
-              </NextLink>
+              <NextLink href="/getting-started/usage">Usage Docs</NextLink>
             </div>
           </GridItem>
         </Grid>
@@ -100,6 +93,6 @@ const App = () => (
       </React.Fragment>
     );
   }
-};
+}
 
 export default Index;

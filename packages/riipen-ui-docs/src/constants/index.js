@@ -1,5 +1,5 @@
-import REGEX from './regex';
+import REGEX from "./regex";
 
 export default {
-  REGEX,
+  REGEX
 };

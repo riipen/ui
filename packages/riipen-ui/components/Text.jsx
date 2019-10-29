@@ -1,8 +1,8 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React from 'react';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 
-import ThemeContext from '../styles/ThemeContext';
+import ThemeContext from "../styles/ThemeContext";
 
 class Text extends React.Component {
   static propTypes = {
@@ -20,40 +20,30 @@ class Text extends React.Component {
      * The color to use.
      */
     color: PropTypes.oneOf([
-      'negative',
-      'positive',
-      'primary',
-      'secondary',
-      'tertiary',
-    ]),
+      "negative",
+      "positive",
+      "primary",
+      "secondary",
+      "tertiary"
+    ])
   };
 
   static defaultProps = {
-    classes: [],
+    classes: []
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const {
-      children,
-      classes,
-      color,
-     } = this.props;
+    const { children, classes, color } = this.props;
 
-     const theme = this.context;
+    const theme = this.context;
 
-     const className = clsx(
-      color,
-      classes,
-    );
-
+    const className = clsx(color, classes);
 
     return (
       <React.Fragment>
-        <span className={className}>
-          {children}
-        </span>
+        <span className={className}>{children}</span>
         <style jsx>{`
           .primary {
             color: ${theme.palette.primary.main};

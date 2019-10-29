@@ -1,13 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import MarkdownPage from 'docs/src/modules/components/MarkdownPage';
+import MarkdownPage from "docs/src/modules/components/MarkdownPage";
 
-const req = require.context('docs/src/pages/customization/theming', false, /\.(md|js|jsx)$/);
+const req = require.context(
+  "docs/src/pages/customization/theming",
+  false,
+  /\.(md|js|jsx)$/
+);
 
 const reqSource = require.context(
-  '!raw-loader!../../src/pages/customization/theming',
+  "!raw-loader!../../src/pages/customization/theming",
   false,
-  /\.(js|jsx)$/,
+  /\.(js|jsx)$/
 );
 
 export default function Page() {

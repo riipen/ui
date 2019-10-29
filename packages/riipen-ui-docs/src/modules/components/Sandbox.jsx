@@ -1,16 +1,15 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
-import ErrorBoundary from 'src/modules/components/ErrorBoundary';
+import ErrorBoundary from "src/modules/components/ErrorBoundary";
 
 class Sandbox extends React.Component {
   static propTypes = {
-    component: PropTypes.elementType.isRequired,
-    name: PropTypes.string.isRequired,
+    component: PropTypes.elementType.isRequired
   };
 
   render() {
-    const { component: Component, name } = this.props;
+    const { component: Component } = this.props;
 
     return (
       <ErrorBoundary>

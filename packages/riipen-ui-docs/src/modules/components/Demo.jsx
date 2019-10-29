@@ -1,37 +1,36 @@
-import clsx from 'clsx';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import prismTheme from "prism-react-renderer/themes/oceanicNext"
-import PropTypes from 'prop-types';
-import React from 'react';
+import Highlight, { defaultProps } from "prism-react-renderer";
+import prismTheme from "prism-react-renderer/themes/oceanicNext";
+import PropTypes from "prop-types";
+import React from "react";
 
-import ThemeContext from '@riipen-ui/styles/ThemeContext';
+import ThemeContext from "@riipen-ui/styles/ThemeContext";
 
-import MarkdownElement from 'src/modules/components/MarkdownElement';
-import Sandbox from 'src/modules/components/Sandbox';
+import Sandbox from "src/modules/components/Sandbox";
 
 class Demo extends React.Component {
   static propTypes = {
-    demo: PropTypes.object.isRequired,
-    options: PropTypes.object.isRequired,
+    demo: PropTypes.object.isRequired
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { demo, options, styles } = this.props;
+    const { demo } = this.props;
 
     const theme = this.context;
 
     return (
       <div className="root">
         <div className="demo">
-          <Sandbox
-            component={demo.jsx}
-            name={demo.name}
-          />
+          <Sandbox component={demo.jsx} name={demo.name} />
         </div>
         <div className="code">
-          <Highlight {...defaultProps} code={demo.rawJS} language="jsx" theme={prismTheme}>
+          <Highlight
+            {...defaultProps}
+            code={demo.rawJS}
+            language="jsx"
+            theme={prismTheme}
+          >
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
               <pre className={className} style={style}>
                 {tokens.map((line, i) => (
@@ -79,7 +78,7 @@ class Demo extends React.Component {
             margin-right: 0;
           }
           .code :global(pre) {
-            background-color: rgba(255,229,100,0.1);
+            background-color: rgba(255, 229, 100, 0.1);
             border-radius: 2px;
             color: ${theme.palette.text.primary};
             display: block;

@@ -1,8 +1,8 @@
-import App from 'next/app'
-import React from 'react'
+import App from "next/app";
+import React from "react";
 
-import ThemeContext from '@riipen-ui/styles/ThemeContext';
-import defaultTheme from '@riipen-ui/themes/default';
+import ThemeContext from "@riipen-ui/styles/ThemeContext";
+import defaultTheme from "@riipen-ui/themes/default";
 
 class MyApp extends App {
   render() {

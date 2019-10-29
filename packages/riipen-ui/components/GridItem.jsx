@@ -1,8 +1,8 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React from 'react';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 
-import ThemeContext from '../styles/ThemeContext';
+import ThemeContext from "../styles/ThemeContext";
 
 const COLUMNS = 12;
 const SPACINGS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -37,54 +37,51 @@ class GridItem extends React.Component {
     /**
      * Defines the space between this grid item and other items.
      */
-    spacing: PropTypes.oneOf(SPACINGS),
+    spacing: PropTypes.oneOf(SPACINGS)
   };
 
   static defaultProps = {
     classes: [],
     lg: 12,
-    spacing: 1,
+    spacing: 1
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const {
-      children,
-      classes,
-      lg,
-      md,
-      sm,
-      spacing,
-    } = this.props;
+    const { children, classes, lg, md, sm, spacing } = this.props;
 
     const theme = this.context;
 
-    const className = clsx(
-      classes,
-    );
+    const className = clsx(classes);
 
     return (
       <React.Fragment>
-        <div className={className}>
-          {children}
-        </div>
+        <div className={className}>{children}</div>
         <style jsx>{`
           div {
             margin-bottom: ${theme.spacing(spacing)}px;
             padding-left: ${theme.spacing(spacing)}px;
-            width: calc(${(+lg / COLUMNS * 100) || 0}% - ${theme.spacing(spacing)}px);
+            width: calc(
+              ${(+lg / COLUMNS) * 100 || 0}% - ${theme.spacing(spacing)}px
+            );
           }
           @media (max-width: ${theme.breakpoints.md}px) {
             div {
-              display: ${md === 'hidden' ? 'none' : 'initial'};
-              width: calc(${((+md || +lg) / COLUMNS * 100) || 0}% - ${theme.spacing(spacing)}px);
+              display: ${md === "hidden" ? "none" : "initial"};
+              width: calc(
+                ${((+md || +lg) / COLUMNS) * 100 || 0}% -
+                  ${theme.spacing(spacing)}px
+              );
             }
           }
           @media (max-width: ${theme.breakpoints.sm}px) {
             div {
-              display: ${[sm, md].includes('hidden') ? 'none' : 'initial'};
-              width: calc(${((+sm || +md || +lg) / COLUMNS * 100) || 0}% - ${theme.spacing(spacing)}px);
+              display: ${[sm, md].includes("hidden") ? "none" : "initial"};
+              width: calc(
+                ${((+sm || +md || +lg) / COLUMNS) * 100 || 0}% -
+                  ${theme.spacing(spacing)}px
+              );
             }
           }
         `}</style>

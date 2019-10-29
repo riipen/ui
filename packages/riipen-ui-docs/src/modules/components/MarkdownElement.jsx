@@ -1,9 +1,8 @@
-import clsx from 'clsx';
-import marked from 'marked';
-import PropTypes from 'prop-types';
-import React from 'react';
+import marked from "marked";
+import PropTypes from "prop-types";
+import React from "react";
 
-import ThemeContext from '@riipen-ui/styles/ThemeContext';
+import ThemeContext from "@riipen-ui/styles/ThemeContext";
 
 const renderer = new marked.Renderer();
 
@@ -15,12 +14,12 @@ const markedOptions = {
   sanitize: false,
   smartLists: true,
   smartypants: false,
-  renderer,
+  renderer
 };
 
 class MarkdownElement extends React.Component {
   static propTypes = {
-    text: PropTypes.string,
+    text: PropTypes.string
   };
 
   static contextType = ThemeContext;
@@ -32,7 +31,9 @@ class MarkdownElement extends React.Component {
 
     return (
       <React.Fragment>
-        <div dangerouslySetInnerHTML={{ __html: marked(text) }} />
+        <div
+          dangerouslySetInnerHTML={{ __html: marked(text, markedOptions) }}
+        />
         <style jsx>{`
           div {
             font-family: ${theme.typography.fontFamily};
@@ -103,6 +104,6 @@ class MarkdownElement extends React.Component {
       </React.Fragment>
     );
   }
-};
+}
 
 export default MarkdownElement;

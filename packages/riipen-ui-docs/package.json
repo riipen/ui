@@ -15,17 +15,33 @@
   "scripts": {
     "build": "next build",
     "ci:audit": "audit-ci --moderate",
-    "format": "prettier --write",
+    "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
+    "precommit": "lint-staged",
     "server": "next start",
     "start": "next"
   },
+  "lint-staged": {
+    "*.{js,jsx}": ["npm run format", "npm run lint", "git add"]
+  },
+  "peerDependencies": {
+    "react": "16.11.0",
+    "react-dom": "16.11.0"
+  },
   "dependencies": {
     "babel-plugin-module-resolver": "^3.2.0",
+    "clsx": "1.0.4",
     "marked": "^0.7.0",
     "next": "^9.1.1",
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.17.1",
-    "raw-loader": "^3.1.0"
+    "prop-types": "15.6.1",
+    "raw-loader": "^3.1.0",
+    "styled-jsx": "3.2.2"
+  },
+  "devDependencies": {
+    "eslint": "6.5.1",
+    "lint-staged": "9.4.2",
+    "prettier": "1.18.2"
   }
 }

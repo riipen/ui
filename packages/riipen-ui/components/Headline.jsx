@@ -1,8 +1,8 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React from 'react';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 
-import ThemeContext from '../styles/ThemeContext';
+import ThemeContext from "../styles/ThemeContext";
 
 class Headline extends React.Component {
   static propTypes = {
@@ -20,42 +20,34 @@ class Headline extends React.Component {
      * The color to use.
      */
     color: PropTypes.oneOf([
-      'negative',
-      'positive',
-      'primary',
-      'secondary',
-      'tertiary',
+      "negative",
+      "positive",
+      "primary",
+      "secondary",
+      "tertiary"
     ]),
 
     /**
      * The variant of the headline in abbreviated format (h1, h2, etc).
      */
-    variant: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+    variant: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"])
   };
 
   static defaultProps = {
     classes: [],
-    variant: 'h1',
+    variant: "h1"
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const {
-      children,
-      classes,
-      color,
-      variant,
-     } = this.props;
+    const { children, classes, color, variant } = this.props;
 
-     const theme = this.context;
+    const theme = this.context;
 
-     const className = clsx(
-      color,
-      classes,
-    );
+    const className = clsx(color, classes);
 
-     const element = variant;
+    const element = variant;
 
     return (
       <React.Fragment>

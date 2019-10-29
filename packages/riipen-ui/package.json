@@ -16,8 +16,25 @@
   "scripts": {
     "ci:audit": "audit-ci --moderate",
     "ci:test:coverage": "NODE_ENV=test NODE_PATH=./ nyc mocha --opts ./test/unit/ci.mocha.opts",
-    "format": "prettier --write",
-    "lint": "eslint ."
+    "format": "prettier --write \"**/*.{js,jsx}\"",
+    "lint": "eslint .",
+    "precommit": "lint-staged"
   },
-  "devDependencies": {}
+  "lint-staged": {
+    "*.{js,jsx}": ["npm run format", "npm run lint", "git add"]
+  },
+  "peerDependencies": {
+    "react": "16.11.0",
+    "react-dom": "16.11.0"
+  },
+  "dependencies": {
+    "clsx": "1.0.4",
+    "prop-types": "15.6.1",
+    "styled-jsx": "3.2.2"
+  },
+  "devDependencies": {
+    "eslint": "6.5.1",
+    "lint-staged": "9.4.2",
+    "prettier": "1.18.2"
+  }
 }

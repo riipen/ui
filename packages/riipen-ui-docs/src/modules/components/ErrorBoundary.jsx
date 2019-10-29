@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 class ErrorBoundary extends React.Component {
   static propTypes = {
-    children: PropTypes.node,
+    children: PropTypes.node
   };
 
   state = {
-    error: null,
+    error: null
   };
 
   static getDerivedStateFromError(error) {
@@ -22,7 +22,6 @@ class ErrorBoundary extends React.Component {
       return (
         <div>
           This demo had a runtime error!
-
           <pre>{error.toString()}</pre>
         </div>
       );

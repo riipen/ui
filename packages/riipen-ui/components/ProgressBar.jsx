@@ -1,8 +1,8 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React from 'react';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 
-import ThemeContext from '../styles/ThemeContext';
+import ThemeContext from "../styles/ThemeContext";
 
 class ProgressBar extends React.Component {
   static propTypes = {
@@ -15,40 +15,33 @@ class ProgressBar extends React.Component {
      * The color to use.
      */
     color: PropTypes.oneOf([
-      'negative',
-      'positive',
-      'primary',
-      'secondary',
-      'tertiary',
+      "negative",
+      "positive",
+      "primary",
+      "secondary",
+      "tertiary"
     ]),
 
     /**
      * The percentage of the completion between 0 and 1.
      */
-    completion: PropTypes.number,
+    completion: PropTypes.number
   };
 
   static defaultProps = {
     classes: [],
-    color: 'primary',
-    completion: 0,
+    color: "primary",
+    completion: 0
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const {
-      classes,
-      color,
-      completion,
-     } = this.props;
+    const { classes, color, completion } = this.props;
 
     const theme = this.context;
 
-    const className = clsx(
-      color,
-      classes,
-    );
+    const className = clsx(color, classes);
 
     return (
       <div>
