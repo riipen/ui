@@ -38,7 +38,6 @@ class Divider extends React.Component {
           div {
             background-color: ${theme.palette.divider};
             height: 1px;
-            margin-bottom: ${theme.spacing(3)}px;
           }
 
           .middle {

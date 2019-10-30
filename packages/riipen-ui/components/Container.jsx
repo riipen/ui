@@ -20,7 +20,7 @@ class Container extends React.Component {
      * Determine the max-width of the container.
      * The container width grows with the size of the screen.
      */
-    maxWidth: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl", false])
+    maxWidth: PropTypes.oneOf(["sm", "md", "lg", "xl", false])
   };
 
   static defaultProps = {
@@ -42,7 +42,9 @@ class Container extends React.Component {
         <style jsx>{`
           div {
             margin: 0 auto;
-            max-width: ${maxWidth ? theme.breakpoint[maxWidth] : "100%"};
+            max-width: ${maxWidth
+              ? `${theme.breakpoints[maxWidth]}px`
+              : "100%"};
             position: relative;
           }
         `}</style>

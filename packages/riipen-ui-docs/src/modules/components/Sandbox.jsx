@@ -5,7 +5,7 @@ import ErrorBoundary from "src/modules/components/ErrorBoundary";
 
 class Sandbox extends React.Component {
   static propTypes = {
-    component: PropTypes.elementType.isRequired
+    component: PropTypes.func.isRequired
   };
 
   render() {
