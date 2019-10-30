@@ -60,7 +60,7 @@ class Demo extends React.Component {
           }
           .demo {
             background-color: #f5f5f5;
-            border-radius: ${theme.shape.borderRadius.large};
+            border-radius: ${theme.shape.borderRadius.md};
             margin: auto;
             outline: 0;
             overflow: auto;

@@ -9,7 +9,7 @@ class ProgressBar extends React.Component {
     /**
      * List of additional classes to apply to this component.
      */
-    classes: PropTypes.array.isRequired,
+    classes: PropTypes.array,
 
     /**
      * The color to use.
@@ -52,7 +52,7 @@ class ProgressBar extends React.Component {
             -webkit-appearance: none;
             background: ${theme.palette.background.default};
             border: none;
-            border-radius: ${theme.shape.borderRadius.large};
+            border-radius: ${theme.shape.borderRadius.md};
             height: 8px;
             margin: 0;
             width: 100%;
@@ -60,15 +60,15 @@ class ProgressBar extends React.Component {
 
           progress::-webkit-progress-bar {
             background: ${theme.palette.background.default};
-            border-radius: ${theme.shape.borderRadius.large};
+            border-radius: ${theme.shape.borderRadius.md};
           }
 
           progress::-webkit-progress-value {
-            border-radius: ${theme.shape.borderRadius.large};
+            border-radius: ${theme.shape.borderRadius.md};
           }
 
           progress::-moz-progress-bar {
-            border-radius: ${theme.shape.borderRadius.large};
+            border-radius: ${theme.shape.borderRadius.md};
           }
 
           .primary::-webkit-progress-value {

@@ -14,6 +14,7 @@ export default {
       black: "#000",
       white: "#fff"
     },
+    divider: "#ddd",
     negative: {
       main: "#e95353"
     },
@@ -38,7 +39,10 @@ export default {
   },
   shape: {
     borderRadius: {
-      large: "4px"
+      sm: "3px",
+      md: "4px",
+      lg: "6px",
+      xl: "8px"
     }
   },
   spacing: factor => 5 * factor,
