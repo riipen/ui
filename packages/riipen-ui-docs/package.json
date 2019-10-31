@@ -14,6 +14,7 @@
   },
   "scripts": {
     "build": "next build",
+    "build:api": "BABEL_ENV=test babel-node ./scripts/buildAPI",
     "ci:audit": "audit-ci --moderate",
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
@@ -22,7 +23,11 @@
     "start": "next"
   },
   "lint-staged": {
-    "*.{js,jsx}": ["npm run format", "npm run lint", "git add"]
+    "*.{js,jsx}": [
+      "npm run format",
+      "npm run lint",
+      "git add"
+    ]
   },
   "peerDependencies": {
     "react": "16.11.0",
@@ -40,9 +45,27 @@
     "styled-jsx": "3.2.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.6.3",
+    "@babel/register": "^7.6.2",
     "audit-ci": "2.4.2",
+    "babel-plugin-optimize-clsx": "^2.5.0",
+    "babel-plugin-react-require": "^3.1.1",
+    "doctrine": "^3.0.0",
     "eslint": "6.5.1",
+    "esm": "^3.2.25",
     "lint-staged": "9.4.2",
-    "prettier": "1.18.2"
+    "prettier": "1.18.2",
+    "react-docgen": "^4.1.1",
+    "recast": "^0.18.5"
   }
 }
