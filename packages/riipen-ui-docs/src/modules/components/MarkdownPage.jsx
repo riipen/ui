@@ -5,6 +5,7 @@ import constants from "src/constants";
 import Demo from "src/modules/components/Demo";
 import Footer from "src/modules/components/Footer";
 import MarkdownElement from "src/modules/components/MarkdownElement";
+import TOC from "src/modules/components/TOC";
 import { getSections } from "src/utils/parseMarkdown";
 
 class MarkdownPage extends React.Component {
@@ -40,34 +41,57 @@ class MarkdownPage extends React.Component {
 
     return (
       <div>
-        {sections.map((section, index) => {
-          if (demos && constants.REGEX.DEMO.test(section)) {
-            let options;
+        <div className="page">
+          <div className="content">
+            {sections.map((section, index) => {
+              if (demos && constants.REGEX.DEMO.test(section)) {
+                let options;
 
-            try {
-              options = JSON.parse(`{${section}}`);
-            } catch (err) {
-              console.error(err);
-              return null;
-            }
+                try {
+                  options = JSON.parse(`{${section}}`);
+                } catch (err) {
+                  console.error(err);
+                  return null;
+                }
 
-            const name = options.demo;
+                const name = options.demo;
 
-            if (!demos || !demos[name]) {
-              throw new Error(
-                [
-                  `Missing demo: ${name}. You can use one of the following:`,
-                  Object.keys(demos)
-                ].join("\n")
-              );
-            }
+                if (!demos || !demos[name]) {
+                  throw new Error(
+                    [
+                      `Missing demo: ${name}. You can use one of the following:`,
+                      Object.keys(demos)
+                    ].join("\n")
+                  );
+                }
 
-            return <Demo key={index} demo={demos[name]} options={options} />;
-          }
+                return (
+                  <Demo key={index} demo={demos[name]} options={options} />
+                );
+              }
 
-          return <MarkdownElement key={index} text={section} />;
-        })}
+              return <MarkdownElement key={index} text={section} />;
+            })}
+          </div>
+          <div className="toc">
+            <TOC sections={sections} />
+          </div>
+        </div>
         <Footer />
+        <style jsx>{`
+          .page {
+            display: flex;
+          }
+          .content {
+            padding-right: 20px;
+            width: 100%;
+          }
+          .toc {
+            top: 70px;
+            position: sticky;
+            width: 175px;
+          }
+        `}</style>
       </div>
     );
   }

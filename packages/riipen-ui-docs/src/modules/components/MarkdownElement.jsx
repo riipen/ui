@@ -101,44 +101,44 @@ class MarkdownElement extends React.Component {
             overflow: auto;
           }
           div :global(table) {
-            width: 100%;
-            display: block;
-            overflow-x: auto;
             border-collapse: collapse;
-            margin-bottom: 16px;
             border-spacing: 0;
+            display: block;
+            margin-bottom: 16px;
+            overflow-x: auto;
             overflow: hidden;
+            width: 100%;
           }
           div :global(table .prop-name) {
-            font-size: 13px;
             font-family: 'Consolas, "Liberation Mono", Menlo, monospace';
+            font-size: 13px;
           }
           div :global(table .required) {
             color: #006500;
           }
           div :global(table .prop-type) {
-            font-size: 13px;
-            font-family: 'Consolas, "Liberation Mono", Menlo, monospace';
             color: #932981;
+            font-family: 'Consolas, "Liberation Mono", Menlo, monospace';
+            font-size: 13px;
           }
           div :global(table .prop-default) {
-            font-size: 13px;
-            font-family: 'Consolas, "Liberation Mono", Menlo, monospace';
             border-bottom: 1px dotted ${theme.palette.text.hint};
+            font-family: 'Consolas, "Liberation Mono", Menlo, monospace';
+            font-size: 13px;
           }
           div :global(td) {
             border-bottom: 1px solid ${theme.palette.divider};
-            padding: 16px;
             color: ${theme.palette.text.primary};
+            padding: 16px;
           }
           div :global(th) {
-            font-size: 14px;
-            line-height: 24px;
-            font-weight: ${theme.typography.fontWeight.medium};
-            color: ${theme.palette.text.primary};
-            white-space: pre;
             border-bottom: 1px solid ${theme.palette.divider};
+            color: ${theme.palette.text.primary};
+            font-size: 14px;
+            font-weight: ${theme.typography.fontWeight.medium};
+            line-height: 24px;
             padding: 16px;
+            white-space: pre;
           }
         `}</style>
       </React.Fragment>
