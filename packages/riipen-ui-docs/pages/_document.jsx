@@ -18,7 +18,10 @@ export default class MyDocument extends Document {
 
     return (
       <html lang="en">
-        <Head>{styles}</Head>
+        <Head>
+          {styles}
+          <style id="prismjs" />
+        </Head>
         <body>
           <Main />
           <NextScript />

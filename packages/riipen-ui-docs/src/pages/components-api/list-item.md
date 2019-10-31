@@ -14,7 +14,7 @@ import ListItem from '@riipen-ui/ListItem';
 import { ListItem } from '@riipen-ui';
 ```
 
-You can learn more about the difference by [reading this guide](/guides/minimizing-bundle-size/).
+You can learn more about the difference by [reading this guide](/guides/bundle-size).
 
 ## Props
 

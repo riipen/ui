@@ -9,7 +9,7 @@ module.exports = {
     );
 
     config.module.rules.push({
-      test: /\.(md)$/,
+      test: /\.(css|md)$/,
       loader: "emit-file-loader",
       options: {
         name: "dist/[path][name].[ext]"
@@ -17,7 +17,7 @@ module.exports = {
     });
 
     config.module.rules.push({
-      test: /\.(md)$/,
+      test: /\.(css|md)$/,
       loader: "raw-loader"
     });
 

@@ -89,7 +89,8 @@ class MarkdownPage extends React.Component {
           .toc {
             top: 70px;
             position: sticky;
-            width: 175px;
+            max-width: 250px;
+            min-width: 175px;
           }
         `}</style>
       </div>

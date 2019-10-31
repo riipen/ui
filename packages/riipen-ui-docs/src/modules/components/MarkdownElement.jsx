@@ -2,6 +2,8 @@ import marked from "marked";
 import PropTypes from "prop-types";
 import React from "react";
 
+import prism from "src/utils/prism";
+
 import ThemeContext from "@riipen-ui/styles/ThemeContext";
 
 const renderer = new marked.Renderer();
@@ -14,6 +16,30 @@ const markedOptions = {
   sanitize: false,
   smartLists: true,
   smartypants: false,
+  highlight(code, language) {
+    let prismLanguage;
+
+    switch (language) {
+      case "js":
+      case "sh":
+        prismLanguage = prism.languages.jsx;
+        break;
+
+      default:
+        prismLanguage = prism.languages[language];
+        break;
+    }
+
+    if (!prismLanguage) {
+      if (language) {
+        throw new Error(`unsupported language: "${language}", "${code}"`);
+      } else {
+        prismLanguage = prism.languages.jsx;
+      }
+    }
+
+    return prism.highlight(code, prismLanguage);
+  },
   renderer
 };
 
