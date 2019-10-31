@@ -11,7 +11,7 @@ class MarkdownPage extends React.Component {
   static propTypes = {
     path: PropTypes.string.isRequired,
     req: PropTypes.func.isRequired,
-    reqSource: PropTypes.func.isRequired
+    reqSource: PropTypes.func
   };
 
   render() {

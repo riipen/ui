@@ -100,6 +100,46 @@ class MarkdownElement extends React.Component {
             padding: 18px 12px;
             overflow: auto;
           }
+          div :global(table) {
+            width: 100%;
+            display: block;
+            overflow-x: auto;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+            border-spacing: 0;
+            overflow: hidden;
+          }
+          div :global(table .prop-name) {
+            font-size: 13px;
+            font-family: 'Consolas, "Liberation Mono", Menlo, monospace';
+          }
+          div :global(table .required) {
+            color: #006500;
+          }
+          div :global(table .prop-type) {
+            font-size: 13px;
+            font-family: 'Consolas, "Liberation Mono", Menlo, monospace';
+            color: #932981;
+          }
+          div :global(table .prop-default) {
+            font-size: 13px;
+            font-family: 'Consolas, "Liberation Mono", Menlo, monospace';
+            border-bottom: 1px dotted ${theme.palette.text.hint};
+          }
+          div :global(td) {
+            border-bottom: 1px solid ${theme.palette.divider};
+            padding: 16px;
+            color: ${theme.palette.text.primary};
+          }
+          div :global(th) {
+            font-size: 14px;
+            line-height: 24px;
+            font-weight: ${theme.typography.fontWeight.medium};
+            color: ${theme.palette.text.primary};
+            white-space: pre;
+            border-bottom: 1px solid ${theme.palette.divider};
+            padding: 16px;
+          }
         `}</style>
       </React.Fragment>
     );
