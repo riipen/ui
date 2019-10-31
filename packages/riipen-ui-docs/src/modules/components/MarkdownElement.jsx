@@ -20,8 +20,11 @@ const markedOptions = {
     let prismLanguage;
 
     switch (language) {
-      case "js":
       case "sh":
+        prismLanguage = prism.languages.bash;
+        break;
+
+      case "js":
         prismLanguage = prism.languages.jsx;
         break;
 

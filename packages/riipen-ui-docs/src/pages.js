@@ -1,13 +1,14 @@
 const pages = [
   {
-    pathname: "/getting-started"
+    name: "Getting Started",
+    children: [],
   },
   {
-    pathname: "/components",
+    name: "Components",
     children: [
       {
-        pathname: "/components",
-        children: [{ pathname: "/components/progress-bar" }]
+        name: "Progress Bar",
+        pathname: "/components/progress-bar",
       }
     ]
   }

@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import React from "react";
 
-import { Grid, GridItem, Headline, Text } from "@riipen-ui/components";
+import { AppBar, Grid, GridItem, Headline, Link, Text } from "@riipen-ui/components";
 
 import MarkdownElement from "src/modules/components/MarkdownElement";
 
@@ -9,6 +9,11 @@ class Index extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <AppBar>
+          <Link href="/">
+            Riipen-UI
+          </Link>
+        </AppBar>
         <div className="hero">
           <img
             src="/static/images/riipen-255.png"
@@ -84,6 +89,9 @@ const App = () => (
           </GridItem>
         </Grid>
         <style jsx>{`
+          .hero {
+            margin-top: 72px;
+          }
           .how-to {
             background-color: #f5f5f5;
             border-radius: 4px;

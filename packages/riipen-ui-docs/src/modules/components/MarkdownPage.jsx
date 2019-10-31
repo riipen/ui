@@ -5,8 +5,13 @@ import constants from "src/constants";
 import Demo from "src/modules/components/Demo";
 import Footer from "src/modules/components/Footer";
 import MarkdownElement from "src/modules/components/MarkdownElement";
+import Menu from "src/modules/components/Menu";
 import TOC from "src/modules/components/TOC";
+import pages from "src/pages";
 import { getSections } from "src/utils/parseMarkdown";
+
+import AppBar from "@riipen-ui/components/AppBar";
+import Link from "@riipen-ui/components/Link";
 
 class MarkdownPage extends React.Component {
   static propTypes = {
@@ -41,7 +46,13 @@ class MarkdownPage extends React.Component {
 
     return (
       <div>
+        <AppBar>
+          <Link href="/">
+            Riipen-UI
+          </Link>
+        </AppBar>
         <div className="page">
+          <Menu />
           <div className="content">
             {sections.map((section, index) => {
               if (demos && constants.REGEX.DEMO.test(section)) {
@@ -81,6 +92,7 @@ class MarkdownPage extends React.Component {
         <style jsx>{`
           .page {
             display: flex;
+            margin-top: 72px;
           }
           .content {
             padding-right: 20px;
