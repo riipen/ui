@@ -1,21 +1,21 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
-import kebabCase from 'lodash/kebabCase';
-import { parse } from 'react-docgen';
+import kebabCase from "lodash/kebabCase";
+import { parse } from "react-docgen";
 
-import generateAPIMarkdown from '../src/utils/generateAPIMarkdown';
+import generateAPIMarkdown from "../src/utils/generateAPIMarkdown";
 
 function getLineFeed(source) {
   const match = source.match(/\r?\n/);
 
-  return match === null ? os.EOL : match[0];
+  return match[0];
 }
 
 function ensureExists(pat, mask, cb) {
   fs.mkdir(pat, mask, err => {
     if (err) {
-      if (err.code === 'EEXIST') {
+      if (err.code === "EEXIST") {
         cb(null); // ignore the error if the folder already exists
       } else {
         cb(err); // something else went wrong
@@ -26,49 +26,10 @@ function ensureExists(pat, mask, cb) {
   });
 }
 
-
-// Exit with a message
-function exit(error) {
-  console.log(error, '\n');
-  process.exit();
-}
-
-function getInheritance(testInfo, src) {
-  let inheritedComponentName = testInfo.inheritComponent;
-
-  if (inheritedComponentName == null) {
-    const match = src.match(inheritedComponentRegexp);
-    if (match !== null) {
-      inheritedComponentName = match[1];
-    }
-  }
-
-  if (inheritedComponentName == null) {
-    return null;
-  }
-
-  let pathname;
-
-  switch (inheritedComponentName) {
-    case 'Transition':
-      pathname = 'https://reactcommunity.org/react-transition-group/transition#Transition-props';
-      break;
-
-    default:
-      pathname = `/api/${kebabCase(inheritedComponentName)}`;
-      break;
-  }
-
-  return {
-    component: inheritedComponentName,
-    pathname,
-  };
-}
-
 async function buildDocs(options = {}) {
   const { component: componentObject } = options;
 
-  const src = fs.readFileSync(componentObject.filename, 'utf8');
+  const src = fs.readFileSync(componentObject.filename, "utf8");
 
   const name = path.parse(componentObject.filename).name;
 
@@ -76,10 +37,10 @@ async function buildDocs(options = {}) {
 
   try {
     reactAPI = parse(src, null, null, {
-      filename: componentObject.filename,
+      filename: componentObject.filename
     });
   } catch (err) {
-    console.log('Error parsing src for', componentObject.filename);
+    console.log("Error parsing src for", componentObject.filename);
     throw err;
   }
 
@@ -88,72 +49,78 @@ async function buildDocs(options = {}) {
   reactAPI.EOL = getLineFeed(src);
 
   // Relative location in the file system.
-  reactAPI.filename = componentObject.filename.replace(__dirname, '../../../');
+  reactAPI.filename = componentObject.filename.replace(__dirname, "../../../");
 
   let markdown;
 
   try {
     markdown = generateAPIMarkdown(reactAPI);
   } catch (err) {
-    console.log('Error generating markdown for', componentObject.filename);
+    console.log("Error generating markdown for", componentObject.filename);
     throw err;
   }
 
-  const markdownDirectory = path.resolve(__dirname, '../src/pages/api');
+  const markdownDirectory = path.resolve(
+    __dirname,
+    "../src/pages/components-api"
+  );
 
-  ensureExists(markdownDirectory, 0o744, (errpr) => {
+  ensureExists(markdownDirectory, 0o744, errpr => {
     if (errpr) {
-      console.log('Error creating directory', markdownDirectory);
+      console.log("Error creating directory", markdownDirectory);
       return;
     }
 
     fs.writeFileSync(
       path.resolve(markdownDirectory, `${kebabCase(reactAPI.name)}.md`),
-      markdown.replace(/\r?\n/g, reactAPI.EOL),
+      markdown.replace(/\r?\n/g, reactAPI.EOL)
     );
   });
 
-  const pageDirectory = path.resolve(__dirname, '../pages/api');
+  const pageDirectory = path.resolve(__dirname, "../pages/components-api");
 
-  ensureExists(pageDirectory, 0o744, (errpr) => {
+  ensureExists(pageDirectory, 0o744, errpr => {
     if (errpr) {
-      console.log('Error creating directory', pageDirectory);
+      console.log("Error creating directory", pageDirectory);
       return;
     }
 
     fs.writeFileSync(
-      path.resolve(pageDirectory, `${kebabCase(reactAPI.name)}.js`),
+      path.resolve(pageDirectory, `${kebabCase(reactAPI.name)}.jsx`),
       `import React from "react";
 
 import MarkdownPage from "src/modules/components/MarkdownPage";
 
 const req = require.context(
-  "src/pages/api",
+  "src/pages/components-api",
   false,
-  /${kebabCase(reactAPI.name)}\.md$/
+  /${kebabCase(reactAPI.name)}.md$/
 );
 
 export default function Page() {
   return (
     <MarkdownPage
-      path="pages/api/${kebabCase(reactAPI.name)}"
+      path="pages/components-api/${kebabCase(reactAPI.name)}"
       req={req}
     />
   );
 }
-`.replace(/\r?\n/g, reactAPI.EOL),
+`.replace(/\r?\n/g, reactAPI.EOL)
     );
 
-    console.log('Built markdown API docs for', reactAPI.name);
+    console.log("Built markdown API docs for", reactAPI.name);
   });
 }
 
 function run() {
-  const directory = path.resolve(__dirname, '../../riipen-ui/components');
+  const directory = path.resolve(__dirname, "../../riipen-ui/components");
 
-  const components = fs.readdirSync(directory).map((item) => ({
-    filename: path.resolve(directory, item),
-  })).filter((item) => !item.filename.endsWith('/index.js'));
+  const components = fs
+    .readdirSync(directory)
+    .map(item => ({
+      filename: path.resolve(directory, item)
+    }))
+    .filter(item => !item.filename.endsWith("/index.js"));
 
   components.forEach(component => {
     buildDocs({ component }).catch(error => {

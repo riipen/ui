@@ -1,17 +1,10 @@
-import { parse as parseDoctrine } from 'doctrine';
-import * as recast from 'recast';
-import { parse as parseDocgen } from 'react-docgen';
-
-const PATH_REPLACE_REGEX = /\\/g;
-const PATH_SEPARATOR = '/';
-
-function normalizePath(path) {
-  return path.replace(PATH_REPLACE_REGEX, PATH_SEPARATOR);
-}
+import { parse as parseDoctrine } from "doctrine";
+import * as recast from "recast";
+import { parse as parseDocgen } from "react-docgen";
 
 function getChained(type) {
   if (type.raw) {
-    const marker = 'chainPropTypes';
+    const marker = "chainPropTypes";
     const indexStart = type.raw.indexOf(marker);
 
     if (indexStart !== -1) {
@@ -20,18 +13,22 @@ function getChained(type) {
         import PropTypes from 'prop-types';
         const Foo = () => <div />
         Foo.propTypes = {
-          bar: ${recast.print(recast.parse(type.raw).program.body[0].expression.arguments[0]).code}
+          bar: ${
+            recast.print(
+              recast.parse(type.raw).program.body[0].expression.arguments[0]
+            ).code
+          }
         }
         export default Foo
       `,
         null,
         null,
         // helps react-docgen pickup babel.config.js
-        { filename: './' },
+        { filename: "./" }
       );
       return {
         type: parsed.props.bar.type,
-        required: parsed.props.bar.required,
+        required: parsed.props.bar.required
       };
     }
   }
@@ -42,33 +39,31 @@ function getChained(type) {
 function escapeCell(value) {
   // As the pipe is use for the table structure
   return value
-    .replace(/</g, '&lt;')
-    .replace(/`&lt;/g, '`<')
-    .replace(/\|/g, '\\|');
+    .replace(/</g, "&lt;")
+    .replace(/`&lt;/g, "`<")
+    .replace(/\|/g, "\\|");
 }
 
 function generatePropDescription(prop) {
   const { description, type } = prop;
 
-  let deprecated = '';
-
   const parsed = parseDoctrine(description, {
-    sloppy: true,
+    sloppy: true
   });
 
   // Two new lines result in a newline in the table.
   // All other new lines must be eliminated to prevent markdown mayhem.
   const jsDocText = escapeCell(parsed.description)
-    .replace(/(\r?\n){2}/g, '<br>')
-    .replace(/\r?\n/g, ' ');
+    .replace(/(\r?\n){2}/g, "<br>")
+    .replace(/\r?\n/g, " ");
 
-  let signature = '';
+  let signature = "";
 
-  if (type.name === 'func' && parsed.tags.length > 0) {
+  if (type.name === "func" && parsed.tags.length > 0) {
     // Remove new lines from tag descriptions to avoid markdown errors.
     parsed.tags.forEach(tag => {
       if (tag.description) {
-        tag.description = tag.description.replace(/\r*\n/g, ' ');
+        tag.description = tag.description.replace(/\r*\n/g, " ");
       }
     });
 
@@ -79,30 +74,32 @@ function generatePropDescription(prop) {
     let parsedArgs = [];
     let parsedReturns;
 
-    if (parsed.tags[parsedLength - 1].title === 'returns') {
+    if (parsed.tags[parsedLength - 1].title === "returns") {
       parsedArgs = parsed.tags.slice(0, parsedLength - 1);
       parsedReturns = parsed.tags[parsedLength - 1];
     } else {
       parsedArgs = parsed.tags;
-      parsedReturns = { type: { name: 'void' } };
+      parsedReturns = { type: { name: "void" } };
     }
 
-    signature += '<br><br>**Signature:**<br>`function(';
+    signature += "<br><br>**Signature:**<br>`function(";
     signature += parsedArgs
       .map(tag => {
-        if (tag.type.type === 'AllLiteral') {
+        if (tag.type.type === "AllLiteral") {
           return `${tag.name}: any`;
         }
 
-        if (tag.type.type === 'OptionalType') {
+        if (tag.type.type === "OptionalType") {
           return `${tag.name}?: ${tag.type.expression.name}`;
         }
 
         return `${tag.name}: ${tag.type.name}`;
       })
-      .join(', ');
+      .join(", ");
     signature += `) => ${parsedReturns.type.name}\`<br>`;
-    signature += parsedArgs.map(tag => `*${tag.name}:* ${tag.description}`).join('<br>');
+    signature += parsedArgs
+      .map(tag => `*${tag.name}:* ${tag.description}`)
+      .join("<br>");
 
     if (parsedReturns.description) {
       signature += `<br> *returns* (${parsedReturns.type.name}): ${parsedReturns.description}`;
@@ -114,20 +111,38 @@ function generatePropDescription(prop) {
 
 function generatePropType(type) {
   switch (type.name) {
-    case 'shape':
+    case "shape":
       return `{ ${Object.keys(type.value)
         .map(subValue => {
           const subType = type.value[subValue];
-          return `${subValue}${subType.required ? '' : '?'}: ${generatePropType(subType)}`;
+          return `${subValue}${subType.required ? "" : "?"}: ${generatePropType(
+            subType
+          )}`;
         })
-        .join(', ')} }`;
+        .join(", ")} }`;
 
-    case 'arrayOf': {
+    case "union":
+    case "enum": {
+      return (
+        type.value
+          .map(type2 => {
+            if (type.name === "enum") {
+              return escapeCell(type2.value);
+            }
+
+            return generatePropType(type2);
+          })
+          // Display one value per line as it's better for visibility.
+          .join("<br>&#124;&nbsp;")
+      );
+    }
+
+    case "arrayOf": {
       return `Array<${generatePropType(type.value)}>`;
     }
 
-    case 'instanceOf': {
-      if (type.value.startsWith('typeof')) {
+    case "instanceOf": {
+      if (type.value.startsWith("typeof")) {
         return /typeof (.*) ===/.exec(type.value)[1];
       }
       return type.value;
@@ -140,10 +155,10 @@ function generatePropType(type) {
 
 function getProp(props, key) {
   switch (key) {
-    case 'classes':
+    case "classes":
       return {
         ...props[key],
-        required: false,
+        required: false
       };
     default:
       return props[key];
@@ -151,7 +166,7 @@ function getProp(props, key) {
 }
 
 function generateProps(reactAPI) {
-  const header = '## Props';
+  const header = "## Props";
 
   let text = `${header}
 
@@ -161,7 +176,7 @@ function generateProps(reactAPI) {
   text = Object.keys(reactAPI.props).reduce((textProps, propRaw) => {
     const prop = getProp(reactAPI.props, propRaw);
 
-    if (typeof prop.description === 'undefined') {
+    if (typeof prop.description === "undefined") {
       throw new Error(`The "${propRaw}" prop is missing a description`);
     }
 
@@ -171,52 +186,50 @@ function generateProps(reactAPI) {
       return textProps;
     }
 
-    let defaultValue = '';
+    let defaultValue = "";
 
     if (prop.defaultValue) {
       defaultValue = `<span class="prop-default">${escapeCell(
-        prop.defaultValue.value.replace(/\r*\n/g, ''),
+        prop.defaultValue.value.replace(/\r*\n/g, "")
       )}</span>`;
     }
 
     const chainedPropType = getChained(prop.type);
+
+    let propName = propRaw;
 
     if (
       prop.required ||
       /\.isRequired/.test(prop.type.raw) ||
       (chainedPropType !== false && chainedPropType.required)
     ) {
-      propRaw = `<span class="prop-name required">${propRaw}&nbsp;*</span>`;
+      propName = `<span class="prop-name required">${propRaw}&nbsp;*</span>`;
     } else {
-      propRaw = `<span class="prop-name">${propRaw}</span>`;
+      propName = `<span class="prop-name">${propRaw}</span>`;
     }
 
-    textProps += `| ${propRaw} | <span class="prop-type">${generatePropType(
-      prop.type,
+    return `${textProps}| ${propName} | <span class="prop-type">${generatePropType(
+      prop.type
     )}</span> | ${defaultValue} | ${description} |\n`;
-
-    return textProps;
   }, text);
 
-    text = `${text}
+  text = `${text}
+
 Any other props supplied will be provided to the root element.`;
 
   return text;
 }
 
 function generateImportStatement(reactAPI) {
-  const source = normalizePath(reactAPI.filename)
-    // determine the published package name
-    .replace(
-      /\/packages\/riipen-ui\/src/,
-      '@riipen-ui/',
-    )
+  const source = "@riipen-ui";
 
   return `## Import
 
 \`\`\`js
 import ${reactAPI.name} from '${source}/${reactAPI.name}';
+
 // or
+
 import { ${reactAPI.name} } from '${source}';
 \`\`\`
 
@@ -225,14 +238,14 @@ You can learn more about the difference by [reading this guide](/guides/minimizi
 
 export default function generateMarkdown(reactAPI) {
   return [
-    '<!--- This documentation is automatically generated, do not try to edit it. -->',
-    '',
+    "<!--- This documentation is automatically generated, do not try to edit it. -->",
+    "",
     `# ${reactAPI.name} API`,
-    '',
+    "",
     `<p class="description">The API documentation of the ${reactAPI.name} React component.</p>`,
-    '',
+    "",
     generateImportStatement(reactAPI),
-    '',
-    generateProps(reactAPI),
-  ].join('\n');
+    "",
+    generateProps(reactAPI)
+  ].join("\n");
 }

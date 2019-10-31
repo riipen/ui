@@ -7,9 +7,11 @@
 ## Import
 
 ```js
-import Container from '/home/jordan/Documents/riipen/github/ui/packages/riipen-ui/components/Container.jsx/Container';
+import Container from '@riipen-ui/Container';
+
 // or
-import { Container } from '/home/jordan/Documents/riipen/github/ui/packages/riipen-ui/components/Container.jsx';
+
+import { Container } from '@riipen-ui';
 ```
 
 You can learn more about the difference by [reading this guide](/guides/minimizing-bundle-size/).
@@ -20,6 +22,7 @@ You can learn more about the difference by [reading this guide](/guides/minimizi
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">any</span> |  | The content inside the container. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | List of additional classes to apply to this component. |
-| <span class="prop-name">maxWidth</span> | <span class="prop-type">enum</span> |  | Determine the max-width of the container. The container width grows with the size of the screen. |
+| <span class="prop-name">maxWidth</span> | <span class="prop-type">"sm"<br>&#124;&nbsp;"md"<br>&#124;&nbsp;"lg"<br>&#124;&nbsp;"xl"<br>&#124;&nbsp;false</span> | <span class="prop-default">'lg'</span> | Determine the max-width of the container. The container width grows with the size of the screen. |
+
 
 Any other props supplied will be provided to the root element.

@@ -7,9 +7,11 @@
 ## Import
 
 ```js
-import ListItem from '/home/jordan/Documents/riipen/github/ui/packages/riipen-ui/components/ListItem.jsx/ListItem';
+import ListItem from '@riipen-ui/ListItem';
+
 // or
-import { ListItem } from '/home/jordan/Documents/riipen/github/ui/packages/riipen-ui/components/ListItem.jsx';
+
+import { ListItem } from '@riipen-ui';
 ```
 
 You can learn more about the difference by [reading this guide](/guides/minimizing-bundle-size/).
@@ -20,5 +22,6 @@ You can learn more about the difference by [reading this guide](/guides/minimizi
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">any</span> |  | The content of the list item. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | Array of additional CSS classes to use. |
+
 
 Any other props supplied will be provided to the root element.

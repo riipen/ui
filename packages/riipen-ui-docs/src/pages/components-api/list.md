@@ -1,15 +1,17 @@
 <!--- This documentation is automatically generated, do not try to edit it. -->
 
-# Divider API
+# List API
 
-<p class="description">The API documentation of the Divider React component.</p>
+<p class="description">The API documentation of the List React component.</p>
 
 ## Import
 
 ```js
-import Divider from '/home/jordan/Documents/riipen/github/ui/packages/riipen-ui/components/Divider.jsx/Divider';
+import List from '@riipen-ui/List';
+
 // or
-import { Divider } from '/home/jordan/Documents/riipen/github/ui/packages/riipen-ui/components/Divider.jsx';
+
+import { List } from '@riipen-ui';
 ```
 
 You can learn more about the difference by [reading this guide](/guides/minimizing-bundle-size/).
@@ -18,7 +20,8 @@ You can learn more about the difference by [reading this guide](/guides/minimizi
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
+| <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | The content of the list. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | List of additional classes to apply to this component. |
-| <span class="prop-name">variant</span> | <span class="prop-type">enum</span> | <span class="prop-default">"fullWidth"</span> | The variant to use. |
+
 
 Any other props supplied will be provided to the root element.

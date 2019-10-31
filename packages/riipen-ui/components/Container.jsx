@@ -24,7 +24,8 @@ class Container extends React.Component {
   };
 
   static defaultProps = {
-    classes: []
+    classes: [],
+    maxWidth: "lg"
   };
 
   static contextType = ThemeContext;
