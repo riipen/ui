@@ -1,6 +1,10 @@
 const path = require("path");
 
 module.exports = {
+  devIndicators: {
+    autoPrerender: false
+  },
+
   webpack(config, options) {
     config.resolve.alias.src = path.join(__dirname, "src");
     config.resolve.alias["@riipen-ui"] = path.resolve(

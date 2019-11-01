@@ -5,8 +5,14 @@ import constants from "src/constants";
 import Demo from "src/modules/components/Demo";
 import Footer from "src/modules/components/Footer";
 import MarkdownElement from "src/modules/components/MarkdownElement";
+import Menu from "src/modules/components/Menu";
 import TOC from "src/modules/components/TOC";
 import { getSections } from "src/utils/parseMarkdown";
+
+import AppBar from "@riipen-ui/components/AppBar";
+import Divider from "@riipen-ui/components/Divider";
+import Link from "@riipen-ui/components/Link";
+import ThemeContext from "@riipen-ui/styles/ThemeContext";
 
 class MarkdownPage extends React.Component {
   static propTypes = {
@@ -15,8 +21,12 @@ class MarkdownPage extends React.Component {
     reqSource: PropTypes.func
   };
 
+  static contextType = ThemeContext;
+
   render() {
     const { req, path, reqSource } = this.props;
+
+    const theme = this.context;
 
     const demos = {};
     let markdown;
@@ -41,7 +51,15 @@ class MarkdownPage extends React.Component {
 
     return (
       <div>
+        <AppBar>
+          <Link href="/" color="inherit">
+            Riipen-UI
+          </Link>
+        </AppBar>
         <div className="page">
+          <div className="menu">
+            <Menu />
+          </div>
           <div className="content">
             {sections.map((section, index) => {
               if (demos && constants.REGEX.DEMO.test(section)) {
@@ -72,25 +90,52 @@ class MarkdownPage extends React.Component {
 
               return <MarkdownElement key={index} text={section} />;
             })}
+            <div className="footer">
+              <Divider />
+              <Footer />
+            </div>
           </div>
           <div className="toc">
             <TOC sections={sections} />
           </div>
         </div>
-        <Footer />
         <style jsx>{`
           .page {
             display: flex;
+            justify-content: space-between;
+            padding-top: 22px;
+            position: relative;
+            top: 50px;
+            width: 100%;
+          }
+          .page :global(*:target) {
+            padding-top: 50px;
           }
           .content {
-            padding-right: 20px;
+            padding: 0 20px;
+            overflow-x: auto;
             width: 100%;
+          }
+          .menu {
+            padding: ${theme.spacing(2)}px;
           }
           .toc {
             top: 70px;
             position: sticky;
             max-width: 250px;
             min-width: 175px;
+          }
+          @media (max-width: ${theme.breakpoints.md}px) {
+            .menu,
+            .toc {
+              display: none;
+            }
+          }
+          .footer {
+            margin: ${theme.spacing(10)}px 0;
+          }
+          .footer :global(footer) {
+            margin-top: ${theme.spacing(10)}px;
           }
         `}</style>
       </div>

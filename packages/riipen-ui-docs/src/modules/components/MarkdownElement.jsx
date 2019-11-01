@@ -20,8 +20,11 @@ const markedOptions = {
     let prismLanguage;
 
     switch (language) {
-      case "js":
       case "sh":
+        prismLanguage = prism.languages.bash;
+        break;
+
+      case "js":
         prismLanguage = prism.languages.jsx;
         break;
 
@@ -116,6 +119,13 @@ class MarkdownElement extends React.Component {
             font-weight: ${theme.typography.fontWeight.medium};
             margin-bottom: 40px;
           }
+          div :global(a) {
+            color: ${theme.palette.secondary.main};
+            text-decoration: none;
+          }
+          div :global(a:hover) {
+            text-decoration: underline;
+          }
           div :global(pre) {
             background-color: #333;
             border-radius: 2px;
@@ -124,7 +134,7 @@ class MarkdownElement extends React.Component {
             font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
             font-size: 14px;
             padding: 18px 12px;
-            overflow: auto;
+            overflow-x: auto;
           }
           div :global(table) {
             border-collapse: collapse;
@@ -132,7 +142,6 @@ class MarkdownElement extends React.Component {
             display: block;
             margin-bottom: 16px;
             overflow-x: auto;
-            overflow: hidden;
             width: 100%;
           }
           div :global(table .prop-name) {

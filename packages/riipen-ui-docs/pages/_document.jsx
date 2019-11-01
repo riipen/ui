@@ -21,8 +21,12 @@ export default class MyDocument extends Document {
         <Head>
           {styles}
           <style id="prismjs" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          />
         </Head>
-        <body>
+        <body style={{ margin: 0, padding: 0 }}>
           <Main />
           <NextScript />
         </body>

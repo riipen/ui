@@ -58,11 +58,16 @@ class Link extends React.Component {
         <style jsx>{`
           a {
             cursor: pointer;
+            font-family: ${theme.typography.fontFamily};
             text-decoration: ${underline === "always" ? "underline" : "none"};
             transition: ${theme.transitions.standard} all;
           }
           a:hover {
             text-decoration: ${underline === "hover" ? "underline" : "none"};
+          }
+
+          .inherit {
+            color: inherit;
           }
 
           .primary {

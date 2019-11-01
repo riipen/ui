@@ -45,7 +45,7 @@ class Demo extends React.Component {
             border-radius: ${theme.shape.borderRadius.md};
             margin: auto;
             outline: 0;
-            overflow: auto;
+            overflow-x: auto;
             padding: 20px;
             position: relative;
           }
@@ -61,7 +61,7 @@ class Demo extends React.Component {
             font-size: 14px;
             margin-bottom: ${theme.spacing(1)};
             margin-right: 0;
-            overflow: auto;
+            overflow-x: auto;
           }
         `}</style>
       </div>
