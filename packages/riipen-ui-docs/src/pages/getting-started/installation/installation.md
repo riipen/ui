@@ -2,7 +2,7 @@
 
 Riipen-UI is available as an [npm package](https://www.npmjs.com/package/@riipen-ui).
 
-## npm
+## NPM
 
 To install and save in your `package.json` dependencies, run:
 

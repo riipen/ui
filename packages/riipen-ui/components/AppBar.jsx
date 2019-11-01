@@ -1,6 +1,6 @@
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React from 'react';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
 
@@ -19,19 +19,25 @@ class AppBar extends React.Component {
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
-    color: PropTypes.oneOf(['primary', 'secondary']),
+    color: PropTypes.oneOf(["primary", "secondary"]),
 
     /**
      * The positioning type. The behavior of the different options is described
      * [in the MDN web docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning).
      * Note: `sticky` is not universally supported and will fall back to `static` when unavailable.
      */
-    position: PropTypes.oneOf(['absolute', 'fixed', 'relative', 'static', 'sticky']),
+    position: PropTypes.oneOf([
+      "absolute",
+      "fixed",
+      "relative",
+      "static",
+      "sticky"
+    ])
   };
 
   static defaultProps = {
-    color: 'primary',
-    position: 'fixed',
+    color: "primary",
+    position: "fixed"
   };
 
   static contextType = ThemeContext;
@@ -41,17 +47,11 @@ class AppBar extends React.Component {
 
     const theme = this.context;
 
-    const className = clsx(
-      color,
-      position,
-      classes
-    );
+    const className = clsx(color, position, classes);
 
     return (
       <React.Fragment>
-        <div className={className}>
-          {children}
-        </div>
+        <div className={className}>{children}</div>
         <style jsx>{`
           div {
             align-items: center;
@@ -60,6 +60,7 @@ class AppBar extends React.Component {
             display: flex;
             padding: ${theme.spacing(3)}px;
             width: 100%;
+            z-index: ${theme.zIndex.high};
           }
 
           .fixed {
@@ -99,6 +100,6 @@ class AppBar extends React.Component {
       </React.Fragment>
     );
   }
-};
+}
 
 export default AppBar;

@@ -5,6 +5,7 @@ import React from "react";
 import textToHash from "src/utils/textToHash";
 
 import Link from "@riipen-ui/components/Link";
+import ThemeContext from "@riipen-ui/styles/ThemeContext";
 
 const renderer = new marked.Renderer();
 
@@ -39,58 +40,69 @@ function getItems(sections, itemsCollector) {
   return itemsCollector.current;
 }
 
-export default function TOC(props) {
-  const { sections } = props;
+class TOC extends React.Component {
+  static propTypes = {
+    sections: PropTypes.array.isRequired
+  };
 
-  const itemsCollector = { current: [] };
+  static contextType = ThemeContext;
 
-  setRenderer(itemsCollector);
+  render() {
+    const { sections } = this.props;
 
-  const items = getItems(sections, itemsCollector);
+    const theme = this.context;
 
-  const itemLink = item => (
-    <Link display="block" href={`#${item.hash}`} underline="none">
-      {item.text}
-    </Link>
-  );
+    const itemsCollector = { current: [] };
 
-  return (
-    <nav>
-      {items.length > 0 ? (
-        <React.Fragment>
-          <p>Content</p>
-          <ul>
-            {items.map(item => (
-              <li key={item.text}>
-                {itemLink(item)}
-                {item.children.length > 0 ? (
-                  <ul>
-                    {item.children.map(child => (
-                      <li key={child.text}>{itemLink(child, true)}</li>
-                    ))}
-                  </ul>
-                ) : null}
-              </li>
-            ))}
-          </ul>
-        </React.Fragment>
-      ) : null}
-      <style jsx>{`
-        ul {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-        }
-        ul ul {
-          list-style-type: none;
-          margin: 0;
-          padding: 0 0 0 10px;
-        }
-      `}</style>
-    </nav>
-  );
+    setRenderer(itemsCollector);
+
+    const items = getItems(sections, itemsCollector);
+
+    const itemLink = item => (
+      <Link display="block" href={`#${item.hash}`} underline="none">
+        {item.text}
+      </Link>
+    );
+
+    return (
+      <nav>
+        {items.length > 0 ? (
+          <React.Fragment>
+            <p>Content</p>
+            <ul>
+              {items.map(item => (
+                <li key={item.text}>
+                  {itemLink(item)}
+                  {item.children.length > 0 ? (
+                    <ul>
+                      {item.children.map(child => (
+                        <li key={child.text}>{itemLink(child, true)}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </React.Fragment>
+        ) : null}
+        <style jsx>{`
+          nav {
+            font-family: ${theme.typography.fontFamily};
+          }
+          ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+          }
+          ul ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0 0 0 10px;
+          }
+        `}</style>
+      </nav>
+    );
+  }
 }
 
-TOC.propTypes = {
-  sections: PropTypes.array.isRequired
-};
+export default TOC;

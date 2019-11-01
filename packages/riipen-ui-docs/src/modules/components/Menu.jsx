@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 
 import pages from "src/pages";
@@ -21,9 +20,7 @@ class Menu extends React.Component {
               <ul>
                 {parent.children.map((child, j) => (
                   <li key={j}>
-                    <Link href={child.pathname}>
-                      {child.name}
-                    </Link>
+                    <Link href={child.pathname}>{child.name}</Link>
                   </li>
                 ))}
               </ul>
@@ -32,6 +29,7 @@ class Menu extends React.Component {
         </ul>
         <style jsx>{`
           div {
+            font-family: ${theme.typography.fontFamily};
             width: 250px;
           }
           ul {

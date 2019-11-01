@@ -3,5 +3,7 @@ export { default as Grid } from "./Grid";
 export { default as GridItem } from "./GridItem";
 export { default as Headline } from "./Headline";
 export { default as Link } from "./Link";
+export { default as List } from "./List";
+export { default as ListItem } from "./ListItem";
 export { default as ProgressBar } from "./ProgressBar";
 export { default as Text } from "./Text";

@@ -38,12 +38,12 @@ export default {
       main: "#4cc88d"
     },
     primary: {
-      main: "#3f51b5",
-      contrastText: "#fff",
+      main: "#284665",
+      contrastText: "#fff"
     },
     secondary: {
       main: "#f58632",
-      contrastText: "#fff",
+      contrastText: "#fff"
     },
     tertiary: {
       main: "#3caabb"
@@ -80,7 +80,7 @@ export default {
     21: "0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12)",
     22: "0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12)",
     23: "0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12)",
-    24: "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)",
+    24: "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)"
   },
   shape: {
     borderRadius: {
@@ -149,5 +149,14 @@ export default {
       lineHeight: 1.33,
       letterSpacing: "0rem"
     }
+  },
+  zIndex: {
+    zero: 0,
+    lowest: 1,
+    low: 2,
+    middle: 3,
+    high: 4,
+    highest: 5,
+    above: 6
   }
 };
