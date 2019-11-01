@@ -1,8 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  assetPrefix:
-    process.env.NODE_ENV === "production" ? "https://riipen.github.io/ui" : "",
+  assetPrefix: process.env.NODE_ENV === "production" ? "/ui" : "",
 
   devIndicators: {
     autoPrerender: false

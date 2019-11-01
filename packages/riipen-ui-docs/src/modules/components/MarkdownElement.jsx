@@ -9,6 +9,7 @@ import ThemeContext from "@riipen-ui/styles/ThemeContext";
 const renderer = new marked.Renderer();
 
 const markedOptions = {
+  baseUrl: process.env.URL_PREFIX,
   gfm: true,
   tables: true,
   breaks: false,
