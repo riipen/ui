@@ -9,8 +9,14 @@ import {
   ListItem
 } from "@riipen-ui/components";
 
+import ThemeContext from "@riipen-ui/styles/ThemeContext";
+
 class Footer extends React.Component {
+  static contextType = ThemeContext;
+
   render() {
+    const theme = this.context;
+
     return (
       <footer>
         <Grid>
@@ -72,6 +78,7 @@ class Footer extends React.Component {
         </Grid>
         <style jsx>{`
           footer {
+            font-family: ${theme.typography.fontFamily};
           }
         `}</style>
       </footer>
