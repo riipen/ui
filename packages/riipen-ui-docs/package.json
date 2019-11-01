@@ -16,6 +16,7 @@
     "build": "next build",
     "build:api": "BABEL_ENV=test babel-node ./scripts/buildAPI",
     "ci:audit": "audit-ci --moderate",
+    "export": "next export && touch ./out/.nojekyll",
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
     "precommit": "lint-staged",

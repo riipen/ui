@@ -1,8 +1,17 @@
 const path = require("path");
 
 module.exports = {
+  assetPrefix:
+    process.env.NODE_ENV === "production" ? "https://riipen.github.io/ui" : "",
+
   devIndicators: {
     autoPrerender: false
+  },
+
+  exportPathMap() {
+    return {
+      "/": { page: "/" }
+    };
   },
 
   webpack(config, options) {
