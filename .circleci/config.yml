@@ -84,23 +84,10 @@ jobs:
       - run: lerna run --scope riipen-ui-docs build:api
       - run: lerna run --scope riipen-ui-docs build:next
 
-      # Uploading source maps is handled by webpack
-      - run: >
-          curl --fail https://api.rollbar.com/api/1/deploy/
-          -F access_token=5f5c0d5523534d1fb68f846e71f716f8
-          -F environment="${CIRCLE_BRANCH}"
-          -F revision="${CIRCLE_SHA1}"
-          -F local_username="${CIRCLE_USERNAME}"
-
-      # Cleanup
-      - run: rm ./build/dist/*.map
-      - run: rm ./config/${CIRCLE_BRANCH}.env
-
       - run:
           name: S3 Static Host Deploy
           command: |
-            aws s3 sync --delete build s3://riipen-static-ca-central-1-web-${CIRCLE_BRANCH}
-            aws s3 cp build/index.html s3://riipen-static-ca-central-1-web-${CIRCLE_BRANCH} --metadata-directive REPLACE --cache-control max-age=0
+            aws s3 sync --delete packages/riipen-ui-docs/out s3://riipen-static-ca-central-1-ui-${CIRCLE_BRANCH}
 
 test_branches: &test_branches
   filters:

@@ -13,6 +13,7 @@
     "npm": ">=6.12.0"
   },
   "scripts": {
+    "build": "npm run build:api && npm run build:next",
     "build:api": "BABEL_ENV=test babel-node ./scripts/buildAPI",
     "build:next": "NODE_ENV=production next build",
     "ci:audit": "audit-ci --moderate",
