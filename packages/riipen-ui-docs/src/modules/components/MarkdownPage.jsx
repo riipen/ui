@@ -4,6 +4,7 @@ import React from "react";
 import constants from "src/constants";
 import Demo from "src/modules/components/Demo";
 import Footer from "src/modules/components/Footer";
+import Link from "src/modules/components/Link";
 import MarkdownElement from "src/modules/components/MarkdownElement";
 import Menu from "src/modules/components/Menu";
 import TOC from "src/modules/components/TOC";
@@ -11,7 +12,6 @@ import { getSections } from "src/utils/parseMarkdown";
 
 import AppBar from "@riipen-ui/components/AppBar";
 import Divider from "@riipen-ui/components/Divider";
-import Link from "@riipen-ui/components/Link";
 import ThemeContext from "@riipen-ui/styles/ThemeContext";
 
 class MarkdownPage extends React.Component {

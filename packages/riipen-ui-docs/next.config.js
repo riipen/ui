@@ -1,9 +1,38 @@
 const path = require("path");
 
+const findPages = require("./src/utils/findPages");
+
 module.exports = {
   devIndicators: {
     autoPrerender: false
   },
+
+  exportPathMap: () => {
+    const staticPages = findPages();
+    const map = {};
+
+    function traverse(pages) {
+      pages.forEach(page => {
+        if (!page.children) {
+          map[page.pathname] = {
+            page: page.pathname
+          };
+
+          return;
+        }
+
+        traverse(page.children);
+      });
+    }
+
+    traverse(staticPages);
+
+    console.log(map);
+
+    return map;
+  },
+
+  exportTrailingSlash: true,
 
   webpack(config, options) {
     config.resolve.alias.src = path.join(__dirname, "src");

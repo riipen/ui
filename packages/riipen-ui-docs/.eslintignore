@@ -1,6 +1,4 @@
 node_modules
-build
-dist
+out
 .git
-next/
-.nyc_output/
+.next/

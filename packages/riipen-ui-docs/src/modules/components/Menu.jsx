@@ -1,8 +1,8 @@
 import React from "react";
 
+import Link from "src/modules/components/Link";
 import pages from "src/pages";
 
-import Link from "@riipen-ui/components/Link";
 import ThemeContext from "@riipen-ui/styles/ThemeContext";
 
 class Menu extends React.Component {

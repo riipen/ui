@@ -1,9 +1,9 @@
 import React from "react";
 
-import MarkdownPage from "docs/src/modules/components/MarkdownPage";
+import MarkdownPage from "src/modules/components/MarkdownPage";
 
 const req = require.context(
-  "docs/src/pages/customization/theming",
+  "src/pages/customization/theming",
   false,
   /\.(md|js|jsx)$/
 );

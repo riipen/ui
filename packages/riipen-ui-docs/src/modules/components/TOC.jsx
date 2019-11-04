@@ -2,9 +2,9 @@ import marked from "marked";
 import PropTypes from "prop-types";
 import React from "react";
 
+import Link from "src/modules/components/Link";
 import textToHash from "src/utils/textToHash";
 
-import Link from "@riipen-ui/components/Link";
 import ThemeContext from "@riipen-ui/styles/ThemeContext";
 
 const renderer = new marked.Renderer();
