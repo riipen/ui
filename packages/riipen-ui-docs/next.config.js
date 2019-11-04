@@ -1,16 +1,33 @@
 const path = require("path");
 
-module.exports = {
-  assetPrefix: process.env.NODE_ENV === "production" ? "/ui" : "",
+const findPages = require("./src/utils/findPages");
 
+module.exports = {
   devIndicators: {
     autoPrerender: false
   },
 
-  exportPathMap() {
-    return {
-      "/": { page: "/" }
-    };
+  exportPathMap: () => {
+    const staticPages = findPages();
+    const map = {};
+
+    function traverse(pages) {
+      pages.forEach(page => {
+        if (!page.children) {
+          map[page.pathname] = {
+            page: page.pathname
+          };
+
+          return;
+        }
+
+        traverse(page.children);
+      });
+    }
+
+    traverse(staticPages);
+
+    return map;
   },
 
   webpack(config, options) {
