@@ -83,6 +83,7 @@ jobs:
       - run: sudo npm install -g lerna
 
       - run: lerna run --scope riipen-ui-docs build
+      - run: lerna run --scope riipen-ui-docs export
 
       - run:
           name: S3 Static Host Deploy
