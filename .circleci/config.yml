@@ -80,9 +80,9 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install -y python-pip libpython-dev
       - run: sudo pip install awscli
+      - run: sudo npm install -g lerna
 
-      - run: lerna run --scope riipen-ui-docs build:api
-      - run: lerna run --scope riipen-ui-docs build:next
+      - run: lerna run --scope riipen-ui-docs build
 
       - run:
           name: S3 Static Host Deploy
