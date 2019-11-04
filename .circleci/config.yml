@@ -67,18 +67,79 @@ jobs:
 
       - run: npm run format
 
+  docs:
+    resource_class: large
+
+    docker:
+      - image: circleci/node:10.15.3
+
+    steps:
+      - attach_workspace:
+          at: ~/
+
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y python-pip libpython-dev
+      - run: sudo pip install awscli
+
+      - run: lerna run --scope riipen-ui-docs build:api
+      - run: lerna run --scope riipen-ui-docs build:next
+
+      # Uploading source maps is handled by webpack
+      - run: >
+          curl --fail https://api.rollbar.com/api/1/deploy/
+          -F access_token=5f5c0d5523534d1fb68f846e71f716f8
+          -F environment="${CIRCLE_BRANCH}"
+          -F revision="${CIRCLE_SHA1}"
+          -F local_username="${CIRCLE_USERNAME}"
+
+      # Cleanup
+      - run: rm ./build/dist/*.map
+      - run: rm ./config/${CIRCLE_BRANCH}.env
+
+      - run:
+          name: S3 Static Host Deploy
+          command: |
+            aws s3 sync --delete build s3://riipen-static-ca-central-1-web-${CIRCLE_BRANCH}
+            aws s3 cp build/index.html s3://riipen-static-ca-central-1-web-${CIRCLE_BRANCH} --metadata-directive REPLACE --cache-control max-age=0
+
+test_branches: &test_branches
+  filters:
+    branches:
+      ignore:
+        - production
+
+deploy_branches: &deploy_branches
+  filters:
+    branches:
+      only:
+        - production
+
 workflows:
   version: 2
 
   test:
     jobs:
-      - checkout
+      - checkout:
+          <<: *test_branches
       - audit:
+          <<: *test_branches
           requires:
             - checkout
       - lint:
+          <<: *test_branches
           requires:
             - checkout
       - format:
+          <<: *test_branches
+          requires:
+            - checkout
+
+  docs:
+    jobs:
+      - checkout:
+          <<: *deploy_branches
+      - docs:
+          <<: *deploy_branches
+          context: StaticDeploy
           requires:
             - checkout

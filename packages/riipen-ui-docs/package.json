@@ -13,8 +13,8 @@
     "npm": ">=6.12.0"
   },
   "scripts": {
-    "build": "NODE_ENV=production next build",
     "build:api": "BABEL_ENV=test babel-node ./scripts/buildAPI",
+    "build:next": "NODE_ENV=production next build",
     "ci:audit": "audit-ci --moderate",
     "export": "NODE_ENV=production next export && touch ./out/.nojekyll",
     "format": "prettier --write \"**/*.{js,jsx}\"",
