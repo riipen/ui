@@ -9,7 +9,6 @@ module.exports = function findPages(
   const pages = [];
 
   fs.readdirSync(directory).forEach(item => {
-    console.log("item", item);
     const itemPath = path.resolve(directory, item);
 
     const pathname = itemPath

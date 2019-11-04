@@ -27,8 +27,12 @@ module.exports = {
 
     traverse(staticPages);
 
+    console.log(map);
+
     return map;
   },
+
+  exportTrailingSlash: true,
 
   webpack(config, options) {
     config.resolve.alias.src = path.join(__dirname, "src");
