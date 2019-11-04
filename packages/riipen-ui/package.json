@@ -1,27 +1,50 @@
 {
   "name": "riipen-ui",
-  "description": "Riipen React component UI kit.",
+  "version": "0.0.1",
+  "private": false,
   "author": {
     "name": "Riipen",
     "email": "admin@riipen.com",
     "url": "https://riipen.com",
     "directory": "packages/riipen-ui"
   },
-  "repository": "https://github.com/riipen/ui",
-  "version": "0.0.1",
-  "private": true,
-  "engines": {
-    "npm": ">=6.12.0"
+  "description": "Riipen React component UI kit.",
+  "keywords": [
+    "react",
+    "react-component",
+    "riipen design",
+    "riipen-ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riipen/ui.git",
+    "directory": "packages/riipen-ui"
   },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/riipen/ui/issues"
+  },
+  "homepage": "https://ui.riipen.com/",
+  "engines": {
+    "npm": ">=8.0.0"
+  },
+  "sideEffects": false,
   "scripts": {
+    "build": "babel ./src --out-dir ./build && cp ./package.json ./build && cp ./README.md ./build",
     "ci:audit": "audit-ci --moderate",
     "ci:test:coverage": "NODE_ENV=test NODE_PATH=./ nyc mocha --opts ./test/unit/ci.mocha.opts",
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
-    "precommit": "lint-staged"
+    "prebuild": "rm -fr ./build",
+    "precommit": "lint-staged",
+    "release": "npm run build && npm publish build --tag latest"
   },
   "lint-staged": {
-    "*.{js,jsx}": ["npm run format", "npm run lint", "git add"]
+    "*.{js,jsx}": [
+      "npm run format",
+      "npm run lint",
+      "git add"
+    ]
   },
   "peerDependencies": {
     "react": "16.11.0",
@@ -33,6 +56,11 @@
     "styled-jsx": "3.2.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
     "audit-ci": "2.4.2",
     "eslint": "6.5.1",
     "lint-staged": "9.4.2",

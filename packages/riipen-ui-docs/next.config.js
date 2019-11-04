@@ -27,8 +27,6 @@ module.exports = {
 
     traverse(staticPages);
 
-    console.log(map);
-
     return map;
   },
 
@@ -38,7 +36,7 @@ module.exports = {
     config.resolve.alias.src = path.join(__dirname, "src");
     config.resolve.alias["@riipen-ui"] = path.resolve(
       __dirname,
-      "../riipen-ui"
+      "../riipen-ui/src"
     );
 
     config.module.rules.push({

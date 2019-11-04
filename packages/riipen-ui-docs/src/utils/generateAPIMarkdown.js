@@ -221,7 +221,7 @@ Any other props supplied will be provided to the root element.`;
 }
 
 function generateImportStatement(reactAPI) {
-  const source = "@riipen-ui";
+  const source = "riipen-ui";
 
   return `## Import
 

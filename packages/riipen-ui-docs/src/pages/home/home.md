@@ -9,7 +9,7 @@ Install Riipen-UI's source files via npm. We take care of
 injecting the CSS needed.
 
 ```sh
-$ npm install @riipen-ui
+$ npm install riipen-ui
 ```
 
 Load the default Roboto font.
@@ -28,7 +28,7 @@ don't pollute the global scope.
 ```jsx
 import React from 'react';
 
-import Button from '@riipen-ui/Button';
+import Button from 'riipen-ui/components/Button';
 
 const App = () => (
   <Button color="primary">

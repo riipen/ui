@@ -7,11 +7,11 @@
 ## Import
 
 ```js
-import AppBar from '@riipen-ui/AppBar';
+import AppBar from 'riipen-ui/AppBar';
 
 // or
 
-import { AppBar } from '@riipen-ui';
+import { AppBar } from 'riipen-ui';
 ```
 
 You can learn more about the difference by [reading this guide](/guides/bundle-size).

@@ -9,7 +9,7 @@ If you're using ES6 modules and a bundler that supports tree-shaking ([`webpack`
 use named imports and expect only a minimal set of riipen-UI components in your bundle:
 
 ```js
-import { Button } from '@riipen-ui/components';
+import { Button } from 'riipen-ui/components';
 ```
 
 ⚠️ Be aware that tree-shaking is an optimization that is usually only applied to production
@@ -25,20 +25,20 @@ For instance, use:
 
 ```js
 // 🚀 Fast
-import Button from '@riipen-ui/components/Button';
+import Button from 'riipen-ui/components/Button';
 ```
 
 instead of top level imports (without a Babel plugin):
 
 ```js
-import { Button } from '@riipen-ui/components';
+import { Button } from 'riipen-ui/components';
 ```
 
 This is the option we document in all the demos, since it requires no configuration.
 It is encouraged for library authors extending the components.
 Head to [Option 2](#option-2) for the approach that yields the best DX and UX.
 
-While importing directly in this manner doesn't use the exports in `@riipen-ui/components/index.js`,
+While importing directly in this manner doesn't use the exports in `riipen-ui/components/index.js`,
 this file can serve as a handy reference as to which modules are public.
 
 ## ECMAScript

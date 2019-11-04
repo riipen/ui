@@ -6,7 +6,7 @@ module.exports = {
       {
         alias: {
           src: "./src",
-          "@riipen-ui": "../riipen-ui"
+          "@riipen-ui": "../riipen-ui/src"
         }
       }
     ]

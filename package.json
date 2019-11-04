@@ -17,6 +17,7 @@
     "styled-jsx": "3.2.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
     "@babel/runtime-corejs2": "7.6.3",
     "audit-ci": "2.4.2",
     "babel-eslint": "10.0.3",

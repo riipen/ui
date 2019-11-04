@@ -113,7 +113,7 @@ export default function Page() {
 }
 
 function run() {
-  const directory = path.resolve(__dirname, "../../riipen-ui/components");
+  const directory = path.resolve(__dirname, "../../riipen-ui/src/components");
 
   const components = fs
     .readdirSync(directory)

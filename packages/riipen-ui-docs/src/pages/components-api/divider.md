@@ -7,11 +7,11 @@
 ## Import
 
 ```js
-import Divider from '@riipen-ui/Divider';
+import Divider from 'riipen-ui/Divider';
 
 // or
 
-import { Divider } from '@riipen-ui';
+import { Divider } from 'riipen-ui';
 ```
 
 You can learn more about the difference by [reading this guide](/guides/bundle-size).

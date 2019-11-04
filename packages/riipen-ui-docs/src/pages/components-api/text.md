@@ -7,11 +7,11 @@
 ## Import
 
 ```js
-import Text from '@riipen-ui/Text';
+import Text from 'riipen-ui/Text';
 
 // or
 
-import { Text } from '@riipen-ui';
+import { Text } from 'riipen-ui';
 ```
 
 You can learn more about the difference by [reading this guide](/guides/bundle-size).

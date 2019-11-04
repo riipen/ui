@@ -7,11 +7,11 @@
 ## Import
 
 ```js
-import GridItem from '@riipen-ui/GridItem';
+import GridItem from 'riipen-ui/GridItem';
 
 // or
 
-import { GridItem } from '@riipen-ui';
+import { GridItem } from 'riipen-ui';
 ```
 
 You can learn more about the difference by [reading this guide](/guides/bundle-size).
