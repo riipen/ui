@@ -48,12 +48,12 @@
   },
   "peerDependencies": {
     "react": "16.11.0",
-    "react-dom": "16.11.0"
+    "react-dom": "16.11.0",
+    "styled-jsx": "3.2.2"
   },
   "dependencies": {
     "clsx": "1.0.4",
-    "prop-types": "15.7.2",
-    "styled-jsx": "3.2.2"
+    "prop-types": "15.7.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",

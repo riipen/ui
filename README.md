@@ -56,13 +56,14 @@ $ nvm install --lts
 $ nvm use --lts
 ```
 
-3. Upgrade npm and install local dependencies:
+3. Upgrade npm to latest version:
+
 ```bash
 $ npm install npm@latest -g
-$ npm install
 ```
 
 4. Install lerna and bootstrap:
+
 ```bash
 $ npm install lerna -g
 $ lerna bootstrap
