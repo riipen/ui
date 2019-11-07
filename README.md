@@ -87,7 +87,7 @@ You can visit the server locally at `http://localhost:3000`.
 To deploy the documentation server on GitHub Pages:
 
 ```bash
- git subtree push --prefix packages/riipen-ui-docs/out origin gh-pages
+$ git push origin production
 ```
 
 ## License
