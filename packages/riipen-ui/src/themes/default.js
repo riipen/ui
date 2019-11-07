@@ -32,20 +32,25 @@ export default {
       A700: "#616161"
     },
     negative: {
+      light: "#ea7e7e",
       main: "#e95353"
     },
     positive: {
+      light: "#78dbac",
       main: "#4cc88d"
     },
     primary: {
+      light: "#005487",
       main: "#284665",
-      contrastText: "#fff"
+      contrast: "#fff"
     },
     secondary: {
+      light: "#f79e5a",
       main: "#f58632",
-      contrastText: "#fff"
+      contrast: "#fff"
     },
     tertiary: {
+      light: "#dff3f7",
       main: "#3caabb"
     },
     text: {

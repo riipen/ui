@@ -16,6 +16,18 @@ const pages = [
     name: "Components",
     children: [
       {
+        name: "App Bar",
+        pathname: "/components/app-bar"
+      },
+      {
+        name: "Avatar",
+        pathname: "/components/avatar"
+      },
+      {
+        name: "Banner",
+        pathname: "/components/banner"
+      },
+      {
         name: "Container",
         pathname: "/components/container"
       },
@@ -36,6 +48,18 @@ const pages = [
   {
     name: "API",
     children: [
+      {
+        name: "App Bar",
+        pathname: "/components-api/app-bar"
+      },
+      {
+        name: "Avatar",
+        pathname: "/components-api/avatar"
+      },
+      {
+        name: "Banner",
+        pathname: "/components-api/banner"
+      },
       {
         name: "Container",
         pathname: "/components-api/container"
@@ -75,6 +99,10 @@ const pages = [
       {
         name: "Text",
         pathname: "/components-api/text"
+      },
+      {
+        name: "Toolbar",
+        pathname: "/components-api/toolbar"
       }
     ]
   },

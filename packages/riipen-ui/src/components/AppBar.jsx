@@ -19,7 +19,7 @@ class AppBar extends React.Component {
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
-    color: PropTypes.oneOf(["primary", "secondary"]),
+    color: PropTypes.oneOf(["primary", "secondary", "white", "black"]),
 
     /**
      * The positioning type. The behavior of the different options is described
@@ -90,11 +90,19 @@ class AppBar extends React.Component {
 
           .primary {
             background-color: ${theme.palette.primary.main};
-            color: ${theme.palette.primary.contrastText};
+            color: ${theme.palette.primary.contrast};
           }
           .secondary {
             background-color: ${theme.palette.secondary.main};
-            color: ${theme.palette.secondary.contrastText};
+            color: ${theme.palette.secondary.contrast};
+          }
+          .white {
+            background-color: ${theme.palette.common.white};
+            color: ${theme.palette.common.black};
+          }
+          .black {
+            background-color: ${theme.palette.common.black};
+            color: ${theme.palette.common.white};
           }
         `}</style>
       </React.Fragment>
