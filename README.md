@@ -56,13 +56,14 @@ $ nvm install --lts
 $ nvm use --lts
 ```
 
-3. Upgrade npm and install local dependencies:
+3. Upgrade npm to latest version:
+
 ```bash
 $ npm install npm@latest -g
-$ npm install
 ```
 
 4. Install lerna and bootstrap:
+
 ```bash
 $ npm install lerna -g
 $ lerna bootstrap
@@ -86,7 +87,7 @@ You can visit the server locally at `http://localhost:3000`.
 To deploy the documentation server on GitHub Pages:
 
 ```bash
- git subtree push --prefix packages/riipen-ui-docs/out origin gh-pages
+$ git push origin production
 ```
 
 ## License
