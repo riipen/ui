@@ -3,10 +3,10 @@ import React from "react";
 import {
   Grid,
   GridItem,
-  Headline,
   Link,
   List,
-  ListItem
+  ListItem,
+  Typography
 } from "@riipen-ui/components";
 
 import ThemeContext from "@riipen-ui/styles/ThemeContext";
@@ -21,7 +21,7 @@ class Footer extends React.Component {
       <footer>
         <Grid>
           <GridItem lg={4} sm={12}>
-            <Headline variant="h3">Community</Headline>
+            <Typography variant="h3">Community</Typography>
             <List>
               <ListItem>
                 <Link
@@ -53,7 +53,7 @@ class Footer extends React.Component {
             </List>
           </GridItem>
           <GridItem lg={4} sm={12}>
-            <Headline variant="h3">Resources</Headline>
+            <Typography variant="h3">Resources</Typography>
             <List>
               <ListItem>
                 <Link

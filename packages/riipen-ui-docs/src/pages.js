@@ -42,6 +42,10 @@ const pages = [
       {
         name: "Progress Bar",
         pathname: "/components/progress-bar"
+      },
+      {
+        name: "Typography",
+        pathname: "/components/typography"
       }
     ]
   },
@@ -77,10 +81,6 @@ const pages = [
         pathname: "/components-api/grid-item"
       },
       {
-        name: "Headline",
-        pathname: "/components-api/headline"
-      },
-      {
         name: "Link",
         pathname: "/components-api/link"
       },
@@ -97,12 +97,12 @@ const pages = [
         pathname: "/components-api/progress-bar"
       },
       {
-        name: "Text",
-        pathname: "/components-api/text"
-      },
-      {
         name: "Toolbar",
         pathname: "/components-api/toolbar"
+      },
+      {
+        name: "Typography",
+        pathname: "/components-api/typography"
       }
     ]
   },
