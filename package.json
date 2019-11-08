@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "build": "lerna run build",
     "ci:audit": "lerna run ci:audit",
     "format": "lerna run format",
     "lint": "lerna run lint"
