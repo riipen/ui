@@ -36,6 +36,10 @@ const pages = [
         pathname: "/components/divider"
       },
       {
+        name: "Drawer",
+        pathname: "/components/drawer"
+      },
+      {
         name: "Grid",
         pathname: "/components/grid"
       },
@@ -61,8 +65,16 @@ const pages = [
         pathname: "/components-api/avatar"
       },
       {
+        name: "Backdrop",
+        pathname: "/components-api/backdrop"
+      },
+      {
         name: "Banner",
         pathname: "/components-api/banner"
+      },
+      {
+        name: "Click Away",
+        pathname: "/components-api/click-away"
       },
       {
         name: "Container",
@@ -71,6 +83,10 @@ const pages = [
       {
         name: "Divider",
         pathname: "/components-api/divider"
+      },
+      {
+        name: "Drawer",
+        pathname: "/components-api/drawer"
       },
       {
         name: "Grid",
