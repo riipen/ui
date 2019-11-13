@@ -50,6 +50,10 @@ const pages = [
       {
         name: "Typography",
         pathname: "/components/typography"
+      },
+      {
+        name: "Warning",
+        pathname: "/components/warning"
       }
     ]
   },
@@ -119,6 +123,10 @@ const pages = [
       {
         name: "Typography",
         pathname: "/components-api/typography"
+      },
+      {
+        name: "Warning",
+        pathname: "/components-api/warning"
       }
     ]
   },
