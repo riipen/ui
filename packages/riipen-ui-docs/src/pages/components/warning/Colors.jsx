@@ -3,7 +3,7 @@ import React from "react";
 import Typography from "@riipen-ui/components/Typography";
 import Warning from "@riipen-ui/components/Warning";
 
-export default function Variants() {
+export default function Colors() {
   const style = {
     marginBottom: "10px"
   };

@@ -70,13 +70,13 @@ class TOC extends React.Component {
           <React.Fragment>
             <p>Content</p>
             <ul>
-              {items.map(item => (
-                <li key={item.text}>
+              {items.map((item, i) => (
+                <li key={i}>
                   {itemLink(item)}
                   {item.children.length > 0 ? (
                     <ul>
-                      {item.children.map(child => (
-                        <li key={child.text}>{itemLink(child, true)}</li>
+                      {item.children.map((child, index) => (
+                        <li key={index}>{itemLink(child, true)}</li>
                       ))}
                     </ul>
                   ) : null}
