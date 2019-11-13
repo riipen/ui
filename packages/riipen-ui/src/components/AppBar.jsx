@@ -60,7 +60,7 @@ class AppBar extends React.Component {
             display: flex;
             padding: ${theme.spacing(3)}px;
             width: 100%;
-            z-index: ${theme.zIndex.high};
+            z-index: ${theme.zIndex.low};
           }
 
           .fixed {
