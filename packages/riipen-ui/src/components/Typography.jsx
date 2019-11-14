@@ -27,7 +27,7 @@ class Typography extends React.Component {
     /**
      * An array of custom CSS classes to apply.
      */
-    classes: PropTypes.object,
+    classes: PropTypes.array,
 
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
@@ -91,6 +91,7 @@ class Typography extends React.Component {
   };
 
   static defaultProps = {
+    classes: [],
     color: "initial",
     display: "initial",
     gutter: false,

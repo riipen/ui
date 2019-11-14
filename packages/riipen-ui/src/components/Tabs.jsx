@@ -12,7 +12,7 @@ class Tabs extends React.Component {
     /**
      * An array of custom CSS classes to apply.
      */
-    classes: PropTypes.object,
+    classes: PropTypes.array,
 
     /**
      * Determines the color of the indicator.

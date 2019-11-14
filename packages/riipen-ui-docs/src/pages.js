@@ -32,6 +32,10 @@ const pages = [
         pathname: "/components/banner"
       },
       {
+        name: "Breadcrumbs",
+        pathname: "/components/breadcrumbs"
+      },
+      {
         name: "Button",
         pathname: "/components/button"
       },

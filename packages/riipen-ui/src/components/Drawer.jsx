@@ -22,7 +22,7 @@ class Drawer extends React.Component {
     /**
      * An array of custom CSS classes to apply.
      */
-    classes: PropTypes.object,
+    classes: PropTypes.array,
 
     /**
      * Callback fired when the component requests to be closed.

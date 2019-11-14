@@ -19,7 +19,7 @@ class Avatar extends React.Component {
     /**
      * An array of custom CSS classes to apply.
      */
-    classes: PropTypes.object,
+    classes: PropTypes.array,
 
     /**
      * The height and width size to render the Avatar at.

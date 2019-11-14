@@ -14,7 +14,7 @@ class Avatar extends React.Component {
     /**
      * An array of custom CSS classes to apply.
      */
-    classes: PropTypes.object,
+    classes: PropTypes.array,
 
     /**
      * The height to render the Banner at.

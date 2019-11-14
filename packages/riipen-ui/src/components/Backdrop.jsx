@@ -12,7 +12,7 @@ class Backdrop extends React.Component {
     /**
      * An array of custom CSS classes to apply.
      */
-    classes: PropTypes.object,
+    classes: PropTypes.array,
 
     /**
      * If `true`, the backdrop is open.
