@@ -24,8 +24,20 @@ const pages = [
         pathname: "/components/avatar"
       },
       {
+        name: "Badge",
+        pathname: "/components/badge"
+      },
+      {
         name: "Banner",
         pathname: "/components/banner"
+      },
+      {
+        name: "Button",
+        pathname: "/components/button"
+      },
+      {
+        name: "Chip",
+        pathname: "/components/chip"
       },
       {
         name: "Container",
@@ -40,12 +52,24 @@ const pages = [
         pathname: "/components/drawer"
       },
       {
+        name: "Hidden",
+        pathname: "/components/hidden"
+      },
+      {
         name: "Grid",
         pathname: "/components/grid"
       },
       {
+        name: "Link",
+        pathname: "/components/link"
+      },
+      {
         name: "Progress Bar",
         pathname: "/components/progress-bar"
+      },
+      {
+        name: "Tabs",
+        pathname: "/components/tabs"
       },
       {
         name: "Typography",
