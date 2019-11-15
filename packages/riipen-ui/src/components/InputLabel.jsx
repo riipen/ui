@@ -21,18 +21,18 @@ class InputLabel extends React.Component {
     /**
      * If true, an asterisk will be appended to the end of the label.
      */
-    isRequired: PropTypes.bool
+    required: PropTypes.bool
   };
 
   static defaultProps = {
     classes: [],
-    isRequired: false
+    required: false
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, isRequired, ...other } = this.props;
+    const { children, classes, required, ...other } = this.props;
 
     const theme = this.context;
 
@@ -43,7 +43,7 @@ class InputLabel extends React.Component {
         <label className={className} {...other}>
           <Typography>
             {children}
-            {isRequired && " *"}
+            {required && " *"}
           </Typography>
         </label>
         <style jsx>{`

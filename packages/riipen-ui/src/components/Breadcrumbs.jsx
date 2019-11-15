@@ -46,16 +46,16 @@ class Breadcrumbs extends React.Component {
       <React.Fragment>
         <Typography component={component} {...other}>
           <ol>
-            {children.reduce((acc, current, index) => {
+            {children.map((child, index) => {
               if (index < children.length - 1) {
-                return acc.concat(
-                  <li key={`child-${index}`}>{current}</li>,
+                return [
+                  <li key={`child-${index}`}>{child}</li>,
                   <li key={`separator-${index}`}>{separator}</li>
-                );
+                ];
               }
 
-              return acc.push(current);
-            }, [])}
+              return <li key={`child-${index}`}>{child}</li>;
+            })}
           </ol>
         </Typography>
         <style jsx>{`

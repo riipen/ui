@@ -55,13 +55,21 @@ class FormGroup extends React.Component {
               {subtitle}
             </Typography>
           )}
-          {children}
+          <div className="children">{children}</div>
         </fieldset>
         <style jsx>{`
           fieldset {
             border: none;
-            margin: ${theme.spacing(3)}px 0;
+            margin: 0 0 ${theme.spacing(8)}px 0;
             padding: 0;
+          }
+
+          fieldset:last-child {
+            margin-bottom: 0;
+          }
+
+          .children {
+            margin-top: ${theme.spacing(4)}px;
           }
         `}</style>
       </React.Fragment>

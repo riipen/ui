@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "clsx": "1.0.4",
+    "popper.js": "^1.16.0",
     "prop-types": "15.7.2",
     "react-icons-riipen": "git+ssh://git@github.com/riipen/react-icons-riipen.git#master"
   },
