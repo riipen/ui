@@ -9,11 +9,11 @@ export default function Letter() {
 
   return (
     <div>
-      <Avatar size="50px">L</Avatar>
+      <Avatar size="25px">HE</Avatar>
       <span style={style} />
-      <Avatar size="50px">U</Avatar>
+      <Avatar size="50px">LL</Avatar>
       <span style={style} />
-      <Avatar size="50px">LZ</Avatar>
+      <Avatar size="75px">O</Avatar>
     </div>
   );
 }

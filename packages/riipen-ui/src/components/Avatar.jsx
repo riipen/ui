@@ -61,10 +61,12 @@ class Avatar extends React.Component {
         <style jsx>{`
           .avatar {
             align-items: center;
+            background-color: ${theme.palette.grey[200]};
             border: 4px solid ${theme.palette.common.white};
             display: inline-flex;
             flex-shrink: 0;
             font-family: ${theme.typography.fontFamily};
+            font-size: calc(${size} * 0.4);
             height: ${size};
             justify-content: center;
             line-height: 1;
