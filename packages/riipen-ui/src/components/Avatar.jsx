@@ -42,6 +42,20 @@ class Avatar extends React.Component {
     variant: "circle"
   };
 
+  getBorderSize() {
+    const { size } = this.props;
+
+    // Remove 'px' and get number of pixels
+    const pixels = +size.substring(0, size.length - 2);
+
+    switch (true) {
+      case pixels < 70:
+        return "2px";
+      default:
+        return "4px";
+    }
+  }
+
   static contextType = ThemeContext;
 
   render() {
@@ -62,7 +76,7 @@ class Avatar extends React.Component {
           .avatar {
             align-items: center;
             background-color: ${theme.palette.grey[200]};
-            border: 4px solid ${theme.palette.common.white};
+            border: ${this.getBorderSize()} solid ${theme.palette.common.white};
             display: inline-flex;
             flex-shrink: 0;
             font-family: ${theme.typography.fontFamily};
