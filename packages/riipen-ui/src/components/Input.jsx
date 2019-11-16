@@ -4,7 +4,7 @@ import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
 
-class AppBar extends React.Component {
+class Input extends React.Component {
   static propTypes = {
     /**
      * An array of custom CSS classes to apply.
@@ -78,4 +78,4 @@ class AppBar extends React.Component {
   }
 }
 
-export default AppBar;
+export default Input;

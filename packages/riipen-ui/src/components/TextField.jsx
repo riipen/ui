@@ -6,7 +6,7 @@ import InputLabel from "./InputLabel";
 import InputHint from "./InputHint";
 import Typography from "./Typography";
 
-class AppBar extends React.Component {
+class TextField extends React.Component {
   static propTypes = {
     /**
      * An array of custom CSS classes to apply.
@@ -67,4 +67,4 @@ class AppBar extends React.Component {
   }
 }
 
-export default AppBar;
+export default TextField;
