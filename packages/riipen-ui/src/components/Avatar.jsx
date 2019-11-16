@@ -45,7 +45,7 @@ class Avatar extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { alt, children, classes, size, src, variant } = this.props;
+    const { alt, children, classes, size, src, variant, ...other } = this.props;
 
     const theme = this.context;
 
@@ -54,7 +54,7 @@ class Avatar extends React.Component {
     return (
       <React.Fragment>
         {src ? (
-          <img alt={alt} src={src} className={className} />
+          <img alt={alt} src={src} className={className} {...other} />
         ) : (
           <span className={className}>{children}</span>
         )}
