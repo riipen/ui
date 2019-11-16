@@ -6,7 +6,7 @@ import Badge from "@riipen-ui/components/Badge";
 export default function Maximum() {
   return (
     <div>
-      <Badge content={11} max={9}>
+      <Badge content={11} max={9} overlap="circle">
         <Avatar
           alt="Jordan Ell"
           size="75px"

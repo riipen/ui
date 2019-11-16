@@ -10,7 +10,11 @@ export default function Alignment() {
 
   return (
     <div>
-      <Badge anchor={{ horizontal: "right", vertical: "top" }} content={1}>
+      <Badge
+        anchor={{ horizontal: "right", vertical: "top" }}
+        content={1}
+        overlap="circle"
+      >
         <Avatar
           alt="Jordan Ell"
           size="75px"
@@ -19,7 +23,11 @@ export default function Alignment() {
         />
       </Badge>
       <span style={style} />
-      <Badge anchor={{ horizontal: "right", vertical: "bottom" }} content={1}>
+      <Badge
+        anchor={{ horizontal: "right", vertical: "bottom" }}
+        content={1}
+        overlap="circle"
+      >
         <Avatar
           alt="Jordan Ell"
           size="75px"
@@ -28,7 +36,11 @@ export default function Alignment() {
         />
       </Badge>
       <span style={style} />
-      <Badge anchor={{ horizontal: "left", vertical: "top" }} content={1}>
+      <Badge
+        anchor={{ horizontal: "left", vertical: "top" }}
+        content={1}
+        overlap="circle"
+      >
         <Avatar
           alt="Jordan Ell"
           size="75px"
@@ -37,7 +49,11 @@ export default function Alignment() {
         />
       </Badge>
       <span style={style} />
-      <Badge anchor={{ horizontal: "left", vertical: "bottom" }} content={1}>
+      <Badge
+        anchor={{ horizontal: "left", vertical: "bottom" }}
+        content={1}
+        overlap="circle"
+      >
         <Avatar
           alt="Jordan Ell"
           size="75px"

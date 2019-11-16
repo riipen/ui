@@ -6,7 +6,7 @@ import Badge from "@riipen-ui/components/Badge";
 export default function Visibility() {
   return (
     <div>
-      <Badge content={0}>
+      <Badge content={0} overlap="circle">
         <Avatar
           alt="Jordan Ell"
           size="75px"
@@ -14,7 +14,7 @@ export default function Visibility() {
           variant="circle"
         />
       </Badge>
-      <Badge content={0} showZero>
+      <Badge content={0} showZero overlap="circle">
         <Avatar
           alt="Jordan Ell"
           size="75px"

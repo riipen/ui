@@ -6,7 +6,7 @@ import Badge from "@riipen-ui/components/Badge";
 export default function Variants() {
   return (
     <div>
-      <Badge variant="dot">
+      <Badge variant="dot" overlap="circle" color="positive">
         <Avatar
           alt="Jordan Ell"
           size="75px"

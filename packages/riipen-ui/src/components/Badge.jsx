@@ -5,7 +5,7 @@ import React from "react";
 import ThemeContext from "../styles/ThemeContext";
 
 const RADIUS_STANDARD = 10;
-const RADIUS_DOT = 3;
+const RADIUS_DOT = 5;
 
 class Badge extends React.Component {
   static propTypes = {
@@ -30,7 +30,7 @@ class Badge extends React.Component {
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
-    color: PropTypes.oneOf(["negative", "primary", "secondary"]),
+    color: PropTypes.oneOf(["negative", "positive", "primary", "secondary"]),
 
     /**
      * The component used for the root node.
@@ -163,6 +163,10 @@ class Badge extends React.Component {
           .secondary {
             background-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.contrast};
+          }
+          .positive {
+            background-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.contrast};
           }
           .negative {
             background-color: ${theme.palette.negative.main};
