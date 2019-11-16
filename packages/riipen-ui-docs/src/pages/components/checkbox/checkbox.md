@@ -11,3 +11,9 @@ instead of on/off switches. If you have a single option, avoid using a checkbox 
 on/off switch instead.
 
 {{"demo": "pages/components/checkbox/Usage.js"}}
+
+## Validation
+
+The `error` prop toggles the error state.
+
+{{"demo": "pages/components/checkbox/Validation.js"}}

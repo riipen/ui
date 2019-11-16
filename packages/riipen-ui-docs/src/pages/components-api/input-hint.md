@@ -1,17 +1,17 @@
 <!--- This documentation is automatically generated, do not try to edit it. -->
 
-# Backdrop API
+# InputHint API
 
-<p class="description">The API documentation of the Backdrop React component.</p>
+<p class="description">The API documentation of the InputHint React component.</p>
 
 ## Import
 
 ```js
-import Backdrop from 'riipen-ui/Backdrop';
+import InputHint from 'riipen-ui/InputHint';
 
 // or
 
-import { Backdrop } from 'riipen-ui';
+import { InputHint } from 'riipen-ui';
 ```
 
 You can learn more about the difference by [reading this guide](/guides/bundle-size).
@@ -21,8 +21,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | The content of the component. |
-| <span class="prop-name">classes</span> | <span class="prop-type">array</span> |  | An array of custom CSS classes to apply. |
-| <span class="prop-name">open</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the backdrop is open. |
+| <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | An array of custom CSS classes to apply. |
 
 
 Any other props supplied will be provided to the root element.

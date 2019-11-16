@@ -40,6 +40,10 @@ const pages = [
         pathname: "/components/button"
       },
       {
+        name: "Checkbox",
+        pathname: "/components/checkbox"
+      },
+      {
         name: "Chip",
         pathname: "/components/chip"
       },
@@ -54,6 +58,10 @@ const pages = [
       {
         name: "Drawer",
         pathname: "/components/drawer"
+      },
+      {
+        name: "Form",
+        pathname: "/components/form"
       },
       {
         name: "Hidden",
@@ -72,8 +80,16 @@ const pages = [
         pathname: "/components/progress-bar"
       },
       {
+        name: "Radio",
+        pathname: "/components/radio"
+      },
+      {
         name: "Tabs",
         pathname: "/components/tabs"
+      },
+      {
+        name: "Text Field",
+        pathname: "/components/text-field"
       },
       {
         name: "Typography",

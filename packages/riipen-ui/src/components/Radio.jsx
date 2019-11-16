@@ -6,7 +6,7 @@ import ThemeContext from "../styles/ThemeContext";
 
 import Typography from "./Typography";
 
-class Checkbox extends React.Component {
+class Radio extends React.Component {
   static propTypes = {
     /**
      * If `true`, the component is checked.
@@ -14,88 +14,35 @@ class Checkbox extends React.Component {
     checked: PropTypes.bool,
 
     /**
-     * An array of custom CSS classes to apply.
-     */
-    classes: PropTypes.array,
-
-    /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
     color: PropTypes.oneOf(["primary", "secondary", "default"]),
 
     /**
-     * An error to display below the checkbox.
+     * Label text to display for the radio.
      */
-    error: PropTypes.string,
-
-    /**
-     * Label text to display for the checkbox.
-     */
-    label: PropTypes.string,
-
-    /**
-     * If true, an asterisk will be appended to the end of the label.
-     */
-    required: PropTypes.bool,
-
-    /**
-     * A warning to display below the checkbox.
-     */
-    warning: PropTypes.string
-  };
-
-  static defaultProps = {
-    checked: false,
-    required: false
+    label: PropTypes.string
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const {
-      checked,
-      classes,
-      color,
-      error,
-      label,
-      required,
-      warning,
-      ...other
-    } = this.props;
+    const { checked, color, label, ...other } = this.props;
 
     const theme = this.context;
-
-    const className = clsx("checkbox", classes);
 
     return (
       <React.Fragment>
         <label htmlFor={other.id}>
-          <Typography>
-            {label}
-            {required && " *"}
-          </Typography>
-          <input
-            checked={checked}
-            className={className}
-            type="checkbox"
-            {...other}
-          />
+          <Typography>{label}</Typography>
+          <input checked={checked} type="radio" {...other} />
           <span className={clsx("checkmark", color)} />
         </label>
-        {error && (
-          <Typography color="negative" variant="body2">
-            {error}
-          </Typography>
-        )}
-        {warning && (
-          <Typography color="secondary" variant="body2">
-            {warning}
-          </Typography>
-        )}
         <style jsx>{`
           label {
             cursor: pointer;
             display: block;
+            margin-bottom: 12px;
             padding-left: 35px;
             position: relative;
             user-select: none;
@@ -104,17 +51,15 @@ class Checkbox extends React.Component {
           /* Hide the browser's default checkbox */
           label input {
             cursor: pointer;
-            height: 0;
             opacity: 0;
             position: absolute;
-            width: 0;
           }
 
           /* Create a custom checkbox */
           .checkmark {
-            background-color: ${theme.palette.common.white};
+            background-color: #eee;
+            border-radius: 50%;
             border: 1px solid rgba(0, 0, 0, 0.23);
-            border-radius: ${theme.shape.borderRadius.md};
             height: 20px;
             left: 0;
             position: absolute;
@@ -151,13 +96,12 @@ class Checkbox extends React.Component {
 
           /* Style the checkmark/indicator */
           label .checkmark:after {
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            height: 10px;
+            background: white;
+            border-radius: 50%;
+            height: 9px;
             left: 6px;
-            top: 2px;
-            transform: rotate(45deg);
-            width: 5px;
+            top: 6px;
+            width: 9px;
           }
         `}</style>
       </React.Fragment>
@@ -165,4 +109,4 @@ class Checkbox extends React.Component {
   }
 }
 
-export default Checkbox;
+export default Radio;

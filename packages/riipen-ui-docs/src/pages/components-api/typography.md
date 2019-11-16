@@ -21,7 +21,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | The content of the component. |
-| <span class="prop-name">classes</span> | <span class="prop-type">object</span> |  | An array of custom CSS classes to apply. |
+| <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | An array of custom CSS classes to apply. |
 | <span class="prop-name">color</span> | <span class="prop-type">"initial"<br>&#124;&nbsp;"inherit"<br>&#124;&nbsp;"primary"<br>&#124;&nbsp;"secondary"<br>&#124;&nbsp;"tertiary"<br>&#124;&nbsp;"positive"<br>&#124;&nbsp;"negative"</span> | <span class="prop-default">"initial"</span> | The color of the component. It supports those theme colors that make sense for this component. |
 | <span class="prop-name">component</span> | <span class="prop-type">elementType</span> |  | The component used for the root node. Either a string to use a DOM element or a component. By default, it maps the variant to a good default headline component. |
 | <span class="prop-name">display</span> | <span class="prop-type">"initial"<br>&#124;&nbsp;"block"<br>&#124;&nbsp;"inline"</span> | <span class="prop-default">"initial"</span> | Controls the display type. |

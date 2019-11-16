@@ -61,7 +61,6 @@ class TextField extends React.Component {
             {warning}
           </Typography>
         )}
-        <style jsx>{``}</style>
       </React.Fragment>
     );
   }

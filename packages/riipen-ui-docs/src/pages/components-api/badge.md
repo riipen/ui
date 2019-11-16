@@ -22,7 +22,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">anchor</span> | <span class="prop-type">{ horizontal: "left"<br>&#124;&nbsp;"right", vertical: "bottom"<br>&#124;&nbsp;"top" }</span> | <span class="prop-default">{  horizontal: "right",  vertical: "top"}</span> | The anchor of the badge. |
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | The badge will be added relative to this node. |
-| <span class="prop-name">classes</span> | <span class="prop-type">object</span> |  | An array of custom CSS classes to apply. |
+| <span class="prop-name">classes</span> | <span class="prop-type">array</span> |  | An array of custom CSS classes to apply. |
 | <span class="prop-name">color</span> | <span class="prop-type">"negative"<br>&#124;&nbsp;"primary"<br>&#124;&nbsp;"secondary"</span> | <span class="prop-default">"primary"</span> | The color of the component. It supports those theme colors that make sense for this component. |
 | <span class="prop-name">component</span> | <span class="prop-type">elementType</span> | <span class="prop-default">"span"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">content</span> | <span class="prop-type">node</span> |  | The content rendered within the badge. |
