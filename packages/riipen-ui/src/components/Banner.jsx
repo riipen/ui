@@ -4,7 +4,7 @@ import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
 
-class Avatar extends React.Component {
+class Banner extends React.Component {
   static propTypes = {
     /**
      * Content to render inside the Banner.
@@ -94,4 +94,4 @@ class Avatar extends React.Component {
   }
 }
 
-export default Avatar;
+export default Banner;
