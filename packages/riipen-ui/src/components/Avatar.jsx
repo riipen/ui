@@ -9,7 +9,7 @@ class Avatar extends React.Component {
     /**
      * Used to provide an alt attribute to the rendered img element.
      */
-    alt: PropTypes.string.isRequired,
+    alt: PropTypes.string,
 
     /**
      * Used to render icon or text elements inside the Avatar if src is not set.
@@ -38,6 +38,7 @@ class Avatar extends React.Component {
   };
 
   static defaultProps = {
+    classes: [],
     size: "96px",
     variant: "circle"
   };

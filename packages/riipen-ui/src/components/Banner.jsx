@@ -70,7 +70,7 @@ class Avatar extends React.Component {
           .overlay {
             bottom: 0;
             left: 0;
-            opacity: 0.4;
+            opacity: 0.9;
             position: absolute;
             right: 0;
             top: 0;
