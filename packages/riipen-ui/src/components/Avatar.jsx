@@ -86,7 +86,6 @@ class Avatar extends React.Component {
             justify-content: center;
             line-height: 1;
             overflow: hidden;
-            position: relative;
             user-select: none;
             width: ${size};
           }

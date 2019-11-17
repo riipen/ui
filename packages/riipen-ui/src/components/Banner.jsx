@@ -45,56 +45,48 @@ class Avatar extends React.Component {
 
     const theme = this.context;
 
-    const className = clsx("banner", classes);
-
-    const style = {
-      backgroundImage: `url(${src})`,
-      height
-    };
-
-    const overlayClassName = clsx("overlay", tint);
+    const className = clsx("banner", tint, classes);
 
     return (
       <React.Fragment>
-        <div className={className} style={style}>
-          <div className={overlayClassName} />
-          {children}
-        </div>
+        <div className={className}>{children}</div>
         <style jsx>{`
           .banner {
+            background-image: url(${src});
             background-position: center;
             background-size: cover;
+            display: flex;
+            height: ${height};
             position: relative;
           }
-
-          .overlay {
-            bottom: 0;
+          .banner::after {
+            content: "";
+            top: 0;
             left: 0;
+            height: 100%;
+            width: 100%;
             opacity: 0.9;
             position: absolute;
-            right: 0;
-            top: 0;
+            z-index: ${theme.zIndex.lowest};
+          }
+          .banner > :global(*) {
+            z-index: ${theme.zIndex.low};
           }
 
-          .primary {
-            background-blend-mode: soft-light;
-            background-color: ${theme.palette.primary.light};
+          .primary::after {
+            background-color: ${theme.palette.primary.main};
           }
-          .secondary {
-            background-blend-mode: soft-light;
-            background-color: ${theme.palette.secondary.light};
+          .secondary::after {
+            background-color: ${theme.palette.secondary.main};
           }
-          .tertiary {
-            background-blend-mode: soft-light;
-            background-color: ${theme.palette.tertiary.light};
+          .tertiary::after {
+            background-color: ${theme.palette.tertiary.main};
           }
-          .positive {
-            background-blend-mode: soft-light;
-            background-color: ${theme.palette.positive.light};
+          .positive::after {
+            background-color: ${theme.palette.positive.main};
           }
-          .negative {
-            background-blend-mode: soft-light;
-            background-color: ${theme.palette.negative.light};
+          .negative::after {
+            background-color: ${theme.palette.negative.main};
           }
         `}</style>
       </React.Fragment>
