@@ -4,10 +4,10 @@ import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
 
-class Warning extends React.Component {
+class Notice extends React.Component {
   static propTypes = {
     /**
-     * The content of the warning.
+     * The content of the Notice.
      */
     children: PropTypes.node,
 
@@ -48,7 +48,7 @@ class Warning extends React.Component {
         <style jsx>{`
           div {
             border: 1px solid transparent;
-            border-radius: ${theme.shape.borderRadius.lg};
+            border-radius: ${theme.shape.borderRadius.md};
             opacity: 0.9;
             padding: ${theme.spacing(2)}px ${theme.spacing(4)}px;
           }
@@ -79,4 +79,4 @@ class Warning extends React.Component {
   }
 }
 
-export default Warning;
+export default Notice;

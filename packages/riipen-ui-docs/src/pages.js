@@ -76,6 +76,10 @@ const pages = [
         pathname: "/components/link"
       },
       {
+        name: "Notice",
+        pathname: "/components/notice"
+      },
+      {
         name: "Progress Bar",
         pathname: "/components/progress-bar"
       },
@@ -94,10 +98,6 @@ const pages = [
       {
         name: "Typography",
         pathname: "/components/typography"
-      },
-      {
-        name: "Warning",
-        pathname: "/components/warning"
       }
     ]
   },

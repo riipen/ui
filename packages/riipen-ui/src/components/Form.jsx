@@ -4,8 +4,8 @@ import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
 
+import Notice from "./Notice";
 import Typography from "./Typography";
-import Warning from "./Warning";
 
 class Form extends React.Component {
   static propTypes = {
@@ -96,12 +96,12 @@ class Form extends React.Component {
     return (
       <React.Fragment>
         {error && (
-          <Warning classes={clsx("error")} color="negative">
+          <Notice classes={clsx("error")} color="negative">
             {typeof error === "string" && this.renderErrorString(error)}
             {typeof error === "object" &&
               Object.keys(error).lenght > 0 &&
               this.renderErrorObject(error)}
-          </Warning>
+          </Notice>
         )}
         <form className={className} onKeyPress={this.handleKeyPress} {...other}>
           {children}
