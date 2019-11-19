@@ -42,11 +42,25 @@ class Container extends React.Component {
         <div className={className}>{children}</div>
         <style jsx>{`
           div {
+            box-sizing: border-box;
             margin: 0 auto;
             max-width: ${maxWidth
               ? `${theme.breakpoints[maxWidth]}px`
               : "100%"};
+            padding: 0 ${theme.spacing(6)}px;
             position: relative;
+          }
+
+          @media (max-width: ${theme.breakpoints.lg}px) {
+            div {
+              padding: 0 ${theme.spacing(5)}px;
+            }
+          }
+
+          @media (max-width: ${theme.breakpoints.md}px) {
+            div {
+              padding: 0 ${theme.spacing(3)}px;
+            }
           }
         `}</style>
       </React.Fragment>
