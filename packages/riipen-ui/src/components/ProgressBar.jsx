@@ -54,7 +54,6 @@ class ProgressBar extends React.Component {
             border: none;
             border-radius: ${theme.shape.borderRadius.md};
             height: 8px;
-            margin: 0;
             width: 100%;
           }
 
