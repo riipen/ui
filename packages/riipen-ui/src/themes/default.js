@@ -19,16 +19,16 @@ export default {
       50: "#fafafa",
       100: "#f5f5f5",
       200: "#eeeeee",
-      300: "#e0e0e0",
-      400: "#bdbdbd",
-      500: "#9e9e9e",
-      600: "#757575",
+      300: "#dddddd",
+      400: "#cccbcb",
+      500: "#9a9a9a",
+      600: "#747474",
       700: "#616161",
       800: "#424242",
       900: "#212121",
       A100: "#d5d5d5",
       A200: "#aaaaaa",
-      A400: "#303030",
+      A400: "#373737",
       A700: "#616161"
     },
     negative: {
@@ -36,19 +36,25 @@ export default {
       light: "#ea7e7e",
       main: "#e95353"
     },
+    warning: {
+      dark: "#cf890e",
+      light: "#ffd894",
+      main: "#febb46"
+    },
     positive: {
       dark: "#1b965c",
       light: "#78dbac",
-      main: "#4cc88d"
+      main: "#4cc88d",
+      contrast: "#fff"
     },
     primary: {
-      dark: "#213b57",
-      light: "#419fd9",
-      main: "#284665",
+      dark: "#254364",
+      light: "#2c8ddc",
+      main: "#1f71ae",
       contrast: "#fff"
     },
     secondary: {
-      dark: "#c75f10",
+      dark: "#ed7321",
       light: "#f5bf95",
       main: "#f58632",
       contrast: "#fff"
@@ -56,7 +62,8 @@ export default {
     tertiary: {
       dark: "#41978a",
       light: "#78becc",
-      main: "#3caabb"
+      main: "#3caabb",
+      contrast: "#fff"
     },
     text: {
       primary: "rgba(0, 0, 0, 0.87)",
