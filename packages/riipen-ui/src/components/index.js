@@ -22,6 +22,7 @@ export { default as InputLabel } from "./InputLabel";
 export { default as Link } from "./Link";
 export { default as List } from "./List";
 export { default as ListItem } from "./ListItem";
+export { default as Menu } from "./Menu";
 export { default as Notice } from "./Notice";
 export { default as ProgressBar } from "./ProgressBar";
 export { default as Radio } from "./Radio";
