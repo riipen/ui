@@ -76,6 +76,10 @@ const pages = [
         pathname: "/components/link"
       },
       {
+        name: "Menu",
+        pathname: "/components/menu"
+      },
+      {
         name: "Notice",
         pathname: "/components/notice"
       },
