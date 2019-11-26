@@ -243,13 +243,13 @@ class Button extends React.Component {
             color: ${theme.palette.secondary.main};
           }
           .text-secondary:hover::before {
-            background-color: ${theme.palette.secondary.light};
+            background-color: ${theme.palette.secondary.main};
           }
           .text-tertiary {
             color: ${theme.palette.tertiary.main};
           }
           .text-tertiary:hover::before {
-            background-color: ${theme.palette.tertiary.light};
+            background-color: ${theme.palette.tertiary.main};
           }
 
           .outlined {
@@ -278,21 +278,21 @@ class Button extends React.Component {
             color: ${theme.palette.primary.main};
           }
           .outlined-primary:hover::before {
-            background-color: ${theme.palette.primary.light};
+            background-color: ${theme.palette.primary.main};
           }
           .outlined-secondary {
             border-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.main};
           }
           .outlined-secondary:hover::before {
-            background-color: ${theme.palette.secondary.light};
+            background-color: ${theme.palette.secondary.main};
           }
           .outlined-tertiary {
             border-color: ${theme.palette.tertiary.main};
             color: ${theme.palette.tertiary.main};
           }
           .outlined-tertiary:hover::before {
-            background-color: ${theme.palette.tertiary.light};
+            background-color: ${theme.palette.tertiary.main};
           }
 
           .label {
