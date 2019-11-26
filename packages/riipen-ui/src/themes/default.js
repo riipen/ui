@@ -66,9 +66,9 @@ export default {
       contrast: "#fff"
     },
     text: {
-      primary: "rgba(0, 0, 0, 0.87)",
-      secondary: "rgba(0, 0, 0, 0.54)",
-      disabled: "rgba(0, 0, 0, 0.38)",
+      primary: "#373737",
+      secondary: "#747474",
+      disabled: "#cccbcb",
       hint: "rgba(0, 0, 0, 0.38)"
     }
   },

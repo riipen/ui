@@ -216,27 +216,39 @@ class Button extends React.Component {
           .text {
             background-color: transparent;
             color: ${theme.palette.text.primary};
+            overflow: hidden;
+            position: relative;
           }
           .text:hover {
-            background-color: ${theme.palette.grey[300]};
+            background-color: transparent;
+          }
+          .text:hover::before {
+            background-color: ${theme.palette.grey[600]};
+            bottom: 0;
+            content: "";
+            left: 0;
+            opacity: 0.1;
+            position: absolute;
+            right: 0;
+            top: 0;
           }
 
           .text-primary {
             color: ${theme.palette.primary.main};
           }
-          .text-primary:hover {
-            background-color: ${theme.palette.primary.light};
+          .text-primary:hover::before {
+            background-color: ${theme.palette.primary.main};
           }
           .text-secondary {
             color: ${theme.palette.secondary.main};
           }
-          .text-secondary:hover {
+          .text-secondary:hover::before {
             background-color: ${theme.palette.secondary.light};
           }
           .text-tertiary {
             color: ${theme.palette.tertiary.main};
           }
-          .text-tertiary:hover {
+          .text-tertiary:hover::before {
             background-color: ${theme.palette.tertiary.light};
           }
 
@@ -244,27 +256,42 @@ class Button extends React.Component {
             background-color: transparent;
             border: 1px solid rgba(0, 0, 0, 0.23);
             color: ${theme.palette.text.primary};
+            overflow: hidden;
+            position: relative;
+          }
+          .outlined:hover {
+            background-color: transparent;
+          }
+          .outlined:hover::before {
+            background-color: ${theme.palette.grey[600]};
+            bottom: 0;
+            content: "";
+            left: 0;
+            opacity: 0.1;
+            position: absolute;
+            right: 0;
+            top: 0;
           }
 
           .outlined-primary {
             border-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.main};
           }
-          .outlined-primary:hover {
+          .outlined-primary:hover::before {
             background-color: ${theme.palette.primary.light};
           }
           .outlined-secondary {
             border-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.main};
           }
-          .outlined-secondary:hover {
+          .outlined-secondary:hover::before {
             background-color: ${theme.palette.secondary.light};
           }
           .outlined-tertiary {
             border-color: ${theme.palette.tertiary.main};
             color: ${theme.palette.tertiary.main};
           }
-          .outlined-tertiary:hover {
+          .outlined-tertiary:hover::before {
             background-color: ${theme.palette.tertiary.light};
           }
 
