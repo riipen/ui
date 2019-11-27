@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import clsx from "clsx";
 
-import ThemeContext from "../styles/ThemeContext";
+import ListItem from "./ListItem";
 
 class MenuItem extends React.Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class MenuItem extends React.Component {
     /**
      * The function callback for when a menu item is selected
      */
-    handleClick: PropTypes.func,
+    onClick: PropTypes.func,
 
     /**
      * The classes to apply to the element
@@ -25,52 +25,37 @@ class MenuItem extends React.Component {
     /**
      * The type of the root object
      */
-    type: PropTypes.string
+    type: PropTypes.string,
+
+    /**
+     *
+     */
+    autoFocus: PropTypes.bool
   };
 
-  static contextType = ThemeContext;
-
   render() {
-    const { handleClick, classes, type = "div" } = this.props;
-
-    const Component = type;
+    const { onClick, classes, autoFocus } = this.props;
 
     const className = clsx(classes, "root");
 
-    const theme = this.context;
-
-    const onClick = () => {
-      if (!handleClick) return;
-      handleClick();
+    const handleClick = () => {
+      if (!onClick) return;
+      onClick();
     };
 
     const { children } = this.props;
+
     return (
       <React.Fragment>
-        <Component type={type} className={className} onClick={onClick}>
+        <ListItem
+          onClick={handleClick}
+          autoFocus={autoFocus}
+          className={className}
+          button
+        >
           {children}
-        </Component>
-        <style jsx>{`
-          .root {
-            margin: 0;
-            padding: ${theme.spacing(2)}px ${theme.spacing(3)}px;
-            background-color: ${theme.palette.background};
-            color: ${theme.palette.text.secondary};
-            cursor: pointer;
-            font-family: ${theme.typography.fontFamily};
-            font-size: 13px;
-            font-weight: ${theme.typography.fontWeight.medium};
-            letter-spacing: 1px;
-            width: 100%;
-            outline: 0;
-            border-left: 5px solid transparent;
-          }
-
-          .root:hover {
-            background-color: ${theme.palette.grey[300]};
-            color: ${theme.palette.text.primary};
-          }
-        `}</style>
+        </ListItem>
+        <style jsx>{``}</style>
       </React.Fragment>
     );
   }

@@ -76,6 +76,10 @@ const pages = [
         pathname: "/components/link"
       },
       {
+        name: "List",
+        pathname: "/components/list"
+      },
+      {
         name: "Menu",
         pathname: "/components/menu"
       },
@@ -159,6 +163,22 @@ const pages = [
       {
         name: "List Item",
         pathname: "/components-api/list-item"
+      },
+      {
+        name: "Menu",
+        pathname: "/components-api/menu"
+      },
+      {
+        name: "Menu List",
+        pathname: "/components-api/menu-list"
+      },
+      {
+        name: "Menu Item",
+        pathname: "/components-api/menu-item"
+      },
+      {
+        name: "Popover",
+        pathname: "/components-api/popover"
       },
       {
         name: "Progress Bar",
