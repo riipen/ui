@@ -12,19 +12,26 @@ class MenuItem extends React.Component {
      */
     children: PropTypes.node,
 
+    /**
+     * The function callback for when a menu item is selected
+     */
     handleClick: PropTypes.func,
 
-    value: PropTypes.any,
-
+    /**
+     * The classes to apply to the element
+     */
     classes: PropTypes.string,
 
+    /**
+     * The type of the root object
+     */
     type: PropTypes.string
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { handleClick, value, classes, type = "div" } = this.props;
+    const { handleClick, classes, type = "div" } = this.props;
 
     const Component = type;
 
@@ -34,7 +41,7 @@ class MenuItem extends React.Component {
 
     const onClick = () => {
       if (!handleClick) return;
-      handleClick(value);
+      handleClick();
     };
 
     const { children } = this.props;

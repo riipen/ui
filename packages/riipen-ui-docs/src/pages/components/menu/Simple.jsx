@@ -4,18 +4,8 @@ import Menu from "@riipen-ui/components/Menu";
 import MenuItem from "@riipen-ui/components/MenuItem";
 import Button from "@riipen-ui/components/Button";
 
-export default function Demo() {
+export default function Simple() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const anchorPosition = {
-    vertical: "bottom",
-    horizontal: "left"
-  };
-
-  const transformOrigin = {
-    vertical: "top",
-    horizontal: "left"
-  };
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -26,19 +16,13 @@ export default function Demo() {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <Button onClick={handleClick}>HELLO</Button>
-      <Menu
-        anchorPosition={anchorPosition}
-        transformOrigin={transformOrigin}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-      >
+      <Menu anchorEl={anchorEl} onClose={handleClose}>
         <MenuItem>Riipen 1</MenuItem>
         <MenuItem>Riipen 2</MenuItem>
         <MenuItem>Riipen 3</MenuItem>
-        <MenuItem>Riipen 4</MenuItem>
       </Menu>
-    </div>
+    </React.Fragment>
   );
 }

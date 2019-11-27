@@ -24,11 +24,13 @@ class Menu extends React.Component {
 
     anchorPosition: PropTypes.object,
 
+    contentPosition: PropTypes.object,
+
     onClose: PropTypes.func
   };
 
   render() {
-    const { children, anchorEl, anchorPosition } = this.props;
+    const { children, anchorEl, anchorPosition, contentPosition } = this.props;
 
     const handleClose = () => {
       this.props.onClose();
@@ -44,6 +46,7 @@ class Menu extends React.Component {
           <Popover
             handleClose={handleClose}
             anchorPosition={anchorPosition}
+            contentPosition={contentPosition}
             anchorEl={anchorEl}
           >
             <MenuList handleClick={handleClick}>{children}</MenuList>
