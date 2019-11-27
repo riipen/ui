@@ -22,10 +22,19 @@ class Menu extends React.Component {
      */
     anchorEl: PropTypes.object,
 
+    /**
+     * The location to attach the content too on the anchor element
+     */
     anchorPosition: PropTypes.object,
 
+    /**
+     * The location to attach the anchor to on the content element
+     */
     contentPosition: PropTypes.object,
 
+    /**
+     * The function callback to use when the menu closes
+     */
     onClose: PropTypes.func
   };
 
@@ -34,10 +43,6 @@ class Menu extends React.Component {
 
     const handleClose = () => {
       this.props.onClose();
-    };
-
-    const handleClick = () => {
-      // handleClose();
     };
 
     return (
@@ -49,7 +54,7 @@ class Menu extends React.Component {
             contentPosition={contentPosition}
             anchorEl={anchorEl}
           >
-            <MenuList handleClick={handleClick}>{children}</MenuList>
+            <MenuList autoFocus>{children}</MenuList>
           </Popover>
         )}
       </React.Fragment>

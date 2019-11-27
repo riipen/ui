@@ -7,6 +7,16 @@ import Button from "@riipen-ui/components/Button";
 export default function Simple() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  const anchorPosition = {
+    vertical: "center",
+    horizontal: "center"
+  };
+
+  const contentPosition = {
+    vertical: "center",
+    horizontal: "center"
+  };
+
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -18,7 +28,13 @@ export default function Simple() {
   return (
     <React.Fragment>
       <Button onClick={handleClick}>HELLO</Button>
-      <Menu anchorEl={anchorEl} onClose={handleClose}>
+      <Menu
+        autoFocus
+        anchorPosition={anchorPosition}
+        contentPosition={contentPosition}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+      >
         <MenuItem>Riipen 1</MenuItem>
         <MenuItem>Riipen 2</MenuItem>
         <MenuItem>Riipen 3</MenuItem>
