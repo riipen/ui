@@ -5,68 +5,56 @@ import clsx from "clsx";
 
 import ThemeContext from "../styles/ThemeContext";
 
+import {
+  getContainer,
+  getDocument,
+  getOffsetLeft,
+  getOffsetTop,
+  debounce
+} from "../utils";
+
 import ClickAway from "./ClickAway";
-
-export function getOffsetTop(rect, vertical) {
-  let offset = 0;
-  if (typeof vertical === "number") {
-    offset = vertical;
-  } else if (vertical === "center") {
-    offset = rect.height / 2;
-  } else if (vertical === "bottom") {
-    offset = rect.height;
-  }
-  return offset;
-}
-
-export function getOffsetLeft(rect, horizontal) {
-  let offset = 0;
-  if (typeof horizontal === "number") {
-    offset = horizontal;
-  } else if (horizontal === "center") {
-    offset = rect.width / 2;
-  } else if (horizontal === "right") {
-    offset = rect.width;
-  }
-  return offset;
-}
-
-export function getScrollParent(parent, child) {
-  let el = child;
-  let scrollTop = 0;
-
-  while (el && el !== parent) {
-    el = el.parentElement;
-    scrollTop += el.scrollTop;
-  }
-
-  return scrollTop;
-}
-
-export function getTransformOriginValue(transformOrigin) {
-  return [transformOrigin.horizontal, transformOrigin.vertical]
-    .map(n => (typeof n === "number" ? `${n}px` : n))
-    .join(" ");
-}
 
 class Popover extends React.Component {
   static propTypes = {
+    /**
+     * The content of the component
+     */
     children: PropTypes.object,
 
+    /**
+     * The classes applied to the component
+     */
     className: PropTypes.string,
 
+    /**
+     * Function call to handle clickaway/ close events
+     */
     handleClose: PropTypes.func.isRequired,
 
-    getContentAnchorEl: PropTypes.func,
-
+    /**
+     * Either a reference to an anchor element or a function to get the reference
+     */
     anchorEl: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 
+    /**
+     * The marigins of the page the popover should respect
+     */
     marginThreshold: PropTypes.number,
 
-    anchorReference: PropTypes.oneOf(["anchorEl", "anchorPosition", "none"]),
-
+    /**
+     * The location to attach the content too on the anchor element
+     */
     anchorPosition: PropTypes.object,
 
+    /**
+     * The location to attach the anchor to on the content element
+     */
+    contentPosition: PropTypes.object,
+
+    /**
+     * The type of element to use at the root
+     */
     type: PropTypes.string
   };
 
@@ -75,34 +63,23 @@ class Popover extends React.Component {
     this.state = {
       scrollContainer: null,
       scrollContainerStyle: null,
-      dropdownRef: null
+      dropdownRef: null,
+      scrollHandler: debounce(this.updatePosition, 100)
     };
   }
 
   componentDidMount() {
-    window.addEventListener("resize", () => this.updatePosition());
-    // window.addEventListener("scroll", () => this.updatePosition());
+    const { scrollHandler } = this.state;
+    window.addEventListener("resize", scrollHandler);
 
-    const parent = this.getAnchorElRef().parentElement;
-
-    const anchorEl = this.getAnchorElRef;
-    const container = this.getDocument(anchorEl);
-
-    this.state.scrollContainer =
-      parent.nodeName === "HTML" &&
-      window.getComputedStyle(parent)["overflow-y"] === "scroll"
-        ? parent
-        : container.body;
-
-    this.state.scrollContainerStyle = this.state.scrollContainer.style.overflow;
-    // this.state.scrollContainer.style.overflow = "hidden";
+    this.lockParentScroll();
   }
 
   componentWillUnmount() {
-    // window.removeEventListener("resize", () => this.updatePosition());
-    // window.removeEventListener("scroll", () => this.updatePosition());
+    const { scrollHandler } = this.state;
+    window.removeEventListener("resize", scrollHandler);
 
-    this.state.scrollContainer.style.overflow = this.state.scrollContainerStyle;
+    this.resetParentScroll();
   }
 
   onClose = () => {
@@ -110,143 +87,84 @@ class Popover extends React.Component {
     if (handleClose) handleClose();
   };
 
-  getAnchorElRef = () => {
+  getAnchorEl = () => {
     const { anchorEl } = this.props;
     return typeof anchorEl === "function" ? anchorEl() : anchorEl;
   };
 
-  getDocument = node => {
-    return (node && node.ownerDocument) || document;
-  };
-
-  getContainer = node => {
-    const doc = this.getDocument(node);
-    return doc.defaultView || window;
-  };
-
-  getAnchorOffset = contentAnchorOffset => {
-    const anchorEl = this.getAnchorElRef();
+  getPositioningStyle = () => {
+    const { dropdownRef } = this.state;
     const {
       anchorPosition = {
+        vertical: "top",
+        horizontal: "left"
+      },
+      contentPosition = {
         vertical: "top",
         horizontal: "left"
       }
     } = this.props;
 
-    const containerWindow = this.getContainer(anchorEl);
+    const anchorEl = this.getAnchorEl();
+    if (!anchorEl || !dropdownRef) return {};
 
-    const anchor =
-      anchorEl instanceof containerWindow.Element
-        ? anchorEl
-        : this.getDocument(React.useRef().current).body;
+    // Set top and left of element based on location of anchor
+    const anchorRect = anchorEl.getBoundingClientRect();
 
-    const anchorRect = anchor.getBoundingClientRect();
+    let top = anchorRect.top;
+    let left = anchorRect.left;
 
-    const anchorVertical =
-      contentAnchorOffset === 0 ? anchorPosition.vertcal : "bottom";
-
-    return {
-      top: anchorRect.top + getOffsetTop(anchorRect, anchorVertical),
-      left:
-        anchorRect.left + getOffsetLeft(anchorRect, anchorPosition.horizontal)
-    };
-  };
-
-  getContentAnchorOffset = element => {
-    let contentAnchorOffset = 0;
-    const { anchorReference, getContentAnchorEl } = this.props;
-
-    if (element && anchorReference === "anchorEl") {
-      const contentAnchorEl = getContentAnchorEl(element);
-
-      if (contentAnchorEl && element.contains(contentAnchorEl)) {
-        const scrollTop = this.getScrollParent(element, contentAnchorEl);
-        contentAnchorOffset =
-          contentAnchorEl.offsetTop +
-            contentAnchorEl.clientHeight / 2 -
-            scrollTop || 0;
-      }
-    }
-
-    return contentAnchorOffset;
-  };
-
-  getTransformOrigin = (elemRect, contentAnchorOffset = 0) => {
-    const { anchorPosition } = this.props;
-    return {
-      vertical:
-        getOffsetTop(elemRect, anchorPosition.vertical) + contentAnchorOffset,
-      horizontal: getOffsetLeft(elemRect, anchorPosition.horizontal)
-    };
-  };
-
-  getPositioningStyle = () => {
-    const element = this.getAnchorElRef();
-    if (element == null) return {};
-    // Check if the parent has requested anchoring on an inner content node
-    const contentAnchorOffset = this.getContentAnchorOffset(element);
-    const elemRect = {
-      width: element.offsetWidth,
-      height: element.offsetHeight
-    };
-
-    // Get the transform origin point on the element itself
-    const elemTransformOrigin = this.getTransformOrigin(
-      elemRect,
-      contentAnchorOffset
+    // Offset Content Based on anchorPosition props
+    const anchorVerticalOffset = getOffsetTop(
+      anchorRect,
+      anchorPosition.vertical
+    );
+    const anchorHorizonalOffset = getOffsetLeft(
+      anchorRect,
+      anchorPosition.horizontal
     );
 
-    // Get the offset of of the anchoring element
-    const anchorOffset = this.getAnchorOffset(contentAnchorOffset);
+    top += anchorVerticalOffset;
+    left += anchorHorizonalOffset;
 
-    // Calculate element positioning
-    let top = anchorOffset.top - elemTransformOrigin.vertical;
-    let left = anchorOffset.left - elemTransformOrigin.horizontal;
+    // Offset Content Based on contentPosition props
+    const contentRect = dropdownRef.getBoundingClientRect();
+    const contentVerticalOffset = getOffsetTop(
+      contentRect,
+      contentPosition.vertical
+    );
+    const contentHorizontalOffset = getOffsetLeft(
+      contentRect,
+      contentPosition.horizontal
+    );
 
-    const bottom = top + elemRect.height;
-    const right = left + elemRect.width;
+    top -= contentVerticalOffset;
+    left -= contentHorizontalOffset;
 
-    // Use the parent window of the anchorEl if provided
-    const containerWindow = this.getContainer(element);
-
-    let dropdownOffsetHeight = 0;
-    if (this.state.dropdownRef) {
-      dropdownOffsetHeight = this.state.dropdownRef.offsetHeight;
-    }
-
-    // Window thresholds taking required margin into account
+    // Move menu back into view if out of screen
     const { marginThreshold = 16 } = this.props;
+    const viewContainer = getContainer(anchorEl);
 
-    const heightThreshold = containerWindow.innerHeight - marginThreshold;
-    const widthThreshold = containerWindow.innerWidth - marginThreshold;
+    const heightMax = viewContainer.innerHeight - marginThreshold;
+    const widthMax = viewContainer.innerWidth - marginThreshold;
 
-    // Check if the vertical axis needs shifting
-    const dropdownBottom =
-      bottom + elemTransformOrigin.vertical + dropdownOffsetHeight;
-    if (top < marginThreshold) {
-      const diff = (top - marginThreshold) / 3;
-      top -= diff;
-      elemTransformOrigin.vertical -= diff;
-    } else if (dropdownBottom > heightThreshold) {
-      const diff = (dropdownBottom - heightThreshold) / 2;
-      elemTransformOrigin.vertical -= diff;
+    // Check Vertical Constraints
+    if (top + contentRect.height > heightMax) {
+      top -= top + contentRect.height - heightMax;
+    } else if (top < marginThreshold) {
+      top = marginThreshold;
     }
 
-    // Check if the horizontal axis needs shifting
-    if (left < marginThreshold) {
-      const diff = left - marginThreshold;
-      left -= diff;
-      elemTransformOrigin.horizontal += diff;
-    } else if (right > widthThreshold) {
-      const diff = right - widthThreshold;
-      left -= diff;
-      elemTransformOrigin.horizontal += diff;
+    // Check Horizontal Constraints
+    if (left + contentRect.width > widthMax) {
+      left -= left + contentRect.width - widthMax;
+    } else if (left < marginThreshold) {
+      left = marginThreshold;
     }
 
     return {
-      top: `${top + elemTransformOrigin.vertical}px`,
-      left: `${left + elemTransformOrigin.horizontal}px`,
-      transform: `translate(${elemTransformOrigin.horizontal}px, ${elemTransformOrigin.vertical}px)`
+      top: `${top}px`,
+      left: `${left}px`
     };
   };
 
@@ -255,6 +173,25 @@ class Popover extends React.Component {
       dropdownRef: el
     });
   };
+
+  lockParentScroll() {
+    const anchorEl = this.getAnchorEl();
+    const parent = anchorEl.parentElement;
+    const container = getDocument(anchorEl);
+
+    this.state.scrollContainer =
+      parent.nodeName === "HTML" &&
+      window.getComputedStyle(parent)["overflow-y"] === "scroll"
+        ? parent
+        : container.body;
+
+    this.state.scrollContainerStyle = this.state.scrollContainer.style.overflow;
+    this.state.scrollContainer.style.overflow = "hidden";
+  }
+
+  resetParentScroll() {
+    this.state.scrollContainer.style.overflow = this.state.scrollContainerStyle;
+  }
 
   updatePosition = () => {
     if (!this.props.anchorEl) return undefined;
@@ -290,9 +227,8 @@ class Popover extends React.Component {
             max-width: calc(100% - 32px);
             max-height: calc(100% - 32px);
             outline: 0;
-            box-shadow: ${theme.shadows[24]};
+            box-shadow: ${theme.shadows[4]};
             box-sizing: border-box;
-
             background: ${theme.palette.background.default};
           }
         `}</style>
