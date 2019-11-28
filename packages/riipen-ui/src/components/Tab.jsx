@@ -104,18 +104,16 @@ class Tab extends React.Component {
     return (
       <React.Fragment>
         <div className={className} onClick={this.handleClick}>
-          {Icon && (
-            <div className={clsx("icon")}>
-              <Icon size="20px" />
-            </div>
-          )}
+          {Icon && <Icon className={clsx("icon")} size="20px" />}
           {label && <div className={clsx("label")}>{label}</div>}
         </div>
         <style jsx>{`
           .root {
+            align-items: center;
             border-bottom: 3px solid transparent;
             cursor: pointer;
-            display: inline-block;
+            display: inline-flex;
+            justify-content: center;
             height: 100%;
             min-width: 72px;
             padding: ${theme.spacing(3)}px ${theme.spacing(6)}px;
@@ -123,17 +121,8 @@ class Tab extends React.Component {
             transition: all ${theme.transitions.duration.standard}ms;
           }
 
-          .icon {
-            align-items: center;
-            display: flex;
-            font-size: 20px;
-            justify-content: center;
-            margin-bottom: ${theme.spacing(1)};
-            text-align: center;
-            width: 100%;
-          }
           .icon + * {
-            margin-top: ${theme.spacing(2)}px;
+            margin-left: ${theme.spacing(2)}px;
           }
 
           .label {
