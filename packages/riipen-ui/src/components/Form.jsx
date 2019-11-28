@@ -37,6 +37,19 @@ class Form extends React.Component {
     enter: true
   };
 
+  componentDidUpdate(prevProps) {
+    const theme = this.context;
+
+    // If an error id dynamically added to the form, scroll the error notice in to view
+    if (!prevProps.error && this.props.error && this.error) {
+      window.scrollTo(0, this.error.offsetTop - theme.spacing(2));
+    }
+  }
+
+  setError = ref => {
+    this.error = ref;
+  };
+
   static contextType = ThemeContext;
 
   handleKeyPress = e => {
@@ -93,15 +106,20 @@ class Form extends React.Component {
 
     const className = clsx(classes);
 
+    // Remove any unwanted props from "other"
+    other.enter = undefined;
+
     return (
       <React.Fragment>
         {error && (
-          <Notice classes={clsx("error")} color="negative">
-            {typeof error === "string" && this.renderErrorString(error)}
-            {typeof error === "object" &&
-              Object.keys(error).lenght > 0 &&
-              this.renderErrorObject(error)}
-          </Notice>
+          <div className={clsx("error")} ref={this.setError}>
+            <Notice color="negative">
+              {typeof error === "string" && this.renderErrorString(error)}
+              {typeof error === "object" &&
+                Object.keys(error).length > 0 &&
+                this.renderErrorObject(error)}
+            </Notice>
+          </div>
         )}
         <form className={className} onKeyPress={this.handleKeyPress} {...other}>
           {children}
@@ -112,7 +130,7 @@ class Form extends React.Component {
           }
 
           .error {
-            margin-bottom: ${theme.spacing(3)}px;
+            margin-bottom: ${theme.spacing(5)}px;
           }
         `}</style>
       </React.Fragment>

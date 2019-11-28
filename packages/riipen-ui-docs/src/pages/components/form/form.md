@@ -13,3 +13,9 @@ A basic form will use a `Form` component and any inputs needed.
 Forms can group inputs with the `FormGroup` component.
 
 {{"demo": "pages/components/form/Group.js"}}
+
+## Errors
+
+Forms can display errors via the `error` prop.
+
+{{"demo": "pages/components/form/Error.js"}}
