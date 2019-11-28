@@ -35,7 +35,13 @@ class Menu extends React.Component {
     /**
      * The function callback to use when the menu closes
      */
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+
+    menuListRef: PropTypes.any
+  };
+
+  static defaultProps = {
+    menuListRef: React.createRef()
   };
 
   render() {
@@ -54,7 +60,9 @@ class Menu extends React.Component {
             contentPosition={contentPosition}
             anchorEl={anchorEl}
           >
-            <MenuList autoFocus>{children}</MenuList>
+            <MenuList ref={this.props.menuListRef} autoFocus>
+              {children}
+            </MenuList>
           </Popover>
         )}
       </React.Fragment>
