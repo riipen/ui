@@ -72,6 +72,7 @@ class Tabs extends React.Component {
     const {
       children,
       classes,
+      color,
       component: Component,
       orientation,
       value,
@@ -83,6 +84,7 @@ class Tabs extends React.Component {
     const childrenWithProps = React.Children.map(children, child =>
       React.cloneElement(child, {
         active: child.props.value === value,
+        color,
         fullWidth: variant === "fullWidth",
         onClick: this.handleChange,
         orientation

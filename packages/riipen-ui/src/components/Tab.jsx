@@ -62,7 +62,7 @@ class Tab extends React.Component {
 
   static defaultProps = {
     active: false,
-    color: "primary",
+    color: "secondary",
     disabled: false,
     fullWidth: false,
     orientation: "horizontal"
@@ -92,7 +92,8 @@ class Tab extends React.Component {
 
     const className = clsx(
       "root",
-      active ? color : null,
+      active ? `${color}-active` : null,
+      color,
       disabled ? "disabled" : null,
       fullWidth ? "full-width" : null,
       orientation,
@@ -116,7 +117,7 @@ class Tab extends React.Component {
             display: inline-block;
             height: 100%;
             min-width: 72px;
-            padding: ${theme.spacing(5)}px ${theme.spacing(6)}px;
+            padding: ${theme.spacing(3)}px ${theme.spacing(6)}px;
             text-align: center;
             transition: all ${theme.transitions.duration.standard}ms;
           }
@@ -137,8 +138,8 @@ class Tab extends React.Component {
           .label {
             font-family: ${theme.typography.fontFamily};
             font-size: 14px;
-            font-weight: ${theme.typography.fontWeight.medium};
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            line-height: 1.4;
             text-decoration: none;
             text-transform: uppercase;
             width: 100%;
@@ -151,12 +152,18 @@ class Tab extends React.Component {
             text-align: left;
           }
 
-          .primary {
+          .primary-active {
             border-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.main};
           }
-          .secondary {
+          .primary:hover {
+            color: ${theme.palette.primary.main};
+          }
+          .secondary-active {
             border-color: ${theme.palette.secondary.main};
+            color: ${theme.palette.secondary.main};
+          }
+          .secondary:hover {
             color: ${theme.palette.secondary.main};
           }
 
