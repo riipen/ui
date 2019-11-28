@@ -93,6 +93,7 @@ class Tab extends React.Component {
     const className = clsx(
       "root",
       active ? `${color}-active` : null,
+      active ? `${orientation}-active` : null,
       color,
       disabled ? "disabled" : null,
       fullWidth ? "full-width" : null,
@@ -148,8 +149,12 @@ class Tab extends React.Component {
           .vertical {
             border-bottom: 0;
             border-right: 3px solid transparent;
-            padding: ${theme.spacing(4)}px ${theme.spacing(4)}px;
+            padding: ${theme.spacing()}px ${theme.spacing(5)}px;
             text-align: left;
+          }
+
+          .vertical-active {
+            background-color: ${theme.palette.grey[50]};
           }
 
           .primary-active {

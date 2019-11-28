@@ -81,15 +81,17 @@ class Tabs extends React.Component {
 
     const className = clsx("root", orientation, classes);
 
-    const childrenWithProps = React.Children.map(children, child =>
-      React.cloneElement(child, {
+    const childrenWithProps = React.Children.map(children, child => {
+      if (!child) return null;
+
+      return React.cloneElement(child, {
         active: child.props.value === value,
         color,
         fullWidth: variant === "fullWidth",
         onClick: this.handleChange,
         orientation
-      })
-    );
+      });
+    });
 
     return (
       <React.Fragment>
