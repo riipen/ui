@@ -26,30 +26,44 @@ class ListItem extends React.Component {
     /**
      *
      */
-    autoFocus: PropTypes.bool
+    autoFocus: PropTypes.bool,
+
+    /**
+     *
+     */
+    listItemRef: PropTypes.any
   };
 
   static defaultProps = {
-    classes: []
+    listItemRef: React.createRef()
   };
 
   static contextType = ThemeContext;
+
+  handleClick = () => {
+    console.log(this.props);
+  };
 
   render() {
     const { children, classes, button, autoFocus } = this.props;
 
     const className = clsx(classes, "root", {});
 
-    let Component = "li";
-    if (button) {
-      Component = "button";
+    let Component = "button";
+    if (!button) {
+      Component = "li";
     }
 
     const theme = this.context;
 
     return (
       <React.Fragment>
-        <Component autoFocus={autoFocus} className={className}>
+        <Component
+          ref={this.props.listItemRef}
+          onClick={this.handleClick}
+          autoFocus={autoFocus}
+          className={className}
+        >
           {children}
         </Component>
         <style jsx>{`

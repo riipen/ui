@@ -30,11 +30,20 @@ class MenuItem extends React.Component {
     /**
      *
      */
-    autoFocus: PropTypes.bool
+    autoFocus: PropTypes.bool,
+
+    /**
+     *
+     */
+    forwardedRef: PropTypes.any
+  };
+
+  static defaultProps = {
+    forwardedRef: React.createRef()
   };
 
   render() {
-    const { onClick, classes, autoFocus } = this.props;
+    const { onClick, classes, autoFocus, children } = this.props;
 
     const className = clsx(classes, "root");
 
@@ -43,14 +52,13 @@ class MenuItem extends React.Component {
       onClick();
     };
 
-    const { children } = this.props;
-
     return (
       <React.Fragment>
         <ListItem
           onClick={handleClick}
           autoFocus={autoFocus}
           className={className}
+          ref={this.props.forwardedRef}
           button
         >
           {children}

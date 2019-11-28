@@ -20,28 +20,37 @@ class MenuList extends React.Component {
     /**
      *
      */
-    autoFocus: PropTypes.bool
+    autoFocus: PropTypes.bool,
 
     /**
      *
      */
+    listRef: PropTypes.any,
+
+    /**
+     *
+     */
+    childRefs: PropTypes.object
+  };
+
+  static defaultProps = {
+    listRef: React.createRef(),
+    childRefs: {}
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      ref: React.createRef(),
       activeItemIndex: -1,
       keyDownHandler: this.keyDownHandler
     };
   }
 
   componentDidMount() {
-    const { autoFocus, children } = this.props;
-    const { activeItemIndex, ref } = this.state;
-    console.log(autoFocus, activeItemIndex);
+    const { autoFocus, children, listRef } = this.props;
+    const { activeItemIndex } = this.state;
     if (autoFocus && activeItemIndex === -1) {
-      this.moveFocus(ref, children, activeItemIndex, "next");
+      this.moveFocus(listRef, children, activeItemIndex, "next");
     }
     window.addEventListener("keydown", this.state.keyDownHandler);
   }
@@ -50,34 +59,30 @@ class MenuList extends React.Component {
     window.addEventListener("keydown", this.state.keyDownHandler);
   }
 
-  getListItems(children, activeItemIndex) {
-    return children.map((child, i) => {
-      if (child.props.autoFocus && !child.props.disabled) {
-        this.setState({
-          activeItemIndex: i
-        });
-      }
+  getOrCreateRef = id => {
+    const { childRefs } = this.props;
+    if (!Object.prototype.hasOwnProperty.call(childRefs, id)) {
+      childRefs[id] = React.createRef();
+    }
+    return childRefs[id];
+  };
 
-      let newProps = { key: i };
-      if (i === activeItemIndex) {
+  getListItems(children, activeItemIndex) {
+    return children.map((child, idx) => {
+      let newProps = { key: idx };
+      if (idx === activeItemIndex) {
         newProps = Object.assign(newProps, {
           autoFocus: true,
           tabIndex: 0
         });
       }
       return React.cloneElement(child, {
+        ref: this.getOrCreateRef(idx),
         ...newProps,
         ...child.props
       });
     });
   }
-
-  setRef = element => {
-    this.setState({
-      ref: element
-    });
-    console.log(element);
-  };
 
   keyDownHandler = event => {
     const { children } = this.props;
@@ -90,7 +95,6 @@ class MenuList extends React.Component {
     } else if (prevEvents.includes(event.key)) {
       this.moveFocus(ref, children, activeItemIndex, "prev");
     }
-    console.log(event);
   };
 
   moveFocus(list, listItems, currIndex, direction) {
@@ -117,7 +121,6 @@ class MenuList extends React.Component {
   }
 
   render() {
-    console.log("render");
     const { children } = this.props;
     const { activeItemIndex } = this.state;
 
@@ -125,7 +128,7 @@ class MenuList extends React.Component {
 
     return (
       <React.Fragment>
-        <List className="root" ref={this.state.ref}>
+        <List className="root" ref={this.props.listRef}>
           {listItems}
         </List>
         <style jsx>{``}</style>
