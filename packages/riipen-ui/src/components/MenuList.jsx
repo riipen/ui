@@ -2,6 +2,8 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
+import clsx from "clsx";
+
 import MenuItem from "./MenuItem";
 
 import List from "./List";
@@ -18,88 +20,107 @@ class MenuList extends React.Component {
     ),
 
     /**
-     *
+     * Wether to select the first element on list open
      */
     autoFocus: PropTypes.bool,
 
     /**
-     *
+     * The selected index of the list
      */
-    listRef: PropTypes.any,
+    selectedIndex: PropTypes.number,
 
     /**
-     *
+     * The function callback when an item is selected
      */
-    childRefs: PropTypes.object
-  };
+    selectChange: PropTypes.func,
 
-  static defaultProps = {
-    listRef: React.createRef(),
-    childRefs: {}
+    /**
+     * The color of the component. It supports those theme colors that make sense for this component.
+     */
+    color: PropTypes.oneOf(["primary", "secondary"]),
+
+    /**
+     * List of additional classes to apply to this component.
+     */
+    classes: PropTypes.array
   };
 
   constructor(props) {
     super(props);
+    const { selectedIndex = -1 } = props;
+    console.log(selectedIndex);
     this.state = {
-      activeItemIndex: -1,
+      activeItemIndex: selectedIndex,
       keyDownHandler: this.keyDownHandler
     };
   }
 
   componentDidMount() {
-    const { autoFocus, children, listRef } = this.props;
-    const { activeItemIndex } = this.state;
+    const { autoFocus, children } = this.props;
+    const { activeItemIndex, keyDownHandler } = this.state;
+    window.addEventListener("keydown", keyDownHandler);
     if (autoFocus && activeItemIndex === -1) {
-      this.moveFocus(listRef, children, activeItemIndex, "next");
+      this.moveFocus(children, activeItemIndex, "next");
     }
-    window.addEventListener("keydown", this.state.keyDownHandler);
   }
 
   componentWillUnmount() {
-    window.addEventListener("keydown", this.state.keyDownHandler);
+    const { keyDownHandler } = this.state;
+    window.removeEventListener("keydown", keyDownHandler);
   }
-
-  getOrCreateRef = id => {
-    const { childRefs } = this.props;
-    if (!Object.prototype.hasOwnProperty.call(childRefs, id)) {
-      childRefs[id] = React.createRef();
-    }
-    return childRefs[id];
-  };
 
   getListItems(children, activeItemIndex) {
     return children.map((child, idx) => {
-      let newProps = { key: idx };
+      let newProps = {
+        onClick: this.handleClick(child, idx),
+        key: idx,
+        color: this.props.color
+      };
       if (idx === activeItemIndex) {
         newProps = Object.assign(newProps, {
-          autoFocus: true,
-          tabIndex: 0
+          selected: true
         });
       }
       return React.cloneElement(child, {
-        ref: this.getOrCreateRef(idx),
         ...newProps,
         ...child.props
       });
     });
   }
 
+  selectChange(idx) {
+    this.setState({
+      activeItemIndex: idx
+    });
+    const { selectChange } = this.props;
+    if (selectChange) selectChange(idx);
+  }
+
   keyDownHandler = event => {
     const { children } = this.props;
-    const { activeItemIndex, ref } = this.state;
+    const { activeItemIndex } = this.state;
     const nextEvents = ["ArrowDown", "ArrowRight"];
     const prevEvents = ["ArrowUp", "ArrowLeft"];
+    const enterEvent = "Enter";
+    const tabEvent = "Tab";
 
     if (nextEvents.includes(event.key)) {
-      this.moveFocus(ref, children, activeItemIndex, "next");
+      this.moveFocus(children, activeItemIndex, "next");
+      event.preventDefault();
     } else if (prevEvents.includes(event.key)) {
-      this.moveFocus(ref, children, activeItemIndex, "prev");
+      this.moveFocus(children, activeItemIndex, "prev");
+      event.preventDefault();
+    } else if (event.key === enterEvent) {
+      this.selectChange(this.state.activeItemIndex);
+      event.preventDefault();
+    } else if (event.key === tabEvent) {
+      const direction = event.shiftkey ? "prev" : "next";
+      this.moveFocus(children, activeItemIndex, direction);
+      event.preventDefault();
     }
   };
 
-  moveFocus(list, listItems, currIndex, direction) {
-    console.log(list, listItems, currIndex, direction);
-    /*
+  moveFocus(listItems, currIndex, direction) {
     let nextIndex = direction === "prev" ? currIndex - 1 : currIndex + 1;
     if (nextIndex >= listItems.length) {
       nextIndex = 0;
@@ -108,29 +129,32 @@ class MenuList extends React.Component {
     }
 
     const nextItem = listItems[nextIndex];
-    if (!nextItem.disabled) {
-      console.log(nextItem);
-      this.setState({
-        activeItemIndex: nextIndex
-      });
+    if (!nextItem.props.disabled) {
+      this.selectChange(nextIndex);
       return;
     }
     this.moveFocus(listItems, nextIndex, direction);
     return;
-    */
   }
 
+  handleClick = (child, idx) => {
+    return () => {
+      if (child.props.disabled) return;
+      this.selectChange(idx);
+    };
+  };
+
   render() {
-    const { children } = this.props;
+    const { children, classes } = this.props;
     const { activeItemIndex } = this.state;
 
     const listItems = this.getListItems(children, activeItemIndex);
 
+    const className = clsx(classes, "menu-list");
+
     return (
       <React.Fragment>
-        <List className="root" ref={this.props.listRef}>
-          {listItems}
-        </List>
+        <List classes={className}>{listItems}</List>
         <style jsx>{``}</style>
       </React.Fragment>
     );

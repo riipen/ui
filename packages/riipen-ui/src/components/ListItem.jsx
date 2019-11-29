@@ -14,90 +14,78 @@ class ListItem extends React.Component {
     /**
      * Array of additional CSS classes to use.
      *
-     * @type {Array}
+     * @type {string}
      */
-    classes: PropTypes.array,
+    classes: PropTypes.string,
 
     /**
-     *
+     * Whether the list item can be selected
      */
-    button: PropTypes.bool,
+    disabled: PropTypes.bool,
 
     /**
-     *
+     * Whether the list item is currently selected
      */
-    autoFocus: PropTypes.bool,
+    selected: PropTypes.bool,
 
     /**
-     *
+     * Callback for when the list item is clicked
      */
-    listItemRef: PropTypes.any
+    onClick: PropTypes.func,
+
+    /**
+     * The color of the component. It supports those theme colors that make sense for this component.
+     */
+    color: PropTypes.oneOf(["primary", "secondary"])
   };
 
   static defaultProps = {
-    listItemRef: React.createRef()
+    color: "primary"
   };
 
   static contextType = ThemeContext;
 
-  handleClick = () => {
-    console.log(this.props);
-  };
-
   render() {
-    const { children, classes, button, autoFocus } = this.props;
+    const {
+      children,
+      classes,
+      onClick,
+      disabled,
+      selected,
+      color
+    } = this.props;
 
-    const className = clsx(classes, "root", {});
-
-    let Component = "button";
-    if (!button) {
-      Component = "li";
-    }
+    const className = clsx(classes, color, "list-item", {
+      disabled,
+      selected
+    });
 
     const theme = this.context;
 
+    const handleClick = () => {
+      if (onClick && !disabled) onClick();
+    };
+
     return (
       <React.Fragment>
-        <Component
-          ref={this.props.listItemRef}
-          onClick={this.handleClick}
-          autoFocus={autoFocus}
-          className={className}
-        >
+        <div onClick={handleClick} className={className}>
           {children}
-        </Component>
+        </div>
         <style jsx>{`
-          .root {
-            margin: 0;
-            box-sizing: border-box;
+          .list-item {
             padding: ${theme.spacing(2)}px ${theme.spacing(3)}px;
-            background-color: ${theme.palette.background.default};
             color: ${theme.palette.text.secondary};
-            cursor: pointer;
-            font-family: ${theme.typography.fontFamily};
-            font-size: 13px;
-            font-weight: ${theme.typography.fontWeight.medium};
-            letter-spacing: 1px;
-            width: 100%;
+            font-family: ${theme.typography.body1.fontFamily};
+            font-size: ${theme.typography.body1.fontSize};
+            font-weight: ${theme.typography.body1.fontWeight};
+            line-height: ${theme.typography.body1.lineHeight};
+            letter-spacing: ${theme.typography.body1.letterSpacing};
             outline: 0;
             border: none;
             text-align: inherit;
             border-left: 5px solid transparent;
-          }
-
-          .root:hover {
-            background-color: ${theme.palette.grey[300]};
-            color: ${theme.palette.text.primary};
-          }
-
-          .root:focus {
-            background-color: ${theme.palette.grey[400]};
-            color: ${theme.palette.text.primary};
-          }
-
-          .root:hover:focus {
-            background-color: ${theme.palette.grey[500]};
-            color: ${theme.palette.text.primary};
+            margin: 0;
+            box-sizing: border-box;
           }
         `}</style>
       </React.Fragment>

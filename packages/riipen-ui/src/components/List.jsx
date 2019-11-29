@@ -12,45 +12,35 @@ class List extends React.Component {
     /**
      * List of additional classes to apply to this component.
      */
-    classes: PropTypes.array,
-
-    listRef: PropTypes.any,
-
-    childRefs: PropTypes.object
+    classes: PropTypes.array
   };
 
   static defaultProps = {
-    classes: [],
-    listRef: React.createRef(),
-    childRefs: {}
+    classes: []
   };
 
-  getOrCreateRef = id => {
-    const { childRefs } = this.props;
-    if (!Object.prototype.hasOwnProperty.call(childRefs, id)) {
-      childRefs[id] = React.createRef();
-    }
-    return childRefs[id];
+  handleClick = (child, idx) => {
+    return () => {
+      if (child.disabled) return;
+      this.setState({
+        activeItemIndex: idx
+      });
+    };
   };
 
   render() {
     const { classes, children } = this.props;
 
-    console.log(this.props);
-
-    const className = clsx(classes);
-
-    const onClick = () => {
-      console.log(this.props);
-    };
+    const className = clsx(classes, "list");
 
     return (
       <React.Fragment>
-        <ul onClick={onClick} ref={this.props.listRef} className={className}>
+        <ul className={className}>
           {children.map((child, idx) => {
             return React.cloneElement(child, {
-              listItemRef: this.getOrCreateRef(idx),
-              key: idx
+              onClick: this.handleClick(child, idx),
+              key: `${idx}`,
+              ...child.props
             });
           })}
         </ul>

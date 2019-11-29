@@ -28,9 +28,9 @@ class Popover extends React.Component {
     className: PropTypes.string,
 
     /**
-     * Function call to handle clickaway/ close events
+     * Function call to handle clickaway/ close events, if not provided the anchor element must be removed to clear the popover
      */
-    handleClose: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
 
     /**
      * Either a reference to an anchor element or a function to get the reference
@@ -70,22 +70,23 @@ class Popover extends React.Component {
 
   componentDidMount() {
     const { scrollHandler } = this.state;
+    const { anchorEl } = this.props;
     window.addEventListener("resize", scrollHandler);
 
-    this.lockParentScroll();
+    if (anchorEl) {
+      this.lockParentScroll();
+    }
   }
 
   componentWillUnmount() {
     const { scrollHandler } = this.state;
+    const { anchorEl } = this.props;
     window.removeEventListener("resize", scrollHandler);
 
-    this.resetParentScroll();
+    if (anchorEl) {
+      this.resetParentScroll();
+    }
   }
-
-  onClose = () => {
-    const { handleClose } = this.props;
-    if (handleClose) handleClose();
-  };
 
   getAnchorEl = () => {
     const { anchorEl } = this.props;
@@ -174,6 +175,11 @@ class Popover extends React.Component {
     });
   };
 
+  handleClose = () => {
+    const { onClose } = this.props;
+    if (onClose) onClose();
+  };
+
   lockParentScroll() {
     const anchorEl = this.getAnchorEl();
     const parent = anchorEl.parentElement;
@@ -201,22 +207,24 @@ class Popover extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { className, children, handleClose, type = "span" } = this.props;
+    const { className, children, type = "span", anchorEl } = this.props;
     const theme = this.context;
     const classes = clsx(className, "root");
     const Component = type;
 
     return (
       <React.Fragment>
-        <ClickAway onClickAway={handleClose}>
-          <Component
-            style={this.getPositioningStyle()}
-            ref={this.setDropdownRef}
-            className={classes}
-          >
-            {children}
-          </Component>
-        </ClickAway>
+        {anchorEl && (
+          <ClickAway onClickAway={this.handleClose}>
+            <Component
+              style={this.getPositioningStyle()}
+              ref={this.setDropdownRef}
+              className={classes}
+            >
+              {children}
+            </Component>
+          </ClickAway>
+        )}
         <style jsx>{`
           .root {
             position: absolute;

@@ -5,40 +5,46 @@ import MenuItem from "@riipen-ui/components/MenuItem";
 import Button from "@riipen-ui/components/Button";
 
 export default function Simple() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const anchorPosition = {
-    vertical: "center",
-    horizontal: "center"
-  };
-
-  const contentPosition = {
-    vertical: "center",
-    horizontal: "center"
-  };
+  const [state, setState] = React.useState({
+    anchorEl: null,
+    index: -1
+  });
 
   const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+    setState({
+      ...state,
+      anchorEl: event.currentTarget
+    });
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setState({
+      ...state,
+      anchorEl: null
+    });
+  };
+
+  const selectedChange = idx => {
+    setState({
+      ...state,
+      index: idx
+    });
   };
 
   return (
     <React.Fragment>
       <Button onClick={handleClick}>HELLO</Button>
       <Menu
-        autoFocus
-        anchorPosition={anchorPosition}
-        contentPosition={contentPosition}
-        anchorEl={anchorEl}
+        selectChange={selectedChange}
+        selectedIndex={state.index}
+        anchorEl={state.anchorEl}
         onClose={handleClose}
       >
         <MenuItem>Riipen 1</MenuItem>
-        <MenuItem>Riipen 2</MenuItem>
+        <MenuItem disabled>Riipen 2</MenuItem>
         <MenuItem>Riipen 3</MenuItem>
       </Menu>
+      <div>Selected Index: {state.index === -1 ? "None" : state.index}</div>
     </React.Fragment>
   );
 }
