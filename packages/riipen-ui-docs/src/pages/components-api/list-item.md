@@ -21,7 +21,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">any</span> |  | The content of the list item. |
-| <span class="prop-name">classes</span> | <span class="prop-type">string</span> |  | Array of additional CSS classes to use. |
+| <span class="prop-name">classes</span> | <span class="prop-type">array<br>&#124;&nbsp;string</span> |  | Array or string of additional CSS classes to use. |
 | <span class="prop-name">disabled</span> | <span class="prop-type">bool</span> |  | Whether the list item can be selected |
 | <span class="prop-name">selected</span> | <span class="prop-type">bool</span> |  | Whether the list item is currently selected |
 | <span class="prop-name">onClick</span> | <span class="prop-type">func</span> |  | Callback for when the list item is clicked |

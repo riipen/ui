@@ -21,9 +21,11 @@ class MenuItem extends React.Component {
     onClick: PropTypes.func,
 
     /**
-     * The classes to apply to the element
+     * Array or string of additional CSS classes to use.
+     *
+     * @type {string | Array}
      */
-    classes: PropTypes.string,
+    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 
     /**
      * The type of the root object
@@ -99,8 +101,8 @@ class MenuItem extends React.Component {
       selected
     });
 
-    const handleClick = () => {
-      if (onClick && !disabled) onClick();
+    const handleClick = event => {
+      if (onClick && !disabled) onClick(event);
     };
 
     return (

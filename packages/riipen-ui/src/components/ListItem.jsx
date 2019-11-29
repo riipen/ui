@@ -12,11 +12,11 @@ class ListItem extends React.Component {
     children: PropTypes.any,
 
     /**
-     * Array of additional CSS classes to use.
+     * Array or string of additional CSS classes to use.
      *
-     * @type {string}
+     * @type {string | Array}
      */
-    classes: PropTypes.string,
+    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 
     /**
      * Whether the list item can be selected
@@ -62,8 +62,8 @@ class ListItem extends React.Component {
 
     const theme = this.context;
 
-    const handleClick = () => {
-      if (onClick && !disabled) onClick();
+    const handleClick = event => {
+      if (onClick && !disabled) onClick(event);
     };
 
     return (
