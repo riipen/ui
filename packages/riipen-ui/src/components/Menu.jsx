@@ -60,36 +60,73 @@ class Menu extends React.Component {
     color: PropTypes.oneOf(["primary", "secondary"]),
 
     /**
-     * List of additional classes to apply to this component.
+     * Array or string of additional CSS classes to use.
+     *
+     * @type {string | Array}
      */
-    classes: PropTypes.array
+    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+
+    /**
+     * Whether or not the menu should close when an option is chosen with a click event
+     */
+    closeOnClick: PropTypes.bool
   };
 
   static defaultProps = {
     color: "primary",
-    classes: []
+    classes: [],
+    closeOnClick: true
   };
 
   constructor(props) {
     super(props);
     const { selectedIndex = -1 } = props;
     this.state = {
+      onCloseHandler: this.closeEvent,
       activeItemIndex: selectedIndex
     };
+  }
+
+  componentDidMount() {
+    const { onCloseHandler } = this.state;
+    window.addEventListener("keydown", onCloseHandler);
+  }
+
+  componentDidUpdate() {
+    const { anchorEl } = this.props;
+    if (document.activeElement && anchorEl) {
+      document.activeElement.blur();
+    }
+  }
+
+  componentWillUnmount() {
+    const { onCloseHandler } = this.state;
+    window.removeEventListener("keydown", onCloseHandler);
   }
 
   handleClose = () => {
     const { onClose } = this.props;
     const { activeItemIndex } = this.state;
+    this.anchorEl = null;
     if (onClose) onClose(activeItemIndex);
   };
 
-  handleChange = idx => {
+  handleChange = (idx, event) => {
     this.setState({
       activeItemIndex: idx
     });
-    const { selectChange } = this.props;
-    if (selectChange) selectChange(idx);
+    const { selectChange, closeOnClick } = this.props;
+    if (selectChange) selectChange(idx, event);
+    if (closeOnClick && event && event.type === "click") this.handleClose(idx);
+  };
+
+  closeEvent = event => {
+    const { anchorEl } = this.props;
+    if (!anchorEl) return;
+    if (event.key === "Enter") {
+      event.preventDefault();
+      this.handleClose();
+    }
   };
 
   render() {
@@ -106,23 +143,23 @@ class Menu extends React.Component {
 
     return (
       <React.Fragment>
-        {anchorEl && (
-          <Popover
-            handleClose={this.handleClose}
-            anchorPosition={anchorPosition}
-            contentPosition={contentPosition}
-            anchorEl={anchorEl}
+        <Popover
+          onClose={this.handleClose}
+          anchorPosition={anchorPosition}
+          contentPosition={contentPosition}
+          lockScroll={false}
+          isOpen={Boolean(anchorEl)}
+          anchorEl={anchorEl}
+        >
+          <MenuList
+            {...this.props}
+            classes={className}
+            selectChange={this.handleChange}
+            selectedIndex={activeItemIndex}
           >
-            <MenuList
-              classes={className}
-              selectChange={this.handleChange}
-              selectedIndex={activeItemIndex}
-              {...this.props}
-            >
-              {children}
-            </MenuList>
-          </Popover>
-        )}
+            {children}
+          </MenuList>
+        </Popover>
       </React.Fragment>
     );
   }

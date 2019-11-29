@@ -10,9 +10,11 @@ class List extends React.Component {
     children: PropTypes.node,
 
     /**
-     * List of additional classes to apply to this component.
+     * Array or string of additional CSS classes to use.
+     *
+     * @type {string | Array}
      */
-    classes: PropTypes.array
+    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
   };
 
   static defaultProps = {

@@ -21,7 +21,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | The content of the list. |
-| <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | List of additional classes to apply to this component. |
+| <span class="prop-name">classes</span> | <span class="prop-type">array<br>&#124;&nbsp;string</span> | <span class="prop-default">[]</span> | Array or string of additional CSS classes to use. |
 
 
 Any other props supplied will be provided to the root element.

@@ -29,7 +29,8 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">autoFocus</span> | <span class="prop-type">bool</span> |  | Whether to autofocus the first element on first open |
 | <span class="prop-name">selectChange</span> | <span class="prop-type">func</span> |  | The function callback for when the selection is changed |
 | <span class="prop-name">color</span> | <span class="prop-type">"primary"<br>&#124;&nbsp;"secondary"</span> | <span class="prop-default">"primary"</span> | The color of the component. It supports those theme colors that make sense for this component. |
-| <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | List of additional classes to apply to this component. |
+| <span class="prop-name">classes</span> | <span class="prop-type">array<br>&#124;&nbsp;string</span> | <span class="prop-default">[]</span> | Array or string of additional CSS classes to use. |
+| <span class="prop-name">closeOnClick</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether or not the menu should close when an option is chosen with a click event |
 
 
 Any other props supplied will be provided to the root element.

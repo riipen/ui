@@ -13,8 +13,6 @@ import {
   debounce
 } from "../utils";
 
-import ClickAway from "./ClickAway";
-
 class Popover extends React.Component {
   static propTypes = {
     /**
@@ -23,12 +21,15 @@ class Popover extends React.Component {
     children: PropTypes.object,
 
     /**
-     * The classes applied to the component
+     * Array or string of additional CSS classes to use.
+     *
+     * @type {string | Array}
      */
-    className: PropTypes.string,
+    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 
     /**
-     * Function call to handle clickaway/ close events, if not provided the anchor element must be removed to clear the popover
+     * Function call to handle clickaway/ close events,
+     * if not provided the anchor element must be removed to clear the popover or use isOpen
      */
     onClose: PropTypes.func,
 
@@ -36,6 +37,11 @@ class Popover extends React.Component {
      * Either a reference to an anchor element or a function to get the reference
      */
     anchorEl: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+
+    /**
+     * Whether the popover should be displayed
+     */
+    isOpen: PropTypes.bool,
 
     /**
      * The marigins of the page the popover should respect
@@ -53,9 +59,19 @@ class Popover extends React.Component {
     contentPosition: PropTypes.object,
 
     /**
+     * Whether to lock the scrollbar when the popover is open
+     */
+    lockScroll: PropTypes.bool,
+
+    /**
      * The type of element to use at the root
      */
     type: PropTypes.string
+  };
+
+  static defaultProps = {
+    lockScroll: true,
+    isOpen: true
   };
 
   constructor(props) {
@@ -63,27 +79,34 @@ class Popover extends React.Component {
     this.state = {
       scrollContainer: null,
       scrollContainerStyle: null,
-      dropdownRef: null,
-      scrollHandler: debounce(this.updatePosition, 100)
+      contentRef: null,
+      positionChangeEventHandler: debounce(this.updatePosition, 10),
+      closeEventHandler: this.closeEvent
     };
   }
 
   componentDidMount() {
-    const { scrollHandler } = this.state;
-    const { anchorEl } = this.props;
-    window.addEventListener("resize", scrollHandler);
+    const { positionChangeEventHandler, closeEventHandler } = this.state;
+    const { anchorEl, lockScroll } = this.props;
+    window.addEventListener("resize", positionChangeEventHandler);
+    window.addEventListener("scroll", positionChangeEventHandler);
+    window.addEventListener("mousedown", closeEventHandler);
+    window.addEventListener("keydown", closeEventHandler);
 
-    if (anchorEl) {
+    if (anchorEl && lockScroll) {
       this.lockParentScroll();
     }
   }
 
   componentWillUnmount() {
-    const { scrollHandler } = this.state;
-    const { anchorEl } = this.props;
-    window.removeEventListener("resize", scrollHandler);
+    const { positionChangeEventHandler, closeEventHandler } = this.state;
+    const { anchorEl, lockScroll } = this.props;
+    window.removeEventListener("resize", positionChangeEventHandler);
+    window.removeEventListener("scroll", positionChangeEventHandler);
+    window.removeEventListener("mousedown", closeEventHandler);
+    window.removeEventListener("keydown", closeEventHandler);
 
-    if (anchorEl) {
+    if (anchorEl && lockScroll) {
       this.resetParentScroll();
     }
   }
@@ -94,7 +117,7 @@ class Popover extends React.Component {
   };
 
   getPositioningStyle = () => {
-    const { dropdownRef } = this.state;
+    const { contentRef } = this.state;
     const {
       anchorPosition = {
         vertical: "top",
@@ -107,11 +130,10 @@ class Popover extends React.Component {
     } = this.props;
 
     const anchorEl = this.getAnchorEl();
-    if (!anchorEl || !dropdownRef) return {};
+    if (!anchorEl || !contentRef) return {};
 
     // Set top and left of element based on location of anchor
     const anchorRect = anchorEl.getBoundingClientRect();
-
     let top = anchorRect.top;
     let left = anchorRect.left;
 
@@ -129,7 +151,8 @@ class Popover extends React.Component {
     left += anchorHorizonalOffset;
 
     // Offset Content Based on contentPosition props
-    const contentRect = dropdownRef.getBoundingClientRect();
+    const contentRect = contentRef.getBoundingClientRect();
+
     const contentVerticalOffset = getOffsetTop(
       contentRect,
       contentPosition.vertical
@@ -143,7 +166,7 @@ class Popover extends React.Component {
     left -= contentHorizontalOffset;
 
     // Move menu back into view if out of screen
-    const { marginThreshold = 16 } = this.props;
+    const { marginThreshold = 0 } = this.props;
     const viewContainer = getContainer(anchorEl);
 
     const heightMax = viewContainer.innerHeight - marginThreshold;
@@ -165,14 +188,42 @@ class Popover extends React.Component {
 
     return {
       top: `${top}px`,
-      left: `${left}px`
+      left: `${left}px`,
+      position: "fixed"
     };
   };
 
-  setDropdownRef = el => {
+  setContentElRef = el => {
     this.setState({
-      dropdownRef: el
+      contentRef: el
     });
+  };
+
+  isDecendant(parent, child) {
+    const node = child.parentNode;
+    if (node == null) {
+      return false;
+    } else if (node === parent) {
+      return true;
+    }
+    return this.isDecendant(parent, node);
+  }
+
+  closeEvent = event => {
+    const { isOpen } = this.props;
+    const { contentRef } = this.state;
+    if (!contentRef || !isOpen) return;
+    if (event.type === "mousedown") {
+      const target = event.target;
+      if (contentRef === target || this.isDecendant(contentRef, event.target)) {
+        return;
+      }
+      event.preventDefault();
+      this.handleClose();
+    } else if (event.type === "keydown" && event.key === "Escape") {
+      event.preventDefault();
+      this.handleClose();
+    }
   };
 
   handleClose = () => {
@@ -207,23 +258,21 @@ class Popover extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { className, children, type = "span", anchorEl } = this.props;
+    const { classes, children, type = "span", anchorEl, isOpen } = this.props;
     const theme = this.context;
-    const classes = clsx(className, "root");
+    const className = clsx(classes, "root");
     const Component = type;
 
     return (
       <React.Fragment>
-        {anchorEl && (
-          <ClickAway onClickAway={this.handleClose}>
-            <Component
-              style={this.getPositioningStyle()}
-              ref={this.setDropdownRef}
-              className={classes}
-            >
-              {children}
-            </Component>
-          </ClickAway>
+        {anchorEl && isOpen && (
+          <Component
+            style={this.getPositioningStyle()}
+            ref={this.setContentElRef}
+            className={className}
+          >
+            {children}
+          </Component>
         )}
         <style jsx>{`
           .root {
@@ -238,6 +287,7 @@ class Popover extends React.Component {
             box-shadow: ${theme.shadows[4]};
             box-sizing: border-box;
             background: ${theme.palette.background.default};
+            z-index: ${theme.zIndex.highest};
           }
         `}</style>
       </React.Fragment>

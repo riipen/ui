@@ -21,10 +21,9 @@ export default function Simple() {
   });
 
   const buttonClick = () => {
-    console.log("button: ", state);
     setState({
       ...state,
-      isOpen: true
+      isOpen: !state.isOpen
     });
   };
 
@@ -183,16 +182,16 @@ export default function Simple() {
         <div className="half" ref={ref => (state.anchorEl = ref)}>
           Anchor Element
         </div>
-        {state.isOpen && (
-          <Popover
-            anchorPosition={state.anchorPosition}
-            contentPosition={state.contentPosition}
-            anchorEl={state.anchorEl}
-            handleClose={handleClose}
-          >
-            <div className="content">Content</div>
-          </Popover>
-        )}
+        <Popover
+          anchorPosition={state.anchorPosition}
+          contentPosition={state.contentPosition}
+          isOpen={state.isOpen}
+          lockScroll={false}
+          anchorEl={state.anchorEl}
+          handleClose={handleClose}
+        >
+          <div className="content">Content</div>
+        </Popover>
       </div>
       <style jsx>{`
         .container {
