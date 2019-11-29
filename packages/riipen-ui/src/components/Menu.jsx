@@ -2,6 +2,8 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
+import clsx from "clsx";
+
 import MenuList from "./MenuList";
 import MenuItem from "./MenuItem";
 import Popover from "./Popover";
@@ -37,30 +39,86 @@ class Menu extends React.Component {
      */
     onClose: PropTypes.func,
 
-    menuListRef: PropTypes.any
+    /**
+     * The index of the item selected in the list
+     */
+    selectedIndex: PropTypes.number,
+
+    /**
+     * Whether to autofocus the first element on first open
+     */
+    autoFocus: PropTypes.bool,
+
+    /**
+     * The function callback for when the selection is changed
+     */
+    selectChange: PropTypes.func,
+
+    /**
+     * The color of the component. It supports those theme colors that make sense for this component.
+     */
+    color: PropTypes.oneOf(["primary", "secondary"]),
+
+    /**
+     * List of additional classes to apply to this component.
+     */
+    classes: PropTypes.array
   };
 
   static defaultProps = {
-    menuListRef: React.createRef()
+    color: "primary",
+    classes: []
+  };
+
+  constructor(props) {
+    super(props);
+    const { selectedIndex = -1 } = props;
+    this.state = {
+      activeItemIndex: selectedIndex
+    };
+  }
+
+  handleClose = () => {
+    const { onClose } = this.props;
+    const { activeItemIndex } = this.state;
+    if (onClose) onClose(activeItemIndex);
+  };
+
+  handleChange = idx => {
+    this.setState({
+      activeItemIndex: idx
+    });
+    const { selectChange } = this.props;
+    if (selectChange) selectChange(idx);
   };
 
   render() {
-    const { children, anchorEl, anchorPosition, contentPosition } = this.props;
+    const {
+      children,
+      anchorEl,
+      anchorPosition,
+      contentPosition,
+      classes
+    } = this.props;
+    const { activeItemIndex } = this.state;
 
-    const handleClose = () => {
-      this.props.onClose();
-    };
+    const className = clsx(classes, "menu");
 
     return (
       <React.Fragment>
         {anchorEl && (
           <Popover
-            handleClose={handleClose}
+            handleClose={this.handleClose}
             anchorPosition={anchorPosition}
             contentPosition={contentPosition}
             anchorEl={anchorEl}
           >
-            <MenuList ref={this.props.menuListRef} autoFocus>
+            <MenuList
+              classes={className}
+              selectChange={this.handleChange}
+              selectedIndex={activeItemIndex}
+              {...this.props}
+            >
               {children}
             </MenuList>
           </Popover>

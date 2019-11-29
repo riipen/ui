@@ -2,6 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import clsx from "clsx";
+import css from "styled-jsx/css";
+
+import ThemeContext from "../styles/ThemeContext";
 
 import ListItem from "./ListItem";
 
@@ -28,42 +31,84 @@ class MenuItem extends React.Component {
     type: PropTypes.string,
 
     /**
-     *
+     * Whether or not the item is selected
      */
-    autoFocus: PropTypes.bool,
+    selected: PropTypes.bool,
 
     /**
-     *
+     * Whether or not the item is disabled
      */
-    forwardedRef: PropTypes.any
+    disabled: PropTypes.bool,
+
+    /**
+     * The color of the component. It supports those theme colors that make sense for this component.
+     */
+    color: PropTypes.oneOf(["primary", "secondary"])
   };
 
   static defaultProps = {
-    forwardedRef: React.createRef()
+    color: "primary"
   };
 
-  render() {
-    const { onClick, classes, autoFocus, children } = this.props;
+  getLinkedStyles = () => {
+    const theme = this.context;
 
-    const className = clsx(classes, "root");
+    return css.resolve`
+      .menu-item {
+        background-color: ${theme.palette.grey[100]};
+        cursor: pointer;
+      }
+      .menu-item:hover {
+        background-color: ${theme.palette.grey[200]};
+      }
+
+      .menu-item.disabled {
+        cursor: inherit;
+        background-color: ${theme.palette.grey[50]};
+        font-weight: ${theme.typography.fontWeight.light};
+      }
+
+      .menu-item.disabled:hover {
+        background-color: ${theme.palette.grey[50]};
+        color: ${theme.palette.text.secondary};
+      }
+
+      .menu-item.selected {
+        background-color: ${theme.palette.grey[200]};
+        color: ${theme.palette.text.primary};
+      }
+
+      .menu-item.selected.primary {
+        border-left: ${theme.spacing(1)}px solid ${theme.palette.primary.main};
+      }
+
+      .menu-item.selected.secondary {
+        border-left: ${theme.spacing(1)}px solid ${theme.palette.secondary.main};
+      }
+    `;
+  };
+
+  static contextType = ThemeContext;
+
+  render() {
+    const { onClick, classes, children, disabled, selected } = this.props;
+
+    const linkedStyles = this.getLinkedStyles();
+
+    const className = clsx(classes, "menu-item", linkedStyles.className, {
+      selected
+    });
 
     const handleClick = () => {
-      if (!onClick) return;
-      onClick();
+      if (onClick && !disabled) onClick();
     };
 
     return (
       <React.Fragment>
-        <ListItem
-          onClick={handleClick}
-          autoFocus={autoFocus}
-          className={className}
-          ref={this.props.forwardedRef}
-          button
-        >
+        <ListItem onClick={handleClick} classes={className} {...this.props}>
           {children}
         </ListItem>
-        <style jsx>{``}</style>
+        {linkedStyles.styles}
       </React.Fragment>
     );
   }

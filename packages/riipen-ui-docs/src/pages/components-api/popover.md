@@ -22,7 +22,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">object</span> |  | The content of the component |
 | <span class="prop-name">className</span> | <span class="prop-type">string</span> |  | The classes applied to the component |
-| <span class="prop-name required">handleClose&nbsp;*</span> | <span class="prop-type">func</span> |  | Function call to handle clickaway/ close events |
+| <span class="prop-name">onClose</span> | <span class="prop-type">func</span> |  | Function call to handle clickaway/ close events, if not provided the anchor element must be removed to clear the popover |
 | <span class="prop-name">anchorEl</span> | <span class="prop-type">func<br>&#124;&nbsp;object</span> |  | Either a reference to an anchor element or a function to get the reference |
 | <span class="prop-name">marginThreshold</span> | <span class="prop-type">number</span> |  | The marigins of the page the popover should respect |
 | <span class="prop-name">anchorPosition</span> | <span class="prop-type">object</span> |  | The location to attach the content too on the anchor element |

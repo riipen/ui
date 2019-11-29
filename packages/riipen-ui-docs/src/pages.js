@@ -88,6 +88,10 @@ const pages = [
         pathname: "/components/notice"
       },
       {
+        name: "Popover",
+        pathname: "/components/popover"
+      },
+      {
         name: "Progress Bar",
         pathname: "/components/progress-bar"
       },

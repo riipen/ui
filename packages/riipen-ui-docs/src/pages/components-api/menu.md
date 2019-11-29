@@ -25,6 +25,11 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">anchorPosition</span> | <span class="prop-type">object</span> |  | The location to attach the content too on the anchor element |
 | <span class="prop-name">contentPosition</span> | <span class="prop-type">object</span> |  | The location to attach the anchor to on the content element |
 | <span class="prop-name">onClose</span> | <span class="prop-type">func</span> |  | The function callback to use when the menu closes |
+| <span class="prop-name">selectedIndex</span> | <span class="prop-type">number</span> |  | The index of the item selected in the list |
+| <span class="prop-name">autoFocus</span> | <span class="prop-type">bool</span> |  | Whether to autofocus the first element on first open |
+| <span class="prop-name">selectChange</span> | <span class="prop-type">func</span> |  | The function callback for when the selection is changed |
+| <span class="prop-name">color</span> | <span class="prop-type">"primary"<br>&#124;&nbsp;"secondary"</span> | <span class="prop-default">"primary"</span> | The color of the component. It supports those theme colors that make sense for this component. |
+| <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | List of additional classes to apply to this component. |
 
 
 Any other props supplied will be provided to the root element.
