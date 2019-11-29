@@ -214,6 +214,7 @@ class Popover extends React.Component {
     const { contentRef } = this.state;
     if (!contentRef || !isOpen) return;
     if (event.type === "mousedown") {
+      // Check if mouse click happened inside popover
       const target = event.target;
       if (contentRef === target || this.isDecendant(contentRef, event.target)) {
         return;
@@ -231,6 +232,7 @@ class Popover extends React.Component {
     if (onClose) onClose();
   };
 
+  // Find the outer most scrollable content and remove the scrollbar
   lockParentScroll() {
     const anchorEl = this.getAnchorEl();
     const parent = anchorEl.parentElement;
@@ -260,7 +262,7 @@ class Popover extends React.Component {
   render() {
     const { classes, children, type = "span", anchorEl, isOpen } = this.props;
     const theme = this.context;
-    const className = clsx(classes, "root");
+    const className = clsx(classes, "popover");
     const Component = type;
 
     return (
@@ -275,7 +277,7 @@ class Popover extends React.Component {
           </Component>
         )}
         <style jsx>{`
-          .root {
+          .popover {
             position: absolute;
             overflow-y: auto;
             overflow-x: hidden;
