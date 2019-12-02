@@ -16,7 +16,7 @@ export default function Simple() {
     setAnchorState(null);
   };
 
-  const selectedChange = index => {
+  const handleOnChange = index => {
     setIndexState(index);
   };
 
@@ -24,7 +24,7 @@ export default function Simple() {
     <React.Fragment>
       <Button onClick={handleClick}>HELLO</Button>
       <Menu
-        selectChange={selectedChange}
+        onChange={handleOnChange}
         selectedIndex={indexState}
         anchorEl={anchorState}
         onClose={handleClose}
@@ -32,6 +32,17 @@ export default function Simple() {
         <MenuItem>Riipen 1</MenuItem>
         <MenuItem disabled>Riipen 2</MenuItem>
         <MenuItem>Riipen 3</MenuItem>
+        <MenuItem>Riipen 4</MenuItem>
+        <MenuItem>Riipen 5</MenuItem>
+        <MenuItem>Riipen 5</MenuItem>
+        <MenuItem>Riipen 5</MenuItem>
+        <MenuItem>Riipen 5</MenuItem>
+        <MenuItem>Riipen 5</MenuItem>
+        <MenuItem>Riipen 5</MenuItem>
+        <MenuItem>Riipen 5</MenuItem>
+        <MenuItem>Riipen 5</MenuItem>
+        <MenuItem>Riipen 5</MenuItem>
+        <MenuItem>Riipen 5</MenuItem>
       </Menu>
       <div>Selected Index: {indexState === -1 ? "None" : indexState}</div>
     </React.Fragment>

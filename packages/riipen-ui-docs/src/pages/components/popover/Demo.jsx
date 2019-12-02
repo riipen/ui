@@ -78,7 +78,6 @@ export default function Simple() {
           <Form>
             <RadioGroup
               label="Anchor Vertical"
-              hint=""
               onChange={handleAnchorVertical}
               required
             >
@@ -103,7 +102,6 @@ export default function Simple() {
             </RadioGroup>
             <RadioGroup
               label="Anchor Horizontal"
-              hint=""
               onChange={handleAnchorHorizontal}
               required
             >
@@ -128,7 +126,6 @@ export default function Simple() {
             </RadioGroup>
             <RadioGroup
               label="Content Vertical"
-              hint=""
               onChange={handleContentVertical}
               required
             >
@@ -153,7 +150,6 @@ export default function Simple() {
             </RadioGroup>
             <RadioGroup
               label="Content Horizontal"
-              hint=""
               onChange={handleContentHorizontal}
               required
             >

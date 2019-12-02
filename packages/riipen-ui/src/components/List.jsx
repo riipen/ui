@@ -1,6 +1,6 @@
-import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import clsx from "clsx";
 
 class List extends React.Component {
   static propTypes = {
@@ -12,22 +12,13 @@ class List extends React.Component {
     /**
      * Array or string of additional CSS classes to use.
      *
-     * @type {string | Array}
+     * @type {Array}
      */
-    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
+    classes: PropTypes.array
   };
 
   static defaultProps = {
     classes: []
-  };
-
-  handleClick = (child, idx) => {
-    return () => {
-      if (child.disabled) return;
-      this.setState({
-        activeItemIndex: idx
-      });
-    };
   };
 
   render() {
@@ -37,15 +28,7 @@ class List extends React.Component {
 
     return (
       <React.Fragment>
-        <ul className={className}>
-          {children.map((child, idx) => {
-            return React.cloneElement(child, {
-              onClick: this.handleClick(child, idx),
-              key: `${idx}`,
-              ...child.props
-            });
-          })}
-        </ul>
+        <ul className={className}>{children}</ul>
         <style jsx>{`
           ul {
             list-style-type: none;

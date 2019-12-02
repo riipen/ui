@@ -1,3 +1,11 @@
+/**
+ * Calls a function after a wait time
+ * prevents other calls to the same function during that time
+ *
+ * @param {function} func - function to wait after timeout
+ * @param {number} wait - Time to wait before call
+ * @param {function} immediate - Wether to call the function immediatly
+ */
 export default function debounce(func, wait = 200, immediate = false) {
   let timeout;
 

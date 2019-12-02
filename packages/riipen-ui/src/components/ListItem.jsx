@@ -14,78 +14,60 @@ class ListItem extends React.Component {
     /**
      * Array or string of additional CSS classes to use.
      *
-     * @type {string | Array}
+     * @type {Array}
      */
-    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-
-    /**
-     * Whether the list item can be selected
-     */
-    disabled: PropTypes.bool,
-
-    /**
-     * Whether the list item is currently selected
-     */
-    selected: PropTypes.bool,
-
-    /**
-     * Callback for when the list item is clicked
-     */
-    onClick: PropTypes.func,
+    classes: PropTypes.array,
 
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
-    color: PropTypes.oneOf(["primary", "secondary"])
+    color: PropTypes.oneOf(["primary", "secondary"]),
+
+    /**
+     * Callback for when the list item is clicked
+     */
+    onClick: PropTypes.func
   };
 
   static defaultProps = {
-    color: "primary"
+    color: "primary",
+    classes: []
   };
 
   static contextType = ThemeContext;
 
-  render() {
-    const {
-      children,
-      classes,
-      onClick,
-      disabled,
-      selected,
-      color
-    } = this.props;
+  handleClick = event => {
+    const { onClick } = this.props;
+    if (onClick) onClick(event);
+  };
 
-    const className = clsx(classes, color, "list-item", {
-      disabled,
-      selected
-    });
+  render() {
+    const { children, classes, color } = this.props;
+
+    const className = clsx(classes, color, "list-item");
 
     const theme = this.context;
 
-    const handleClick = event => {
-      if (onClick && !disabled) onClick(event);
-    };
-
     return (
       <React.Fragment>
-        <div onClick={handleClick} className={className}>
+        <div onClick={this.handleClick} className={className}>
           {children}
         </div>
         <style jsx>{`
           .list-item {
-            padding: ${theme.spacing(2)}px ${theme.spacing(3)}px;
+            border: none;
+            border-left: 5px solid transparent;
+            box-sizing: border-box;
             color: ${theme.palette.text.secondary};
             font-family: ${theme.typography.body1.fontFamily};
             font-size: ${theme.typography.body1.fontSize};
             font-weight: ${theme.typography.body1.fontWeight};
-            line-height: ${theme.typography.body1.lineHeight};
             letter-spacing: ${theme.typography.body1.letterSpacing};
+            line-height: ${theme.typography.body1.lineHeight};
             outline: 0;
-            border: none;
+            padding: ${theme.spacing(2)}px ${theme.spacing(3)}px;
             text-align: inherit;
-            border-left: 5px solid transparent;
             margin: 0;
-            box-sizing: border-box;
           }
         `}</style>
       </React.Fragment>

@@ -16,26 +16,16 @@ class MenuItem extends React.Component {
     children: PropTypes.node,
 
     /**
-     * The function callback for when a menu item is selected
-     */
-    onClick: PropTypes.func,
-
-    /**
      * Array or string of additional CSS classes to use.
      *
-     * @type {string | Array}
+     * @type {Array}
      */
-    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+    classes: PropTypes.array,
 
     /**
-     * The type of the root object
+     * The color of the component. It supports those theme colors that make sense for this component.
      */
-    type: PropTypes.string,
-
-    /**
-     * Whether or not the item is selected
-     */
-    selected: PropTypes.bool,
+    color: PropTypes.oneOf(["primary", "secondary"]),
 
     /**
      * Whether or not the item is disabled
@@ -43,13 +33,19 @@ class MenuItem extends React.Component {
     disabled: PropTypes.bool,
 
     /**
-     * The color of the component. It supports those theme colors that make sense for this component.
+     * The function callback for when a menu item is selected
      */
-    color: PropTypes.oneOf(["primary", "secondary"])
+    onClick: PropTypes.func,
+
+    /**
+     * Whether or not the item is selected
+     */
+    selected: PropTypes.bool
   };
 
   static defaultProps = {
-    color: "primary"
+    color: "primary",
+    classes: []
   };
 
   getLinkedStyles = () => {
@@ -65,9 +61,10 @@ class MenuItem extends React.Component {
       }
 
       .menu-item.disabled {
-        cursor: inherit;
         background-color: ${theme.palette.grey[50]};
+        cursor: inherit;
         font-weight: ${theme.typography.fontWeight.light};
+        opacity: 0.6;
       }
 
       .menu-item.disabled:hover {
@@ -98,16 +95,22 @@ class MenuItem extends React.Component {
     const linkedStyles = this.getLinkedStyles();
 
     const className = clsx(classes, "menu-item", linkedStyles.className, {
-      selected
+      selected,
+      disabled
     });
 
     const handleClick = event => {
+      console.log(event);
+      if (disabled) {
+        event.stopPropagation();
+      }
+
       if (onClick && !disabled) onClick(event);
     };
 
     return (
       <React.Fragment>
-        <ListItem onClick={handleClick} classes={className} {...this.props}>
+        <ListItem {...this.props} onClick={handleClick} classes={[className]}>
           {children}
         </ListItem>
         {linkedStyles.styles}
