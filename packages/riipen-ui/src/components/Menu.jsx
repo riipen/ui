@@ -33,7 +33,7 @@ class Menu extends React.Component {
     ),
 
     /**
-     * Array or string of additional CSS classes to use.
+     * Array of additional CSS classes to use.
      *
      * @type {Array}
      */
