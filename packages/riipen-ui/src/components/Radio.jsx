@@ -14,9 +14,19 @@ class Radio extends React.Component {
     checked: PropTypes.bool,
 
     /**
+     * An array of custom CSS classes to apply.
+     */
+    classes: PropTypes.array,
+
+    /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
     color: PropTypes.oneOf(["primary", "secondary", "default"]),
+
+    /**
+     * If `true`, the radio will be disabled.
+     */
+    disabled: PropTypes.bool,
 
     /**
      * Label text to display for the radio.
@@ -24,19 +34,31 @@ class Radio extends React.Component {
     label: PropTypes.string
   };
 
+  static defaultProps = {
+    checked: false,
+    disabled: false
+  };
+
   static contextType = ThemeContext;
 
   render() {
-    const { checked, color, label, ...other } = this.props;
+    const { checked, classes, color, disabled, label, ...other } = this.props;
 
     const theme = this.context;
 
     return (
-      <React.Fragment>
+      <div className={clsx(classes)}>
         <label htmlFor={other.id}>
           <Typography>{label}</Typography>
-          <input checked={checked} type="radio" {...other} />
-          <span className={clsx("checkmark", color)} />
+          <input
+            checked={checked}
+            disabled={disabled}
+            type="radio"
+            {...other}
+          />
+          <span
+            className={clsx("checkmark", disabled ? "disabled" : null, color)}
+          />
         </label>
         <style jsx>{`
           label {
@@ -98,13 +120,19 @@ class Radio extends React.Component {
           label .checkmark:after {
             background: white;
             border-radius: 50%;
-            height: 9px;
-            left: 6px;
-            top: 6px;
-            width: 9px;
+            height: 10px;
+            left: 5px;
+            top: 5px;
+            width: 10px;
+          }
+
+          .disabled {
+            background-color: ${theme.palette.grey[300]};
+            border-color: ${theme.palette.grey[300]};
+            pointer-events: none;
           }
         `}</style>
-      </React.Fragment>
+      </div>
     );
   }
 }

@@ -15,17 +15,17 @@ class RadioGroup extends React.Component {
     /**
      * An error to display below the input.
      */
-    error: PropTypes.string,
+    error: PropTypes.node,
 
     /**
      * Hint text to display under the label of the input.
      */
-    hint: PropTypes.string,
+    hint: PropTypes.node,
 
     /**
      * Label text to display for the input.
      */
-    label: PropTypes.string,
+    label: PropTypes.node,
 
     /**
      * Callback fired when a radio button is selected.
@@ -43,7 +43,7 @@ class RadioGroup extends React.Component {
     /**
      * A warning to display below the input.
      */
-    warning: PropTypes.string
+    warning: PropTypes.node
   };
 
   handleChange = e => {

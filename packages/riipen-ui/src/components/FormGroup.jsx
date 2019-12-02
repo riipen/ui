@@ -21,7 +21,7 @@ class FormGroup extends React.Component {
     /**
      * A title for the field set.
      */
-    title: PropTypes.string,
+    title: PropTypes.node,
 
     /**
      * A subtitle for the field set.
