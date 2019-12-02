@@ -24,6 +24,11 @@ class Checkbox extends React.Component {
     color: PropTypes.oneOf(["primary", "secondary", "default"]),
 
     /**
+     * If `true`, the checkbox will be disabled.
+     */
+    disabled: PropTypes.bool,
+
+    /**
      * An error to display below the checkbox.
      */
     error: PropTypes.string,
@@ -46,6 +51,7 @@ class Checkbox extends React.Component {
 
   static defaultProps = {
     checked: false,
+    disabled: false,
     required: false
   };
 
@@ -56,6 +62,7 @@ class Checkbox extends React.Component {
       checked,
       classes,
       color,
+      disabled,
       error,
       label,
       required,
@@ -77,10 +84,13 @@ class Checkbox extends React.Component {
           <input
             checked={checked}
             className={className}
+            disabled={disabled}
             type="checkbox"
             {...other}
           />
-          <span className={clsx("checkmark", color)} />
+          <span
+            className={clsx("checkmark", disabled ? "disabled" : null, color)}
+          />
         </label>
         {error && (
           <Typography color="negative" variant="body2">
@@ -158,6 +168,12 @@ class Checkbox extends React.Component {
             top: 2px;
             transform: rotate(45deg);
             width: 5px;
+          }
+
+          label input:checked ~ .disabled {
+            background-color: ${theme.palette.grey[300]};
+            border-color: ${theme.palette.grey[300]};
+            pointer-events: none;
           }
         `}</style>
       </React.Fragment>

@@ -25,10 +25,24 @@ export default function Usage() {
         onChange={handleChange}
       />
       <div style={style} />
-      <Checkbox checked id="two" color="primary" label="Primary" />
+      <Checkbox checked id="two" color="primary" label="Primary" readOnly />
       <div style={style} />
-      <Checkbox checked id="three" color="secondary" label="Secondary" />
+      <Checkbox
+        checked
+        id="three"
+        color="secondary"
+        label="Secondary"
+        readOnly
+      />
       <div style={style} />
+      <Checkbox
+        checked
+        id="four"
+        color="primary"
+        disabled
+        label="Disabled"
+        readOnly
+      />
     </Form>
   );
 }
