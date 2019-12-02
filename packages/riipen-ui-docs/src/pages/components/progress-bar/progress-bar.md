@@ -15,3 +15,6 @@ Progress bars can be rendered with different colors for different use cases.
 
 {{"demo": "pages/components/progress-bar/Colors.js"}}
 
+And can have either a light or dark unfilled color
+
+{{"demo": "pages/components/progress-bar/Unfilled.js"}}
