@@ -31,12 +31,12 @@ class Checkbox extends React.Component {
     /**
      * An error to display below the checkbox.
      */
-    error: PropTypes.string,
+    error: PropTypes.node,
 
     /**
      * Label text to display for the checkbox.
      */
-    label: PropTypes.string,
+    label: PropTypes.node,
 
     /**
      * If true, an asterisk will be appended to the end of the label.
@@ -46,7 +46,7 @@ class Checkbox extends React.Component {
     /**
      * A warning to display below the checkbox.
      */
-    warning: PropTypes.string
+    warning: PropTypes.node
   };
 
   static defaultProps = {
@@ -72,10 +72,10 @@ class Checkbox extends React.Component {
 
     const theme = this.context;
 
-    const className = clsx("checkbox", classes);
+    const className = clsx("checkbox");
 
     return (
-      <React.Fragment>
+      <div className={clsx(classes)}>
         <label htmlFor={other.id}>
           <Typography>
             {label}
@@ -93,12 +93,20 @@ class Checkbox extends React.Component {
           />
         </label>
         {error && (
-          <Typography color="negative" variant="body2">
+          <Typography
+            classes={[clsx("error")]}
+            color="negative"
+            variant="body2"
+          >
             {error}
           </Typography>
         )}
         {warning && (
-          <Typography color="secondary" variant="body2">
+          <Typography
+            classes={[clsx("error")]}
+            color="secondary"
+            variant="body2"
+          >
             {warning}
           </Typography>
         )}
@@ -175,8 +183,13 @@ class Checkbox extends React.Component {
             border-color: ${theme.palette.grey[300]};
             pointer-events: none;
           }
+
+          label + :global(.error) {
+            margin-left: 35px !important;
+            margin-top: ${theme.spacing(2)}px;
+          }
         `}</style>
-      </React.Fragment>
+      </div>
     );
   }
 }
