@@ -11,8 +11,6 @@ class List extends React.Component {
 
     /**
      * Array of additional CSS classes to use.
-     *
-     * @type {Array}
      */
     classes: PropTypes.array
   };
