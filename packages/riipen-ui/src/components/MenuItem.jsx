@@ -100,7 +100,6 @@ class MenuItem extends React.Component {
     });
 
     const handleClick = event => {
-      console.log(event);
       if (disabled) {
         event.stopPropagation();
       }

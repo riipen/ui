@@ -84,16 +84,11 @@ class Menu extends React.Component {
 
   constructor(props) {
     super(props);
-    const { selectedIndex = -1 } = props;
-    this.state = {
-      onCloseHandler: this.handleCloseEvent,
-      activeItemIndex: selectedIndex
-    };
+    this.handleCloseEvent = this.handleCloseEvent.bind(this);
   }
 
   componentDidMount() {
-    const { onCloseHandler } = this.state;
-    window.addEventListener("keydown", onCloseHandler);
+    window.addEventListener("keydown", this.handleCloseEvent);
   }
 
   componentDidUpdate() {
@@ -104,22 +99,16 @@ class Menu extends React.Component {
   }
 
   componentWillUnmount() {
-    const { onCloseHandler } = this.state;
-    window.removeEventListener("keydown", onCloseHandler);
+    window.removeEventListener("keydown", this.handleCloseEvent);
   }
 
   handleClose = () => {
     const { onClose } = this.props;
-    const { activeItemIndex } = this.state;
     this.anchorEl = null;
-    if (onClose) onClose(activeItemIndex);
+    if (onClose) onClose();
   };
 
   handleChange = (idx, event) => {
-    console.log(idx, event);
-    this.setState({
-      activeItemIndex: idx
-    });
     const { onChange, closeOnClick } = this.props;
     if (onChange) onChange(idx, event);
     if (closeOnClick && event && event.type === "click") this.handleClose(idx);
@@ -136,14 +125,16 @@ class Menu extends React.Component {
 
   render() {
     const {
-      children,
       anchorEl,
       anchorPosition,
-      contentPosition,
+      children,
       classes,
-      popoverStyles
+      contentPosition,
+      popoverStyles,
+      selectedIndex
     } = this.props;
-    const { activeItemIndex } = this.state;
+
+    console.log(anchorEl);
 
     const className = classes.concat("menu");
 
@@ -160,9 +151,9 @@ class Menu extends React.Component {
         >
           <MenuList
             {...this.props}
-            classes={className}
+            classes={[className]}
             selectChange={this.handleChange}
-            selectedIndex={activeItemIndex}
+            selectedIndex={selectedIndex}
           >
             {children}
           </MenuList>
