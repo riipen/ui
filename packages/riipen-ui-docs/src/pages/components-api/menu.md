@@ -24,7 +24,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">anchorPosition</span> | <span class="prop-type">object</span> |  | The location to attach the content too on the anchor element |
 | <span class="prop-name">autoFocus</span> | <span class="prop-type">bool</span> |  | Whether to autofocus the first element on first open |
 | <span class="prop-name">children</span> | <span class="prop-type">Array<{ type?: import MenuItem from "./MenuItem"; }></span> |  | The content of the component. |
-| <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | Array or string of additional CSS classes to use. |
+| <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | Array of additional CSS classes to use. |
 | <span class="prop-name">closeOnClick</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether or not the menu should close when an option is chosen with a click event |
 | <span class="prop-name">color</span> | <span class="prop-type">"primary"<br>&#124;&nbsp;"secondary"</span> | <span class="prop-default">"primary"</span> | The color of the component. It supports those theme colors that make sense for this component. |
 | <span class="prop-name">contentPosition</span> | <span class="prop-type">object</span> |  | The location to attach the anchor to on the content element |
