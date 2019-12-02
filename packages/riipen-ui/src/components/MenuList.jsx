@@ -2,14 +2,17 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-import clsx from "clsx";
-
 import MenuItem from "./MenuItem";
 
 import List from "./List";
 
 class MenuList extends React.Component {
   static propTypes = {
+    /**
+     * Wether to select the first element on list open
+     */
+    autoFocus: PropTypes.bool,
+
     /**
      * The content of the component.
      */
@@ -20,19 +23,11 @@ class MenuList extends React.Component {
     ),
 
     /**
-     * Wether to select the first element on list open
+     * Array or string of additional CSS classes to use.
+     *
+     * @type {string | Array}
      */
-    autoFocus: PropTypes.bool,
-
-    /**
-     * The selected index of the list
-     */
-    selectedIndex: PropTypes.number,
-
-    /**
-     * The function callback when an item is selected
-     */
-    selectChange: PropTypes.func,
+    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
@@ -40,11 +35,14 @@ class MenuList extends React.Component {
     color: PropTypes.oneOf(["primary", "secondary"]),
 
     /**
-     * Array or string of additional CSS classes to use.
-     *
-     * @type {string | Array}
+     * The function callback when an item is selected
      */
-    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string])
+    selectChange: PropTypes.func,
+
+    /**
+     * The selected index of the list
+     */
+    selectedIndex: PropTypes.number
   };
 
   constructor(props) {
@@ -107,19 +105,22 @@ class MenuList extends React.Component {
     const enterEvent = "Enter";
     const tabEvent = "Tab";
 
+    const allEvents = nextEvents
+      .concat(prevEvents)
+      .push(enterEvent)
+      .push(tabEvent);
+
+    if (allEvents.includes(event.key)) event.preventDefault();
+
     if (nextEvents.includes(event.key)) {
       this.moveFocus(children, activeItemIndex, "next", event);
-      event.preventDefault();
     } else if (prevEvents.includes(event.key)) {
       this.moveFocus(children, activeItemIndex, "prev", event);
-      event.preventDefault();
     } else if (event.key === enterEvent) {
       this.handleSelectChange(this.state.activeItemIndex, event);
-      event.preventDefault();
     } else if (event.key === tabEvent) {
       const direction = event.shiftkey ? "prev" : "next";
       this.moveFocus(children, activeItemIndex, direction, event);
-      event.preventDefault();
     }
   };
 
@@ -153,13 +154,9 @@ class MenuList extends React.Component {
 
     const listItems = this.getListItems(children, activeItemIndex);
 
-    const className = clsx(classes, "menu-list");
+    const className = classes.concat("menu-list");
 
-    return (
-      <React.Fragment>
-        <List classes={className}>{listItems}</List>
-      </React.Fragment>
-    );
+    return <List classes={className}>{listItems}</List>;
   }
 }
 

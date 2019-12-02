@@ -1,3 +1,8 @@
+/**
+ * @param {object} rect - The bounding rectangle of an element
+ * @param {string | number} vertical - The type of vertical offset to calculate from the element
+ * @return {string} The parent document element that contains the element
+ */
 export function getOffsetTop(rect, vertical) {
   let offset = 0;
   if (typeof vertical === "number") {
@@ -10,6 +15,11 @@ export function getOffsetTop(rect, vertical) {
   return offset;
 }
 
+/**
+ * @param {object} rect - The bounding rectangle of an element
+ * @param {string | number} horizontal - The type of horizontal offset to calculate from the element
+ * @return {string} The parent document element that contains the element
+ */
 export function getOffsetLeft(rect, horizontal) {
   let offset = 0;
   if (typeof horizontal === "number") {

@@ -16,6 +16,16 @@ import {
 class Popover extends React.Component {
   static propTypes = {
     /**
+     * Either a reference to an anchor element or a function to get the reference
+     */
+    anchorEl: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+
+    /**
+     * The location to attach the content too on the anchor element
+     */
+    anchorPosition: PropTypes.object,
+
+    /**
      * The content of the component
      */
     children: PropTypes.object,
@@ -23,9 +33,34 @@ class Popover extends React.Component {
     /**
      * Array or string of additional CSS classes to use.
      *
-     * @type {string | Array}
+     * @type {Array}
      */
-    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+    classes: PropTypes.array,
+
+    /**
+     * The type of element to use at the root
+     */
+    component: PropTypes.string,
+
+    /**
+     * The location to attach the anchor to on the content element
+     */
+    contentPosition: PropTypes.object,
+
+    /**
+     * Whether to keep the popout on screen when the anchor element scrolls off
+     */
+    keepOnScreen: PropTypes.bool,
+
+    /**
+     * Whether to lock the scrollbar when the popover is open
+     */
+    lockScroll: PropTypes.bool,
+
+    /**
+     * The marigins of the page the popover should respect
+     */
+    marginThreshold: PropTypes.number,
 
     /**
      * Function call to handle clickaway/ close events,
@@ -34,44 +69,21 @@ class Popover extends React.Component {
     onClose: PropTypes.func,
 
     /**
-     * Either a reference to an anchor element or a function to get the reference
-     */
-    anchorEl: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-
-    /**
      * Whether the popover should be displayed
      */
-    isOpen: PropTypes.bool,
+    open: PropTypes.bool,
 
     /**
-     * The marigins of the page the popover should respect
+     * Styles to apply to the component
      */
-    marginThreshold: PropTypes.number,
-
-    /**
-     * The location to attach the content too on the anchor element
-     */
-    anchorPosition: PropTypes.object,
-
-    /**
-     * The location to attach the anchor to on the content element
-     */
-    contentPosition: PropTypes.object,
-
-    /**
-     * Whether to lock the scrollbar when the popover is open
-     */
-    lockScroll: PropTypes.bool,
-
-    /**
-     * The type of element to use at the root
-     */
-    type: PropTypes.string
+    styles: PropTypes.object
   };
 
   static defaultProps = {
     lockScroll: true,
-    isOpen: true
+    open: true,
+    component: "span",
+    styles: {}
   };
 
   constructor(props) {
@@ -81,7 +93,7 @@ class Popover extends React.Component {
       scrollContainerStyle: null,
       contentRef: null,
       positionChangeEventHandler: debounce(this.updatePosition, 10),
-      closeEventHandler: this.closeEvent
+      closeEventHandler: this.handleCloseEvent
     };
   }
 
@@ -126,7 +138,8 @@ class Popover extends React.Component {
       contentPosition = {
         vertical: "top",
         horizontal: "left"
-      }
+      },
+      keepOnScreen
     } = this.props;
 
     const anchorEl = this.getAnchorEl();
@@ -166,24 +179,26 @@ class Popover extends React.Component {
     left -= contentHorizontalOffset;
 
     // Move menu back into view if out of screen
-    const { marginThreshold = 0 } = this.props;
-    const viewContainer = getContainer(anchorEl);
+    if (keepOnScreen) {
+      const { marginThreshold = 0 } = this.props;
+      const viewContainer = getContainer(anchorEl);
 
-    const heightMax = viewContainer.innerHeight - marginThreshold;
-    const widthMax = viewContainer.innerWidth - marginThreshold;
+      const heightMax = viewContainer.innerHeight - marginThreshold;
+      const widthMax = viewContainer.innerWidth - marginThreshold;
 
-    // Check Vertical Constraints
-    if (top + contentRect.height > heightMax) {
-      top -= top + contentRect.height - heightMax;
-    } else if (top < marginThreshold) {
-      top = marginThreshold;
-    }
+      // Check Vertical Constraints
+      if (top + contentRect.height > heightMax) {
+        top -= top + contentRect.height - heightMax;
+      } else if (top < marginThreshold) {
+        top = marginThreshold;
+      }
 
-    // Check Horizontal Constraints
-    if (left + contentRect.width > widthMax) {
-      left -= left + contentRect.width - widthMax;
-    } else if (left < marginThreshold) {
-      left = marginThreshold;
+      // Check Horizontal Constraints
+      if (left + contentRect.width > widthMax) {
+        left -= left + contentRect.width - widthMax;
+      } else if (left < marginThreshold) {
+        left = marginThreshold;
+      }
     }
 
     return {
@@ -209,10 +224,10 @@ class Popover extends React.Component {
     return this.isDecendant(parent, node);
   }
 
-  closeEvent = event => {
-    const { isOpen } = this.props;
+  handleCloseEvent = event => {
+    const { open } = this.props;
     const { contentRef } = this.state;
-    if (!contentRef || !isOpen) return;
+    if (!contentRef || !open) return;
     if (event.type === "mousedown") {
       // Check if mouse click happened inside popover
       const target = event.target;
@@ -260,16 +275,16 @@ class Popover extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { classes, children, type = "span", anchorEl, isOpen } = this.props;
+    const { anchorEl, classes, children, component, styles, open } = this.props;
     const theme = this.context;
-    const className = clsx(classes, "popover");
-    const Component = type;
+    const className = clsx(classes, "popover", { open });
+    const Component = component;
 
     return (
       <React.Fragment>
-        {anchorEl && isOpen && (
+        {anchorEl && (
           <Component
-            style={this.getPositioningStyle()}
+            style={{ ...styles, ...this.getPositioningStyle() }}
             ref={this.setContentElRef}
             className={className}
           >
@@ -278,18 +293,18 @@ class Popover extends React.Component {
         )}
         <style jsx>{`
           .popover {
-            position: absolute;
-            overflow-y: auto;
-            overflow-x: hidden;
-            min-width: 16px;
-            min-height: 16px;
-            max-width: calc(100% - 32px);
-            max-height: calc(100% - 32px);
-            outline: 0;
+            background: ${theme.palette.background.default};
             box-shadow: ${theme.shadows[4]};
             box-sizing: border-box;
-            background: ${theme.palette.background.default};
-            z-index: ${theme.zIndex.highest};
+            max-height: calc(100% - 32px);
+            max-width: calc(100% - 32px);
+            min-height: 16px;
+            min-width: 16px;
+            outline: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: absolute;
+            z-index: ${theme.zIndex.middle};
           }
         `}</style>
       </React.Fragment>

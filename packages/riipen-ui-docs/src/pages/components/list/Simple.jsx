@@ -7,7 +7,7 @@ export default function Example() {
   return (
     <List>
       <ListItem>Item 1</ListItem>
-      <ListItem disabled>Item 2</ListItem>
+      <ListItem>Item 2</ListItem>
       <ListItem>Item 3</ListItem>
       <ListItem>Item 4</ListItem>
     </List>
