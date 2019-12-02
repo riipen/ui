@@ -134,8 +134,6 @@ class Menu extends React.Component {
       selectedIndex
     } = this.props;
 
-    console.log(anchorEl);
-
     const className = classes.concat("menu");
 
     return (
