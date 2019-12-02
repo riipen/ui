@@ -16,7 +16,7 @@ class MenuItem extends React.Component {
     children: PropTypes.node,
 
     /**
-     * Array or string of additional CSS classes to use.
+     * Array of additional CSS classes to use.
      *
      * @type {Array}
      */

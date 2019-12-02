@@ -23,11 +23,11 @@ class MenuList extends React.Component {
     ),
 
     /**
-     * Array or string of additional CSS classes to use.
+     * Array of additional CSS classes to use.
      *
-     * @type {string | Array}
+     * @type {Array}
      */
-    classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+    classes: PropTypes.array,
 
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
