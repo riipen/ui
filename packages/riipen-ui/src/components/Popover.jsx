@@ -88,22 +88,21 @@ class Popover extends React.Component {
 
   constructor(props) {
     super(props);
+    this.positionChangeEventHandler = debounce(this.updatePosition, 10);
+    this.handleCloseEvent = this.handleCloseEvent.bind(this);
     this.state = {
       scrollContainer: null,
       scrollContainerStyle: null,
-      contentRef: null,
-      positionChangeEventHandler: debounce(this.updatePosition, 10),
-      closeEventHandler: this.handleCloseEvent
+      contentRef: null
     };
   }
 
   componentDidMount() {
-    const { positionChangeEventHandler, closeEventHandler } = this.state;
     const { anchorEl, lockScroll } = this.props;
-    window.addEventListener("resize", positionChangeEventHandler);
-    window.addEventListener("scroll", positionChangeEventHandler);
-    window.addEventListener("mousedown", closeEventHandler);
-    window.addEventListener("keydown", closeEventHandler);
+    window.addEventListener("resize", this.positionChangeEventHandler);
+    window.addEventListener("scroll", this.positionChangeEventHandler);
+    window.addEventListener("mousedown", this.handleCloseEvent);
+    window.addEventListener("keydown", this.handleCloseEvent);
 
     if (anchorEl && lockScroll) {
       this.lockParentScroll();
@@ -111,12 +110,11 @@ class Popover extends React.Component {
   }
 
   componentWillUnmount() {
-    const { positionChangeEventHandler, closeEventHandler } = this.state;
     const { anchorEl, lockScroll } = this.props;
-    window.removeEventListener("resize", positionChangeEventHandler);
-    window.removeEventListener("scroll", positionChangeEventHandler);
-    window.removeEventListener("mousedown", closeEventHandler);
-    window.removeEventListener("keydown", closeEventHandler);
+    window.removeEventListener("resize", this.positionChangeEventHandler);
+    window.removeEventListener("scroll", this.positionChangeEventHandler);
+    window.removeEventListener("mousedown", this.handleCloseEvent);
+    window.removeEventListener("keydown", this.handleCloseEvent);
 
     if (anchorEl && lockScroll) {
       this.resetParentScroll();
@@ -282,7 +280,7 @@ class Popover extends React.Component {
 
     return (
       <React.Fragment>
-        {anchorEl && (
+        {anchorEl && open && (
           <Component
             style={{ ...styles, ...this.getPositioningStyle() }}
             ref={this.setContentElRef}

@@ -45,27 +45,25 @@ class MenuList extends React.Component {
     selectedIndex: PropTypes.number
   };
 
+  static defaultProps = {
+    selectedIndex: -1
+  };
+
   constructor(props) {
     super(props);
-    const { selectedIndex = -1 } = props;
-    this.state = {
-      activeItemIndex: selectedIndex,
-      keyDownHandler: this.keyDownHandler
-    };
+    this.keyDownHandler = this.keyDownHandler.bind(this);
   }
 
   componentDidMount() {
-    const { autoFocus, children } = this.props;
-    const { activeItemIndex, keyDownHandler } = this.state;
-    window.addEventListener("keydown", keyDownHandler);
-    if (autoFocus && activeItemIndex === -1) {
-      this.moveFocus(children, activeItemIndex, "next");
+    const { autoFocus, children, selectedIndex } = this.props;
+    window.addEventListener("keydown", this.keyDownHandler);
+    if (autoFocus && selectedIndex === -1) {
+      this.moveFocus(children, selectedIndex, "next");
     }
   }
 
   componentWillUnmount() {
-    const { keyDownHandler } = this.state;
-    window.removeEventListener("keydown", keyDownHandler);
+    window.removeEventListener("keydown", this.keyDownHandler);
   }
 
   getListItems(children, activeItemIndex) {
@@ -88,9 +86,6 @@ class MenuList extends React.Component {
   }
 
   handleSelectChange(idx, event) {
-    this.setState({
-      activeItemIndex: idx
-    });
     const { selectChange } = this.props;
     if (selectChange) {
       selectChange(idx, event);
@@ -98,8 +93,7 @@ class MenuList extends React.Component {
   }
 
   keyDownHandler = event => {
-    const { children } = this.props;
-    const { activeItemIndex } = this.state;
+    const { children, selectedIndex } = this.props;
     const nextEvents = ["ArrowDown", "ArrowRight"];
     const prevEvents = ["ArrowUp", "ArrowLeft"];
     const enterEvent = "Enter";
@@ -107,20 +101,23 @@ class MenuList extends React.Component {
 
     const allEvents = nextEvents
       .concat(prevEvents)
-      .push(enterEvent)
-      .push(tabEvent);
+      .concat(enterEvent)
+      .concat(tabEvent);
 
-    if (allEvents.includes(event.key)) event.preventDefault();
+    if (allEvents.includes(event.key)) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
 
     if (nextEvents.includes(event.key)) {
-      this.moveFocus(children, activeItemIndex, "next", event);
+      this.moveFocus(children, selectedIndex, "next", event);
     } else if (prevEvents.includes(event.key)) {
-      this.moveFocus(children, activeItemIndex, "prev", event);
+      this.moveFocus(children, selectedIndex, "prev", event);
     } else if (event.key === enterEvent) {
-      this.handleSelectChange(this.state.activeItemIndex, event);
+      this.handleSelectChange(selectedIndex, event);
     } else if (event.key === tabEvent) {
       const direction = event.shiftkey ? "prev" : "next";
-      this.moveFocus(children, activeItemIndex, direction, event);
+      this.moveFocus(children, selectedIndex, direction, event);
     }
   };
 
@@ -149,10 +146,9 @@ class MenuList extends React.Component {
   };
 
   render() {
-    const { children, classes } = this.props;
-    const { activeItemIndex } = this.state;
+    const { children, classes, selectedIndex } = this.props;
 
-    const listItems = this.getListItems(children, activeItemIndex);
+    const listItems = this.getListItems(children, selectedIndex);
 
     const className = classes.concat("menu-list");
 

@@ -34,15 +34,6 @@ export default function Simple() {
         <MenuItem>Riipen 3</MenuItem>
         <MenuItem>Riipen 4</MenuItem>
         <MenuItem>Riipen 5</MenuItem>
-        <MenuItem>Riipen 5</MenuItem>
-        <MenuItem>Riipen 5</MenuItem>
-        <MenuItem>Riipen 5</MenuItem>
-        <MenuItem>Riipen 5</MenuItem>
-        <MenuItem>Riipen 5</MenuItem>
-        <MenuItem>Riipen 5</MenuItem>
-        <MenuItem>Riipen 5</MenuItem>
-        <MenuItem>Riipen 5</MenuItem>
-        <MenuItem>Riipen 5</MenuItem>
       </Menu>
       <div>Selected Index: {indexState === -1 ? "None" : indexState}</div>
     </React.Fragment>
