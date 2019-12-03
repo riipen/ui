@@ -12,7 +12,7 @@ export default function CenteredGrid() {
   };
 
   return (
-    <Grid spacing={1}>
+    <Grid>
       <GridItem lg={12}>
         <div style={itemStyle}>lg=12</div>
       </GridItem>

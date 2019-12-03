@@ -43,7 +43,7 @@ class GridItem extends React.Component {
   static defaultProps = {
     classes: [],
     lg: 12,
-    spacing: 1
+    spacing: 3
   };
 
   static contextType = ThemeContext;

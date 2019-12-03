@@ -51,7 +51,7 @@ class Grid extends React.Component {
     alignItems: "flex-start",
     classes: [],
     justifyContent: "flex-start",
-    spacing: 1
+    spacing: 3
   };
 
   static contextType = ThemeContext;
@@ -69,9 +69,11 @@ class Grid extends React.Component {
 
     const className = clsx(classes);
 
-    const childrenWithProps = React.Children.map(children, child =>
-      React.cloneElement(child, { spacing })
-    );
+    const childrenWithProps = React.Children.map(children, child => {
+      if (!child) return null;
+
+      return React.cloneElement(child, { spacing });
+    });
 
     return (
       <React.Fragment>
@@ -86,10 +88,6 @@ class Grid extends React.Component {
             margin-bottom: -${theme.spacing(spacing)}px;
             min-height: 0;
             position: relative;
-          }
-          div > :global(*) {
-            display: inline-block;
-            vertical-align: top;
           }
         `}</style>
       </React.Fragment>
