@@ -33,7 +33,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">onClose</span> | <span class="prop-type">func</span> |  | The function callback to use when the menu closes |
 | <span class="prop-name">popoverStyles</span> | <span class="prop-type">object</span> | <span class="prop-default">{}</span> | The styles to be applied to the popover list |
 | <span class="prop-name">selectedIndex</span> | <span class="prop-type">number</span> |  | The index of the item selected in the list |
-| <span class="prop-name">type</span> | <span class="prop-type">"menu"<br>&#124;&nbsp;"selection"</span> | <span class="prop-default">"menu"</span> | The type of menu to create |
+| <span class="prop-name">variant</span> | <span class="prop-type">"menu"<br>&#124;&nbsp;"selection"</span> | <span class="prop-default">"menu"</span> | The type of menu to create Use 'menu' for lists of links |
 
 
 Any other props supplied will be provided to the root element.

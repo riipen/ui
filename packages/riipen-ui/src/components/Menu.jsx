@@ -74,8 +74,9 @@ class Menu extends React.Component {
 
     /**
      * The type of menu to create
+     * Use 'menu' for lists of links
      */
-    type: PropTypes.oneOf(["menu", "selection"])
+    variant: PropTypes.oneOf(["menu", "selection"])
   };
 
   static defaultProps = {
@@ -84,7 +85,7 @@ class Menu extends React.Component {
     closeOnClick: true,
     keepOnScreen: false,
     popoverStyles: {},
-    type: "menu"
+    variant: "menu"
   };
 
   constructor(props) {
@@ -138,7 +139,7 @@ class Menu extends React.Component {
       keepOnScreen,
       popoverStyles,
       selectedIndex,
-      type
+      variant
     } = this.props;
 
     const className = classes.concat("menu");
@@ -160,7 +161,7 @@ class Menu extends React.Component {
             classes={[className]}
             selectChange={this.handleChange}
             selectedIndex={selectedIndex}
-            type={type}
+            variant={variant}
           >
             {children}
           </MenuList>

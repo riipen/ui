@@ -22,12 +22,15 @@ export default function Simple() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleClick}>HELLO</Button>
+      <Button color="primary" variant="contained" onClick={handleClick}>
+        Open Menu
+      </Button>
       <Menu
         onChange={handleOnChange}
         selectedIndex={indexState}
         anchorEl={anchorState}
         onClose={handleClose}
+        variant="selection"
       >
         <MenuItem>Riipen 1</MenuItem>
         <MenuItem disabled>Riipen 2</MenuItem>

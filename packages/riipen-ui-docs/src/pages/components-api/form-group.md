@@ -22,7 +22,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | The content of the component. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | An array of custom CSS classes to apply. |
-| <span class="prop-name">title</span> | <span class="prop-type">string</span> |  | A title for the field set. |
+| <span class="prop-name">title</span> | <span class="prop-type">node</span> |  | A title for the field set. |
 | <span class="prop-name">subtitle</span> | <span class="prop-type">node</span> |  | A subtitle for the field set. |
 
 

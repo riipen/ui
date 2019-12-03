@@ -36,12 +36,16 @@ class MenuList extends React.Component {
      */
     selectedIndex: PropTypes.number,
 
-    type: PropTypes.oneOf(["menu", "selection"])
+    /**
+     * The type of menu to create
+     * Use 'menu' for lists of links
+     */
+    variant: PropTypes.oneOf(["menu", "selection"])
   };
 
   static defaultProps = {
     selectedIndex: -1,
-    type: "menu"
+    variant: "menu"
   };
 
   constructor(props) {
@@ -62,14 +66,14 @@ class MenuList extends React.Component {
   }
 
   getListItems(children, activeItemIndex) {
-    const { type } = this.props;
+    const { variant } = this.props;
 
     return children.map((child, idx) => {
       let newProps = {
         key: idx,
         color: this.props.color
       };
-      if (type === "selection") {
+      if (variant === "selection") {
         newProps = Object.assign(newProps, {
           onClick: this.handleClick(child, idx)
         });
