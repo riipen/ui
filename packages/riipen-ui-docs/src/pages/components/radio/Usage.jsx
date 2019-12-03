@@ -39,6 +39,13 @@ export default function Usage() {
           color="secondary"
           checked={state.value === "orange"}
         />
+        <Radio
+          disabled
+          label="Disabled"
+          value="disabled"
+          color="primary"
+          checked={state.value === "disabled"}
+        />
       </RadioGroup>
     </Form>
   );

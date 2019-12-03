@@ -35,7 +35,7 @@ class InputHint extends React.Component {
     return (
       <React.Fragment>
         <div className={className}>
-          <Typography variant="caption">{children}</Typography>
+          <Typography variant="body2">{children}</Typography>
         </div>
         <style jsx>{`
           div {

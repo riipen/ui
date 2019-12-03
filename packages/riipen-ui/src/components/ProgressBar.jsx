@@ -19,8 +19,11 @@ class ProgressBar extends React.Component {
       "positive",
       "primary",
       "secondary",
-      "tertiary"
+      "tertiary",
+      "warning"
     ]),
+
+    unfilled: PropTypes.oneOf(["light", "dark"]),
 
     /**
      * The percentage of the completion between 0 and 1.
@@ -31,17 +34,18 @@ class ProgressBar extends React.Component {
   static defaultProps = {
     classes: [],
     color: "primary",
-    completion: 0
+    completion: 0,
+    unfilled: "light"
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { classes, color, completion } = this.props;
+    const { classes, color, completion, unfilled } = this.props;
 
     const theme = this.context;
 
-    const className = clsx(color, classes);
+    const className = clsx(color, unfilled, classes);
 
     return (
       <div>
@@ -50,7 +54,6 @@ class ProgressBar extends React.Component {
           progress {
             -moz-appearance: none;
             -webkit-appearance: none;
-            background: ${theme.palette.background.default};
             border: none;
             border-radius: ${theme.shape.borderRadius.md};
             height: 8px;
@@ -58,7 +61,6 @@ class ProgressBar extends React.Component {
           }
 
           progress::-webkit-progress-bar {
-            background: ${theme.palette.background.default};
             border-radius: ${theme.shape.borderRadius.md};
           }
 
@@ -76,6 +78,22 @@ class ProgressBar extends React.Component {
 
           .primary::-moz-progress-bar {
             background: ${theme.palette.primary.main};
+          }
+
+          .light {
+            background: ${theme.palette.grey[50]};
+          }
+
+          .light::-webkit-progress-bar {
+            background: ${theme.palette.grey[50]};
+          }
+
+          .dark {
+            background: ${theme.palette.grey[300]};
+          }
+
+          .dark::-webkit-progress-bar {
+            background: ${theme.palette.grey[300]};
           }
 
           .secondary::-webkit-progress-value {
@@ -108,6 +126,14 @@ class ProgressBar extends React.Component {
 
           .negative::-moz-progress-bar {
             background: ${theme.palette.negative.main};
+          }
+
+          .warning::-webkit-progress-value {
+            background: ${theme.palette.warning.main};
+          }
+
+          .warning::-moz-progress-bar {
+            background: ${theme.palette.warning.main};
           }
         `}</style>
       </div>

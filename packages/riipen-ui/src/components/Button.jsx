@@ -215,6 +215,7 @@ class Button extends React.Component {
 
           .text {
             background-color: transparent;
+            border: 0;
             color: ${theme.palette.text.primary};
             overflow: hidden;
             position: relative;

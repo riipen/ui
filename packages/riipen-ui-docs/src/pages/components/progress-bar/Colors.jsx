@@ -10,6 +10,7 @@ export default function Colors() {
       <ProgressBar color="tertiary" completion={0.5} />
       <ProgressBar color="positive" completion={0.6} />
       <ProgressBar color="negative" completion={0.7} />
+      <ProgressBar color="warning" completion={0.8} />
     </div>
   );
 }
