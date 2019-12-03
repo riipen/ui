@@ -3,7 +3,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import MenuList from "./MenuList";
-import MenuItem from "./MenuItem";
 import Popover from "./Popover";
 
 class Menu extends React.Component {
@@ -26,11 +25,7 @@ class Menu extends React.Component {
     /**
      * The content of the component.
      */
-    children: PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.oneOf([MenuItem])
-      })
-    ),
+    children: PropTypes.array,
 
     /**
      * Array of additional CSS classes to use.
@@ -53,6 +48,11 @@ class Menu extends React.Component {
     contentPosition: PropTypes.object,
 
     /**
+     * Whether or not the popout should be forced to stay on screen
+     */
+    keepOnScreen: PropTypes.bool,
+
+    /**
      * The function callback for when the selection is changed
      */
     onChange: PropTypes.func,
@@ -70,14 +70,21 @@ class Menu extends React.Component {
     /**
      * The index of the item selected in the list
      */
-    selectedIndex: PropTypes.number
+    selectedIndex: PropTypes.number,
+
+    /**
+     * The type of menu to create
+     */
+    type: PropTypes.oneOf(["menu", "selection"])
   };
 
   static defaultProps = {
     color: "primary",
     classes: [],
     closeOnClick: true,
-    popoverStyles: {}
+    keepOnScreen: false,
+    popoverStyles: {},
+    type: "menu"
   };
 
   constructor(props) {
@@ -128,8 +135,10 @@ class Menu extends React.Component {
       children,
       classes,
       contentPosition,
+      keepOnScreen,
       popoverStyles,
-      selectedIndex
+      selectedIndex,
+      type
     } = this.props;
 
     const className = classes.concat("menu");
@@ -144,12 +153,14 @@ class Menu extends React.Component {
           open={Boolean(anchorEl)}
           anchorEl={anchorEl}
           styles={popoverStyles}
+          keepOnScreen={keepOnScreen}
         >
           <MenuList
             {...this.props}
             classes={[className]}
             selectChange={this.handleChange}
             selectedIndex={selectedIndex}
+            type={type}
           >
             {children}
           </MenuList>

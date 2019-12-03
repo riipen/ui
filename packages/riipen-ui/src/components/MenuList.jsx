@@ -2,8 +2,6 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-import MenuItem from "./MenuItem";
-
 import List from "./List";
 
 class MenuList extends React.Component {
@@ -16,11 +14,7 @@ class MenuList extends React.Component {
     /**
      * The content of the component.
      */
-    children: PropTypes.arrayOf(
-      PropTypes.shape({
-        type: PropTypes.oneOf([MenuItem])
-      })
-    ),
+    children: PropTypes.array,
 
     /**
      * Array of additional CSS classes to use.
@@ -40,11 +34,14 @@ class MenuList extends React.Component {
     /**
      * The selected index of the list
      */
-    selectedIndex: PropTypes.number
+    selectedIndex: PropTypes.number,
+
+    type: PropTypes.oneOf(["menu", "selection"])
   };
 
   static defaultProps = {
-    selectedIndex: -1
+    selectedIndex: -1,
+    type: "menu"
   };
 
   constructor(props) {
@@ -65,16 +62,22 @@ class MenuList extends React.Component {
   }
 
   getListItems(children, activeItemIndex) {
+    const { type } = this.props;
+
     return children.map((child, idx) => {
       let newProps = {
-        onClick: this.handleClick(child, idx),
         key: idx,
         color: this.props.color
       };
-      if (idx === activeItemIndex) {
+      if (type === "selection") {
         newProps = Object.assign(newProps, {
-          selected: true
+          onClick: this.handleClick(child, idx)
         });
+        if (idx === activeItemIndex) {
+          newProps = Object.assign(newProps, {
+            selected: true
+          });
+        }
       }
       return React.cloneElement(child, {
         ...child.props,

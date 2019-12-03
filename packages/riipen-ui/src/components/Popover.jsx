@@ -221,13 +221,19 @@ class Popover extends React.Component {
   }
 
   handleCloseEvent = event => {
-    const { open } = this.props;
+    const { open, anchorEl } = this.props;
     const { contentRef } = this.state;
     if (!contentRef || !open) return;
     if (event.type === "mousedown") {
       // Check if mouse click happened inside popover
+      // Or on the anchorEl
       const target = event.target;
-      if (contentRef === target || this.isDecendant(contentRef, event.target)) {
+      if (
+        contentRef === target ||
+        anchorEl === target ||
+        this.isDecendant(contentRef, target) ||
+        this.isDecendant(anchorEl, target)
+      ) {
         return;
       }
       event.preventDefault();
