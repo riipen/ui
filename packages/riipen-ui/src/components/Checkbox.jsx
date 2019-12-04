@@ -111,6 +111,10 @@ class Checkbox extends React.Component {
           </Typography>
         )}
         <style jsx>{`
+          div {
+            min-height: 20px;
+          }
+
           label {
             cursor: pointer;
             display: block;
