@@ -30,6 +30,10 @@ export default function Example() {
       <Link href="#color" onClick={preventDefault} color="negative">
         Link
       </Link>
+      <span style={style} />
+      <Link href="#color" onClick={preventDefault} color="white">
+        Link
+      </Link>
     </div>
   );
 }
