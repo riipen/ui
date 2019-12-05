@@ -78,9 +78,10 @@ class Popover extends React.Component {
   };
 
   static defaultProps = {
-    lockScroll: true,
-    open: true,
     component: "span",
+    lockScroll: true,
+    marginThreshold: 16,
+    open: true,
     styles: {}
   };
 
@@ -176,7 +177,7 @@ class Popover extends React.Component {
 
     // Move menu back into view if out of screen
     if (keepOnScreen) {
-      const { marginThreshold = 0 } = this.props;
+      const { marginThreshold } = this.props;
       const viewContainer = getContainer(anchorEl);
 
       const heightMax = viewContainer.innerHeight - marginThreshold;
