@@ -43,7 +43,7 @@ class GridItem extends React.Component {
   static defaultProps = {
     classes: [],
     lg: 12,
-    spacing: 1
+    spacing: 3
   };
 
   static contextType = ThemeContext;
@@ -60,28 +60,21 @@ class GridItem extends React.Component {
         <div className={className}>{children}</div>
         <style jsx>{`
           div {
+            box-sizing: border-box;
             margin-bottom: ${theme.spacing(spacing)}px;
             padding-left: ${theme.spacing(spacing)}px;
-            width: calc(
-              ${(+lg / COLUMNS) * 100 || 0}% - ${theme.spacing(spacing)}px
-            );
+            width: ${(+lg / COLUMNS) * 100 || 0}%;
           }
           @media (max-width: ${theme.breakpoints.md}px) {
             div {
               display: ${md === "hidden" ? "none" : "initial"};
-              width: calc(
-                ${((+md || +lg) / COLUMNS) * 100 || 0}% -
-                  ${theme.spacing(spacing)}px
-              );
+              width: ${((+md || +lg) / COLUMNS) * 100 || 0}%;
             }
           }
           @media (max-width: ${theme.breakpoints.sm}px) {
             div {
               display: ${[sm, md].includes("hidden") ? "none" : "initial"};
-              width: calc(
-                ${((+sm || +md || +lg) / COLUMNS) * 100 || 0}% -
-                  ${theme.spacing(spacing)}px
-              );
+              width: ${((+sm || +md || +lg) / COLUMNS) * 100 || 0}%;
             }
           }
         `}</style>

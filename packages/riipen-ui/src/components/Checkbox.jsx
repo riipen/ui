@@ -24,14 +24,19 @@ class Checkbox extends React.Component {
     color: PropTypes.oneOf(["primary", "secondary", "default"]),
 
     /**
+     * If `true`, the checkbox will be disabled.
+     */
+    disabled: PropTypes.bool,
+
+    /**
      * An error to display below the checkbox.
      */
-    error: PropTypes.string,
+    error: PropTypes.node,
 
     /**
      * Label text to display for the checkbox.
      */
-    label: PropTypes.string,
+    label: PropTypes.node,
 
     /**
      * If true, an asterisk will be appended to the end of the label.
@@ -41,11 +46,12 @@ class Checkbox extends React.Component {
     /**
      * A warning to display below the checkbox.
      */
-    warning: PropTypes.string
+    warning: PropTypes.node
   };
 
   static defaultProps = {
     checked: false,
+    disabled: false,
     required: false
   };
 
@@ -56,6 +62,7 @@ class Checkbox extends React.Component {
       checked,
       classes,
       color,
+      disabled,
       error,
       label,
       required,
@@ -65,10 +72,10 @@ class Checkbox extends React.Component {
 
     const theme = this.context;
 
-    const className = clsx("checkbox", classes);
+    const className = clsx("checkbox");
 
     return (
-      <React.Fragment>
+      <div className={clsx(classes)}>
         <label htmlFor={other.id}>
           <Typography>
             {label}
@@ -77,22 +84,37 @@ class Checkbox extends React.Component {
           <input
             checked={checked}
             className={className}
+            disabled={disabled}
             type="checkbox"
             {...other}
           />
-          <span className={clsx("checkmark", color)} />
+          <span
+            className={clsx("checkmark", disabled ? "disabled" : null, color)}
+          />
         </label>
         {error && (
-          <Typography color="negative" variant="body2">
+          <Typography
+            classes={[clsx("error")]}
+            color="negative"
+            variant="body2"
+          >
             {error}
           </Typography>
         )}
         {warning && (
-          <Typography color="secondary" variant="body2">
+          <Typography
+            classes={[clsx("error")]}
+            color="secondary"
+            variant="body2"
+          >
             {warning}
           </Typography>
         )}
         <style jsx>{`
+          div {
+            min-height: 20px;
+          }
+
           label {
             cursor: pointer;
             display: block;
@@ -159,8 +181,19 @@ class Checkbox extends React.Component {
             transform: rotate(45deg);
             width: 5px;
           }
+
+          label input:checked ~ .disabled {
+            background-color: ${theme.palette.grey[300]};
+            border-color: ${theme.palette.grey[300]};
+            pointer-events: none;
+          }
+
+          label + :global(.error) {
+            margin-left: 35px !important;
+            margin-top: ${theme.spacing(2)}px;
+          }
         `}</style>
-      </React.Fragment>
+      </div>
     );
   }
 }

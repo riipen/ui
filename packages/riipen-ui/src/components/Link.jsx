@@ -26,8 +26,15 @@ class Link extends React.Component {
       "positive",
       "primary",
       "secondary",
-      "tertiary"
+      "tertiary",
+      "white"
     ]),
+
+    /**
+     * The component used for the root node.
+     * Either a string to use a DOM element or a component.
+     */
+    component: PropTypes.elementType,
 
     /**
      * Controls when the link should have an underline.
@@ -38,13 +45,21 @@ class Link extends React.Component {
   static defaultProps = {
     classes: [],
     color: "primary",
+    component: "a",
     underline: "none"
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, color, underline, ...other } = this.props;
+    const {
+      children,
+      classes,
+      color,
+      component: Component,
+      underline,
+      ...other
+    } = this.props;
 
     const theme = this.context;
 
@@ -52,9 +67,9 @@ class Link extends React.Component {
 
     return (
       <React.Fragment>
-        <a className={className} {...other}>
+        <Component className={className} {...other}>
           {children}
-        </a>
+        </Component>
         <style jsx>{`
           a {
             cursor: pointer;
@@ -113,6 +128,15 @@ class Link extends React.Component {
           .negative:focus,
           .negative:hover {
             color: ${theme.palette.negative.dark};
+          }
+
+          .white {
+            color: ${theme.palette.common.white};
+          }
+          .white:active,
+          .white:focus,
+          .white:hover {
+            color: ${theme.palette.grey[200]};
           }
         `}</style>
       </React.Fragment>

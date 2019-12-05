@@ -10,9 +10,19 @@ export default function Usage() {
 
   return (
     <Form>
-      <Checkbox id="agree" label="I agree" error="You must agree to continue" />
+      <Checkbox
+        id="agree"
+        label="I agree"
+        readOnly
+        error="You must agree to continue"
+      />
       <div style={style} />
-      <Checkbox id="agree" label="I agree" warning="You have not agreed yet" />
+      <Checkbox
+        id="agree"
+        label="I agree"
+        readOnly
+        warning="You have not agreed yet"
+      />
     </Form>
   );
 }
