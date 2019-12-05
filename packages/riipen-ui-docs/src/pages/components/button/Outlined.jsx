@@ -25,6 +25,10 @@ export default function Outlined() {
         Tertiary
       </Button>
       <span style={style} />
+      <Button color="white" variant="outlined">
+        White
+      </Button>
+      <span style={style} />
       <Button color="default" variant="outlined" disabled>
         Disabled
       </Button>

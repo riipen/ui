@@ -22,6 +22,12 @@ class Button extends React.Component {
     color: PropTypes.oneOf(["default", "primary", "secondary", "tertiary"]),
 
     /**
+     * The component used for the root node.
+     * Either a string to use a DOM element or a component.
+     */
+    component: PropTypes.elementType,
+
+    /**
      * If `true`, the button will be disabled.
      */
     disabled: PropTypes.bool,
@@ -42,7 +48,15 @@ class Button extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, color, disabled, size, ...other } = this.props;
+    const {
+      children,
+      classes,
+      color,
+      component,
+      disabled,
+      size,
+      ...other
+    } = this.props;
 
     const theme = this.context;
 
@@ -54,7 +68,9 @@ class Button extends React.Component {
       classes
     );
 
-    const Component = other.href ? "a" : "button";
+    let Component = other.href ? "a" : "button";
+
+    if (component) Component = component;
 
     return (
       <React.Fragment>
@@ -68,8 +84,7 @@ class Button extends React.Component {
             color: ${theme.palette.text.primary};
             cursor: pointer;
             display: inline-flex;
-            margin: 0;
-            padding: ${theme.spacing(3)}px;
+            padding: ${theme.spacing(2)}px;
             position: relative;
             outline: 0;
             transition: all ${theme.transitions.duration.standard}ms;
@@ -121,27 +136,20 @@ class Button extends React.Component {
             pointer-events: none;
           }
 
-          .small {
-            padding: ${theme.spacing(2)}px;
-          }
-          .large {
-            padding: ${theme.spacing(4)}px;
-          }
-
           .label {
             align-items: center;
             display: flex;
-            font-size: 16px;
+            font-size: 18px;
             justify-content: center;
             text-align: center;
             width: 100%;
           }
 
           .font-small {
-            font-size: 12px;
+            font-size: 16px;
           }
           .font-large {
-            font-size: 18px;
+            font-size: 20px;
           }
         `}</style>
       </React.Fragment>

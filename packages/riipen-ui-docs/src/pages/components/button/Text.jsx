@@ -25,6 +25,10 @@ export default function Text() {
         Tertiary
       </Button>
       <span style={style} />
+      <Button color="white" variant="text">
+        White
+      </Button>
+      <span style={style} />
       <Button color="default" variant="text" disabled>
         Disabled
       </Button>
