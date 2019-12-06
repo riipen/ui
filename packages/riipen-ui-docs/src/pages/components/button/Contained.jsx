@@ -25,6 +25,10 @@ export default function Contained() {
         Tertiary
       </Button>
       <span style={style} />
+      <Button color="white" variant="contained">
+        White
+      </Button>
+      <span style={style} />
       <Button color="default" variant="contained" disabled>
         Disabled
       </Button>
