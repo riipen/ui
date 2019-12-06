@@ -198,6 +198,9 @@ class Button extends React.Component {
             padding: ${theme.spacing(3)}px ${theme.spacing(5)}px;
           }
 
+          .contained {
+            border: 0;
+          }
           .contained-primary {
             background-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.contrast};
