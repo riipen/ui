@@ -9,7 +9,7 @@ class Button extends React.Component {
     /**
      * The content of the button.
      */
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
 
     /**
      * List of additional classes to apply to this component.
@@ -19,7 +19,19 @@ class Button extends React.Component {
     /**
      * The color to use.
      */
-    color: PropTypes.oneOf(["default", "primary", "secondary", "tertiary"]),
+    color: PropTypes.oneOf([
+      "default",
+      "primary",
+      "secondary",
+      "tertiary",
+      "white"
+    ]),
+
+    /**
+     * The component used for the root node.
+     * Either a string to use a DOM element or a component.
+     */
+    component: PropTypes.elementType,
 
     /**
      * If `true`, the button will be disabled.
@@ -80,6 +92,7 @@ class Button extends React.Component {
       children,
       classes,
       color,
+      component,
       disabled,
       fullWidth,
       iconEnd: IconEnd,
@@ -104,7 +117,9 @@ class Button extends React.Component {
       classes
     );
 
-    const Component = other.href ? "a" : "button";
+    let Component = component || other.href ? "a" : "button";
+
+    if (component) Component = component;
 
     return (
       <React.Fragment>
@@ -137,8 +152,7 @@ class Button extends React.Component {
             color: ${theme.palette.text.primary};
             cursor: pointer;
             display: inline-flex;
-            margin: 0;
-            min-width: 130px;
+            min-width: 100px;
             padding: ${theme.spacing(2)}px ${theme.spacing(3)}px;
             outline: 0;
             transition: all ${theme.transitions.duration.standard}ms;
@@ -151,8 +165,7 @@ class Button extends React.Component {
           }
 
           a.root {
-            border: none;
-            min-width: 100px;
+            min-width: 70px;
             text-decoration: none;
           }
 
@@ -185,6 +198,9 @@ class Button extends React.Component {
             padding: ${theme.spacing(3)}px ${theme.spacing(5)}px;
           }
 
+          .contained {
+            border: 0;
+          }
           .contained-primary {
             background-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.contrast};
@@ -211,6 +227,15 @@ class Button extends React.Component {
           .contained-tertiary:focus,
           .contained-tertiary:hover {
             background-color: ${theme.palette.tertiary.dark};
+          }
+          .contained-white {
+            background-color: ${theme.palette.common.white};
+            color: ${theme.palette.common.black};
+          }
+          .contained-white:active,
+          .contained-white:focus,
+          .contained-white:hover {
+            background-color: ${theme.palette.grey[100]};
           }
 
           .text {
@@ -251,6 +276,12 @@ class Button extends React.Component {
           }
           .text-tertiary:hover::before {
             background-color: ${theme.palette.tertiary.main};
+          }
+          .text-white {
+            color: ${theme.palette.common.white};
+          }
+          .text-white:hover::before {
+            background-color: ${theme.palette.grey[100]};
           }
 
           .outlined {
@@ -294,6 +325,13 @@ class Button extends React.Component {
           }
           .outlined-tertiary:hover::before {
             background-color: ${theme.palette.tertiary.main};
+          }
+          .outlined-white {
+            border-color: ${theme.palette.common.white};
+            color: ${theme.palette.common.white};
+          }
+          .outlined-white:hover::before {
+            background-color: ${theme.palette.grey[100]};
           }
 
           .label {
