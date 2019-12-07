@@ -4,7 +4,7 @@ import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
 
-class Button extends React.Component {
+class ButtonIcon extends React.Component {
   static propTypes = {
     /**
      * The icon element.
@@ -157,4 +157,4 @@ class Button extends React.Component {
   }
 }
 
-export default Button;
+export default ButtonIcon;
