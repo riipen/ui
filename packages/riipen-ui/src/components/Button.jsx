@@ -131,13 +131,13 @@ class Button extends React.Component {
         >
           <span className={clsx("label")}>
             {IconStart && (
-              <span className={clsx("icon-start")}>
+              <span className={clsx("icon", "icon-start")}>
                 <IconStart />
               </span>
             )}
             {children}
             {IconEnd && (
-              <span className={clsx("icon-end")}>
+              <span className={clsx("icon", "icon-end")}>
                 <IconEnd />
               </span>
             )}
@@ -152,7 +152,7 @@ class Button extends React.Component {
             color: ${theme.palette.text.primary};
             cursor: pointer;
             display: inline-flex;
-            min-width: 100px;
+            min-width: 130px;
             padding: ${theme.spacing(2)}px ${theme.spacing(3)}px;
             outline: 0;
             transition: all ${theme.transitions.duration.standard}ms;
@@ -165,19 +165,24 @@ class Button extends React.Component {
           }
 
           a.root {
-            min-width: 70px;
+            min-width: 100px;
             text-decoration: none;
           }
 
+          .icon {
+            font-size: 16px;
+            height: 13px;
+            margin-top: -3px;
+          }
+          .icon > svg {
+            display: flex;
+          }
+
           .icon-start {
-            margin-right: 8px;
+            margin-right: ${theme.spacing(2)}px;
           }
           .icon-end {
-            margin-left: 8px;
-          }
-          .icon-start > svg,
-          .icon-end > svg {
-            display: flex;
+            margin-left: ${theme.spacing(2)}px;
           }
 
           .full-width {
