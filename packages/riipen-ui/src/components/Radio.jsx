@@ -79,6 +79,7 @@ class Radio extends React.Component {
 
           /* Create a custom checkbox */
           .checkmark {
+            box-sizing: content-box;
             background-color: #eee;
             border-radius: 50%;
             border: 1px solid rgba(0, 0, 0, 0.23);
