@@ -171,8 +171,6 @@ class Button extends React.Component {
 
           .icon {
             font-size: 16px;
-            height: 13px;
-            margin-top: -3px;
           }
           .icon > svg {
             display: flex;
