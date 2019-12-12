@@ -179,10 +179,10 @@ class Button extends React.Component {
           }
 
           .icon-start {
-            margin-right: 10px;
+            margin-right: ${theme.spacing(2)}px;
           }
           .icon-end {
-            margin-left: 10px;
+            margin-left: ${theme.spacing(2)}px;
           }
 
           .full-width {
