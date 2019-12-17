@@ -54,20 +54,23 @@ class MenuItem extends React.Component {
         background-color: ${theme.palette.grey[100]};
         cursor: pointer;
       }
+
       .menu-item:hover {
         background-color: ${theme.palette.grey[200]};
       }
 
-      .menu-item.disabled {
-        background-color: ${theme.palette.grey[50]};
-        cursor: inherit;
-        font-weight: ${theme.typography.fontWeight.light};
-        opacity: 0.6;
-      }
-
       .menu-item.disabled:hover {
+        border-left: ${theme.spacing(1)}px solid transparent;
         background-color: ${theme.palette.grey[50]};
         color: ${theme.palette.text.secondary};
+      }
+
+      .menu-item.primary:hover {
+        border-left: ${theme.spacing(1)}px solid ${theme.palette.primary.main};
+      }
+
+      .menu-item.secondary:hover {
+        border-left: ${theme.spacing(1)}px solid ${theme.palette.secondary.main};
       }
 
       .menu-item.selected {
@@ -81,6 +84,19 @@ class MenuItem extends React.Component {
 
       .menu-item.selected.secondary {
         border-left: ${theme.spacing(1)}px solid ${theme.palette.secondary.main};
+      }
+
+      .menu-item.disabled {
+        border-left: ${theme.spacing(1)}px solid transparent;
+        background-color: ${theme.palette.grey[50]};
+        cursor: inherit;
+        font-weight: ${theme.typography.fontWeight.light};
+        opacity: 0.6;
+      }
+
+      .menu-item.disabled:hover {
+        border-left: ${theme.spacing(1)}px solid transparent;
+        background-color: ${theme.palette.grey[50]};
       }
     `;
   };
