@@ -28,7 +28,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">contentPosition</span> | <span class="prop-type">object</span> |  | The location to attach the anchor to on the content element |
 | <span class="prop-name">keepOnScreen</span> | <span class="prop-type">bool</span> |  | Whether to keep the popout on screen when the anchor element scrolls off |
 | <span class="prop-name">lockScroll</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether to lock the scrollbar when the popover is open |
-| <span class="prop-name">marginThreshold</span> | <span class="prop-type">number</span> |  | The marigins of the page the popover should respect |
+| <span class="prop-name">marginThreshold</span> | <span class="prop-type">number</span> | <span class="prop-default">16</span> | The marigins of the page the popover should respect |
 | <span class="prop-name">onClose</span> | <span class="prop-type">func</span> |  | Function call to handle clickaway/ close events, if not provided the anchor element must be removed to clear the popover or use isOpen |
 | <span class="prop-name">open</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether the popover should be displayed |
 | <span class="prop-name">styles</span> | <span class="prop-type">object</span> | <span class="prop-default">{}</span> | Styles to apply to the component |
