@@ -1,6 +1,6 @@
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import clsx from "clsx";
 
 class List extends React.Component {
   static propTypes = {
@@ -22,7 +22,7 @@ class List extends React.Component {
   render() {
     const { classes, children } = this.props;
 
-    const className = clsx(classes, "list");
+    const className = clsx(classes);
 
     return (
       <React.Fragment>

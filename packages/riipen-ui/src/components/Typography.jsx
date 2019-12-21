@@ -92,7 +92,7 @@ class Typography extends React.Component {
 
   static defaultProps = {
     classes: [],
-    color: "initial",
+    color: "inherit",
     display: "initial",
     gutter: false,
     textAlign: "inherit",

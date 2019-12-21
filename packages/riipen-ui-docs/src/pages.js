@@ -64,12 +64,16 @@ const pages = [
         pathname: "/components/form"
       },
       {
+        name: "Grid",
+        pathname: "/components/grid"
+      },
+      {
         name: "Hidden",
         pathname: "/components/hidden"
       },
       {
-        name: "Grid",
-        pathname: "/components/grid"
+        name: "Input",
+        pathname: "/components/input"
       },
       {
         name: "Link",
@@ -102,10 +106,6 @@ const pages = [
       {
         name: "Tabs",
         pathname: "/components/tabs"
-      },
-      {
-        name: "Text Field",
-        pathname: "/components/text-field"
       },
       {
         name: "Typography",
@@ -155,6 +155,10 @@ const pages = [
       {
         name: "Grid Item",
         pathname: "/components-api/grid-item"
+      },
+      {
+        name: "Input",
+        pathname: "/components-api/input"
       },
       {
         name: "Link",

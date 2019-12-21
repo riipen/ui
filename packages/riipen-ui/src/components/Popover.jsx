@@ -296,7 +296,8 @@ class Popover extends React.Component {
         )}
         <style jsx>{`
           .popover {
-            background: ${theme.palette.background.default};
+            background: ${theme.palette.common.white};
+            border-radius: ${theme.shape.borderRadius.md};
             box-shadow: ${theme.shadows[4]};
             box-sizing: border-box;
             max-height: calc(100% - 32px);

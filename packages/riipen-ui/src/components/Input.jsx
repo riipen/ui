@@ -4,6 +4,10 @@ import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
 
+import InputLabel from "./InputLabel";
+import InputHint from "./InputHint";
+import Typography from "./Typography";
+
 class Input extends React.Component {
   static propTypes = {
     /**
@@ -17,9 +21,34 @@ class Input extends React.Component {
     disabled: PropTypes.bool,
 
     /**
+     * An error to display below the input.
+     */
+    error: PropTypes.node,
+
+    /**
+     * Hint text to display under the label of the input.
+     */
+    hint: PropTypes.string,
+
+    /**
+     * Label text to display for the input.
+     */
+    label: PropTypes.string,
+
+    /**
      * If `true`, a textarea element will be rendered.
      */
-    multiline: PropTypes.bool
+    multiline: PropTypes.bool,
+
+    /**
+     * If true, an asterisk will be appended to the end of the label.
+     */
+    required: PropTypes.bool,
+
+    /**
+     * A warning to display below the input.
+     */
+    warning: PropTypes.node
   };
 
   static defaultProps = {
@@ -30,11 +59,21 @@ class Input extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { classes, disabled, multiline, ...other } = this.props;
+    const {
+      classes,
+      disabled,
+      error,
+      hint,
+      label,
+      multiline,
+      required,
+      warning,
+      ...other
+    } = this.props;
 
     const theme = this.context;
 
-    const className = clsx(disabled ? "disabled" : null, classes);
+    const className = clsx(classes);
 
     let Component = "input";
 
@@ -42,9 +81,35 @@ class Input extends React.Component {
       Component = "textarea";
     }
 
+    const componentClassName = clsx(
+      error ? "error" : null,
+      disabled ? "disabled" : null,
+      warning ? "warning" : null
+    );
+
     return (
-      <React.Fragment>
-        <Component className={className} {...other} />
+      <div className={className}>
+        {label && (
+          <InputLabel htmlFor={other.id || other.name} required={required}>
+            {label}
+          </InputLabel>
+        )}
+        {hint && <InputHint>{hint}</InputHint>}
+        <Component
+          className={componentClassName}
+          disabled={disabled}
+          {...other}
+        />
+        {error && (
+          <Typography color="negative" variant="body2">
+            {error}
+          </Typography>
+        )}
+        {warning && (
+          <Typography color="secondary" variant="body2">
+            {warning}
+          </Typography>
+        )}
         <style jsx>{`
           input,
           textarea {
@@ -64,7 +129,7 @@ class Input extends React.Component {
 
           input:focus,
           textarea:focus {
-            border-color: ${theme.palette.secondary.main};
+            border-color: ${theme.palette.tertiary.main};
             outline: 0;
           }
 
@@ -72,8 +137,16 @@ class Input extends React.Component {
             opacity: 0.5;
             pointer-events: none;
           }
+
+          .error {
+            border-color: ${theme.palette.negative.main};
+          }
+
+          .warning {
+            border-color: ${theme.palette.warning.main};
+          }
         `}</style>
-      </React.Fragment>
+      </div>
     );
   }
 }

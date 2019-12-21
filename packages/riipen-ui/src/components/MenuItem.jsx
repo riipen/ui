@@ -51,11 +51,23 @@ class MenuItem extends React.Component {
 
     return css.resolve`
       .menu-item {
-        background-color: ${theme.palette.grey[100]};
+        border-left: 5px solid transparent;
+        border: none;
+        box-sizing: border-box;
+        color: ${theme.palette.text.secondary};
         cursor: pointer;
+        font-family: ${theme.typography.body1.fontFamily};
+        font-size: ${theme.typography.body1.fontSize};
+        font-weight: ${theme.typography.body1.fontWeight};
+        letter-spacing: ${theme.typography.body1.letterSpacing};
+        line-height: ${theme.typography.body1.lineHeight};
+        margin: 0;
+        outline: 0;
+        padding: ${theme.spacing(2)}px ${theme.spacing(4)}px;
+        text-align: inherit;
       }
       .menu-item:hover {
-        background-color: ${theme.palette.grey[200]};
+        background-color: ${theme.palette.grey[100]};
       }
 
       .menu-item.disabled {
@@ -92,10 +104,15 @@ class MenuItem extends React.Component {
 
     const linkedStyles = this.getLinkedStyles();
 
-    const className = clsx(classes, "menu-item", linkedStyles.className, {
-      selected,
-      disabled
-    });
+    const className = clsx(
+      "menu-item",
+      linkedStyles.className,
+      {
+        selected,
+        disabled
+      },
+      classes
+    );
 
     const handleClick = event => {
       if (disabled) {

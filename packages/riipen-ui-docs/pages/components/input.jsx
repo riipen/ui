@@ -3,13 +3,13 @@ import React from "react";
 import MarkdownPage from "src/modules/components/MarkdownPage";
 
 const req = require.context(
-  "src/pages/components/text-field",
+  "src/pages/components/input",
   false,
   /\.(md|js|jsx)$/
 );
 
 const reqSource = require.context(
-  "!raw-loader!../../src/pages/components/text-field",
+  "!raw-loader!../../src/pages/components/input",
   false,
   /\.(js|jsx)$/
 );
@@ -17,7 +17,7 @@ const reqSource = require.context(
 export default function Page() {
   return (
     <MarkdownPage
-      path="pages/components/text-field"
+      path="pages/components/input"
       req={req}
       reqSource={reqSource}
     />

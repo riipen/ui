@@ -1,12 +1,12 @@
 import React from "react";
 
 import Form from "@riipen-ui/components/Form";
-import TextField from "@riipen-ui/components/TextField";
+import Input from "@riipen-ui/components/Input";
 
 export default function Props() {
   return (
     <Form>
-      <TextField id="name" label="Biography" multiline rows="5" />
+      <Input id="name" label="Biography" multiline rows="5" />
     </Form>
   );
 }
