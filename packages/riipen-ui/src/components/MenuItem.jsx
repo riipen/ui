@@ -51,23 +51,37 @@ class MenuItem extends React.Component {
 
     return css.resolve`
       .menu-item {
-        background-color: ${theme.palette.grey[100]};
+        border-left: 5px solid transparent;
+        box-sizing: border-box;
+        color: ${theme.palette.text.secondary};
         cursor: pointer;
-      }
-      .menu-item:hover {
-        background-color: ${theme.palette.grey[200]};
+        font-family: ${theme.typography.body1.fontFamily};
+        font-size: ${theme.typography.body1.fontSize};
+        font-weight: ${theme.typography.body1.fontWeight};
+        letter-spacing: ${theme.typography.body1.letterSpacing};
+        line-height: ${theme.typography.body1.lineHeight};
+        margin: 0;
+        outline: 0;
+        padding: ${theme.spacing(2)}px ${theme.spacing(4)}px;
+        text-align: inherit;
       }
 
-      .menu-item.disabled {
-        background-color: ${theme.palette.grey[50]};
-        cursor: inherit;
-        font-weight: ${theme.typography.fontWeight.light};
-        opacity: 0.6;
+      .menu-item:hover {
+        background-color: ${theme.palette.grey[100]};
       }
 
       .menu-item.disabled:hover {
         background-color: ${theme.palette.grey[50]};
+        border-color: transparent;
         color: ${theme.palette.text.secondary};
+      }
+
+      .menu-item.primary:hover {
+        border-color: ${theme.palette.primary.main};
+      }
+
+      .menu-item.secondary:hover {
+        border-color: ${theme.palette.secondary.main};
       }
 
       .menu-item.selected {
@@ -76,11 +90,24 @@ class MenuItem extends React.Component {
       }
 
       .menu-item.selected.primary {
-        border-left: ${theme.spacing(1)}px solid ${theme.palette.primary.main};
+        border-color: ${theme.palette.primary.main};
       }
 
       .menu-item.selected.secondary {
-        border-left: ${theme.spacing(1)}px solid ${theme.palette.secondary.main};
+        border-color: ${theme.palette.secondary.main};
+      }
+
+      .menu-item.disabled {
+        background-color: ${theme.palette.grey[50]};
+        border-color: transparent;
+        cursor: inherit;
+        font-weight: ${theme.typography.fontWeight.light};
+        opacity: 0.6;
+      }
+
+      .menu-item.disabled:hover {
+        background-color: ${theme.palette.grey[50]};
+        border-color: transparent;
       }
     `;
   };
@@ -92,10 +119,15 @@ class MenuItem extends React.Component {
 
     const linkedStyles = this.getLinkedStyles();
 
-    const className = clsx(classes, "menu-item", linkedStyles.className, {
-      selected,
-      disabled
-    });
+    const className = clsx(
+      "menu-item",
+      linkedStyles.className,
+      {
+        selected,
+        disabled
+      },
+      classes
+    );
 
     const handleClick = event => {
       if (disabled) {

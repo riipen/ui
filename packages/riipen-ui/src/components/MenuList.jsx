@@ -1,8 +1,8 @@
+import clsx from "clsx";
 import React from "react";
-
 import PropTypes from "prop-types";
 
-import List from "./List";
+import ThemeContext from "../styles/ThemeContext";
 
 class MenuList extends React.Component {
   static propTypes = {
@@ -90,6 +90,8 @@ class MenuList extends React.Component {
     });
   }
 
+  static contextType = ThemeContext;
+
   handleSelectChange(idx, event) {
     const { selectChange } = this.props;
     if (selectChange) {
@@ -153,11 +155,20 @@ class MenuList extends React.Component {
   render() {
     const { children, classes, selectedIndex } = this.props;
 
-    const listItems = this.getListItems(children, selectedIndex);
+    const theme = this.context;
 
-    const className = classes.concat("menu-list");
-
-    return <List classes={className}>{listItems}</List>;
+    return (
+      <React.Fragment>
+        <div className={clsx(classes)}>
+          {this.getListItems(children, selectedIndex)}
+        </div>
+        <style jsx>{`
+          div {
+            margin: ${theme.spacing(1)}px 0;
+          }
+        `}</style>
+      </React.Fragment>
+    );
   }
 }
 

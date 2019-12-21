@@ -22,7 +22,8 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name required">children&nbsp;*</span> | <span class="prop-type">any</span> |  | The content of the link. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | List of additional classes to apply to this component. |
-| <span class="prop-name">color</span> | <span class="prop-type">"inherit"<br>&#124;&nbsp;"negative"<br>&#124;&nbsp;"positive"<br>&#124;&nbsp;"primary"<br>&#124;&nbsp;"secondary"<br>&#124;&nbsp;"tertiary"</span> | <span class="prop-default">"primary"</span> | The color of the link. |
+| <span class="prop-name">color</span> | <span class="prop-type">"inherit"<br>&#124;&nbsp;"negative"<br>&#124;&nbsp;"positive"<br>&#124;&nbsp;"primary"<br>&#124;&nbsp;"secondary"<br>&#124;&nbsp;"tertiary"<br>&#124;&nbsp;"white"</span> | <span class="prop-default">"primary"</span> | The color of the link. |
+| <span class="prop-name">component</span> | <span class="prop-type">elementType</span> | <span class="prop-default">"a"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">underline</span> | <span class="prop-type">"none"<br>&#124;&nbsp;"hover"<br>&#124;&nbsp;"always"</span> | <span class="prop-default">"none"</span> | Controls when the link should have an underline. |
 
 

@@ -21,7 +21,9 @@ class Footer extends React.Component {
       <footer>
         <Grid>
           <GridItem lg={4} sm={12}>
-            <Typography variant="h3">Community</Typography>
+            <Typography gutter variant="h3">
+              Community
+            </Typography>
             <List>
               <ListItem>
                 <Link
@@ -53,7 +55,9 @@ class Footer extends React.Component {
             </List>
           </GridItem>
           <GridItem lg={4} sm={12}>
-            <Typography variant="h3">Resources</Typography>
+            <Typography gutter variant="h3">
+              Resources
+            </Typography>
             <List>
               <ListItem>
                 <Link

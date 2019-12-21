@@ -54,18 +54,10 @@ class ListItem extends React.Component {
         <style jsx>{`
           .list-item {
             border: none;
-            border-left: 5px solid transparent;
             box-sizing: border-box;
-            color: ${theme.palette.text.secondary};
-            font-family: ${theme.typography.body1.fontFamily};
-            font-size: ${theme.typography.body1.fontSize};
-            font-weight: ${theme.typography.body1.fontWeight};
-            letter-spacing: ${theme.typography.body1.letterSpacing};
-            line-height: ${theme.typography.body1.lineHeight};
-            outline: 0;
-            padding: ${theme.spacing(2)}px ${theme.spacing(3)}px;
-            text-align: inherit;
             margin: 0;
+            outline: 0;
+            padding: ${theme.spacing(2)}px 0;
           }
         `}</style>
       </React.Fragment>

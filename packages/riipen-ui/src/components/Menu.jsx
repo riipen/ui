@@ -134,15 +134,12 @@ class Menu extends React.Component {
       anchorEl,
       anchorPosition,
       children,
-      classes,
       contentPosition,
       keepOnScreen,
       popoverStyles,
       selectedIndex,
       variant
     } = this.props;
-
-    const className = classes.concat("menu");
 
     return (
       <React.Fragment>
@@ -158,7 +155,6 @@ class Menu extends React.Component {
         >
           <MenuList
             {...this.props}
-            classes={[className]}
             selectChange={this.handleChange}
             selectedIndex={selectedIndex}
             variant={variant}
