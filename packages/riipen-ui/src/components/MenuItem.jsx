@@ -52,7 +52,6 @@ class MenuItem extends React.Component {
     return css.resolve`
       .menu-item {
         border-left: 5px solid transparent;
-        border: none;
         box-sizing: border-box;
         color: ${theme.palette.text.secondary};
         cursor: pointer;
@@ -72,17 +71,17 @@ class MenuItem extends React.Component {
       }
 
       .menu-item.disabled:hover {
-        border-left: ${theme.spacing(1)}px solid transparent;
         background-color: ${theme.palette.grey[50]};
+        border-color: transparent;
         color: ${theme.palette.text.secondary};
       }
 
       .menu-item.primary:hover {
-        border-left: ${theme.spacing(1)}px solid ${theme.palette.primary.main};
+        border-color: ${theme.palette.primary.main};
       }
 
       .menu-item.secondary:hover {
-        border-left: ${theme.spacing(1)}px solid ${theme.palette.secondary.main};
+        border-color: ${theme.palette.secondary.main};
       }
 
       .menu-item.selected {
@@ -91,24 +90,24 @@ class MenuItem extends React.Component {
       }
 
       .menu-item.selected.primary {
-        border-left: ${theme.spacing(1)}px solid ${theme.palette.primary.main};
+        border-color: ${theme.palette.primary.main};
       }
 
       .menu-item.selected.secondary {
-        border-left: ${theme.spacing(1)}px solid ${theme.palette.secondary.main};
+        border-color: ${theme.palette.secondary.main};
       }
 
       .menu-item.disabled {
-        border-left: ${theme.spacing(1)}px solid transparent;
         background-color: ${theme.palette.grey[50]};
+        border-color: transparent;
         cursor: inherit;
         font-weight: ${theme.typography.fontWeight.light};
         opacity: 0.6;
       }
 
       .menu-item.disabled:hover {
-        border-left: ${theme.spacing(1)}px solid transparent;
         background-color: ${theme.palette.grey[50]};
+        border-color: transparent;
       }
     `;
   };
