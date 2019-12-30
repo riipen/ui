@@ -49,8 +49,7 @@ class GridItem extends React.Component {
     classes: [],
     lg: 12,
     spacing: 3,
-    flexGrow: false,
-    flexShrink: false
+    flexGrow: false
   };
 
   static contextType = ThemeContext;
