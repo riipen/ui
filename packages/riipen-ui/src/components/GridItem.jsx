@@ -20,6 +20,11 @@ class GridItem extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * Defines if the grid item should grow to fill extra space in the row
+     */
+    flexGrow: PropTypes.bool,
+
+    /**
      * The columns use at the large resolution. Can also be 'hidden'.
      */
     lg: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -37,12 +42,7 @@ class GridItem extends React.Component {
     /**
      * Defines the space between this grid item and other items.
      */
-    spacing: PropTypes.oneOf(SPACINGS),
-
-    /**
-     * Defines if the grid item should grow to fill extra space in the row
-     */
-    flexGrow: PropTypes.bool
+    spacing: PropTypes.oneOf(SPACINGS)
   };
 
   static defaultProps = {
