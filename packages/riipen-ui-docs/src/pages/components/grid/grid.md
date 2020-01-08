@@ -41,3 +41,10 @@ this spacing by passing in a spacing factor size which makes the spacing between
 smaller.
 
 {{"demo": "pages/components/grid/Spacing.js"}}
+
+
+### Growing grid items
+Grid items can grow to fill the space remaining in the grid relative to other grid items. Extra space is 
+split between growing grid items that end up in the same row 
+
+{{"demo": "pages/components/grid/Grow.js"}}

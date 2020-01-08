@@ -20,6 +20,11 @@ class GridItem extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * Defines if the grid item should grow to fill extra space in the row
+     */
+    flexGrow: PropTypes.bool,
+
+    /**
      * The columns use at the large resolution. Can also be 'hidden'.
      */
     lg: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -43,17 +48,20 @@ class GridItem extends React.Component {
   static defaultProps = {
     classes: [],
     lg: 12,
-    spacing: 3
+    spacing: 3,
+    flexGrow: false
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, lg, md, sm, spacing } = this.props;
+    const { children, classes, lg, md, sm, spacing, flexGrow } = this.props;
 
     const theme = this.context;
 
     const className = clsx(classes);
+
+    const grow = flexGrow ? 1 : 0;
 
     return (
       <React.Fragment>
@@ -63,18 +71,18 @@ class GridItem extends React.Component {
             box-sizing: border-box;
             margin-bottom: ${theme.spacing(spacing)}px;
             padding-left: ${theme.spacing(spacing)}px;
-            width: ${(+lg / COLUMNS) * 100 || 0}%;
+            flex: ${grow} 0 ${(+lg / COLUMNS) * 100 || 0}%;
           }
           @media (max-width: ${theme.breakpoints.md}px) {
             div {
               display: ${md === "hidden" ? "none" : "initial"};
-              width: ${((+md || +lg) / COLUMNS) * 100 || 0}%;
+              flex: ${grow} 0 ${((+md || +lg) / COLUMNS) * 100 || 0}%;
             }
           }
           @media (max-width: ${theme.breakpoints.sm}px) {
             div {
               display: ${[sm, md].includes("hidden") ? "none" : "initial"};
-              width: ${((+sm || +md || +lg) / COLUMNS) * 100 || 0}%;
+              flex: ${grow} 0 ${((+sm || +md || +lg) / COLUMNS) * 100 || 0}%;
             }
           }
         `}</style>
