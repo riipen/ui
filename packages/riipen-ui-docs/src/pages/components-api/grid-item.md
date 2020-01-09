@@ -22,6 +22,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">any</span> |  | The content of the grid item. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | An array of custom CSS classes to apply. |
+| <span class="prop-name">flexGrow</span> | <span class="prop-type">number</span> | <span class="prop-default">0</span> | Defines if the grid item should grow to fill extra space in the row |
 | <span class="prop-name">lg</span> | <span class="prop-type">number<br>&#124;&nbsp;string</span> | <span class="prop-default">12</span> | The columns use at the large resolution. Can also be 'hidden'. |
 | <span class="prop-name">md</span> | <span class="prop-type">number<br>&#124;&nbsp;string</span> |  | The columns use at the medium resolution. Can also be 'hidden'. |
 | <span class="prop-name">sm</span> | <span class="prop-type">number<br>&#124;&nbsp;string</span> |  | The columns use at the small resolution. Can also be 'hidden'. |

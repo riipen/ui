@@ -16,16 +16,16 @@ export default function GrowingGrid() {
       <GridItem lg={3}>
         <div style={itemStyle}>lg=3</div>
       </GridItem>
-      <GridItem lg={2} flexGrow>
+      <GridItem lg={2} flexGrow={1}>
         <div style={itemStyle}>lg=2 Grow</div>
       </GridItem>
-      <GridItem lg={2} flexGrow>
+      <GridItem lg={2} flexGrow={1}>
         <div style={itemStyle}>lg=2 Grow</div>
       </GridItem>
       <GridItem lg={6}>
         <div style={itemStyle}>lg=6</div>
       </GridItem>
-      <GridItem lg={4} flexGrow>
+      <GridItem lg={4} flexGrow={1}>
         <div style={itemStyle}>lg=4 Grow</div>
       </GridItem>
     </Grid>
