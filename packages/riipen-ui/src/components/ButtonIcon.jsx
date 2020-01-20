@@ -19,7 +19,13 @@ class ButtonIcon extends React.Component {
     /**
      * The color to use.
      */
-    color: PropTypes.oneOf(["default", "primary", "secondary", "tertiary"]),
+    color: PropTypes.oneOf([
+      "default",
+      "primary",
+      "secondary",
+      "tertiary",
+      "white"
+    ]),
 
     /**
      * The component used for the root node.
@@ -129,6 +135,12 @@ class ButtonIcon extends React.Component {
           }
           .tertiary:hover::before {
             background-color: ${theme.palette.tertiary.main};
+          }
+          .white {
+            color: ${theme.palette.common.white};
+          }
+          .white:hover::before {
+            background-color: ${theme.palette.common.white};
           }
 
           .disabled {
