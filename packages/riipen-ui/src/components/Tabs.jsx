@@ -97,9 +97,7 @@ class Tabs extends React.Component {
       <React.Fragment>
         <Component className={className}>
           <div className={clsx("scroller")}>
-            <div className={clsx("container", orientation)}>
-              {childrenWithProps}
-            </div>
+            <div className={clsx(orientation)}>{childrenWithProps}</div>
           </div>
         </Component>
         <style jsx>{`
@@ -110,6 +108,7 @@ class Tabs extends React.Component {
           }
 
           .vertical {
+            display: flex;
             flex-direction: column;
           }
 
@@ -119,10 +118,6 @@ class Tabs extends React.Component {
             overflow-x: auto;
             position: relative;
             white-space: nowrap;
-          }
-
-          .container {
-            display: flex;
           }
         `}</style>
       </React.Fragment>
