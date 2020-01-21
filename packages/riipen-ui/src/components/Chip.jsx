@@ -1,7 +1,9 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import { FaTimes } from "react-icons-riipen/fa";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import ThemeContext from "../styles/ThemeContext";
 
@@ -89,7 +91,7 @@ class Chip extends React.Component {
           <span className={clsx("label")}>{label}</span>
           {onDelete && (
             <span className={clsx("delete", `delete-${color}`)}>
-              <FaTimes size="12px" onClick={onDelete} />
+              <FontAwesomeIcon fixedWidth icon={faTimes} onClick={onDelete} />
             </span>
           )}
         </Component>
@@ -125,11 +127,15 @@ class Chip extends React.Component {
           }
 
           .delete {
+            align-items: center;
             background-color: ${theme.palette.grey[400]};
             border-radius: 50%;
             color: ${theme.palette.common.white};
+            display: flex;
+            height: 20px;
+            justify-content: center;
             margin-right: 12px;
-            padding: 5px 5px 2px;
+            width: 20px;
           }
           .delete:hover {
             background-color: ${theme.palette.grey[500]};

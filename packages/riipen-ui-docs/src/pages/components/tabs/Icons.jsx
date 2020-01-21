@@ -1,5 +1,13 @@
 import React from "react";
-import { FaHeart, FaMapMarker, FaPhone } from "react-icons-riipen/fa";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHeart,
+  faMapMarker,
+  faPhone
+} from "@fortawesome/free-solid-svg-icons";
+
+const icon = i => props => <FontAwesomeIcon icon={i} {...props} />;
 
 import Tabs from "@riipen-ui/components/Tabs";
 import Tab from "@riipen-ui/components/Tab";
@@ -20,9 +28,9 @@ export default function Icons() {
   return (
     <div style={style}>
       <Tabs onChange={handleChange} value={state.value}>
-        <Tab icon={FaPhone} value="recents" />
-        <Tab icon={FaHeart} value="favorites" />
-        <Tab icon={FaMapMarker} value="local" />
+        <Tab icon={icon(faPhone)} value="recents" />
+        <Tab icon={icon(faHeart)} value="favorites" />
+        <Tab icon={icon(faMapMarker)} value="local" />
       </Tabs>
     </div>
   );

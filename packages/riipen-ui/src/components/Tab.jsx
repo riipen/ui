@@ -104,7 +104,7 @@ class Tab extends React.Component {
     return (
       <React.Fragment>
         <div className={className} onClick={this.handleClick}>
-          {Icon && <Icon className={clsx("icon")} size="20px" />}
+          {Icon && <Icon className={clsx("icon")} />}
           {label && <div className={clsx("label")}>{label}</div>}
         </div>
         <style jsx>{`
@@ -123,6 +123,10 @@ class Tab extends React.Component {
 
           .icon + * {
             margin-left: ${theme.spacing(2)}px;
+          }
+
+          .icon {
+            margin-bottom: 1px;
           }
 
           .label {

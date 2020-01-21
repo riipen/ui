@@ -81,7 +81,9 @@ class ButtonIcon extends React.Component {
     return (
       <React.Fragment>
         <Component className={className} disabled={disabled} {...other}>
-          <span className={clsx("label", `font-${size}`)}>{children}</span>
+          <span className={clsx("label", `icon-${size}`, `font-${size}`)}>
+            {children}
+          </span>
         </Component>
         <style jsx>{`
           .root {
@@ -155,6 +157,19 @@ class ButtonIcon extends React.Component {
             justify-content: center;
             text-align: center;
             width: 100%;
+          }
+
+          .icon-small {
+            height: 16px;
+            width: 16px;
+          }
+          .icon-medium {
+            height: 18px;
+            width: 18px;
+          }
+          .icon-large {
+            height: 20px;
+            width: 20px;
           }
 
           .font-small {
