@@ -28,6 +28,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">closeOnClick</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether or not the menu should close when an option is chosen with a click event |
 | <span class="prop-name">color</span> | <span class="prop-type">"primary"<br>&#124;&nbsp;"secondary"</span> | <span class="prop-default">"primary"</span> | The color of the component. It supports those theme colors that make sense for this component. |
 | <span class="prop-name">contentPosition</span> | <span class="prop-type">object</span> |  | The location to attach the anchor to on the content element |
+| <span class="prop-name">isOpen</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether or not the menu should be rendered |
 | <span class="prop-name">keepOnScreen</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Whether or not the popout should be forced to stay on screen |
 | <span class="prop-name">onChange</span> | <span class="prop-type">func</span> |  | The function callback for when the selection is changed |
 | <span class="prop-name">onClose</span> | <span class="prop-type">func</span> |  | The function callback to use when the menu closes |

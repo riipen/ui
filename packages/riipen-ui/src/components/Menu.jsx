@@ -48,6 +48,11 @@ class Menu extends React.Component {
     contentPosition: PropTypes.object,
 
     /**
+     * Whether or not the menu should be rendered
+     */
+    isOpen: PropTypes.bool,
+
+    /**
      * Whether or not the popout should be forced to stay on screen
      */
     keepOnScreen: PropTypes.bool,
@@ -83,6 +88,7 @@ class Menu extends React.Component {
     color: "primary",
     classes: [],
     closeOnClick: true,
+    isOpen: true,
     keepOnScreen: false,
     popoverStyles: {},
     variant: "menu"
@@ -110,7 +116,6 @@ class Menu extends React.Component {
 
   handleClose = () => {
     const { onClose } = this.props;
-    this.anchorEl = null;
     if (onClose) onClose();
   };
 
@@ -136,6 +141,7 @@ class Menu extends React.Component {
       children,
       contentPosition,
       keepOnScreen,
+      isOpen,
       popoverStyles,
       selectedIndex,
       variant
@@ -148,7 +154,7 @@ class Menu extends React.Component {
           anchorPosition={anchorPosition}
           contentPosition={contentPosition}
           lockScroll={false}
-          open={Boolean(anchorEl)}
+          isOpen={isOpen}
           anchorEl={anchorEl}
           styles={popoverStyles}
           keepOnScreen={keepOnScreen}
