@@ -8,7 +8,7 @@ import Form from "@riipen-ui/components/Form";
 
 export default function Simple() {
   const anchorEl = React.useRef(null);
-  const [open, setOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
   const [anchorPosition, setAnchorPosition] = React.useState({
     vertical: "top",
     horizontal: "left"
@@ -19,7 +19,7 @@ export default function Simple() {
   });
 
   const buttonClick = () => {
-    setOpen(prevVal => !prevVal);
+    setIsOpen(prevVal => !prevVal);
   };
 
   const handleAnchorVertical = (e, value) => {
@@ -141,7 +141,9 @@ export default function Simple() {
                 checked={contentPosition.horizontal === "right"}
               />
             </RadioGroup>
-            <Button onClick={buttonClick}>Open Popover</Button>
+            <Button color="primary" variant="outlined" onClick={buttonClick}>
+              Toggle Popover
+            </Button>
           </Form>
         </div>
         <div className="half" ref={anchorEl}>
@@ -150,7 +152,7 @@ export default function Simple() {
         <Popover
           anchorPosition={anchorPosition}
           contentPosition={contentPosition}
-          open={open}
+          isOpen={isOpen}
           lockScroll={false}
           anchorEl={anchorEl.current}
         >
