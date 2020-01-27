@@ -92,12 +92,19 @@ class Popover extends React.Component {
     this.state = {
       scrollContainer: null,
       scrollContainerStyle: null,
-      contentRef: null
+      contentStyles: {
+        top: 0,
+        left: 0,
+        visibility: "hidden"
+      }
     };
+
+    this.contentRef = React.createRef();
   }
 
   componentDidMount() {
     const { anchorEl, lockScroll } = this.props;
+
     window.addEventListener("resize", this.positionChangeEventHandler);
     window.addEventListener("scroll", this.positionChangeEventHandler);
     window.addEventListener("mousedown", this.handleCloseEvent);
@@ -105,6 +112,29 @@ class Popover extends React.Component {
 
     if (anchorEl && lockScroll) {
       this.lockParentScroll();
+    }
+
+    this.getPositioningStyle();
+  }
+
+  componentDidUpdate(prevProps) {
+    const anchorChange =
+      prevProps.anchorEl === null && this.props.anchorEl !== null;
+    const openChange = !prevProps.open && this.props.open;
+    const anchorPositionChange = !(
+      prevProps.anchorPosition === this.props.anchorPosition
+    );
+    const contentPositionChange = !(
+      prevProps.contentPosition === this.props.contentPosition
+    );
+
+    if (
+      anchorChange ||
+      openChange ||
+      contentPositionChange ||
+      anchorPositionChange
+    ) {
+      this.getPositioningStyle();
     }
   }
 
@@ -126,7 +156,7 @@ class Popover extends React.Component {
   };
 
   getPositioningStyle = () => {
-    const { contentRef } = this.state;
+    const contentRef = this.contentRef.current;
     const {
       anchorPosition = {
         vertical: "top",
@@ -140,7 +170,7 @@ class Popover extends React.Component {
     } = this.props;
 
     const anchorEl = this.getAnchorEl();
-    if (!anchorEl || !contentRef) return {};
+    if (!anchorEl || !contentRef) return;
 
     // Set top and left of element based on location of anchor
     const anchorRect = anchorEl.getBoundingClientRect();
@@ -198,17 +228,15 @@ class Popover extends React.Component {
       }
     }
 
-    return {
-      top: `${top}px`,
-      left: `${left}px`,
-      position: "fixed"
-    };
-  };
-
-  setContentElRef = el => {
-    this.setState({
-      contentRef: el
-    });
+    this.setState(
+      Object.assign(this.state, {
+        contentStyles: {
+          top: `${top}px`,
+          left: `${left}px`,
+          position: "fixed"
+        }
+      })
+    );
   };
 
   isDecendant(parent, child) {
@@ -223,7 +251,7 @@ class Popover extends React.Component {
 
   handleCloseEvent = event => {
     const { open, anchorEl } = this.props;
-    const { contentRef } = this.state;
+    const contentRef = this.contentRef.current;
     if (!contentRef || !open) return;
     if (event.type === "mousedown") {
       // Check if mouse click happened inside popover
@@ -237,10 +265,8 @@ class Popover extends React.Component {
       ) {
         return;
       }
-      event.preventDefault();
       this.handleClose();
     } else if (event.type === "keydown" && event.key === "Escape") {
-      event.preventDefault();
       this.handleClose();
     }
   };
@@ -272,7 +298,7 @@ class Popover extends React.Component {
 
   updatePosition = () => {
     if (!this.props.anchorEl) return undefined;
-    return this.forceUpdate();
+    return this.getPositioningStyle();
   };
 
   static contextType = ThemeContext;
@@ -287,8 +313,8 @@ class Popover extends React.Component {
       <React.Fragment>
         {anchorEl && open && (
           <Component
-            style={{ ...styles, ...this.getPositioningStyle() }}
-            ref={this.setContentElRef}
+            style={{ ...styles, ...this.state.contentStyles }}
+            ref={this.contentRef}
             className={className}
           >
             {children}
@@ -305,10 +331,12 @@ class Popover extends React.Component {
             min-height: 16px;
             min-width: 16px;
             outline: 0;
-            overflow-x: hidden;
-            overflow-y: auto;
             position: absolute;
             z-index: ${theme.zIndex.middle};
+          }
+
+          .popover::webkit-scrollbar {
+            display: none;
           }
         `}</style>
       </React.Fragment>

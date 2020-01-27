@@ -155,18 +155,11 @@ class MenuList extends React.Component {
   render() {
     const { children, classes, selectedIndex } = this.props;
 
-    const theme = this.context;
-
     return (
       <React.Fragment>
         <div className={clsx(classes)}>
           {this.getListItems(children, selectedIndex)}
         </div>
-        <style jsx>{`
-          div {
-            margin: ${theme.spacing(1)}px 0;
-          }
-        `}</style>
       </React.Fragment>
     );
   }
