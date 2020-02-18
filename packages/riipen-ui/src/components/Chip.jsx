@@ -158,8 +158,11 @@ class Chip extends React.Component {
             font-family: ${theme.typography.fontFamily};
             font-size: 13px;
             justify-content: center;
-            margin-bottom: ${theme.spacing(spacing)}px;
-            margin-right: ${theme.spacing(spacing)}px;
+            ${spacing !== 0 && `margin-bottom: ${theme.spacing(spacing)}px;`}
+            ${spacing !== 0 &&
+              `margin-right: ${theme.spacing(
+                spacing
+              )}px;`}
             outline: 0;
             vertical-align: middle;
             white-space: nowrap;
