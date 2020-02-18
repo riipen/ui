@@ -7,6 +7,11 @@ import ThemeContext from "../styles/ThemeContext";
 class Chip extends React.Component {
   static propTypes = {
     /**
+     * The elements to render inside the pill
+     */
+    children: PropTypes.node,
+
+    /**
      * List of additional classes to apply to this component.
      */
     classes: PropTypes.array,
@@ -29,11 +34,6 @@ class Chip extends React.Component {
      * Either a string to use a DOM element or a component.
      */
     component: PropTypes.elementType,
-
-    /**
-     * The elements to render inside the pill
-     */
-    children: PropTypes.node,
 
     /**
      * If `true`, the chip should be displayed in a disabled state.
@@ -71,7 +71,7 @@ class Chip extends React.Component {
     size: PropTypes.oneOf(["small", "medium"]),
 
     /**
-     *
+     * Amount of spacing to put around the chip
      */
     spacing: PropTypes.number,
 
