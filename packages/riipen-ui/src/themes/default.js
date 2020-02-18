@@ -15,6 +15,7 @@ export default {
       white: "#fff"
     },
     divider: "#ddd",
+    disabled: "#cccbcb",
     grey: {
       50: "#fafafa",
       100: "#f5f5f5",
@@ -34,12 +35,14 @@ export default {
     negative: {
       dark: "#ba2222",
       light: "#ea7e7e",
-      main: "#e95353"
+      main: "#e95353",
+      contrast: "#fff"
     },
     warning: {
       dark: "#cf890e",
       light: "#ffd894",
-      main: "#febb46"
+      main: "#febb46",
+      contrast: "#fff"
     },
     positive: {
       dark: "#1b965c",

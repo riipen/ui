@@ -2,9 +2,6 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-
 import ThemeContext from "../styles/ThemeContext";
 
 class Chip extends React.Component {
@@ -17,7 +14,15 @@ class Chip extends React.Component {
     /**
      * The color to use.
      */
-    color: PropTypes.oneOf(["default", "primary", "secondary", "tertiary"]),
+    color: PropTypes.oneOf([
+      "default",
+      "primary",
+      "secondary",
+      "tertiary",
+      "positive",
+      "warning",
+      "negative"
+    ]),
 
     /**
      * The component used for the root node.
@@ -26,9 +31,24 @@ class Chip extends React.Component {
     component: PropTypes.elementType,
 
     /**
+     * The elements to render inside the pill
+     */
+    children: PropTypes.node,
+
+    /**
      * If `true`, the chip should be displayed in a disabled state.
      */
     disabled: PropTypes.bool,
+
+    /**
+     * Whether to invert colors on hover
+     */
+    hover: PropTypes.bool,
+
+    /**
+     * Icon to display at start of chip
+     */
+    iconStart: PropTypes.elementType,
 
     /**
      * The content of the label.
@@ -36,15 +56,25 @@ class Chip extends React.Component {
     label: PropTypes.node,
 
     /**
-     * Callback function fired when the delete icon is clicked.
-     * If set, the delete icon will be shown.
+     * Action to perform when clicked
      */
-    onDelete: PropTypes.func,
+    onClick: PropTypes.func,
+
+    /**
+     * Callback function fired when the icon is clicked.
+     */
+    onIconClick: PropTypes.func,
 
     /**
      * The size of the chip.
      */
     size: PropTypes.oneOf(["small", "medium"]),
+
+    /**
+     *
+     */
+    spacing: PropTypes.number,
+
     /**
      * The variant to use.
      */
@@ -57,6 +87,7 @@ class Chip extends React.Component {
     component: "div",
     disabled: false,
     size: "medium",
+    spacing: 1,
     variant: "default"
   };
 
@@ -68,82 +99,117 @@ class Chip extends React.Component {
       color,
       component: Component,
       disabled,
-      label,
-      onDelete,
+      hover,
+      iconStart: IconStart,
+      onIconClick,
+      onClick,
+      spacing,
       size,
       variant
     } = this.props;
 
+    const label = this.props.label || this.props.children;
+
     const theme = this.context;
+
+    const clickable = !!onClick;
+    const iconClickable = !!onIconClick;
 
     const className = clsx(
       "root",
       color,
       disabled ? "disabled" : null,
       size,
+      { hover },
       variant,
-      classes
+      classes,
+      { clickable }
     );
+
+    const handleClick = () => {
+      if (onClick) onClick();
+    };
 
     return (
       <React.Fragment>
-        <Component className={className}>
-          <span className={clsx("label")}>{label}</span>
-          {onDelete && (
-            <span className={clsx("delete", `delete-${color}`)}>
-              <FontAwesomeIcon fixedWidth icon={faTimes} onClick={onDelete} />
+        <Component onClick={handleClick} className={className}>
+          {IconStart && (
+            <span
+              onClick={onIconClick}
+              className={clsx("icon", "icon-start", {
+                iconClickable
+              })}
+            >
+              <IconStart />
             </span>
           )}
+          <span className={clsx("label")}>{label}</span>
         </Component>
         <style jsx>{`
           .root {
-            align-items: center;
             background-color: ${theme.palette.grey[300]};
-            border-radius: 16px;
-            border: none;
+            border-radius: 50px;
+            border: 1px solid;
+            border-color: transparent;
             box-sizing: border-box;
+            color: ${theme.palette.text.secondary};
+            cursor: default;
             display: inline-flex;
             font-family: ${theme.typography.fontFamily};
             font-size: 13px;
-            height: 32px;
             justify-content: center;
+            margin-bottom: ${theme.spacing(spacing)}px;
+            margin-right: ${theme.spacing(spacing)}px;
             outline: 0;
-            padding: 0;
             vertical-align: middle;
             white-space: nowrap;
           }
-
-          .disabled {
-            opacity: 0.5;
+          .root.small {
+            padding: 5px 10px;
+          }
+          .root.medium {
+            padding: 10px 15px;
+          }
+          .root.disabled {
+            background-color: ${theme.palette.disabled};
+            border: 1px solid;
+            border-color: ${theme.palette.disabled};
+            color: ${theme.palette.common.white};
             pointer-events: none;
+          }
+          .root.clickable {
+            cursor: pointer;
+          }
+
+          .icon-start {
+            align-items: center;
+            display: flex;
+            padding-right: 10px;
+            white-space: nowrap;
+          }
+
+          .icon-start.disabled {
+            cursor: initial;
+          }
+
+          .icon-start.iconClickable {
+            cursor: pointer;
           }
 
           .label {
             align-items: center;
             display: flex;
-            padding-left: 12px;
-            padding-right: 12px;
             white-space: nowrap;
           }
 
-          .delete {
-            align-items: center;
-            background-color: ${theme.palette.grey[400]};
-            border-radius: 50%;
-            color: ${theme.palette.common.white};
-            display: flex;
-            height: 20px;
-            justify-content: center;
-            margin-right: 12px;
-            width: 20px;
+          .hover:hover {
+            background-color: transparent;
+            border: 1px solid ${theme.palette.text.primary};
           }
-          .delete:hover {
-            background-color: ${theme.palette.grey[500]};
-            cursor: pointer;
-          }
-
-          .small {
-            height: 24px;
+          .outlined.hover:hover {
+            color: ${theme.palette.text.secondary};
+            background-color: ${theme.palette.grey[300]};
+            border: 1px solid transparent;
           }
 
           .primary {
@@ -151,20 +217,118 @@ class Chip extends React.Component {
             border-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.contrast};
           }
+          .primary.outlined {
+            border-color: ${theme.palette.primary.main};
+            color: ${theme.palette.primary.main};
+          }
+          .primary.hover:hover {
+            border-color: ${theme.palette.primary.main};
+            color: ${theme.palette.primary.main};
+          }
+          .primary.outlined.hover:hover {
+            background-color: ${theme.palette.primary.main};
+            border-color: ${theme.palette.primary.main};
+            color: ${theme.palette.primary.contrast};
+          }
+
           .secondary {
             background-color: ${theme.palette.secondary.main};
             border-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.contrast};
           }
+          .secondary.outlined {
+            border-color: ${theme.palette.secondary.main};
+            color: ${theme.palette.secondary.main};
+          }
+          .secondary.hover:hover {
+            border-color: ${theme.palette.secondary.main};
+            color: ${theme.palette.secondary.main};
+          }
+          .secondary.outlined.hover:hover {
+            background-color: ${theme.palette.secondary.main};
+            border-color: ${theme.palette.secondary.main};
+            color: ${theme.palette.secondary.contrast};
+          }
+
           .tertiary {
             background-color: ${theme.palette.tertiary.main};
             border-color: ${theme.palette.tertiary.main};
             color: ${theme.palette.tertiary.contrast};
           }
+          .tertiary.outlined {
+            border-color: ${theme.palette.tertiary.main};
+            color: ${theme.palette.tertiary.main};
+          }
+          .tertiary.hover:hover {
+            border-color: ${theme.palette.tertiary.main};
+            color: ${theme.palette.tertiary.main};
+          }
+          .tertiary.outlined.hover:hover {
+            background-color: ${theme.palette.tertiary.main};
+            border-color: ${theme.palette.tertiary.main};
+            color: ${theme.palette.tertiary.contrast};
+          }
+
+          .negative {
+            background-color: ${theme.palette.negative.main};
+            border-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.contrast};
+          }
+          .negative.outlined {
+            border-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.main};
+          }
+          .negative.hover:hover {
+            border-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.main};
+          }
+          .negative.outlined.hover:hover {
+            background-color: ${theme.palette.negative.main};
+            border-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.contrast};
+          }
+
+          .warning {
+            background-color: ${theme.palette.warning.main};
+            border-color: ${theme.palette.warning.main};
+            color: ${theme.palette.warning.contrast};
+          }
+          .warning.outlined {
+            border-color: ${theme.palette.warning.main};
+            color: ${theme.palette.warning.main};
+          }
+          .warning.hover:hover {
+            border-color: ${theme.palette.warning.main};
+            color: ${theme.palette.warning.main};
+          }
+          .warning.outlined.hover:hover {
+            background-color: ${theme.palette.warning.main};
+            border-color: ${theme.palette.warning.main};
+            color: ${theme.palette.warning.contrast};
+          }
+
+          .positive {
+            background-color: ${theme.palette.positive.main};
+            border-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.contrast};
+          }
+          .positive.outlined {
+            border-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.main};
+          }
+          .positive.hover:hover {
+            border-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.main};
+          }
+          .positive.outlined.hover:hover {
+            background-color: ${theme.palette.positive.main};
+            border-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.contrast};
+          }
 
           .outlined {
             background-color: transparent;
-            border: 1px solid ${theme.palette.grey[300]};
+            border: 1px solid ${theme.palette.text.primary};
           }
         `}</style>
       </React.Fragment>

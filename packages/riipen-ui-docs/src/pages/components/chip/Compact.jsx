@@ -14,20 +14,20 @@ export default function DefaultVariant() {
   return (
     <div>
       <div>
-        <Chip label="Default" color="default" />
+        <Chip label="Default" size="small" color="default" />
         <span style={style} />
-        <Chip label="Primary" color="primary" />
+        <Chip label="Primary" size="small" color="primary" />
         <span style={style} />
-        <Chip label="Secondary" color="secondary" />
+        <Chip label="Secondary" size="small" color="secondary" />
         <span style={style} />
-        <Chip label="Tertiary" color="tertiary" />
+        <Chip label="Tertiary" size="small" color="tertiary" />
       </div>
       <div style={breakStyle}>
-        <Chip label="Positive" color="positive" />
+        <Chip label="Positive" size="small" color="positive" />
         <span style={style} />
-        <Chip label="Warning" color="warning" />
+        <Chip label="Warning" size="small" color="warning" />
         <span style={style} />
-        <Chip label="Negative" color="negative" />
+        <Chip label="Negative" size="small" color="negative" />
       </div>
     </div>
   );
