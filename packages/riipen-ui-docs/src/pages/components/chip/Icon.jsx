@@ -11,7 +11,7 @@ import Chip from "@riipen-ui/components/Chip";
 
 const icon = i => props => <FontAwesomeIcon icon={i} {...props} />;
 
-export default function Colors() {
+export default function Icons() {
   const style = {
     marginRight: "10px"
   };

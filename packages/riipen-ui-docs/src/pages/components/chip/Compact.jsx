@@ -2,7 +2,7 @@ import React from "react";
 
 import Chip from "@riipen-ui/components/Chip";
 
-export default function DefaultVariant() {
+export default function Compact() {
   const style = {
     marginRight: "10px"
   };

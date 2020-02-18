@@ -2,7 +2,7 @@ import React from "react";
 
 import Chip from "@riipen-ui/components/Chip";
 
-export default function DefaultVariant() {
+export default function Colors() {
   const style = {
     marginRight: "10px"
   };
