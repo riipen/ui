@@ -1,11 +1,21 @@
 # Table
 
-<p class="description">Tabs make it easy to explore and switch between different views.</p>
+Tables display information in a way that’s easy to scan, so that users can look for patterns and insights. They can be embedded in primary content, such as cards.
 
-Tabs organize and allow navigation between groups of content that are related and at the same level of hierarchy.
+Tables can include:
 
-## Test
+- A corresponding visualization
+- Navigation
+- Tools to query and manipulate data
 
-TESTING
+## Simple Table
 
-{{"demo": "pages/components/table/Test.js"}}
+A table rendered using the components of the library
+
+{{"demo": "pages/components/table/Simple.js"}}
+
+## Auto-generated Mobile Table
+
+A table view that changes for better viewing on mobile
+
+{{"demo": "pages/components/table/Mobile.js"}}

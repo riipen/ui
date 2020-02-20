@@ -4,7 +4,7 @@ import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
 
-class TableCellHeader extends React.Component {
+class TableHeaderCell extends React.Component {
   static propTypes = {
     /**
      * Children to render in the th element
@@ -30,4 +30,4 @@ class TableCellHeader extends React.Component {
   }
 }
 
-export default TableCellHeader;
+export default TableHeaderCell;

@@ -10,7 +10,7 @@ import TableContainer from "./TableContainer";
 import TableRow from "./TableRow";
 import TableBody from "./TableBody";
 import TableCell from "./TableCell";
-import TableCellHeader from "./TableCellHeader";
+import TableHeaderCell from "./TableHeaderCell";
 
 class Table extends React.Component {
   static propTypes = {
@@ -172,10 +172,10 @@ class Table extends React.Component {
                     <TableBody>
                       {Object.keys(bodyContent).map((key, j) => (
                         <TableRow border={false} key={`${i}-${j}`}>
-                          <TableCellHeader>
+                          <TableHeaderCell>
                             {tableContent[key]?.label ||
                               tableContent[key]?.header(entity)}
-                          </TableCellHeader>
+                          </TableHeaderCell>
                           <TableCell>
                             {tableContent[key]?.cell(entity)}
                           </TableCell>

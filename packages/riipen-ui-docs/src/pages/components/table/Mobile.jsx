@@ -3,7 +3,7 @@ import React from "react";
 import Table from "@riipen-ui/components/Table";
 import TableColumn from "@riipen-ui/components/TableColumn";
 
-export default function Test() {
+export default function Mobile() {
   const createEntity = (firstName, lastName, email, age) => {
     return {
       firstName,

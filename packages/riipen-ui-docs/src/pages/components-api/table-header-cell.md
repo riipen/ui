@@ -1,17 +1,17 @@
 <!--- This documentation is automatically generated, do not try to edit it. -->
 
-# TableHeader API
+# TableHeaderCell API
 
-<p class="description">The API documentation of the TableHeader React component.</p>
+<p class="description">The API documentation of the TableHeaderCell React component.</p>
 
 ## Import
 
 ```js
-import TableHeader from 'riipen-ui/TableHeader';
+import TableHeaderCell from 'riipen-ui/TableHeaderCell';
 
 // or
 
-import { TableHeader } from 'riipen-ui';
+import { TableHeaderCell } from 'riipen-ui';
 ```
 
 You can learn more about the difference by [reading this guide](/guides/bundle-size).
@@ -20,7 +20,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | Children to render in the thead element |
+| <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | Children to render in the th element |
 | <span class="prop-name">classes</span> | <span class="prop-type">Array<string></span> |  | Classes to apply to the root element |
 
 
