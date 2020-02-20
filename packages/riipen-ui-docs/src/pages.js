@@ -108,6 +108,10 @@ const pages = [
         pathname: "/components/tabs"
       },
       {
+        name: "Table",
+        pathname: "/components/table"
+      },
+      {
         name: "Typography",
         pathname: "/components/typography"
       }

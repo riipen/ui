@@ -44,7 +44,7 @@ export default function Simple() {
         </TableHeader>
         <TableBody>
           {entities.map(entity => (
-            <TableRow hover>
+            <TableRow>
               <TableCell>{entity.firstName}</TableCell>
               <TableCell>{entity.lastName}</TableCell>
               <TableCell>{entity.email}</TableCell>
