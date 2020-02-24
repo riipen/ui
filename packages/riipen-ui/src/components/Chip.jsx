@@ -7,7 +7,7 @@ import ThemeContext from "../styles/ThemeContext";
 class Chip extends React.Component {
   static propTypes = {
     /**
-     * The elements to render inside the pill
+     * The elements to render inside the pill.
      */
     children: PropTypes.node,
 
@@ -41,14 +41,9 @@ class Chip extends React.Component {
     disabled: PropTypes.bool,
 
     /**
-     * Whether to invert colors on hover
+     * Icon to display at start of chip.
      */
-    hover: PropTypes.bool,
-
-    /**
-     * Icon to display at start of chip
-     */
-    iconStart: PropTypes.elementType,
+    icon: PropTypes.elementType,
 
     /**
      * The content of the label.
@@ -56,7 +51,7 @@ class Chip extends React.Component {
     label: PropTypes.node,
 
     /**
-     * Action to perform when clicked
+     * Action to perform when clicked.
      */
     onClick: PropTypes.func,
 
@@ -71,11 +66,6 @@ class Chip extends React.Component {
     size: PropTypes.oneOf(["small", "medium"]),
 
     /**
-     * Amount of spacing to put around the chip
-     */
-    spacing: PropTypes.number,
-
-    /**
      * The variant to use.
      */
     variant: PropTypes.oneOf(["default", "outlined"])
@@ -87,7 +77,6 @@ class Chip extends React.Component {
     component: "div",
     disabled: false,
     size: "medium",
-    spacing: 1,
     variant: "default"
   };
 
@@ -99,11 +88,9 @@ class Chip extends React.Component {
       color,
       component: Component,
       disabled,
-      hover,
-      iconStart: IconStart,
+      icon: Icon,
       onIconClick,
       onClick,
-      spacing,
       size,
       variant
     } = this.props;
@@ -120,7 +107,6 @@ class Chip extends React.Component {
       color,
       disabled ? "disabled" : null,
       size,
-      { hover },
       variant,
       classes,
       { clickable }
@@ -133,14 +119,14 @@ class Chip extends React.Component {
     return (
       <React.Fragment>
         <Component onClick={handleClick} className={className}>
-          {IconStart && (
+          {Icon && (
             <span
               onClick={onIconClick}
               className={clsx("icon", "icon-start", {
                 iconClickable
               })}
             >
-              <IconStart />
+              <Icon />
             </span>
           )}
           <span className={clsx("label")}>{label}</span>
@@ -158,11 +144,6 @@ class Chip extends React.Component {
             font-family: ${theme.typography.fontFamily};
             font-size: 13px;
             justify-content: center;
-            ${spacing !== 0 && `margin-bottom: ${theme.spacing(spacing)}px;`}
-            ${spacing !== 0 &&
-              `margin-right: ${theme.spacing(
-                spacing
-              )}px;`}
             outline: 0;
             vertical-align: middle;
             white-space: nowrap;
@@ -205,26 +186,12 @@ class Chip extends React.Component {
             white-space: nowrap;
           }
 
-          .hover:hover {
-            background-color: transparent;
-            border: 1px solid ${theme.palette.text.primary};
-          }
-          .outlined.hover:hover {
-            color: ${theme.palette.text.secondary};
-            background-color: ${theme.palette.grey[300]};
-            border: 1px solid transparent;
-          }
-
           .primary {
             background-color: ${theme.palette.primary.main};
             border-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.contrast};
           }
           .primary.outlined {
-            border-color: ${theme.palette.primary.main};
-            color: ${theme.palette.primary.main};
-          }
-          .primary.hover:hover {
             border-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.main};
           }
@@ -243,10 +210,6 @@ class Chip extends React.Component {
             border-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.main};
           }
-          .secondary.hover:hover {
-            border-color: ${theme.palette.secondary.main};
-            color: ${theme.palette.secondary.main};
-          }
           .secondary.outlined.hover:hover {
             background-color: ${theme.palette.secondary.main};
             border-color: ${theme.palette.secondary.main};
@@ -262,15 +225,6 @@ class Chip extends React.Component {
             border-color: ${theme.palette.tertiary.main};
             color: ${theme.palette.tertiary.main};
           }
-          .tertiary.hover:hover {
-            border-color: ${theme.palette.tertiary.main};
-            color: ${theme.palette.tertiary.main};
-          }
-          .tertiary.outlined.hover:hover {
-            background-color: ${theme.palette.tertiary.main};
-            border-color: ${theme.palette.tertiary.main};
-            color: ${theme.palette.tertiary.contrast};
-          }
 
           .negative {
             background-color: ${theme.palette.negative.main};
@@ -280,15 +234,6 @@ class Chip extends React.Component {
           .negative.outlined {
             border-color: ${theme.palette.negative.main};
             color: ${theme.palette.negative.main};
-          }
-          .negative.hover:hover {
-            border-color: ${theme.palette.negative.main};
-            color: ${theme.palette.negative.main};
-          }
-          .negative.outlined.hover:hover {
-            background-color: ${theme.palette.negative.main};
-            border-color: ${theme.palette.negative.main};
-            color: ${theme.palette.negative.contrast};
           }
 
           .warning {
@@ -300,15 +245,6 @@ class Chip extends React.Component {
             border-color: ${theme.palette.warning.main};
             color: ${theme.palette.warning.main};
           }
-          .warning.hover:hover {
-            border-color: ${theme.palette.warning.main};
-            color: ${theme.palette.warning.main};
-          }
-          .warning.outlined.hover:hover {
-            background-color: ${theme.palette.warning.main};
-            border-color: ${theme.palette.warning.main};
-            color: ${theme.palette.warning.contrast};
-          }
 
           .positive {
             background-color: ${theme.palette.positive.main};
@@ -318,15 +254,6 @@ class Chip extends React.Component {
           .positive.outlined {
             border-color: ${theme.palette.positive.main};
             color: ${theme.palette.positive.main};
-          }
-          .positive.hover:hover {
-            border-color: ${theme.palette.positive.main};
-            color: ${theme.palette.positive.main};
-          }
-          .positive.outlined.hover:hover {
-            background-color: ${theme.palette.positive.main};
-            border-color: ${theme.palette.positive.main};
-            color: ${theme.palette.positive.contrast};
           }
 
           .outlined {
