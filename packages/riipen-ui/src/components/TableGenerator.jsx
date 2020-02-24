@@ -197,7 +197,7 @@ class TableGenerator extends React.Component {
               >
                 <TableCell spacing={0}>
                   {mobileHeader && (
-                    <Table background={false}>
+                    <Table background="transparent">
                       <TableBody>
                         <TableRow>
                           <TableCell>
@@ -207,7 +207,7 @@ class TableGenerator extends React.Component {
                       </TableBody>
                     </Table>
                   )}
-                  <Table centered fixed background={false}>
+                  <Table centered fixed background="transparent">
                     <TableBody>
                       {bodyColumns.map((bodyColumn, j) => (
                         <TableRow border={false} key={`${i}-${j}`}>
@@ -253,7 +253,9 @@ class TableGenerator extends React.Component {
     return (
       <React.Fragment>
         <div className={clsx("container", linkedStyles.className, classes)}>
-          <Table>{isMobile ? this.renderMobile() : this.renderDefault()}</Table>
+          <Table backgroundColor="grey100">
+            {isMobile ? this.renderMobile() : this.renderDefault()}
+          </Table>
         </div>
         {linkedStyles.styles}
       </React.Fragment>

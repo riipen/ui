@@ -27,9 +27,11 @@ class Table extends React.Component {
     centered: PropTypes.bool,
 
     /**
-     * Whether to render the background for a table
+     * What background to render for the table
+     * defaults to transparent
      */
-    background: PropTypes.oneOf([
+    backgroundColor: PropTypes.oneOf([
+      "transparent",
       "grey50",
       "grey100",
       "grey200",
@@ -39,18 +41,19 @@ class Table extends React.Component {
   };
 
   static defaultProps = {
-    background: "grey100",
+    backgroundColor: "transparent",
     layout: "auto"
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, layout, centered, background } = this.props;
+    const { children, classes, layout, centered, backgroundColor } = this.props;
 
     const theme = this.context;
 
     const tableBackground = {
+      transparent: "transparent",
       grey50: theme.palette.grey[50],
       grey100: theme.palette.grey[100],
       grey200: theme.palette.grey[200],
@@ -65,9 +68,7 @@ class Table extends React.Component {
         </table>
         <style jsx>{`
           table {
-            ${tableBackground[background]
-              ? `background-color: ${tableBackground[background]}`
-              : "background-color: transparent"};
+            background-color: ${tableBackground[backgroundColor]};
             border-radius: 4px;
             border-collapse: collapse;
             ${centered ? "margin: auto" : "width: 100%"};
