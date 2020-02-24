@@ -7,6 +7,19 @@ import ThemeContext from "../styles/ThemeContext";
 class Table extends React.Component {
   static propTypes = {
     /**
+     * What background to render for the table
+     * defaults to grey100
+     */
+    backgroundColor: PropTypes.oneOf([
+      "transparent",
+      "grey50",
+      "grey100",
+      "grey200",
+      "grey300",
+      "grey400"
+    ]),
+
+    /**
      * Children to render in the table element
      */
     children: PropTypes.node,
@@ -19,36 +32,19 @@ class Table extends React.Component {
     /**
      * Whether to give all columns in the table equal width
      */
-    layout: PropTypes.oneOf(["auto", "fixed"]),
-
-    /**
-     * Whether to center the table in the parent container
-     */
-    centered: PropTypes.bool,
-
-    /**
-     * What background to render for the table
-     * defaults to grey100
-     */
-    backgroundColor: PropTypes.oneOf([
-      "transparent",
-      "grey50",
-      "grey100",
-      "grey200",
-      "grey300",
-      "grey400"
-    ])
+    layout: PropTypes.oneOf(["auto", "fixed"])
   };
 
   static defaultProps = {
     backgroundColor: "grey100",
+
     layout: "auto"
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, layout, centered, backgroundColor } = this.props;
+    const { children, classes, layout, backgroundColor } = this.props;
 
     const theme = this.context;
 
@@ -71,8 +67,8 @@ class Table extends React.Component {
             background-color: ${tableBackground[backgroundColor]};
             border-radius: 4px;
             border-collapse: collapse;
-            ${centered ? "margin: auto" : "width: 100%"};
             table-layout: ${layout};
+            width: 100%;
           }
         `}</style>
       </React.Fragment>

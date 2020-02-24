@@ -86,6 +86,12 @@ class TableGenerator extends React.Component {
         width: 100%;
       }
 
+      .centeredTable {
+        margin: auto;
+        min-width: 50%;
+        width: auto;
+      }
+
       td,
       th {
         max-width: 400px;
@@ -197,7 +203,7 @@ class TableGenerator extends React.Component {
               >
                 <TableCell spacing={0}>
                   {mobileHeader && (
-                    <Table background="transparent">
+                    <Table backgroundColor="transparent">
                       <TableBody>
                         <TableRow>
                           <TableCell>
@@ -207,7 +213,11 @@ class TableGenerator extends React.Component {
                       </TableBody>
                     </Table>
                   )}
-                  <Table centered fixed background="transparent">
+                  <Table
+                    classes={[clsx(linkedStyles.className, "centeredTable")]}
+                    layout="fixed"
+                    backgroundColor="transparent"
+                  >
                     <TableBody>
                       {bodyColumns.map((bodyColumn, j) => (
                         <TableRow border={false} key={`${i}-${j}`}>
@@ -225,7 +235,7 @@ class TableGenerator extends React.Component {
                     </TableBody>
                   </Table>
                   {mobileFooter && (
-                    <Table background={false}>
+                    <Table backgroundColor="transparent">
                       <TableBody>
                         <TableRow border={false}>
                           <TableCell>
