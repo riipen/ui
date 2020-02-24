@@ -17,11 +17,6 @@ class TableRow extends React.Component {
     classes: PropTypes.arrayOf(PropTypes.string),
 
     /**
-     * The number of columns the row should span
-     */
-    span: PropTypes.number,
-
-    /**
      * Whether to highlight the row on hover
      */
     hover: PropTypes.bool,
@@ -33,33 +28,26 @@ class TableRow extends React.Component {
   };
 
   static defaultProps = {
-    span: 1,
     border: true
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, span, hover, border } = this.props;
+    const { children, classes, hover, border } = this.props;
 
     const theme = this.context;
 
     return (
       <React.Fragment>
-        <tr className={clsx(classes)} rowSpan={span}>
-          {children}
-        </tr>
+        <tr className={clsx(classes)}>{children}</tr>
         <style jsx>{`
           tr {
-            ${border
-              ? `background: linear-gradient(
-                to bottom,
-                transparent calc(100% - 1px),
-                ${theme.palette.grey[400]} 0%,
-                ${theme.palette.grey[400]}
-              )
-              bottom / calc(100% - ${theme.spacing(8)}px);`
-              : ""}
+            border-bottom: 1px solid
+              ${border &&
+                (theme.palette.divider
+                  ? theme.palette.divider
+                  : `transparent`)};
             border-left: 3px solid transparent;
           }
 

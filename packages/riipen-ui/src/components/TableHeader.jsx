@@ -2,8 +2,6 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-import ThemeContext from "../styles/ThemeContext";
-
 class TableHeader extends React.Component {
   static propTypes = {
     /**
@@ -17,16 +15,11 @@ class TableHeader extends React.Component {
     classes: PropTypes.arrayOf(PropTypes.string)
   };
 
-  static defaultProps = {};
-
-  static contextType = ThemeContext;
-
   render() {
     const { children, classes } = this.props;
     return (
       <React.Fragment>
         <thead className={clsx(classes)}>{children}</thead>
-        <style jsx>{``}</style>
       </React.Fragment>
     );
   }

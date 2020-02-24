@@ -20,12 +20,11 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">allowSearch</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Displays the label instead of the header |
-| <span class="prop-name">children</span> | <span class="prop-type">Array<{ type?: import TableColumn from "./TableColumn"; }><br>&#124;&nbsp;{ type?: import TableColumn from "./TableColumn"; }</span> |  | The children columns to render Must be of type TableColumn |
+| <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | Children to render in the table element |
 | <span class="prop-name">classes</span> | <span class="prop-type">Array<string></span> |  | Classes to apply to the root element |
-| <span class="prop-name">entities</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | The entities to render in the table |
-| <span class="prop-name">hover</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether or not to highlight rows on highlight |
-| <span class="prop-name">mobileBreakpoint</span> | <span class="prop-type">"xs"<br>&#124;&nbsp;"sm"<br>&#124;&nbsp;"md"<br>&#124;&nbsp;"lg"<br>&#124;&nbsp;"xl"</span> | <span class="prop-default">"md"</span> | Size to change table render from desktop to mobile |
+| <span class="prop-name">layout</span> | <span class="prop-type">"auto"<br>&#124;&nbsp;"fixed"</span> | <span class="prop-default">"auto"</span> | Whether to give all columns in the table equal width |
+| <span class="prop-name">centered</span> | <span class="prop-type">bool</span> |  | Whether to center the table in the parent container |
+| <span class="prop-name">background</span> | <span class="prop-type">"grey50"<br>&#124;&nbsp;"grey100"<br>&#124;&nbsp;"grey200"<br>&#124;&nbsp;"grey300"<br>&#124;&nbsp;"grey400"</span> | <span class="prop-default">"grey100"</span> | Whether to render the background for a table |
 
 
 Any other props supplied will be provided to the root element.

@@ -22,7 +22,6 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | Children to render in the tr element |
 | <span class="prop-name">classes</span> | <span class="prop-type">Array<string></span> |  | Classes to apply to the root element |
-| <span class="prop-name">span</span> | <span class="prop-type">number</span> | <span class="prop-default">1</span> | The number of columns the row should span |
 | <span class="prop-name">hover</span> | <span class="prop-type">bool</span> |  | Whether to highlight the row on hover |
 | <span class="prop-name">border</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether to render the border for the row |
 

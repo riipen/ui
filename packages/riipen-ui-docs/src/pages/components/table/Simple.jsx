@@ -1,6 +1,6 @@
 import React from "react";
 
-import TableContainer from "@riipen-ui/components/TableContainer";
+import Table from "@riipen-ui/components/Table";
 import TableHeader from "@riipen-ui/components/TableHeader";
 import TableBody from "@riipen-ui/components/TableBody";
 import TableRow from "@riipen-ui/components/TableRow";
@@ -33,7 +33,7 @@ export default function Simple() {
 
   return (
     <div>
-      <TableContainer>
+      <Table>
         <TableHeader>
           <TableRow>
             <TableHeaderCell>First Name</TableHeaderCell>
@@ -43,8 +43,8 @@ export default function Simple() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {entities.map(entity => (
-            <TableRow>
+          {entities.map((entity, i) => (
+            <TableRow hover key={`simple-row-${i}`}>
               <TableCell>{entity.firstName}</TableCell>
               <TableCell>{entity.lastName}</TableCell>
               <TableCell>{entity.email}</TableCell>
@@ -52,7 +52,7 @@ export default function Simple() {
             </TableRow>
           ))}
         </TableBody>
-      </TableContainer>
+      </Table>
     </div>
   );
 }

@@ -1,9 +1,12 @@
 import React from "react";
 
-import Table from "@riipen-ui/components/Table";
-import TableColumn from "@riipen-ui/components/TableColumn";
+import TableGenerator from "@riipen-ui/components/TableGenerator";
 
 export default function Mobile() {
+  const style = {
+    padding: "15px"
+  };
+
   const createEntity = (firstName, lastName, email, age) => {
     return {
       firstName,
@@ -27,27 +30,30 @@ export default function Mobile() {
     createEntity("Test", null, null, 21)
   ];
 
-  const cell = key => entity => {
-    return entity[key];
-  };
-
-  const ageCell = entity => {
-    return entity.age;
-  };
+  const columns = [
+    {
+      mobileHeader: true,
+      header: () => <div style={style}>First Name</div>,
+      cell: entity => <div style={style}>{entity.firstName}</div>
+    },
+    {
+      header: () => <div style={style}>Last Name</div>,
+      cell: entity => <div style={style}>{entity.lastName}</div>
+    },
+    {
+      header: () => <div style={style}>Email</div>,
+      cell: entity => <div style={style}>{entity.email}</div>
+    },
+    {
+      align: "right",
+      header: () => <div style={style}>Age</div>,
+      cell: entity => <div style={style}>{entity.age}</div>
+    }
+  ];
 
   return (
     <div>
-      <Table entities={entities}>
-        <TableColumn
-          key="firstName"
-          primary
-          label="First Name"
-          cell={cell("firstName")}
-        />
-        <TableColumn key="lastName" label="Last Name" cell={cell("lastName")} />
-        <TableColumn key="email" label="Email" cell={cell("email")} />
-        <TableColumn key="age" label="Age" cell={ageCell} />
-      </Table>
+      <TableGenerator columns={columns} data={entities} />
     </div>
   );
 }

@@ -2,10 +2,13 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-import ThemeContext from "../styles/ThemeContext";
-
 class TableHeaderCell extends React.Component {
   static propTypes = {
+    /**
+     * Alignment property to apply to the th element
+     */
+    align: PropTypes.oneOf(["center", "left", "right", "justify", "char"]),
+
     /**
      * Children to render in the th element
      */
@@ -17,14 +20,17 @@ class TableHeaderCell extends React.Component {
     classes: PropTypes.arrayOf(PropTypes.string)
   };
 
-  static contextType = ThemeContext;
+  static defaultProps = {
+    align: "left"
+  };
 
   render() {
-    const { children, classes } = this.props;
+    const { align, children, classes } = this.props;
     return (
       <React.Fragment>
-        <th className={clsx(classes)}>{children}</th>
-        <style jsx>{``}</style>
+        <th align={align} className={clsx(classes)}>
+          {children}
+        </th>
       </React.Fragment>
     );
   }
