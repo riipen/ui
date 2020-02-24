@@ -28,7 +28,7 @@ class Table extends React.Component {
 
     /**
      * What background to render for the table
-     * defaults to transparent
+     * defaults to grey100
      */
     backgroundColor: PropTypes.oneOf([
       "transparent",
@@ -53,7 +53,7 @@ class Table extends React.Component {
     const theme = this.context;
 
     const tableBackground = {
-      transparent: "transparent",
+      transparent: "grey100",
       grey50: theme.palette.grey[50],
       grey100: theme.palette.grey[100],
       grey200: theme.palette.grey[200],

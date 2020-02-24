@@ -253,9 +253,7 @@ class TableGenerator extends React.Component {
     return (
       <React.Fragment>
         <div className={clsx("container", linkedStyles.className, classes)}>
-          <Table backgroundColor="grey100">
-            {isMobile ? this.renderMobile() : this.renderDefault()}
-          </Table>
+          <Table>{isMobile ? this.renderMobile() : this.renderDefault()}</Table>
         </div>
         {linkedStyles.styles}
       </React.Fragment>
