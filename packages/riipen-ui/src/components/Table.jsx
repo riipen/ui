@@ -41,7 +41,7 @@ class Table extends React.Component {
   };
 
   static defaultProps = {
-    backgroundColor: "transparent",
+    backgroundColor: "grey100",
     layout: "auto"
   };
 
@@ -53,7 +53,7 @@ class Table extends React.Component {
     const theme = this.context;
 
     const tableBackground = {
-      transparent: "grey100",
+      transparent: "transparent",
       grey50: theme.palette.grey[50],
       grey100: theme.palette.grey[100],
       grey200: theme.palette.grey[200],
