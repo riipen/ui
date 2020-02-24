@@ -26,7 +26,7 @@ class TableGenerator extends React.Component {
      */
     columns: PropTypes.arrayOf(
       PropTypes.shape({
-        align: PropTypes.oneOfType(["left", "center", "right"]),
+        align: PropTypes.oneOf(["left", "center", "right"]),
         cell: PropTypes.func.isRequired,
         header: PropTypes.func.isRequired,
         mobileFooter: PropTypes.bool,
