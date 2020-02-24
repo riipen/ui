@@ -2,6 +2,8 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+import ThemeContext from "../styles/ThemeContext";
+
 class TableCell extends React.Component {
   static propTypes = {
     /**
@@ -36,8 +38,12 @@ class TableCell extends React.Component {
     rowSpan: 1
   };
 
+  static contextType = ThemeContext;
+
   render() {
     const { children, classes, colSpan, rowSpan, align } = this.props;
+
+    const theme = this.context;
 
     return (
       <React.Fragment>
@@ -49,6 +55,17 @@ class TableCell extends React.Component {
         >
           {children}
         </td>
+        <style jsx>{`
+          td {
+            font-family: ${theme.typography.body2.fontFamily};
+            font-size: ${theme.typography.body2.fontSize};
+            font-weight: ${theme.typography.body2.fontWeight};
+            letter-spacing: ${theme.typography.body2.letterSpacing};
+            line-height: ${theme.typography.body2.lineHeight};
+            padding: ${theme.spacing(3)}px;
+            text-align: left;
+          }
+        `}</style>
       </React.Fragment>
     );
   }

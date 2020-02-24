@@ -92,10 +92,13 @@ class TableGenerator extends React.Component {
         width: auto;
       }
 
+      .noPadding {
+        padding: 0;
+      }
+
       td,
       th {
         max-width: 400px;
-        padding: ${theme.spacing(3)}px;
         vertical-align: middle;
       }
     `;
@@ -126,13 +129,13 @@ class TableGenerator extends React.Component {
       <TableHeader>
         <TableRow border>
           {columns.map((col, i) => (
-            <TableCell
+            <TableHeaderCell
               classes={[linkedStyles.className]}
               key={`header-column-${i}`}
               align={this.getCellAlignment(col)}
             >
               {col?.header(isMobile)}
-            </TableCell>
+            </TableHeaderCell>
           ))}
         </TableRow>
       </TableHeader>
@@ -201,12 +204,12 @@ class TableGenerator extends React.Component {
                 border={i !== rowCount - 1}
                 key={`entity-${i}`}
               >
-                <TableCell spacing={0}>
+                <TableCell classes={[linkedStyles.className, "noPadding"]}>
                   {mobileHeader && (
                     <Table backgroundColor="transparent">
                       <TableBody>
                         <TableRow>
-                          <TableCell>
+                          <TableCell classes={[linkedStyles.className]}>
                             {mobileHeader?.cell(row, isMobile)}
                           </TableCell>
                         </TableRow>
@@ -238,7 +241,7 @@ class TableGenerator extends React.Component {
                     <Table backgroundColor="transparent">
                       <TableBody>
                         <TableRow border={false}>
-                          <TableCell>
+                          <TableCell classes={[linkedStyles.className]}>
                             {mobileFooter?.cell(row, isMobile)}
                           </TableCell>
                         </TableRow>

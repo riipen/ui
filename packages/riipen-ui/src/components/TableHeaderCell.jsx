@@ -2,6 +2,8 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+import ThemeContext from "../styles/ThemeContext";
+
 class TableHeaderCell extends React.Component {
   static propTypes = {
     /**
@@ -24,13 +26,29 @@ class TableHeaderCell extends React.Component {
     align: "left"
   };
 
+  static contextType = ThemeContext;
+
   render() {
     const { align, children, classes } = this.props;
+
+    const theme = this.context;
+
     return (
       <React.Fragment>
         <th align={align} className={clsx(classes)}>
           {children}
         </th>
+        <style jsx>{`
+          th {
+            font-family: ${theme.typography.body1.fontFamily};
+            font-size: ${theme.typography.body1.fontSize};
+            font-weight: ${theme.typography.body1.fontWeight};
+            letter-spacing: ${theme.typography.body1.letterSpacing};
+            line-height: ${theme.typography.body1.lineHeight};
+            padding: ${theme.spacing(3)}px;
+            text-align: left;
+          }
+        `}</style>
       </React.Fragment>
     );
   }
