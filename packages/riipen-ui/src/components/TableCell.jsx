@@ -63,7 +63,6 @@ class TableCell extends React.Component {
             letter-spacing: ${theme.typography.body2.letterSpacing};
             line-height: ${theme.typography.body2.lineHeight};
             padding: ${theme.spacing(3)}px;
-            text-align: left;
           }
         `}</style>
       </React.Fragment>

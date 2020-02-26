@@ -45,6 +45,11 @@ class TableGenerator extends React.Component {
     hover: PropTypes.bool,
 
     /**
+     * The react node to display if no data is provided
+     */
+    emptyNode: PropTypes.node,
+
+    /**
      * Size to change table render from desktop to mobile
      */
     mobileBreakpoint: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"])
@@ -172,6 +177,22 @@ class TableGenerator extends React.Component {
     );
   }
 
+  renderEmpty() {
+    const { emptyNode, columns } = this.props;
+    return (
+      <React.Fragment>
+        {this.renderTableHeader()}
+        <TableBody>
+          <TableRow>
+            <TableCell colSpan={columns.length} align="center">
+              {emptyNode || "There doesn't appear to be anything here"}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </React.Fragment>
+    );
+  }
+
   renderMobile() {
     const { hover, columns, data } = this.props;
     const { isMobile } = this.state;
@@ -185,78 +206,82 @@ class TableGenerator extends React.Component {
     const bodyColumns = columns.filter(x => !x.mobileFooter && !x.mobileHeader);
 
     return (
-      <React.Fragment>
-        <TableBody>
-          {data.map((row, i) => {
-            return (
-              <TableRow
-                hover={hover}
-                border={i !== rowCount - 1}
-                key={`entity-${i}`}
-              >
-                <TableCell classes={[linkedStyles.className, "noPadding"]}>
-                  {mobileHeader && (
-                    <Table backgroundColor="transparent">
-                      <TableBody>
-                        <TableRow>
-                          <TableCell classes={[linkedStyles.className]}>
-                            {mobileHeader?.cell(row, isMobile)}
-                          </TableCell>
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  )}
-                  <Table
-                    classes={[clsx(linkedStyles.className, "centeredTable")]}
-                    layout="fixed"
-                    backgroundColor="transparent"
-                  >
+      <TableBody>
+        {data.map((row, i) => {
+          return (
+            <TableRow
+              hover={hover}
+              border={i !== rowCount - 1}
+              key={`entity-${i}`}
+            >
+              <TableCell classes={[linkedStyles.className, "noPadding"]}>
+                {mobileHeader && (
+                  <Table backgroundColor="transparent">
                     <TableBody>
-                      {bodyColumns.map((bodyColumn, j) => (
-                        <TableRow border={false} key={`${i}-${j}`}>
-                          <TableHeaderCell
-                            align="left"
-                            classes={[linkedStyles.className]}
-                          >
-                            {bodyColumn?.header(isMobile)}
-                          </TableHeaderCell>
-                          <TableCell classes={[linkedStyles.className]}>
-                            {bodyColumn?.cell(row, isMobile)}
-                          </TableCell>
-                        </TableRow>
-                      ))}
+                      <TableRow>
+                        <TableCell classes={[linkedStyles.className]}>
+                          {mobileHeader?.cell(row, isMobile)}
+                        </TableCell>
+                      </TableRow>
                     </TableBody>
                   </Table>
-                  {mobileFooter && (
-                    <Table backgroundColor="transparent">
-                      <TableBody>
-                        <TableRow border={false}>
-                          <TableCell classes={[linkedStyles.className]}>
-                            {mobileFooter?.cell(row, isMobile)}
-                          </TableCell>
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  )}
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </React.Fragment>
+                )}
+                <Table
+                  classes={[clsx(linkedStyles.className, "centeredTable")]}
+                  layout="fixed"
+                  backgroundColor="transparent"
+                >
+                  <TableBody>
+                    {bodyColumns.map((bodyColumn, j) => (
+                      <TableRow border={false} key={`${i}-${j}`}>
+                        <TableHeaderCell
+                          align="left"
+                          classes={[linkedStyles.className]}
+                        >
+                          {bodyColumn?.header(isMobile)}
+                        </TableHeaderCell>
+                        <TableCell classes={[linkedStyles.className]}>
+                          {bodyColumn?.cell(row, isMobile)}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+                {mobileFooter && (
+                  <Table backgroundColor="transparent">
+                    <TableBody>
+                      <TableRow border={false}>
+                        <TableCell classes={[linkedStyles.className]}>
+                          {mobileFooter?.cell(row, isMobile)}
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                )}
+              </TableCell>
+            </TableRow>
+          );
+        })}
+      </TableBody>
     );
   }
 
   render() {
     const { isMobile } = this.state;
-    const { classes } = this.props;
+    const { classes, data } = this.props;
+
+    const isEmpty = data.length === 0;
 
     const linkedStyles = this.getLinkedStyles();
 
     return (
       <React.Fragment>
         <div className={clsx("container", linkedStyles.className, classes)}>
-          <Table>{isMobile ? this.renderMobile() : this.renderDefault()}</Table>
+          <Table>
+            {isEmpty && this.renderEmpty()}
+            {!isEmpty &&
+              (isMobile ? this.renderMobile() : this.renderDefault())}
+          </Table>
         </div>
         {linkedStyles.styles}
       </React.Fragment>
