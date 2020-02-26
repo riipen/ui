@@ -100,6 +100,7 @@ class TableGenerator extends React.Component {
         border: 1px solid ${theme.palette.grey[400]};
         border-radius: 4px;
         display: inline-block;
+        min-width: fit-content;
         width: 100%;
       }
 
