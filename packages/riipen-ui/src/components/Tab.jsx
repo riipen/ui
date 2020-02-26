@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Tab extends React.Component {
   static propTypes = {
@@ -182,4 +183,4 @@ class Tab extends React.Component {
   }
 }
 
-export default Tab;
+export default withClasses()(Tab);

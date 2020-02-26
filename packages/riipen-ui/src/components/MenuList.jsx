@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class MenuList extends React.Component {
   static propTypes = {
@@ -165,4 +166,4 @@ class MenuList extends React.Component {
   }
 }
 
-export default MenuList;
+export default withClasses()(MenuList);

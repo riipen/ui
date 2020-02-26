@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 import Typography from "./Typography";
 
@@ -80,4 +81,4 @@ class Breadcrumbs extends React.Component {
   }
 }
 
-export default Breadcrumbs;
+export default withClasses()(Breadcrumbs);

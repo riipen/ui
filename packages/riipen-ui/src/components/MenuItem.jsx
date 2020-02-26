@@ -5,6 +5,7 @@ import clsx from "clsx";
 import css from "styled-jsx/css";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 import ListItem from "./ListItem";
 
@@ -148,4 +149,4 @@ class MenuItem extends React.Component {
   }
 }
 
-export default MenuItem;
+export default withClasses()(MenuItem);
