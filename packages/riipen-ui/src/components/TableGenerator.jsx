@@ -13,16 +13,17 @@ import TableRow from "./TableRow";
 import TableBody from "./TableBody";
 import TableCell from "./TableCell";
 import TableHeaderCell from "./TableHeaderCell";
+import Spinner from "./Spinner";
 
 class TableGenerator extends React.Component {
   static propTypes = {
     /**
-     * Classes to apply to the root element
+     * Classes to apply to the root element.
      */
     classes: PropTypes.arrayOf(PropTypes.string),
 
     /**
-     * The columns to render
+     * The columns to render.
      */
     columns: PropTypes.arrayOf(
       PropTypes.shape({
@@ -35,22 +36,33 @@ class TableGenerator extends React.Component {
     ),
 
     /**
-     * The entities to render in the table rows
+     * The entities to render in the table rows.
      */
     data: PropTypes.array,
 
     /**
-     * Whether or not to highlight rows on highlight
+     * Whether or not to highlight rows on highlight.
      */
     hover: PropTypes.bool,
 
     /**
-     * The react node to display if no data is provided
+     * Whether or not the table data is loading.
+     */
+    loading: PropTypes.bool,
+
+    /**
+     * Node to display when loading
+     * Defaults to Spinner
+     */
+    loadingNode: PropTypes.node,
+
+    /**
+     * The react node to display if no data is provided.
      */
     emptyNode: PropTypes.node,
 
     /**
-     * Size to change table render from desktop to mobile
+     * Size to change table render from desktop to mobile.
      */
     mobileBreakpoint: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"])
   };
@@ -148,10 +160,18 @@ class TableGenerator extends React.Component {
   }
 
   renderDefault() {
-    const { hover, data, columns } = this.props;
+    const { hover, data, columns, loading } = this.props;
     const { isMobile } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
+
+    if (loading) {
+      return this.renderLoading();
+    }
+
+    if (data.length === 0) {
+      return this.renderEmpty();
+    }
 
     return (
       <React.Fragment>
@@ -193,13 +213,37 @@ class TableGenerator extends React.Component {
     );
   }
 
+  renderLoading() {
+    const { columns, loadingNode } = this.props;
+    return (
+      <React.Fragment>
+        {this.renderTableHeader()}
+        <TableBody>
+          <TableRow>
+            <TableCell colSpan={columns.length} align="center">
+              {loadingNode || <Spinner loading color="secondary" />}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </React.Fragment>
+    );
+  }
+
   renderMobile() {
-    const { hover, columns, data } = this.props;
+    const { hover, columns, data, loading } = this.props;
     const { isMobile } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
 
     const rowCount = data.length;
+
+    if (loading) {
+      return this.renderLoading();
+    }
+
+    if (rowCount === 0) {
+      return this.renderEmpty();
+    }
 
     const mobileHeader = columns.find(x => x.mobileHeader);
     const mobileFooter = columns.find(x => x.mobileFooter);
@@ -268,20 +312,14 @@ class TableGenerator extends React.Component {
 
   render() {
     const { isMobile } = this.state;
-    const { classes, data } = this.props;
-
-    const isEmpty = data.length === 0;
+    const { classes } = this.props;
 
     const linkedStyles = this.getLinkedStyles();
 
     return (
       <React.Fragment>
         <div className={clsx("container", linkedStyles.className, classes)}>
-          <Table>
-            {isEmpty && this.renderEmpty()}
-            {!isEmpty &&
-              (isMobile ? this.renderMobile() : this.renderDefault())}
-          </Table>
+          <Table>{isMobile ? this.renderMobile() : this.renderDefault()}</Table>
         </div>
         {linkedStyles.styles}
       </React.Fragment>

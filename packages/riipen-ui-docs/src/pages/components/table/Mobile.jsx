@@ -3,6 +3,8 @@ import React from "react";
 import TableGenerator from "@riipen-ui/components/TableGenerator";
 
 export default function Mobile() {
+  const [loading, setLoading] = React.useState(true);
+
   const createEntity = (firstName, lastName, email, age) => {
     return {
       firstName,
@@ -11,6 +13,12 @@ export default function Mobile() {
       age
     };
   };
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  });
 
   const entities = [
     createEntity("Joanne", "Davies", "joanne.davies@riipen.com", 24),
@@ -49,7 +57,7 @@ export default function Mobile() {
 
   return (
     <div>
-      <TableGenerator columns={columns} data={entities} />
+      <TableGenerator loading={loading} columns={columns} data={entities} />
     </div>
   );
 }
