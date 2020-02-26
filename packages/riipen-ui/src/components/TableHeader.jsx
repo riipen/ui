@@ -17,11 +17,7 @@ class TableHeader extends React.Component {
 
   render() {
     const { children, classes } = this.props;
-    return (
-      <React.Fragment>
-        <thead className={clsx(classes)}>{children}</thead>
-      </React.Fragment>
-    );
+    return <thead className={clsx(classes)}>{children}</thead>;
   }
 }
 

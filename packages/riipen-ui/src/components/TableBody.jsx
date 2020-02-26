@@ -17,11 +17,7 @@ class TableBody extends React.Component {
 
   render() {
     const { children, classes } = this.props;
-    return (
-      <React.Fragment>
-        <tbody classes={clsx(classes)}>{children}</tbody>
-      </React.Fragment>
-    );
+    return <tbody classes={clsx(classes)}>{children}</tbody>;
   }
 }
 

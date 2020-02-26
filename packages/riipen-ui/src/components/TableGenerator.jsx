@@ -178,21 +178,11 @@ class TableGenerator extends React.Component {
 
     const linkedStyles = this.getLinkedStyles();
 
-    const bodyColumns = Object.assign([], columns);
-    let mobileHeader;
-    let mobileFooter;
-
-    const mobileHeaderIndex = bodyColumns.findIndex(x => x.mobileHeader);
-    if (mobileHeaderIndex !== -1) {
-      mobileHeader = bodyColumns.splice(mobileHeaderIndex, 1)[0];
-    }
-
-    const mobileFooterIndex = bodyColumns.findIndex(x => x.mobileFooter);
-    if (mobileFooterIndex !== -1) {
-      mobileFooter = bodyColumns.splice(mobileFooterIndex, 1)[0];
-    }
-
     const rowCount = data.length;
+
+    const mobileHeader = columns.find(x => x.mobileHeader);
+    const mobileFooter = columns.find(x => x.mobileFooter);
+    const bodyColumns = columns.filter(x => !x.mobileFooter && !x.mobileHeader);
 
     return (
       <React.Fragment>
