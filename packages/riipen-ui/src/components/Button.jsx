@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Button extends React.Component {
   static propTypes = {
@@ -355,4 +356,4 @@ class Button extends React.Component {
   }
 }
 
-export default Button;
+export default withClasses()(Button);

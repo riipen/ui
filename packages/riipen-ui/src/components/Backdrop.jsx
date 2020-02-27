@@ -2,6 +2,8 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+import withClasses from "../utils/withClasses";
+
 class Backdrop extends React.Component {
   static propTypes = {
     /**
@@ -52,4 +54,4 @@ class Backdrop extends React.Component {
   }
 }
 
-export default Backdrop;
+export default withClasses()(Backdrop);

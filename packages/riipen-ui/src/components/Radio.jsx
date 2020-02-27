@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 import Typography from "./Typography";
 
@@ -138,4 +139,4 @@ class Radio extends React.Component {
   }
 }
 
-export default Radio;
+export default withClasses()(Radio);

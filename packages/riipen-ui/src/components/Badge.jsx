@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 const RADIUS_STANDARD = 10;
 const RADIUS_DOT = 5;
@@ -227,4 +228,4 @@ class Badge extends React.Component {
   }
 }
 
-export default Badge;
+export default withClasses()(Badge);
