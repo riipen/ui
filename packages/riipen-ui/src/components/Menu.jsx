@@ -94,15 +94,6 @@ class Menu extends React.Component {
     variant: "menu"
   };
 
-  constructor(props) {
-    super(props);
-    this.handleCloseEvent = this.handleCloseEvent.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener("keydown", this.handleCloseEvent);
-  }
-
   componentDidUpdate() {
     const { anchorEl } = this.props;
     if (document.activeElement && anchorEl) {
@@ -110,28 +101,10 @@ class Menu extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("keydown", this.handleCloseEvent);
-  }
-
-  handleClose = () => {
-    const { onClose } = this.props;
-    if (onClose) onClose();
-  };
-
   handleChange = (idx, event) => {
     const { onChange, closeOnClick } = this.props;
     if (onChange) onChange(idx, event);
     if (closeOnClick && event && event.type === "click") this.handleClose(idx);
-  };
-
-  handleCloseEvent = event => {
-    const { anchorEl } = this.props;
-    if (!anchorEl) return;
-    if (event.key === "Enter") {
-      event.preventDefault();
-      this.handleClose();
-    }
   };
 
   render() {
@@ -142,6 +115,7 @@ class Menu extends React.Component {
       contentPosition,
       keepOnScreen,
       isOpen,
+      onClose,
       popoverStyles,
       selectedIndex,
       variant
@@ -150,7 +124,7 @@ class Menu extends React.Component {
     return (
       <React.Fragment>
         <Popover
-          onClose={this.handleClose}
+          onClose={onClose}
           anchorPosition={anchorPosition}
           contentPosition={contentPosition}
           lockScroll={false}
