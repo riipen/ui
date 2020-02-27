@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class TableHeaderCell extends React.Component {
   static propTypes = {
@@ -54,4 +55,4 @@ class TableHeaderCell extends React.Component {
   }
 }
 
-export default TableHeaderCell;
+export default withClasses()(TableHeaderCell);

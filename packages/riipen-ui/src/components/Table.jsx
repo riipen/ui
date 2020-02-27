@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Table extends React.Component {
   static propTypes = {
@@ -76,4 +77,4 @@ class Table extends React.Component {
   }
 }
 
-export default Table;
+export default withClasses()(Table);

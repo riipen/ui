@@ -6,6 +6,7 @@ import css from "styled-jsx/css";
 import ThemeContext from "../styles/ThemeContext";
 
 import debounce from "../utils/debounce";
+import withClasses from "../utils/withClasses";
 
 import TableHeader from "./TableHeader";
 import Table from "./Table";
@@ -328,4 +329,4 @@ class TableGenerator extends React.Component {
   }
 }
 
-export default TableGenerator;
+export default withClasses()(TableGenerator);

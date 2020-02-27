@@ -2,6 +2,8 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+import withClasses from "../utils/withClasses";
+
 class TableBody extends React.Component {
   static propTypes = {
     /**
@@ -21,4 +23,4 @@ class TableBody extends React.Component {
   }
 }
 
-export default TableBody;
+export default withClasses()(TableBody);
