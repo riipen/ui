@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 const COLUMNS = 12;
 const SPACINGS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -89,4 +90,4 @@ class GridItem extends React.Component {
   }
 }
 
-export default GridItem;
+export default withClasses()(GridItem);

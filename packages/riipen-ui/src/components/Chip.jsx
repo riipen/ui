@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Chip extends React.Component {
   static propTypes = {
@@ -266,4 +267,4 @@ class Chip extends React.Component {
   }
 }
 
-export default Chip;
+export default withClasses()(Chip);

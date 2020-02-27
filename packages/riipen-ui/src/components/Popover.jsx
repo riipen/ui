@@ -1,7 +1,6 @@
+import clsx from "clsx";
 import React from "react";
 import PropTypes from "prop-types";
-
-import clsx from "clsx";
 
 import ThemeContext from "../styles/ThemeContext";
 
@@ -12,6 +11,7 @@ import {
   getOffsetTop,
   debounce
 } from "../utils";
+import withClasses from "../utils/withClasses";
 
 class Popover extends React.Component {
   static propTypes = {
@@ -351,4 +351,4 @@ class Popover extends React.Component {
   }
 }
 
-export default Popover;
+export default withClasses()(Popover);

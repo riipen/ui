@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 import Typography from "./Typography";
 
@@ -57,4 +58,4 @@ class InputLabel extends React.Component {
   }
 }
 
-export default InputLabel;
+export default withClasses(InputLabel);

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Avatar extends React.Component {
   static propTypes = {
@@ -105,4 +106,4 @@ class Avatar extends React.Component {
   }
 }
 
-export default Avatar;
+export default withClasses()(Avatar);

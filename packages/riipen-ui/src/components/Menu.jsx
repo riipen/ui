@@ -2,6 +2,8 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
+import withClasses from "../utils/withClasses";
+
 import MenuList from "./MenuList";
 import Popover from "./Popover";
 
@@ -147,4 +149,4 @@ class Menu extends React.Component {
   }
 }
 
-export default Menu;
+export default withClasses()(Menu);

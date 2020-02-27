@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class ButtonIcon extends React.Component {
   static propTypes = {
@@ -184,4 +185,4 @@ class ButtonIcon extends React.Component {
   }
 }
 
-export default ButtonIcon;
+export default withClasses()(ButtonIcon);

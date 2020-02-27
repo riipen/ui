@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Notice extends React.Component {
   static propTypes = {
@@ -79,4 +80,4 @@ class Notice extends React.Component {
   }
 }
 
-export default Notice;
+export default withClasses()(Notice);
