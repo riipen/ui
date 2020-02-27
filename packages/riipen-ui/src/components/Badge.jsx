@@ -31,7 +31,13 @@ class Badge extends React.Component {
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
-    color: PropTypes.oneOf(["negative", "positive", "primary", "secondary"]),
+    color: PropTypes.oneOf([
+      "negative",
+      "positive",
+      "primary",
+      "secondary",
+      "muted"
+    ]),
 
     /**
      * The component used for the root node.
@@ -171,6 +177,10 @@ class Badge extends React.Component {
           }
           .negative {
             background-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.contrast};
+          }
+          .muted {
+            background-color: ${theme.palette.grey[400]};
             color: ${theme.palette.negative.contrast};
           }
 
