@@ -145,4 +145,4 @@ class Link extends React.Component {
   }
 }
 
-export default withClasses()(Link);
+export default withClasses(Link);

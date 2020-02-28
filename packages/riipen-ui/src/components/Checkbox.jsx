@@ -199,4 +199,4 @@ class Checkbox extends React.Component {
   }
 }
 
-export default withClasses()(Checkbox);
+export default withClasses(Checkbox);

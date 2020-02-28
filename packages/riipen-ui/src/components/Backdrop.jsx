@@ -54,4 +54,4 @@ class Backdrop extends React.Component {
   }
 }
 
-export default withClasses()(Backdrop);
+export default withClasses(Backdrop);

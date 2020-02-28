@@ -103,4 +103,4 @@ class Drawer extends React.Component {
   }
 }
 
-export default withClasses()(Drawer);
+export default withClasses(Drawer);

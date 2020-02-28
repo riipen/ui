@@ -81,4 +81,4 @@ class Breadcrumbs extends React.Component {
   }
 }
 
-export default withClasses()(Breadcrumbs);
+export default withClasses(Breadcrumbs);

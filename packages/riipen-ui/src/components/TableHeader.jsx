@@ -23,4 +23,4 @@ class TableHeader extends React.Component {
   }
 }
 
-export default withClasses()(TableHeader);
+export default withClasses(TableHeader);

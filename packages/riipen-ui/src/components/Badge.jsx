@@ -238,4 +238,4 @@ class Badge extends React.Component {
   }
 }
 
-export default withClasses()(Badge);
+export default withClasses(Badge);

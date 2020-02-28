@@ -55,4 +55,4 @@ class TableHeaderCell extends React.Component {
   }
 }
 
-export default withClasses()(TableHeaderCell);
+export default withClasses(TableHeaderCell);

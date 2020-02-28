@@ -262,4 +262,4 @@ class Typography extends React.Component {
   }
 }
 
-export default withClasses()(Typography);
+export default withClasses(Typography);

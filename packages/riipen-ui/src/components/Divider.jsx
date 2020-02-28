@@ -51,4 +51,4 @@ class Divider extends React.Component {
   }
 }
 
-export default withClasses()(Divider);
+export default withClasses(Divider);

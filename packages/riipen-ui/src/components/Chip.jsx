@@ -267,4 +267,4 @@ class Chip extends React.Component {
   }
 }
 
-export default withClasses()(Chip);
+export default withClasses(Chip);

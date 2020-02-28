@@ -64,4 +64,4 @@ class TableRow extends React.Component {
   }
 }
 
-export default withClasses()(TableRow);
+export default withClasses(TableRow);

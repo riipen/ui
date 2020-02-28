@@ -139,4 +139,4 @@ class Radio extends React.Component {
   }
 }
 
-export default withClasses()(Radio);
+export default withClasses(Radio);

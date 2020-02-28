@@ -4,12 +4,13 @@ import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
+import withForwardedRef from "../utils/withForwardedRef";
 
 class Table extends React.Component {
   static propTypes = {
     /**
-     * What background to render for the table
-     * defaults to grey100
+     * What background to render for the table.
+     * Defaults to grey100.
      */
     backgroundColor: PropTypes.oneOf([
       "transparent",
@@ -21,17 +22,22 @@ class Table extends React.Component {
     ]),
 
     /**
-     * Children to render in the table element
+     * Children to render in the table element.
      */
     children: PropTypes.node,
 
     /**
-     * Classes to apply to the root element
+     * Classes to apply to the root element.
      */
     classes: PropTypes.arrayOf(PropTypes.string),
 
     /**
-     * Whether to give all columns in the table equal width
+     * A reference to the table DOM element.
+     */
+    forwardedRef: PropTypes.element,
+
+    /**
+     * Whether to give all columns in the table equal width.
      */
     layout: PropTypes.oneOf(["auto", "fixed"])
   };
@@ -45,7 +51,13 @@ class Table extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, layout, backgroundColor } = this.props;
+    const {
+      children,
+      classes,
+      layout,
+      backgroundColor,
+      forwardedRef
+    } = this.props;
 
     const theme = this.context;
 
@@ -60,7 +72,7 @@ class Table extends React.Component {
 
     return (
       <React.Fragment>
-        <table className={clsx(classes)} border="0">
+        <table ref={forwardedRef} className={clsx(classes)} border="0">
           {children}
         </table>
         <style jsx>{`
@@ -77,4 +89,4 @@ class Table extends React.Component {
   }
 }
 
-export default withClasses()(Table);
+export default withForwardedRef(withClasses(Table));

@@ -183,4 +183,4 @@ class Tab extends React.Component {
   }
 }
 
-export default withClasses()(Tab);
+export default withClasses(Tab);

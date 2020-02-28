@@ -100,4 +100,4 @@ class Hidden extends React.Component {
   }
 }
 
-export default withClasses()(Hidden);
+export default withClasses(Hidden);

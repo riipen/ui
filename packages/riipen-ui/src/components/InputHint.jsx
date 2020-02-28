@@ -48,4 +48,4 @@ class InputHint extends React.Component {
   }
 }
 
-export default withClasses()(InputHint);
+export default withClasses(InputHint);
