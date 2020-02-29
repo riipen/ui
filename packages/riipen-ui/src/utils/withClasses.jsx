@@ -2,13 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const withClasses = WrappedComponent => {
-  const handle = props => {
+  const handle = (props = {}) => {
     const { classes, ...other } = props;
-    return <WrappedComponent classes={["riipen", ...classes]} {...other} />;
-  };
-
-  handle.defaultProps = {
-    classes: []
+    return (
+      <WrappedComponent classes={["riipen", ...(classes || [])]} {...other} />
+    );
   };
 
   handle.propTypes = {
