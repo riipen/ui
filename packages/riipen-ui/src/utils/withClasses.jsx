@@ -1,24 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const withClasses = () => Component => {
-  const WithClasses = React.forwardRef(function WithClasses(props, ref) {
+const withClasses = WrappedComponent => {
+  const handle = (props, ref) => {
     const { classes, ...other } = props;
-    return <Component ref={ref} classes={["riipen", ...classes]} {...other} />;
-  });
+    return (
+      <WrappedComponent ref={ref} classes={["riipen", ...classes]} {...other} />
+    );
+  };
 
-  WithClasses.defaultProps = {
+  handle.defaultProps = {
     classes: []
   };
 
-  WithClasses.propTypes = {
+  handle.propTypes = {
     /**
-     * Extend the styles applied to the component.
+     * Class list to append the default classes to.
      */
-    classes: PropTypes.object
+    classes: PropTypes.array
   };
 
-  return WithClasses;
+  const name = WrappedComponent.displayName || WrappedComponent.name;
+  handle.displayName = `withClasses(${name})`;
+
+  return handle;
 };
 
 export default withClasses;

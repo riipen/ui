@@ -185,4 +185,4 @@ class ButtonIcon extends React.Component {
   }
 }
 
-export default withClasses()(ButtonIcon);
+export default withClasses(ButtonIcon);

@@ -95,4 +95,4 @@ class Banner extends React.Component {
   }
 }
 
-export default withClasses()(Banner);
+export default withClasses(Banner);

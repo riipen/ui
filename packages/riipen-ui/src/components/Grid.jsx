@@ -96,4 +96,4 @@ class Grid extends React.Component {
   }
 }
 
-export default withClasses()(Grid);
+export default withClasses(Grid);

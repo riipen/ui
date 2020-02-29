@@ -106,4 +106,4 @@ class Avatar extends React.Component {
   }
 }
 
-export default withClasses()(Avatar);
+export default withClasses(Avatar);

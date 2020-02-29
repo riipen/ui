@@ -111,4 +111,4 @@ class AppBar extends React.Component {
   }
 }
 
-export default withClasses()(AppBar);
+export default withClasses(AppBar);

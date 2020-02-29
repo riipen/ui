@@ -152,4 +152,4 @@ class Input extends React.Component {
   }
 }
 
-export default withClasses()(Input);
+export default withClasses(Input);

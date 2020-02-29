@@ -139,4 +139,4 @@ class Form extends React.Component {
   }
 }
 
-export default withClasses()(Form);
+export default withClasses(Form);

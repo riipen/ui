@@ -69,4 +69,4 @@ class Container extends React.Component {
   }
 }
 
-export default withClasses()(Container);
+export default withClasses(Container);

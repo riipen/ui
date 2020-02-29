@@ -356,4 +356,4 @@ class Button extends React.Component {
   }
 }
 
-export default withClasses()(Button);
+export default withClasses(Button);

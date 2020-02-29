@@ -90,4 +90,4 @@ class GridItem extends React.Component {
   }
 }
 
-export default withClasses()(GridItem);
+export default withClasses(GridItem);

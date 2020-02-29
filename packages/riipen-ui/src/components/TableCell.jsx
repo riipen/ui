@@ -71,4 +71,4 @@ class TableCell extends React.Component {
   }
 }
 
-export default withClasses()(TableCell);
+export default withClasses(TableCell);

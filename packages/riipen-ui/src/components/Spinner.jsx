@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Spinner extends React.Component {
   static propTypes = {
@@ -136,4 +137,4 @@ class Spinner extends React.Component {
   }
 }
 
-export default Spinner;
+export default withClasses(Spinner);

@@ -166,4 +166,4 @@ class MenuList extends React.Component {
   }
 }
 
-export default withClasses()(MenuList);
+export default withClasses(MenuList);

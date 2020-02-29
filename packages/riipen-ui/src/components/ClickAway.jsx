@@ -59,4 +59,4 @@ class ClickAway extends React.Component {
   }
 }
 
-export default withClasses()(ClickAway);
+export default withClasses(ClickAway);

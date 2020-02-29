@@ -41,4 +41,4 @@ class List extends React.Component {
   }
 }
 
-export default withClasses()(List);
+export default withClasses(List);

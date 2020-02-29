@@ -103,4 +103,4 @@ class RadioGroup extends React.Component {
   }
 }
 
-export default withClasses()(RadioGroup);
+export default withClasses(RadioGroup);

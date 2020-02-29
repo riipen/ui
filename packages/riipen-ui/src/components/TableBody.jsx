@@ -23,4 +23,4 @@ class TableBody extends React.Component {
   }
 }
 
-export default withClasses()(TableBody);
+export default withClasses(TableBody);

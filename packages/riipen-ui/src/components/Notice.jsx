@@ -80,4 +80,4 @@ class Notice extends React.Component {
   }
 }
 
-export default withClasses()(Notice);
+export default withClasses(Notice);
