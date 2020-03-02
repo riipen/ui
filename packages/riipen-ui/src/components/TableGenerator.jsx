@@ -101,7 +101,9 @@ class TableGenerator extends React.Component {
         border: 1px solid ${theme.palette.grey[400]};
         border-radius: 4px;
         display: inline-block;
-        width: 100%;
+        margin: 0 ${theme.spacing(1)}px 0 ${theme.spacing(1)}px;
+        min-width: calc(100% - ${theme.spacing(2)}px);
+        overflow-x: auto;
       }
 
       .centeredTable {
