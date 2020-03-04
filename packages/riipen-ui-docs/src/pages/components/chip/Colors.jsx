@@ -7,15 +7,28 @@ export default function Colors() {
     marginRight: "10px"
   };
 
+  const breakStyle = {
+    marginTop: "10px"
+  };
+
   return (
     <div>
-      <Chip label="Default" color="default" />
-      <span style={style} />
-      <Chip label="Primary" color="primary" />
-      <span style={style} />
-      <Chip label="Secondary" color="secondary" />
-      <span style={style} />
-      <Chip label="Tertiary" color="tertiary" />
+      <div>
+        <Chip label="Default" color="default" />
+        <span style={style} />
+        <Chip label="Primary" color="primary" />
+        <span style={style} />
+        <Chip label="Secondary" color="secondary" />
+        <span style={style} />
+        <Chip label="Tertiary" color="tertiary" />
+      </div>
+      <div style={breakStyle}>
+        <Chip label="Positive" color="positive" />
+        <span style={style} />
+        <Chip label="Warning" color="warning" />
+        <span style={style} />
+        <Chip label="Negative" color="negative" />
+      </div>
     </div>
   );
 }

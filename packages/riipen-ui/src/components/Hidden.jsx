@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Hidden extends React.Component {
   static propTypes = {
@@ -99,4 +100,4 @@ class Hidden extends React.Component {
   }
 }
 
-export default Hidden;
+export default withClasses(Hidden);

@@ -2,6 +2,8 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+import withClasses from "../utils/withClasses";
+
 class Tabs extends React.Component {
   static propTypes = {
     /**
@@ -125,4 +127,4 @@ class Tabs extends React.Component {
   }
 }
 
-export default Tabs;
+export default withClasses(Tabs);

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 import Backdrop from "./Backdrop";
 import ClickAway from "./ClickAway";
@@ -102,4 +103,4 @@ class Drawer extends React.Component {
   }
 }
 
-export default Drawer;
+export default withClasses(Drawer);

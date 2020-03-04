@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 const variantMapping = {
   h1: "h1",
@@ -261,4 +262,4 @@ class Typography extends React.Component {
   }
 }
 
-export default Typography;
+export default withClasses(Typography);

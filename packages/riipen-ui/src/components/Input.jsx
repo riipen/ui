@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 import InputLabel from "./InputLabel";
 import InputHint from "./InputHint";
@@ -151,4 +152,4 @@ class Input extends React.Component {
   }
 }
 
-export default Input;
+export default withClasses(Input);

@@ -1,12 +1,17 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import { FaTimes } from "react-icons-riipen/fa";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Chip extends React.Component {
   static propTypes = {
+    /**
+     * The elements to render inside the pill.
+     */
+    children: PropTypes.node,
+
     /**
      * List of additional classes to apply to this component.
      */
@@ -15,7 +20,15 @@ class Chip extends React.Component {
     /**
      * The color to use.
      */
-    color: PropTypes.oneOf(["default", "primary", "secondary", "tertiary"]),
+    color: PropTypes.oneOf([
+      "default",
+      "primary",
+      "secondary",
+      "tertiary",
+      "positive",
+      "warning",
+      "negative"
+    ]),
 
     /**
      * The component used for the root node.
@@ -29,20 +42,30 @@ class Chip extends React.Component {
     disabled: PropTypes.bool,
 
     /**
+     * Icon to display at start of chip.
+     */
+    icon: PropTypes.elementType,
+
+    /**
      * The content of the label.
      */
     label: PropTypes.node,
 
     /**
-     * Callback function fired when the delete icon is clicked.
-     * If set, the delete icon will be shown.
+     * Action to perform when clicked.
      */
-    onDelete: PropTypes.func,
+    onClick: PropTypes.func,
+
+    /**
+     * Callback function fired when the icon is clicked.
+     */
+    onIconClick: PropTypes.func,
 
     /**
      * The size of the chip.
      */
     size: PropTypes.oneOf(["small", "medium"]),
+
     /**
      * The variant to use.
      */
@@ -66,13 +89,19 @@ class Chip extends React.Component {
       color,
       component: Component,
       disabled,
-      label,
-      onDelete,
+      icon: Icon,
+      onIconClick,
+      onClick,
       size,
       variant
     } = this.props;
 
+    const label = this.props.label || this.props.children;
+
     const theme = this.context;
+
+    const clickable = !!onClick;
+    const iconClickable = !!onIconClick;
 
     const className = clsx(
       "root",
@@ -80,64 +109,82 @@ class Chip extends React.Component {
       disabled ? "disabled" : null,
       size,
       variant,
-      classes
+      classes,
+      { clickable }
     );
+
+    const handleClick = () => {
+      if (onClick) onClick();
+    };
 
     return (
       <React.Fragment>
-        <Component className={className}>
-          <span className={clsx("label")}>{label}</span>
-          {onDelete && (
-            <span className={clsx("delete", `delete-${color}`)}>
-              <FaTimes size="12px" onClick={onDelete} />
+        <Component onClick={handleClick} className={className}>
+          {Icon && (
+            <span
+              onClick={onIconClick}
+              className={clsx("icon", "icon-start", {
+                iconClickable
+              })}
+            >
+              <Icon />
             </span>
           )}
+          <span className={clsx("label")}>{label}</span>
         </Component>
         <style jsx>{`
           .root {
-            align-items: center;
             background-color: ${theme.palette.grey[300]};
-            border-radius: 16px;
-            border: none;
+            border-radius: 50px;
+            border: 1px solid;
+            border-color: transparent;
             box-sizing: border-box;
+            color: ${theme.palette.text.secondary};
+            cursor: default;
             display: inline-flex;
             font-family: ${theme.typography.fontFamily};
             font-size: 13px;
-            height: 32px;
             justify-content: center;
             outline: 0;
-            padding: 0;
             vertical-align: middle;
             white-space: nowrap;
           }
-
-          .disabled {
-            opacity: 0.5;
+          .root.small {
+            padding: 5px 10px;
+          }
+          .root.medium {
+            padding: 10px 15px;
+          }
+          .root.disabled {
+            background-color: ${theme.palette.disabled};
+            border: 1px solid;
+            border-color: ${theme.palette.disabled};
+            color: ${theme.palette.common.white};
             pointer-events: none;
+          }
+          .root.clickable {
+            cursor: pointer;
+          }
+
+          .icon-start {
+            align-items: center;
+            display: flex;
+            padding-right: 10px;
+            white-space: nowrap;
+          }
+
+          .icon-start.disabled {
+            cursor: initial;
+          }
+
+          .icon-start.iconClickable {
+            cursor: pointer;
           }
 
           .label {
             align-items: center;
             display: flex;
-            padding-left: 12px;
-            padding-right: 12px;
             white-space: nowrap;
-          }
-
-          .delete {
-            background-color: ${theme.palette.grey[400]};
-            border-radius: 50%;
-            color: ${theme.palette.common.white};
-            margin-right: 12px;
-            padding: 5px 5px 2px;
-          }
-          .delete:hover {
-            background-color: ${theme.palette.grey[500]};
-            cursor: pointer;
-          }
-
-          .small {
-            height: 24px;
           }
 
           .primary {
@@ -145,20 +192,74 @@ class Chip extends React.Component {
             border-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.contrast};
           }
+          .primary.outlined {
+            border-color: ${theme.palette.primary.main};
+            color: ${theme.palette.primary.main};
+          }
+          .primary.outlined.hover:hover {
+            background-color: ${theme.palette.primary.main};
+            border-color: ${theme.palette.primary.main};
+            color: ${theme.palette.primary.contrast};
+          }
+
           .secondary {
             background-color: ${theme.palette.secondary.main};
             border-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.contrast};
           }
+          .secondary.outlined {
+            border-color: ${theme.palette.secondary.main};
+            color: ${theme.palette.secondary.main};
+          }
+          .secondary.outlined.hover:hover {
+            background-color: ${theme.palette.secondary.main};
+            border-color: ${theme.palette.secondary.main};
+            color: ${theme.palette.secondary.contrast};
+          }
+
           .tertiary {
             background-color: ${theme.palette.tertiary.main};
             border-color: ${theme.palette.tertiary.main};
             color: ${theme.palette.tertiary.contrast};
           }
+          .tertiary.outlined {
+            border-color: ${theme.palette.tertiary.main};
+            color: ${theme.palette.tertiary.main};
+          }
+
+          .negative {
+            background-color: ${theme.palette.negative.main};
+            border-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.contrast};
+          }
+          .negative.outlined {
+            border-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.main};
+          }
+
+          .warning {
+            background-color: ${theme.palette.warning.main};
+            border-color: ${theme.palette.warning.main};
+            color: ${theme.palette.warning.contrast};
+          }
+          .warning.outlined {
+            border-color: ${theme.palette.warning.main};
+            color: ${theme.palette.warning.main};
+          }
+
+          .positive {
+            background-color: ${theme.palette.positive.main};
+            border-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.contrast};
+          }
+          .positive.outlined {
+            border-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.main};
+          }
 
           .outlined {
             background-color: transparent;
-            border: 1px solid ${theme.palette.grey[300]};
+            border: 1px solid ${theme.palette.text.primary};
           }
         `}</style>
       </React.Fragment>
@@ -166,4 +267,4 @@ class Chip extends React.Component {
   }
 }
 
-export default Chip;
+export default withClasses(Chip);

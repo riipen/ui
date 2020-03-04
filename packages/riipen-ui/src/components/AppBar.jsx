@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class AppBar extends React.Component {
   static propTypes = {
@@ -47,7 +48,7 @@ class AppBar extends React.Component {
 
     const theme = this.context;
 
-    const className = clsx(color, position, classes);
+    const className = clsx(classes, color, position);
 
     return (
       <React.Fragment>
@@ -110,4 +111,4 @@ class AppBar extends React.Component {
   }
 }
 
-export default AppBar;
+export default withClasses(AppBar);

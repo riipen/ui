@@ -2,6 +2,8 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+import withClasses from "../utils/withClasses";
+
 class Toolbar extends React.Component {
   static propTypes = {
     /**
@@ -39,4 +41,4 @@ class Toolbar extends React.Component {
   }
 }
 
-export default Toolbar;
+export default withClasses(Toolbar);

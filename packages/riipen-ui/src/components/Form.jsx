@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 import Notice from "./Notice";
 import Typography from "./Typography";
@@ -138,4 +139,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default withClasses(Form);

@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class MenuList extends React.Component {
   static propTypes = {
@@ -155,21 +156,14 @@ class MenuList extends React.Component {
   render() {
     const { children, classes, selectedIndex } = this.props;
 
-    const theme = this.context;
-
     return (
       <React.Fragment>
         <div className={clsx(classes)}>
           {this.getListItems(children, selectedIndex)}
         </div>
-        <style jsx>{`
-          div {
-            margin: ${theme.spacing(1)}px 0;
-          }
-        `}</style>
       </React.Fragment>
     );
   }
 }
 
-export default MenuList;
+export default withClasses(MenuList);

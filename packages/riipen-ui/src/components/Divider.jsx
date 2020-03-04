@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Divider extends React.Component {
   static propTypes = {
@@ -50,4 +51,4 @@ class Divider extends React.Component {
   }
 }
 
-export default Divider;
+export default withClasses(Divider);

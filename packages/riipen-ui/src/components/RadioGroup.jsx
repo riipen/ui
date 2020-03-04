@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import withClasses from "../utils/withClasses";
+
 import InputLabel from "./InputLabel";
 import InputHint from "./InputHint";
 import Typography from "./Typography";
@@ -101,4 +103,4 @@ class RadioGroup extends React.Component {
   }
 }
 
-export default RadioGroup;
+export default withClasses(RadioGroup);

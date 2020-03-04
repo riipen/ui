@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class ButtonIcon extends React.Component {
   static propTypes = {
@@ -81,7 +82,9 @@ class ButtonIcon extends React.Component {
     return (
       <React.Fragment>
         <Component className={className} disabled={disabled} {...other}>
-          <span className={clsx("label", `font-${size}`)}>{children}</span>
+          <span className={clsx("label", `icon-${size}`, `font-${size}`)}>
+            {children}
+          </span>
         </Component>
         <style jsx>{`
           .root {
@@ -157,6 +160,19 @@ class ButtonIcon extends React.Component {
             width: 100%;
           }
 
+          .icon-small {
+            height: 16px;
+            width: 16px;
+          }
+          .icon-medium {
+            height: 18px;
+            width: 18px;
+          }
+          .icon-large {
+            height: 20px;
+            width: 20px;
+          }
+
           .font-small {
             font-size: 16px;
           }
@@ -169,4 +185,4 @@ class ButtonIcon extends React.Component {
   }
 }
 
-export default ButtonIcon;
+export default withClasses(ButtonIcon);

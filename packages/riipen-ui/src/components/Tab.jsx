@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Tab extends React.Component {
   static propTypes = {
@@ -104,7 +105,7 @@ class Tab extends React.Component {
     return (
       <React.Fragment>
         <div className={className} onClick={this.handleClick}>
-          {Icon && <Icon className={clsx("icon")} size="20px" />}
+          {Icon && <Icon className={clsx("icon")} />}
           {label && <div className={clsx("label")}>{label}</div>}
         </div>
         <style jsx>{`
@@ -123,6 +124,10 @@ class Tab extends React.Component {
 
           .icon + * {
             margin-left: ${theme.spacing(2)}px;
+          }
+
+          .icon {
+            margin-bottom: 1px;
           }
 
           .label {
@@ -178,4 +183,4 @@ class Tab extends React.Component {
   }
 }
 
-export default Tab;
+export default withClasses(Tab);

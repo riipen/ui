@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
 class Banner extends React.Component {
   static propTypes = {
@@ -94,4 +95,4 @@ class Banner extends React.Component {
   }
 }
 
-export default Banner;
+export default withClasses(Banner);

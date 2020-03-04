@@ -2,6 +2,8 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
+import withClasses from "../utils/withClasses";
+
 import MenuList from "./MenuList";
 import Popover from "./Popover";
 
@@ -48,6 +50,11 @@ class Menu extends React.Component {
     contentPosition: PropTypes.object,
 
     /**
+     * Whether or not the menu should be rendered
+     */
+    isOpen: PropTypes.bool,
+
+    /**
      * Whether or not the popout should be forced to stay on screen
      */
     keepOnScreen: PropTypes.bool,
@@ -83,19 +90,11 @@ class Menu extends React.Component {
     color: "primary",
     classes: [],
     closeOnClick: true,
+    isOpen: true,
     keepOnScreen: false,
     popoverStyles: {},
     variant: "menu"
   };
-
-  constructor(props) {
-    super(props);
-    this.handleCloseEvent = this.handleCloseEvent.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener("keydown", this.handleCloseEvent);
-  }
 
   componentDidUpdate() {
     const { anchorEl } = this.props;
@@ -104,29 +103,10 @@ class Menu extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("keydown", this.handleCloseEvent);
-  }
-
-  handleClose = () => {
-    const { onClose } = this.props;
-    this.anchorEl = null;
-    if (onClose) onClose();
-  };
-
   handleChange = (idx, event) => {
     const { onChange, closeOnClick } = this.props;
     if (onChange) onChange(idx, event);
     if (closeOnClick && event && event.type === "click") this.handleClose(idx);
-  };
-
-  handleCloseEvent = event => {
-    const { anchorEl } = this.props;
-    if (!anchorEl) return;
-    if (event.key === "Enter") {
-      event.preventDefault();
-      this.handleClose();
-    }
   };
 
   render() {
@@ -136,6 +116,8 @@ class Menu extends React.Component {
       children,
       contentPosition,
       keepOnScreen,
+      isOpen,
+      onClose,
       popoverStyles,
       selectedIndex,
       variant
@@ -144,11 +126,11 @@ class Menu extends React.Component {
     return (
       <React.Fragment>
         <Popover
-          onClose={this.handleClose}
+          onClose={onClose}
           anchorPosition={anchorPosition}
           contentPosition={contentPosition}
           lockScroll={false}
-          open={Boolean(anchorEl)}
+          isOpen={isOpen}
           anchorEl={anchorEl}
           styles={popoverStyles}
           keepOnScreen={keepOnScreen}
@@ -167,4 +149,4 @@ class Menu extends React.Component {
   }
 }
 
-export default Menu;
+export default withClasses(Menu);
