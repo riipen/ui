@@ -15,7 +15,7 @@ class MenuList extends React.Component {
     /**
      * The content of the component.
      */
-    children: PropTypes.array,
+    children: PropTypes.node,
 
     /**
      * Array of additional CSS classes to use.
@@ -69,7 +69,7 @@ class MenuList extends React.Component {
   getListItems(children, activeItemIndex) {
     const { variant } = this.props;
 
-    return children.map((child, idx) => {
+    return React.Children.map(children, (child, idx) => {
       let newProps = {
         key: idx,
         color: this.props.color
