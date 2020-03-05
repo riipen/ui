@@ -1,4 +1,6 @@
 import clsx from "clsx";
+import css from "styled-jsx/css";
+
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -34,6 +36,23 @@ class FormGroup extends React.Component {
     classes: []
   };
 
+  getLinkedStyles = () => {
+    const theme = this.context;
+
+    return css.resolve`
+      .subtitle {
+        color: ${theme.palette.text.secondary};
+        font-weight: ${theme.typography.fontWeight.regular};
+      }
+
+      .title {
+        font-weight: ${theme.typography.fontWeight.medium};
+        font-size: 22px;
+        margin-bottom: ${theme.spacing(3)}px;
+      }
+    `;
+  };
+
   static contextType = ThemeContext;
 
   render() {
@@ -41,19 +60,31 @@ class FormGroup extends React.Component {
 
     const theme = this.context;
 
+    const linkedStyles = this.getLinkedStyles();
     const className = clsx(classes);
 
     return (
       <React.Fragment>
         <fieldset className={className}>
           {title && (
-            <Typography component="p" gutter variant="h3">
+            <Typography
+              classes={[linkedStyles.className, "title"]}
+              component="p"
+              variant="h3"
+            >
               {title}
+              {linkedStyles.styles}
             </Typography>
           )}
           {subtitle && (
-            <Typography component="p" gutter variant="h4">
+            <Typography
+              classes={[linkedStyles.className, "subtitle"]}
+              component="p"
+              gutter
+              variant="h4"
+            >
               {subtitle}
+              {linkedStyles.styles}
             </Typography>
           )}
           <div className="children">{children}</div>

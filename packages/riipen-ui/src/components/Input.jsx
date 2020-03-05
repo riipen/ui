@@ -122,7 +122,7 @@ class Input extends React.Component {
             font-family: ${theme.typography.fontFamily};
             font-size: 14px;
             outline: none;
-            padding: ${theme.spacing(2)}px;
+            padding: ${theme.spacing(1.5)}px;
             position: relative;
             transition: all ${theme.transitions.duration.standard}ms;
             width: 100%;

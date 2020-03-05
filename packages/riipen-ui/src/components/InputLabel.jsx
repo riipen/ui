@@ -42,15 +42,21 @@ class InputLabel extends React.Component {
     return (
       <React.Fragment>
         <label className={className} {...other}>
-          <Typography>
+          <Typography color="inherit" variant="inherit">
             {children}
             {required && " *"}
           </Typography>
         </label>
         <style jsx>{`
           label {
+            color: ${theme.palette.text.secondary};
             display: inline-block;
-            margin-bottom: ${theme.spacing(1)}px;
+            font-family: ${theme.typography.body1.fontFamily};
+            font-size: font-size: 16px;
+            font-weight: ${theme.typography.body1.fontWeight};
+            letter-spacing: ${theme.typography.body1.letterSpacing};
+            line-height: 1.4;
+            margin-bottom: ${theme.spacing(3)}px;
           }
         `}</style>
       </React.Fragment>
