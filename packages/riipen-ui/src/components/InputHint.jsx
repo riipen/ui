@@ -40,6 +40,7 @@ class InputHint extends React.Component {
         </div>
         <style jsx>{`
           div {
+            color: ${theme.palette.text.secondary};
             margin-bottom: ${theme.spacing(2)}px;
           }
         `}</style>
