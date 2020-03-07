@@ -104,9 +104,8 @@ class Menu extends React.Component {
   }
 
   handleChange = (idx, event) => {
-    const { onChange, closeOnClick } = this.props;
+    const { onChange } = this.props;
     if (onChange) onChange(idx, event);
-    if (closeOnClick && event && event.type === "click") this.handleClose(idx);
   };
 
   render() {
@@ -120,7 +119,8 @@ class Menu extends React.Component {
       onClose,
       popoverStyles,
       selectedIndex,
-      variant
+      variant,
+      ...other
     } = this.props;
 
     return (
@@ -136,10 +136,10 @@ class Menu extends React.Component {
           keepOnScreen={keepOnScreen}
         >
           <MenuList
-            {...this.props}
             selectChange={this.handleChange}
             selectedIndex={selectedIndex}
             variant={variant}
+            {...other}
           >
             {children}
           </MenuList>
