@@ -91,7 +91,11 @@ class Input extends React.Component {
     return (
       <div className={className}>
         {label && (
-          <InputLabel htmlFor={other.id || other.name} required={required}>
+          <InputLabel
+            htmlFor={other.id || other.name}
+            required={required}
+            marginBottom={hint ? 1 : 3}
+          >
             {label}
           </InputLabel>
         )}
@@ -120,9 +124,10 @@ class Input extends React.Component {
             box-sizing: border-box;
             color: ${theme.palette.text.primary};
             font-family: ${theme.typography.fontFamily};
-            font-size: 14px;
+            font-size: ${theme.typography.body1.fontSize};
+            line-height: 1;
             outline: none;
-            padding: ${theme.spacing(1.5)}px;
+            padding: ${theme.spacing(2)}px;
             position: relative;
             transition: all ${theme.transitions.duration.standard}ms;
             width: 100%;
