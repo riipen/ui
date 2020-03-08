@@ -9,5 +9,10 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/table-body" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/table-body"
+      req={req}
+    />
+  );
 }
