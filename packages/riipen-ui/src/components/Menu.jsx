@@ -27,7 +27,7 @@ class Menu extends React.Component {
     /**
      * The content of the component.
      */
-    children: PropTypes.array,
+    children: PropTypes.node,
 
     /**
      * Array of additional CSS classes to use.
