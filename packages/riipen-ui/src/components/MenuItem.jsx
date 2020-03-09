@@ -116,7 +116,14 @@ class MenuItem extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { onClick, classes, children, disabled, selected } = this.props;
+    const {
+      onClick,
+      classes,
+      children,
+      disabled,
+      selected,
+      ...other
+    } = this.props;
 
     const linkedStyles = this.getLinkedStyles();
 
@@ -140,7 +147,7 @@ class MenuItem extends React.Component {
 
     return (
       <React.Fragment>
-        <ListItem {...this.props} onClick={handleClick} classes={[className]}>
+        <ListItem onClick={handleClick} classes={[className]} {...other}>
           {children}
         </ListItem>
         {linkedStyles.styles}

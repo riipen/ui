@@ -44,7 +44,6 @@ class Table extends React.Component {
 
   static defaultProps = {
     backgroundColor: "grey100",
-
     layout: "auto"
   };
 

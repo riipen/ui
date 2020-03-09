@@ -28,6 +28,12 @@ export default function Outlined() {
       <Button color="white" variant="outlined">
         White
       </Button>
+      <Button color="positive" variant="outlined">
+        Positive
+      </Button>
+      <Button color="negative" variant="outlined">
+        Negative
+      </Button>
       <span style={style} />
       <Button color="default" variant="outlined" disabled>
         Disabled
