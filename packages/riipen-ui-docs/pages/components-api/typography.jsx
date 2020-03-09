@@ -9,5 +9,10 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/typography" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/typography"
+      req={req}
+    />
+  );
 }

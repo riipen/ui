@@ -28,6 +28,12 @@ export default function Text() {
       <Button color="white" variant="text">
         White
       </Button>
+      <Button color="positive" variant="text">
+        Positive
+      </Button>
+      <Button color="negative" variant="text">
+        Negative
+      </Button>
       <span style={style} />
       <Button color="default" variant="text" disabled>
         Disabled

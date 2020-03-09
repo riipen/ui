@@ -22,6 +22,8 @@ class Button extends React.Component {
      */
     color: PropTypes.oneOf([
       "default",
+      "negative",
+      "positive",
       "primary",
       "secondary",
       "tertiary",
@@ -241,6 +243,24 @@ class Button extends React.Component {
           .contained-white:hover {
             background-color: ${theme.palette.grey[100]};
           }
+          .contained-positive {
+            background-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.contrast};
+          }
+          .contained-positive:active,
+          .contained-positive:focus,
+          .contained-positive:hover {
+            background-color: ${theme.palette.positive.dark};
+          }
+          .contained-negative {
+            background-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.contrast};
+          }
+          .contained-negative:active,
+          .contained-negative:focus,
+          .contained-negative:hover {
+            background-color: ${theme.palette.negative.dark};
+          }
 
           .text {
             background-color: transparent;
@@ -286,6 +306,18 @@ class Button extends React.Component {
           }
           .text-white:hover::before {
             background-color: ${theme.palette.grey[100]};
+          }
+          .text-positive {
+            color: ${theme.palette.positive.main};
+          }
+          .text-positive:hover::before {
+            background-color: ${theme.palette.positive.main};
+          }
+          .text-negative {
+            color: ${theme.palette.negative.main};
+          }
+          .text-negative:hover::before {
+            background-color: ${theme.palette.negative.main};
           }
 
           .outlined {
@@ -336,6 +368,20 @@ class Button extends React.Component {
           }
           .outlined-white:hover::before {
             background-color: ${theme.palette.grey[100]};
+          }
+          .outlined-positive {
+            border-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.main};
+          }
+          .outlined-positive:hover::before {
+            background-color: ${theme.palette.positive.main};
+          }
+          .outlined-negative {
+            border-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.main};
+          }
+          .outlined-negative:hover::before {
+            background-color: ${theme.palette.negative.main};
           }
 
           .label {

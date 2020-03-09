@@ -88,6 +88,10 @@ const pages = [
         pathname: "/components/menu"
       },
       {
+        name: "No SSR",
+        pathname: "/components/no-ssr"
+      },
+      {
         name: "Notice",
         pathname: "/components/notice"
       },
