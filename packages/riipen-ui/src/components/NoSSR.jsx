@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
 class NoSSR extends React.Component {
   static propTypes = {
@@ -11,31 +11,27 @@ class NoSSR extends React.Component {
     /**
      * The fallback content to display.
      */
-    fallback: PropTypes.node,
+    fallback: PropTypes.node
   };
 
   static defaultProps = {
-    fallback: null,
+    fallback: null
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      mounted: false,
+      mounted: false
     };
   }
 
   componentDidMount() {
+    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({
-      mounted: true,
-    })
+      mounted: true
+    });
   }
-
-  componentDidUpdate(prevProps) {
-
-  }
-
 
   render() {
     const { children, fallback } = this.props;
