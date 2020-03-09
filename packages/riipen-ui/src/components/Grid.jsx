@@ -101,12 +101,12 @@ class Grid extends React.Component {
 
     if (typeof ResizeObserver !== "undefined") {
       this.resizeObserver = new ResizeObserver(this.onResize);
+
+      if (this.resizeObserver && this.resizeRef.current) {
+        this.resizeObserver.observe(this.resizeRef.current);
+      }
     } else {
       window.addEventListener("resize", this.onResize);
-    }
-
-    if (this.resizeRef) {
-      this.resizeObserver.observe(this.resizeRef.current);
     }
 
     this.onResize();
