@@ -58,7 +58,7 @@ class InputLabel extends React.Component {
             color: ${theme.palette.text.secondary};
             display: inline-block;
             font-family: ${theme.typography.body1.fontFamily};
-            font-size: font-size: 16px;
+            font-size: 16px;
             font-weight: ${theme.typography.body1.fontWeight};
             letter-spacing: ${theme.typography.body1.letterSpacing};
             line-height: 1.4;
