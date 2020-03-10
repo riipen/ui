@@ -40,12 +40,12 @@ class FormGroup extends React.Component {
     const theme = this.context;
 
     return css.resolve`
-      .subtitle {
+      p.subtitle {
         color: ${theme.palette.text.secondary};
         font-weight: ${theme.typography.fontWeight.regular};
       }
 
-      .title {
+      p.title {
         font-weight: ${theme.typography.fontWeight.medium};
         font-size: 22px;
         margin-bottom: ${theme.spacing(3)}px;
