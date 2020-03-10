@@ -20,12 +20,7 @@ class ListItem extends React.Component {
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
-    color: PropTypes.oneOf(["primary", "secondary"]),
-
-    /**
-     * Callback for when the list item is clicked
-     */
-    onClick: PropTypes.func
+    color: PropTypes.oneOf(["primary", "secondary"])
   };
 
   static defaultProps = {
@@ -35,13 +30,8 @@ class ListItem extends React.Component {
 
   static contextType = ThemeContext;
 
-  handleClick = event => {
-    const { onClick } = this.props;
-    if (onClick) onClick(event);
-  };
-
   render() {
-    const { children, classes, color } = this.props;
+    const { children, classes, color, ...other } = this.props;
 
     const className = clsx(classes, color, "list-item");
 
@@ -49,7 +39,7 @@ class ListItem extends React.Component {
 
     return (
       <React.Fragment>
-        <div onClick={this.handleClick} className={className}>
+        <div className={className} {...other}>
           {children}
         </div>
         <style jsx>{`

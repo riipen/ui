@@ -30,13 +30,13 @@ class TableHeaderCell extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { align, children, classes } = this.props;
+    const { align, children, classes, ...other } = this.props;
 
     const theme = this.context;
 
     return (
       <React.Fragment>
-        <th align={align} className={clsx(classes)}>
+        <th align={align} className={clsx(classes)} {...other}>
           {children}
         </th>
         <style jsx>{`
