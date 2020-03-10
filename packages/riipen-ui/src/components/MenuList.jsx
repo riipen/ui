@@ -160,7 +160,7 @@ class MenuList extends React.Component {
       <React.Fragment>
         <div
           className={clsx(classes)}
-          onClick={() => this.handleSelectChange(null, event)}
+          onClick={event => this.handleSelectChange(null, event)}
         >
           {this.getListItems(children, selectedIndex)}
         </div>
