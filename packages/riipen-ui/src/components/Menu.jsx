@@ -104,8 +104,9 @@ class Menu extends React.Component {
   }
 
   handleChange = (idx, event) => {
-    const { onChange, closeOnClick } = this.props;
-    if (closeOnClick && event && event.type === "click") this.handleClose(idx);
+    const { onChange, closeOnClick, onClose } = this.props;
+    if (onClose && closeOnClick && event && event.type === "click")
+      onClose(idx);
     if (onChange) onChange(idx, event);
   };
 
