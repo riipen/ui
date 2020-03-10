@@ -162,11 +162,11 @@ class Grid extends React.Component {
           div {
             align-items: ${alignItems};
             display: flex;
-            flex-wrap: ${flexWrap};
             flex-direction: ${flexDirection};
+            flex-wrap: ${flexWrap};
             justify-content: ${justifyContent};
-            margin-left: -${theme.spacing(spacing)}px;
             margin-bottom: -${theme.spacing(spacing)}px;
+            margin-left: -${theme.spacing(spacing)}px;
             min-height: 0;
             position: relative;
           }

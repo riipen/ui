@@ -35,12 +35,12 @@ class GridItem extends React.Component {
      * The styling to pass into the flex-direction of the grid.
      */
     flexDirection: PropTypes.oneOf([
-      "row",
-      "row-reverse",
       "column",
       "column-reverse",
       "initial",
-      "inherit"
+      "inherit",
+      "row",
+      "row-reverse"
     ]),
 
     /**
@@ -57,23 +57,23 @@ class GridItem extends React.Component {
      * The styling to pass into the flex-wrap of the grid item.
      */
     flexWrap: PropTypes.oneOf([
-      "nowrap",
-      "wrap",
-      "wrap-reverse",
       "inherit",
       "initial",
-      "unset"
+      "nowrap",
+      "unset",
+      "wrap",
+      "wrap-reverse"
     ]),
 
     /**
      * A whitelisted set of justify content options for the grid item.
      */
     justifyContent: PropTypes.oneOf([
-      "flex-start",
       "center",
       "flex-end",
-      "space-between",
+      "flex-start",
       "space-around",
+      "space-between",
       "space-evenly"
     ]),
 
@@ -82,7 +82,7 @@ class GridItem extends React.Component {
      */
     lg: PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.oneOf(["hidden", "auto"])
+      PropTypes.oneOf(["auto", "hidden"])
     ]),
 
     /**
@@ -90,7 +90,7 @@ class GridItem extends React.Component {
      */
     md: PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.oneOf(["hidden", "auto"])
+      PropTypes.oneOf(["auto", "hidden"])
     ]),
 
     /**
@@ -98,7 +98,7 @@ class GridItem extends React.Component {
      */
     sm: PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.oneOf(["hidden", "auto"])
+      PropTypes.oneOf(["auto", "hidden"])
     ]),
 
     /**
@@ -117,7 +117,7 @@ class GridItem extends React.Component {
      */
     xs: PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.oneOf(["hidden", "auto"])
+      PropTypes.oneOf(["auto", "hidden"])
     ])
   };
 
@@ -153,12 +153,14 @@ class GridItem extends React.Component {
     const theme = this.context;
 
     const { lg, md, sm, xs } = this.props;
+    // determine size of component
     const itemColumns =
       (size === "md" && (md || lg)) ||
       (size === "sm" && (sm || md || lg)) ||
       (size === "xs" && (xs || sm || md || lg)) ||
       lg;
 
+    // add class to component based on size it is rendering
     const itemSize =
       (itemColumns === lg && "lg") ||
       (itemColumns === md && "md") ||
@@ -183,16 +185,16 @@ class GridItem extends React.Component {
         <style jsx>{`
           div {
             align-items: ${alignItems};
-            display: ${!hidden ? "flex" : "none"};
             box-sizing: border-box;
-            margin-bottom: ${theme.spacing(spacing)}px;
-            padding-left: ${theme.spacing(spacing)}px;
-            flex-grow: ${flexGrow};
-            flex-shrink: ${flexShrink};
+            display: ${hidden ? "none" : "flex"};
             flex-basis: ${flexBasis}%;
             flex-direction: ${flexDirection};
+            flex-grow: ${flexGrow};
+            flex-shrink: ${flexShrink};
             flex-wrap: ${flexWrap};
             justify-content: ${justifyContent};
+            margin-bottom: ${theme.spacing(spacing)}px;
+            padding-left: ${theme.spacing(spacing)}px;
           }
         `}</style>
       </React.Fragment>
