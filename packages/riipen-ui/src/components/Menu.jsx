@@ -96,9 +96,11 @@ class Menu extends React.Component {
     variant: "menu"
   };
 
-  componentDidUpdate() {
-    const { anchorEl } = this.props;
-    if (document.activeElement && anchorEl) {
+  componentDidUpdate(oldProps) {
+    const { anchorEl, isOpen } = this.props;
+    const menuDidOpen =
+      (oldProps.anchorEl == null && anchorEl) || (!oldProps.isOpen && isOpen);
+    if (menuDidOpen && document.activeElement) {
       document.activeElement.blur();
     }
   }
