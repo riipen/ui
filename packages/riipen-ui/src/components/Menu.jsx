@@ -92,8 +92,6 @@ class Menu extends React.Component {
     closeOnClick: true,
     isOpen: true,
     keepOnScreen: false,
-    onChange: () => {},
-    onClose: () => {},
     popoverStyles: {},
     variant: "menu"
   };
@@ -107,8 +105,9 @@ class Menu extends React.Component {
 
   handleChange = (idx, event) => {
     const { onChange, closeOnClick, onClose } = this.props;
-    if (closeOnClick && event && event.type === "click") onClose(idx);
-    onChange(idx, event);
+    if (onClose && closeOnClick && event && event.type === "click")
+      onClose(idx);
+    if (onChange) onChange(idx, event);
   };
 
   render() {
