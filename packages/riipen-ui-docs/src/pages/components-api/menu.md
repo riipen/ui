@@ -30,8 +30,8 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">contentPosition</span> | <span class="prop-type">object</span> |  | The location to attach the anchor to on the content element |
 | <span class="prop-name">isOpen</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether or not the menu should be rendered |
 | <span class="prop-name">keepOnScreen</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Whether or not the popout should be forced to stay on screen |
-| <span class="prop-name">onChange</span> | <span class="prop-type">func</span> |  | The function callback for when the selection is changed |
-| <span class="prop-name">onClose</span> | <span class="prop-type">func</span> |  | The function callback to use when the menu closes |
+| <span class="prop-name">onChange</span> | <span class="prop-type">func</span> | <span class="prop-default">() => {}</span> | The function callback for when the selection is changed |
+| <span class="prop-name">onClose</span> | <span class="prop-type">func</span> | <span class="prop-default">() => {}</span> | The function callback to use when the menu closes |
 | <span class="prop-name">popoverStyles</span> | <span class="prop-type">object</span> | <span class="prop-default">{}</span> | The styles to be applied to the popover list |
 | <span class="prop-name">selectedIndex</span> | <span class="prop-type">number</span> |  | The index of the item selected in the list |
 | <span class="prop-name">variant</span> | <span class="prop-type">"menu"<br>&#124;&nbsp;"selection"</span> | <span class="prop-default">"menu"</span> | The type of menu to create Use 'menu' for lists of links |
