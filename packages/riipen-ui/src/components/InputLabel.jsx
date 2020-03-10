@@ -20,6 +20,11 @@ class InputLabel extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * Margin bottom styling to apply to the label.
+     */
+    marginBottom: PropTypes.number,
+
+    /**
      * If true, an asterisk will be appended to the end of the label.
      */
     required: PropTypes.bool
@@ -27,13 +32,14 @@ class InputLabel extends React.Component {
 
   static defaultProps = {
     classes: [],
+    marginBottom: 3,
     required: false
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, required, ...other } = this.props;
+    const { children, classes, marginBottom, required, ...other } = this.props;
 
     const theme = this.context;
 
@@ -42,15 +48,21 @@ class InputLabel extends React.Component {
     return (
       <React.Fragment>
         <label className={className} {...other}>
-          <Typography>
+          <Typography color="inherit" variant="inherit">
             {children}
             {required && " *"}
           </Typography>
         </label>
         <style jsx>{`
           label {
+            color: ${theme.palette.text.secondary};
             display: inline-block;
-            margin-bottom: ${theme.spacing(1)}px;
+            font-family: ${theme.typography.body1.fontFamily};
+            font-size: font-size: 16px;
+            font-weight: ${theme.typography.body1.fontWeight};
+            letter-spacing: ${theme.typography.body1.letterSpacing};
+            line-height: 1.4;
+            margin-bottom: ${theme.spacing(marginBottom)}px;
           }
         `}</style>
       </React.Fragment>
