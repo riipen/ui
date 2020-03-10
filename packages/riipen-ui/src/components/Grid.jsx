@@ -75,7 +75,7 @@ class Grid extends React.Component {
      * The function to callback to when the grid changes sizes
      * The callback includes the current size of the grid.
      */
-    sizeChange: PropTypes.func
+    onResize: PropTypes.func
   };
 
   static defaultProps = {
@@ -85,7 +85,7 @@ class Grid extends React.Component {
     spacing: 3,
     flexDirection: "row",
     flexWrap: "wrap",
-    sizeChange: () => {}
+    onResize: () => {}
   };
 
   constructor(props) {
@@ -112,10 +112,18 @@ class Grid extends React.Component {
     this.onResize();
   };
 
+  componentWillUnmount = () => {
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    } else {
+      window.removeEventListener("resize", this.onResize);
+    }
+  };
+
   onResize = () => {
     const size = this.getComponentSize();
     this.setState({ size });
-    this.props.sizeChange(size);
+    this.props.onResize(size);
   };
 
   getComponentSize = () => {
