@@ -75,7 +75,11 @@ class RadioGroup extends React.Component {
       <React.Fragment>
         <fieldset>
           {label && (
-            <InputLabel htmlFor={other.name} required={required}>
+            <InputLabel
+              htmlFor={other.name}
+              required={required}
+              marginBottom={hint && 1}
+            >
               {label}
             </InputLabel>
           )}
