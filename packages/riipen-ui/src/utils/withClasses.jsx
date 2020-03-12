@@ -2,10 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const withClasses = WrappedComponent => {
+  const name = WrappedComponent.displayName || WrappedComponent.name;
+
   const handle = (props = {}) => {
     const { classes, ...other } = props;
     return (
-      <WrappedComponent classes={["riipen", ...(classes || [])]} {...other} />
+      <WrappedComponent
+        classes={["riipen", `riipen-${name.toLowerCase()}`, ...(classes || [])]}
+        {...other}
+      />
     );
   };
 
@@ -15,8 +20,6 @@ const withClasses = WrappedComponent => {
      */
     classes: PropTypes.array
   };
-
-  const name = WrappedComponent.displayName || WrappedComponent.name;
   handle.displayName = `withClasses(${name})`;
 
   return handle;

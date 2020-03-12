@@ -11,6 +11,17 @@ const SPACINGS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 class GridItem extends React.Component {
   static propTypes = {
     /**
+     * A whitelisted set of align items options for the grid item.
+     */
+    alignItems: PropTypes.oneOf([
+      "flex-start",
+      "center",
+      "flex-end",
+      "stretch",
+      "baseline"
+    ]),
+
+    /**
      * The content of the grid item.
      */
     children: PropTypes.any,
@@ -21,68 +32,169 @@ class GridItem extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * The styling to pass into the flex-direction of the grid.
+     */
+    flexDirection: PropTypes.oneOf([
+      "column",
+      "column-reverse",
+      "initial",
+      "inherit",
+      "row",
+      "row-reverse"
+    ]),
+
+    /**
      * Defines if the grid item should grow to fill extra space in the row
      */
     flexGrow: PropTypes.number,
 
     /**
-     * The columns use at the large resolution. Can also be 'hidden'.
+     * Defines if the grid item should shrink to allow more space in the row
      */
-    lg: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    flexShrink: PropTypes.number,
 
     /**
-     * The columns use at the medium resolution. Can also be 'hidden'.
+     * The styling to pass into the flex-wrap of the grid item.
      */
-    md: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    flexWrap: PropTypes.oneOf([
+      "inherit",
+      "initial",
+      "nowrap",
+      "unset",
+      "wrap",
+      "wrap-reverse"
+    ]),
 
     /**
-     * The columns use at the small resolution. Can also be 'hidden'.
+     * A whitelisted set of justify content options for the grid item.
      */
-    sm: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    justifyContent: PropTypes.oneOf([
+      "center",
+      "flex-end",
+      "flex-start",
+      "space-around",
+      "space-between",
+      "space-evenly"
+    ]),
+
+    /**
+     * The columns use at the large resolution. Can also be 'hidden'. Can also be 'hidden' or 'auto'.
+     */
+    lg: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.oneOf(["auto", "hidden"])
+    ]),
+
+    /**
+     * The columns use at the medium resolution. Can also be 'hidden'. Can also be 'hidden' or 'auto'.
+     */
+    md: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.oneOf(["auto", "hidden"])
+    ]),
+
+    /**
+     * The columns use at the small resolution. Can also be 'hidden'. Can also be 'hidden' or 'auto'.
+     */
+    sm: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.oneOf(["auto", "hidden"])
+    ]),
 
     /**
      * Defines the space between this grid item and other items.
      */
-    spacing: PropTypes.oneOf(SPACINGS)
+    spacing: PropTypes.oneOf(SPACINGS),
+
+    /**
+     * The size of the component to render.
+     * Passed in by the Grid.
+     */
+    size: PropTypes.oneOf(["xs", "sm", "md", "lg"]),
+
+    /**
+     * The columns use at the extra small resolution. Can also be 'hidden' or 'auto'.
+     */
+    xs: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.oneOf(["auto", "hidden"])
+    ])
   };
 
   static defaultProps = {
+    alignItems: "stretch",
     classes: [],
     lg: 12,
     spacing: 3,
-    flexGrow: 0
+    flexGrow: 0,
+    flexShrink: 0,
+    flexDirection: "column",
+    flexWrap: "wrap",
+    justifyContent: "flex-start",
+    size: "lg"
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, lg, md, sm, spacing, flexGrow } = this.props;
+    const {
+      alignItems,
+      children,
+      classes,
+      spacing,
+      flexGrow,
+      flexShrink,
+      flexWrap,
+      flexDirection,
+      justifyContent,
+      size
+    } = this.props;
 
     const theme = this.context;
 
-    const className = clsx(classes);
+    const { lg, md, sm, xs } = this.props;
+    // determine size of component
+    const itemColumns =
+      (size === "md" && (md || lg)) ||
+      (size === "sm" && (sm || md || lg)) ||
+      (size === "xs" && (xs || sm || md || lg)) ||
+      lg;
+
+    // add class to component based on size it is rendering
+    const itemSize =
+      (itemColumns === lg && "lg") ||
+      (itemColumns === md && "md") ||
+      (itemColumns === sm && "sm") ||
+      (itemColumns === xs && "xs");
+
+    let hidden = false;
+    let flexBasis = 0;
+    if (itemColumns === "hidden") {
+      hidden = true;
+    } else if (itemColumns === "auto") {
+      flexBasis = itemColumns;
+    } else {
+      flexBasis = (itemColumns / COLUMNS) * 100;
+    }
+
+    const className = clsx(classes, itemSize);
 
     return (
       <React.Fragment>
         <div className={className}>{children}</div>
         <style jsx>{`
           div {
+            align-items: ${alignItems};
             box-sizing: border-box;
+            display: ${hidden ? "none" : "flex"};
+            flex-basis: ${flexBasis}%;
+            flex-direction: ${flexDirection};
+            flex-grow: ${flexGrow};
+            flex-shrink: ${flexShrink};
+            flex-wrap: ${flexWrap};
+            justify-content: ${justifyContent};
             margin-bottom: ${theme.spacing(spacing)}px;
             padding-left: ${theme.spacing(spacing)}px;
-            flex: ${flexGrow} 0 ${(+lg / COLUMNS) * 100 || 0}%;
-          }
-          @media (max-width: ${theme.breakpoints.md}px) {
-            div {
-              display: ${md === "hidden" ? "none" : "initial"};
-              flex: ${flexGrow} 0 ${((+md || +lg) / COLUMNS) * 100 || 0}%;
-            }
-          }
-          @media (max-width: ${theme.breakpoints.sm}px) {
-            div {
-              display: ${[sm, md].includes("hidden") ? "none" : "initial"};
-              flex: ${flexGrow} 0 ${((+sm || +md || +lg) / COLUMNS) * 100 || 0}%;
-            }
           }
         `}</style>
       </React.Fragment>

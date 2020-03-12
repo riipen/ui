@@ -31,6 +31,30 @@ class Grid extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * The styling to pass into the flex-direction of the grid.
+     */
+    flexDirection: PropTypes.oneOf([
+      "row",
+      "row-reverse",
+      "column",
+      "column-reverse",
+      "initial",
+      "inherit"
+    ]),
+
+    /**
+     * The styling to pass into the flex-wrap of the grid.
+     */
+    flexWrap: PropTypes.oneOf([
+      "nowrap",
+      "wrap",
+      "wrap-reverse",
+      "inherit",
+      "initial",
+      "unset"
+    ]),
+
+    /**
      * A whitelisted set of justify content options for the grid.
      */
     justifyContent: PropTypes.oneOf([
@@ -45,14 +69,71 @@ class Grid extends React.Component {
     /**
      * Defines the space between grid items in the grid.
      */
-    spacing: PropTypes.oneOf(SPACINGS)
+    spacing: PropTypes.oneOf(SPACINGS),
+
+    /**
+     * The function to callback to when the grid changes sizes
+     * The callback includes the current size of the grid.
+     */
+    onResize: PropTypes.func
   };
 
   static defaultProps = {
     alignItems: "flex-start",
     classes: [],
     justifyContent: "flex-start",
-    spacing: 3
+    spacing: 3,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    onResize: () => {}
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      size: "lg"
+    };
+    this.resizeRef = React.createRef();
+  }
+
+  componentDidMount = () => {
+    // If the user has support for the ResizeObserver use that, if not use the window resize event
+
+    if (typeof ResizeObserver !== "undefined") {
+      this.resizeObserver = new ResizeObserver(this.onResize);
+
+      if (this.resizeObserver && this.resizeRef.current) {
+        this.resizeObserver.observe(this.resizeRef.current);
+      }
+    } else {
+      window.addEventListener("resize", this.onResize);
+    }
+
+    this.onResize();
+  };
+
+  componentWillUnmount = () => {
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    } else {
+      window.removeEventListener("resize", this.onResize);
+    }
+  };
+
+  onResize = () => {
+    const size = this.getComponentSize();
+    this.setState({ size });
+    this.props.onResize(size);
+  };
+
+  getComponentSize = () => {
+    const width = this.resizeRef.current?.clientWidth || 1080;
+    return (
+      (width >= this.context.breakpoints.lg && "lg") ||
+      (width >= this.context.breakpoints.md && "md") ||
+      (width >= this.context.breakpoints.sm && "sm") ||
+      "xs"
+    );
   };
 
   static contextType = ThemeContext;
@@ -63,30 +144,37 @@ class Grid extends React.Component {
       children,
       classes,
       justifyContent,
-      spacing
+      spacing,
+      flexDirection,
+      flexWrap
     } = this.props;
+
+    const { size } = this.state;
 
     const theme = this.context;
 
-    const className = clsx(classes);
+    const className = clsx(classes, size);
 
     const childrenWithProps = React.Children.map(children, child => {
       if (!child) return null;
 
-      return React.cloneElement(child, { spacing });
+      return React.cloneElement(child, { spacing, size });
     });
 
     return (
       <React.Fragment>
-        <div className={className}>{childrenWithProps}</div>
+        <div ref={this.resizeRef} className={className}>
+          {childrenWithProps}
+        </div>
         <style jsx>{`
           div {
             align-items: ${alignItems};
             display: flex;
-            flex-flow: row wrap;
+            flex-direction: ${flexDirection};
+            flex-wrap: ${flexWrap};
             justify-content: ${justifyContent};
-            margin-left: -${theme.spacing(spacing)}px;
             margin-bottom: -${theme.spacing(spacing)}px;
+            margin-left: -${theme.spacing(spacing)}px;
             min-height: 0;
             position: relative;
           }
