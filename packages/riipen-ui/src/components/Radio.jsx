@@ -93,7 +93,7 @@ class Radio extends React.Component {
             cursor: pointer;
             display: block;
             margin-bottom: 12px;
-            padding-left: 23px;
+            padding-left: ${theme.spacing(5)}px;
             position: relative;
             user-select: none;
           }
