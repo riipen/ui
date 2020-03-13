@@ -93,8 +93,8 @@ class Grid extends React.Component {
     classes: [],
     justifyContent: "flex-start",
     spacing: 3,
-    flexGrow: 0,
-    flexShrink: 0,
+    flexGrow: 1,
+    flexShrink: 1,
     flexDirection: "row",
     flexWrap: "wrap",
     onResize: () => {}
