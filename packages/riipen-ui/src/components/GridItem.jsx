@@ -174,7 +174,7 @@ class GridItem extends React.Component {
     } else if (itemColumns === "auto") {
       flexBasis = itemColumns;
     } else {
-      flexBasis = (itemColumns / COLUMNS) * 100;
+      flexBasis = `${(itemColumns / COLUMNS) * 100}%`;
     }
 
     const className = clsx(classes, itemSize);
@@ -187,7 +187,7 @@ class GridItem extends React.Component {
             align-items: ${alignItems};
             box-sizing: border-box;
             display: ${hidden ? "none" : "flex"};
-            flex-basis: ${flexBasis}%;
+            flex-basis: ${flexBasis};
             flex-direction: ${flexDirection};
             flex-grow: ${flexGrow};
             flex-shrink: ${flexShrink};
