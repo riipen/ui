@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import css from "styled-jsx/css";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -40,6 +41,25 @@ class Radio extends React.Component {
     disabled: false
   };
 
+  getLinkedStyles = () => {
+    const theme = this.context;
+
+    return css.resolve`
+      input:checked ~ p,
+      input:disabled ~ p {
+        color: ${theme.palette.grey[400]};
+      }
+
+      input:checked ~ p.primary {
+        color: ${theme.palette.primary.main};
+      }
+
+      input:checked ~ p.secondary {
+        color: ${theme.palette.secondary.main};
+      }
+    `;
+  };
+
   static contextType = ThemeContext;
 
   render() {
@@ -47,26 +67,33 @@ class Radio extends React.Component {
 
     const theme = this.context;
 
+    const linkedStyles = this.getLinkedStyles();
+
     return (
       <div className={clsx(classes)}>
         <label htmlFor={other.id}>
-          <Typography>{label}</Typography>
           <input
+            className={linkedStyles.className}
             checked={checked}
             disabled={disabled}
             type="radio"
             {...other}
           />
+          <Typography classes={[linkedStyles.className, color]}>
+            {label}
+            {linkedStyles.styles}
+          </Typography>
           <span
             className={clsx("checkmark", disabled ? "disabled" : null, color)}
           />
         </label>
         <style jsx>{`
           label {
+            color: ${theme.palette.text.secondary};
             cursor: pointer;
             display: block;
             margin-bottom: 12px;
-            padding-left: 35px;
+            padding-left: ${theme.spacing(5)}px;
             position: relative;
             user-select: none;
           }
@@ -81,28 +108,26 @@ class Radio extends React.Component {
           /* Create a custom checkbox */
           .checkmark {
             box-sizing: content-box;
-            background-color: #eee;
+            background-color: ${theme.palette.common.white};
             border-radius: 50%;
             border: 1px solid rgba(0, 0, 0, 0.23);
-            height: 20px;
+            height: 11px;
             left: 0;
             position: absolute;
-            top: 0;
-            width: 20px;
+            top: 3px;
+            width: 11px;
           }
 
           /* When the checkbox is checked */
           label input:checked ~ .checkmark {
-            background-color: ${theme.palette.grey[400]};
             border-color: ${theme.palette.grey[400]};
           }
 
           label input:checked ~ .primary {
-            background-color: ${theme.palette.primary.main};
             border-color: ${theme.palette.primary.main};
           }
+
           label input:checked ~ .secondary {
-            background-color: ${theme.palette.secondary.main};
             border-color: ${theme.palette.secondary.main};
           }
 
@@ -120,17 +145,24 @@ class Radio extends React.Component {
 
           /* Style the checkmark/indicator */
           label .checkmark:after {
-            background: white;
+            background: ${theme.palette.grey[400]};
             border-radius: 50%;
-            height: 10px;
-            left: 5px;
-            top: 5px;
-            width: 10px;
+            height: 7px;
+            left: 2px;
+            top: 2px;
+            width: 7px;
+          }
+
+          label .primary.checkmark:after {
+            background: ${theme.palette.primary.main};
+          }
+
+          label .secondary.checkmark:after {
+            background: ${theme.palette.secondary.main};
           }
 
           .disabled {
-            background-color: ${theme.palette.grey[300]};
-            border-color: ${theme.palette.grey[300]};
+            border-color: ${theme.palette.grey[400]};
             pointer-events: none;
           }
         `}</style>
