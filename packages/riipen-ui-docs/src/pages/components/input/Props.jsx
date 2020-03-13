@@ -12,6 +12,8 @@ export default function Props() {
     <Form>
       <Input id="name" label="Name" hint="Your first and last names." />
       <div style={style} />
+      <Input id="name" hint="Your first and last names." />
+      <div style={style} />
       <Input id="name" label="Name" defaultValue="Jane Doe" required />
       <div style={style} />
       <Input id="name" label="Name" disabled />
