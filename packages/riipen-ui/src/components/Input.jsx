@@ -6,7 +6,6 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 import InputLabel from "./InputLabel";
-import InputHint from "./InputHint";
 import Typography from "./Typography";
 
 class Input extends React.Component {
@@ -92,14 +91,13 @@ class Input extends React.Component {
       <div className={className}>
         {label && (
           <InputLabel
+            hint={hint}
             htmlFor={other.id || other.name}
             required={required}
-            marginBottom={hint ? 1 : 3}
           >
             {label}
           </InputLabel>
         )}
-        {hint && <InputHint>{hint}</InputHint>}
         <Component
           className={componentClassName}
           disabled={disabled}

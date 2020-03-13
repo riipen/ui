@@ -5,6 +5,7 @@ import React from "react";
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
+import InputHint from "./InputHint";
 import Typography from "./Typography";
 
 class InputLabel extends React.Component {
@@ -20,9 +21,9 @@ class InputLabel extends React.Component {
     classes: PropTypes.array,
 
     /**
-     * Margin bottom styling to apply to the label.
+     * Hint text to display under the label.
      */
-    marginBottom: PropTypes.number,
+    hint: PropTypes.node,
 
     /**
      * If true, an asterisk will be appended to the end of the label.
@@ -32,18 +33,19 @@ class InputLabel extends React.Component {
 
   static defaultProps = {
     classes: [],
-    marginBottom: 3,
     required: false
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, marginBottom, required, ...other } = this.props;
+    const { children, classes, hint, required, ...other } = this.props;
 
     const theme = this.context;
 
     const className = clsx(classes);
+
+    const marginBottom = hint ? 1 : 3;
 
     return (
       <React.Fragment>
@@ -53,6 +55,7 @@ class InputLabel extends React.Component {
             {required && " *"}
           </Typography>
         </label>
+        {hint && <InputHint>{hint}</InputHint>}
         <style jsx>{`
           label {
             color: ${theme.palette.text.secondary};

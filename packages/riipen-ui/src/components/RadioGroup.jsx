@@ -4,7 +4,6 @@ import React from "react";
 import withClasses from "../utils/withClasses";
 
 import InputLabel from "./InputLabel";
-import InputHint from "./InputHint";
 import Typography from "./Typography";
 
 class RadioGroup extends React.Component {
@@ -75,11 +74,10 @@ class RadioGroup extends React.Component {
       <React.Fragment>
         <fieldset>
           {label && (
-            <InputLabel htmlFor={other.name} required={required}>
+            <InputLabel hint={hint} htmlFor={other.name} required={required}>
               {label}
             </InputLabel>
           )}
-          {hint && <InputHint>{hint}</InputHint>}
           {childrenWithProps}
           {error && (
             <Typography color="negative" variant="body2">
