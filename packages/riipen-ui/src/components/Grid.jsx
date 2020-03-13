@@ -43,6 +43,16 @@ class Grid extends React.Component {
     ]),
 
     /**
+     * Defines if the grid should grow to fill the space available
+     */
+    flexGrow: PropTypes.number,
+
+    /**
+     * Defines if the grid should shrink to allow more space available
+     */
+    flexShrink: PropTypes.number,
+
+    /**
      * The styling to pass into the flex-wrap of the grid.
      */
     flexWrap: PropTypes.oneOf([
@@ -83,6 +93,8 @@ class Grid extends React.Component {
     classes: [],
     justifyContent: "flex-start",
     spacing: 3,
+    flexGrow: 0,
+    flexShrink: 0,
     flexDirection: "row",
     flexWrap: "wrap",
     onResize: () => {}
@@ -146,6 +158,8 @@ class Grid extends React.Component {
       justifyContent,
       spacing,
       flexDirection,
+      flexGrow,
+      flexShrink,
       flexWrap
     } = this.props;
 
@@ -171,6 +185,8 @@ class Grid extends React.Component {
             align-items: ${alignItems};
             display: flex;
             flex-direction: ${flexDirection};
+            flex-grow: ${flexGrow};
+            flex-shrink: ${flexShrink};
             flex-wrap: ${flexWrap};
             justify-content: ${justifyContent};
             margin-bottom: -${theme.spacing(spacing)}px;
