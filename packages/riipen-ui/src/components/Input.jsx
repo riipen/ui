@@ -89,7 +89,7 @@ class Input extends React.Component {
 
     return (
       <div className={className}>
-        {label && (
+        {(label || hint) && (
           <InputLabel
             hint={hint}
             htmlFor={other.id || other.name}

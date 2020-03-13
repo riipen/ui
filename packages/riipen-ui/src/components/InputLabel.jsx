@@ -49,12 +49,14 @@ class InputLabel extends React.Component {
 
     return (
       <React.Fragment>
-        <label className={className} {...other}>
-          <Typography color="inherit" variant="inherit">
-            {children}
-            {required && " *"}
-          </Typography>
-        </label>
+        {children && (
+          <label className={className} {...other}>
+            <Typography color="inherit" variant="inherit">
+              {children}
+              {required && " *"}
+            </Typography>
+          </label>
+        )}
         {hint && <InputHint>{hint}</InputHint>}
         <style jsx>{`
           label {
