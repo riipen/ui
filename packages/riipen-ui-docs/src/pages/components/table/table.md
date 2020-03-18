@@ -19,3 +19,9 @@ A table rendered using the components of the library
 A table view that changes for better viewing on mobile
 
 {{"demo": "pages/components/table/Mobile.js"}}
+
+## Expandable content
+
+Expandable content within tables
+
+{{"demo": "pages/components/table/Expandable.js"}}

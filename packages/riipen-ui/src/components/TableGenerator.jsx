@@ -63,6 +63,16 @@ class TableGenerator extends React.Component {
     emptyNode: PropTypes.node,
 
     /**
+     * Node to render for an expanded row.
+     */
+    expandedNode: PropTypes.func,
+
+    /**
+     * Function to determine if row should be expanded or not
+     */
+    expandRow: PropTypes.func,
+
+    /**
      * Size to change table render from desktop to mobile.
      */
     mobileBreakpoint: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"])
@@ -163,7 +173,14 @@ class TableGenerator extends React.Component {
   }
 
   renderDefault() {
-    const { hover, data, columns, loading } = this.props;
+    const {
+      hover,
+      data,
+      columns,
+      loading,
+      expandedNode,
+      expandRow
+    } = this.props;
     const { isMobile } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
@@ -176,23 +193,34 @@ class TableGenerator extends React.Component {
       return this.renderEmpty();
     }
 
+    const isExpandable = expandRow && expandedNode;
+
     return (
       <React.Fragment>
         {this.renderTableHeader()}
         <TableBody>
           {data.map((row, i) => {
             return (
-              <TableRow hover={hover} key={`default-row-${i}`}>
-                {columns.map((col, j) => (
-                  <TableCell
-                    classes={[linkedStyles.className]}
-                    key={`default-cell-${i}-${j}`}
-                    align={this.getCellAlignment(col)}
-                  >
-                    {col?.cell(row, isMobile)}
-                  </TableCell>
-                ))}
-              </TableRow>
+              <React.Fragment key={`default-row-${i}`}>
+                <TableRow onClick={row.onClick} hover={hover}>
+                  {columns.map((col, j) => (
+                    <TableCell
+                      classes={[linkedStyles.className]}
+                      key={`default-cell-${i}-${j}`}
+                      align={this.getCellAlignment(col)}
+                    >
+                      {col?.cell(row, isMobile)}
+                    </TableCell>
+                  ))}
+                </TableRow>
+                {isExpandable && expandRow(row) && (
+                  <TableRow>
+                    <TableCell colSpan={columns.length}>
+                      {expandedNode(row)}
+                    </TableCell>
+                  </TableRow>
+                )}
+              </React.Fragment>
             );
           })}
         </TableBody>
@@ -233,7 +261,14 @@ class TableGenerator extends React.Component {
   }
 
   renderMobile() {
-    const { hover, columns, data, loading } = this.props;
+    const {
+      hover,
+      columns,
+      data,
+      loading,
+      expandedNode,
+      expandRow
+    } = this.props;
     const { isMobile } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
@@ -252,61 +287,70 @@ class TableGenerator extends React.Component {
     const mobileFooter = columns.find(x => x.mobileFooter);
     const bodyColumns = columns.filter(x => !x.mobileFooter && !x.mobileHeader);
 
+    const isExpandable = expandRow && expandedNode;
+
     return (
       <TableBody>
         {data.map((row, i) => {
           return (
-            <TableRow
-              hover={hover}
-              border={i !== rowCount - 1}
-              key={`entity-${i}`}
-            >
-              <TableCell classes={[linkedStyles.className, "noPadding"]}>
-                {mobileHeader && (
-                  <Table backgroundColor="transparent">
+            <React.Fragment key={`entity-${i}`}>
+              <TableRow
+                hover={hover}
+                onClick={row.onClick}
+                border={i !== rowCount - 1}
+              >
+                <TableCell classes={[linkedStyles.className, "noPadding"]}>
+                  {mobileHeader && (
+                    <Table backgroundColor="transparent">
+                      <TableBody>
+                        <TableRow>
+                          <TableCell classes={[linkedStyles.className]}>
+                            {mobileHeader?.cell(row, isMobile)}
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  )}
+                  <Table
+                    classes={[clsx(linkedStyles.className, "centeredTable")]}
+                    layout="fixed"
+                    backgroundColor="transparent"
+                  >
                     <TableBody>
-                      <TableRow>
-                        <TableCell classes={[linkedStyles.className]}>
-                          {mobileHeader?.cell(row, isMobile)}
-                        </TableCell>
-                      </TableRow>
+                      {bodyColumns.map((bodyColumn, j) => (
+                        <TableRow border={false} key={`${i}-${j}`}>
+                          <TableHeaderCell
+                            align="left"
+                            classes={[linkedStyles.className]}
+                          >
+                            {bodyColumn?.header(isMobile)}
+                          </TableHeaderCell>
+                          <TableCell classes={[linkedStyles.className]}>
+                            {bodyColumn?.cell(row, isMobile)}
+                          </TableCell>
+                        </TableRow>
+                      ))}
                     </TableBody>
                   </Table>
-                )}
-                <Table
-                  classes={[clsx(linkedStyles.className, "centeredTable")]}
-                  layout="fixed"
-                  backgroundColor="transparent"
-                >
-                  <TableBody>
-                    {bodyColumns.map((bodyColumn, j) => (
-                      <TableRow border={false} key={`${i}-${j}`}>
-                        <TableHeaderCell
-                          align="left"
-                          classes={[linkedStyles.className]}
-                        >
-                          {bodyColumn?.header(isMobile)}
-                        </TableHeaderCell>
-                        <TableCell classes={[linkedStyles.className]}>
-                          {bodyColumn?.cell(row, isMobile)}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-                {mobileFooter && (
-                  <Table backgroundColor="transparent">
-                    <TableBody>
-                      <TableRow border={false}>
-                        <TableCell classes={[linkedStyles.className]}>
-                          {mobileFooter?.cell(row, isMobile)}
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                )}
-              </TableCell>
-            </TableRow>
+                  {mobileFooter && (
+                    <Table backgroundColor="transparent">
+                      <TableBody>
+                        <TableRow border={false}>
+                          <TableCell classes={[linkedStyles.className]}>
+                            {mobileFooter?.cell(row, isMobile)}
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  )}
+                </TableCell>
+              </TableRow>
+              {isExpandable && expandRow(row) && (
+                <TableRow>
+                  <TableCell>{expandedNode(row)}</TableCell>
+                </TableRow>
+              )}
+            </React.Fragment>
           );
         })}
       </TableBody>
