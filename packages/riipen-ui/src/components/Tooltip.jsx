@@ -12,7 +12,7 @@ import Popover from "./Popover";
 class Tooltip extends React.Component {
   static propTypes = {
     /**
-     * The tooltip content.
+     * The content to trigger the tooltip with.
      */
     children: PropTypes.node,
 
@@ -376,8 +376,6 @@ class Tooltip extends React.Component {
 
     const linkedStyles = this.getLinkedStyles();
 
-    const position = `${contentPosition.vertical}-${contentPosition.horizontal}`;
-
     return (
       open && (
         <Popover
@@ -387,7 +385,7 @@ class Tooltip extends React.Component {
             "popover",
             color,
             contentPosition.vertical,
-            position
+            `${contentPosition.vertical}-${contentPosition.horizontal}`
           ])}
           contentPosition={contentPosition}
           anchorEl={this.tooltipRootRef.current}
