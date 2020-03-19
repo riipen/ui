@@ -5,143 +5,42 @@ import RadioGroup from "@riipen-ui/components/RadioGroup";
 import Form from "@riipen-ui/components/Form";
 import Tooltip from "@riipen-ui/components/Tooltip";
 
+const POSITIONS = [
+  "top-right",
+  "top-center",
+  "top-left",
+  "center-right",
+  "center-left",
+  "bottom-right",
+  "bottom-center",
+  "bottom-left"
+];
 export default function Component() {
-  const [anchorPosition, setAnchorPosition] = React.useState({
-    vertical: "top",
-    horizontal: "left"
-  });
-  const [contentPosition, setContentPosition] = React.useState({
-    vertical: "top",
-    horizontal: "left"
-  });
+  const [position, setPosition] = React.useState("top-center");
 
-  const handleAnchorVertical = (e, value) => {
-    setAnchorPosition({
-      vertical: value,
-      horizontal: anchorPosition.horizontal
-    });
+  const handlePosition = (e, value) => {
+    setPosition(value);
   };
-  const handleAnchorHorizontal = (e, value) => {
-    setAnchorPosition({
-      vertical: anchorPosition.vertical,
-      horizontal: value
-    });
-  };
-  const handleContentVertical = (e, value) => {
-    setContentPosition({
-      vertical: value,
-      horizontal: contentPosition.horizontal
-    });
-  };
-  const handleContentHorizontal = (e, value) => {
-    setContentPosition({
-      vertical: contentPosition.vertical,
-      horizontal: value
-    });
-  };
-
   return (
     <React.Fragment>
       <div className="container">
         <div className="half">
           <Form>
-            <RadioGroup label="Anchor Vertical" onChange={handleAnchorVertical}>
-              <Radio
-                label="Top"
-                value="top"
-                color="primary"
-                checked={anchorPosition.vertical === "top"}
-              />
-              <Radio
-                label="Center"
-                value="center"
-                color="primary"
-                checked={anchorPosition.vertical === "center"}
-              />
-              <Radio
-                label="Bottom"
-                value="bottom"
-                color="primary"
-                checked={anchorPosition.vertical === "bottom"}
-              />
-            </RadioGroup>
-            <RadioGroup
-              label="Anchor Horizontal"
-              onChange={handleAnchorHorizontal}
-            >
-              <Radio
-                label="Left"
-                value="left"
-                color="primary"
-                checked={anchorPosition.horizontal === "left"}
-              />
-              <Radio
-                label="Center"
-                value="center"
-                color="primary"
-                checked={anchorPosition.horizontal === "center"}
-              />
-              <Radio
-                label="Right"
-                value="right"
-                color="primary"
-                checked={anchorPosition.horizontal === "right"}
-              />
-            </RadioGroup>
-            <RadioGroup
-              label="Content Vertical"
-              onChange={handleContentVertical}
-            >
-              <Radio
-                label="Top"
-                value="top"
-                color="primary"
-                checked={contentPosition.vertical === "top"}
-              />
-              <Radio
-                label="Center"
-                value="center"
-                color="primary"
-                checked={contentPosition.vertical === "center"}
-              />
-              <Radio
-                label="Bottom"
-                value="bottom"
-                color="primary"
-                checked={contentPosition.vertical === "bottom"}
-              />
-            </RadioGroup>
-            <RadioGroup
-              label="Content Horizontal"
-              onChange={handleContentHorizontal}
-            >
-              <Radio
-                label="Left"
-                value="left"
-                color="primary"
-                checked={contentPosition.horizontal === "left"}
-              />
-              <Radio
-                label="Center"
-                value="center"
-                color="primary"
-                checked={contentPosition.horizontal === "center"}
-              />
-              <Radio
-                label="Right"
-                value="right"
-                color="primary"
-                checked={contentPosition.horizontal === "right"}
-              />
+            <RadioGroup label="Anchor Vertical" onChange={handlePosition}>
+              {POSITIONS.map(pos => (
+                <Radio
+                  key={pos}
+                  label={pos}
+                  value={pos}
+                  color="primary"
+                  checked={position === pos}
+                />
+              ))}
             </RadioGroup>
           </Form>
         </div>
         <div className="half elementContainer">
-          <Tooltip
-            anchorPosition={anchorPosition}
-            contentPosition={contentPosition}
-            tooltip={<div>Hi!</div>}
-          >
+          <Tooltip position={position} tooltip={<div>Hi!</div>}>
             <div className={"element"}>Anchor Element</div>
           </Tooltip>
         </div>

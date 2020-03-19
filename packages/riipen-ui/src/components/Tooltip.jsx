@@ -44,12 +44,6 @@ class Tooltip extends React.Component {
     component: PropTypes.elementType,
 
     /**
-     * The location to attach the anchor to on the content element.
-     * Also used to determine the tooltip arrow placement/direction.
-     */
-    contentPosition: PropTypes.object,
-
-    /**
      * Whether tooltip should display on hover.
      */
     hover: PropTypes.bool,
@@ -65,6 +59,20 @@ class Tooltip extends React.Component {
     onOpen: PropTypes.func,
 
     /**
+     * Where to display the tooltip in relation to element.
+     */
+    position: PropTypes.oneOf([
+      "top-right",
+      "top-center",
+      "top-left",
+      "center-right",
+      "center-left",
+      "bottom-right",
+      "bottom-center",
+      "bottom-left"
+    ]),
+
+    /**
      * The tooltip content to display.
      */
     tooltip: PropTypes.node
@@ -75,8 +83,8 @@ class Tooltip extends React.Component {
     click: false,
     color: "default",
     component: "div",
-    contentPosition: { vertical: "bottom", horizontal: "left" },
-    hover: true
+    hover: true,
+    position: "top-center"
   };
 
   constructor() {
@@ -168,7 +176,7 @@ class Tooltip extends React.Component {
       }
 
       .popover.top {
-        margin-top: ${theme.spacing(2)}px;
+        margin-top: ${theme.spacing(3)}px;
       }
 
       .popover.top::before {
@@ -271,7 +279,7 @@ class Tooltip extends React.Component {
       }
 
       .popover.bottom {
-        margin-top: ${theme.spacing(-2)}px;
+        margin-top: ${theme.spacing(-3)}px;
       }
 
       .popover.bottom::before {
@@ -333,6 +341,22 @@ class Tooltip extends React.Component {
     `;
   };
 
+  /**
+   * Gets the opposing direction of direction1 and direction2.
+   * @param {string} direction1 - first direction
+   * @param {string} direction2 - opposing direction of direction1
+   * @param {string} value - value to compare
+   * @returns {string} Opposing direciton, or just value if directions do not oppose.
+   */
+  getOppositeDirection = (direction1, direction2, value) => {
+    if (value === direction1) {
+      return direction2;
+    } else if (value === direction2) {
+      return direction1;
+    }
+    return value;
+  };
+
   blur = () => {
     // Unfocus if it is still active
     const activeElement = document.activeElement;
@@ -371,10 +395,19 @@ class Tooltip extends React.Component {
   };
 
   renderPopover = () => {
-    const { contentPosition, classes, color, tooltip, ...other } = this.props;
+    const { classes, color, position, tooltip, ...other } = this.props;
     const { open } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
+
+    const [vertical, horizontal] = position.split("-");
+
+    const anchorVertical = this.getOppositeDirection("top", "bottom", vertical);
+    const anchorHorizontal = this.getOppositeDirection(
+      "left",
+      "right",
+      horizontal
+    );
 
     return (
       open && (
@@ -384,10 +417,14 @@ class Tooltip extends React.Component {
             linkedStyles.className,
             "popover",
             color,
-            contentPosition.vertical,
-            `${contentPosition.vertical}-${contentPosition.horizontal}`
+            position,
+            vertical
           ])}
-          contentPosition={contentPosition}
+          anchorPosition={{
+            horizontal: anchorHorizontal,
+            vertical: anchorVertical
+          }}
+          contentPosition={{ horizontal, vertical }}
           anchorEl={this.tooltipRootRef.current}
           open={open}
           keepOnScreen={false}
