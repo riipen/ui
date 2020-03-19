@@ -45,6 +45,7 @@ class Tooltip extends React.Component {
 
     /**
      * The location to attach the anchor to on the content element.
+     * Also used to determine the tooltip arrow placement/direction.
      */
     contentPosition: PropTypes.object,
 
