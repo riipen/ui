@@ -2,7 +2,7 @@
 
 <p class="description">The Tooltip will create a place for information to appear over top existing data</p>
 
-The Tooltip wraps the Popover component. You can pass Popover props into it.
+The Tooltip wraps the Popover component. You can pass Popover props into it. It uses the contentPosition prop to determine the arrow style.
 
 The Tooltip has a variety of colours to choose from.
 
