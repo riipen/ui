@@ -1,6 +1,5 @@
 import React from "react";
 
-import Checkbox from "@riipen-ui/components/Checkbox";
 import Radio from "@riipen-ui/components/Radio";
 import RadioGroup from "@riipen-ui/components/RadioGroup";
 import Form from "@riipen-ui/components/Form";
@@ -15,9 +14,6 @@ export default function Component() {
     vertical: "top",
     horizontal: "left"
   });
-  const [click, setClick] = React.useState(false);
-  const [color, setColor] = React.useState("default");
-  const [hover, setHover] = React.useState(true);
 
   const handleAnchorVertical = (e, value) => {
     setAnchorPosition({
@@ -42,15 +38,6 @@ export default function Component() {
       vertical: contentPosition.vertical,
       horizontal: value
     });
-  };
-  const handleColor = (e, value) => {
-    setColor(value);
-  };
-  const handleHover = e => {
-    setHover(e.target.checked);
-  };
-  const handleClick = e => {
-    setClick(e.target.checked);
   };
 
   return (
@@ -147,60 +134,12 @@ export default function Component() {
                 checked={contentPosition.horizontal === "right"}
               />
             </RadioGroup>
-            <RadioGroup label="Color" onChange={handleColor}>
-              <Radio
-                label={"Default"}
-                value={"default"}
-                color="primary"
-                checked={color === "default"}
-              />
-              <Radio
-                label={"White"}
-                value={"white"}
-                color="primary"
-                checked={color === "white"}
-              />
-              <Radio
-                label={"Positive"}
-                value={"positive"}
-                color="primary"
-                checked={color === "positive"}
-              />
-              <Radio
-                label={"Negative"}
-                value={"negative"}
-                color="primary"
-                checked={color === "negative"}
-              />
-              <Radio
-                label={"Warning"}
-                value={"warning"}
-                color="primary"
-                checked={color === "warning"}
-              />
-            </RadioGroup>
-            <div className="checkbox">
-              <Checkbox
-                checked={hover}
-                label="Show Tooltip On Hover"
-                onChange={handleHover}
-              />
-              <div className="spacer" />
-              <Checkbox
-                checked={click}
-                label="Show Tooltip On Click"
-                onChange={handleClick}
-              />
-            </div>
           </Form>
         </div>
         <div className="half elementContainer">
           <Tooltip
             anchorPosition={anchorPosition}
             contentPosition={contentPosition}
-            click={click}
-            color={color}
-            hover={hover}
             tooltip={<div>Hi!</div>}
           >
             <div className={"element"}>Anchor Element</div>
@@ -233,10 +172,6 @@ export default function Component() {
         .elementContainer {
           align-items: center;
           justify-content: center;
-        }
-
-        .spacer {
-          margin-bottom: 10px;
         }
       `}</style>
     </React.Fragment>
