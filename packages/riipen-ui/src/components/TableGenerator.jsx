@@ -88,7 +88,8 @@ class TableGenerator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMobile: false
+      isMobile: false,
+      hoverIdx: null
     };
 
     this.updateWindowDimensions = debounce(this.updateWindowDimensions);
@@ -140,6 +141,9 @@ class TableGenerator extends React.Component {
 
   static contextType = ThemeContext;
 
+  handleRowMouseOver = idx => () => this.setState({ hoverIdx: idx });
+  handleRowMouseOut = () => this.setState({ hoverIdx: null });
+
   updateWindowDimensions = () => {
     const theme = this.context;
     const windowWidth = window.innerWidth;
@@ -181,7 +185,7 @@ class TableGenerator extends React.Component {
       expandedNode,
       expandRow
     } = this.props;
-    const { isMobile } = this.state;
+    const { isMobile, hoverIdx } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
 
@@ -194,15 +198,25 @@ class TableGenerator extends React.Component {
     }
 
     const isExpandable = expandRow && expandedNode;
+    const rowCount = data.length;
 
     return (
       <React.Fragment>
         {this.renderTableHeader()}
         <TableBody>
           {data.map((row, i) => {
+            const isExpanded = isExpandable && expandRow(row);
+            const isHovering = hover && hoverIdx === i;
+            const isNotLastRow = i !== rowCount - 1;
+
             return (
               <React.Fragment key={`default-row-${i}`}>
-                <TableRow onClick={row.onClick} hover={hover}>
+                <TableRow
+                  border={isNotLastRow || isExpanded}
+                  forceHover={isHovering}
+                  onMouseOver={this.handleRowMouseOver(i)}
+                  onMouseOut={this.handleRowMouseOut}
+                >
                   {columns.map((col, j) => (
                     <TableCell
                       classes={[linkedStyles.className]}
@@ -213,8 +227,13 @@ class TableGenerator extends React.Component {
                     </TableCell>
                   ))}
                 </TableRow>
-                {isExpandable && expandRow(row) && (
-                  <TableRow>
+                {isExpanded && (
+                  <TableRow
+                    border={isNotLastRow}
+                    forceHover={isHovering}
+                    onMouseOver={this.handleRowMouseOver(i)}
+                    onMouseOut={this.handleRowMouseOut}
+                  >
                     <TableCell colSpan={columns.length}>
                       {expandedNode(row)}
                     </TableCell>
@@ -269,7 +288,7 @@ class TableGenerator extends React.Component {
       expandedNode,
       expandRow
     } = this.props;
-    const { isMobile } = this.state;
+    const { isMobile, hoverIdx } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
 
@@ -292,12 +311,17 @@ class TableGenerator extends React.Component {
     return (
       <TableBody>
         {data.map((row, i) => {
+          const isExpanded = isExpandable && expandRow(row);
+          const isHovering = hover && hoverIdx === i;
+          const isNotLastRow = i !== rowCount - 1;
+
           return (
             <React.Fragment key={`entity-${i}`}>
               <TableRow
-                hover={hover}
-                onClick={row.onClick}
-                border={i !== rowCount - 1}
+                border={isNotLastRow}
+                forceHover={isHovering}
+                onMouseOver={this.handleRowMouseOver(i)}
+                onMouseOut={this.handleRowMouseOut}
               >
                 <TableCell classes={[linkedStyles.className, "noPadding"]}>
                   {mobileHeader && (
@@ -345,8 +369,13 @@ class TableGenerator extends React.Component {
                   )}
                 </TableCell>
               </TableRow>
-              {isExpandable && expandRow(row) && (
-                <TableRow>
+              {isExpanded && (
+                <TableRow
+                  border={isNotLastRow}
+                  forceHover={isHovering}
+                  onMouseOver={this.handleRowMouseOver(i)}
+                  onMouseOut={this.handleRowMouseOut}
+                >
                   <TableCell>{expandedNode(row)}</TableCell>
                 </TableRow>
               )}
