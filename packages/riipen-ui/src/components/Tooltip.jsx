@@ -33,6 +33,11 @@ class Tooltip extends React.Component {
     ]),
 
     /**
+     * Whether tooltip should display on click.
+     */
+    click: PropTypes.bool,
+
+    /**
      * The component used for the root node.
      * Either a string to use a DOM element or a component.
      */
@@ -66,6 +71,7 @@ class Tooltip extends React.Component {
 
   static defaultProps = {
     classes: [],
+    click: false,
     color: "default",
     component: "div",
     contentPosition: { vertical: "bottom", horizontal: "left" },
@@ -397,7 +403,7 @@ class Tooltip extends React.Component {
     );
   };
   render() {
-    const { children, hover, component: Component } = this.props;
+    const { children, click, hover, component: Component } = this.props;
 
     const linkedStyles = this.getLinkedStyles();
 
@@ -406,7 +412,7 @@ class Tooltip extends React.Component {
         <Component
           className={clsx(linkedStyles.className, "wrapper")}
           ref={this.tooltipRootRef}
-          onClick={!hover ? this.buttonCallback : undefined}
+          onClick={click ? this.buttonCallback : undefined}
           onMouseOver={hover ? this.handleOpen : undefined}
           onMouseOut={hover ? this.handleClose : undefined}
         >

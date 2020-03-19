@@ -1,5 +1,6 @@
 import React from "react";
 
+import Checkbox from "@riipen-ui/components/Checkbox";
 import Radio from "@riipen-ui/components/Radio";
 import RadioGroup from "@riipen-ui/components/RadioGroup";
 import Form from "@riipen-ui/components/Form";
@@ -14,8 +15,9 @@ export default function Component() {
     vertical: "top",
     horizontal: "left"
   });
+  const [click, setClick] = React.useState(false);
   const [color, setColor] = React.useState("default");
-  const [hover, setHover] = React.useState("hover");
+  const [hover, setHover] = React.useState(true);
 
   const handleAnchorVertical = (e, value) => {
     setAnchorPosition({
@@ -44,8 +46,11 @@ export default function Component() {
   const handleColor = (e, value) => {
     setColor(value);
   };
-  const handleHover = (e, value) => {
-    setHover(value);
+  const handleHover = e => {
+    setHover(e.target.checked);
+  };
+  const handleClick = e => {
+    setClick(e.target.checked);
   };
 
   return (
@@ -174,28 +179,28 @@ export default function Component() {
                 checked={color === "warning"}
               />
             </RadioGroup>
-            <RadioGroup label="Show Tooltip On" onChange={handleHover}>
-              <Radio
-                label={"Hover"}
-                value="hover"
-                color="primary"
-                checked={hover === "hover"}
+            <div className="checkbox">
+              <Checkbox
+                checked={hover}
+                label="Show Tooltip On Hover"
+                onChange={handleHover}
               />
-              <Radio
-                label={"Click"}
-                value={"click"}
-                color="primary"
-                checked={hover === "click"}
+              <div className="spacer" />
+              <Checkbox
+                checked={click}
+                label="Show Tooltip On Click"
+                onChange={handleClick}
               />
-            </RadioGroup>
+            </div>
           </Form>
         </div>
         <div className="half elementContainer">
           <Tooltip
             anchorPosition={anchorPosition}
             contentPosition={contentPosition}
+            click={click}
             color={color}
-            hover={hover === "hover"}
+            hover={hover}
             tooltip={<div>Hi!</div>}
           >
             <div className={"element"}>Anchor Element</div>
@@ -203,6 +208,10 @@ export default function Component() {
         </div>
       </div>
       <style jsx>{`
+        .checkbox {
+          padding: 10px;
+        }
+
         .container {
           display: flex;
         }
@@ -224,6 +233,10 @@ export default function Component() {
         .elementContainer {
           align-items: center;
           justify-content: center;
+        }
+
+        .spacer {
+          margin-bottom: 10px;
         }
       `}</style>
     </React.Fragment>
