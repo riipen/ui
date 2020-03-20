@@ -340,13 +340,20 @@ class Popover extends React.Component {
             box-shadow: ${theme.shadows[4]};
             box-sizing: border-box;
             max-height: calc(100% - 32px);
-            max-width: ${anchorPosition?.horizontal === "full-width"
-              ? "100%"
-              : "calc(100% - 32px)"};
+            max-width: ${
+              anchorPosition?.horizontal === "full-width"
+                ? "100%"
+                : "calc(100% - 32px)"
+            };
             min-height: 16px;
             min-width: 16px;
             outline: 0;
             position: absolute;
+            ${
+              anchorPosition?.horizontal === "full-width"
+                ? "width: 100%;"
+                : null
+            }
             z-index: ${theme.zIndex.middle};
           }
 
