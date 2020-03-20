@@ -228,6 +228,11 @@ class Popover extends React.Component {
       }
     }
 
+    // Handle full-width menu
+    if (anchorPosition.horizontal === "full-width") {
+      left = 0;
+    }
+
     this.setState(
       Object.assign(this.state, {
         contentStyles: {
@@ -310,7 +315,8 @@ class Popover extends React.Component {
       children,
       component,
       styles,
-      isOpen
+      isOpen,
+      anchorPosition
     } = this.props;
     const theme = this.context;
     const className = clsx(classes, "popover", { open: isOpen });
@@ -334,7 +340,9 @@ class Popover extends React.Component {
             box-shadow: ${theme.shadows[4]};
             box-sizing: border-box;
             max-height: calc(100% - 32px);
-            max-width: calc(100% - 32px);
+            max-width: ${anchorPosition?.horizontal === "full-width"
+              ? "100%"
+              : "calc(100% - 32px)"};
             min-height: 16px;
             min-width: 16px;
             outline: 0;
