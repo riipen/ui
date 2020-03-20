@@ -15,9 +15,13 @@ export default function Mobile() {
   };
 
   React.useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setLoading(false);
     }, 3000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   });
 
   const entities = [
