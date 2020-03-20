@@ -21,7 +21,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">autoFocus</span> | <span class="prop-type">bool</span> |  | Wether to select the first element on list open |
-| <span class="prop-name">children</span> | <span class="prop-type">array</span> |  | The content of the component. |
+| <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | The content of the component. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> |  | Array of additional CSS classes to use. |
 | <span class="prop-name">color</span> | <span class="prop-type">"primary"<br>&#124;&nbsp;"secondary"</span> |  | The color of the component. It supports those theme colors that make sense for this component. |
 | <span class="prop-name">selectChange</span> | <span class="prop-type">func</span> |  | The function callback when an item is selected |

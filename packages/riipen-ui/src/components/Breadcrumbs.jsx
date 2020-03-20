@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -39,15 +40,15 @@ class Breadcrumbs extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { children, component, separator, ...other } = this.props;
+    const { children, classes, component, separator, ...other } = this.props;
 
     const theme = this.context;
 
     return (
       <React.Fragment>
         <Typography component={component} {...other}>
-          <ol>
-            {children.map((child, index) => {
+          <ol className={clsx(classes)}>
+            {React.Children.map(children, (child, index) => {
               if (index < children.length - 1) {
                 return [
                   <li key={`child-${index}`}>{child}</li>,

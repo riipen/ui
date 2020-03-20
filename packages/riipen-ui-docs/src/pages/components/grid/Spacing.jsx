@@ -8,7 +8,8 @@ export default function CenteredGrid() {
     backgroundColor: "#fff",
     boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.23)",
     padding: "10px",
-    textAlign: "center"
+    textAlign: "center",
+    width: "100%"
   };
 
   return (

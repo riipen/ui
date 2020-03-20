@@ -28,6 +28,12 @@ export default function Contained() {
       <Button color="white" variant="contained">
         White
       </Button>
+      <Button color="positive" variant="contained">
+        Positive
+      </Button>
+      <Button color="negative" variant="contained">
+        Negative
+      </Button>
       <span style={style} />
       <Button color="default" variant="contained" disabled>
         Disabled

@@ -27,7 +27,7 @@ class Menu extends React.Component {
     /**
      * The content of the component.
      */
-    children: PropTypes.array,
+    children: PropTypes.node,
 
     /**
      * Array of additional CSS classes to use.
@@ -96,17 +96,20 @@ class Menu extends React.Component {
     variant: "menu"
   };
 
-  componentDidUpdate() {
-    const { anchorEl } = this.props;
-    if (document.activeElement && anchorEl) {
+  componentDidUpdate(oldProps) {
+    const { anchorEl, isOpen } = this.props;
+    const menuDidOpen =
+      (oldProps.anchorEl == null && anchorEl) || (!oldProps.isOpen && isOpen);
+    if (menuDidOpen && document.activeElement) {
       document.activeElement.blur();
     }
   }
 
   handleChange = (idx, event) => {
-    const { onChange, closeOnClick } = this.props;
+    const { onChange, closeOnClick, onClose } = this.props;
+    if (onClose && closeOnClick && event && event.type === "click")
+      onClose(idx);
     if (onChange) onChange(idx, event);
-    if (closeOnClick && event && event.type === "click") this.handleClose(idx);
   };
 
   render() {
@@ -120,7 +123,8 @@ class Menu extends React.Component {
       onClose,
       popoverStyles,
       selectedIndex,
-      variant
+      variant,
+      ...other
     } = this.props;
 
     return (
@@ -136,10 +140,10 @@ class Menu extends React.Component {
           keepOnScreen={keepOnScreen}
         >
           <MenuList
-            {...this.props}
             selectChange={this.handleChange}
             selectedIndex={selectedIndex}
             variant={variant}
+            {...other}
           >
             {children}
           </MenuList>

@@ -88,6 +88,10 @@ const pages = [
         pathname: "/components/menu"
       },
       {
+        name: "No SSR",
+        pathname: "/components/no-ssr"
+      },
+      {
         name: "Notice",
         pathname: "/components/notice"
       },
@@ -110,6 +114,10 @@ const pages = [
       {
         name: "Table",
         pathname: "/components/table"
+      },
+      {
+        name: "Tooltip",
+        pathname: "/components/tooltip"
       },
       {
         name: "Typography",
@@ -199,6 +207,10 @@ const pages = [
       {
         name: "Toolbar",
         pathname: "/components-api/toolbar"
+      },
+      {
+        name: "Tooltip",
+        pathname: "/components-api/tooltip"
       },
       {
         name: "Typography",
