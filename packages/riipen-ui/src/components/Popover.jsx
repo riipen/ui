@@ -61,7 +61,7 @@ class Popover extends React.Component {
     lockScroll: PropTypes.bool,
 
     /**
-     * The marigins of the page the popover should respect
+     * The margins of the page the popover should respect
      */
     marginThreshold: PropTypes.number,
 
@@ -157,6 +157,7 @@ class Popover extends React.Component {
 
   setPositioningStyle = () => {
     const contentRef = this.contentRef.current;
+
     const {
       anchorPosition = {
         vertical: "top",
@@ -170,12 +171,14 @@ class Popover extends React.Component {
     } = this.props;
 
     const anchorEl = this.getAnchorEl();
+    console.log(anchorEl);
     if (!anchorEl || !contentRef) return;
 
     // Set top and left of element based on location of anchor
     const anchorRect = anchorEl.getBoundingClientRect();
     let top = anchorRect.top;
     let left = anchorRect.left;
+    console.log("from anchorRect,", { top, left });
 
     // Offset Content Based on anchorPosition props
     const anchorVerticalOffset = getOffsetTop(
@@ -187,11 +190,18 @@ class Popover extends React.Component {
       anchorPosition.horizontal
     );
 
+    console.log({ anchorVerticalOffset, anchorHorizonalOffset });
+
     top += anchorVerticalOffset;
     left += anchorHorizonalOffset;
 
+    console.log("after anchorHorizontalOffset,", { left });
+
     // Offset Content Based on contentPosition props
     const contentRect = contentRef.getBoundingClientRect();
+    console.log("contentRef: ", contentRef);
+
+    console.log("contentRect:", contentRect);
 
     const contentVerticalOffset = getOffsetTop(
       contentRect,
@@ -202,8 +212,11 @@ class Popover extends React.Component {
       contentPosition.horizontal
     );
 
+    console.log({ contentVerticalOffset, contentHorizontalOffset });
+
     top -= contentVerticalOffset;
     left -= contentHorizontalOffset;
+    console.log("After contentHorizontalOffset:", { left });
 
     // Move menu back into view if out of screen
     if (keepOnScreen) {
@@ -212,6 +225,8 @@ class Popover extends React.Component {
 
       const heightMax = viewContainer.innerHeight - marginThreshold;
       const widthMax = viewContainer.innerWidth - marginThreshold;
+
+      console.log({ heightMax, widthMax, marginThreshold });
 
       // Check Vertical Constraints
       if (top + contentRect.height > heightMax) {
@@ -222,15 +237,11 @@ class Popover extends React.Component {
 
       // Check Horizontal Constraints
       if (left + contentRect.width > widthMax) {
-        left -= left + contentRect.width - widthMax;
+        left = contentRect.width - widthMax;
       } else if (left < marginThreshold) {
         left = marginThreshold;
       }
-    }
-
-    // Handle full-width menu
-    if (anchorPosition.horizontal === "full-width") {
-      left = 0;
+      console.log("after keepOnScreen:", { top, left });
     }
 
     this.setState(
@@ -315,8 +326,7 @@ class Popover extends React.Component {
       children,
       component,
       styles,
-      isOpen,
-      anchorPosition
+      isOpen
     } = this.props;
     const theme = this.context;
     const className = clsx(classes, "popover", { open: isOpen });
@@ -340,20 +350,11 @@ class Popover extends React.Component {
             box-shadow: ${theme.shadows[4]};
             box-sizing: border-box;
             max-height: calc(100% - 32px);
-            max-width: ${
-              anchorPosition?.horizontal === "full-width"
-                ? "100%"
-                : "calc(100% - 32px)"
-            };
+            max-width: calc(100% - 32px);
             min-height: 16px;
             min-width: 16px;
             outline: 0;
             position: absolute;
-            ${
-              anchorPosition?.horizontal === "full-width"
-                ? "width: 100%;"
-                : null
-            }
             z-index: ${theme.zIndex.middle};
           }
 
