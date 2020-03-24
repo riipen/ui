@@ -159,9 +159,9 @@ class MenuList extends React.Component {
   };
 
   handleFragmentChildren = children => {
-      return children.type === React.Fragment
-            ? children.props.children
-            : children;
+    return children.type === React.Fragment
+      ? children.props.children
+      : children;
   };
 
   render() {
