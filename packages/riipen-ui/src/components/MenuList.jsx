@@ -69,26 +69,31 @@ class MenuList extends React.Component {
   getListItems(children, activeItemIndex) {
     const { variant } = this.props;
 
-    return React.Children.map(children, (child, idx) => {
-      let newProps = {
-        key: idx,
-        color: this.props.color
-      };
-      if (variant === "selection") {
-        newProps = Object.assign(newProps, {
-          onClick: this.handleClick(child, idx)
-        });
-        if (idx === activeItemIndex) {
+    return React.Children.map(
+      this.handleFragmentChildren(children),
+      (child, idx) => {
+        let newProps = {
+          key: idx,
+          color: this.props.color
+        };
+
+        if (variant === "selection") {
           newProps = Object.assign(newProps, {
-            selected: true
+            onClick: this.handleClick(child, idx)
           });
+          if (idx === activeItemIndex) {
+            newProps = Object.assign(newProps, {
+              selected: true
+            });
+          }
         }
+
+        return React.cloneElement(child, {
+          ...child.props,
+          ...newProps
+        });
       }
-      return React.cloneElement(child, {
-        ...child.props,
-        ...newProps
-      });
-    });
+    );
   }
 
   static contextType = ThemeContext;
@@ -151,6 +156,17 @@ class MenuList extends React.Component {
       if (child.props.disabled) return;
       this.handleSelectChange(idx, event);
     };
+  };
+
+  handleFragmentChildren = children => {
+    let handledChildren = children;
+
+    if (!Array.isArray(handledChildren)) {
+      if (handledChildren.type.toString().includes("react.fragment")) {
+        handledChildren = this.handleFragmentChildren(children.props.children);
+      }
+    }
+    return handledChildren;
   };
 
   render() {
