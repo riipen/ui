@@ -32,9 +32,9 @@
     ]
   },
   "peerDependencies": {
-    "react": "16.11.0",
-    "react-dom": "16.11.0",
-    "styled-jsx": "3.2.2"
+    "react": ">= 16.11.0",
+    "react-dom": ">= 16.11.0",
+    "styled-jsx": ">= 3.2.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
