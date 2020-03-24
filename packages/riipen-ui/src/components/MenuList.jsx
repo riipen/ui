@@ -106,7 +106,7 @@ class MenuList extends React.Component {
   }
 
   keyDownHandler = event => {
-    const { selectedIndex, children } = this.props;
+    const { children, selectedIndex } = this.props;
     const nextEvents = ["ArrowDown", "ArrowRight"];
     const prevEvents = ["ArrowUp", "ArrowLeft"];
     const enterEvent = "Enter";
