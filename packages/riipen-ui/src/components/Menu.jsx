@@ -80,6 +80,11 @@ class Menu extends React.Component {
     selectedIndex: PropTypes.number,
 
     /**
+     * The margins of the page the popover should respect
+     */
+    marginThreshold: PropTypes.number,
+
+    /**
      * The type of menu to create
      * Use 'menu' for lists of links
      */
@@ -124,6 +129,7 @@ class Menu extends React.Component {
       popoverStyles,
       selectedIndex,
       variant,
+      marginThreshold,
       ...other
     } = this.props;
 
@@ -138,6 +144,7 @@ class Menu extends React.Component {
           anchorEl={anchorEl}
           styles={popoverStyles}
           keepOnScreen={keepOnScreen}
+          marginThreshold={marginThreshold}
         >
           <MenuList
             selectChange={this.handleChange}
