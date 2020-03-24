@@ -159,14 +159,9 @@ class MenuList extends React.Component {
   };
 
   handleFragmentChildren = children => {
-    let handledChildren = children;
-
-    if (!Array.isArray(handledChildren)) {
-      if (handledChildren.type.toString().includes("react.fragment")) {
-        handledChildren = this.handleFragmentChildren(children.props.children);
-      }
-    }
-    return handledChildren;
+      return children.type === React.Fragment
+            ? children.props.children
+            : children;
   };
 
   render() {
