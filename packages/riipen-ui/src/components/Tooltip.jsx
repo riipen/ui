@@ -108,6 +108,17 @@ class Tooltip extends React.Component {
         width: max-content;
       }
 
+      .popover {
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+        visibility: hidden;
+      }
+
+      .popover.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
       /* Colors */
 
       .popover.default {
@@ -175,62 +186,62 @@ class Tooltip extends React.Component {
         position: absolute;
       }
 
-      .popover.top {
+      .popover.bottom {
         margin-top: ${theme.spacing(3)}px;
       }
 
-      .popover.top::before {
+      .popover.bottom::before {
         margin-top: ${theme.spacing(-4)}px;
         top: 0;
       }
 
-      .popover.top::after {
+      .popover.bottom::after {
         margin-top: -17px;
         top: 0;
       }
 
-      .popover.top-left {
+      .popover.bottom-right {
         border-top-left-radius: 0;
       }
 
       /* Tooltip arrow */
-      .popover.top-left::before {
+      .popover.bottom-right::before {
         border-bottom-color: var(--before-color);
         border-left: none;
         left: 0;
         margin-left: -1px;
       }
 
-      .popover.top-left::after {
+      .popover.bottom-right::after {
         border-bottom-color: var(--after-color);
         border-left: none;
         left: 0;
       }
 
-      .popover.top-center::before {
+      .popover.bottom-center::before {
         border-bottom-color: var(--before-color);
         left: calc(50% - (${theme.spacing(2)}px));
       }
 
-      .popover.top-center::after {
+      .popover.bottom-center::after {
         border-bottom-color: var(--after-color);
         border-width: ${theme.spacing(2)}px;
         left: calc(50% - ${theme.spacing(2)}px);
         margin-top: calc(${theme.spacing(-4)}px + 1px);
       }
 
-      .popover.top-right {
+      .popover.bottom-left {
         border-top-right-radius: 0;
       }
 
-      .popover.top-right::before {
+      .popover.bottom-left::before {
         border-bottom-color: var(--before-color);
         border-right: none;
         margin-right: -1px;
         right: 0;
       }
 
-      .popover.top-right::after {
+      .popover.bottom-left::after {
         border-bottom-color: var(--after-color);
         border-right: none;
         right: 0;
@@ -244,88 +255,88 @@ class Tooltip extends React.Component {
         top: calc(50% - ${theme.spacing(2)}px);
       }
 
-      .popover.center-left {
+      .popover.center-right {
         margin-left: ${theme.spacing(3)}px;
       }
 
-      .popover.center-left::before {
+      .popover.center-right::before {
         border-right-color: var(--before-color);
         left: 0;
         margin-left: ${theme.spacing(-4)}px;
       }
 
-      .popover.center-left::after {
+      .popover.center-right::after {
         border-right-color: var(--after-color);
         border-width: ${theme.spacing(2)}px;
         left: 0;
         margin-left: calc(${theme.spacing(-4)}px + 1px);
       }
 
-      .popover.center-right {
+      .popover.center-left {
         margin-left: ${theme.spacing(-3)}px;
       }
 
-      .popover.center-right::before {
+      .popover.center-left::before {
         border-left-color: var(--before-color);
         margin-right: ${theme.spacing(-4)}px;
         right: 0;
       }
 
-      .popover.center-right::after {
+      .popover.center-left::after {
         border-left-color: var(--after-color);
         border-width: ${theme.spacing(2)}px;
         margin-right: calc(${theme.spacing(-4)}px + 1px);
         right: 0;
       }
 
-      .popover.bottom {
+      .popover.top {
         margin-top: ${theme.spacing(-3)}px;
       }
 
-      .popover.bottom::before {
+      .popover.top::before {
         bottom: 0;
         margin-bottom: ${theme.spacing(-4)}px;
       }
 
-      .popover.bottom::after {
+      .popover.top::after {
         bottom: 0;
         margin-bottom: -17px;
       }
 
-      .popover.bottom-left {
+      .popover.top-right {
         border-bottom-left-radius: 0;
       }
 
-      .popover.bottom-left::before {
+      .popover.top-right::before {
         border-left: none;
         border-top-color: var(--before-color);
         left: 0;
         margin-left: -1px;
       }
 
-      .popover.bottom-left::after {
+      .popover.top-right::after {
         border-left: none;
         border-top-color: var(--after-color);
         left: 0;
       }
 
-      .popover.bottom-center::before {
+      .popover.top-center::before {
         border-top-color: var(--before-color);
         left: calc(50% - ${theme.spacing(2)}px);
       }
 
-      .popover.bottom-center::after {
+      .popover.top-center::after {
         border-top-color: var(--after-color);
         border-width: ${theme.spacing(2)}px;
         left: calc(50% - ${theme.spacing(2)}px);
         margin-bottom: calc(${theme.spacing(-4)}px + 1px);
       }
 
-      .popover.bottom-right {
+      .popover.top-left {
         border-bottom-right-radius: 0;
       }
 
-      .popover.bottom-right::before {
+      .popover.top-left::before {
         border-right: none;
         border-top-color: var(--before-color);
         border-width: ${theme.spacing(2)}px;
@@ -333,7 +344,7 @@ class Tooltip extends React.Component {
         right: 0;
       }
 
-      .popover.bottom-right::after {
+      .popover.top-left::after {
         border-right: none;
         border-top-color: var(--after-color);
         right: 0;
@@ -402,40 +413,46 @@ class Tooltip extends React.Component {
 
     const [vertical, horizontal] = position.split("-");
 
-    const anchorVertical = this.getOppositeDirection("top", "bottom", vertical);
-    const anchorHorizontal = this.getOppositeDirection(
+    const contentVertical = this.getOppositeDirection(
+      "top",
+      "bottom",
+      vertical
+    );
+    const contentHorizontal = this.getOppositeDirection(
       "left",
       "right",
       horizontal
     );
 
     return (
-      open && (
-        <Popover
-          {...other}
-          classes={classes.concat([
-            linkedStyles.className,
-            "popover",
-            color,
-            position,
-            vertical
-          ])}
-          anchorPosition={{
-            horizontal: anchorHorizontal,
-            vertical: anchorVertical
-          }}
-          contentPosition={{ horizontal, vertical }}
-          anchorEl={this.tooltipRootRef.current}
-          open={open}
-          keepOnScreen={false}
-          lockScroll={false}
-          onClose={this.handleClose}
-        >
-          <div className={clsx(linkedStyles.className, "container")}>
-            {tooltip}
-          </div>
-        </Popover>
-      )
+      <Popover
+        {...other}
+        classes={classes.concat([
+          linkedStyles.className,
+          "popover",
+          color,
+          position,
+          vertical,
+          open && "show"
+        ])}
+        anchorPosition={{
+          horizontal,
+          vertical
+        }}
+        contentPosition={{
+          horizontal: contentHorizontal,
+          vertical: contentVertical
+        }}
+        anchorEl={this.tooltipRootRef.current}
+        open={open}
+        keepOnScreen
+        lockScroll={false}
+        onClose={this.handleClose}
+      >
+        <div className={clsx(linkedStyles.className, "container")}>
+          {tooltip}
+        </div>
+      </Popover>
     );
   };
   render() {
