@@ -26,7 +26,7 @@ export default function Component() {
       <div className="container">
         <div className="half">
           <Form>
-            <RadioGroup label="Anchor Vertical" onChange={handlePosition}>
+            <RadioGroup label="Position" onChange={handlePosition}>
               {POSITIONS.map(pos => (
                 <Radio
                   key={pos}
