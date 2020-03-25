@@ -46,6 +46,11 @@ class Popover extends React.Component {
     contentPosition: PropTypes.object,
 
     /**
+     * Whether or not the dropdown should take up the entire screen-width.
+     */
+    fullWidth: PropTypes.bool,
+
+    /**
      * Whether the popover should be displayed
      */
     isOpen: PropTypes.bool,
@@ -79,6 +84,7 @@ class Popover extends React.Component {
 
   static defaultProps = {
     component: "span",
+    fullWidth: false,
     isOpen: true,
     lockScroll: true,
     marginThreshold: 16,
@@ -166,6 +172,7 @@ class Popover extends React.Component {
         vertical: "top",
         horizontal: "left"
       },
+      fullWidth,
       keepOnScreen
     } = this.props;
 
@@ -226,6 +233,11 @@ class Popover extends React.Component {
       } else if (left < marginThreshold) {
         left = marginThreshold;
       }
+    }
+
+    // Handle fullWidth menu
+    if (fullWidth) {
+      left = 0;
     }
 
     this.setState(
@@ -309,6 +321,7 @@ class Popover extends React.Component {
       classes,
       children,
       component,
+      fullWidth,
       styles,
       isOpen
     } = this.props;
@@ -334,11 +347,12 @@ class Popover extends React.Component {
             box-shadow: ${theme.shadows[4]};
             box-sizing: border-box;
             max-height: calc(100% - 32px);
-            max-width: calc(100% - 32px);
+            max-width: ${fullWidth ? "100%" : "calc(100% - 32px)"};
             min-height: 16px;
             min-width: 16px;
             outline: 0;
             position: absolute;
+            ${fullWidth ? "width: 100%;" : null}
             z-index: ${theme.zIndex.middle};
           }
 

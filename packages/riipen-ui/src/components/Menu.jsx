@@ -50,6 +50,11 @@ class Menu extends React.Component {
     contentPosition: PropTypes.object,
 
     /**
+     * Whether or not the dropdown should take up the entire screen-width.
+     */
+    fullWidth: PropTypes.bool,
+
+    /**
      * Whether or not the menu should be rendered
      */
     isOpen: PropTypes.bool,
@@ -78,6 +83,11 @@ class Menu extends React.Component {
      * The index of the item selected in the list
      */
     selectedIndex: PropTypes.number,
+
+    /**
+     * The margins of the page the popover should respect
+     */
+    marginThreshold: PropTypes.number,
 
     /**
      * The type of menu to create
@@ -118,26 +128,30 @@ class Menu extends React.Component {
       anchorPosition,
       children,
       contentPosition,
+      fullWidth,
       keepOnScreen,
       isOpen,
       onClose,
       popoverStyles,
       selectedIndex,
       variant,
+      marginThreshold,
       ...other
     } = this.props;
 
     return (
       <React.Fragment>
         <Popover
-          onClose={onClose}
+          anchorEl={anchorEl}
           anchorPosition={anchorPosition}
           contentPosition={contentPosition}
-          lockScroll={false}
+          fullWidth={fullWidth}
           isOpen={isOpen}
-          anchorEl={anchorEl}
-          styles={popoverStyles}
           keepOnScreen={keepOnScreen}
+          lockScroll={false}
+          marginThreshold={marginThreshold}
+          onClose={onClose}
+          styles={popoverStyles}
         >
           <MenuList
             selectChange={this.handleChange}
