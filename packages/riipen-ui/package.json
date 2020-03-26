@@ -30,12 +30,11 @@
   },
   "sideEffects": false,
   "scripts": {
-    "build": "babel ./src --out-dir ./build && cp ./package.json ./build && cp ./README.md ./build",
+    "build": "babel ./src --out-dir ./temp && cp ./package.json ./temp && cp ./README.md ./temp && rsync ./temp/ ./build/ -r --delete-after && rm -rf ./temp",
     "ci:audit": "audit-ci --moderate",
     "ci:test:coverage": "NODE_ENV=test NODE_PATH=./ nyc mocha --opts ./test/unit/ci.mocha.opts",
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
-    "prebuild": "rm -fr ./build",
     "precommit": "lint-staged",
     "release": "npm run build && npm publish build --tag latest"
   },
