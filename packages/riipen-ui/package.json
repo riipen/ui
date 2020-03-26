@@ -30,7 +30,7 @@
   },
   "sideEffects": false,
   "scripts": {
-    "build": "babel ./src --out-dir ./temp && cp ./package.json ./temp && cp ./README.md ./temp && rsync ./temp/ ./build/ -r --delete-after",
+    "build": "babel ./src --out-dir ./temp && cp ./package.json ./temp && cp ./README.md ./temp && rsync ./temp/ ./build/ -r --delete-after && rm -rf ./temp",
     "ci:audit": "audit-ci --moderate",
     "ci:test:coverage": "NODE_ENV=test NODE_PATH=./ nyc mocha --opts ./test/unit/ci.mocha.opts",
     "format": "prettier --write \"**/*.{js,jsx}\"",
