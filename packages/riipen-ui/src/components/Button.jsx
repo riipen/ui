@@ -320,6 +320,16 @@ class Button extends React.Component {
             background-color: ${theme.palette.negative.main};
           }
 
+          .outlined.small {
+            padding: calc(${theme.spacing(1)}px - 1px)
+              calc(${theme.spacing(2)}px - 1px);
+          }
+
+          .outlined.large {
+            padding: calc(${theme.spacing(3)}px - 1px)
+              calc(${theme.spacing(5)}px - 1px);
+          }
+
           .outlined {
             background-color: transparent;
             border: 1px solid rgba(0, 0, 0, 0.23);
