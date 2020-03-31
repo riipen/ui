@@ -204,9 +204,13 @@ class Button extends React.Component {
             padding: ${theme.spacing(3)}px ${theme.spacing(5)}px;
           }
 
-          .contained {
+          .contained,
+          .text {
             border: 0;
+            padding: calc(${theme.spacing(2)}px + 1px)
+              calc(${theme.spacing(3)}px + 1px);
           }
+
           .contained-primary {
             background-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.contrast};
@@ -264,7 +268,6 @@ class Button extends React.Component {
 
           .text {
             background-color: transparent;
-            border: 0;
             color: ${theme.palette.text.primary};
             overflow: hidden;
             position: relative;
