@@ -173,7 +173,7 @@ class Button extends React.Component {
           }
 
           .icon {
-            font-size: 16px;
+            font-size: 15px;
           }
           .icon > svg {
             display: flex;
@@ -204,13 +204,9 @@ class Button extends React.Component {
             padding: ${theme.spacing(3)}px ${theme.spacing(5)}px;
           }
 
-          .contained,
-          .text {
+          .contained {
             border: 0;
-            padding: calc(${theme.spacing(2)}px + 1px)
-              calc(${theme.spacing(3)}px + 1px);
           }
-
           .contained-primary {
             background-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.contrast};
@@ -268,6 +264,7 @@ class Button extends React.Component {
 
           .text {
             background-color: transparent;
+            border: 0;
             color: ${theme.palette.text.primary};
             overflow: hidden;
             position: relative;
@@ -328,6 +325,8 @@ class Button extends React.Component {
             border: 1px solid rgba(0, 0, 0, 0.23);
             color: ${theme.palette.text.primary};
             overflow: hidden;
+            padding: calc(${theme.spacing(2)}px - 1px)
+              calc(${theme.spacing(3)}px - 1px);
             position: relative;
           }
           .outlined:hover {
@@ -395,6 +394,7 @@ class Button extends React.Component {
             font-weight: ${theme.typography.fontWeight.medium};
             justify-content: center;
             letter-spacing: 1px;
+            line-height: 15px;
             text-align: center;
             text-transform: uppercase;
             width: 100%;
