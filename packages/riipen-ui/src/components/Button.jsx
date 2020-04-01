@@ -149,9 +149,8 @@ class Button extends React.Component {
         <style jsx>{`
           .root {
             background-color: ${theme.palette.grey[300]};
+            border: 0;
             border-radius: ${theme.shape.borderRadius.md};
-            border-style: solid;
-            border-width: 1px;
             color: ${theme.palette.text.primary};
             cursor: pointer;
             display: inline-flex;
@@ -204,9 +203,6 @@ class Button extends React.Component {
             padding: ${theme.spacing(3)}px ${theme.spacing(5)}px;
           }
 
-          .contained {
-            border: 0;
-          }
           .contained-primary {
             background-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.contrast};
@@ -264,7 +260,6 @@ class Button extends React.Component {
 
           .text {
             background-color: transparent;
-            border: 0;
             color: ${theme.palette.text.primary};
             overflow: hidden;
             position: relative;
@@ -320,24 +315,21 @@ class Button extends React.Component {
             background-color: ${theme.palette.negative.main};
           }
 
-          .outlined.small {
-            padding: calc(${theme.spacing(1)}px - 1px)
-              calc(${theme.spacing(2)}px - 1px);
-          }
-
-          .outlined.large {
-            padding: calc(${theme.spacing(3)}px - 1px)
-              calc(${theme.spacing(5)}px - 1px);
-          }
-
           .outlined {
             background-color: transparent;
-            border: 1px solid rgba(0, 0, 0, 0.23);
             color: ${theme.palette.text.primary};
             overflow: hidden;
-            padding: calc(${theme.spacing(2)}px - 1px)
-              calc(${theme.spacing(3)}px - 1px);
             position: relative;
+          }
+          .outlined::after {
+            border-radius: ${theme.shape.borderRadius.md};
+            border: 1px solid rgba(0, 0, 0, 0.23);
+            bottom: 0;
+            content: "";
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
           }
           .outlined:hover {
             background-color: transparent;
@@ -354,46 +346,58 @@ class Button extends React.Component {
           }
 
           .outlined-primary {
-            border-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.main};
           }
           .outlined-primary:hover::before {
             background-color: ${theme.palette.primary.main};
           }
+          .outlined-primary::after {
+            border-color: ${theme.palette.primary.main};
+          }
           .outlined-secondary {
-            border-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.main};
           }
           .outlined-secondary:hover::before {
             background-color: ${theme.palette.secondary.main};
           }
+          .outlined-secondary::after {
+            border-color: ${theme.palette.secondary.main};
+          }
           .outlined-tertiary {
-            border-color: ${theme.palette.tertiary.main};
             color: ${theme.palette.tertiary.main};
           }
           .outlined-tertiary:hover::before {
             background-color: ${theme.palette.tertiary.main};
           }
+          .outlined-tertiary::after {
+            border-color: ${theme.palette.tertiary.main};
+          }
           .outlined-white {
-            border-color: ${theme.palette.common.white};
             color: ${theme.palette.common.white};
           }
           .outlined-white:hover::before {
             background-color: ${theme.palette.grey[100]};
           }
+          .outlined-white::after {
+            border-color: ${theme.palette.common.white};
+          }
           .outlined-positive {
-            border-color: ${theme.palette.positive.main};
             color: ${theme.palette.positive.main};
           }
           .outlined-positive:hover::before {
             background-color: ${theme.palette.positive.main};
           }
+          .outlined-positive::after {
+            border-color: ${theme.palette.positive.main};
+          }
           .outlined-negative {
-            border-color: ${theme.palette.negative.main};
             color: ${theme.palette.negative.main};
           }
           .outlined-negative:hover::before {
             background-color: ${theme.palette.negative.main};
+          }
+          .outlined-negative::after {
+            border-color: ${theme.palette.negative.main};
           }
 
           .label {
