@@ -28,9 +28,11 @@ export default function Outlined() {
       <Button color="white" variant="outlined">
         White
       </Button>
+      <span style={style} />
       <Button color="positive" variant="outlined">
         Positive
       </Button>
+      <span style={style} />
       <Button color="negative" variant="outlined">
         Negative
       </Button>
