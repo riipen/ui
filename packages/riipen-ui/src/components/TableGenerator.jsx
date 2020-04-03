@@ -141,11 +141,8 @@ class TableGenerator extends React.Component {
 
   static contextType = ThemeContext;
 
-  handleRowMouseOver = idx => () => {
-    console.log(idx);
-    this.setState({ hoverIdx: idx });
-  };
-  handleRowMouseOut = () => this.setState({ hoverIdx: null });
+  handleRowMouseEnter = idx => () => this.setState({ hoverIdx: idx });
+  handleRowMouseLeave = () => this.setState({ hoverIdx: null });
 
   updateWindowDimensions = () => {
     const theme = this.context;
@@ -217,8 +214,8 @@ class TableGenerator extends React.Component {
                 <TableRow
                   border={isNotLastRow || isExpanded}
                   forceHover={isHovering}
-                  onMouseEnter={this.handleRowMouseOver(i)}
-                  onMouseLeave={this.handleRowMouseOut}
+                  onMouseEnter={this.handleRowMouseEnter(i)}
+                  onMouseLeave={this.handleRowMouseLeave}
                 >
                   {columns.map((col, j) => (
                     <TableCell
@@ -234,8 +231,8 @@ class TableGenerator extends React.Component {
                   <TableRow
                     border={isNotLastRow}
                     forceHover={isHovering}
-                    onMouseEnter={this.handleRowMouseOver(i)}
-                    onMouseLeave={this.handleRowMouseOut}
+                    onMouseEnter={this.handleRowMouseEnter(i)}
+                    onMouseLeave={this.handleRowMouseLeave}
                   >
                     <TableCell colSpan={columns.length}>
                       {expandedNode(row)}
