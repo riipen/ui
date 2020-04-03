@@ -320,8 +320,8 @@ class TableGenerator extends React.Component {
               <TableRow
                 border={isNotLastRow}
                 forceHover={isHovering}
-                onMouseOver={this.handleRowMouseOver(i)}
-                onMouseOut={this.handleRowMouseOut}
+                onMouseEnter={this.handleRowMouseEnter(i)}
+                onMouseLeave={this.handleRowMouseLeave}
               >
                 <TableCell classes={[linkedStyles.className, "noPadding"]}>
                   {mobileHeader && (
@@ -373,8 +373,8 @@ class TableGenerator extends React.Component {
                 <TableRow
                   border={isNotLastRow}
                   forceHover={isHovering}
-                  onMouseOver={this.handleRowMouseOver(i)}
-                  onMouseOut={this.handleRowMouseOut}
+                  onMouseEnter={this.handleRowMouseEnter(i)}
+                  onMouseLeave={this.handleRowMouseLeave}
                 >
                   <TableCell>{expandedNode(row)}</TableCell>
                 </TableRow>
