@@ -35,12 +35,12 @@ class TableRow extends React.Component {
     /**
      * Function to call when we mouseover the row
      */
-    onMouseOver: PropTypes.func,
+    onMouseEnter: PropTypes.func,
 
     /**
      * Function to call when the mouse exits the row
      */
-    onMouseOut: PropTypes.func
+    onMouseLeave: PropTypes.func
   };
 
   static defaultProps = {
@@ -57,8 +57,8 @@ class TableRow extends React.Component {
       hover,
       forceHover,
       border,
-      onMouseOver,
-      onMouseOut
+      onMouseEnter,
+      onMouseLeave
     } = this.props;
 
     const theme = this.context;
@@ -67,8 +67,8 @@ class TableRow extends React.Component {
       <React.Fragment>
         <tr
           className={clsx(classes, forceHover && "forceHover")}
-          onMouseOver={onMouseOver}
-          onMouseOut={onMouseOut}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
         >
           {children}
         </tr>
