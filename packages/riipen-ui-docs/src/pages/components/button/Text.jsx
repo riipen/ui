@@ -28,9 +28,11 @@ export default function Text() {
       <Button color="white" variant="text">
         White
       </Button>
+      <span style={style} />
       <Button color="positive" variant="text">
         Positive
       </Button>
+      <span style={style} />
       <Button color="negative" variant="text">
         Negative
       </Button>

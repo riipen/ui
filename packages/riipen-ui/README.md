@@ -14,6 +14,27 @@ $ npm install riipen-ui
 $ yarn add riipen-ui
 ```
 
+## Local development in tandem with another project
+
+Build the project
+```sh
+npm run build
+```
+
+Create a symlink from the build directory
+```sh
+cd ./build
+npm link
+```
+
+In the other project (web/admin) grab the symlink
+```sh
+cd $OTHER_PROJECT
+npm link riipen-ui
+```
+
+NOTE: Running npm install in the $OTHER_PROJECT directory will remove the symlink
+
 ## Usage
 
 Here is a quick example to get you started, **it's all you need**:

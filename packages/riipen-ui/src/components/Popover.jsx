@@ -352,7 +352,7 @@ class Popover extends React.Component {
             min-width: 16px;
             outline: 0;
             position: absolute;
-            ${fullWidth ? "width: 100%;" : null}
+            ${fullWidth ? "width: 100%;" : ""}
             z-index: ${theme.zIndex.middle};
           }
 
