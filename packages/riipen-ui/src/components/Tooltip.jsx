@@ -73,6 +73,11 @@ class Tooltip extends React.Component {
     ]),
 
     /**
+     * The size of the tooltip.
+     */
+    size: PropTypes.oneOf(["small", "medium"]),
+
+    /**
      * The tooltip content to display.
      */
     tooltip: PropTypes.node
@@ -84,7 +89,8 @@ class Tooltip extends React.Component {
     color: "default",
     component: "div",
     hover: true,
-    position: "top-center"
+    position: "top-center",
+    size: "small"
   };
 
   constructor() {
@@ -99,13 +105,14 @@ class Tooltip extends React.Component {
     const theme = this.context;
 
     return css.resolve`
-      .container {
-        padding: ${theme.spacing(4)}px;
-      }
-
       .wrapper {
         height: max-content;
         width: max-content;
+      }
+
+      .popover {
+        border-radius: 2px;
+        color: ${theme.palette.common.white};
       }
 
       @keyframes fade {
@@ -118,14 +125,19 @@ class Tooltip extends React.Component {
         }
       }
 
-      .popover {
-        border-radius: 2px;
-        color: ${theme.palette.common.white};
-      }
-
       .popover.show {
         animation: fade ${theme.transitions.duration.short}ms
           ${theme.transitions.easing.easeIn};
+      }
+
+      /* Sizes */
+
+      .popover.small {
+        padding: ${theme.spacing(2)}px ${theme.spacing(4)}px;
+      }
+
+      .popover.medium {
+        padding: ${theme.spacing(4)}px;
       }
 
       /* Colors */
@@ -416,7 +428,7 @@ class Tooltip extends React.Component {
   };
 
   renderPopover = () => {
-    const { classes, color, position, tooltip, ...other } = this.props;
+    const { classes, color, position, size, tooltip, ...other } = this.props;
     const { open } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
@@ -443,6 +455,7 @@ class Tooltip extends React.Component {
           color,
           position,
           vertical,
+          size,
           open && "show"
         ])}
         anchorPosition={{
@@ -459,9 +472,7 @@ class Tooltip extends React.Component {
         lockScroll={false}
         onClose={this.handleClose}
       >
-        <div className={clsx(linkedStyles.className, "container")}>
-          {tooltip}
-        </div>
+        {tooltip}
       </Popover>
     );
   };
