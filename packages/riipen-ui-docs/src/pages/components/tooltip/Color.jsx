@@ -52,12 +52,7 @@ export default function Component() {
           </Form>
         </div>
         <div className="half elementContainer">
-          <Tooltip
-            anchorPosition={{ horizontal: "center", vertical: "top" }}
-            contentPosition={{ horizontal: "center", vertical: "bottom" }}
-            color={color}
-            tooltip={<div>Hi!</div>}
-          >
+          <Tooltip color={color} tooltip={<div>Hi!</div>}>
             <div className={"element"}>Anchor Element</div>
           </Tooltip>
         </div>
