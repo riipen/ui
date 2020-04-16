@@ -120,7 +120,6 @@ class Tooltip extends React.Component {
 
       .popover {
         border-radius: 2px;
-        box-shadow: ${theme.shadows[4]};
         color: ${theme.palette.common.white};
       }
 
