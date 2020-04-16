@@ -100,7 +100,7 @@ class Tooltip extends React.Component {
 
     return css.resolve`
       .container {
-        padding: ${theme.spacing(2)}px ${theme.spacing(4)}px;
+        padding: ${theme.spacing(4)}px;
       }
 
       .wrapper {
