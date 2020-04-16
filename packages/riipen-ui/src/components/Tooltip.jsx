@@ -89,7 +89,7 @@ class Tooltip extends React.Component {
     color: "default",
     component: "div",
     hover: true,
-    position: "top-center",
+    position: "bottom-center",
     size: "small"
   };
 
