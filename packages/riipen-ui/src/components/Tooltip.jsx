@@ -185,7 +185,7 @@ class Tooltip extends React.Component {
 
         background: ${theme.palette.common.white};
         border: 1px solid ${theme.palette.grey[300]};
-        color: ${theme.palette.text.secondary};
+        color: ${theme.palette.text.primary};
       }
 
       /* Positions */
