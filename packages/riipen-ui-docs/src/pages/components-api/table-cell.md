@@ -24,6 +24,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | Children to render in the td element |
 | <span class="prop-name">classes</span> | <span class="prop-type">Array<string></span> |  | Classes to apply to the td element |
 | <span class="prop-name">colSpan</span> | <span class="prop-type">number</span> | <span class="prop-default">1</span> | Number of columns the td element should span |
+| <span class="prop-name">padding</span> | <span class="prop-type">number</span> | <span class="prop-default">3</span> | The amount of padding the cell should have. |
 | <span class="prop-name">rowSpan</span> | <span class="prop-type">number</span> | <span class="prop-default">1</span> | Number of rows the td element should span |
 
 

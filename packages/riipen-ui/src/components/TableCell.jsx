@@ -28,6 +28,11 @@ class TableCell extends React.Component {
     colSpan: PropTypes.number,
 
     /**
+     * The amount of padding the cell should have.
+     */
+    padding: PropTypes.number,
+
+    /**
      * Number of rows the td element should span
      */
     rowSpan: PropTypes.number
@@ -36,13 +41,22 @@ class TableCell extends React.Component {
   static defaultProps = {
     align: "left",
     colSpan: 1,
+    padding: 3,
     rowSpan: 1
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, colSpan, rowSpan, align } = this.props;
+    const {
+      align,
+      children,
+      classes,
+      colSpan,
+      padding,
+      rowSpan,
+      ...other
+    } = this.props;
 
     const theme = this.context;
 
@@ -53,6 +67,7 @@ class TableCell extends React.Component {
           align={align}
           colSpan={colSpan}
           rowSpan={rowSpan}
+          {...other}
         >
           {children}
         </td>
@@ -63,7 +78,7 @@ class TableCell extends React.Component {
             font-weight: ${theme.typography.body2.fontWeight};
             letter-spacing: ${theme.typography.body2.letterSpacing};
             line-height: ${theme.typography.body2.lineHeight};
-            padding: ${theme.spacing(3)}px;
+            padding: ${theme.spacing(padding)}px;
           }
         `}</style>
       </React.Fragment>

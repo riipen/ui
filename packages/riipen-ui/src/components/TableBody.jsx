@@ -18,8 +18,12 @@ class TableBody extends React.Component {
   };
 
   render() {
-    const { children, classes } = this.props;
-    return <tbody classes={clsx(classes)}>{children}</tbody>;
+    const { children, classes, ...other } = this.props;
+    return (
+      <tbody classes={clsx(classes)} {...other}>
+        {children}
+      </tbody>
+    );
   }
 }
 

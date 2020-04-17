@@ -75,7 +75,12 @@ class TableGenerator extends React.Component {
     /**
      * Size to change table render from desktop to mobile.
      */
-    mobileBreakpoint: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"])
+    mobileBreakpoint: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
+
+    /**
+     * Funtion to call if a row is clicked in the generated table.
+     */
+    onRowClick: PropTypes.func
   };
 
   static defaultProps = {
@@ -127,6 +132,10 @@ class TableGenerator extends React.Component {
         padding: 0;
       }
 
+      .expandedRow {
+        background-color: ${theme.palette.grey[100]};
+      }
+
       td,
       th {
         max-width: 400px;
@@ -143,6 +152,13 @@ class TableGenerator extends React.Component {
 
   handleRowMouseEnter = idx => () => this.setState({ hoverIdx: idx });
   handleRowMouseLeave = () => this.setState({ hoverIdx: null });
+
+  handleRowClick = entity => e => {
+    const { onRowClick } = this.props;
+    if (!onRowClick) return;
+    e.stopPropagation();
+    onRowClick(entity);
+  };
 
   updateWindowDimensions = () => {
     const theme = this.context;
@@ -216,6 +232,7 @@ class TableGenerator extends React.Component {
                   forceHover={isHovering}
                   onMouseEnter={this.handleRowMouseEnter(i)}
                   onMouseLeave={this.handleRowMouseLeave}
+                  onClick={this.handleRowClick(row)}
                 >
                   {columns.map((col, j) => (
                     <TableCell
@@ -234,7 +251,11 @@ class TableGenerator extends React.Component {
                     onMouseEnter={this.handleRowMouseEnter(i)}
                     onMouseLeave={this.handleRowMouseLeave}
                   >
-                    <TableCell colSpan={columns.length}>
+                    <TableCell
+                      classes={[linkedStyles.className, "expandedRow"]}
+                      padding={0}
+                      colSpan={columns.length}
+                    >
                       {expandedNode(row)}
                     </TableCell>
                   </TableRow>
@@ -320,6 +341,7 @@ class TableGenerator extends React.Component {
               <TableRow
                 border={isNotLastRow}
                 forceHover={isHovering}
+                onClick={this.handleRowClick(row)}
                 onMouseEnter={this.handleRowMouseEnter(i)}
                 onMouseLeave={this.handleRowMouseLeave}
               >
@@ -371,12 +393,13 @@ class TableGenerator extends React.Component {
               </TableRow>
               {isExpanded && (
                 <TableRow
+                  classes={[linkedStyles.className, "expandedRow"]}
                   border={isNotLastRow}
                   forceHover={isHovering}
                   onMouseEnter={this.handleRowMouseEnter(i)}
                   onMouseLeave={this.handleRowMouseLeave}
                 >
-                  <TableCell>{expandedNode(row)}</TableCell>
+                  <TableCell padding={0}>{expandedNode(row)}</TableCell>
                 </TableRow>
               )}
             </React.Fragment>
