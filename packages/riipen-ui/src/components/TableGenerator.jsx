@@ -153,10 +153,9 @@ class TableGenerator extends React.Component {
   handleRowMouseEnter = idx => () => this.setState({ hoverIdx: idx });
   handleRowMouseLeave = () => this.setState({ hoverIdx: null });
 
-  handleRowClick = entity => e => {
+  handleRowClick = entity => () => {
     const { onRowClick } = this.props;
     if (!onRowClick) return;
-    e.stopPropagation();
     onRowClick(entity);
   };
 
