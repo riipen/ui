@@ -73,6 +73,11 @@ class Tooltip extends React.Component {
     ]),
 
     /**
+     * The size of the tooltip.
+     */
+    size: PropTypes.oneOf(["small", "medium"]),
+
+    /**
      * The tooltip content to display.
      */
     tooltip: PropTypes.node
@@ -84,7 +89,8 @@ class Tooltip extends React.Component {
     color: "default",
     component: "div",
     hover: true,
-    position: "top-center"
+    position: "bottom-center",
+    size: "small"
   };
 
   constructor() {
@@ -99,24 +105,39 @@ class Tooltip extends React.Component {
     const theme = this.context;
 
     return css.resolve`
-      .container {
-        padding: ${theme.spacing(4)}px;
-      }
-
       .wrapper {
         height: max-content;
         width: max-content;
       }
 
       .popover {
-        opacity: 0;
-        transition: opacity 0.3s ease-out;
-        visibility: hidden;
+        border-radius: 2px;
+        color: ${theme.palette.common.white};
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+        }
+
+        to: {
+          opacity: 1;
+        }
       }
 
       .popover.show {
-        opacity: 1;
-        visibility: visible;
+        animation: fade ${theme.transitions.duration.short}ms
+          ${theme.transitions.easing.easeIn};
+      }
+
+      /* Sizes */
+
+      .popover.small {
+        padding: ${theme.spacing(2)}px ${theme.spacing(4)}px;
+      }
+
+      .popover.medium {
+        padding: ${theme.spacing(4)}px;
       }
 
       /* Colors */
@@ -160,10 +181,11 @@ class Tooltip extends React.Component {
       .popover.white {
         --after-color: ${theme.palette.common.white};
 
-        --before-color: ${theme.palette.grey[400]};
+        --before-color: ${theme.palette.grey[300]};
 
         background: ${theme.palette.common.white};
-        border: 1px solid ${theme.palette.grey[400]};
+        border: 1px solid ${theme.palette.grey[300]};
+        color: ${theme.palette.text.primary};
       }
 
       /* Positions */
@@ -376,7 +398,7 @@ class Tooltip extends React.Component {
     }
   };
 
-  buttonCallback = () => {
+  clickCallback = () => {
     const { open } = this.state;
 
     const callback = !open ? this.props.onOpen : this.props.onClose;
@@ -406,7 +428,7 @@ class Tooltip extends React.Component {
   };
 
   renderPopover = () => {
-    const { classes, color, position, tooltip, ...other } = this.props;
+    const { classes, color, position, size, tooltip, ...other } = this.props;
     const { open } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
@@ -433,6 +455,7 @@ class Tooltip extends React.Component {
           color,
           position,
           vertical,
+          size,
           open && "show"
         ])}
         anchorPosition={{
@@ -443,15 +466,13 @@ class Tooltip extends React.Component {
           horizontal: contentHorizontal,
           vertical: contentVertical
         }}
+        isOpen={open}
         anchorEl={this.tooltipRootRef.current}
-        open={open}
         keepOnScreen
         lockScroll={false}
         onClose={this.handleClose}
       >
-        <div className={clsx(linkedStyles.className, "container")}>
-          {tooltip}
-        </div>
+        {tooltip}
       </Popover>
     );
   };
@@ -465,7 +486,7 @@ class Tooltip extends React.Component {
         <Component
           className={clsx(linkedStyles.className, "wrapper")}
           ref={this.tooltipRootRef}
-          onClick={click ? this.buttonCallback : undefined}
+          onClick={click ? this.clickCallback : undefined}
           onMouseOver={hover ? this.handleOpen : undefined}
           onMouseOut={hover ? this.handleClose : undefined}
         >

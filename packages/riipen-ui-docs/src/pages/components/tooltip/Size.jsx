@@ -1,19 +1,15 @@
 import React from "react";
 
-import Checkbox from "@riipen-ui/components/Checkbox";
+import Radio from "@riipen-ui/components/Radio";
+import RadioGroup from "@riipen-ui/components/RadioGroup";
 import Form from "@riipen-ui/components/Form";
 import Tooltip from "@riipen-ui/components/Tooltip";
 
 export default function Component() {
-  const [click, setClick] = React.useState(false);
-  const [hover, setHover] = React.useState(true);
+  const [size, setSize] = React.useState("small");
 
-  const handleHover = e => {
-    setHover(e.target.checked);
-  };
-
-  const handleClick = e => {
-    setClick(e.target.checked);
+  const handleSize = (e, value) => {
+    setSize(value);
   };
 
   return (
@@ -21,41 +17,36 @@ export default function Component() {
       <div className="container">
         <div className="half">
           <Form>
-            <div className="checkbox">
-              <Checkbox
-                checked={hover}
+            <RadioGroup label="Size" onChange={handleSize}>
+              <Radio
+                label={"Small"}
+                value={"small"}
                 color="primary"
-                label="Show Tooltip On Hover"
-                onChange={handleHover}
+                checked={size === "small"}
               />
-              <div className="spacer" />
-              <Checkbox
-                checked={click}
+              <Radio
+                label={"Medium"}
+                value={"medium"}
                 color="primary"
-                label="Show Tooltip On Click"
-                onChange={handleClick}
+                checked={size === "medium"}
               />
-            </div>
+            </RadioGroup>
           </Form>
         </div>
         <div className="half elementContainer">
-          <Tooltip click={click} hover={hover} tooltip={<div>Hi!</div>}>
+          <Tooltip size={size} tooltip={<div>Hi!</div>}>
             <div className={"element"}>Anchor Element</div>
           </Tooltip>
         </div>
       </div>
       <style jsx>{`
-        .checkbox {
-          padding: 10px;
-        }
-
         .container {
           display: flex;
         }
 
         .element {
           border: 1px solid black;
-          padding: 10px;
+          padding: 40px;
           text-align: center;
         }
 
@@ -70,10 +61,6 @@ export default function Component() {
         .elementContainer {
           align-items: center;
           justify-content: center;
-        }
-
-        .spacer {
-          margin-bottom: 10px;
         }
       `}</style>
     </React.Fragment>
