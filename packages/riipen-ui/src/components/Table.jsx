@@ -10,7 +10,7 @@ class Table extends React.Component {
   static propTypes = {
     /**
      * What background to render for the table.
-     * Defaults to grey100.
+     * Defaults to grey50.
      */
     backgroundColor: PropTypes.oneOf([
       "transparent",
@@ -43,7 +43,7 @@ class Table extends React.Component {
   };
 
   static defaultProps = {
-    backgroundColor: "grey100",
+    backgroundColor: "grey50",
     layout: "auto"
   };
 
@@ -51,11 +51,12 @@ class Table extends React.Component {
 
   render() {
     const {
+      backgroundColor,
       children,
       classes,
+      forwardedRef,
       layout,
-      backgroundColor,
-      forwardedRef
+      ...other
     } = this.props;
 
     const theme = this.context;
@@ -71,7 +72,12 @@ class Table extends React.Component {
 
     return (
       <React.Fragment>
-        <table ref={forwardedRef} className={clsx(classes)} border="0">
+        <table
+          ref={forwardedRef}
+          className={clsx(classes)}
+          border="0"
+          {...other}
+        >
           {children}
         </table>
         <style jsx>{`

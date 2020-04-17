@@ -30,17 +30,7 @@ class TableRow extends React.Component {
     /**
      * Whether to render the border for the row
      */
-    border: PropTypes.bool,
-
-    /**
-     * Function to call when we mouseover the row
-     */
-    onMouseEnter: PropTypes.func,
-
-    /**
-     * Function to call when the mouse exits the row
-     */
-    onMouseLeave: PropTypes.func
+    border: PropTypes.bool
   };
 
   static defaultProps = {
@@ -57,19 +47,14 @@ class TableRow extends React.Component {
       hover,
       forceHover,
       border,
-      onMouseEnter,
-      onMouseLeave
+      ...other
     } = this.props;
 
     const theme = this.context;
 
     return (
       <React.Fragment>
-        <tr
-          className={clsx(classes, forceHover && "forceHover")}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-        >
+        <tr className={clsx(classes, forceHover && "forceHover")} {...other}>
           {children}
         </tr>
         <style jsx>{`
