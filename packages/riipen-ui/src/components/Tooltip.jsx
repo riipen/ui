@@ -113,6 +113,7 @@ class Tooltip extends React.Component {
       .popover {
         border-radius: 2px;
         color: ${theme.palette.common.white};
+        display: none;
       }
 
       @keyframes fade {
@@ -128,6 +129,7 @@ class Tooltip extends React.Component {
       .popover.show {
         animation: fade ${theme.transitions.duration.short}ms
           ${theme.transitions.easing.easeIn};
+        display: block;
       }
 
       /* Sizes */
@@ -466,7 +468,6 @@ class Tooltip extends React.Component {
           horizontal: contentHorizontal,
           vertical: contentVertical
         }}
-        isOpen={open}
         anchorEl={this.tooltipRootRef.current}
         keepOnScreen
         lockScroll={false}
