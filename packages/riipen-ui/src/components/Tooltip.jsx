@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 import css from "styled-jsx/css";
@@ -105,11 +104,6 @@ class Tooltip extends React.Component {
     const theme = this.context;
 
     return css.resolve`
-      .wrapper {
-        height: max-content;
-        width: max-content;
-      }
-
       .popover {
         border-radius: 2px;
         color: ${theme.palette.common.white};
@@ -474,7 +468,7 @@ class Tooltip extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-        {tooltip}
+        <React.Fragment>{tooltip}</React.Fragment>
       </Popover>
     );
   };
@@ -486,11 +480,10 @@ class Tooltip extends React.Component {
     return (
       <React.Fragment>
         <Component
-          className={clsx(linkedStyles.className, "wrapper")}
           ref={this.tooltipRootRef}
           onClick={click ? this.clickCallback : undefined}
           onMouseOver={hover ? this.handleOpen : undefined}
-          onMouseOut={hover ? this.handleClose : undefined}
+          onMouseLeave={hover ? this.handleClose : undefined}
         >
           {children}
         </Component>
