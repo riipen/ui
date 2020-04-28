@@ -22,6 +22,7 @@ class ButtonIcon extends React.Component {
      */
     color: PropTypes.oneOf([
       "default",
+      "muted",
       "primary",
       "secondary",
       "tertiary",
@@ -103,9 +104,10 @@ class ButtonIcon extends React.Component {
           .root:focus,
           .root:hover {
             background-color: transparent;
+            color: ${theme.palette.secondary.main};
           }
           .root:hover::before {
-            background-color: ${theme.palette.grey[600]};
+            background-color: ${theme.palette.secondary.main};
             border-radius: 50%;
             bottom: 0;
             content: "";
@@ -121,25 +123,38 @@ class ButtonIcon extends React.Component {
             text-decoration: none;
           }
 
-          .primary {
+          .muted:hover {
+            color: ${theme.palette.text.primary};
+          }
+
+          .muted:hover::before {
+            background-color: ${theme.palette.grey[600]};
+          }
+
+          .primary,
+          .primary:hover {
             color: ${theme.palette.primary.main};
           }
+
           .primary:hover::before {
             background-color: ${theme.palette.primary.main};
           }
-          .secondary {
+          .secondary,
+          .secondary:hover {
             color: ${theme.palette.secondary.main};
           }
           .secondary:hover::before {
             background-color: ${theme.palette.secondary.main};
           }
-          .tertiary {
+          .tertiary,
+          .tertiary:hover {
             color: ${theme.palette.tertiary.main};
           }
           .tertiary:hover::before {
             background-color: ${theme.palette.tertiary.main};
           }
-          .white {
+          .white,
+          .white:hover {
             color: ${theme.palette.common.white};
           }
           .white:hover::before {
