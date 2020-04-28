@@ -25,10 +25,6 @@ export default function Contained() {
         Tertiary
       </Button>
 
-      <Button style={style} color="white" variant="inverted">
-        White
-      </Button>
-
       <Button style={style} color="positive" variant="inverted">
         Positive
       </Button>
@@ -39,15 +35,6 @@ export default function Contained() {
 
       <Button style={style} variant="inverted" disabled>
         Disabled
-      </Button>
-
-      <Button
-        style={style}
-        color="default"
-        variant="inverted"
-        href="#inverted-buttons"
-      >
-        Link
       </Button>
     </div>
   );

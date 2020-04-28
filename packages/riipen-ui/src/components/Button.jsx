@@ -448,13 +448,6 @@ class Button extends React.Component {
             color: ${theme.palette.common.white};
             background-color: ${theme.palette.tertiary.main};
           }
-          .inverted-white {
-            color: ${theme.palette.common.black};
-          }
-          .inverted-white:hover {
-            color: ${theme.palette.common.white};
-            background-color: ${theme.palette.common.black};
-          }
           .inverted-positive {
             color: ${theme.palette.positive.main};
           }
