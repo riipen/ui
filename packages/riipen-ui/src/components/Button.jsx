@@ -409,7 +409,7 @@ class Button extends React.Component {
           }
           .inverted::after {
             border-radius: ${theme.shape.borderRadius.md};
-            border: 1px solid rgba(0, 0, 0, 0.23);
+            border: 1px solid transparent;
             bottom: 0;
             content: "";
             left: 0;
@@ -418,11 +418,10 @@ class Button extends React.Component {
             top: 0;
           }
           .inverted:hover::before {
-            background-color: ${theme.palette.grey[600]};
             bottom: 0;
             content: "";
             left: 0;
-            opacity: 0.1;
+            opacity: 1;
             position: absolute;
             right: 0;
             top: 0;
@@ -431,56 +430,44 @@ class Button extends React.Component {
           .inverted-primary {
             color: ${theme.palette.primary.main};
           }
-          .inverted-primary:hover::before {
+          .inverted-primary:hover {
+            color: ${theme.palette.common.white};
             background-color: ${theme.palette.primary.main};
-          }
-          .inverted-primary::after {
-            border-color: ${theme.palette.primary.main};
           }
           .inverted-secondary {
             color: ${theme.palette.secondary.main};
           }
-          .inverted-secondary:hover::before {
+          .inverted-secondary:hover {
+            color: ${theme.palette.common.white};
             background-color: ${theme.palette.secondary.main};
-          }
-          .inverted-secondary::after {
-            border-color: ${theme.palette.secondary.main};
           }
           .inverted-tertiary {
             color: ${theme.palette.tertiary.main};
           }
-          .inverted-tertiary:hover::before {
+          .inverted-tertiary:hover {
+            color: ${theme.palette.common.white};
             background-color: ${theme.palette.tertiary.main};
-          }
-          .inverted-tertiary::after {
-            border-color: ${theme.palette.tertiary.main};
           }
           .inverted-white {
             color: ${theme.palette.common.black};
           }
-          .inverted-white:hover::before {
-            background-color: ${theme.palette.grey[100]};
-          }
-          .inverted-white::after {
-            border-color: ${theme.palette.common.black};
+          .inverted-white:hover {
+            color: ${theme.palette.common.white};
+            background-color: ${theme.palette.common.black};
           }
           .inverted-positive {
             color: ${theme.palette.positive.main};
           }
-          .inverted-positive:hover::before {
+          .inverted-positive:hover {
+            color: ${theme.palette.common.white};
             background-color: ${theme.palette.positive.main};
-          }
-          .inverted-positive::after {
-            border-color: ${theme.palette.positive.main};
           }
           .inverted-negative {
             color: ${theme.palette.negative.main};
           }
-          .inverted-negative:hover::before {
+          .inverted-negative:hover {
+            color: ${theme.palette.common.white};
             background-color: ${theme.palette.negative.main};
-          }
-          .inverted-negative::after {
-            border-color: ${theme.palette.negative.main};
           }
 
           .label {
