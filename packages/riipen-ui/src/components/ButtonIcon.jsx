@@ -90,7 +90,7 @@ class ButtonIcon extends React.Component {
           .root {
             background-color: transparent;
             border: 0;
-            color: ${theme.palette.text.primary};
+            color: ${theme.palette.text.secondary};
             cursor: pointer;
             display: inline-flex;
             padding: ${theme.spacing(2)}px;
