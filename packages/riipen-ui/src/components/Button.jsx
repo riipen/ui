@@ -75,7 +75,7 @@ class Button extends React.Component {
     /**
      * The variant to use.
      */
-    variant: PropTypes.oneOf(["text", "outlined", "contained"])
+    variant: PropTypes.oneOf(["text", "outlined", "contained", "inverted"])
   };
 
   static defaultProps = {
@@ -117,6 +117,7 @@ class Button extends React.Component {
       variant === "contained" ? `contained-${color}` : null,
       variant === "text" ? `text-${color}` : null,
       variant === "outlined" ? `outlined-${color}` : null,
+      variant === "inverted" ? `inverted-${color}` : null,
       classes
     );
 
@@ -397,6 +398,88 @@ class Button extends React.Component {
             background-color: ${theme.palette.negative.main};
           }
           .outlined-negative::after {
+            border-color: ${theme.palette.negative.main};
+          }
+
+          .inverted {
+            background-color: white;
+            color: ${theme.palette.text.primary};
+            overflow: hidden;
+            position: relative;
+          }
+          .inverted::after {
+            border-radius: ${theme.shape.borderRadius.md};
+            border: 1px solid rgba(0, 0, 0, 0.23);
+            bottom: 0;
+            content: "";
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+          .inverted:hover::before {
+            background-color: ${theme.palette.grey[600]};
+            bottom: 0;
+            content: "";
+            left: 0;
+            opacity: 0.1;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+
+          .inverted-primary {
+            color: ${theme.palette.primary.main};
+          }
+          .inverted-primary:hover::before {
+            background-color: ${theme.palette.primary.main};
+          }
+          .inverted-primary::after {
+            border-color: ${theme.palette.primary.main};
+          }
+          .inverted-secondary {
+            color: ${theme.palette.secondary.main};
+          }
+          .inverted-secondary:hover::before {
+            background-color: ${theme.palette.secondary.main};
+          }
+          .inverted-secondary::after {
+            border-color: ${theme.palette.secondary.main};
+          }
+          .inverted-tertiary {
+            color: ${theme.palette.tertiary.main};
+          }
+          .inverted-tertiary:hover::before {
+            background-color: ${theme.palette.tertiary.main};
+          }
+          .inverted-tertiary::after {
+            border-color: ${theme.palette.tertiary.main};
+          }
+          .inverted-white {
+            color: ${theme.palette.common.black};
+          }
+          .inverted-white:hover::before {
+            background-color: ${theme.palette.grey[100]};
+          }
+          .inverted-white::after {
+            border-color: ${theme.palette.common.black};
+          }
+          .inverted-positive {
+            color: ${theme.palette.positive.main};
+          }
+          .inverted-positive:hover::before {
+            background-color: ${theme.palette.positive.main};
+          }
+          .inverted-positive::after {
+            border-color: ${theme.palette.positive.main};
+          }
+          .inverted-negative {
+            color: ${theme.palette.negative.main};
+          }
+          .inverted-negative:hover::before {
+            background-color: ${theme.palette.negative.main};
+          }
+          .inverted-negative::after {
             border-color: ${theme.palette.negative.main};
           }
 
