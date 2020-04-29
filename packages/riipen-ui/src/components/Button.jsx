@@ -75,7 +75,7 @@ class Button extends React.Component {
     /**
      * The variant to use.
      */
-    variant: PropTypes.oneOf(["text", "outlined", "contained"])
+    variant: PropTypes.oneOf(["text", "outlined", "contained", "inverted"])
   };
 
   static defaultProps = {
@@ -117,6 +117,7 @@ class Button extends React.Component {
       variant === "contained" ? `contained-${color}` : null,
       variant === "text" ? `text-${color}` : null,
       variant === "outlined" ? `outlined-${color}` : null,
+      variant === "inverted" ? `inverted-${color}` : null,
       classes
     );
 
@@ -398,6 +399,68 @@ class Button extends React.Component {
           }
           .outlined-negative::after {
             border-color: ${theme.palette.negative.main};
+          }
+
+          .inverted {
+            background-color: white;
+            color: ${theme.palette.text.primary};
+            overflow: hidden;
+            position: relative;
+          }
+          .inverted::after {
+            border-radius: ${theme.shape.borderRadius.md};
+            border: 1px solid transparent;
+            bottom: 0;
+            content: "";
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+          .inverted:hover::before {
+            bottom: 0;
+            content: "";
+            left: 0;
+            opacity: 1;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+
+          .inverted-primary {
+            color: ${theme.palette.primary.main};
+          }
+          .inverted-primary:hover {
+            color: ${theme.palette.common.white};
+            background-color: ${theme.palette.primary.main};
+          }
+          .inverted-secondary {
+            color: ${theme.palette.secondary.main};
+          }
+          .inverted-secondary:hover {
+            color: ${theme.palette.common.white};
+            background-color: ${theme.palette.secondary.main};
+          }
+          .inverted-tertiary {
+            color: ${theme.palette.tertiary.main};
+          }
+          .inverted-tertiary:hover {
+            color: ${theme.palette.common.white};
+            background-color: ${theme.palette.tertiary.main};
+          }
+          .inverted-positive {
+            color: ${theme.palette.positive.main};
+          }
+          .inverted-positive:hover {
+            color: ${theme.palette.common.white};
+            background-color: ${theme.palette.positive.main};
+          }
+          .inverted-negative {
+            color: ${theme.palette.negative.main};
+          }
+          .inverted-negative:hover {
+            color: ${theme.palette.common.white};
+            background-color: ${theme.palette.negative.main};
           }
 
           .label {
