@@ -108,6 +108,10 @@ const pages = [
         pathname: "/components/radio"
       },
       {
+        name: "Rich Text Editor",
+        pathname: "/components/rich-text-editor"
+      },
+      {
         name: "Tabs",
         pathname: "/components/tabs"
       },
@@ -203,6 +207,10 @@ const pages = [
       {
         name: "Progress Bar",
         pathname: "/components-api/progress-bar"
+      },
+      {
+        name: "Rich Text Editor",
+        pathname: "/components-api/rich-text-editor"
       },
       {
         name: "Toolbar",
