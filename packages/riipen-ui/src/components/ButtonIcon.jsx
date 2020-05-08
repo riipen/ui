@@ -41,6 +41,11 @@ class ButtonIcon extends React.Component {
     disabled: PropTypes.bool,
 
     /**
+     * If `true`, the button will have an outline. If `false` the button will not have an outline when focussed.
+     */
+    outline: PropTypes.bool,
+
+    /**
      * The size of the chip.
      */
     size: PropTypes.oneOf(["small", "medium", "large"])
@@ -50,6 +55,7 @@ class ButtonIcon extends React.Component {
     classes: [],
     color: "default",
     disabled: false,
+    outline: false,
     size: "medium"
   };
 
@@ -62,6 +68,7 @@ class ButtonIcon extends React.Component {
       color,
       component,
       disabled,
+      outline,
       size,
       ...other
     } = this.props;
@@ -96,7 +103,7 @@ class ButtonIcon extends React.Component {
             display: inline-flex;
             padding: ${theme.spacing(2)}px;
             position: relative;
-            outline: 0;
+            ${outline ? "" : "outline: 0;"}
             transition: all ${theme.transitions.duration.standard}ms;
             user-select: none;
           }
