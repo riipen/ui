@@ -108,7 +108,9 @@ const req = require.context(
 export default function Page() {
   return (
     <MarkdownPage
-      path="pages/components-api/${dir}${kebabCase(`${reactAPI.name}`)}"
+      path="pages/components-api/${
+        reactAPI.dir ? `${reactAPI.dir}/` : ""
+      }${kebabCase(`${reactAPI.name}`)}"
       req={req}
     />
   );

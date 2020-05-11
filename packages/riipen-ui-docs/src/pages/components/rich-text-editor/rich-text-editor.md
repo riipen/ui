@@ -13,10 +13,9 @@ which are used to give context about a field’s input, such as how the input wi
 
 ## Accessibility
 
-In order for the rich text editors to be accessible, the rich text editor should be linked to the label. The underlying DOM nodes should have this structure.
+In order for the rich text editors to be accessible, the rich text editor should be linked to the label. You can use the prop ariaLabelledBy to achieve this.
 
 ```html
-<label for="my-input">Email address</label> <input id="my-input" />
+<label for="my-input" id="my-input-label">Email address</label>
+<RichTextEditor ariaLabelledBy="my-input-label" />
 ```
-
-If you are using the RichTextEditor component, you just have to provide a unique `id` or `name`.

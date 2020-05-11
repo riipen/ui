@@ -11,7 +11,7 @@ const req = require.context(
 export default function Page() {
   return (
     <MarkdownPage
-      path="pages/components-api//editorinline-style-controls"
+      path="pages/components-api/editor/inline-style-controls"
       req={req}
     />
   );

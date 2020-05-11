@@ -81,6 +81,11 @@ class Editor extends React.Component {
     additionalControls: PropTypes.node,
 
     /**
+     * The id of the element to use as the aria-label for the Editor
+     */
+    ariaLabelledBy: PropTypes.string,
+
+    /**
      * Optional array of whitelisted styles
      * ex. ['code-block', 'BOLD', 'LINK']
      */
@@ -508,7 +513,7 @@ class Editor extends React.Component {
   };
 
   render() {
-    const { error, controlPosition } = this.props;
+    const { ariaLabelledBy, error, controlPosition } = this.props;
 
     const { editorState } = this.state;
 
@@ -542,6 +547,7 @@ class Editor extends React.Component {
           {controlPosition === "top" && this.renderControls()}
           <div className={editorClasses} style={this.props.style}>
             <DraftJsEditor
+              ariaLabelledBy={ariaLabelledBy}
               blockRendererFn={getBlockComponent}
               blockStyleFn={this.getBlockStyle}
               customStyleMap={styleMap}

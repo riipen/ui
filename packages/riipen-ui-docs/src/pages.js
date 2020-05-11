@@ -165,6 +165,35 @@ const pages = [
         pathname: "/components-api/drawer"
       },
       {
+        name: "Editor",
+        children: [
+          {
+            name: "BlockStyleControls",
+            pathname: "/components-api/editor/block-style-controls"
+          },
+          {
+            name: "ControlButton",
+            pathname: "/components-api/editor/control-button"
+          },
+          {
+            name: "Editor",
+            pathname: "/components-api/editor/editor"
+          },
+          {
+            name: "Image",
+            pathname: "/components-api/editor/image"
+          },
+          {
+            name: "InlineStyleControls",
+            pathname: "/components-api/editor/inline-style-controls"
+          },
+          {
+            name: "Link",
+            pathname: "/components-api/editor/link"
+          }
+        ]
+      },
+      {
         name: "Grid",
         pathname: "/components-api/grid"
       },
