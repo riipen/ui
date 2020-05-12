@@ -41,7 +41,7 @@ class ButtonIcon extends React.Component {
     disabled: PropTypes.bool,
 
     /**
-     * If `true`, the button will have an outline. If `false` the button will not have an outline when focussed.
+     * If `true`, the button will have an outline when focussed. If `false` the button will not have an outline when focussed.
      */
     outline: PropTypes.bool,
 
