@@ -120,7 +120,7 @@ export default function Page() {
 
     console.log(
       "Built markdown API docs for",
-      `${dir ? `${dir.substring(1)}/` : ""}${reactAPI.name}`
+      `${reactAPI.dir ? `${reactAPI.dir}/` : ""}${reactAPI.name}`
     );
   });
 }

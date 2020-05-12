@@ -18,6 +18,8 @@ import { findLinkEntities } from "../../utils/findEntities";
 import { convertFromHTML } from "../../utils/convertFromHTML";
 import ThemeContext from "../../styles/ThemeContext";
 
+import withClasses from "../../utils/withClasses";
+
 import BlockStyleControls from "./BlockStyleControls";
 import InlineStyleControls from "./InlineStyleControls";
 import RteLink from "./Link";
@@ -583,4 +585,4 @@ class Editor extends React.Component {
   }
 }
 
-export default Editor;
+export default withClasses(Editor);
