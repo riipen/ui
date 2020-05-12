@@ -81,7 +81,7 @@ class Editor extends React.Component {
     additionalControls: PropTypes.node,
 
     /**
-     * The id of the element to use as the aria-label for the Editor
+     * The id of the element to use as the aria-label for the Editor.
      */
     ariaLabelledBy: PropTypes.string,
 
@@ -132,16 +132,20 @@ class Editor extends React.Component {
 
     this.editor = React.createRef();
 
-    const initialValue = props.initialValue;
+    this.state = { editorState: undefined };
+  }
 
+  componentDidMount() {
+    const { initialValue } = this.props;
+
+    // Sets editor state after mount (because SSR)
     const editorState = initialValue
       ? EditorState.createWithContent(convertFromHTML(initialValue), decorator)
       : EditorState.createEmpty(decorator);
-
-    this.state = { editorState };
+    this.onChange(editorState);
   }
 
-  onChange = async editorState => {
+  onChange = editorState => {
     this.setState({ editorState }, () => {
       const html = this.getHtml();
 
@@ -159,6 +163,9 @@ class Editor extends React.Component {
         background-color: ${theme.palette.common.white};
         border: 1px solid ${theme.palette.grey[400]};
         border-radius: ${theme.shape.borderRadius.md};
+        font-family: ${theme.typography.body1.fontFamily};
+        font-size: ${theme.typography.body1.fontSize};
+        line-height: ${theme.typography.body1.lineHeight};
         min-height: 115px;
         position: relative;
         transition: ${theme.transitions.duration.standard}ms all;
@@ -513,16 +520,24 @@ class Editor extends React.Component {
   };
 
   render() {
-    const { ariaLabelledBy, error, controlPosition } = this.props;
+    const {
+      ariaLabelledBy,
+      error,
+      controlPosition,
+      placeholder,
+      style
+    } = this.props;
 
     const { editorState } = this.state;
+
+    if (!editorState) return null;
 
     const linkedStyles = this.getLinkedStyles();
 
     const wrapperClasses = clsx(
       linkedStyles.className,
       "wrapper",
-      this.state.editorState.getSelection().getHasFocus() && "focus",
+      editorState.getSelection().getHasFocus() && "focus",
       error && "error"
     );
 
@@ -545,7 +560,7 @@ class Editor extends React.Component {
       <React.Fragment>
         <div className={wrapperClasses} onClick={this.focus}>
           {controlPosition === "top" && this.renderControls()}
-          <div className={editorClasses} style={this.props.style}>
+          <div className={editorClasses} style={style}>
             <DraftJsEditor
               ariaLabelledBy={ariaLabelledBy}
               blockRendererFn={getBlockComponent}
@@ -555,7 +570,7 @@ class Editor extends React.Component {
               handleKeyCommand={this.handleKeyCommand}
               keyBindingFn={this.myKeyBindingFn}
               onChange={this.onChange}
-              placeholder={this.props.placeholder}
+              placeholder={placeholder}
               ref={this.editor}
               spellCheck
             />

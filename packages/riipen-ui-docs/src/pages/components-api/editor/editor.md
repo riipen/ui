@@ -21,7 +21,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">additionalControls</span> | <span class="prop-type">node</span> |  | Additional controls to display. |
-| <span class="prop-name">ariaLabelledBy</span> | <span class="prop-type">string</span> |  | The id of the element to use as the aria-label for the Editor |
+| <span class="prop-name">ariaLabelledBy</span> | <span class="prop-type">string</span> |  | The id of the element to use as the aria-label for the Editor. |
 | <span class="prop-name">controlWhitelist</span> | <span class="prop-type">Array<string></span> |  | Optional array of whitelisted styles ex. ['code-block', 'BOLD', 'LINK'] |
 | <span class="prop-name">controlPosition</span> | <span class="prop-type">"top"<br>&#124;&nbsp;"bottom"</span> | <span class="prop-default">"top"</span> | Position of controls for the editor |
 | <span class="prop-name">error</span> | <span class="prop-type">any</span> |  | If the error style should be shown or not |

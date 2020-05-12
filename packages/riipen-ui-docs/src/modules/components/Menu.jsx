@@ -31,7 +31,7 @@ class Menu extends React.Component {
       if (!child.children) return listItem;
 
       return (
-        <React.Fragment>
+        <React.Fragment key={`${parent.name}-list-${j}`}>
           {listItem}
           <ul>{this.getLinks(child, returnLinks)}</ul>
         </React.Fragment>

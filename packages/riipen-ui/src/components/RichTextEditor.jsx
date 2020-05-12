@@ -9,10 +9,9 @@ import Typography from "./Typography";
 class RichTextEditor extends React.Component {
   static propTypes = {
     /**
-     * Optional array of whitelisted styles
-     * ex. ['code-block', 'BOLD', 'LINK']
+     * The id of the element to use as the aria-label for the Editor.
      */
-    controlWhitelist: PropTypes.arrayOf(PropTypes.string),
+    ariaLabelledBy: PropTypes.string,
 
     /**
      * An error to display below the input.
@@ -36,23 +35,6 @@ class RichTextEditor extends React.Component {
     label: PropTypes.string,
 
     /**
-     * Optional max character length.
-     * Shows a character count component if present.
-     */
-    maxLength: PropTypes.number,
-
-    /**
-     * Optional placeholder. Shows when there is no text.
-     */
-    placeholder: PropTypes.node,
-
-    /**
-     * Optional style applied to parent div of editor.
-     * Used to set a minimum height.
-     */
-    style: PropTypes.object,
-
-    /**
      * A warning to display below the input.
      */
     warning: PropTypes.node
@@ -63,16 +45,25 @@ class RichTextEditor extends React.Component {
   };
 
   render() {
-    const { error, label, id, isRequired, warning, ...other } = this.props;
+    const {
+      ariaLabelledBy,
+      error,
+      label,
+      id,
+      isRequired,
+      warning,
+      ...other
+    } = this.props;
 
+    const ariaLabel = ariaLabelledBy || label;
     return (
       <div id={id}>
         {label && (
-          <InputLabel htmlFor={id} required={isRequired}>
+          <InputLabel id={ariaLabel} htmlFor={id} required={isRequired}>
             {label}
           </InputLabel>
         )}
-        <Editor error={error} {...other} />
+        <Editor ariaLabelledBy={ariaLabel} error={error} {...other} />
         {error && (
           <Typography color="negative" variant="body2">
             {error}

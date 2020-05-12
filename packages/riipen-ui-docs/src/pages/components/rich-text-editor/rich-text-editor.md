@@ -4,12 +4,17 @@
 
 Rich text editors allow users to enter text into a UI. They typically appear in forms.
 
-## Form props
+The Rich Text Editor uses [Draft.js](https://draftjs.org/docs/api-reference-editor).
 
-Standard form attributes are supported e.g. required, readOnly, type, etc. as well as a `label` and `hint`
-which are used to give context about a field’s input, such as how the input will be used.
+## Editor props
 
 {{"demo": "pages/components/rich-text-editor/Usage.js"}}
+
+## Validation
+
+The `error` prop toggles the error state.
+
+{{"demo": "pages/components/rich-text-editor/Validation.js"}}
 
 ## Accessibility
 
