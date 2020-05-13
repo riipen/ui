@@ -18,8 +18,6 @@ import { findLinkEntities } from "../../utils/findEntities";
 import { convertFromHTML } from "../../utils/convertFromHTML";
 import ThemeContext from "../../styles/ThemeContext";
 
-import withClasses from "../../utils/withClasses";
-
 import BlockStyleControls from "./BlockStyleControls";
 import InlineStyleControls from "./InlineStyleControls";
 import RteLink from "./Link";
@@ -496,7 +494,8 @@ class Editor extends React.Component {
   static contextType = ThemeContext;
 
   renderControls = () => {
-    const { additionalControls, editorState } = this.state;
+    const { additionalControls } = this.props;
+    const { editorState } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
 
@@ -585,4 +584,4 @@ class Editor extends React.Component {
   }
 }
 
-export default withClasses(Editor);
+export default Editor;

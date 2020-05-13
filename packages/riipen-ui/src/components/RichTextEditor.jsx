@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+import withForwardedRef from "../utils/withForwardedRef";
+
 import Editor from "./editor/Editor";
 
 import InputLabel from "./InputLabel";
@@ -17,6 +19,11 @@ class RichTextEditor extends React.Component {
      * An error to display below the input.
      */
     error: PropTypes.node,
+
+    /**
+     * A reference to the Editor component.
+     */
+    forwardedRef: PropTypes.object,
 
     /**
      * An ID to set on the wrapper div of this component.
@@ -48,6 +55,7 @@ class RichTextEditor extends React.Component {
     const {
       ariaLabelledBy,
       error,
+      forwardedRef,
       label,
       id,
       isRequired,
@@ -63,7 +71,12 @@ class RichTextEditor extends React.Component {
             {label}
           </InputLabel>
         )}
-        <Editor ariaLabelledBy={ariaLabel} error={error} {...other} />
+        <Editor
+          ariaLabelledBy={ariaLabel}
+          error={error}
+          ref={forwardedRef}
+          {...other}
+        />
         {error && (
           <Typography color="negative" variant="body2">
             {error}
@@ -79,4 +92,4 @@ class RichTextEditor extends React.Component {
   }
 }
 
-export default RichTextEditor;
+export default withForwardedRef(RichTextEditor);
