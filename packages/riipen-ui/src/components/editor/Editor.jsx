@@ -14,8 +14,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import css from "styled-jsx/css";
 
-import { findLinkEntities } from "../../utils/findEntities";
-import { convertFromHTML } from "../../utils/convertFromHTML";
+import { convertFromHTML, findLinkEntities } from "../../utils/editor";
 import ThemeContext from "../../styles/ThemeContext";
 
 import BlockStyleControls from "./BlockStyleControls";
@@ -124,6 +123,7 @@ class Editor extends React.Component {
   };
 
   static defaultProps = {
+    additionalControls: [],
     controlPosition: "top"
   };
 
@@ -336,7 +336,7 @@ class Editor extends React.Component {
   };
 
   focus = () => {
-    if (this.editor) this.editor.current.focus();
+    if (this.editor && this.editor.current) this.editor.current.focus();
   };
 
   // Control button callback for toggling block type
@@ -514,7 +514,15 @@ class Editor extends React.Component {
             toggle={this.toggleInlineStyle}
             whitelist={this.props.controlWhitelist}
           />
-          {additionalControls}
+          {additionalControls &&
+            additionalControls.map((control, index) => (
+              <div
+                key={`control-${index}`}
+                className={clsx([linkedStyles.className, "controlRow"])}
+              >
+                {control}
+              </div>
+            ))}
         </div>
       </React.Fragment>
     );

@@ -1,4 +1,9 @@
-const findEntities = (contentBlock, callback, contentState, entityType) => {
+export const findEntities = (
+  contentBlock,
+  callback,
+  contentState,
+  entityType
+) => {
   contentBlock.findEntityRanges(character => {
     const entityKey = character.getEntity();
     return (
@@ -11,4 +16,4 @@ const findEntities = (contentBlock, callback, contentState, entityType) => {
 
 export const findLinkEntities = (...args) => findEntities(...args, "LINK");
 
-export default findEntities;
+export default { findEntities, findLinkEntities };
