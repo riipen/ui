@@ -71,10 +71,13 @@ class Tab extends React.Component {
 
   static contextType = ThemeContext;
 
-  handleClick = e => {
+  handleChange = e => {
     const { onClick, value } = this.props;
+    if (e.type === "click" || (e.type === "keydown" && e.key === "Enter")) {
+      onClick(e, value);
+    }
 
-    return onClick(e, value);
+    return;
   };
 
   render() {
@@ -104,7 +107,14 @@ class Tab extends React.Component {
 
     return (
       <React.Fragment>
-        <div className={className} onClick={this.handleClick}>
+        <div
+          tabIndex="0"
+          role="button"
+          aria-pressed={active}
+          className={className}
+          onClick={this.handleChange}
+          onKeyDown={this.handleChange}
+        >
           {Icon && <Icon className={clsx("icon")} />}
           {label && <div className={clsx("label")}>{label}</div>}
         </div>
@@ -120,6 +130,11 @@ class Tab extends React.Component {
             padding: ${theme.spacing(3)}px ${theme.spacing(6)}px;
             text-align: center;
             transition: all ${theme.transitions.duration.standard}ms;
+          }
+
+          .root:focus {
+            outline: none;
+            color: ${theme.palette[color].main};
           }
 
           .icon + * {
