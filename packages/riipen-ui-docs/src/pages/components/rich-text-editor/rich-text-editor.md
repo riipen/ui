@@ -24,3 +24,27 @@ In order for the rich text editors to be accessible, the rich text editor should
 <label for="my-input" id="my-input-label">Email address</label>
 <RichTextEditor ariaLabelledBy="my-input-label" />
 ```
+
+## Additional Methods
+
+There are additional methods that the editor has that can be accessed using a ref.
+
+### addText
+
+Adds text to the editor.
+
+### addLink
+
+Creates a link in the editor.
+
+- pass the RichTextEditor a draft-js CompositeDecorator (see example)
+
+### addImage
+
+Adds an image to the editor.
+
+### removeLinks
+
+Unlinks linked text within specified range of given selection ranges.
+
+{{"demo": "pages/components/rich-text-editor/AdditionalMethods.js"}}

@@ -10,23 +10,34 @@ export default function Usage() {
 
   return (
     <Form>
-      <RichTextEditor editorKey="editor-basic" label="Basic" />
+      <RichTextEditor id="editor-basic" label="Basic" />
       <div style={style} />
       <RichTextEditor
+        id="editor-whitelist"
         label="Control Whitelist"
         controlWhitelist={["header-one", "BOLD"]}
       />
       <div style={style} />
-      <RichTextEditor label="Control Position" controlPosition="bottom" />
-      <div style={style} />
-      <RichTextEditor label="Initial Value" initialValue="hi!" />
+      <RichTextEditor
+        id="editor-position"
+        label="Control Position"
+        controlPosition="bottom"
+      />
       <div style={style} />
       <RichTextEditor
+        id="editor-value"
+        label="Initial Value"
+        initialValue="hi!"
+      />
+      <div style={style} />
+      <RichTextEditor
+        id="editor-placeholder"
         label="Placeholder"
         placeholder="I'm holding the place!"
       />
       <div style={style} />
       <RichTextEditor
+        id="editor-style"
         label="Style"
         style={{ backgroundColor: "#ed7321", minHeight: "200px", opacity: 0.3 }}
       />

@@ -15,17 +15,17 @@ const INLINE_STYLES = [
   {
     label: <FontAwesomeIcon icon={faBold} />,
     style: "BOLD",
-    width: "small"
+    size: "small"
   },
   {
     label: <FontAwesomeIcon icon={faItalic} />,
     style: "ITALIC",
-    width: "small"
+    size: "small"
   },
   {
     label: <FontAwesomeIcon icon={faUnderline} />,
     style: "UNDERLINE",
-    width: "small"
+    size: "small"
   }
 ];
 
@@ -76,13 +76,13 @@ class InlineStyleControls extends React.Component {
 
     return (
       <div className={clsx(classes)}>
-        {controlButtons.map(({ label, style, width }) => (
+        {controlButtons.map(({ label, style, size }) => (
           <ControlButton
             key={style}
             active={currentStyle.has(style)}
             label={label}
             onClick={this.onControlClick(style)}
-            width={width}
+            size={size}
           />
         ))}
       </div>

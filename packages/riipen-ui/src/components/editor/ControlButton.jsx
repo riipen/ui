@@ -29,11 +29,11 @@ class ControlButton extends React.Component {
      * The width of the control button.
      *
      */
-    width: PropTypes.oneOf(["small", "medium", "large"])
+    size: PropTypes.oneOf(["small", "medium", "large"])
   };
 
   static defaultProps = {
-    width: "small"
+    size: "small"
   };
 
   onClick = e => {
@@ -44,12 +44,10 @@ class ControlButton extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { active, width } = this.props;
-    const classNames = [
-      "controlButton",
-      width,
-      active && "activeButton"
-    ].filter(Boolean);
+    const { active, size } = this.props;
+    const classNames = ["controlButton", size, active && "activeButton"].filter(
+      Boolean
+    );
 
     const theme = this.context;
 

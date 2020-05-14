@@ -7,7 +7,6 @@ import withClasses from "../../utils/withClasses";
 
 class RteLink extends React.Component {
   static propTypes = {
-    // draft-js CompositeDecorator
     /**
      * The draft-js ContentState to render with.
      */

@@ -11,14 +11,14 @@ export default function Validation() {
   return (
     <Form>
       <RichTextEditor
-        id="description"
+        id="description-1"
         label="Description"
         isRequired
         error="You must provide a description."
       />
       <div style={style} />
       <RichTextEditor
-        id="description"
+        id="description-2"
         label="Description"
         warning="Are you sure you don't want to be descriptive?"
       />

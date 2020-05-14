@@ -15,12 +15,12 @@ const BLOCK_TYPES = [
   {
     label: <FontAwesomeIcon icon={faListUl} />,
     style: "unordered-list-item",
-    width: "small"
+    size: "small"
   },
   {
     label: <FontAwesomeIcon icon={faListOl} />,
     style: "ordered-list-item",
-    width: "small"
+    size: "small"
   },
   { label: "H1", style: "header-one", width: "small" },
   { label: "H2", style: "header-two", width: "small" },
@@ -29,7 +29,7 @@ const BLOCK_TYPES = [
   {
     label: <FontAwesomeIcon icon={faQuoteLeft} />,
     style: "blockquote",
-    width: "small"
+    size: "small"
   }
 ];
 
@@ -88,13 +88,13 @@ class BlockStyleControls extends React.Component {
 
     return (
       <div className={clsx(classes)}>
-        {controlButtons.map(({ label, style, width }) => (
+        {controlButtons.map(({ label, style, size }) => (
           <ControlButton
             key={style}
             active={style === blockType}
             label={label}
             onClick={this.onControlClick(style)}
-            width={width}
+            size={size}
           />
         ))}
       </div>

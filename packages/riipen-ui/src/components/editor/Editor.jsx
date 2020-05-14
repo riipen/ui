@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { convertToHTML } from "draft-convert";
+import { convertFromHTML, convertToHTML } from "draft-convert";
 import {
   AtomicBlockUtils,
   CompositeDecorator,
@@ -14,13 +14,39 @@ import PropTypes from "prop-types";
 import React from "react";
 import css from "styled-jsx/css";
 
-import { convertFromHTML, findLinkEntities } from "../../utils/editor";
 import ThemeContext from "../../styles/ThemeContext";
 
 import BlockStyleControls from "./BlockStyleControls";
 import InlineStyleControls from "./InlineStyleControls";
-import RteLink from "./Link";
 import RteImage from "./Image";
+
+// draft-convert configuration for converting HTML to EditorState.
+export const fromHtmlConfig = {
+  htmlToEntity: (nodeName, node, createEntity) => {
+    switch (nodeName) {
+      case "a":
+        return createEntity("LINK", "MUTABLE", { url: node.href });
+      case "img":
+        return createEntity("IMAGE", "IMMUTABLE", {
+          alt: node.alt,
+          src: node.src
+        });
+      default:
+        return null;
+    }
+  },
+  htmlToBlock: nodeName => {
+    switch (nodeName) {
+      case "div":
+        return {
+          type: "atomic",
+          data: {}
+        };
+      default:
+        return null;
+    }
+  }
+};
 
 // draft-convert configuration for converting EditorState to HTML.
 const toHtmlConfig = {
@@ -65,13 +91,6 @@ const getBlockComponent = block => {
   }
 };
 
-const decorator = new CompositeDecorator([
-  {
-    strategy: findLinkEntities,
-    component: RteLink
-  }
-]);
-
 class Editor extends React.Component {
   static propTypes = {
     /**
@@ -94,6 +113,11 @@ class Editor extends React.Component {
      * Position of controls for the editor
      */
     controlPosition: PropTypes.oneOf(["top", "bottom"]),
+
+    /**
+     * The decorator for the editor.
+     */
+    decorator: PropTypes.shape({ type: PropTypes.oneOf([CompositeDecorator]) }),
 
     /**
      * If the error style should be shown or not
@@ -136,11 +160,14 @@ class Editor extends React.Component {
   }
 
   componentDidMount() {
-    const { initialValue } = this.props;
+    const { decorator, initialValue } = this.props;
 
     // Sets editor state after mount (because SSR)
     const editorState = initialValue
-      ? EditorState.createWithContent(convertFromHTML(initialValue), decorator)
+      ? EditorState.createWithContent(
+          convertFromHTML(fromHtmlConfig)(initialValue || ""),
+          decorator
+        )
       : EditorState.createEmpty(decorator);
     this.onChange(editorState);
   }
@@ -291,7 +318,9 @@ class Editor extends React.Component {
    * Note: Does not keep editing history so use  sparingly.
    */
   setHtml = async html => {
-    const contentState = convertFromHTML(html);
+    const { decorator } = this.props;
+
+    const contentState = convertFromHTML(fromHtmlConfig)(html || "");
     const editorState = EditorState.createWithContent(contentState, decorator);
 
     await this.onChange(editorState);
@@ -357,11 +386,19 @@ class Editor extends React.Component {
     const contentState = editorState.getCurrentContent();
     const selectionState = editorState.getSelection();
 
-    const newContentState = Modifier.insertText(
-      contentState,
-      selectionState,
-      text
-    );
+    let newContentState;
+
+    // Checks if text is highlighted to either insert/replace
+    if (selectionState.isCollapsed()) {
+      newContentState = Modifier.insertText(contentState, selectionState, text);
+    } else {
+      newContentState = Modifier.replaceText(
+        contentState,
+        selectionState,
+        text
+      );
+    }
+
     const newEditorState = EditorState.push(
       editorState,
       newContentState,
@@ -425,11 +462,17 @@ class Editor extends React.Component {
   };
 
   /**
+   * @typedef {Object} Block - object containing range which to remove links from
+   * @property {number} start - start position of selection range
+   * @property {number} end - end position of selection range
+   */
+
+  /**
    * Control button callback for toggling removing links.
    * This breakdown of selection states is necessary because we don't want to clear the whole user's
    * selection of all entities, only links.
    *
-   * @param ranges {Object} Block keys to ranges, use the entityRanges object returned from getEntitesSelection.
+   * @param {Object.<string, Array.<Block>} ranges - Block keys to ranges, use the entityRanges object returned from getEntitesSelection.
    */
   removeLinks = ranges => {
     const blocks = Object.keys(ranges);
