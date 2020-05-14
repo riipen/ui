@@ -6,6 +6,8 @@ import { parse } from "react-docgen";
 
 import generateAPIMarkdown from "../src/utils/generateAPIMarkdown";
 
+const SRC_DIR = "/riipen-ui/src/components/";
+
 function getLineFeed(source) {
   const match = source.match(/\r?\n/);
 
@@ -31,7 +33,7 @@ async function buildDocs(options = {}) {
 
   const src = fs.readFileSync(componentObject.filename, "utf8");
 
-  const name = path.parse(componentObject.filename).name;
+  const pathObj = path.parse(componentObject.filename);
 
   let reactAPI;
 
@@ -44,7 +46,8 @@ async function buildDocs(options = {}) {
     throw err;
   }
 
-  reactAPI.name = name;
+  reactAPI.dir = pathObj.dir.split(SRC_DIR)[1];
+  reactAPI.name = pathObj.name;
   reactAPI.src = src;
   reactAPI.EOL = getLineFeed(src);
 
@@ -60,13 +63,15 @@ async function buildDocs(options = {}) {
     throw err;
   }
 
+  const dir = reactAPI.dir ? `/${reactAPI.dir}` : "";
+
   const markdownDirectory = path.resolve(
     __dirname,
-    "../src/pages/components-api"
+    `../src/pages/components-api${dir}`
   );
 
-  ensureExists(markdownDirectory, 0o744, errpr => {
-    if (errpr) {
+  ensureExists(markdownDirectory, 0o744, error => {
+    if (error) {
       console.log("Error creating directory", markdownDirectory);
       return;
     }
@@ -77,10 +82,13 @@ async function buildDocs(options = {}) {
     );
   });
 
-  const pageDirectory = path.resolve(__dirname, "../pages/components-api");
+  const pageDirectory = path.resolve(
+    __dirname,
+    `../pages/components-api${dir}`
+  );
 
-  ensureExists(pageDirectory, 0o744, errpr => {
-    if (errpr) {
+  ensureExists(pageDirectory, 0o744, error => {
+    if (error) {
       console.log("Error creating directory", pageDirectory);
       return;
     }
@@ -92,15 +100,17 @@ async function buildDocs(options = {}) {
 import MarkdownPage from "src/modules/components/MarkdownPage";
 
 const req = require.context(
-  "src/pages/components-api",
+  "src/pages/components-api${dir}",
   false,
-  /${kebabCase(reactAPI.name)}.md$/
+  /${kebabCase(`${reactAPI.name}`)}.md$/
 );
 
 export default function Page() {
   return (
     <MarkdownPage
-      path="pages/components-api/${kebabCase(reactAPI.name)}"
+      path="pages/components-api/${
+        reactAPI.dir ? `${reactAPI.dir}/` : ""
+      }${kebabCase(`${reactAPI.name}`)}"
       req={req}
     />
   );
@@ -108,19 +118,41 @@ export default function Page() {
 `.replace(/\r?\n/g, reactAPI.EOL)
     );
 
-    console.log("Built markdown API docs for", reactAPI.name);
+    console.log(
+      "Built markdown API docs for",
+      `${reactAPI.dir ? `${reactAPI.dir}/` : ""}${reactAPI.name}`
+    );
   });
 }
 
-function run() {
-  const directory = path.resolve(__dirname, "../../riipen-ui/src/components");
-
-  const components = fs
+/**
+ * Gets component filenames in directory and subdirectories.
+ * @param {String} directory - directory name
+ * @param {Array} components - Array of components in given directory
+ */
+function getComponents(directory, components) {
+  const items = fs
     .readdirSync(directory)
     .map(item => ({
       filename: path.resolve(directory, item)
     }))
     .filter(item => !item.filename.endsWith("/index.js"));
+
+  items.forEach(item => {
+    if (!item.filename.endsWith(".jsx")) {
+      getComponents(item.filename, components);
+    } else {
+      components.push(item);
+    }
+  });
+
+  return components;
+}
+
+function run() {
+  const directory = path.resolve(__dirname, "../../riipen-ui/src/components");
+
+  const components = getComponents(directory, []);
 
   components.forEach(component => {
     buildDocs({ component }).catch(error => {

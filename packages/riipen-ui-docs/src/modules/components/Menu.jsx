@@ -6,6 +6,39 @@ import pages from "src/pages";
 import ThemeContext from "@riipen-ui/styles/ThemeContext";
 
 class Menu extends React.Component {
+  getLinks = (parent, links) => {
+    const returnLinks = links || [];
+
+    const theme = this.context;
+
+    return parent.children.map((child, j) => {
+      const listItem = (
+        <li key={`${child.name}-${j}`}>
+          {!child.pathname ? (
+            <label>{child.name}</label>
+          ) : (
+            <Link href={child.pathname}>{child.name}</Link>
+          )}
+
+          <style jsx>{`
+            li {
+              padding: ${theme.spacing(1)}px;
+            }
+          `}</style>
+        </li>
+      );
+
+      if (!child.children) return listItem;
+
+      return (
+        <React.Fragment key={`${parent.name}-list-${j}`}>
+          {listItem}
+          <ul>{this.getLinks(child, returnLinks)}</ul>
+        </React.Fragment>
+      );
+    });
+  };
+
   static contextType = ThemeContext;
 
   render() {
@@ -17,13 +50,7 @@ class Menu extends React.Component {
           {pages.map((parent, i) => (
             <li key={i}>
               {parent.name}
-              <ul>
-                {parent.children.map((child, j) => (
-                  <li key={j}>
-                    <Link href={child.pathname}>{child.name}</Link>
-                  </li>
-                ))}
-              </ul>
+              <ul>{this.getLinks(parent)}</ul>
             </li>
           ))}
         </ul>

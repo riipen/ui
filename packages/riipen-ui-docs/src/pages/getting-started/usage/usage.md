@@ -2,7 +2,7 @@
 
 <p class="description">Get started with React and Riipen-UI in no time.</p>
 
-Material-UI components work in isolation. **They are self-supporting**, and will only
+Riipen-UI components work in isolation. **They are self-supporting**, and will only
 inject the styles they need to display. They don't rely on any global style-sheets.
 
 You can use any of the components as demonstrated in the documentation.
@@ -13,19 +13,15 @@ Please refer to each component's [demo page](/components/buttons/) to see how th
 Here's a quick example to get you started, **it's literally all you need**:
 
 ```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from '@riipen-ui/Button';
+import React from "react";
+import ReactDOM from "react-dom";
+import Button from "@riipen-ui/Button";
 
 function App() {
-  return (
-    <Button color="primary">
-      Hello World
-    </Button>
-  );
+  return <Button color="primary">Hello World</Button>;
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+ReactDOM.render(<App />, document.querySelector("#app"));
 ```
 
 ## Globals

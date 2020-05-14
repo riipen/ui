@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  aws-cli: circleci/aws-cli@1.0.0
+
 jobs:
   checkout:
     docker:
@@ -79,11 +82,13 @@ jobs:
 
       - run: sudo apt-get update
       - run: sudo apt-get install -y python-pip libpython-dev
-      - run: sudo pip install awscli
       - run: sudo npm install -g lerna
 
       - run: lerna run --scope riipen-ui-docs build
       - run: lerna run --scope riipen-ui-docs export
+
+      - aws-cli/install
+      - aws-cli/setup
 
       - run:
           name: S3 Static Host Deploy
