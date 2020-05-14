@@ -78,12 +78,12 @@ class RichTextEditor extends React.Component {
           {...other}
         />
         {error && (
-          <Typography color="negative" variant="body2">
+          <Typography component="div" color="negative" variant="body2">
             {error}
           </Typography>
         )}
         {warning && (
-          <Typography color="secondary" variant="body2">
+          <Typography component="div" color="secondary" variant="body2">
             {warning}
           </Typography>
         )}

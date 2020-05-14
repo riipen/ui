@@ -24,7 +24,7 @@ const decorator = new CompositeDecorator([
   }
 ]);
 
-export default function Usage() {
+export default function AdditionalMethods() {
   const style = {
     margin: "5px"
   };
