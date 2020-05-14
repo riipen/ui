@@ -52,7 +52,7 @@ class MenuItem extends React.Component {
 
     return css.resolve`
       .menu-item {
-        border-left: 5px solid transparent;
+        border-left: 3px solid transparent;
         box-sizing: border-box;
         color: ${theme.palette.text.secondary};
         cursor: pointer;

@@ -27,7 +27,10 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">loading</span> | <span class="prop-type">bool</span> |  | Whether or not the table data is loading. |
 | <span class="prop-name">loadingNode</span> | <span class="prop-type">node</span> |  | Node to display when loading Defaults to Spinner |
 | <span class="prop-name">emptyNode</span> | <span class="prop-type">node</span> |  | The react node to display if no data is provided. |
+| <span class="prop-name">expandedNode</span> | <span class="prop-type">func</span> |  | Node to render for an expanded row. |
+| <span class="prop-name">expandRow</span> | <span class="prop-type">func</span> |  | Function to determine if row should be expanded or not |
 | <span class="prop-name">mobileBreakpoint</span> | <span class="prop-type">"xs"<br>&#124;&nbsp;"sm"<br>&#124;&nbsp;"md"<br>&#124;&nbsp;"lg"<br>&#124;&nbsp;"xl"</span> | <span class="prop-default">"md"</span> | Size to change table render from desktop to mobile. |
+| <span class="prop-name">onRowClick</span> | <span class="prop-type">func</span> |  | Funtion to call if a row is clicked in the generated table. |
 
 
 Any other props supplied will be provided to the root element.

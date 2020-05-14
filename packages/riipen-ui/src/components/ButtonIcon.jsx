@@ -22,6 +22,7 @@ class ButtonIcon extends React.Component {
      */
     color: PropTypes.oneOf([
       "default",
+      "muted",
       "primary",
       "secondary",
       "tertiary",
@@ -40,6 +41,11 @@ class ButtonIcon extends React.Component {
     disabled: PropTypes.bool,
 
     /**
+     * If `true`, the button will have an outline when focussed. If `false` the button will not have an outline when focussed.
+     */
+    outline: PropTypes.bool,
+
+    /**
      * The size of the chip.
      */
     size: PropTypes.oneOf(["small", "medium", "large"])
@@ -49,6 +55,7 @@ class ButtonIcon extends React.Component {
     classes: [],
     color: "default",
     disabled: false,
+    outline: false,
     size: "medium"
   };
 
@@ -61,6 +68,7 @@ class ButtonIcon extends React.Component {
       color,
       component,
       disabled,
+      outline,
       size,
       ...other
     } = this.props;
@@ -90,12 +98,12 @@ class ButtonIcon extends React.Component {
           .root {
             background-color: transparent;
             border: 0;
-            color: ${theme.palette.text.primary};
+            color: ${theme.palette.text.secondary};
             cursor: pointer;
             display: inline-flex;
             padding: ${theme.spacing(2)}px;
             position: relative;
-            outline: 0;
+            ${outline ? "" : "outline: 0;"}
             transition: all ${theme.transitions.duration.standard}ms;
             user-select: none;
           }
@@ -103,9 +111,10 @@ class ButtonIcon extends React.Component {
           .root:focus,
           .root:hover {
             background-color: transparent;
+            color: ${theme.palette.secondary.main};
           }
           .root:hover::before {
-            background-color: ${theme.palette.grey[600]};
+            background-color: ${theme.palette.secondary.main};
             border-radius: 50%;
             bottom: 0;
             content: "";
@@ -121,25 +130,38 @@ class ButtonIcon extends React.Component {
             text-decoration: none;
           }
 
-          .primary {
+          .muted:hover {
+            color: ${theme.palette.text.primary};
+          }
+
+          .muted:hover::before {
+            background-color: ${theme.palette.grey[600]};
+          }
+
+          .primary,
+          .primary:hover {
             color: ${theme.palette.primary.main};
           }
+
           .primary:hover::before {
             background-color: ${theme.palette.primary.main};
           }
-          .secondary {
+          .secondary,
+          .secondary:hover {
             color: ${theme.palette.secondary.main};
           }
           .secondary:hover::before {
             background-color: ${theme.palette.secondary.main};
           }
-          .tertiary {
+          .tertiary,
+          .tertiary:hover {
             color: ${theme.palette.tertiary.main};
           }
           .tertiary:hover::before {
             background-color: ${theme.palette.tertiary.main};
           }
-          .white {
+          .white,
+          .white:hover {
             color: ${theme.palette.common.white};
           }
           .white:hover::before {

@@ -26,6 +26,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> |  | Array of additional CSS classes to use. |
 | <span class="prop-name">component</span> | <span class="prop-type">string</span> | <span class="prop-default">"span"</span> | The type of element to use at the root |
 | <span class="prop-name">contentPosition</span> | <span class="prop-type">object</span> |  | The location to attach the anchor to on the content element |
+| <span class="prop-name">fullWidth</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Whether or not the dropdown should take up the entire screen-width. |
 | <span class="prop-name">isOpen</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether the popover should be displayed |
 | <span class="prop-name">keepOnScreen</span> | <span class="prop-type">bool</span> |  | Whether to keep the popout on screen when the anchor element scrolls off |
 | <span class="prop-name">lockScroll</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether to lock the scrollbar when the popover is open |

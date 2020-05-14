@@ -12,6 +12,10 @@ The Tooltip has the option to be opened/closed on hover and click.
 
 {{"demo": "pages/components/tooltip/Location.js"}}
 
+## Tooltip Size
+
+{{"demo": "pages/components/tooltip/Size.js"}}
+
 ## Tooltip Color
 
 {{"demo": "pages/components/tooltip/Color.js"}}

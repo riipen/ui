@@ -26,6 +26,12 @@ Outlined buttons are medium-emphasis buttons. They contain actions that are impo
 
 {{"demo": "pages/components/button/Outlined.js"}}
 
+## Inverted buttons
+
+Inverted buttons are medium-emphasis buttons. They are similar to outlined buttons but have a white background rather than a transparent one.
+
+{{"demo": "pages/components/button/Inverted.js"}}
+
 ## Sizes
 
 Fancy larger or smaller buttons? Use the `size` property.
@@ -37,4 +43,3 @@ Fancy larger or smaller buttons? Use the `size` property.
 Sometimes you might want to have icons for certain button to enhance the UX of the application as we recognize logos more easily than plain text. For example, if you have a delete button you can label it with a trash icon.
 
 {{"demo": "pages/components/button/Icons.js"}}
-

@@ -75,7 +75,7 @@ class Button extends React.Component {
     /**
      * The variant to use.
      */
-    variant: PropTypes.oneOf(["text", "outlined", "contained"])
+    variant: PropTypes.oneOf(["text", "outlined", "contained", "inverted"])
   };
 
   static defaultProps = {
@@ -117,6 +117,7 @@ class Button extends React.Component {
       variant === "contained" ? `contained-${color}` : null,
       variant === "text" ? `text-${color}` : null,
       variant === "outlined" ? `outlined-${color}` : null,
+      variant === "inverted" ? `inverted-${color}` : null,
       classes
     );
 
@@ -149,9 +150,8 @@ class Button extends React.Component {
         <style jsx>{`
           .root {
             background-color: ${theme.palette.grey[300]};
+            border: 0;
             border-radius: ${theme.shape.borderRadius.md};
-            border-style: solid;
-            border-width: 1px;
             color: ${theme.palette.text.primary};
             cursor: pointer;
             display: inline-flex;
@@ -173,7 +173,7 @@ class Button extends React.Component {
           }
 
           .icon {
-            font-size: 16px;
+            font-size: 15px;
           }
           .icon > svg {
             display: flex;
@@ -204,9 +204,6 @@ class Button extends React.Component {
             padding: ${theme.spacing(3)}px ${theme.spacing(5)}px;
           }
 
-          .contained {
-            border: 0;
-          }
           .contained-primary {
             background-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.contrast};
@@ -264,7 +261,6 @@ class Button extends React.Component {
 
           .text {
             background-color: transparent;
-            border: 0;
             color: ${theme.palette.text.primary};
             overflow: hidden;
             position: relative;
@@ -322,10 +318,19 @@ class Button extends React.Component {
 
           .outlined {
             background-color: transparent;
-            border: 1px solid rgba(0, 0, 0, 0.23);
             color: ${theme.palette.text.primary};
             overflow: hidden;
             position: relative;
+          }
+          .outlined::after {
+            border-radius: ${theme.shape.borderRadius.md};
+            border: 1px solid rgba(0, 0, 0, 0.23);
+            bottom: 0;
+            content: "";
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
           }
           .outlined:hover {
             background-color: transparent;
@@ -342,45 +347,119 @@ class Button extends React.Component {
           }
 
           .outlined-primary {
-            border-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.main};
           }
           .outlined-primary:hover::before {
             background-color: ${theme.palette.primary.main};
           }
+          .outlined-primary::after {
+            border-color: ${theme.palette.primary.main};
+          }
           .outlined-secondary {
-            border-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.main};
           }
           .outlined-secondary:hover::before {
             background-color: ${theme.palette.secondary.main};
           }
+          .outlined-secondary::after {
+            border-color: ${theme.palette.secondary.main};
+          }
           .outlined-tertiary {
-            border-color: ${theme.palette.tertiary.main};
             color: ${theme.palette.tertiary.main};
           }
           .outlined-tertiary:hover::before {
             background-color: ${theme.palette.tertiary.main};
           }
+          .outlined-tertiary::after {
+            border-color: ${theme.palette.tertiary.main};
+          }
           .outlined-white {
-            border-color: ${theme.palette.common.white};
             color: ${theme.palette.common.white};
           }
           .outlined-white:hover::before {
             background-color: ${theme.palette.grey[100]};
           }
+          .outlined-white::after {
+            border-color: ${theme.palette.common.white};
+          }
           .outlined-positive {
-            border-color: ${theme.palette.positive.main};
             color: ${theme.palette.positive.main};
           }
           .outlined-positive:hover::before {
             background-color: ${theme.palette.positive.main};
           }
+          .outlined-positive::after {
+            border-color: ${theme.palette.positive.main};
+          }
           .outlined-negative {
-            border-color: ${theme.palette.negative.main};
             color: ${theme.palette.negative.main};
           }
           .outlined-negative:hover::before {
+            background-color: ${theme.palette.negative.main};
+          }
+          .outlined-negative::after {
+            border-color: ${theme.palette.negative.main};
+          }
+
+          .inverted {
+            background-color: white;
+            color: ${theme.palette.text.primary};
+            overflow: hidden;
+            position: relative;
+          }
+          .inverted::after {
+            border-radius: ${theme.shape.borderRadius.md};
+            border: 1px solid transparent;
+            bottom: 0;
+            content: "";
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+          .inverted:hover::before {
+            bottom: 0;
+            content: "";
+            left: 0;
+            opacity: 1;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+
+          .inverted-primary {
+            color: ${theme.palette.primary.main};
+          }
+          .inverted-primary:hover {
+            color: ${theme.palette.common.white};
+            background-color: ${theme.palette.primary.main};
+          }
+          .inverted-secondary {
+            color: ${theme.palette.secondary.main};
+          }
+          .inverted-secondary:hover {
+            color: ${theme.palette.common.white};
+            background-color: ${theme.palette.secondary.main};
+          }
+          .inverted-tertiary {
+            color: ${theme.palette.tertiary.main};
+          }
+          .inverted-tertiary:hover {
+            color: ${theme.palette.common.white};
+            background-color: ${theme.palette.tertiary.main};
+          }
+          .inverted-positive {
+            color: ${theme.palette.positive.main};
+          }
+          .inverted-positive:hover {
+            color: ${theme.palette.common.white};
+            background-color: ${theme.palette.positive.main};
+          }
+          .inverted-negative {
+            color: ${theme.palette.negative.main};
+          }
+          .inverted-negative:hover {
+            color: ${theme.palette.common.white};
             background-color: ${theme.palette.negative.main};
           }
 
@@ -392,6 +471,7 @@ class Button extends React.Component {
             font-weight: ${theme.typography.fontWeight.medium};
             justify-content: center;
             letter-spacing: 1px;
+            line-height: 15px;
             text-align: center;
             text-transform: uppercase;
             width: 100%;

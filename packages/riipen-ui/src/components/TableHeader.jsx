@@ -18,8 +18,12 @@ class TableHeader extends React.Component {
   };
 
   render() {
-    const { children, classes } = this.props;
-    return <thead className={clsx(classes)}>{children}</thead>;
+    const { children, classes, ...other } = this.props;
+    return (
+      <thead className={clsx(classes)} {...other}>
+        {children}
+      </thead>
+    );
   }
 }
 
