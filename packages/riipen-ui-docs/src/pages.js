@@ -108,6 +108,10 @@ const pages = [
         pathname: "/components/radio"
       },
       {
+        name: "Rich Text Editor",
+        pathname: "/components/rich-text-editor"
+      },
+      {
         name: "Tabs",
         pathname: "/components/tabs"
       },
@@ -161,6 +165,35 @@ const pages = [
         pathname: "/components-api/drawer"
       },
       {
+        name: "Editor",
+        children: [
+          {
+            name: "BlockStyleControls",
+            pathname: "/components-api/editor/block-style-controls"
+          },
+          {
+            name: "ControlButton",
+            pathname: "/components-api/editor/control-button"
+          },
+          {
+            name: "Editor",
+            pathname: "/components-api/editor/editor"
+          },
+          {
+            name: "Image",
+            pathname: "/components-api/editor/image"
+          },
+          {
+            name: "InlineStyleControls",
+            pathname: "/components-api/editor/inline-style-controls"
+          },
+          {
+            name: "Link",
+            pathname: "/components-api/editor/link"
+          }
+        ]
+      },
+      {
         name: "Grid",
         pathname: "/components-api/grid"
       },
@@ -203,6 +236,10 @@ const pages = [
       {
         name: "Progress Bar",
         pathname: "/components-api/progress-bar"
+      },
+      {
+        name: "Rich Text Editor",
+        pathname: "/components-api/rich-text-editor"
       },
       {
         name: "Toolbar",

@@ -2,6 +2,8 @@ import { parse as parseDoctrine } from "doctrine";
 import * as recast from "recast";
 import { parse as parseDocgen } from "react-docgen";
 
+const SRC_DIR = "/riipen-ui/src/components";
+
 function getChained(type) {
   if (type.raw) {
     const marker = "chainPropTypes";
@@ -221,16 +223,22 @@ Any other props supplied will be provided to the root element.`;
 }
 
 function generateImportStatement(reactAPI) {
-  const source = "riipen-ui";
+  const { filename, name } = reactAPI;
+  const dir = filename.substring(
+    filename.indexOf(SRC_DIR) + SRC_DIR.length,
+    filename.indexOf(`/${name}`)
+  );
+
+  const source = `riipen-ui${dir}`;
 
   return `## Import
 
 \`\`\`js
-import ${reactAPI.name} from '${source}/${reactAPI.name}';
+import ${name} from '${source}/${name}';
 
 // or
 
-import { ${reactAPI.name} } from '${source}';
+import { ${name} } from '${source}';
 \`\`\`
 
 You can learn more about the difference by [reading this guide](/guides/bundle-size).`;

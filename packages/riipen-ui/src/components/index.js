@@ -32,6 +32,7 @@ export { default as Popover } from "./Popover";
 export { default as ProgressBar } from "./ProgressBar";
 export { default as Radio } from "./Radio";
 export { default as RadioGroup } from "./RadioGroup";
+export { default as RichTextEditor } from "./RichTextEditor";
 export { default as Tab } from "./Tab";
 export { default as Tabs } from "./Tabs";
 export { default as Toolbar } from "./Toolbar";
