@@ -97,7 +97,7 @@ class Tabs extends React.Component {
 
     return (
       <React.Fragment>
-        <Component className={className}>
+        <Component role="tablist" className={className}>
           <div className={clsx("scroller")}>
             <div className={clsx(orientation)}>{childrenWithProps}</div>
           </div>

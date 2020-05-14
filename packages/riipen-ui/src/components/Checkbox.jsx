@@ -145,6 +145,10 @@ class Checkbox extends React.Component {
             width: 20px;
           }
 
+          label input:focus ~ .checkmark {
+            outline: -webkit-focus-ring-color auto 5px;
+          }
+
           /* When the checkbox is checked */
           label input:checked ~ .checkmark {
             background-color: ${theme.palette.grey[400]};

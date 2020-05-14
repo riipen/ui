@@ -22,9 +22,10 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name required">children&nbsp;*</span> | <span class="prop-type">node</span> |  | The icon element. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | List of additional classes to apply to this component. |
-| <span class="prop-name">color</span> | <span class="prop-type">"default"<br>&#124;&nbsp;"primary"<br>&#124;&nbsp;"secondary"<br>&#124;&nbsp;"tertiary"<br>&#124;&nbsp;"white"</span> | <span class="prop-default">"default"</span> | The color to use. |
+| <span class="prop-name">color</span> | <span class="prop-type">"default"<br>&#124;&nbsp;"muted"<br>&#124;&nbsp;"primary"<br>&#124;&nbsp;"secondary"<br>&#124;&nbsp;"tertiary"<br>&#124;&nbsp;"white"</span> | <span class="prop-default">"default"</span> | The color to use. |
 | <span class="prop-name">component</span> | <span class="prop-type">elementType</span> |  | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">disabled</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the button will be disabled. |
+| <span class="prop-name">outline</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the button will have an outline when focussed. If `false` the button will not have an outline when focussed. |
 | <span class="prop-name">size</span> | <span class="prop-type">"small"<br>&#124;&nbsp;"medium"<br>&#124;&nbsp;"large"</span> | <span class="prop-default">"medium"</span> | The size of the chip. |
 
 
