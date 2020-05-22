@@ -20,7 +20,12 @@ class ListItem extends React.Component {
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
-    color: PropTypes.oneOf(["primary", "secondary"])
+    color: PropTypes.oneOf(["primary", "secondary"]),
+
+    /**
+     * function to call when the list item is selected.
+     */
+    onClick: PropTypes.func
   };
 
   static defaultProps = {
@@ -29,6 +34,19 @@ class ListItem extends React.Component {
   };
 
   static contextType = ThemeContext;
+
+  handleChange = e => {
+    const { onClick } = this.props;
+    if (!onClick) {
+      return;
+    }
+
+    if (e.type === "click" || (e.type === "keydown" && e.key === "Enter")) {
+      onClick();
+    }
+
+    return;
+  };
 
   render() {
     const { children, classes, color, ...other } = this.props;
@@ -39,7 +57,14 @@ class ListItem extends React.Component {
 
     return (
       <React.Fragment>
-        <div className={className} {...other}>
+        <div
+          tabIndex="0"
+          role="button"
+          className={className}
+          onKeyDown={this.handleChange}
+          onClick={this.handleChange}
+          {...other}
+        >
           {children}
         </div>
         <style jsx>{`
@@ -49,6 +74,9 @@ class ListItem extends React.Component {
             margin: 0;
             outline: 0;
             padding: ${theme.spacing(2)}px 0;
+          }
+          .list-item:focus {
+            color: ${theme.palette[color].main};
           }
         `}</style>
       </React.Fragment>

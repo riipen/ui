@@ -73,6 +73,10 @@ class Tab extends React.Component {
 
   handleChange = e => {
     const { onClick, value } = this.props;
+    if (!onClick) {
+      return;
+    }
+
     if (e.type === "click" || (e.type === "keydown" && e.key === "Enter")) {
       onClick(e, value);
     }
@@ -133,7 +137,6 @@ class Tab extends React.Component {
           }
 
           .root:focus {
-            outline: none;
             color: ${theme.palette[color].main};
           }
 
