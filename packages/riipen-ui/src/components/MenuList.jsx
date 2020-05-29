@@ -110,12 +110,8 @@ class MenuList extends React.Component {
     const nextEvents = ["ArrowDown", "ArrowRight"];
     const prevEvents = ["ArrowUp", "ArrowLeft"];
     const enterEvent = "Enter";
-    const tabEvent = "Tab";
 
-    const allEvents = nextEvents
-      .concat(prevEvents)
-      .concat(enterEvent)
-      .concat(tabEvent);
+    const allEvents = nextEvents.concat(prevEvents).concat(enterEvent);
 
     if (allEvents.includes(event.key)) {
       event.preventDefault();
@@ -128,9 +124,6 @@ class MenuList extends React.Component {
       this.moveFocus(children, selectedIndex, "prev", event);
     } else if (event.key === enterEvent) {
       this.handleSelectChange(selectedIndex, event);
-    } else if (event.key === tabEvent) {
-      const direction = event.shiftkey ? "prev" : "next";
-      this.moveFocus(children, selectedIndex, direction, event);
     }
   };
 
