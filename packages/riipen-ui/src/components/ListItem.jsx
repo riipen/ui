@@ -49,7 +49,7 @@ class ListItem extends React.Component {
   };
 
   render() {
-    const { children, classes, color, ...other } = this.props;
+    const { children, classes, color, onClick, ...other } = this.props;
 
     const className = clsx(classes, color, "list-item");
 
@@ -59,7 +59,7 @@ class ListItem extends React.Component {
       <React.Fragment>
         <div
           tabIndex="0"
-          role="button"
+          role={onClick ? "button" : ""}
           className={className}
           onKeyDown={this.handleChange}
           onClick={this.handleChange}
