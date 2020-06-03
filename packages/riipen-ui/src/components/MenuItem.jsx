@@ -151,13 +151,11 @@ class MenuItem extends React.Component {
       classes
     );
 
-    const handleClick = event => {
-      if (disabled && event) {
-        event.preventDefault();
-        event.stopPropagation();
+    const handleClick = e => {
+      if (disabled) {
+        e.stopPropagation();
       }
-
-      if (onClick && !disabled) onClick(event);
+      if (onClick && !disabled) onClick(e);
     };
 
     return (

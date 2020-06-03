@@ -42,7 +42,7 @@ class ListItem extends React.Component {
     }
 
     if (e.type === "click" || (e.type === "keydown" && e.key === "Enter")) {
-      onClick();
+      onClick(e);
     }
 
     return;
