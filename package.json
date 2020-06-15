@@ -20,7 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/runtime-corejs2": "7.6.3",
-    "audit-ci": "2.4.2",
+    "audit-ci": "3.0.1",
     "babel-eslint": "10.0.3",
     "eslint": "6.5.1",
     "eslint-config-prettier": "6.5.0",
