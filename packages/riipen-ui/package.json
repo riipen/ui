@@ -1,6 +1,6 @@
 {
   "name": "riipen-ui",
-  "version": "0.0.113",
+  "version": "1.0.1-0",
   "private": false,
   "author": {
     "name": "Riipen",
@@ -36,6 +36,9 @@
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
     "precommit": "lint-staged",
+    "preversion": "npm test",
+    "version": "PACKAGE_VERSION=$(node -pe \"require('./package.json').version\") && git tag $PACKAGE_VERSION && git push --tags",
+    "postversion": "git push --tags && npm run release && rm -rf build",
     "release": "npm run build && npm publish build --tag latest"
   },
   "lint-staged": {
