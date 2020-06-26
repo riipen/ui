@@ -90,6 +90,15 @@ To deploy the documentation server on GitHub Pages:
 $ git push origin production
 ```
 
+## Version Update
+
+In order to update the version run `npm run release` from the `master` or `staging` branches
+
+If ran on the master branch it will release a patch (x.y.z)
+If ran on the staging branch it will release a prerelease (x.y.z-#)
+
+Version updates for minor or major builds will still need to be done manually
+
 ## License
 
 This project is licensed under the terms of the [MIT license](/LICENSE).
