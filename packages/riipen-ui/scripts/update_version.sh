@@ -36,7 +36,7 @@ NEW_VERSION=$(npm version $VERSION_CHANGE)
 PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 git add "$(dirname "$0")/../package.json"
 git add "$(dirname "$0")/../package-lock.json"
-git commit -m "Pushed New Version: $VERSION_CHANGE [ci skip]"
+git commit -m "Pushed New $VERSION_CHANGE: $NEW_VERSION [ci skip]"
 git push origin $CURR_BRANCH
 
 # Update git tags
