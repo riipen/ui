@@ -1,6 +1,6 @@
 {
   "name": "riipen-ui",
-  "version": "0.0.113",
+  "version": "0.0.114",
   "private": false,
   "author": {
     "name": "Riipen",
@@ -36,7 +36,7 @@
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
     "precommit": "lint-staged",
-    "release": "npm run build && npm publish build --tag latest"
+    "release": "./scripts/update_version.sh"
   },
   "lint-staged": {
     "*.{js,jsx}": [
