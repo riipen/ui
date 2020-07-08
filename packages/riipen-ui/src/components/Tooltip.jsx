@@ -45,7 +45,7 @@ class Tooltip extends React.Component {
     /**
      * Function to call on tooltip keydown.
      */
-    handleKeyDown: PropTypes.func,
+    onKeyDown: PropTypes.func,
 
     /**
      * Whether tooltip should display on hover.
@@ -451,7 +451,7 @@ class Tooltip extends React.Component {
     const {
       classes,
       color,
-      handleKeyDown,
+      onKeyDown,
       isControlledByProps,
       position,
       size,
@@ -495,7 +495,7 @@ class Tooltip extends React.Component {
           horizontal: contentHorizontal,
           vertical: contentVertical
         }}
-        handleKeyDown={handleKeyDown}
+        onKeyDown={onKeyDown}
         anchorEl={this.tooltipRootRef.current}
         isOpen={open}
         keepOnScreen
