@@ -43,9 +43,21 @@ class Tooltip extends React.Component {
     component: PropTypes.elementType,
 
     /**
+     * Function to call on tooltip keydown.
+     */
+    handleKeyDown: PropTypes.func,
+
+    /**
      * Whether tooltip should display on hover.
      */
     hover: PropTypes.bool,
+
+    /**
+     * How the open/close state will be determined:
+     * [Default] false: by this component's state,
+     * true: by this component's props.
+     */
+    isControlledByProps: PropTypes.bool,
 
     /**
      * Function to call on tooltip close.
@@ -56,6 +68,13 @@ class Tooltip extends React.Component {
      * Function to call on tooltip open.
      */
     onOpen: PropTypes.func,
+
+    /**
+     * Whether the popover should be open/shown.
+     * Only used when props.isControlledByProps is true
+     * [Default] false
+     */
+    open: PropTypes.bool,
 
     /**
      * Where to display the tooltip in relation to element.
@@ -88,6 +107,8 @@ class Tooltip extends React.Component {
     color: "default",
     component: "div",
     hover: true,
+    isControlledByProps: false,
+    open: false,
     position: "bottom-center",
     size: "small"
   };
@@ -398,7 +419,9 @@ class Tooltip extends React.Component {
     const { open } = this.state;
 
     const callback = !open ? this.props.onOpen : this.props.onClose;
+
     this.blur();
+
     this.setState(
       {
         open: !open
@@ -415,6 +438,7 @@ class Tooltip extends React.Component {
 
   handleClose = () => {
     this.blur();
+
     this.setState(
       {
         open: false
@@ -424,8 +448,18 @@ class Tooltip extends React.Component {
   };
 
   renderPopover = () => {
-    const { classes, color, position, size, tooltip, ...other } = this.props;
-    const { open } = this.state;
+    const {
+      classes,
+      color,
+      handleKeyDown,
+      isControlledByProps,
+      position,
+      size,
+      tooltip,
+      ...other
+    } = this.props;
+
+    const { open } = isControlledByProps ? this.props : this.state;
 
     const linkedStyles = this.getLinkedStyles();
 
@@ -461,6 +495,7 @@ class Tooltip extends React.Component {
           horizontal: contentHorizontal,
           vertical: contentVertical
         }}
+        handleKeyDown={handleKeyDown}
         anchorEl={this.tooltipRootRef.current}
         isOpen={open}
         keepOnScreen
@@ -482,7 +517,7 @@ class Tooltip extends React.Component {
         <Component
           ref={this.tooltipRootRef}
           onClick={click ? this.clickCallback : undefined}
-          onMouseOver={hover ? this.handleOpen : undefined}
+          onMouseEnter={hover ? this.handleOpen : undefined}
           onMouseLeave={hover ? this.handleClose : undefined}
         >
           {children}
