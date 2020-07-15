@@ -98,7 +98,7 @@ class Popover extends React.Component {
     closeOnScrolled: true,
     component: "span",
     fullWidth: false,
-    isOpen: false,
+    isOpen: true,
     lockScroll: true,
     marginThreshold: 16,
     styles: {}
