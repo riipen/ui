@@ -2,8 +2,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import ThemeContext from "../styles/ThemeContext";
-import useIsFocusVisible from "../utils/useIsFocusVisible";
+import { useIsFocusVisible, withThemeContext } from "../utils";
 
 const Button = props => {
   const {
@@ -499,14 +498,6 @@ Button.defaultProps = {
   size: "medium",
   type: "button",
   variant: "text"
-};
-
-const withThemeContext = Component => {
-  return props => (
-    <ThemeContext.Consumer>
-      {context => <Component {...props} theme={context} />}
-    </ThemeContext.Consumer>
-  );
 };
 
 export default withThemeContext(Button);

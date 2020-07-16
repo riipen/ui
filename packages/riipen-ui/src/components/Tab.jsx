@@ -1,78 +1,37 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
-import ThemeContext from "../styles/ThemeContext";
-import withClasses from "../utils/withClasses";
+import { useIsFocusVisible, withThemeContext } from "../utils";
 
-class Tab extends React.Component {
-  static propTypes = {
-    /**
-     * If `true`, the tab indicator will be displayed.
-     */
-    active: PropTypes.bool,
+const Tab = props => {
+  const {
+    active,
+    classes,
+    color,
+    disabled,
+    fullWidth,
+    icon: Icon,
+    label,
+    onClick,
+    orientation,
+    theme,
+    value
+  } = props;
 
-    /**
-     * An array of custom CSS classes to apply.
-     */
-    classes: PropTypes.array,
+  const [focusVisible, setFocusVisible] = useState(false);
+  const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
-    /**
-     * Determines the color of the indicator.
-     */
-    color: PropTypes.oneOf(["primary", "secondary"]),
-
-    /**
-     * If `true`, the tab will be disabled.
-     */
-    disabled: PropTypes.bool,
-
-    /**
-     * If `true`, will make the tab grow to use all the available space,
-     */
-    fullWidth: PropTypes.bool,
-
-    /**
-     * The icon element.
-     */
-    icon: PropTypes.elementType,
-
-    /**
-     * The label element.
-     */
-    label: PropTypes.node,
-
-    /**
-     * Callback fired when the tab is clicked.
-     *
-     * @param {object} event The event source of the callback
-     * @param {any} value We default to the index of the child (number)
-     */
-    onClick: PropTypes.func,
-
-    /**
-     * The indicator orientation.
-     */
-    orientation: PropTypes.oneOf(["horizontal", "vertical"]),
-
-    /**
-     * The value provided when a click event is dispatched.
-     */
-    value: PropTypes.any.isRequired
+  const handleFocus = e => {
+    setFocusVisible(isFocusVisible(e));
   };
 
-  static defaultProps = {
-    active: false,
-    color: "secondary",
-    disabled: false,
-    fullWidth: false,
-    orientation: "horizontal"
+  const handleBlur = () => {
+    setFocusVisible(false);
+    onBlurVisible();
   };
 
-  static contextType = ThemeContext;
-
-  handleChange = e => {
-    const { onClick, value } = this.props;
+  const handleChange = e => {
     if (!onClick) {
       return;
     }
@@ -84,121 +43,179 @@ class Tab extends React.Component {
     return;
   };
 
-  render() {
-    const {
-      active,
-      classes,
-      color,
-      disabled,
-      fullWidth,
-      icon: Icon,
-      label,
-      orientation
-    } = this.props;
+  const className = clsx(
+    "root",
+    active ? `${color}-active` : null,
+    active ? `${orientation}-active` : null,
+    color,
+    disabled ? "disabled" : null,
+    focusVisible ? "focusVisible" : null,
+    fullWidth ? "full-width" : null,
+    orientation,
+    classes
+  );
 
-    const theme = this.context;
+  return (
+    <React.Fragment>
+      <div
+        tabIndex="0"
+        role="button"
+        ref={ref}
+        aria-pressed={active}
+        className={className}
+        onClick={handleChange}
+        onKeyDown={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      >
+        {Icon && <Icon className={clsx("icon")} />}
+        {label && <div className={clsx("label")}>{label}</div>}
+      </div>
+      <style jsx>{`
+        .root {
+          align-items: center;
+          border-bottom: 3px solid transparent;
+          cursor: pointer;
+          display: inline-flex;
+          justify-content: center;
+          height: 100%;
+          min-width: 72px;
+          outline: 0;
+          padding: ${theme.spacing(3)}px ${theme.spacing(6)}px;
+          text-align: center;
+          transition: all ${theme.transitions.duration.standard}ms;
+        }
 
-    const className = clsx(
-      "root",
-      active ? `${color}-active` : null,
-      active ? `${orientation}-active` : null,
-      color,
-      disabled ? "disabled" : null,
-      fullWidth ? "full-width" : null,
-      orientation,
-      classes
-    );
+        .root.focusVisible {
+          outline: 5px auto -webkit-focus-ring-color;
+        }
 
-    return (
-      <React.Fragment>
-        <div
-          tabIndex="0"
-          role="button"
-          aria-pressed={active}
-          className={className}
-          onClick={this.handleChange}
-          onKeyDown={this.handleChange}
-        >
-          {Icon && <Icon className={clsx("icon")} />}
-          {label && <div className={clsx("label")}>{label}</div>}
-        </div>
-        <style jsx>{`
-          .root {
-            align-items: center;
-            border-bottom: 3px solid transparent;
-            cursor: pointer;
-            display: inline-flex;
-            justify-content: center;
-            height: 100%;
-            min-width: 72px;
-            padding: ${theme.spacing(3)}px ${theme.spacing(6)}px;
-            text-align: center;
-            transition: all ${theme.transitions.duration.standard}ms;
-          }
+        .icon + * {
+          margin-left: ${theme.spacing(2)}px;
+        }
 
-          .root:focus {
-            color: ${theme.palette[color].main};
-          }
+        .icon {
+          margin-bottom: 1px;
+        }
 
-          .icon + * {
-            margin-left: ${theme.spacing(2)}px;
-          }
+        .label {
+          font-family: ${theme.typography.fontFamily};
+          font-size: 14px;
+          letter-spacing: 2px;
+          line-height: 1.4;
+          text-decoration: none;
+          text-transform: uppercase;
+          width: 100%;
+        }
 
-          .icon {
-            margin-bottom: 1px;
-          }
+        .vertical {
+          border-bottom: 0;
+          border-right: 3px solid transparent;
+          padding: ${theme.spacing()}px ${theme.spacing(5)}px;
+          text-align: left;
+        }
 
-          .label {
-            font-family: ${theme.typography.fontFamily};
-            font-size: 14px;
-            letter-spacing: 2px;
-            line-height: 1.4;
-            text-decoration: none;
-            text-transform: uppercase;
-            width: 100%;
-          }
+        .vertical-active {
+          background-color: ${theme.palette.grey[50]};
+        }
 
-          .vertical {
-            border-bottom: 0;
-            border-right: 3px solid transparent;
-            padding: ${theme.spacing()}px ${theme.spacing(5)}px;
-            text-align: left;
-          }
+        .primary-active {
+          border-color: ${theme.palette.primary.main};
+          color: ${theme.palette.primary.main};
+        }
+        .primary:hover {
+          color: ${theme.palette.primary.main};
+        }
+        .secondary-active {
+          border-color: ${theme.palette.secondary.main};
+          color: ${theme.palette.secondary.main};
+        }
+        .secondary:hover {
+          color: ${theme.palette.secondary.main};
+        }
 
-          .vertical-active {
-            background-color: ${theme.palette.grey[50]};
-          }
+        .disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
 
-          .primary-active {
-            border-color: ${theme.palette.primary.main};
-            color: ${theme.palette.primary.main};
-          }
-          .primary:hover {
-            color: ${theme.palette.primary.main};
-          }
-          .secondary-active {
-            border-color: ${theme.palette.secondary.main};
-            color: ${theme.palette.secondary.main};
-          }
-          .secondary:hover {
-            color: ${theme.palette.secondary.main};
-          }
+        .full-width {
+          flex-basis: 0;
+          flex-grow: 1;
+          flex-shrink: 1;
+          max-width: none;
+        }
+      `}</style>
+    </React.Fragment>
+  );
+};
 
-          .disabled {
-            opacity: 0.5;
-            pointer-events: none;
-          }
+Tab.defaultProps = {
+  active: false,
+  color: "secondary",
+  disabled: false,
+  fullWidth: false,
+  orientation: "horizontal"
+};
 
-          .full-width {
-            flex-basis: 0;
-            flex-grow: 1;
-            flex-shrink: 1;
-            max-width: none;
-          }
-        `}</style>
-      </React.Fragment>
-    );
-  }
-}
+Tab.propTypes = {
+  /**
+   * If `true`, the tab indicator will be displayed.
+   */
+  active: PropTypes.bool,
 
-export default withClasses(Tab);
+  /**
+   * An array of custom CSS classes to apply.
+   */
+  classes: PropTypes.array,
+
+  /**
+   * Determines the color of the indicator.
+   */
+  color: PropTypes.oneOf(["primary", "secondary"]),
+
+  /**
+   * If `true`, the tab will be disabled.
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * If `true`, will make the tab grow to use all the available space,
+   */
+  fullWidth: PropTypes.bool,
+
+  /**
+   * The icon element.
+   */
+  icon: PropTypes.elementType,
+
+  /**
+   * The label element.
+   */
+  label: PropTypes.node,
+
+  /**
+   * Callback fired when the tab is clicked.
+   *
+   * @param {object} event The event source of the callback
+   * @param {any} value We default to the index of the child (number)
+   */
+  onClick: PropTypes.func,
+
+  /**
+   * The indicator orientation.
+   */
+  orientation: PropTypes.oneOf(["horizontal", "vertical"]),
+
+  /**
+   * The theme context object
+   */
+  theme: PropTypes.object,
+
+  /**
+   * The value provided when a click event is dispatched.
+   */
+  value: PropTypes.any.isRequired
+};
+
+export default withThemeContext(Tab);
