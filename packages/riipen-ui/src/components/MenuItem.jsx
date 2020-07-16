@@ -77,26 +77,29 @@ class MenuItem extends React.Component {
         color: ${theme.palette.text.secondary};
       }
 
-      .menu-item.disabled:focus {
+      .menu-item.disabled.focusVisible {
         background-color: ${theme.palette.grey[50]};
         border-color: transparent;
         color: ${theme.palette.text.secondary};
+        outline: 0;
       }
 
       .menu-item.primary:hover {
         border-color: ${theme.palette.primary.main};
       }
 
-      .menu-item.primary:focus {
-        outline: auto;
+      .menu-item.primary.focusVisible {
+        color: ${theme.palette.primary.main};
+        outline: 5px auto -webkit-focus-ring-color;
       }
 
       .menu-item.secondary:hover {
         border-color: ${theme.palette.secondary.main};
       }
 
-      .menu-item.secondary:focus {
-        outline: auto;
+      .menu-item.secondary.focusVisible {
+        color: ${theme.palette.secondary.main};
+        outline: 5px auto -webkit-focus-ring-color;
       }
 
       .menu-item.selected {
