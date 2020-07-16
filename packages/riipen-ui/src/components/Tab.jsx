@@ -208,6 +208,7 @@ Tab.propTypes = {
   orientation: PropTypes.oneOf(["horizontal", "vertical"]),
 
   /**
+   * @ignore
    * The theme context object
    */
   theme: PropTypes.object,

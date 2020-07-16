@@ -92,6 +92,7 @@ ListItem.propTypes = {
   onClick: PropTypes.func,
 
   /**
+   * @ignore
    * The theme context object
    */
   theme: PropTypes.object
