@@ -9,6 +9,7 @@ import {
   getDocument,
   getOffsetLeft,
   getOffsetTop,
+  getClosestScrollableParent,
   debounce
 } from "../utils";
 import withClasses from "../utils/withClasses";
@@ -36,6 +37,12 @@ class Popover extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * Whether the popover should be closed when its closest scrollable parent is scrolled.
+     * [Default] true
+     */
+    closeOnScrolled: PropTypes.bool,
+
+    /**
      * The type of element to use at the root
      */
     component: PropTypes.string,
@@ -54,6 +61,11 @@ class Popover extends React.Component {
      * Whether the popover should be displayed
      */
     isOpen: PropTypes.bool,
+
+    /**
+     * Function call to handle keydown events,
+     */
+    onKeyDown: PropTypes.func,
 
     /**
      * Whether to keep the popout on screen when the anchor element scrolls off
@@ -83,6 +95,7 @@ class Popover extends React.Component {
   };
 
   static defaultProps = {
+    closeOnScrolled: true,
     component: "span",
     fullWidth: false,
     isOpen: true,
@@ -116,6 +129,10 @@ class Popover extends React.Component {
     window.addEventListener("mousedown", this.handleCloseEvent);
     window.addEventListener("keydown", this.handleCloseEvent);
 
+    if (anchorEl) {
+      this.manageScrollableParentEventListeners(false);
+    }
+
     if (anchorEl && lockScroll) {
       this.lockParentScroll();
     }
@@ -126,7 +143,12 @@ class Popover extends React.Component {
   componentDidUpdate(prevProps) {
     const anchorChange =
       prevProps.anchorEl === null && this.props.anchorEl !== null;
-    const openChange = !prevProps.isOpen && this.props.isOpen;
+
+    /* need to NOT check that previous prop was !isOpen
+     * in order to cause positioning of popover to be correct
+     * when it is opened by a controlled Tooltip being opened
+     */
+    const openChange = this.props.isOpen;
     const anchorPositionChange = !(
       prevProps.anchorPosition === this.props.anchorPosition
     );
@@ -134,13 +156,19 @@ class Popover extends React.Component {
       prevProps.contentPosition === this.props.contentPosition
     );
 
+    if (anchorChange) {
+      // add event listeners
+      this.manageScrollableParentEventListeners(false);
+    }
+
     if (
       anchorChange ||
       openChange ||
       contentPositionChange ||
       anchorPositionChange
     ) {
-      this.setPositioningStyle();
+      // need to use requestAnimationFrame in order for popover to get proper position on first open
+      window.requestAnimationFrame(this.setPositioningStyle);
     }
   }
 
@@ -150,6 +178,8 @@ class Popover extends React.Component {
     window.removeEventListener("scroll", this.positionChangeEventHandler);
     window.removeEventListener("mousedown", this.handleCloseEvent);
     window.removeEventListener("keydown", this.handleCloseEvent);
+
+    this.manageScrollableParentEventListeners(true);
 
     if (anchorEl && lockScroll) {
       this.resetParentScroll();
@@ -163,6 +193,7 @@ class Popover extends React.Component {
 
   setPositioningStyle = () => {
     const contentRef = this.contentRef.current;
+
     const {
       anchorPosition = {
         vertical: "top",
@@ -251,6 +282,34 @@ class Popover extends React.Component {
     );
   };
 
+  manageScrollableParentEventListeners(remove = true) {
+    const { anchorEl, closeOnScrolled } = this.props;
+    if (anchorEl) {
+      const closestScrollableParent = getClosestScrollableParent(anchorEl);
+      if (closestScrollableParent) {
+        if (remove) {
+          closestScrollableParent.removeEventListener(
+            "resize",
+            closeOnScrolled ? this.handleClose : this.positionChangeEventHandler
+          );
+          closestScrollableParent.removeEventListener(
+            "scroll",
+            closeOnScrolled ? this.handleClose : this.positionChangeEventHandler
+          );
+        } else {
+          closestScrollableParent.addEventListener(
+            "resize",
+            closeOnScrolled ? this.handleClose : this.positionChangeEventHandler
+          );
+          closestScrollableParent.addEventListener(
+            "scroll",
+            closeOnScrolled ? this.handleClose : this.positionChangeEventHandler
+          );
+        }
+      }
+    }
+  }
+
   isDecendant(parent, child) {
     const node = child.parentNode;
     if (node == null) {
@@ -280,6 +339,11 @@ class Popover extends React.Component {
       this.handleClose();
     } else if (event.type === "keydown" && event.key === "Escape") {
       this.handleClose();
+    } else if (event.type === "keydown" && this.props.onKeyDown) {
+      // stop this event from triggering other keydown listeners
+      event.stopImmediatePropagation();
+
+      this.props.onKeyDown(event);
     }
   };
 
