@@ -193,7 +193,8 @@ Checkbox.propTypes = {
   required: PropTypes.bool,
 
   /**
-   *
+   * @ignore
+   * The theme context object
    */
   theme: PropTypes.object,
 

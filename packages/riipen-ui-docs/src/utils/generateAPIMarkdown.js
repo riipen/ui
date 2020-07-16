@@ -182,6 +182,10 @@ function generateProps(reactAPI) {
       throw new Error(`The "${propRaw}" prop is missing a description`);
     }
 
+    if (prop.description && prop.description.includes("@ignore")) {
+      return textProps;
+    }
+
     const description = generatePropDescription(prop);
 
     if (description === null) {

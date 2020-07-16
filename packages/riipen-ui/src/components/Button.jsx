@@ -475,6 +475,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(["small", "medium", "large"]),
 
   /**
+   * @ignore
    * The theme context object
    */
   theme: PropTypes.object,

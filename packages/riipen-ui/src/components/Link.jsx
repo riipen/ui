@@ -159,6 +159,7 @@ Link.propTypes = {
   underline: PropTypes.oneOf(["none", "hover", "always"]),
 
   /**
+   * @ignore
    * The theme context object
    */
   theme: PropTypes.object
