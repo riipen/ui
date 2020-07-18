@@ -45,7 +45,7 @@
     "doctrine": "^3.0.0",
     "draft-convert": "^2.1.10",
     "draft-js": "^0.11.5",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "marked": "^0.7.0",
     "next": "^9.4.4",
     "prismjs": "^1.17.1",
