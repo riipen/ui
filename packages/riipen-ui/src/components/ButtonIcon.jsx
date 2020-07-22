@@ -69,6 +69,9 @@ const ButtonIcon = props => {
             transition: all ${theme.transitions.duration.standard}ms;
             user-select: none;
           }
+          .root.focusVisible {
+            outline: 5px auto -webkit-focus-ring-color;
+          }
           .root:active,
           .root.focusVisible,
           .root:hover {

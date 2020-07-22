@@ -32,7 +32,7 @@ const Tab = props => {
   };
 
   const handleChange = e => {
-    if (!onClick) {
+    if (!onClick || disabled) {
       return;
     }
 
@@ -62,6 +62,7 @@ const Tab = props => {
         role="button"
         ref={ref}
         aria-pressed={active}
+        aria-disabled={disabled}
         className={className}
         onClick={handleChange}
         onKeyDown={handleChange}
