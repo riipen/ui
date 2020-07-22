@@ -65,6 +65,7 @@ const Input = props => {
         onBlur={handleBlur}
         className={componentClassName}
         disabled={disabled}
+        aria-disabled={disabled}
         {...other}
       />
       {error && (

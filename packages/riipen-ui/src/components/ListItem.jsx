@@ -64,6 +64,7 @@ const ListItem = props => {
 
         .list-item.focusVisible {
           color: ${theme.palette[color].main};
+          outline: 5px auto -webkit-focus-ring-color;
         }
       `}</style>
     </React.Fragment>
