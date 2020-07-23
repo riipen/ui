@@ -1,100 +1,62 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
-import ThemeContext from "../styles/ThemeContext";
-import withClasses from "../utils/withClasses";
+import { withThemeContext, useIsFocusVisible } from "../utils";
 
-class ButtonIcon extends React.Component {
-  static propTypes = {
-    /**
-     * The icon element.
-     */
-    children: PropTypes.node.isRequired,
+const ButtonIcon = props => {
+  const {
+    children,
+    classes,
+    color,
+    component,
+    disabled,
+    outline,
+    size,
+    theme,
+    ...other
+  } = props;
 
-    /**
-     * List of additional classes to apply to this component.
-     */
-    classes: PropTypes.array,
+  const [focusVisible, setFocusVisible] = useState(false);
+  const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
-    /**
-     * The color to use.
-     */
-    color: PropTypes.oneOf([
-      "default",
-      "muted",
-      "primary",
-      "secondary",
-      "tertiary",
-      "white"
-    ]),
-
-    /**
-     * The component used for the root node.
-     * Either a string to use a DOM element or a component.
-     */
-    component: PropTypes.elementType,
-
-    /**
-     * If `true`, the button will be disabled.
-     */
-    disabled: PropTypes.bool,
-
-    /**
-     * If `true`, the button will have an outline when focussed. If `false` the button will not have an outline when focussed.
-     */
-    outline: PropTypes.bool,
-
-    /**
-     * The size of the chip.
-     */
-    size: PropTypes.oneOf(["small", "medium", "large"])
+  const handleFocus = e => {
+    setFocusVisible(isFocusVisible(e));
   };
 
-  static defaultProps = {
-    classes: [],
-    color: "default",
-    disabled: false,
-    outline: false,
-    size: "medium"
+  const handleBlur = () => {
+    setFocusVisible(false);
+    onBlurVisible();
   };
 
-  static contextType = ThemeContext;
+  const className = clsx(
+    "root",
+    color,
+    disabled ? "disabled" : null,
+    focusVisible ? "focusVisible" : null,
+    size,
+    classes
+  );
 
-  render() {
-    const {
-      children,
-      classes,
-      color,
-      component,
-      disabled,
-      outline,
-      size,
-      ...other
-    } = this.props;
+  let Component = other.href ? "a" : "button";
 
-    const theme = this.context;
+  if (component) Component = component;
 
-    const className = clsx(
-      "root",
-      color,
-      disabled ? "disabled" : null,
-      size,
-      classes
-    );
-
-    let Component = other.href ? "a" : "button";
-
-    if (component) Component = component;
-
-    return (
-      <React.Fragment>
-        <Component className={className} disabled={disabled} {...other}>
-          <span className={clsx("label", `icon-${size}`, `font-${size}`)}>
-            {children}
-          </span>
-        </Component>
-        <style jsx>{`
+  return (
+    <React.Fragment>
+      <Component
+        ref={ref}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        className={className}
+        disabled={disabled}
+        {...other}
+      >
+        <span className={clsx("label", `icon-${size}`, `font-${size}`)}>
+          {children}
+        </span>
+      </Component>
+      <style jsx>{`
           .root {
             background-color: transparent;
             border: 0;
@@ -107,8 +69,11 @@ class ButtonIcon extends React.Component {
             transition: all ${theme.transitions.duration.standard}ms;
             user-select: none;
           }
+          .root.focusVisible {
+            outline: 5px auto -webkit-focus-ring-color;
+          }
           .root:active,
-          .root:focus,
+          .root.focusVisible,
           .root:hover {
             background-color: transparent;
             color: ${theme.palette.secondary.main};
@@ -202,9 +167,67 @@ class ButtonIcon extends React.Component {
             font-size: 20px;
           }
         `}</style>
-      </React.Fragment>
-    );
-  }
-}
+    </React.Fragment>
+  );
+};
 
-export default withClasses(ButtonIcon);
+ButtonIcon.propTypes = {
+  /**
+   * The icon element.
+   */
+  children: PropTypes.node.isRequired,
+
+  /**
+   * List of additional classes to apply to this component.
+   */
+  classes: PropTypes.array,
+
+  /**
+   * The color to use.
+   */
+  color: PropTypes.oneOf([
+    "default",
+    "muted",
+    "primary",
+    "secondary",
+    "tertiary",
+    "white"
+  ]),
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a DOM element or a component.
+   */
+  component: PropTypes.elementType,
+
+  /**
+   * If `true`, the button will be disabled.
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * If `true`, the button will have an outline when focussed. If `false` the button will not have an outline when focussed.
+   */
+  outline: PropTypes.bool,
+
+  /**
+   * The size of the chip.
+   */
+  size: PropTypes.oneOf(["small", "medium", "large"]),
+
+  /**
+   * @ignore
+   * The theme context object
+   */
+  theme: PropTypes.object
+};
+
+ButtonIcon.defaultProps = {
+  classes: [],
+  color: "default",
+  disabled: false,
+  outline: false,
+  size: "medium"
+};
+
+export default withThemeContext(ButtonIcon);

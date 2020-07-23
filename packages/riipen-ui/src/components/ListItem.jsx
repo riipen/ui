@@ -1,42 +1,13 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
-import ThemeContext from "../styles/ThemeContext";
-import withClasses from "../utils/withClasses";
+import { useIsFocusVisible, withThemeContext } from "../utils";
 
-class ListItem extends React.Component {
-  static propTypes = {
-    /**
-     * The content of the list item.
-     */
-    children: PropTypes.any,
+const ListItem = props => {
+  const { children, classes, color, theme, onClick, ...other } = props;
 
-    /**
-     * Array of additional CSS classes to use.
-     */
-    classes: PropTypes.array,
-
-    /**
-     * The color of the component. It supports those theme colors that make sense for this component.
-     */
-    color: PropTypes.oneOf(["primary", "secondary"]),
-
-    /**
-     * function to call when the list item is selected.
-     */
-    onClick: PropTypes.func
-  };
-
-  static defaultProps = {
-    color: "primary",
-    classes: []
-  };
-
-  static contextType = ThemeContext;
-
-  handleChange = e => {
-    const { onClick } = this.props;
+  const handleChange = e => {
     if (!onClick) {
       return;
     }
@@ -48,40 +19,89 @@ class ListItem extends React.Component {
     return;
   };
 
-  render() {
-    const { children, classes, color, onClick, ...other } = this.props;
+  const [focusVisible, setFocusVisible] = useState(false);
+  const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
-    const className = clsx(classes, color, "list-item");
+  const handleFocus = e => {
+    setFocusVisible(isFocusVisible(e));
+  };
 
-    const theme = this.context;
+  const handleBlur = () => {
+    setFocusVisible(false);
+    onBlurVisible();
+  };
 
-    return (
-      <React.Fragment>
-        <div
-          tabIndex="0"
-          role={onClick ? "button" : ""}
-          className={className}
-          onKeyDown={this.handleChange}
-          onClick={this.handleChange}
-          {...other}
-        >
-          {children}
-        </div>
-        <style jsx>{`
-          .list-item {
-            border: none;
-            box-sizing: border-box;
-            margin: 0;
-            outline: 0;
-            padding: ${theme.spacing(2)}px 0;
-          }
-          .list-item:focus {
-            color: ${theme.palette[color].main};
-          }
-        `}</style>
-      </React.Fragment>
-    );
-  }
-}
+  const className = clsx(
+    classes,
+    focusVisible ? "focusVisible" : null,
+    color,
+    "list-item"
+  );
 
-export default withClasses(ListItem);
+  return (
+    <React.Fragment>
+      <div
+        ref={ref}
+        tabIndex="0"
+        role={onClick ? "button" : ""}
+        className={className}
+        onKeyDown={handleChange}
+        onClick={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        {...other}
+      >
+        {children}
+      </div>
+      <style jsx>{`
+        .list-item {
+          border: none;
+          box-sizing: border-box;
+          margin: 0;
+          outline: 0;
+          padding: ${theme.spacing(2)}px 0;
+        }
+
+        .list-item.focusVisible {
+          color: ${theme.palette[color].main};
+          outline: 5px auto -webkit-focus-ring-color;
+        }
+      `}</style>
+    </React.Fragment>
+  );
+};
+
+ListItem.propTypes = {
+  /**
+   * The content of the list item.
+   */
+  children: PropTypes.any,
+
+  /**
+   * Array of additional CSS classes to use.
+   */
+  classes: PropTypes.array,
+
+  /**
+   * The color of the component. It supports those theme colors that make sense for this component.
+   */
+  color: PropTypes.oneOf(["primary", "secondary"]),
+
+  /**
+   * function to call when the list item is selected.
+   */
+  onClick: PropTypes.func,
+
+  /**
+   * @ignore
+   * The theme context object
+   */
+  theme: PropTypes.object
+};
+
+ListItem.defaultProps = {
+  color: "primary",
+  classes: []
+};
+
+export default withThemeContext(ListItem);
