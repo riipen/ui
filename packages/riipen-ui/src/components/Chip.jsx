@@ -22,6 +22,7 @@ class Chip extends React.Component {
      */
     color: PropTypes.oneOf([
       "default",
+      "dark",
       "primary",
       "secondary",
       "tertiary",
@@ -255,6 +256,16 @@ class Chip extends React.Component {
           .positive.outlined {
             border-color: ${theme.palette.positive.main};
             color: ${theme.palette.positive.main};
+          }
+
+          .dark {
+            background-color: ${theme.palette.grey.A400};
+            border-color: ${theme.palette.grey.A400};
+            color: ${theme.palette.common.white};
+          }
+          .dark.outlined {
+            border-color: ${theme.palette.grey.A400};
+            color: ${theme.palette.grey.A400};
           }
 
           .outlined {

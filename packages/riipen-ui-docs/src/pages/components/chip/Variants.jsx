@@ -28,6 +28,8 @@ export default function Variants() {
         <Chip label="Warning" variant="outlined" color="warning" />
         <span style={style} />
         <Chip label="Negative" variant="outlined" color="negative" />
+        <span style={style} />
+        <Chip label="Dark" variant="outlined" color="dark" />
       </div>
     </div>
   );
