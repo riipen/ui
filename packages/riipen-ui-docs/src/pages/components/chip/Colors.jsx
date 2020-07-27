@@ -28,6 +28,8 @@ export default function Colors() {
         <Chip label="Warning" color="warning" />
         <span style={style} />
         <Chip label="Negative" color="negative" />
+        <span style={style} />
+        <Chip label="Dark" color="dark" />
       </div>
     </div>
   );
