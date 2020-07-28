@@ -23,11 +23,13 @@ export default function Compact() {
         <Chip label="Tertiary" size="small" color="tertiary" />
       </div>
       <div style={breakStyle}>
-        <Chip label="Positive" size="small" color="positive" />
+        <Chip label="Positive" size="xsmall" color="positive" />
         <span style={style} />
-        <Chip label="Warning" size="small" color="warning" />
+        <Chip label="Warning" size="xsmall" color="warning" />
         <span style={style} />
-        <Chip label="Negative" size="small" color="negative" />
+        <Chip label="Negative" size="xsmall" color="negative" />
+        <span style={style} />
+        <Chip label="Dark" size="xsmall" color="dark" />
       </div>
     </div>
   );
