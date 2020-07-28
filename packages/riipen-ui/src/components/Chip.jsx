@@ -65,7 +65,7 @@ class Chip extends React.Component {
     /**
      * The size of the chip.
      */
-    size: PropTypes.oneOf(["small", "medium"]),
+    size: PropTypes.oneOf(["medium", "small", "xsmall"]),
 
     /**
      * The variant to use.
@@ -149,6 +149,9 @@ class Chip extends React.Component {
             outline: 0;
             vertical-align: middle;
             white-space: nowrap;
+          }
+          .root.xsmall {
+            padding: 1px 5px;
           }
           .root.small {
             padding: 5px 10px;
