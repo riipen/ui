@@ -79,6 +79,7 @@ Resources:
           MinTTL: 0
           TargetOriginId: !Sub ui-${Environment}-docs
           ViewerProtocolPolicy: redirect-to-https
+        DefaultRootObject: index.html
         Enabled: !Ref Enabled
         HttpVersion: http2
         IPV6Enabled: false
