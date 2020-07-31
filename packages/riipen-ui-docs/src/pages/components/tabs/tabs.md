@@ -35,3 +35,9 @@ Tab labels may be either all icons or all text.
 Tabs can be displayed vertically be setting the `orientation` prop.
 
 {{"demo": "pages/components/tabs/Vertical.js"}}
+
+## Forcing Active Display
+
+Tabs can be forced to display active with the `active` tab prop.
+
+{{"demo": "pages/components/tabs/Forced.js"}}
