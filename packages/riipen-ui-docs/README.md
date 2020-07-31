@@ -27,6 +27,14 @@ npm install npm@latest -g
 npm install
 ```
 
+## Run
+
+Start the server:
+
+```bash
+$ npm start
+```
+
 ## DevOps
 
 ### Requirements
