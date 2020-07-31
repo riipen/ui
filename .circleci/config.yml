@@ -109,6 +109,11 @@ jobs:
       - attach_workspace:
           at: ~/
 
+      - aws-cli/install
+      - aws-cli/configure:
+          aws-access-key-id: $AWS_ACCESS_KEY_ID
+          aws-region: $AWS_REGION
+
       - run: sudo apt-get update
       - run: sudo apt-get install -y python-pip libpython-dev
       - run: sudo npm install -g lerna
