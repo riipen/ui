@@ -3,6 +3,44 @@ version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@1.0.0
 
+test_branches: &test_branches
+  filters:
+    branches:
+      ignore:
+        - production
+
+docs_branches: &docs_branches
+  filters:
+    branches:
+      only:
+        - production
+
+workflows:
+  version: 2
+
+  test:
+    jobs:
+      - checkout:
+          <<: *test_branches
+      - audit:
+          <<: *test_branches
+          requires:
+            - checkout
+      - lint:
+          <<: *test_branches
+          requires:
+            - checkout
+
+  docs:
+    jobs:
+      - checkout:
+          <<: *docs_branches
+      - docs:
+          <<: *docs_branches
+          context: AWS
+          requires:
+            - checkout
+
 jobs:
   checkout:
     docker:
@@ -59,15 +97,6 @@ jobs:
           at: ~/
 
       - run: npm run lint
-
-  format:
-    docker:
-      - image: circleci/node:10.15.3
-
-    steps:
-      - attach_workspace:
-          at: ~/
-
       - run: npm run format
 
   docs:
@@ -93,46 +122,4 @@ jobs:
       - run:
           name: S3 Static Host Deploy
           command: |
-            aws s3 sync --delete packages/riipen-ui-docs/out s3://riipen-static-ca-central-1-ui-${CIRCLE_BRANCH}
-
-test_branches: &test_branches
-  filters:
-    branches:
-      ignore:
-        - production
-
-deploy_branches: &deploy_branches
-  filters:
-    branches:
-      only:
-        - production
-
-workflows:
-  version: 2
-
-  test:
-    jobs:
-      - checkout:
-          <<: *test_branches
-      - audit:
-          <<: *test_branches
-          requires:
-            - checkout
-      - lint:
-          <<: *test_branches
-          requires:
-            - checkout
-      - format:
-          <<: *test_branches
-          requires:
-            - checkout
-
-  docs:
-    jobs:
-      - checkout:
-          <<: *deploy_branches
-      - docs:
-          <<: *deploy_branches
-          context: StaticDeploy
-          requires:
-            - checkout
+            aws s3 sync --delete packages/riipen-ui-docs/out s3://ui-${CIRCLE_BRANCH}-docs
