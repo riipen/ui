@@ -54,4 +54,4 @@ If you want to create a new cloud environment:
 3. Run `git checkout -b environment && git push origin environment`
 4. Run `make config="./config/environment.env" version="environment" cloud-run`
 
-For subsequent deploys, you just need to repeat step 2 above.
+For subsequent deploys, you just need to repeat step 3 above.
