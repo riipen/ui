@@ -14,7 +14,7 @@ These setup instructions should work for macOS and linux. It is assumed you know
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/${VERSION}/install.sh | bash
 ```
 
-2. Install `node 10.x.x` (currently latest LTS, we keep our servers on LTS):
+2. Install `node 14.x.x` (currently latest LTS, we keep our servers on LTS):
 
 ```bash
 nvm install --lts

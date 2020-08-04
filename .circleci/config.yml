@@ -44,7 +44,7 @@ workflows:
 jobs:
   checkout:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:14.4
 
     steps:
       # Init
@@ -55,23 +55,18 @@ jobs:
           command: |
             sudo npm install -g npm
 
-      - run:
-          name: Install lerna
-          command: |
-            sudo npm install -g lerna
-
       - restore_cache:
           keys:
-            - v1-cache-{{ checksum "package.json" }}
-            - v1-cache-
+            - v2-cache-{{ checksum "package.json" }}
+            - v2-cache-
 
       - run: npm install
-      - run: lerna bootstrap
+      - run: npm bootstrap
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-cache-{{ checksum "package.json" }}
+          key: v2-cache-{{ checksum "package.json" }}
 
       - persist_to_workspace:
           root: /home/circleci
@@ -80,7 +75,7 @@ jobs:
 
   audit:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:14.4
 
     steps:
       - attach_workspace:
@@ -90,7 +85,7 @@ jobs:
 
   lint:
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:14.4
 
     steps:
       - attach_workspace:
@@ -103,7 +98,7 @@ jobs:
     resource_class: large
 
     docker:
-      - image: circleci/node:10.15.3
+      - image: circleci/node:14.4
 
     steps:
       - aws-cli/install
@@ -116,10 +111,9 @@ jobs:
 
       - run: sudo apt-get update
       - run: sudo apt-get install -y python-pip libpython-dev
-      - run: sudo npm install -g lerna
 
-      - run: lerna run --scope riipen-ui-docs build
-      - run: lerna run --scope riipen-ui-docs export
+      - run: $(npm bin)/lerna run --scope riipen-ui-docs build
+      - run: $(npm bin)/lerna run --scope riipen-ui-docs export
 
       - run:
           name: S3 Static Host Deploy

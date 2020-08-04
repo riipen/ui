@@ -14,27 +14,6 @@ $ npm install riipen-ui
 $ yarn add riipen-ui
 ```
 
-## Local development in tandem with another project
-
-Build the project
-```sh
-npm run build
-```
-
-Create a symlink from the build directory
-```sh
-cd ./build
-npm link
-```
-
-In the other project (web/admin) grab the symlink
-```sh
-cd $OTHER_PROJECT
-npm link riipen-ui
-```
-
-NOTE: Running npm install in the $OTHER_PROJECT directory will remove the symlink
-
 ## Usage
 
 Here is a quick example to get you started, **it's all you need**:
@@ -59,6 +38,15 @@ ReactDOM.render(<App />, document.querySelector('#app'));
 ## Documentation
 
 Check out our [documentation website](https://ui.riipen.com).
+
+## Releases
+
+In order to release the current version run `npm run release` from the `master` or `staging` branches.
+
+If ran on the master branch it will release a patch (x.y.z)
+If ran on the staging branch it will release a prerelease (x.y.z-#)
+
+Releases for minor or major builds will still need to be done manually.
 
 ## License
 
