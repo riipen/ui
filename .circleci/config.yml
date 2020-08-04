@@ -61,7 +61,7 @@ jobs:
             - v2-cache-
 
       - run: npm install
-      - run: npm bootstrap
+      - run: npm run bootstrap
 
       - save_cache:
           paths:
