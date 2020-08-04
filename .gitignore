@@ -46,3 +46,6 @@ node_modules/
 
 # next.js export output
 out/
+
+# macOS output
+.DS_Store
