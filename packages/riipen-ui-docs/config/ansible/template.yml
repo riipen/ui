@@ -79,7 +79,6 @@ Resources:
           MinTTL: 0
           TargetOriginId: !Sub ui-${Environment}-docs
           ViewerProtocolPolicy: redirect-to-https
-        DefaultRootObject: index.html
         Enabled: !Ref Enabled
         HttpVersion: http2
         IPV6Enabled: false
@@ -91,7 +90,7 @@ Resources:
               OriginProtocolPolicy: match-viewer
               OriginSSLProtocols: 
                 - TLSv1.1
-            DomainName: !GetAtt S3Bucket.RegionalDomainName
+            DomainName: !GetAtt S3Bucket.WebsiteURL
             Id: !Sub ui-${Environment}-docs
         ViewerCertificate:
           AcmCertificateArn: !Ref AcmArn
