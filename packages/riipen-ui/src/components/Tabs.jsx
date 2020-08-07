@@ -86,8 +86,10 @@ class Tabs extends React.Component {
     const childrenWithProps = React.Children.map(children, child => {
       if (!child) return null;
 
+      const active = child.props.active || child.props.value === value;
+
       return React.cloneElement(child, {
-        active: child.props.value === value,
+        active,
         color,
         fullWidth: variant === "fullWidth",
         onClick: this.handleChange,

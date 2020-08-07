@@ -10,6 +10,7 @@ const Tab = props => {
     classes,
     color,
     disabled,
+    displayActive,
     fullWidth,
     icon: Icon,
     label,
@@ -45,8 +46,8 @@ const Tab = props => {
 
   const className = clsx(
     "root",
-    active ? `${color}-active` : null,
-    active ? `${orientation}-active` : null,
+    active || displayActive ? `${color}-active` : null,
+    active || displayActive ? `${orientation}-active` : null,
     color,
     disabled ? "disabled" : null,
     focusVisible ? "focusVisible" : null,
@@ -179,6 +180,11 @@ Tab.propTypes = {
    * If `true`, the tab will be disabled.
    */
   disabled: PropTypes.bool,
+
+  /**
+   * If `true` will force the tab to be displayed active
+   */
+  displayActive: PropTypes.bool,
 
   /**
    * If `true`, will make the tab grow to use all the available space,
