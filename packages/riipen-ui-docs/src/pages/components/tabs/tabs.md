@@ -38,6 +38,6 @@ Tabs can be displayed vertically be setting the `orientation` prop.
 
 ## Forcing Active Display
 
-Tabs can be forced to display active with the `active` tab prop.
+Tabs can be forced to display active with the `displayActive` tab prop.
 
 {{"demo": "pages/components/tabs/Forced.js"}}
