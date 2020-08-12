@@ -19,3 +19,7 @@ Forms can group inputs with the `FormGroup` component.
 Forms can display errors via the `error` prop.
 
 {{"demo": "pages/components/form/Error.js"}}
+
+Form will scroll to error when it exists.
+
+{{"demo": "pages/components/form/ErrorScroll.js"}}

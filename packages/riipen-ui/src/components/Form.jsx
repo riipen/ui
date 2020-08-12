@@ -22,10 +22,21 @@ class Form extends React.Component {
 
     /**
      * Top level form error to display.
-     * An object consisting of key value errors or a single string
-     * to display as an error.
+     * An object consisting of key value errors, an array of strings, an array of
+     * react elements, or a single string to display as an error.
      */
-    error: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    error: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.arrayOf(PropTypes.element),
+      PropTypes.node,
+      PropTypes.object,
+      PropTypes.string
+    ]),
+
+    /**
+     * If `false`, error will not be scrolled to when it is passed to the form.
+     */
+    errorScroll: PropTypes.bool,
 
     /**
      * If `false`, pressing enter to submit the form will be disabled.
@@ -35,15 +46,27 @@ class Form extends React.Component {
 
   static defaultProps = {
     classes: [],
-    enter: true
+    enter: true,
+    errorScroll: true
   };
 
   componentDidUpdate(prevProps) {
     const theme = this.context;
 
     // If an error id dynamically added to the form, scroll the error notice in to view
-    if (!prevProps.error && this.props.error && this.error) {
-      window.scrollTo(0, this.error.offsetTop - theme.spacing(2));
+    if (
+      !prevProps.error &&
+      this.props.error &&
+      this.error &&
+      this.props.errorScroll
+    ) {
+      const padding = theme.spacing(20);
+      const rect = this.error.getBoundingClientRect();
+
+      // Only scroll if it's not already visible
+      if (rect.y - padding < 0 || rect.y - padding > window.innerHeight) {
+        window.scrollTo(0, rect.top + window.pageYOffset - padding);
+      }
     }
   }
 
@@ -62,7 +85,7 @@ class Form extends React.Component {
     }
   };
 
-  renderErrorListItem = (key, message) => (
+  renderErrorObjectItemMessage = (key, message) => (
     <li key={key}>
       <Typography>
         {key}
@@ -72,7 +95,7 @@ class Form extends React.Component {
     </li>
   );
 
-  renderErrorList(error, key) {
+  renderErroObjectItem(error, key) {
     if (!error) return [];
 
     let newError;
@@ -81,22 +104,74 @@ class Form extends React.Component {
       newError = error.map((e, i) => {
         const newKey = key ? `${key} ${i}` : i;
 
-        return this.renderErrorList(e, newKey);
+        return this.renderErroObjectItem(e, newKey);
       });
-    } else if (typeof error === "object") {
+    } else if (typeof error === "object" && !React.isValidElement(error)) {
       newError = Object.entries(error).map(([k, e]) => {
         const newKey = key ? `${key} ${k}` : k;
 
-        return this.renderErrorList(e, newKey);
+        return this.renderErroObjectItem(e, newKey);
       });
     } else {
-      newError = this.renderErrorListItem(key, error);
+      newError = this.renderErrorObjectItemMessage(key, error);
     }
 
     return newError;
   }
 
-  renderErrorObject = error => <ul>{this.renderErrorList(error)}</ul>;
+  renderErrorArrayString = error => {
+    const theme = this.context;
+
+    return (
+      <ul className={clsx("errors")}>
+        {error.map((e, i) => (
+          <li key={i}>
+            <Typography>{e}</Typography>
+          </li>
+        ))}
+        <style jsx>{`
+          .errors {
+            margin: ${theme.spacing(2)}px ${theme.spacing(4)}px;
+            padding: 0;
+          }
+        `}</style>
+      </ul>
+    );
+  };
+
+  renderErrorArrayNode = error => {
+    const theme = this.context;
+
+    return (
+      <ul className={clsx("errors")}>
+        {error.map((e, i) => (
+          <li key={i}>{e}</li>
+        ))}
+        <style jsx>{`
+          .errors {
+            margin: ${theme.spacing(2)}px ${theme.spacing(4)}px;
+            padding: 0;
+          }
+        `}</style>
+      </ul>
+    );
+  };
+
+  renderErrorObject = error => {
+    const theme = this.context;
+
+    return (
+      <ul className={clsx("errors")}>
+        {this.renderErroObjectItem(error)}
+        <style jsx>{`
+          .errors {
+            margin: ${theme.spacing(2)}px ${theme.spacing(3)}px;
+            padding: 0;
+          }
+        `}</style>
+      </ul>
+    );
+  };
 
   renderErrorString = error => <Typography>{error}</Typography>;
 
@@ -110,16 +185,33 @@ class Form extends React.Component {
     // Remove any unwanted props from "other"
     other.enter = undefined;
 
+    let errorRenderer;
+
+    if (error) {
+      if (typeof error === "string") {
+        errorRenderer = this.renderErrorString;
+      } else if (
+        Array.isArray(error) &&
+        error.length > 0 &&
+        typeof error[0] === "string"
+      ) {
+        errorRenderer = this.renderErrorArrayString;
+      } else if (
+        Array.isArray(error) &&
+        error.length > 0 &&
+        React.isValidElement(error[0])
+      ) {
+        errorRenderer = this.renderErrorArrayNode;
+      } else if (typeof error === "object" && Object.keys(error).length > 0) {
+        errorRenderer = this.renderErrorObject;
+      }
+    }
+
     return (
       <React.Fragment>
-        {error && (
+        {errorRenderer && (
           <div className={clsx("error")} ref={this.setError}>
-            <Notice color="negative">
-              {typeof error === "string" && this.renderErrorString(error)}
-              {typeof error === "object" &&
-                Object.keys(error).length > 0 &&
-                this.renderErrorObject(error)}
-            </Notice>
+            <Notice color="negative">{errorRenderer(error)}</Notice>
           </div>
         )}
         <form className={className} onKeyPress={this.handleKeyPress} {...other}>
@@ -128,6 +220,11 @@ class Form extends React.Component {
         <style jsx>{`
           form {
             width: 100%;
+          }
+
+          .errors {
+            margin: ${theme.spacing(2)}px ${theme.spacing(4)}px;
+            padding: 0;
           }
 
           .error {
