@@ -14,11 +14,11 @@ import PropTypes from "prop-types";
 import React from "react";
 import css from "styled-jsx/css";
 
-import ThemeContext from "../../styles/ThemeContext";
+import ThemeContext from "../styles/ThemeContext";
 
-import BlockStyleControls from "./BlockStyleControls";
-import InlineStyleControls from "./InlineStyleControls";
-import RteImage from "./Image";
+import EditorBlockStyleControls from "./EditorBlockStyleControls";
+import EditorInlineStyleControls from "./EditorInlineStyleControls";
+import EditorImage from "./EditorImage";
 
 // draft-convert configuration for converting HTML to EditorState.
 export const fromHtmlConfig = {
@@ -85,7 +85,7 @@ const styleMap = {
 const getBlockComponent = block => {
   switch (block.getType()) {
     case "atomic":
-      return { component: RteImage, editable: false };
+      return { component: EditorImage, editable: false };
     default:
       return null;
   }
@@ -282,32 +282,35 @@ class Editor extends React.Component {
       }
 
       /* Rich Text Editor */
-      :global .DraftEditor-root {
+      :global(.DraftEditor-root) {
         position: relative;
       }
 
-      :global .public-DraftEditorPlaceholder-inner {
+      :global(.public-DraftEditorPlaceholder-inner) {
         color: ${theme.palette.text.disabled};
       }
 
-      :global
-        .richTextEditor-hidePlaceholder
-        .public-DraftEditorPlaceholder-root {
+      :global(.public-DraftEditorPlaceholder-root) {
+        position: absolute;
+      }
+
+      :global(.richTextEditor-hidePlaceholder
+          .public-DraftEditorPlaceholder-root) {
         display: none;
       }
 
-      :global .public-DraftEditorPlaceholder-hasFocus {
+      :global(.public-DraftEditorPlaceholder-hasFocus) {
         display: none;
       }
 
-      :global .public-DraftStyleDefault-pre {
+      :global(.public-DraftStyleDefault-pre) {
         background-color: rgba(0, 0, 0, 0.05);
         font-family: "Inconsolata", "Menlo", "Consolas", monospace;
         font-size: 16px;
         padding: ${theme.spacing(4)}px;
       }
 
-      :global .public-DraftStyleDefault-block {
+      :global(.public-DraftStyleDefault-block) {
         margin-bottom: 1em;
       }
     `;
@@ -545,13 +548,13 @@ class Editor extends React.Component {
     return (
       <React.Fragment>
         <div className={clsx(linkedStyles.className, "controlContainer")}>
-          <BlockStyleControls
+          <EditorBlockStyleControls
             classes={[linkedStyles.className, "controlRow"]}
             editorState={editorState}
             toggle={this.toggleBlockType}
             whitelist={this.props.controlWhitelist}
           />
-          <InlineStyleControls
+          <EditorInlineStyleControls
             classes={[linkedStyles.className, "controlRow"]}
             editorState={editorState}
             toggle={this.toggleInlineStyle}

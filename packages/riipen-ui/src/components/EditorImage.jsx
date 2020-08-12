@@ -2,9 +2,9 @@ import { ContentBlock, ContentState } from "draft-js";
 import PropTypes from "prop-types";
 import React from "react";
 
-import withClasses from "../../utils/withClasses";
+import withClasses from "../utils/withClasses";
 
-class RteImage extends React.Component {
+class EditorImage extends React.Component {
   static propTypes = {
     // draft-js CompositeDecorator
     /**
@@ -45,4 +45,4 @@ class RteImage extends React.Component {
   }
 }
 
-export default withClasses(RteImage);
+export default withClasses(EditorImage);

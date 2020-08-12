@@ -4,59 +4,51 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faListOl,
-  faListUl,
-  faQuoteLeft
+  faBold,
+  faItalic,
+  faUnderline
 } from "@fortawesome/free-solid-svg-icons";
 
-import ControlButton from "./ControlButton";
+import EditorControlButton from "./EditorControlButton";
 
-const BLOCK_TYPES = [
+const INLINE_STYLES = [
   {
-    label: <FontAwesomeIcon icon={faListUl} />,
-    style: "unordered-list-item",
+    label: <FontAwesomeIcon icon={faBold} />,
+    style: "BOLD",
     size: "small"
   },
   {
-    label: <FontAwesomeIcon icon={faListOl} />,
-    style: "ordered-list-item",
+    label: <FontAwesomeIcon icon={faItalic} />,
+    style: "ITALIC",
     size: "small"
   },
-  { label: "H1", style: "header-one", width: "small" },
-  { label: "H2", style: "header-two", width: "small" },
-  { label: "H3", style: "header-three", width: "small" },
-  { label: "H4", style: "header-four", width: "small" },
   {
-    label: <FontAwesomeIcon icon={faQuoteLeft} />,
-    style: "blockquote",
+    label: <FontAwesomeIcon icon={faUnderline} />,
+    style: "UNDERLINE",
     size: "small"
   }
 ];
 
-class BlockStyleControls extends React.Component {
+class EditorInlineStyleControls extends React.Component {
   static propTypes = {
     /**
      * The additional css classes to style the controls with.
-     *
      */
     classes: PropTypes.arrayOf(PropTypes.string),
 
     /**
      * The draftjs editor state immutable record.
-     *
      */
     editorState: PropTypes.any.isRequired,
 
     /**
-     * Function to toggle block type.
-     *
+     * Function to toggle inline style.
      */
     toggle: PropTypes.func.isRequired,
 
     /**
-     * Optional array of whitelisted block styles
-     * ex. ['header-one', 'code-block']
-     *
+     * Optional array of whitelisted inline styles
+     * ex. ['ITALIC', 'BOLD']
      */
     whitelist: PropTypes.arrayOf(PropTypes.string)
   };
@@ -69,15 +61,11 @@ class BlockStyleControls extends React.Component {
 
   render() {
     const { classes, editorState, whitelist } = this.props;
-    const selection = editorState.getSelection();
-    const blockType = editorState
-      .getCurrentContent()
-      .getBlockForKey(selection.getStartKey())
-      .getType();
+    const currentStyle = editorState.getCurrentInlineStyle();
 
-    let controlButtons = BLOCK_TYPES;
+    let controlButtons = INLINE_STYLES;
     if (whitelist) {
-      controlButtons = BLOCK_TYPES.filter(({ style }) =>
+      controlButtons = INLINE_STYLES.filter(({ style }) =>
         whitelist.includes(style)
       );
     }
@@ -89,9 +77,9 @@ class BlockStyleControls extends React.Component {
     return (
       <div className={clsx(classes)}>
         {controlButtons.map(({ label, style, size }) => (
-          <ControlButton
+          <EditorControlButton
             key={style}
-            active={style === blockType}
+            active={currentStyle.has(style)}
             label={label}
             onClick={this.onControlClick(style)}
             size={size}
@@ -102,4 +90,4 @@ class BlockStyleControls extends React.Component {
   }
 }
 
-export default BlockStyleControls;
+export default EditorInlineStyleControls;
