@@ -184,6 +184,7 @@ class Form extends React.Component {
 
     // Remove any unwanted props from "other"
     other.enter = undefined;
+    other.errorScroll = undefined;
 
     let errorRenderer;
 
@@ -220,11 +221,6 @@ class Form extends React.Component {
         <style jsx>{`
           form {
             width: 100%;
-          }
-
-          .errors {
-            margin: ${theme.spacing(2)}px ${theme.spacing(4)}px;
-            padding: 0;
           }
 
           .error {
