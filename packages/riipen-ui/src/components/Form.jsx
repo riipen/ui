@@ -59,7 +59,8 @@ class Form extends React.Component {
     // If an error id dynamically added to the form, scroll the error notice in to view
     if (
       !prevProps.error &&
-      this.props.error &&
+      !prevProps.errors &&
+      (this.props.error || this.props.errors) &&
       this.error &&
       this.props.errorScroll
     ) {
