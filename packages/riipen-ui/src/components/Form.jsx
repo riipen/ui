@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import css from "styled-jsx/css";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -21,16 +22,18 @@ class Form extends React.Component {
     classes: PropTypes.array,
 
     /**
-     * Top level form error to display.
-     * An object consisting of key value errors, an array of strings, an array of
-     * react elements, or a single string to display as an error.
+     * Top level form error to display. One of either string or react node.
      */
-    error: PropTypes.oneOfType([
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+
+    /**
+     * A list of form errors to display. One of an object consisting of key value errors,
+     * an array of strings, or an array of react nodes.
+     */
+    errors: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.string),
       PropTypes.arrayOf(PropTypes.element),
-      PropTypes.node,
-      PropTypes.object,
-      PropTypes.string
+      PropTypes.object
     ]),
 
     /**
@@ -74,6 +77,28 @@ class Form extends React.Component {
     this.error = ref;
   };
 
+  getLinkedStyles = () => {
+    const theme = this.context;
+
+    return css.resolve`
+      .errorContainer {
+        margin-bottom: ${theme.spacing(5)}px;
+      }
+
+      .error {
+      }
+
+      .errors {
+        margin: 0 ${theme.spacing(3)}px;
+        padding: 0;
+      }
+
+      .errorContainer > div > .error + .errors {
+        margin-top: ${theme.spacing(2)}px;
+      }
+    `;
+  };
+
   static contextType = ThemeContext;
 
   handleKeyPress = e => {
@@ -85,100 +110,63 @@ class Form extends React.Component {
     }
   };
 
-  renderErrorObjectItemMessage = (key, message) => (
-    <li key={key}>
-      <Typography>
-        {key}
-        {": "}
-        {message}
-      </Typography>
-    </li>
-  );
-
-  renderErroObjectItem(error, key) {
-    if (!error) return [];
-
-    let newError;
-
-    if (Array.isArray(error)) {
-      newError = error.map((e, i) => {
-        const newKey = key ? `${key} ${i}` : i;
-
-        return this.renderErroObjectItem(e, newKey);
-      });
-    } else if (typeof error === "object" && !React.isValidElement(error)) {
-      newError = Object.entries(error).map(([k, e]) => {
-        const newKey = key ? `${key} ${k}` : k;
-
-        return this.renderErroObjectItem(e, newKey);
-      });
-    } else {
-      newError = this.renderErrorObjectItemMessage(key, error);
-    }
-
-    return newError;
-  }
-
-  renderErrorArrayString = error => {
-    const theme = this.context;
-
-    return (
-      <ul className={clsx("errors")}>
-        {error.map((e, i) => (
-          <li key={i}>
-            <Typography>{e}</Typography>
-          </li>
-        ))}
-        <style jsx>{`
-          .errors {
-            margin: ${theme.spacing(2)}px ${theme.spacing(4)}px;
-            padding: 0;
-          }
-        `}</style>
-      </ul>
-    );
+  renderErrorsString = errors => {
+    return errors.map((e, i) => (
+      <li key={i}>
+        <Typography>{e}</Typography>
+      </li>
+    ));
   };
 
-  renderErrorArrayNode = error => {
-    const theme = this.context;
-
-    return (
-      <ul className={clsx("errors")}>
-        {error.map((e, i) => (
-          <li key={i}>{e}</li>
-        ))}
-        <style jsx>{`
-          .errors {
-            margin: ${theme.spacing(2)}px ${theme.spacing(4)}px;
-            padding: 0;
-          }
-        `}</style>
-      </ul>
-    );
+  renderErrorsNode = errors => {
+    return errors.map((e, i) => <li key={i}>{e}</li>);
   };
 
-  renderErrorObject = error => {
-    const theme = this.context;
-
-    return (
-      <ul className={clsx("errors")}>
-        {this.renderErroObjectItem(error)}
-        <style jsx>{`
-          .errors {
-            margin: ${theme.spacing(2)}px ${theme.spacing(3)}px;
-            padding: 0;
-          }
-        `}</style>
-      </ul>
+  renderErrorsObject = errors => {
+    const renderEntry = (key, message) => (
+      <li key={key}>
+        <Typography>
+          {key}
+          {": "}
+          {message}
+        </Typography>
+      </li>
     );
+
+    const renderObject = (obj, key) => {
+      if (!obj) return [];
+
+      let newError;
+
+      if (Array.isArray(obj)) {
+        newError = obj.map((e, i) => {
+          const newKey = key ? `${key} ${i}` : i;
+
+          return renderObject(e, newKey);
+        });
+      } else if (typeof obj === "object" && !React.isValidElement(obj)) {
+        newError = Object.entries(obj).map(([k, e]) => {
+          const newKey = key ? `${key} ${k}` : k;
+
+          return renderObject(e, newKey);
+        });
+      } else {
+        newError = renderEntry(key, obj);
+      }
+
+      return newError;
+    };
+
+    return renderObject(errors);
   };
 
+  renderErrorNode = error => error;
   renderErrorString = error => <Typography>{error}</Typography>;
 
   render() {
-    const { children, classes, error, ...other } = this.props;
+    const { children, classes, error, errors, ...other } = this.props;
 
-    const theme = this.context;
+    const linkedStyles = this.getLinkedStyles();
 
     const className = clsx(classes);
 
@@ -187,32 +175,53 @@ class Form extends React.Component {
     other.errorScroll = undefined;
 
     let errorRenderer;
+    let errorsRenderer;
 
     if (error) {
       if (typeof error === "string") {
         errorRenderer = this.renderErrorString;
-      } else if (
-        Array.isArray(error) &&
-        error.length > 0 &&
-        typeof error[0] === "string"
+      } else if (React.isValidElement(error)) {
+        errorRenderer = this.renderErrorNode;
+      }
+    }
+
+    if (errors) {
+      if (
+        Array.isArray(errors) &&
+        errors.length > 0 &&
+        typeof errors[0] === "string"
       ) {
-        errorRenderer = this.renderErrorArrayString;
+        errorsRenderer = this.renderErrorsString;
       } else if (
-        Array.isArray(error) &&
-        error.length > 0 &&
-        React.isValidElement(error[0])
+        Array.isArray(errors) &&
+        errors.length > 0 &&
+        React.isValidElement(errors[0])
       ) {
-        errorRenderer = this.renderErrorArrayNode;
-      } else if (typeof error === "object" && Object.keys(error).length > 0) {
-        errorRenderer = this.renderErrorObject;
+        errorsRenderer = this.renderErrorsNode;
+      } else if (typeof errors === "object" && Object.keys(errors).length > 0) {
+        errorsRenderer = this.renderErrorsObject;
       }
     }
 
     return (
       <React.Fragment>
-        {errorRenderer && (
-          <div className={clsx("error")} ref={this.setError}>
-            <Notice color="negative">{errorRenderer(error)}</Notice>
+        {(errorRenderer || errorsRenderer) && (
+          <div
+            className={clsx(linkedStyles.className, "errorContainer")}
+            ref={this.setError}
+          >
+            <Notice classes={[linkedStyles.className]} color="negative">
+              {errorRenderer && (
+                <span className={clsx(linkedStyles.className, "error")}>
+                  {errorRenderer(error)}
+                </span>
+              )}
+              {errorsRenderer && (
+                <ul className={clsx(linkedStyles.className, "errors")}>
+                  {errorsRenderer(errors)}
+                </ul>
+              )}
+            </Notice>
           </div>
         )}
         <form className={className} onKeyPress={this.handleKeyPress} {...other}>
@@ -222,11 +231,8 @@ class Form extends React.Component {
           form {
             width: 100%;
           }
-
-          .error {
-            margin-bottom: ${theme.spacing(5)}px;
-          }
         `}</style>
+        {linkedStyles.styles}
       </React.Fragment>
     );
   }

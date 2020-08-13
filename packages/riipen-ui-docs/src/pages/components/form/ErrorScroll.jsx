@@ -4,7 +4,7 @@ import Button from "@riipen-ui/components/Button";
 import Form from "@riipen-ui/components/Form";
 import Input from "@riipen-ui/components/Input";
 
-export default function Basic() {
+export default function ErrorScroll() {
   const style = {
     marginBottom: "10px"
   };
