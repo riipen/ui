@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import css from "styled-jsx/css";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -21,11 +22,24 @@ class Form extends React.Component {
     classes: PropTypes.array,
 
     /**
-     * Top level form error to display.
-     * An object consisting of key value errors or a single string
-     * to display as an error.
+     * Top level form error to display. One of either string or react node.
      */
-    error: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+
+    /**
+     * A list of form errors to display. One of an object consisting of key value errors,
+     * an array of strings, or an array of react nodes.
+     */
+    errors: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.arrayOf(PropTypes.element),
+      PropTypes.object
+    ]),
+
+    /**
+     * If `false`, error will not be scrolled to when it is passed to the form.
+     */
+    errorScroll: PropTypes.bool,
 
     /**
      * If `false`, pressing enter to submit the form will be disabled.
@@ -35,20 +49,54 @@ class Form extends React.Component {
 
   static defaultProps = {
     classes: [],
-    enter: true
+    enter: true,
+    errorScroll: true
   };
 
   componentDidUpdate(prevProps) {
     const theme = this.context;
 
     // If an error id dynamically added to the form, scroll the error notice in to view
-    if (!prevProps.error && this.props.error && this.error) {
-      window.scrollTo(0, this.error.offsetTop - theme.spacing(2));
+    if (
+      !prevProps.error &&
+      this.props.error &&
+      this.error &&
+      this.props.errorScroll
+    ) {
+      const padding = theme.spacing(20);
+      const rect = this.error.getBoundingClientRect();
+
+      // Only scroll if it's not already visible
+      if (rect.y - padding < 0 || rect.y - padding > window.innerHeight) {
+        window.scrollTo(0, rect.top + window.pageYOffset - padding);
+      }
     }
   }
 
   setError = ref => {
     this.error = ref;
+  };
+
+  getLinkedStyles = () => {
+    const theme = this.context;
+
+    return css.resolve`
+      .errorContainer {
+        margin-bottom: ${theme.spacing(5)}px;
+      }
+
+      .error {
+      }
+
+      .errors {
+        margin: 0 ${theme.spacing(3)}px;
+        padding: 0;
+      }
+
+      .errorContainer > div > .error + .errors {
+        margin-top: ${theme.spacing(2)}px;
+      }
+    `;
   };
 
   static contextType = ThemeContext;
@@ -62,63 +110,117 @@ class Form extends React.Component {
     }
   };
 
-  renderErrorListItem = (key, message) => (
-    <li key={key}>
-      <Typography>
-        {key}
-        {": "}
-        {message}
-      </Typography>
-    </li>
-  );
+  renderErrorsString = errors => {
+    return errors.map((e, i) => (
+      <li key={i}>
+        <Typography>{e}</Typography>
+      </li>
+    ));
+  };
 
-  renderErrorList(error, key) {
-    if (!error) return [];
+  renderErrorsNode = errors => {
+    return errors.map((e, i) => <li key={i}>{e}</li>);
+  };
 
-    let newError;
+  renderErrorsObject = errors => {
+    const renderEntry = (key, message) => (
+      <li key={key}>
+        <Typography>
+          {key}
+          {": "}
+          {message}
+        </Typography>
+      </li>
+    );
 
-    if (Array.isArray(error)) {
-      newError = error.map((e, i) => {
-        const newKey = key ? `${key} ${i}` : i;
+    const renderObject = (obj, key) => {
+      if (!obj) return [];
 
-        return this.renderErrorList(e, newKey);
-      });
-    } else if (typeof error === "object") {
-      newError = Object.entries(error).map(([k, e]) => {
-        const newKey = key ? `${key} ${k}` : k;
+      let newError;
 
-        return this.renderErrorList(e, newKey);
-      });
-    } else {
-      newError = this.renderErrorListItem(key, error);
-    }
+      if (Array.isArray(obj)) {
+        newError = obj.map((e, i) => {
+          const newKey = key ? `${key} ${i}` : i;
 
-    return newError;
-  }
+          return renderObject(e, newKey);
+        });
+      } else if (typeof obj === "object" && !React.isValidElement(obj)) {
+        newError = Object.entries(obj).map(([k, e]) => {
+          const newKey = key ? `${key} ${k}` : k;
 
-  renderErrorObject = error => <ul>{this.renderErrorList(error)}</ul>;
+          return renderObject(e, newKey);
+        });
+      } else {
+        newError = renderEntry(key, obj);
+      }
 
+      return newError;
+    };
+
+    return renderObject(errors);
+  };
+
+  renderErrorNode = error => error;
   renderErrorString = error => <Typography>{error}</Typography>;
 
   render() {
-    const { children, classes, error, ...other } = this.props;
+    const { children, classes, error, errors, ...other } = this.props;
 
-    const theme = this.context;
+    const linkedStyles = this.getLinkedStyles();
 
     const className = clsx(classes);
 
     // Remove any unwanted props from "other"
     other.enter = undefined;
+    other.errorScroll = undefined;
+
+    let errorRenderer;
+    let errorsRenderer;
+
+    if (error) {
+      if (typeof error === "string") {
+        errorRenderer = this.renderErrorString;
+      } else if (React.isValidElement(error)) {
+        errorRenderer = this.renderErrorNode;
+      }
+    }
+
+    if (errors) {
+      if (
+        Array.isArray(errors) &&
+        errors.length > 0 &&
+        typeof errors[0] === "string"
+      ) {
+        errorsRenderer = this.renderErrorsString;
+      } else if (
+        Array.isArray(errors) &&
+        errors.length > 0 &&
+        React.isValidElement(errors[0])
+      ) {
+        errorsRenderer = this.renderErrorsNode;
+      } else if (typeof errors === "object" && Object.keys(errors).length > 0) {
+        errorsRenderer = this.renderErrorsObject;
+      }
+    }
 
     return (
       <React.Fragment>
-        {error && (
-          <div className={clsx("error")} ref={this.setError}>
-            <Notice color="negative">
-              {typeof error === "string" && this.renderErrorString(error)}
-              {typeof error === "object" &&
-                Object.keys(error).length > 0 &&
-                this.renderErrorObject(error)}
+        {(errorRenderer || errorsRenderer) && (
+          <div
+            className={clsx(linkedStyles.className, "errorContainer")}
+            ref={this.setError}
+          >
+            <Notice classes={[linkedStyles.className]} color="negative">
+              {errorRenderer && (
+                <span className={clsx(linkedStyles.className, "error")}>
+                  {errorRenderer(error)}
+                </span>
+              )}
+              {errorsRenderer && (
+                <ul className={clsx(linkedStyles.className, "errors")}>
+                  {errorsRenderer(errors)}
+                </ul>
+              )}
             </Notice>
           </div>
         )}
@@ -129,11 +231,8 @@ class Form extends React.Component {
           form {
             width: 100%;
           }
-
-          .error {
-            margin-bottom: ${theme.spacing(5)}px;
-          }
         `}</style>
+        {linkedStyles.styles}
       </React.Fragment>
     );
   }
