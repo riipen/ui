@@ -125,7 +125,7 @@ class Form extends React.Component {
   renderErrorsObject = errors => {
     const renderEntry = (key, message) => (
       <li key={key}>
-        <Typography>
+        <Typography component="span">
           {key}
           {": "}
           {message}
@@ -171,8 +171,8 @@ class Form extends React.Component {
     const className = clsx(classes);
 
     // Remove any unwanted props from "other"
-    other.enter = undefined;
-    other.errorScroll = undefined;
+    delete other.enter;
+    delete other.errorScroll;
 
     let errorRenderer;
     let errorsRenderer;
