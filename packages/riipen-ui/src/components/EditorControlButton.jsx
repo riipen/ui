@@ -2,10 +2,10 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-import ThemeContext from "../../styles/ThemeContext";
-import withClasses from "../../utils/withClasses";
+import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
-class ControlButton extends React.Component {
+class EditorControlButton extends React.Component {
   static propTypes = {
     /**
      * If the control is active.
@@ -92,4 +92,4 @@ class ControlButton extends React.Component {
   }
 }
 
-export default withClasses(ControlButton);
+export default withClasses(EditorControlButton);

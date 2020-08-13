@@ -2,10 +2,10 @@ import { ContentState } from "draft-js";
 import PropTypes from "prop-types";
 import React from "react";
 
-import ThemeContext from "../../styles/ThemeContext";
-import withClasses from "../../utils/withClasses";
+import ThemeContext from "../styles/ThemeContext";
+import withClasses from "../utils/withClasses";
 
-class RteLink extends React.Component {
+class EditorLink extends React.Component {
   static propTypes = {
     /**
      * The draft-js ContentState to render with.
@@ -49,4 +49,4 @@ class RteLink extends React.Component {
   }
 }
 
-export default withClasses(RteLink);
+export default withClasses(EditorLink);

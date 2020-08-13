@@ -4,7 +4,7 @@ import { CompositeDecorator } from "draft-js";
 import Button from "@riipen-ui/components/Button";
 import Form from "@riipen-ui/components/Form";
 import RichTextEditor from "@riipen-ui/components/RichTextEditor";
-import Link from "@riipen-ui/components/editor/Link";
+import EditorLink from "@riipen-ui/components/EditorLink";
 
 const findEntities = (contentBlock, callback, contentState) => {
   contentBlock.findEntityRanges(character => {
@@ -20,7 +20,7 @@ const findEntities = (contentBlock, callback, contentState) => {
 const decorator = new CompositeDecorator([
   {
     strategy: findEntities,
-    component: Link
+    component: EditorLink
   }
 ]);
 

@@ -3,7 +3,7 @@ import React from "react";
 
 import withForwardedRef from "../utils/withForwardedRef";
 
-import Editor from "./editor/Editor";
+import Editor from "./Editor";
 
 import InputLabel from "./InputLabel";
 import Typography from "./Typography";
