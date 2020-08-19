@@ -169,14 +169,14 @@ class Editor extends React.Component {
           decorator
         )
       : EditorState.createEmpty(decorator);
-    this.onChange(editorState);
+    this.onChange(editorState, false);
   }
 
-  onChange = editorState => {
+  onChange = (editorState, propagate = true) => {
     this.setState({ editorState }, () => {
       const html = this.getHtml();
 
-      if (this.props.onChange) {
+      if (this.props.onChange && propagate) {
         this.props.onChange(html);
       }
     });
