@@ -92,6 +92,8 @@ const getBlockComponent = block => {
 };
 
 class Editor extends React.Component {
+  static displayName = "Editor";
+
   static propTypes = {
     /**
      * Additional controls to display.

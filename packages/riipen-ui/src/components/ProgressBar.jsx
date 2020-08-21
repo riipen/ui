@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class ProgressBar extends React.Component {
+  static displayName = "ProgressBar";
+
   static propTypes = {
     /**
      * List of additional classes to apply to this component.

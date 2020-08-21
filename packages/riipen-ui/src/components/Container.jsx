@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class Container extends React.Component {
+  static displayName = "Container";
+
   static propTypes = {
     /**
      * The content inside the container.

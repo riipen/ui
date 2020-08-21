@@ -10,6 +10,8 @@ import Notice from "./Notice";
 import Typography from "./Typography";
 
 class Form extends React.Component {
+  static displayName = "Form";
+
   static propTypes = {
     /**
      * The content of the component.

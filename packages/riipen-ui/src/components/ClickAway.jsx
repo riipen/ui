@@ -5,6 +5,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class ClickAway extends React.Component {
+  static displayName = "ClickAway";
+
   static propTypes = {
     /**
      * The content of the component.

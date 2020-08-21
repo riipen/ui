@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class Banner extends React.Component {
+  static displayName = "Banner";
+
   static propTypes = {
     /**
      * Content to render inside the Banner.

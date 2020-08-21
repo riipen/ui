@@ -104,4 +104,6 @@ ListItem.defaultProps = {
   classes: []
 };
 
+ListItem.displayName = "ListItem";
+
 export default withThemeContext(ListItem);

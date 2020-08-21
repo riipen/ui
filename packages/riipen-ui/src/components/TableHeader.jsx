@@ -5,6 +5,8 @@ import React from "react";
 import withClasses from "../utils/withClasses";
 
 class TableHeader extends React.Component {
+  static displayName = "TableHeader";
+
   static propTypes = {
     /**
      * Children to render in the thead element

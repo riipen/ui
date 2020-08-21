@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class Hidden extends React.Component {
+  static displayName = "Hidden";
+
   static propTypes = {
     /**
      * The content of the component.

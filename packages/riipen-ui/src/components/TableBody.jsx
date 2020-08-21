@@ -5,6 +5,8 @@ import React from "react";
 import withClasses from "../utils/withClasses";
 
 class TableBody extends React.Component {
+  static displayName = "TableBody";
+
   static propTypes = {
     /**
      * Children to render in the tbody element

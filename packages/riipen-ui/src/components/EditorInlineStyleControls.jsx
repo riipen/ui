@@ -30,6 +30,8 @@ const INLINE_STYLES = [
 ];
 
 class EditorInlineStyleControls extends React.Component {
+  static displayName = "EditorInlineStyleControls";
+
   static propTypes = {
     /**
      * The additional css classes to style the controls with.

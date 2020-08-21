@@ -7,6 +7,8 @@ import InputLabel from "./InputLabel";
 import Typography from "./Typography";
 
 class RadioGroup extends React.Component {
+  static displayName = "RadioGroup";
+
   static propTypes = {
     /**
      * The content of the component.

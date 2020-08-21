@@ -34,6 +34,8 @@ const BLOCK_TYPES = [
 ];
 
 class EditorBlockStyleControls extends React.Component {
+  static displayName = "EditorBlockStyleControls";
+
   static propTypes = {
     /**
      * The additional css classes to style the controls with.

@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class EditorControlButton extends React.Component {
+  static displayName = "EditorControlButton";
+
   static propTypes = {
     /**
      * If the control is active.

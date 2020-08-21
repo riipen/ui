@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class TableRow extends React.Component {
+  static displayName = "TableRow";
+
   static propTypes = {
     /**
      * Children to render in the tr element

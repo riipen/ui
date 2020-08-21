@@ -230,4 +230,6 @@ ButtonIcon.defaultProps = {
   size: "medium"
 };
 
+ButtonIcon.displayName = "ButtonIcon";
+
 export default withThemeContext(ButtonIcon);

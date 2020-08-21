@@ -17,6 +17,8 @@ import TableHeaderCell from "./TableHeaderCell";
 import Spinner from "./Spinner";
 
 class TableGenerator extends React.Component {
+  static displayName = "TableGenerator";
+
   static propTypes = {
     /**
      * Classes to apply to the root element.

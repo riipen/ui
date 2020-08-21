@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class Divider extends React.Component {
+  static displayName = "Divider";
+
   static propTypes = {
     /**
      * List of additional classes to apply to this component.

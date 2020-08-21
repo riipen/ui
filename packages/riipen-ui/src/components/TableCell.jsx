@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class TableCell extends React.Component {
+  static displayName = "TableCell";
+
   static propTypes = {
     /**
      * Alignment property to apply to the td element

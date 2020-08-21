@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class EditorLink extends React.Component {
+  static displayName = "EditorLink";
+
   static propTypes = {
     /**
      * The draft-js ContentState to render with.

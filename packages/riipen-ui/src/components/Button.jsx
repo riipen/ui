@@ -501,4 +501,6 @@ Button.defaultProps = {
   variant: "text"
 };
 
+Button.displayName = "Button";
+
 export default withThemeContext(Button);

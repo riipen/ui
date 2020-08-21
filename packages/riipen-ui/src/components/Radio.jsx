@@ -9,6 +9,8 @@ import withClasses from "../utils/withClasses";
 import Typography from "./Typography";
 
 class Radio extends React.Component {
+  static displayName = "Radio";
+
   static propTypes = {
     /**
      * If `true`, the component is checked.

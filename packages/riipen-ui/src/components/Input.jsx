@@ -177,4 +177,6 @@ Input.propTypes = {
   warning: PropTypes.node
 };
 
+Input.displayName = "Input";
+
 export default withThemeContext(Input);

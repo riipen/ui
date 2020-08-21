@@ -9,6 +9,8 @@ import InputHint from "./InputHint";
 import Typography from "./Typography";
 
 class InputLabel extends React.Component {
+  static displayName = "InputLabel";
+
   static propTypes = {
     /**
      * The content of the component.

@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class MenuList extends React.Component {
+  static displayName = "MenuList";
+
   static propTypes = {
     /**
      * Wether to select the first element on list open

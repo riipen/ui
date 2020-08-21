@@ -5,6 +5,8 @@ import React from "react";
 import withClasses from "../utils/withClasses";
 
 class List extends React.Component {
+  static displayName = "List";
+
   static propTypes = {
     /**
      * The content of the list.

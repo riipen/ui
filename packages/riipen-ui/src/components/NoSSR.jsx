@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 class NoSSR extends React.Component {
+  static displayName = "NoSSR";
+
   static propTypes = {
     /**
      * The children not to render server side.

@@ -9,6 +9,8 @@ import withClasses from "../utils/withClasses";
 import Popover from "./Popover";
 
 class Tooltip extends React.Component {
+  static displayName = "Tooltip";
+
   static propTypes = {
     /**
      * The content to trigger the tooltip with.

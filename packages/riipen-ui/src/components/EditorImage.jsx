@@ -5,6 +5,8 @@ import React from "react";
 import withClasses from "../utils/withClasses";
 
 class EditorImage extends React.Component {
+  static displayName = "EditorImage";
+
   static propTypes = {
     // draft-js CompositeDecorator
     /**

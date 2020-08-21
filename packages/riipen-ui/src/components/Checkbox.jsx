@@ -210,4 +210,6 @@ Checkbox.defaultProps = {
   required: false
 };
 
+Checkbox.displayName = "Checkbox";
+
 export default withThemeContext(Checkbox);

@@ -8,6 +8,8 @@ import withClasses from "../utils/withClasses";
 import Typography from "./Typography";
 
 class InputHint extends React.Component {
+  static displayName = "InputHint";
+
   static propTypes = {
     /**
      * The content of the component.

@@ -5,6 +5,8 @@ import React from "react";
 import withClasses from "../utils/withClasses";
 
 class Backdrop extends React.Component {
+  static displayName = "Backdrop";
+
   static propTypes = {
     /**
      * The content of the component.

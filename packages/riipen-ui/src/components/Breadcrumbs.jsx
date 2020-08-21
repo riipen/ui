@@ -8,6 +8,8 @@ import withClasses from "../utils/withClasses";
 import Typography from "./Typography";
 
 class Breadcrumbs extends React.Component {
+  static displayName = "Breadcrumbs";
+
   static propTypes = {
     /**
      * The breadcrumb children.

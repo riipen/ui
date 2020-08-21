@@ -9,6 +9,8 @@ import Backdrop from "./Backdrop";
 import ClickAway from "./ClickAway";
 
 class Drawer extends React.Component {
+  static displayName = "Drawer";
+
   static propTypes = {
     /**
      * Side from which the drawer will appear.

@@ -19,6 +19,8 @@ const variantMapping = {
 };
 
 class Typography extends React.Component {
+  static displayName = "Typography";
+
   static propTypes = {
     /**
      * The content of the component.

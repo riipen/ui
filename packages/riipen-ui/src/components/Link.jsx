@@ -172,4 +172,6 @@ Link.defaultProps = {
   underline: "none"
 };
 
+Link.displayName = "Link";
+
 export default withThemeContext(Link);

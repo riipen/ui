@@ -5,6 +5,8 @@ import React from "react";
 import withClasses from "../utils/withClasses";
 
 class Tabs extends React.Component {
+  static displayName = "Tabs";
+
   static propTypes = {
     /**
      * The content of the component.

@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class Spinner extends React.Component {
+  static displayName = "Spinner";
+
   static propTypes = {
     /**
      * The content of the component to display when it is not loading.

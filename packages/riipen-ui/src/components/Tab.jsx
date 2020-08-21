@@ -226,4 +226,6 @@ Tab.propTypes = {
   value: PropTypes.any.isRequired
 };
 
+Tab.displayName = "Tab";
+
 export default withThemeContext(Tab);

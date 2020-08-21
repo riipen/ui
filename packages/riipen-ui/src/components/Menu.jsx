@@ -8,6 +8,8 @@ import MenuList from "./MenuList";
 import Popover from "./Popover";
 
 class Menu extends React.Component {
+  static displayName = "Menu";
+
   static propTypes = {
     /**
      * The element the menu is attached too

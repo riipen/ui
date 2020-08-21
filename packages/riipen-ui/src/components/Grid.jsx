@@ -8,6 +8,8 @@ import withClasses from "../utils/withClasses";
 const SPACINGS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 class Grid extends React.Component {
+  static displayName = "Grid";
+
   static propTypes = {
     /**
      * A whitelisted set of align items options for the grid.

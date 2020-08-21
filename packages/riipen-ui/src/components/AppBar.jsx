@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class AppBar extends React.Component {
+  static displayName = "AppBar";
+
   static propTypes = {
     /**
      * The content of the component.

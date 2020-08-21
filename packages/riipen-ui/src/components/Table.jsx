@@ -7,6 +7,8 @@ import withClasses from "../utils/withClasses";
 import withForwardedRef from "../utils/withForwardedRef";
 
 class Table extends React.Component {
+  static displayName = "Table";
+
   static propTypes = {
     /**
      * What background to render for the table.

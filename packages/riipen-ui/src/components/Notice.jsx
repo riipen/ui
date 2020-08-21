@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class Notice extends React.Component {
+  static displayName = "Notice";
+
   static propTypes = {
     /**
      * The content of the Notice.

@@ -15,6 +15,8 @@ import {
 import withClasses from "../utils/withClasses";
 
 class Popover extends React.Component {
+  static displayName = "Popover";
+
   static propTypes = {
     /**
      * Either a reference to an anchor element or a function to get the reference

@@ -6,6 +6,7 @@ const withClasses = WrappedComponent => {
 
   const handle = (props = {}) => {
     const { classes, ...other } = props;
+
     return (
       <WrappedComponent
         classes={["riipen", `riipen-${name.toLowerCase()}`, ...(classes || [])]}
@@ -20,6 +21,7 @@ const withClasses = WrappedComponent => {
      */
     classes: PropTypes.array
   };
+
   handle.displayName = `withClasses(${name})`;
 
   return handle;

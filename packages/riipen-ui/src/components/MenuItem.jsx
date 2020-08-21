@@ -10,6 +10,8 @@ import withClasses from "../utils/withClasses";
 import ListItem from "./ListItem";
 
 class MenuItem extends React.Component {
+  static displayName = "MenuItem";
+
   static propTypes = {
     /**
      * The content of the component.

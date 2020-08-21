@@ -9,6 +9,8 @@ const RADIUS_STANDARD = 10;
 const RADIUS_DOT = 5;
 
 class Badge extends React.Component {
+  static displayName = "Badge";
+
   static propTypes = {
     /**
      * The anchor of the badge.

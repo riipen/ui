@@ -9,6 +9,8 @@ import InputLabel from "./InputLabel";
 import Typography from "./Typography";
 
 class RichTextEditor extends React.Component {
+  static displayName = "RichTextEditor";
+
   static propTypes = {
     /**
      * The id of the element to use as the aria-label for the Editor.

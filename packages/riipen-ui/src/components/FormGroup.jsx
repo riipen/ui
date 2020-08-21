@@ -10,6 +10,8 @@ import withClasses from "../utils/withClasses";
 import Typography from "./Typography";
 
 class FormGroup extends React.Component {
+  static displayName = "FormGroup";
+
   static propTypes = {
     /**
      * The content of the component.

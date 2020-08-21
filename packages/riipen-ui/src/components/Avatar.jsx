@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class Avatar extends React.Component {
+  static displayName = "Avatar";
+
   static propTypes = {
     /**
      * Used to provide an alt attribute to the rendered img element.

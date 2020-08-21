@@ -6,6 +6,8 @@ import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
 class Chip extends React.Component {
+  static displayName = "Chip";
+
   static propTypes = {
     /**
      * The elements to render inside the pill.
