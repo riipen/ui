@@ -166,11 +166,11 @@ const pages = [
       },
       {
         name: "EditorBlockStyleControls",
-        pathname: "/components-api/block-style-controls"
+        pathname: "/components-api/editor-block-style-controls"
       },
       {
         name: "EditorControlButton",
-        pathname: "/components-api/control-button"
+        pathname: "/components-api/editor-control-button"
       },
       {
         name: "Editor",
@@ -178,15 +178,15 @@ const pages = [
       },
       {
         name: "EditorImage",
-        pathname: "/components-api/image"
+        pathname: "/components-api/editor-image"
       },
       {
         name: "EditorInlineStyleControls",
-        pathname: "/components-api/inline-style-controls"
+        pathname: "/components-api/editor-inline-style-controls"
       },
       {
         name: "EditorLink",
-        pathname: "/components-api/link"
+        pathname: "/components-api/editor-link"
       },
       {
         name: "Grid",
