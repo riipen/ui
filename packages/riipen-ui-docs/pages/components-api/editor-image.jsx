@@ -9,5 +9,11 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/editor-image" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/editor-image"
+      req={req}
+      title="Editor Image API"
+    />
+  );
 }

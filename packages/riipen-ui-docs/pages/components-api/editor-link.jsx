@@ -9,5 +9,11 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/editor-link" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/editor-link"
+      req={req}
+      title="Editor Link API"
+    />
+  );
 }

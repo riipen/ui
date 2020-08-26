@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/divider"
       req={req}
       reqSource={reqSource}
+      title="Divider"
     />
   );
 }

@@ -9,5 +9,11 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/input-hint" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/input-hint"
+      req={req}
+      title="Input Hint API"
+    />
+  );
 }

@@ -13,6 +13,7 @@ export default function Page() {
     <MarkdownPage
       path="pages/components-api/editor-block-style-controls"
       req={req}
+      title="Editor Block Style Controls API"
     />
   );
 }

@@ -9,5 +9,11 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/button-icon" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/button-icon"
+      req={req}
+      title="Button Icon API"
+    />
+  );
 }

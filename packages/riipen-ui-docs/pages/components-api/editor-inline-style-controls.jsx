@@ -13,6 +13,7 @@ export default function Page() {
     <MarkdownPage
       path="pages/components-api/editor-inline-style-controls"
       req={req}
+      title="Editor Inline Style Controls API"
     />
   );
 }

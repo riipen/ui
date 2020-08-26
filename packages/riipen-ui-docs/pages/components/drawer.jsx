@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/drawer"
       req={req}
       reqSource={reqSource}
+      title="Drawer"
     />
   );
 }

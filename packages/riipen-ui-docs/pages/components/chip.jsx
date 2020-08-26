@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/chip"
       req={req}
       reqSource={reqSource}
+      title="Chip"
     />
   );
 }

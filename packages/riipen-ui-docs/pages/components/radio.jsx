@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/radio"
       req={req}
       reqSource={reqSource}
+      title="Radio"
     />
   );
 }

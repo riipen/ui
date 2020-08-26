@@ -9,5 +9,11 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/progress-bar" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/progress-bar"
+      req={req}
+      title="Progress Bar API"
+    />
+  );
 }

@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/grid"
       req={req}
       reqSource={reqSource}
+      title="Grid"
     />
   );
 }

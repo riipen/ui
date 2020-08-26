@@ -1,4 +1,5 @@
 import App from "next/app";
+import Head from "next/head";
 import React from "react";
 
 import ThemeContext from "@riipen-ui/styles/ThemeContext";
@@ -10,6 +11,9 @@ class MyApp extends App {
 
     return (
       <ThemeContext.Provider value={defaultTheme}>
+        <Head>
+          <title>Riipen UI</title>
+        </Head>
         <Component {...pageProps} />
       </ThemeContext.Provider>
     );

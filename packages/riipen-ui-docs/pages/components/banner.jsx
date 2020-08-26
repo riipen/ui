@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/banner"
       req={req}
       reqSource={reqSource}
+      title="Banner"
     />
   );
 }

@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/badge"
       req={req}
       reqSource={reqSource}
+      title="Badge"
     />
   );
 }

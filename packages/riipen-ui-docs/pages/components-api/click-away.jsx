@@ -9,5 +9,11 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/click-away" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/click-away"
+      req={req}
+      title="Click Away API"
+    />
+  );
 }

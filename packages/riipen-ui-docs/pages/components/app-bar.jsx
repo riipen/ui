@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/app-bar"
       req={req}
       reqSource={reqSource}
+      title="App Bar"
     />
   );
 }

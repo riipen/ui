@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/rich-text-editor"
       req={req}
       reqSource={reqSource}
+      title="Rich Text Editor"
     />
   );
 }

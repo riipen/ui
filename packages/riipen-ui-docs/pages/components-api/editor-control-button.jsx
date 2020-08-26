@@ -10,6 +10,10 @@ const req = require.context(
 
 export default function Page() {
   return (
-    <MarkdownPage path="pages/components-api/editor-control-button" req={req} />
+    <MarkdownPage
+      path="pages/components-api/editor-control-button"
+      req={req}
+      title="Editor Control Button API"
+    />
   );
 }
