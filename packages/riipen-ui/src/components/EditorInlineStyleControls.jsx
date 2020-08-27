@@ -3,11 +3,9 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBold,
-  faItalic,
-  faUnderline
-} from "@fortawesome/free-solid-svg-icons";
+import faBold from "@fortawesome/free-solid-svg-icons/faBold";
+import faItalic from "@fortawesome/free-solid-svg-icons/faItalic";
+import faUnderline from "@fortawesome/free-solid-svg-icons/faUnderline";
 
 import EditorControlButton from "./EditorControlButton";
 
