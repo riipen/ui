@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import faListOl from "@fortawesome/free-solid-svg-icons/faListOl";
-import faListUl from "@fortawesome/free-solid-svg-icons/faListUl";
-import faQuoteLeft from "@fortawesome/free-solid-svg-icons/faQuoteLeft";
+import { faListOl } from "@fortawesome/free-solid-svg-icons/faListOl";
+import { faListUl } from "@fortawesome/free-solid-svg-icons/faListUl";
+import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons/faQuoteLeft";
 
 import EditorControlButton from "./EditorControlButton";
 
