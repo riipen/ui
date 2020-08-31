@@ -41,8 +41,6 @@ class InputHint extends React.Component {
 
     const className = clsx(classes, color);
 
-    console.log(className);
-
     return (
       <React.Fragment>
         <div className={className}>
@@ -50,11 +48,8 @@ class InputHint extends React.Component {
         </div>
         <style jsx>{`
           div {
-            margin-bottom: ${theme.spacing(2)}px;
-          }
-
-          .default {
             color: ${theme.palette.text.secondary};
+            margin-bottom: ${theme.spacing(2)}px;
           }
 
           .white {

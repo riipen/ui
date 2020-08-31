@@ -55,8 +55,6 @@ class InputLabel extends React.Component {
 
     const marginBottom = hint ? 1 : 3;
 
-    console.log(className);
-
     return (
       <React.Fragment>
         {children && (
@@ -70,6 +68,7 @@ class InputLabel extends React.Component {
         {hint && <InputHint color={color}>{hint}</InputHint>}
         <style jsx>{`
           label {
+            color: ${theme.palette.text.secondary};
             display: inline-block;
             font-family: ${theme.typography.body1.fontFamily};
             font-size: 16px;
@@ -77,10 +76,6 @@ class InputLabel extends React.Component {
             letter-spacing: ${theme.typography.body1.letterSpacing};
             line-height: 1.4;
             margin-bottom: ${theme.spacing(marginBottom)}px;
-          }
-
-          .default {
-            color: ${theme.palette.text.secondary};
           }
 
           .white {
