@@ -23,6 +23,11 @@ class InputLabel extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * Color of the hint text
+     */
+    color: PropTypes.string,
+
+    /**
      * Hint text to display under the label.
      */
     hint: PropTypes.node,
@@ -35,19 +40,22 @@ class InputLabel extends React.Component {
 
   static defaultProps = {
     classes: [],
+    color: "default",
     required: false
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes, hint, required, ...other } = this.props;
+    const { children, color, classes, hint, required, ...other } = this.props;
 
     const theme = this.context;
 
-    const className = clsx(classes);
+    const className = clsx(classes, color);
 
     const marginBottom = hint ? 1 : 3;
+
+    console.log(className);
 
     return (
       <React.Fragment>
@@ -59,10 +67,9 @@ class InputLabel extends React.Component {
             </Typography>
           </label>
         )}
-        {hint && <InputHint>{hint}</InputHint>}
+        {hint && <InputHint color={color}>{hint}</InputHint>}
         <style jsx>{`
           label {
-            color: ${theme.palette.text.secondary};
             display: inline-block;
             font-family: ${theme.typography.body1.fontFamily};
             font-size: 16px;
@@ -70,6 +77,14 @@ class InputLabel extends React.Component {
             letter-spacing: ${theme.typography.body1.letterSpacing};
             line-height: 1.4;
             margin-bottom: ${theme.spacing(marginBottom)}px;
+          }
+
+          .default {
+            color: ${theme.palette.text.secondary};
+          }
+
+          .white {
+            color: ${theme.palette.common.white};
           }
         `}</style>
       </React.Fragment>
