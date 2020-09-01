@@ -14,6 +14,7 @@ const Input = props => {
     error,
     hint,
     label,
+    labelColor,
     multiline,
     required,
     theme,
@@ -52,6 +53,7 @@ const Input = props => {
     <div className={className}>
       {(label || hint) && (
         <InputLabel
+          color={labelColor}
           hint={hint}
           htmlFor={other.id || other.name}
           required={required}
@@ -154,6 +156,11 @@ Input.propTypes = {
    * Label text to display for the input.
    */
   label: PropTypes.string,
+
+  /**
+   * Label text to display for the input.
+   */
+  labelColor: PropTypes.oneOf(["default", "white"]),
 
   /**
    * If `true`, a textarea element will be rendered.

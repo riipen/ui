@@ -23,6 +23,12 @@ The `multiline` prop transforms the input into a `textarea`.
 
 {{"demo": "pages/components/input/Multiline.js"}}
 
+## Label Color
+
+The `labelColor` prop can change the color of the label.
+
+{{"demo": "pages/components/input/Color.js"}}
+
 ## Accessibility
 
 In order for the input to be accessible, the input should be linked to the label. The underlying DOM nodes should have this structure.
