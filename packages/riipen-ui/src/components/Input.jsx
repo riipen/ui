@@ -160,7 +160,7 @@ Input.propTypes = {
   /**
    * Label text to display for the input.
    */
-  labelColor: PropTypes.string,
+  labelColor: PropTypes.oneOf(["default", "white"]),
 
   /**
    * If `true`, a textarea element will be rendered.

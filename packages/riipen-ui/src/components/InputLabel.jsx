@@ -25,7 +25,7 @@ class InputLabel extends React.Component {
     /**
      * Color of the hint text
      */
-    color: PropTypes.string,
+    color: PropTypes.oneOf(["default", "white"]),
 
     /**
      * Hint text to display under the label.
