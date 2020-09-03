@@ -1,6 +1,6 @@
 import React from "react";
 
-import TableGenerator from "@riipen-ui/components/TableGenerator";
+import TableGenerator from "riipen-ui/components/TableGenerator";
 
 export default function Mobile() {
   const [loading, setLoading] = React.useState(true);

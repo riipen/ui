@@ -1,6 +1,6 @@
 import React from "react";
 
-import Avatar from "@riipen-ui/components/Avatar";
+import Avatar from "riipen-ui/components/Avatar";
 
 export default function Variants() {
   const style = {

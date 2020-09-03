@@ -1,6 +1,6 @@
 import React from "react";
 
-import Drawer from "@riipen-ui/components/Drawer";
+import Drawer from "riipen-ui/components/Drawer";
 
 export default function Position() {
   const style = {

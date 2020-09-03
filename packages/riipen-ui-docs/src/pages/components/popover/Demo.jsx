@@ -1,10 +1,10 @@
 import React from "react";
 
-import Popover from "@riipen-ui/components/Popover";
-import Button from "@riipen-ui/components/Button";
-import Radio from "@riipen-ui/components/Radio";
-import RadioGroup from "@riipen-ui/components/RadioGroup";
-import Form from "@riipen-ui/components/Form";
+import Popover from "riipen-ui/components/Popover";
+import Button from "riipen-ui/components/Button";
+import Radio from "riipen-ui/components/Radio";
+import RadioGroup from "riipen-ui/components/RadioGroup";
+import Form from "riipen-ui/components/Form";
 
 export default function Simple() {
   const anchorEl = React.useRef(null);

@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/riipen/ui.git",
+    "url": "https://github.com/riipen/ui/packages/riipen-ui",
     "directory": "packages/riipen-ui"
   },
   "license": "MIT",
@@ -46,6 +46,8 @@
     ]
   },
   "peerDependencies": {
+    "draft-convert": "^2.1.10",
+    "draft-js": "^0.11.6",
     "react": ">= 16.11.0",
     "react-dom": ">= 16.11.0",
     "styled-jsx": ">= 3.2.2"
@@ -56,8 +58,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "clsx": "1.0.4",
-    "draft-convert": "^2.1.10",
-    "draft-js": "^0.11.6",
     "popper.js": "^1.16.1",
     "prop-types": "15.7.2"
   },

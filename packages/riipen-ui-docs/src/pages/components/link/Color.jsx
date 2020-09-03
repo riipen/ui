@@ -1,6 +1,6 @@
 import React from "react";
 
-import Link from "@riipen-ui/components/Link";
+import Link from "riipen-ui/components/Link";
 
 export default function Example() {
   const style = {

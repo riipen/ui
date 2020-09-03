@@ -1,8 +1,8 @@
 import React from "react";
 
-import Button from "@riipen-ui/components/Button";
-import Form from "@riipen-ui/components/Form";
-import Input from "@riipen-ui/components/Input";
+import Button from "riipen-ui/components/Button";
+import Form from "riipen-ui/components/Form";
+import Input from "riipen-ui/components/Input";
 
 export default function ErrorScroll() {
   const style = {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Container from "@riipen-ui/components/Container";
+import Container from "riipen-ui/components/Container";
 
 export default function Variants() {
   const style = {

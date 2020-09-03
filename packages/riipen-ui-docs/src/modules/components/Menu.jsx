@@ -3,7 +3,7 @@ import React from "react";
 import Link from "src/modules/components/Link";
 import pages from "src/pages";
 
-import ThemeContext from "@riipen-ui/styles/ThemeContext";
+import ThemeContext from "riipen-ui/styles/ThemeContext";
 
 class Menu extends React.Component {
   getLinks = (parent, links) => {

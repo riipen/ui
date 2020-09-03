@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Link as RiipenLink } from "@riipen-ui/components";
+import { Link as RiipenLink } from "riipen-ui/components";
 
 class Link extends React.Component {
   static propTypes = {

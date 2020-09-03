@@ -1,6 +1,6 @@
 import React from "react";
 
-import Button from "@riipen-ui/components/Button";
+import Button from "riipen-ui/components/Button";
 
 export default function Text() {
   const style = {

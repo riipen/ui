@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import ThemeContext from "@riipen-ui/styles/ThemeContext";
+import ThemeContext from "riipen-ui/styles/ThemeContext";
 
 import MarkdownElement from "src/modules/components/MarkdownElement";
 import Sandbox from "src/modules/components/Sandbox";

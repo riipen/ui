@@ -1,7 +1,7 @@
 import React from "react";
 
-import Badge from "@riipen-ui/components/Badge";
-import Typography from "@riipen-ui/components/Typography";
+import Badge from "riipen-ui/components/Badge";
+import Typography from "riipen-ui/components/Typography";
 
 const style = {
   marginRight: "20px"
