@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/list"
       req={req}
       reqSource={reqSource}
+      title="List"
     />
   );
 }

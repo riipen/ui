@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/table"
       req={req}
       reqSource={reqSource}
+      title="Table"
     />
   );
 }

@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/avatar"
       req={req}
       reqSource={reqSource}
+      title="Avatar"
     />
   );
 }

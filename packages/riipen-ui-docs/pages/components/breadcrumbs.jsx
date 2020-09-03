@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/breadcrumbs"
       req={req}
       reqSource={reqSource}
+      title="Breadcumbs"
     />
   );
 }

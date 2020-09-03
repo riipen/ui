@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/tooltip"
       req={req}
       reqSource={reqSource}
+      title="Tooltip"
     />
   );
 }

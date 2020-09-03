@@ -9,5 +9,11 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/form-group" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/form-group"
+      req={req}
+      title="Form Group API"
+    />
+  );
 }

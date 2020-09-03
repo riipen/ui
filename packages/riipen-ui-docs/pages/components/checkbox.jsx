@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/checkbox"
       req={req}
       reqSource={reqSource}
+      title="Checkbox"
     />
   );
 }

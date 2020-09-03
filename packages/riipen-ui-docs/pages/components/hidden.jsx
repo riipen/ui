@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/hidden"
       req={req}
       reqSource={reqSource}
+      title="Hidden"
     />
   );
 }

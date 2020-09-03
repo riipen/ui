@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/menu"
       req={req}
       reqSource={reqSource}
+      title="Menu"
     />
   );
 }

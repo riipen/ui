@@ -9,5 +9,11 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/input-label" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/input-label"
+      req={req}
+      title="Input Label API"
+    />
+  );
 }

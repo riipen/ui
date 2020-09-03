@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/progress-bar"
       req={req}
       reqSource={reqSource}
+      title="Progress Bar"
     />
   );
 }

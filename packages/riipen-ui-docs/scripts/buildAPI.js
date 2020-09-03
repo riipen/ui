@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import kebabCase from "lodash/kebabCase";
+import startCase from "lodash/startCase";
 import { parse } from "react-docgen";
 
 import generateAPIMarkdown from "../src/utils/generateAPIMarkdown";
@@ -112,6 +113,7 @@ export default function Page() {
         reactAPI.dir ? `${reactAPI.dir}/` : ""
       }${kebabCase(`${reactAPI.name}`)}"
       req={req}
+      title="${startCase(reactAPI.name)} API"
     />
   );
 }

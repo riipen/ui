@@ -17,23 +17,29 @@ class InputHint extends React.Component {
     children: PropTypes.node,
 
     /**
+     * Color of the hint text
+     */
+    color: PropTypes.oneOf(["default", "white"]),
+
+    /**
      * An array of custom CSS classes to apply.
      */
     classes: PropTypes.array
   };
 
   static defaultProps = {
-    classes: []
+    classes: [],
+    color: "default"
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, classes } = this.props;
+    const { children, color, classes } = this.props;
 
     const theme = this.context;
 
-    const className = clsx(classes);
+    const className = clsx(classes, color);
 
     return (
       <React.Fragment>
@@ -44,6 +50,10 @@ class InputHint extends React.Component {
           div {
             color: ${theme.palette.text.secondary};
             margin-bottom: ${theme.spacing(2)}px;
+          }
+
+          .white {
+            color: ${theme.palette.common.white};
           }
         `}</style>
       </React.Fragment>

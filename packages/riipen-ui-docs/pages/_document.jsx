@@ -25,6 +25,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+          <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
         </Head>
         <body style={{ margin: 0, padding: 0 }}>
           <Main />

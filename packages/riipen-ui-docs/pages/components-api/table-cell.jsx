@@ -9,5 +9,11 @@ const req = require.context(
 );
 
 export default function Page() {
-  return <MarkdownPage path="pages/components-api/table-cell" req={req} />;
+  return (
+    <MarkdownPage
+      path="pages/components-api/table-cell"
+      req={req}
+      title="Table Cell API"
+    />
+  );
 }

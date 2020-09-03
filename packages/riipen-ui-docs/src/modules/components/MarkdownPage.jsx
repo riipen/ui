@@ -1,3 +1,4 @@
+import Head from "next/head";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -18,13 +19,14 @@ class MarkdownPage extends React.Component {
   static propTypes = {
     path: PropTypes.string.isRequired,
     req: PropTypes.func.isRequired,
-    reqSource: PropTypes.func
+    reqSource: PropTypes.func,
+    title: PropTypes.string
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { req, path, reqSource } = this.props;
+    const { req, path, reqSource, title } = this.props;
 
     const theme = this.context;
 
@@ -51,6 +53,9 @@ class MarkdownPage extends React.Component {
 
     return (
       <div>
+        <Head>
+          <title>{title ? `${title} | ` : ""}Riipen UI</title>
+        </Head>
         <AppBar>
           <Link href="/" color="inherit">
             Riipen-UI

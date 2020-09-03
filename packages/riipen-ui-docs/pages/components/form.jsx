@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/form"
       req={req}
       reqSource={reqSource}
+      title="Form"
     />
   );
 }

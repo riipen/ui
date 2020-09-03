@@ -20,6 +20,7 @@ export default function Page() {
       path="pages/components/no-ssr"
       req={req}
       reqSource={reqSource}
+      title="No SSR"
     />
   );
 }
