@@ -46,6 +46,12 @@ export default function Component() {
       <Typography variant="caption" display="block" gutter>
         caption text
       </Typography>
+      <Typography color="primary">primary color</Typography>
+      <Typography color="secondary">secondary color</Typography>
+      <Typography color="tertiary">tertiary color</Typography>
+      <Typography color="positive">positive color</Typography>
+      <Typography color="negative">negative color</Typography>
+      <Typography color="muted">muted color</Typography>
     </div>
   );
 }

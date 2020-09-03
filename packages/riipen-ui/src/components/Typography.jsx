@@ -42,7 +42,8 @@ class Typography extends React.Component {
       "secondary",
       "tertiary",
       "positive",
-      "negative"
+      "negative",
+      "muted"
     ]),
 
     /**
@@ -169,6 +170,9 @@ class Typography extends React.Component {
           }
           .color-negative {
             color: ${theme.palette.negative.main};
+          }
+          .color-muted {
+            color: ${theme.palette.text.secondary};
           }
 
           .align-center {
