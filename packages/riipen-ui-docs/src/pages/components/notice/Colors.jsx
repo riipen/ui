@@ -1,7 +1,7 @@
 import React from "react";
 
-import Typography from "@riipen-ui/components/Typography";
-import Notice from "@riipen-ui/components/Notice";
+import Typography from "riipen-ui/components/Typography";
+import Notice from "riipen-ui/components/Notice";
 
 export default function Colors() {
   const style = {

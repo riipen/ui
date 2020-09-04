@@ -1,7 +1,7 @@
 import React from "react";
 
-import Form from "@riipen-ui/components/Form";
-import Checkbox from "@riipen-ui/components/Checkbox";
+import Form from "riipen-ui/components/Form";
+import Checkbox from "riipen-ui/components/Checkbox";
 
 export default function Usage() {
   const style = {

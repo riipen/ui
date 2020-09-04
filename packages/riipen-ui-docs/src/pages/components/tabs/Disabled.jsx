@@ -1,7 +1,7 @@
 import React from "react";
 
-import Tabs from "@riipen-ui/components/Tabs";
-import Tab from "@riipen-ui/components/Tab";
+import Tabs from "riipen-ui/components/Tabs";
+import Tab from "riipen-ui/components/Tab";
 
 export default function Disabled() {
   const style = {

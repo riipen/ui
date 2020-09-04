@@ -1,7 +1,7 @@
 import React from "react";
 
-import Form from "@riipen-ui/components/Form";
-import RichTextEditor from "@riipen-ui/components/RichTextEditor";
+import Form from "riipen-ui/components/Form";
+import RichTextEditor from "riipen-ui/components/RichTextEditor";
 
 export default function Usage() {
   const style = {

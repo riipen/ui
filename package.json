@@ -1,25 +1,28 @@
 {
+  "name": "ui",
+  "version": "0.0.1",
+  "author": {
+    "name": "Riipen",
+    "email": "admin@riipen.com",
+    "url": "https://riipen.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/riipen/ui",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap --hoist",
     "build": "lerna run build",
     "ci:audit": "lerna run ci:audit",
     "format": "lerna run format",
-    "lint": "lerna run lint"
+    "lint": "lerna run lint",
+    "start": "lerna --scope riipen-ui-docs run start --stream"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lerna run --concurrency 1 --stream precommit"
     }
   },
-  "dependencies": {
-    "clsx": "1.0.4",
-    "prop-types": "15.7.2",
-    "react": "16.11.0",
-    "react-dom": "16.11.0",
-    "styled-jsx": "3.2.2"
-  },
   "devDependencies": {
-    "@babel/core": "^7.6.4",
+    "@babel/core": "^7.10.5",
     "@babel/runtime-corejs2": "7.6.3",
     "audit-ci": "3.0.1",
     "babel-eslint": "10.0.3",

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Typography from "@riipen-ui/components/Typography";
+import Typography from "riipen-ui/components/Typography";
 
 export default function Component() {
   return (

@@ -5,7 +5,7 @@ import React from "react";
 import Link from "src/modules/components/Link";
 import textToHash from "src/utils/textToHash";
 
-import ThemeContext from "@riipen-ui/styles/ThemeContext";
+import ThemeContext from "riipen-ui/styles/ThemeContext";
 
 const renderer = new marked.Renderer();
 

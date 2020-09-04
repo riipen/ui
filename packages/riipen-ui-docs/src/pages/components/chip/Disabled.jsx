@@ -1,6 +1,6 @@
 import React from "react";
 
-import Chip from "@riipen-ui/components/Chip";
+import Chip from "riipen-ui/components/Chip";
 
 export default function Disabled() {
   const style = {

@@ -5,8 +5,8 @@ import { faChevronRight, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const icon = i => props => <FontAwesomeIcon icon={i} {...props} />;
 
-import Button from "@riipen-ui/components/Button";
-import ButtonIcon from "@riipen-ui/components/ButtonIcon";
+import Button from "riipen-ui/components/Button";
+import ButtonIcon from "riipen-ui/components/ButtonIcon";
 
 export default function Icons() {
   const style = {

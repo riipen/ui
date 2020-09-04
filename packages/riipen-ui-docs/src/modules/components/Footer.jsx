@@ -7,9 +7,9 @@ import {
   List,
   ListItem,
   Typography
-} from "@riipen-ui/components";
+} from "riipen-ui/components";
 
-import ThemeContext from "@riipen-ui/styles/ThemeContext";
+import ThemeContext from "riipen-ui/styles/ThemeContext";
 
 class Footer extends React.Component {
   static contextType = ThemeContext;

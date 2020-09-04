@@ -4,7 +4,7 @@ import React from "react";
 
 import prism from "src/utils/prism";
 
-import ThemeContext from "@riipen-ui/styles/ThemeContext";
+import ThemeContext from "riipen-ui/styles/ThemeContext";
 
 const renderer = new marked.Renderer();
 

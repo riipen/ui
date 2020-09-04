@@ -11,9 +11,9 @@ import Menu from "src/modules/components/Menu";
 import TOC from "src/modules/components/TOC";
 import { getSections } from "src/utils/parseMarkdown";
 
-import AppBar from "@riipen-ui/components/AppBar";
-import Divider from "@riipen-ui/components/Divider";
-import ThemeContext from "@riipen-ui/styles/ThemeContext";
+import AppBar from "riipen-ui/components/AppBar";
+import Divider from "riipen-ui/components/Divider";
+import ThemeContext from "riipen-ui/styles/ThemeContext";
 
 class MarkdownPage extends React.Component {
   static propTypes = {

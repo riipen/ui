@@ -1,9 +1,9 @@
 import React from "react";
 
-import Radio from "@riipen-ui/components/Radio";
-import RadioGroup from "@riipen-ui/components/RadioGroup";
-import Form from "@riipen-ui/components/Form";
-import Tooltip from "@riipen-ui/components/Tooltip";
+import Radio from "riipen-ui/components/Radio";
+import RadioGroup from "riipen-ui/components/RadioGroup";
+import Form from "riipen-ui/components/Form";
+import Tooltip from "riipen-ui/components/Tooltip";
 
 export default function Component() {
   const [size, setSize] = React.useState("small");

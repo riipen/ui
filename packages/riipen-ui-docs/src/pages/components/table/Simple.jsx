@@ -1,11 +1,11 @@
 import React from "react";
 
-import Table from "@riipen-ui/components/Table";
-import TableHeader from "@riipen-ui/components/TableHeader";
-import TableBody from "@riipen-ui/components/TableBody";
-import TableRow from "@riipen-ui/components/TableRow";
-import TableHeaderCell from "@riipen-ui/components/TableHeaderCell";
-import TableCell from "@riipen-ui/components/TableCell";
+import Table from "riipen-ui/components/Table";
+import TableHeader from "riipen-ui/components/TableHeader";
+import TableBody from "riipen-ui/components/TableBody";
+import TableRow from "riipen-ui/components/TableRow";
+import TableHeaderCell from "riipen-ui/components/TableHeaderCell";
+import TableCell from "riipen-ui/components/TableCell";
 
 export default function Simple() {
   const createEntity = (firstName, lastName, email, age) => {

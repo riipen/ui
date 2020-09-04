@@ -1,6 +1,6 @@
 import React from "react";
 
-import Banner from "@riipen-ui/components/Banner";
+import Banner from "riipen-ui/components/Banner";
 
 export default function Tints() {
   const style = {

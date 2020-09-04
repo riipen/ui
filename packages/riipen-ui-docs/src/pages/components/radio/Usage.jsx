@@ -1,8 +1,8 @@
 import React from "react";
 
-import Form from "@riipen-ui/components/Form";
-import Radio from "@riipen-ui/components/Radio";
-import RadioGroup from "@riipen-ui/components/RadioGroup";
+import Form from "riipen-ui/components/Form";
+import Radio from "riipen-ui/components/Radio";
+import RadioGroup from "riipen-ui/components/RadioGroup";
 
 export default function Usage() {
   const [state, setState] = React.useState({

@@ -7,7 +7,7 @@ import {
   faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
 
-import Chip from "@riipen-ui/components/Chip";
+import Chip from "riipen-ui/components/Chip";
 
 const icon = i => props => <FontAwesomeIcon icon={i} {...props} />;
 

@@ -15,7 +15,7 @@ Here's a quick example to get you started, **it's literally all you need**:
 ```jsx
 import React from "react";
 import ReactDOM from "react-dom";
-import Button from "@riipen-ui/Button";
+import Button from "riipen-ui/Button";
 
 function App() {
   return <Button color="primary">Hello World</Button>;

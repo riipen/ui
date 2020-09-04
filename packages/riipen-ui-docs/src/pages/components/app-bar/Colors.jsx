@@ -1,7 +1,7 @@
 import React from "react";
 
-import AppBar from "@riipen-ui/components/AppBar";
-import Toolbar from "@riipen-ui/components/Toolbar";
+import AppBar from "riipen-ui/components/AppBar";
+import Toolbar from "riipen-ui/components/Toolbar";
 
 export default function Colors() {
   const style = {

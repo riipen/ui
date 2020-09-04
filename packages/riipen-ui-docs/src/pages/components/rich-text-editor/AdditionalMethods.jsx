@@ -1,10 +1,10 @@
 import React from "react";
 import { CompositeDecorator } from "draft-js";
 
-import Button from "@riipen-ui/components/Button";
-import Form from "@riipen-ui/components/Form";
-import RichTextEditor from "@riipen-ui/components/RichTextEditor";
-import EditorLink from "@riipen-ui/components/EditorLink";
+import Button from "riipen-ui/components/Button";
+import Form from "riipen-ui/components/Form";
+import RichTextEditor from "riipen-ui/components/RichTextEditor";
+import EditorLink from "riipen-ui/components/EditorLink";
 
 const findEntities = (contentBlock, callback, contentState) => {
   contentBlock.findEntityRanges(character => {

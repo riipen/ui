@@ -30,7 +30,7 @@ module.exports = {
     return map;
   },
 
-  exportTrailingSlash: true,
+  trailingSlash: true,
 
   webpack(config, options) {
     config.resolve.alias.src = path.join(__dirname, "src");
