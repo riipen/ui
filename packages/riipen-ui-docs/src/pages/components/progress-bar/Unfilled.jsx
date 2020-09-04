@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProgressBar from "@riipen-ui/components/ProgressBar";
+import ProgressBar from "riipen-ui/components/ProgressBar";
 
 export default function Unfilled() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Divider from "@riipen-ui/components/Divider";
+import Divider from "riipen-ui/components/Divider";
 
 export default function Variants() {
   const style = {

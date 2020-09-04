@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 import React from "react";
 import flush from "styled-jsx/server";
 
@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
     const { styles } = this.props;
 
     return (
-      <html lang="en">
+      <Html>
         <Head>
           {styles}
           <style id="prismjs" />
@@ -31,7 +31,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

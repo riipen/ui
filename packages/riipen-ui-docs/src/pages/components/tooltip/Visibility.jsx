@@ -1,8 +1,8 @@
 import React from "react";
 
-import Checkbox from "@riipen-ui/components/Checkbox";
-import Form from "@riipen-ui/components/Form";
-import Tooltip from "@riipen-ui/components/Tooltip";
+import Checkbox from "riipen-ui/components/Checkbox";
+import Form from "riipen-ui/components/Form";
+import Tooltip from "riipen-ui/components/Tooltip";
 
 export default function Component() {
   const [click, setClick] = React.useState(false);

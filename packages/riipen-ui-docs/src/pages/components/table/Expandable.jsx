@@ -8,7 +8,7 @@ import {
   faStar
 } from "@fortawesome/free-solid-svg-icons";
 
-import TableGenerator from "@riipen-ui/components/TableGenerator";
+import TableGenerator from "riipen-ui/components/TableGenerator";
 
 function ExpandedRow({ rating, review }) {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 
-import Grid from "@riipen-ui/components/Grid";
-import GridItem from "@riipen-ui/components/GridItem";
+import Grid from "riipen-ui/components/Grid";
+import GridItem from "riipen-ui/components/GridItem";
 
 export default function CenteredGrid() {
   const itemStyle = {

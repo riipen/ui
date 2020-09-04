@@ -9,8 +9,8 @@ import {
 
 const icon = i => props => <FontAwesomeIcon icon={i} {...props} />;
 
-import Tabs from "@riipen-ui/components/Tabs";
-import Tab from "@riipen-ui/components/Tab";
+import Tabs from "riipen-ui/components/Tabs";
+import Tab from "riipen-ui/components/Tab";
 
 export default function Icons() {
   const style = {

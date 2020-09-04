@@ -1,7 +1,7 @@
 import React from "react";
 
-import Avatar from "@riipen-ui/components/Avatar";
-import Badge from "@riipen-ui/components/Badge";
+import Avatar from "riipen-ui/components/Avatar";
+import Badge from "riipen-ui/components/Badge";
 
 export default function Visibility() {
   return (

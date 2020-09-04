@@ -1,7 +1,7 @@
 import React from "react";
 
-import List from "@riipen-ui/components/List";
-import ListItem from "@riipen-ui/components/ListItem";
+import List from "riipen-ui/components/List";
+import ListItem from "riipen-ui/components/ListItem";
 
 export default function Example() {
   return (

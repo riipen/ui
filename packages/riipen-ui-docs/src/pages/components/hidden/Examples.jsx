@@ -1,6 +1,6 @@
 import React from "react";
 
-import Hidden from "@riipen-ui/components/Hidden";
+import Hidden from "riipen-ui/components/Hidden";
 
 export default function Examples() {
   const style = {

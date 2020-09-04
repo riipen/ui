@@ -1,8 +1,8 @@
 import React from "react";
 
-import Menu from "@riipen-ui/components/Menu";
-import MenuItem from "@riipen-ui/components/MenuItem";
-import Button from "@riipen-ui/components/Button";
+import Menu from "riipen-ui/components/Menu";
+import MenuItem from "riipen-ui/components/MenuItem";
+import Button from "riipen-ui/components/Button";
 
 export default function Simple() {
   const [anchorState, setAnchorState] = React.useState(null);

@@ -35,4 +35,10 @@ npm install npm@latest -g
 $ npm run bootstrap
 ```
 
-See each package's readme file for further instructions regarding setup.
+## Run
+
+Start the documentation server:
+
+```bash
+npm start
+```

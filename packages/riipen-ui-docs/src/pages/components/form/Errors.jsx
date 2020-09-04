@@ -1,8 +1,8 @@
 import React from "react";
 
-import Form from "@riipen-ui/components/Form";
-import Input from "@riipen-ui/components/Input";
-import Typography from "@riipen-ui/components/Typography";
+import Form from "riipen-ui/components/Form";
+import Input from "riipen-ui/components/Input";
+import Typography from "riipen-ui/components/Typography";
 
 export default function Errors() {
   const style = {

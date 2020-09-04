@@ -1,8 +1,8 @@
 import React from "react";
 
-import Form from "@riipen-ui/components/Form";
-import FormGroup from "@riipen-ui/components/FormGroup";
-import Input from "@riipen-ui/components/Input";
+import Form from "riipen-ui/components/Form";
+import FormGroup from "riipen-ui/components/FormGroup";
+import Input from "riipen-ui/components/Input";
 
 export default function Group() {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 
-import Breadcrumbs from "@riipen-ui/components/Breadcrumbs";
-import Typography from "@riipen-ui/components/Typography";
+import Breadcrumbs from "riipen-ui/components/Breadcrumbs";
+import Typography from "riipen-ui/components/Typography";
 
 export default function Simple() {
   return (

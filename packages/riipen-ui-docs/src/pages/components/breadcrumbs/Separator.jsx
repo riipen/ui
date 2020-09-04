@@ -2,8 +2,8 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-import Breadcrumbs from "@riipen-ui/components/Breadcrumbs";
-import Typography from "@riipen-ui/components/Typography";
+import Breadcrumbs from "riipen-ui/components/Breadcrumbs";
+import Typography from "riipen-ui/components/Typography";
 
 export default function Separator() {
   const style = {
