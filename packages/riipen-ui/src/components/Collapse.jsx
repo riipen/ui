@@ -33,7 +33,7 @@ const Collapse = props => {
         overflow: visible;
       }
       .exited {
-        visibility: hidden;
+        height: 0;
       }
     `;
   };
@@ -51,13 +51,15 @@ const Collapse = props => {
   };
 
   const handleEntering = node => {
+    const wrapperSize = getWrapperSize();
+
     if (wrapperRef.current) {
       // After the size is read reset the position back to default
       wrapperRef.current.style.position = "";
     }
 
     node.style.transitionDuration = `${theme.transitions.duration.standard}ms`;
-    node.style.height = `${getWrapperSize()}px`;
+    node.style.height = `${wrapperSize}px`;
   };
 
   const handleEntered = node => {
@@ -69,6 +71,9 @@ const Collapse = props => {
   };
 
   const handleExiting = node => {
+    // For some reason smooth collapse doesn't work unless we call this here
+    getWrapperSize();
+
     node.style.transitionDuration = `${theme.transitions.duration.standard}ms`;
     node.style.height = "0";
   };
