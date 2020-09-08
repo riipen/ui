@@ -78,7 +78,7 @@ const Menu = () => {
           font-weight: ${theme.typography.fontWeight.regular};
           list-style-type: none;
           margin: 0;
-          padding-left: 10px;
+          padding-left: ${theme.spacing(2)}px;
         }
         li {
           padding: ${theme.spacing(1)}px;

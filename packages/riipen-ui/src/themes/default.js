@@ -116,7 +116,7 @@ export default {
       properties
         .map(
           property =>
-            `${property} ${options.duraction || 300}ms ${options.easing ||
+            `${property} ${options.duration || 300}ms ${options.easing ||
               "cubic-bezier(0.4, 0, 0.2, 1)"}`
         )
         .join(", "),

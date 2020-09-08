@@ -29,8 +29,6 @@ AccordionDetails.propTypes = {
   classes: PropTypes.array
 };
 
-AccordionDetails.defaultProps = {};
-
 AccordionDetails.displayName = "AccordionDetails";
 
 export default AccordionDetails;

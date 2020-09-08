@@ -10,7 +10,7 @@ const Collapse = props => {
   const {
     children,
     classes,
-    component: Component = "div",
+    component: Component,
     in: inProp,
     ...other
   } = props;
@@ -23,7 +23,7 @@ const Collapse = props => {
     return css.resolve`
       .root {
         height: 0;
-        min-height: 0px;
+        min-height: 0;
         overflow: hidden;
         transition: ${theme.transitions.create(["height"])};
       }
@@ -47,19 +47,17 @@ const Collapse = props => {
       wrapperRef.current.style.position = "absolute";
     }
 
-    node.style.height = "0px";
+    node.style.height = "0";
   };
 
   const handleEntering = node => {
-    const wrapperSize = getWrapperSize();
-
     if (wrapperRef.current) {
       // After the size is read reset the position back to default
       wrapperRef.current.style.position = "";
     }
 
     node.style.transitionDuration = `${theme.transitions.duration.standard}ms`;
-    node.style.height = `${wrapperSize}px`;
+    node.style.height = `${getWrapperSize()}px`;
   };
 
   const handleEntered = node => {
@@ -72,7 +70,7 @@ const Collapse = props => {
 
   const handleExiting = node => {
     node.style.transitionDuration = `${theme.transitions.duration.standard}ms`;
-    node.style.height = "0px";
+    node.style.height = "0";
   };
 
   const linkedStyles = getLinkedStyles();

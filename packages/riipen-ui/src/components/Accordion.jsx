@@ -11,8 +11,8 @@ const Accordion = props => {
   const {
     children: childrenProp,
     classes,
-    defaultExpanded = false,
-    disabled = false,
+    defaultExpanded,
+    disabled,
     ...other
   } = props;
 

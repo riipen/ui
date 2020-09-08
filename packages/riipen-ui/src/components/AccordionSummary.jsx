@@ -9,7 +9,7 @@ import AccordionContext from "./AccordionContext";
 import ButtonIcon from "./ButtonIcon";
 
 const AccordionSummary = props => {
-  const { children, classes, iconProps = {}, icon, ...other } = props;
+  const { children, classes, iconProps, icon, ...other } = props;
 
   const theme = React.useContext(ThemeContext);
 
@@ -69,7 +69,6 @@ const AccordionSummary = props => {
   return (
     <div
       disabled={disabled}
-      component="div"
       aria-expanded={expanded}
       className={clsx(
         linkedStyles.className,
@@ -140,8 +139,8 @@ AccordionSummary.propTypes = {
 };
 
 AccordionSummary.defaultProps = {
-  iconProps: {},
-  classes: []
+  classes: [],
+  iconProps: {}
 };
 
 AccordionSummary.displayName = "AccordionSummary";
