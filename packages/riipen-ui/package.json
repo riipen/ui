@@ -59,7 +59,8 @@
     "clsx": "1.0.4",
     "draft-convert": "2.1.10",
     "popper.js": "1.16.1",
-    "prop-types": "15.7.2"
+    "prop-types": "15.7.2",
+    "react-transition-group": "^4.4.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

@@ -1,6 +1,9 @@
 const pages = [
   {
     name: "Getting Started",
+    props: {
+      defaultExpanded: true
+    },
     children: [
       {
         name: "Installation",
@@ -14,7 +17,14 @@ const pages = [
   },
   {
     name: "Components",
+    props: {
+      defaultExpanded: true
+    },
     children: [
+      {
+        name: "Accordion",
+        pathname: "/components/accordion"
+      },
       {
         name: "App Bar",
         pathname: "/components/app-bar"
@@ -131,6 +141,7 @@ const pages = [
   },
   {
     name: "API",
+    props: {},
     children: [
       {
         name: "App Bar",
@@ -256,6 +267,7 @@ const pages = [
   },
   {
     name: "Guides",
+    props: {},
     children: [
       {
         name: "Bundle Size",

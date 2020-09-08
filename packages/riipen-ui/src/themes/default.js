@@ -112,6 +112,14 @@ export default {
   },
   spacing: factor => 5 * factor,
   transitions: {
+    create: (properties = [], options = {}) =>
+      properties
+        .map(
+          property =>
+            `${property} ${options.duraction || 300}ms ${options.easing ||
+              "cubic-bezier(0.4, 0, 0.2, 1)"}`
+        )
+        .join(", "),
     duration: {
       shortest: 150,
       shorter: 200,
