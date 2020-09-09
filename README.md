@@ -2,10 +2,6 @@
 
 A monorepository containing the Riipen UI kit and its documentation.
 
-## Setup
-
-These setup instructions should work for macOS and linux. It is assumed you know how to download / install packages in your linux distribution of choice if that is your decision.
-
 ## Development
 
 ### Node
