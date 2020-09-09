@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import css from "styled-jsx/css";
 
+import AccordionContext from "../contexts/AccordionContext";
 import ThemeContext from "../styles/ThemeContext";
 
-import AccordionContext from "./AccordionContext";
 import ButtonIcon from "./ButtonIcon";
 
 const AccordionSummary = props => {

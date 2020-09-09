@@ -2,9 +2,9 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+import AccordionContext from "../contexts/AccordionContext";
 import ThemeContext from "../styles/ThemeContext";
 
-import AccordionContext from "./AccordionContext";
 import Collapse from "./Collapse";
 
 const Accordion = props => {
