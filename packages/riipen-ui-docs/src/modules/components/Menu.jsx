@@ -1,15 +1,21 @@
 import React from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
+import Accordion from "riipen-ui/components/Accordion";
+import AccordionDetails from "riipen-ui/components/AccordionDetails";
+import AccordionSummary from "riipen-ui/components/AccordionSummary";
+import ThemeContext from "riipen-ui/styles/ThemeContext";
+
 import Link from "src/modules/components/Link";
 import pages from "src/pages";
 
-import ThemeContext from "riipen-ui/styles/ThemeContext";
+const Menu = () => {
+  const theme = React.useContext(ThemeContext);
 
-class Menu extends React.Component {
-  getLinks = (parent, links) => {
+  const getLinks = (parent, links) => {
     const returnLinks = links || [];
-
-    const theme = this.context;
 
     return parent.children.map((child, j) => {
       const listItem = (
@@ -33,51 +39,53 @@ class Menu extends React.Component {
       return (
         <React.Fragment key={`${parent.name}-list-${j}`}>
           {listItem}
-          <ul>{this.getLinks(child, returnLinks)}</ul>
+          <ul>{getLinks(child, returnLinks)}</ul>
         </React.Fragment>
       );
     });
   };
 
-  static contextType = ThemeContext;
+  const Icon = <FontAwesomeIcon icon={faChevronDown} />;
 
-  render() {
-    const theme = this.context;
-
-    return (
-      <div>
-        <ul>
-          {pages.map((parent, i) => (
-            <li key={i}>
-              {parent.name}
-              <ul>{this.getLinks(parent)}</ul>
-            </li>
-          ))}
-        </ul>
-        <style jsx>{`
-          div {
-            font-family: ${theme.typography.fontFamily};
-            width: 250px;
-          }
-          ul {
-            font-weight: ${theme.typography.fontWeight.bold};
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-          }
-          ul ul {
-            font-weight: ${theme.typography.fontWeight.regular};
-            list-style-type: none;
-            margin: 0;
-            padding-left: 10px;
-          }
-          li {
-            padding: ${theme.spacing(1)}px;
-          }
-        `}</style>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <ul>
+        {pages.map((parent, i) => (
+          <li key={i}>
+            <Accordion {...parent.props}>
+              <AccordionSummary icon={Icon} iconProps={{ size: "small" }}>
+                {parent.name}
+              </AccordionSummary>
+              <AccordionDetails>
+                <ul>{getLinks(parent)}</ul>
+              </AccordionDetails>
+            </Accordion>
+          </li>
+        ))}
+      </ul>
+      <style jsx>{`
+        div {
+          font-family: ${theme.typography.fontFamily};
+          width: 250px;
+        }
+        ul {
+          font-weight: ${theme.typography.fontWeight.bold};
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+        }
+        ul ul {
+          font-weight: ${theme.typography.fontWeight.regular};
+          list-style-type: none;
+          margin: 0;
+          padding-left: ${theme.spacing(2)}px;
+        }
+        li {
+          padding: ${theme.spacing(1)}px;
+        }
+      `}</style>
+    </div>
+  );
+};
 
 export default Menu;

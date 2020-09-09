@@ -1,3 +1,6 @@
+export { default as Accordion } from "./Accordion";
+export { default as AccordionDetails } from "./AccordionDetails";
+export { default as AccordionSummary } from "./AccordionSummary";
 export { default as AppBar } from "./AppBar";
 export { default as Avatar } from "./Avatar";
 export { default as Backdrop } from "./Backdrop";
