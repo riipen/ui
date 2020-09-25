@@ -72,7 +72,9 @@ class Avatar extends React.Component {
     return (
       <React.Fragment>
         {src ? (
-          <img alt={alt} src={src} className={className} {...other} />
+          <span className="image">
+            <img alt={alt} src={src} className={className} {...other} />
+          </span>
         ) : (
           <span className={className}>{children}</span>
         )}
@@ -96,6 +98,13 @@ class Avatar extends React.Component {
           .circle {
             border-radius: 50%;
           }
+
+          .image {
+            display: block;
+            height: calc(${size} + ${this.getBorderSize()} * 2);
+            width: calc(${size} + ${this.getBorderSize()} * 2);
+          }
+
           .rounded {
             border-radius: ${theme.shape.borderRadius.md};
           }
