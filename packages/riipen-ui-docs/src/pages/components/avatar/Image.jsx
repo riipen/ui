@@ -14,9 +14,6 @@ export default function Image() {
         size="50px"
         src="/static/images/avatars/jordan-ell.png"
       />
-      <Avatar alt="HE" size="50px">
-        HE
-      </Avatar>
       <span style={style} />
       <Avatar
         alt="Jordan Ell"
