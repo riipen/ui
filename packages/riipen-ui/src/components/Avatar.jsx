@@ -71,21 +71,22 @@ class Avatar extends React.Component {
 
     return (
       <React.Fragment>
-        <span className={className}>
-          {src ? (
-            <img alt={alt} src={src} className={className} {...other} />
-          ) : (
-            <span className="inner">{children}</span>
-          )}
-        </span>
+        {src ? (
+          <img alt={alt} src={src} className={className} {...other} />
+        ) : (
+          <span className={className}>{children}</span>
+        )}
         <style jsx>{`
           .avatar {
+            align-items: center;
             background-color: ${theme.palette.grey[200]};
             border: ${this.getBorderSize()} solid ${theme.palette.common.white};
-            display: inline-block;
+            display: inline-flex;
+            flex-shrink: 0;
             font-family: ${theme.typography.fontFamily};
             font-size: calc(${size} * 0.4);
             height: ${size};
+            justify-content: center;
             line-height: 1;
             overflow: hidden;
             user-select: none;
@@ -95,16 +96,6 @@ class Avatar extends React.Component {
           .circle {
             border-radius: 50%;
           }
-
-          .inner {
-            align-items: center;
-            display: flex;
-            flex-shrink: 0;
-            height: 100%;
-            justify-content: center;
-            width: 100%;
-          }
-
           .rounded {
             border-radius: ${theme.shape.borderRadius.md};
           }
