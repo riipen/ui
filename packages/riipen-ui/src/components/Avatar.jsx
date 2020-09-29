@@ -97,8 +97,8 @@ class Avatar extends React.Component {
           }
 
           .image {
-            height: ${size};
-            width: ${size};
+            height: 100%;
+            width: 100%;
           }
 
           .inner {
