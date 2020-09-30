@@ -36,6 +36,12 @@ Tabs can be displayed vertically be setting the `orientation` prop.
 
 {{"demo": "pages/components/tabs/Vertical.js"}}
 
+## Breakpoints
+
+You can set the breakpoint to display the horizontal tab mobile styling with the `breakpoint` prop.
+
+{{"demo": "pages/components/tabs/Breakpoint.js"}}
+
 ## Forcing Active Display
 
 Tabs can be forced to display active with the `displayActive` tab prop.
