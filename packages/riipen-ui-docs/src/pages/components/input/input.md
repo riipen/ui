@@ -29,6 +29,13 @@ The `labelColor` prop can change the color of the label.
 
 {{"demo": "pages/components/input/Color.js"}}
 
+
+## Label Weight
+
+The `labelWeight` prop can change the weight of the label.
+
+{{"demo": "pages/components/input/Weight.js"}}
+
 ## Accessibility
 
 In order for the input to be accessible, the input should be linked to the label. The underlying DOM nodes should have this structure.

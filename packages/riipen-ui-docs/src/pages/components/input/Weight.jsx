@@ -4,26 +4,25 @@ import Form from "riipen-ui/components/Form";
 import Input from "riipen-ui/components/Input";
 
 export default function Color() {
-  const dark = {
-    backgroundColor: "#333"
-  };
-
   const section = {
     display: "inline-block",
     padding: "10px",
-    width: "25%"
+    width: "20%"
   };
 
   return (
     <Form>
       <div style={section}>
-        <Input id="default" label="Default" labelColor="default" />
-      </div>
-      <div style={{ ...section, ...dark }}>
-        <Input id="white" label="White" labelColor="white" />
+        <Input id="light" label="Light" labelWeight="light" />
       </div>
       <div style={section}>
-        <Input id="black" label="Black" labelColor="black" />
+        <Input id="regular" label="Regular" labelWeight="regular" />
+      </div>
+      <div style={section}>
+        <Input id="medium" label="Medium" labelWeight="medium" />
+      </div>
+      <div style={section}>
+        <Input id="bold" label="Bold" labelWeight="bold" />
       </div>
     </Form>
   );
