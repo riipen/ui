@@ -87,9 +87,12 @@ class Avatar extends React.Component {
             font-size: calc(${size} * 0.4);
             height: ${size};
             line-height: 1;
+            max-height: ${size};
+            max-width: ${size};
+            min-height: ${size};
+            min-width: ${size};
             overflow: hidden;
             user-select: none;
-            width: ${size};
           }
 
           .circle {
