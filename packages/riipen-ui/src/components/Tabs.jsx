@@ -9,6 +9,11 @@ class Tabs extends React.Component {
 
   static propTypes = {
     /**
+     * The breakpoint to display the mobile tab styling. Use "none" for no styling.
+     */
+    breakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl", "none"]),
+
+    /**
      * The content of the component.
      */
     children: PropTypes.node,
@@ -58,6 +63,7 @@ class Tabs extends React.Component {
   };
 
   static defaultProps = {
+    breakpoint: "sm",
     color: "secondary",
     component: "div",
     orientation: "horizontal",
@@ -74,6 +80,7 @@ class Tabs extends React.Component {
 
   render() {
     const {
+      breakpoint,
       children,
       classes,
       color,
@@ -92,6 +99,7 @@ class Tabs extends React.Component {
 
       return React.cloneElement(child, {
         active,
+        breakpoint,
         color,
         fullWidth: variant === "fullWidth",
         onClick: this.handleChange,

@@ -7,6 +7,7 @@ import { useIsFocusVisible, withThemeContext } from "../utils";
 const Tab = props => {
   const {
     active,
+    breakpoint,
     classes,
     color,
     disabled,
@@ -46,6 +47,7 @@ const Tab = props => {
 
   const className = clsx(
     "root",
+    orientation === "horizontal" && breakpoint !== "none" ? "breakpoint" : null,
     active || displayActive ? `${color}-active` : null,
     active || displayActive ? `${orientation}-active` : null,
     color,
@@ -147,6 +149,27 @@ const Tab = props => {
           flex-shrink: 1;
           max-width: none;
         }
+
+        @media (max-width: ${theme.breakpoints[breakpoint]}px) {
+          .breakpoint {
+            margin: 0 ${theme.spacing(1)}px;
+            padding: ${theme.spacing(2)}px 0;
+            position: relative;
+          }
+
+          .breakpoint:not(:last-child)::after {
+            border-right: 1px solid ${theme.palette.divider};
+            content: "";
+            height: ${theme.spacing(6)}px;
+            position: absolute;
+            right: ${theme.spacing(-1)}px;
+          }
+
+          .breakpoint > * {
+            font-size: ${theme.typography.body2.fontSize};
+            padding: ${theme.spacing(1)}px ${theme.spacing(3)}px;
+          }
+        }
       `}</style>
     </React.Fragment>
   );
@@ -154,6 +177,7 @@ const Tab = props => {
 
 Tab.defaultProps = {
   active: false,
+  breakpoint: "sm",
   color: "secondary",
   disabled: false,
   fullWidth: false,
@@ -165,6 +189,11 @@ Tab.propTypes = {
    * If `true`, the tab indicator will be displayed.
    */
   active: PropTypes.bool,
+
+  /**
+   * The breakpoint to display the mobile tab styling. Use "none" for no styling.
+   */
+  breakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl", "none"]),
 
   /**
    * An array of custom CSS classes to apply.
