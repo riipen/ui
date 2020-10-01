@@ -75,7 +75,9 @@ class Avatar extends React.Component {
           {src ? (
             <img alt={alt} src={src} className="image" {...other} />
           ) : (
-            <span className="inner">{children}</span>
+            <span className="inner" {...other}>
+              {children}
+            </span>
           )}
         </span>
         <style jsx>{`
