@@ -46,6 +46,6 @@ You can use the `color` property choose the badge color.
 
 ## Size
 
-You can use the `size` property to choose the badge size, if the `variant` is `standard`.
+Use the `size` property to choose the badge size. Only works with the `standard` `variant`.
 
 {{"demo": "pages/components/badge/Size.js"}}
