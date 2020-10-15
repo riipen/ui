@@ -43,3 +43,9 @@ You can use the `anchor` property to move the badge to any corner of the wrapped
 You can use the `color` property choose the badge color.
 
 {{"demo": "pages/components/badge/Color.js"}}
+
+## Size
+
+You can use the `size` property to choose the badge size, if the `variant` is `standard`.
+
+{{"demo": "pages/components/badge/Size.js"}}
