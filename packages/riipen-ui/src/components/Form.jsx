@@ -30,7 +30,6 @@ const Form = ({
     if ((error || !isEmpty(errors)) && errorScroll) {
       const padding = theme.spacing(20);
 
-      console.log(errorRef);
       const rect = errorRef.current.getBoundingClientRect();
 
       // Only scroll if it's not already visible
