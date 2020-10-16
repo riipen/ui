@@ -12,6 +12,11 @@ class Container extends React.Component {
 
   static propTypes = {
     /**
+     * Whether to have a border around the container.
+     */
+    border: PropTypes.bool,
+
+    /**
      * The content inside the container.
      */
     children: PropTypes.any,
@@ -20,6 +25,11 @@ class Container extends React.Component {
      * List of additional classes to apply to this component.
      */
     classes: PropTypes.array,
+
+    /**
+     * The color of the container.
+     */
+    color: PropTypes.oneOf("default", "white"),
 
     /**
      * The props to pass to the ContainerHeader.
@@ -34,27 +44,36 @@ class Container extends React.Component {
   };
 
   static defaultProps = {
+    border: false,
     classes: [],
+    color: "default",
     maxWidth: "lg"
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { classes, children, headerProps, maxWidth } = this.props;
+    const {
+      border,
+      classes,
+      children,
+      color,
+      headerProps,
+      maxWidth
+    } = this.props;
 
     const theme = this.context;
 
-    const className = clsx(classes);
+    const className = clsx("root", classes);
 
     return (
       <React.Fragment>
         <div className={className}>
           {headerProps && <ContainerHeader {...headerProps} />}
-          {children}
+          <div className={clsx(border && "border", color)}>{children}</div>
         </div>
         <style jsx>{`
-          div {
+          .root {
             box-sizing: border-box;
             margin: 0 auto;
             max-width: ${maxWidth
@@ -64,14 +83,22 @@ class Container extends React.Component {
             position: relative;
           }
 
+          .border {
+            box-shadow: ${theme.shadows[1]};
+          }
+
+          .white {
+            background-color: ${theme.palette.common.white};
+          }
+
           @media (max-width: ${theme.breakpoints.lg}px) {
-            div {
+            .root {
               padding: 0 ${theme.spacing(5)}px;
             }
           }
 
           @media (max-width: ${theme.breakpoints.md}px) {
-            div {
+            .root {
               padding: 0 ${theme.spacing(3)}px;
             }
           }
