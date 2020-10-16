@@ -167,9 +167,10 @@ class Badge extends React.Component {
           .badge.small {
             font-size: ${theme.typography.h5.fontSize};
             height: 14px;
+            letter-spacing: 0;
             line-height: ${theme.typography.h5.fontSize};
             min-width: 14px;
-            padding: 1px 4px;
+            padding: 1px 2px;
           }
 
           .badge.medium {
