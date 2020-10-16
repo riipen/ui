@@ -5,6 +5,8 @@ import React from "react";
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
+import ContainerHeader from "./ContainerHeader";
+
 class Container extends React.Component {
   static displayName = "Container";
 
@@ -18,6 +20,11 @@ class Container extends React.Component {
      * List of additional classes to apply to this component.
      */
     classes: PropTypes.array,
+
+    /**
+     * The props to pass to the ContainerHeader.
+     */
+    headerProps: PropTypes.object,
 
     /**
      * Determine the max-width of the container.
@@ -34,7 +41,7 @@ class Container extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { classes, children, maxWidth } = this.props;
+    const { classes, children, headerProps, maxWidth } = this.props;
 
     const theme = this.context;
 
@@ -42,7 +49,10 @@ class Container extends React.Component {
 
     return (
       <React.Fragment>
-        <div className={className}>{children}</div>
+        <div className={className}>
+          {headerProps && <ContainerHeader {...headerProps} />}
+          {children}
+        </div>
         <style jsx>{`
           div {
             box-sizing: border-box;
