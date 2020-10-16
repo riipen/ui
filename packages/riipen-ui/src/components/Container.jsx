@@ -7,105 +7,97 @@ import withClasses from "../utils/withClasses";
 
 import ContainerHeader from "./ContainerHeader";
 
-class Container extends React.Component {
-  static displayName = "Container";
+const Container = ({
+  border,
+  classes,
+  children,
+  color,
+  headerProps,
+  maxWidth
+}) => {
+  const theme = React.useContext(ThemeContext);
 
-  static propTypes = {
-    /**
-     * Whether to have a border around the container.
-     */
-    border: PropTypes.bool,
+  const className = clsx("root", classes);
 
-    /**
-     * The content inside the container.
-     */
-    children: PropTypes.any,
+  return (
+    <React.Fragment>
+      <div className={className}>
+        {headerProps && <ContainerHeader {...headerProps} />}
+        <div className={clsx(border && "border", color)}>{children}</div>
+      </div>
+      <style jsx>{`
+        .root {
+          box-sizing: border-box;
+          margin: 0 auto;
+          max-width: ${maxWidth ? `${theme.breakpoints[maxWidth]}px` : "100%"};
+          padding: 0 ${theme.spacing(6)}px;
+          position: relative;
+        }
 
-    /**
-     * List of additional classes to apply to this component.
-     */
-    classes: PropTypes.array,
+        .border {
+          box-shadow: ${theme.shadows[1]};
+        }
 
-    /**
-     * The color of the container.
-     */
-    color: PropTypes.oneOf("default", "white"),
+        .white {
+          background-color: ${theme.palette.common.white};
+        }
 
-    /**
-     * The props to pass to the ContainerHeader.
-     */
-    headerProps: PropTypes.object,
-
-    /**
-     * Determine the max-width of the container.
-     * The container width grows with the size of the screen.
-     */
-    maxWidth: PropTypes.oneOf(["sm", "md", "lg", "xl", false])
-  };
-
-  static defaultProps = {
-    border: false,
-    classes: [],
-    color: "default",
-    maxWidth: "lg"
-  };
-
-  static contextType = ThemeContext;
-
-  render() {
-    const {
-      border,
-      classes,
-      children,
-      color,
-      headerProps,
-      maxWidth
-    } = this.props;
-
-    const theme = this.context;
-
-    const className = clsx("root", classes);
-
-    return (
-      <React.Fragment>
-        <div className={className}>
-          {headerProps && <ContainerHeader {...headerProps} />}
-          <div className={clsx(border && "border", color)}>{children}</div>
-        </div>
-        <style jsx>{`
+        @media (max-width: ${theme.breakpoints.lg}px) {
           .root {
-            box-sizing: border-box;
-            margin: 0 auto;
-            max-width: ${maxWidth
-              ? `${theme.breakpoints[maxWidth]}px`
-              : "100%"};
-            padding: 0 ${theme.spacing(6)}px;
-            position: relative;
+            padding: 0 ${theme.spacing(5)}px;
           }
+        }
 
-          .border {
-            box-shadow: ${theme.shadows[1]};
+        @media (max-width: ${theme.breakpoints.md}px) {
+          .root {
+            padding: 0 ${theme.spacing(3)}px;
           }
+        }
+      `}</style>
+    </React.Fragment>
+  );
+};
 
-          .white {
-            background-color: ${theme.palette.common.white};
-          }
+Container.propTypes = {
+  /**
+   * Whether to have a border around the container.
+   */
+  border: PropTypes.bool,
 
-          @media (max-width: ${theme.breakpoints.lg}px) {
-            .root {
-              padding: 0 ${theme.spacing(5)}px;
-            }
-          }
+  /**
+   * The content inside the container.
+   */
+  children: PropTypes.any,
 
-          @media (max-width: ${theme.breakpoints.md}px) {
-            .root {
-              padding: 0 ${theme.spacing(3)}px;
-            }
-          }
-        `}</style>
-      </React.Fragment>
-    );
-  }
-}
+  /**
+   * List of additional classes to apply to this component.
+   */
+  classes: PropTypes.array,
+
+  /**
+   * The color of the container.
+   */
+  color: PropTypes.oneOf("default", "white"),
+
+  /**
+   * The props to pass to the ContainerHeader.
+   */
+  headerProps: PropTypes.object,
+
+  /**
+   * Determine the max-width of the container.
+   * The container width grows with the size of the screen.
+   */
+  maxWidth: PropTypes.oneOf(["sm", "md", "lg", "xl", false])
+};
+
+Container.defaultProps = {
+  border: false,
+  classes: [],
+  color: "default",
+  maxWidth: "lg"
+};
+
+Container.displayName = "Container";
 
 export default withClasses(Container);
