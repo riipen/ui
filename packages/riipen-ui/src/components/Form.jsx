@@ -133,19 +133,11 @@ const Form = ({
   }
 
   if (!isEmpty(errors)) {
-    if (
-      Array.isArray(errors) &&
-      errors.length > 0 &&
-      typeof errors[0] === "string"
-    ) {
+    if (Array.isArray(errors) && typeof errors[0] === "string") {
       errorsRenderer = renderErrorsString;
-    } else if (
-      Array.isArray(errors) &&
-      errors.length > 0 &&
-      React.isValidElement(errors[0])
-    ) {
+    } else if (Array.isArray(errors) && React.isValidElement(errors[0])) {
       errorsRenderer = renderErrorsNode;
-    } else if (typeof errors === "object" && Object.keys(errors).length > 0) {
+    } else if (typeof errors === "object") {
       errorsRenderer = renderErrorsObject;
     }
   }
