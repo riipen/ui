@@ -12,7 +12,7 @@ A container width is bounded by the `maxWidth` property value.
 
 ## Headers
 
-A container can also have a header by specifying the `headerProps'.
+A container can also have a header by specifying the `headerProps`.
 
 {{"demo": "pages/components/container/Headers.js"}}
 

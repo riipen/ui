@@ -77,7 +77,7 @@ Container.propTypes = {
   /**
    * The color of the container.
    */
-  color: PropTypes.oneOf("default", "white"),
+  color: PropTypes.oneOf(["default", "white"]),
 
   /**
    * The props to pass to the ContainerHeader.
