@@ -1,6 +1,7 @@
 import React from "react";
 
 import Container from "riipen-ui/components/Container";
+import ContainerHeader from "riipen-ui/components/ContainerHeader";
 
 export default function Headers() {
   const style = {
@@ -15,43 +16,51 @@ export default function Headers() {
     <div>
       <Container
         maxWidth="md"
-        headerProps={{ children: "primary", color: "primary" }}
+        header={<ContainerHeader color="primary">{"primary"}</ContainerHeader>}
       >
         <div style={style}>md</div>
       </Container>
       <Container
         maxWidth="md"
-        headerProps={{ children: "secondary", color: "secondary" }}
+        header={
+          <ContainerHeader color="secondary">{"secondary"}</ContainerHeader>
+        }
       >
         <div style={style}>md</div>
       </Container>
       <Container
         maxWidth="md"
-        headerProps={{ children: "tertiary", color: "tertiary" }}
+        header={
+          <ContainerHeader color="tertiary">{"tertiary"}</ContainerHeader>
+        }
       >
         <div style={style}>md</div>
       </Container>
       <Container
         maxWidth="md"
-        headerProps={{ children: "positive", color: "positive" }}
+        header={
+          <ContainerHeader color="positive">{"positive"}</ContainerHeader>
+        }
       >
         <div style={style}>md</div>
       </Container>
       <Container
         maxWidth="md"
-        headerProps={{ children: "negative", color: "negative" }}
+        header={
+          <ContainerHeader color="negative">{"negative"}</ContainerHeader>
+        }
       >
         <div style={style}>md</div>
       </Container>
       <Container
         maxWidth="md"
-        headerProps={{ children: "warning", color: "warning" }}
+        header={<ContainerHeader color="warning">{"warning"}</ContainerHeader>}
       >
         <div style={style}>md</div>
       </Container>
       <Container
         maxWidth="md"
-        headerProps={{ children: "default", color: "default" }}
+        header={<ContainerHeader color="default">{"default"}</ContainerHeader>}
       >
         <div style={style}>md</div>
       </Container>

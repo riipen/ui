@@ -5,16 +5,7 @@ import React from "react";
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
-import ContainerHeader from "./ContainerHeader";
-
-const Container = ({
-  border,
-  classes,
-  children,
-  color,
-  headerProps,
-  maxWidth
-}) => {
+const Container = ({ border, classes, children, color, header, maxWidth }) => {
   const theme = React.useContext(ThemeContext);
 
   const className = clsx("root", classes);
@@ -22,7 +13,7 @@ const Container = ({
   return (
     <React.Fragment>
       <div className={className}>
-        {headerProps && <ContainerHeader {...headerProps} />}
+        {header}
         <div className={clsx(border && "border", color)}>{children}</div>
       </div>
       <style jsx>{`
@@ -80,9 +71,9 @@ Container.propTypes = {
   color: PropTypes.oneOf(["default", "white"]),
 
   /**
-   * The props to pass to the ContainerHeader.
+   * The header component.
    */
-  headerProps: PropTypes.object,
+  header: PropTypes.node,
 
   /**
    * Determine the max-width of the container.
