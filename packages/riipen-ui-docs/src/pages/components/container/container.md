@@ -9,3 +9,21 @@ While containers can be nested, most layouts do not require a nested container.
 A container width is bounded by the `maxWidth` property value.
 
 {{"demo": "pages/components/container/Widths.js"}}
+
+## Headers
+
+A container can also have a `header`.
+
+{{"demo": "pages/components/container/Headers.js"}}
+
+## Border
+
+The `border` prop gives the container a border.
+
+{{"demo": "pages/components/container/Border.js"}}
+
+## Color
+
+You can use the `color` prop to change the container's color.
+
+{{"demo": "pages/components/container/Colors.js"}}
