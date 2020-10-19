@@ -23,9 +23,9 @@ class InputLabel extends React.Component {
     classes: PropTypes.array,
 
     /**
-     * Color of the hint text
+     * Color of the label text
      */
-    color: PropTypes.oneOf(["default", "white"]),
+    color: PropTypes.oneOf(["default", "white", "black"]),
 
     /**
      * Hint text to display under the label.
@@ -35,23 +35,37 @@ class InputLabel extends React.Component {
     /**
      * If true, an asterisk will be appended to the end of the label.
      */
-    required: PropTypes.bool
+    required: PropTypes.bool,
+
+    /**
+     * Weight of the label text
+     */
+    weight: PropTypes.oneOf(["light", "regular", "medium", "bold"])
   };
 
   static defaultProps = {
     classes: [],
     color: "default",
-    required: false
+    required: false,
+    weight: "regular"
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { children, color, classes, hint, required, ...other } = this.props;
+    const {
+      children,
+      color,
+      classes,
+      hint,
+      required,
+      weight,
+      ...other
+    } = this.props;
 
     const theme = this.context;
 
-    const className = clsx(classes, color);
+    const className = clsx(classes, color, weight);
 
     const marginBottom = hint ? 1 : 3;
 
@@ -80,6 +94,22 @@ class InputLabel extends React.Component {
 
           .white {
             color: ${theme.palette.common.white};
+          }
+
+          .black {
+            color: ${theme.palette.common.black};
+          }
+
+          .light {
+            font-weight: ${theme.typography.fontWeight.light};
+          }
+
+          .medium {
+            font-weight: ${theme.typography.fontWeight.medium};
+          }
+
+          .bold {
+            font-weight: ${theme.typography.fontWeight.bold};
           }
         `}</style>
       </React.Fragment>

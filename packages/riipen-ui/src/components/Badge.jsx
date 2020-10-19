@@ -68,6 +68,11 @@ class Badge extends React.Component {
     showZero: PropTypes.bool,
 
     /**
+     * The size of the badge. Only applicable to 'standard' variant.
+     */
+    size: PropTypes.oneOf(["small", "medium"]),
+
+    /**
      * The variant to use.
      */
     variant: PropTypes.oneOf(["dot", "standard"])
@@ -83,6 +88,7 @@ class Badge extends React.Component {
     max: 99,
     overlap: "rectangle",
     showZero: false,
+    size: "medium",
     variant: "standard"
   };
 
@@ -99,10 +105,13 @@ class Badge extends React.Component {
       max,
       overlap,
       showZero,
+      size,
       variant
     } = this.props;
 
-    if ((content === 0 && !showZero) || (content == null && variant !== "dot"))
+    const isStandardVariant = variant !== "dot";
+
+    if ((content === 0 && !showZero) || (content == null && isStandardVariant))
       return null;
 
     const theme = this.context;
@@ -111,7 +120,7 @@ class Badge extends React.Component {
 
     let value = "";
 
-    if (variant !== "dot") {
+    if (isStandardVariant) {
       value = content > max ? `${max}+` : content;
     }
 
@@ -125,6 +134,7 @@ class Badge extends React.Component {
               `${anchor.vertical}-${anchor.horizontal}-${overlap}`,
               color,
               variant,
+              isStandardVariant && size,
               classes
             )}
           >
@@ -149,14 +159,26 @@ class Badge extends React.Component {
             flex-direction: row;
             flex-wrap: wrap;
             font-family: ${theme.typography.fontFamily};
-            font-size: 12px;
             font-weight: ${theme.typography.fontWeight.medium};
-            height: ${RADIUS_STANDARD * 2}px;
             justify-content: center;
+            position: absolute;
+          }
+
+          .badge.small {
+            font-size: ${theme.typography.h5.fontSize};
+            height: 14px;
+            letter-spacing: 0;
+            line-height: ${theme.typography.h5.fontSize};
+            min-width: 14px;
+            padding: 1px 2px;
+          }
+
+          .badge.medium {
+            font-size: ${theme.typography.subtitle2.fontSize};
+            height: ${RADIUS_STANDARD * 2}px;
             line-height: 1;
             min-width: ${RADIUS_STANDARD * 2}px;
             padding: 0 6px;
-            position: absolute;
           }
 
           .dot {
