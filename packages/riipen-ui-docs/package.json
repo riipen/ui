@@ -17,7 +17,7 @@
     "build": "npm run build:api && npm run build:next",
     "build:api": "BABEL_ENV=test babel-node ./scripts/buildAPI",
     "build:next": "NODE_ENV=production next build",
-    "ci:audit": "audit-ci --moderate",
+    "ci:audit": "audit-ci --moderate --config audit-ci.json",
     "export": "NODE_ENV=production next export",
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
