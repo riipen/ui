@@ -50,7 +50,7 @@
     "react-docgen": "^4.1.1",
     "react-dom": "16.11.0",
     "recast": "^0.18.5",
-    "riipen-ui": "^0.1.23",
+    "riipen-ui": "^0.1.24",
     "styled-jsx": "3.2.2"
   },
   "devDependencies": {
