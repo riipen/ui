@@ -14,7 +14,9 @@ const Container = ({ border, classes, children, color, header, maxWidth }) => {
     <React.Fragment>
       <div className={className}>
         {header}
-        <div className={clsx(border && "border", color)}>{children}</div>
+        <div className={clsx(border && "border", color, header && "header")}>
+          {children}
+        </div>
       </div>
       <style jsx>{`
         .root {
@@ -26,7 +28,12 @@ const Container = ({ border, classes, children, color, header, maxWidth }) => {
         }
 
         .border {
+          border: 1px solid ${theme.palette.divider};
           box-shadow: ${theme.shadows[1]};
+        }
+
+        .border.header {
+          border-top: none;
         }
 
         .white {
