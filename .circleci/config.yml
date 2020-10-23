@@ -15,6 +15,11 @@ docs_branches: &docs_branches
       only:
         - production
 
+docker-auth: &docker-auth
+  auth:
+    username: $DOCKERHUB_USERNAME
+    password: $DOCKERHUB_PASSWORD
+
 workflows:
   version: 2
 
@@ -22,12 +27,18 @@ workflows:
     jobs:
       - checkout:
           <<: *test_branches
+          context:
+            - DockerHub
       - audit:
           <<: *test_branches
+          context:
+            - DockerHub
           requires:
             - checkout
       - lint:
           <<: *test_branches
+          context:
+            - DockerHub
           requires:
             - checkout
 
@@ -35,9 +46,13 @@ workflows:
     jobs:
       - checkout:
           <<: *docs_branches
+          context:
+            - DockerHub
       - docs:
           <<: *docs_branches
-          context: AWS
+          context:
+            - AWS
+            - DockerHub
           requires:
             - checkout
 
@@ -45,6 +60,7 @@ jobs:
   checkout:
     docker:
       - image: circleci/node:14.4
+        <<: *docker-auth
 
     steps:
       # Init
@@ -76,6 +92,7 @@ jobs:
   audit:
     docker:
       - image: circleci/node:14.4
+        <<: *docker-auth
 
     steps:
       - attach_workspace:
@@ -86,6 +103,7 @@ jobs:
   lint:
     docker:
       - image: circleci/node:14.4
+        <<: *docker-auth
 
     steps:
       - attach_workspace:
@@ -99,6 +117,7 @@ jobs:
 
     docker:
       - image: circleci/node:14.4
+        <<: *docker-auth
 
     steps:
       - aws-cli/install
