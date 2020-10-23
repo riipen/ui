@@ -138,7 +138,11 @@ class MenuList extends React.Component {
     }
 
     const nextItem = listItems[nextIndex];
-    if (!nextItem.props.disabled) {
+    if (!nextItem) {
+      return;
+    }
+
+    if (nextItem.props && !nextItem.props.disabled) {
       this.handleSelectChange(nextIndex, event);
       return;
     }
