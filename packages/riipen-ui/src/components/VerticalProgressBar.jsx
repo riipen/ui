@@ -17,11 +17,8 @@ const VerticalProgressBar = ({ progresses }) => {
       </GridItem>
     ));
   };
-  return (
-    <div>
-      <Grid spacing={0}>{renderProgress()}</Grid>
-    </div>
-  );
+
+  return <Grid spacing={0}>{renderProgress()}</Grid>;
 };
 
 VerticalProgressBar.propTypes = {

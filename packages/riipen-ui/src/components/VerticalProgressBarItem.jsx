@@ -100,9 +100,8 @@ const VerticalProgressBarItem = ({ progress }) => {
           display: flex;
           height: 24px;
           justify-content: center;
-          margin: ${theme.spacing(2)}px 0 ${theme.spacing(7)}px
-            ${theme.spacing(-4.65)}px;
-          padding: ${theme.spacing(1.5)}px;
+          margin: ${theme.spacing(2)}px 0 ${theme.spacing(7)}px -23px;
+          padding: 7px;
           width: 24px;
         }
       `}</style>
