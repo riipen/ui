@@ -58,6 +58,11 @@ class Typography extends React.Component {
     display: PropTypes.oneOf(["initial", "block", "inline"]),
 
     /**
+     * Set the font weight on the component.
+     */
+    fontWeight: PropTypes.oneOf(["bold", "light", "medium", "regular"]),
+
+    /**
      * If true, the text will have a bottom margin.
      */
     gutter: PropTypes.bool,
@@ -83,12 +88,9 @@ class Typography extends React.Component {
       "h4",
       "h5",
       "h6",
-      "subtitle1",
-      "subtitle2",
       "body1",
       "body2",
-      "caption",
-      "button",
+      "body3",
       "inherit"
     ])
   };
@@ -111,6 +113,7 @@ class Typography extends React.Component {
       color,
       component,
       display,
+      fontWeight,
       gutter,
       textAlign,
       variant
@@ -122,6 +125,7 @@ class Typography extends React.Component {
       "root",
       `color-${color}`,
       display,
+      fontWeight,
       gutter ? "gutter" : null,
       variant,
       `align-${textAlign}`,
@@ -195,19 +199,12 @@ class Typography extends React.Component {
             line-height: ${theme.typography.body2.lineHeight};
             letter-spacing: ${theme.typography.body2.letterSpacing};
           }
-          .button {
-            font-family: ${theme.typography.button.fontFamily};
-            font-weight: ${theme.typography.button.fontWeight};
-            font-size: ${theme.typography.button.fontSize};
-            line-height: ${theme.typography.button.lineHeight};
-            letter-spacing: ${theme.typography.button.letterSpacing};
-          }
-          .caption {
-            font-family: ${theme.typography.caption.fontFamily};
-            font-weight: ${theme.typography.caption.fontWeight};
-            font-size: ${theme.typography.caption.fontSize};
-            line-height: ${theme.typography.caption.lineHeight};
-            letter-spacing: ${theme.typography.caption.letterSpacing};
+          .body3 {
+            font-family: ${theme.typography.body3.fontFamily};
+            font-weight: ${theme.typography.body3.fontWeight};
+            font-size: ${theme.typography.body3.fontSize};
+            line-height: ${theme.typography.body3.lineHeight};
+            letter-spacing: ${theme.typography.body3.letterSpacing};
           }
           .h1 {
             font-family: ${theme.typography.h1.fontFamily};
@@ -244,19 +241,18 @@ class Typography extends React.Component {
             line-height: ${theme.typography.h5.lineHeight};
             letter-spacing: ${theme.typography.h5.letterSpacing};
           }
-          .subtitle1 {
-            font-family: ${theme.typography.subtitle1.fontFamily};
-            font-weight: ${theme.typography.subtitle1.fontWeight};
-            font-size: ${theme.typography.subtitle1.fontSize};
-            line-height: ${theme.typography.subtitle1.lineHeight};
-            letter-spacing: ${theme.typography.subtitle1.letterSpacing};
+
+          .bold {
+            font-weight: ${theme.typography.fontWeight.bold};
           }
-          .subtitle2 {
-            font-family: ${theme.typography.subtitle2.fontFamily};
-            font-weight: ${theme.typography.subtitle2.fontWeight};
-            font-size: ${theme.typography.subtitle2.fontSize};
-            line-height: ${theme.typography.subtitle2.lineHeight};
-            letter-spacing: ${theme.typography.subtitle2.letterSpacing};
+          .light {
+            font-weight: ${theme.typography.fontWeight.light};
+          }
+          .medium {
+            font-weight: ${theme.typography.fontWeight.medium};
+          }
+          .regular {
+            font-weight: ${theme.typography.fontWeight.regular};
           }
         `}</style>
       </React.Fragment>

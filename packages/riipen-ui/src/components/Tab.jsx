@@ -104,6 +104,7 @@ const Tab = props => {
 
         .label {
           font-family: ${theme.typography.fontFamily};
+          font-weight: ${theme.typography.fontWeight.regular};
           font-size: 14px;
           letter-spacing: 2px;
           line-height: 1.4;

@@ -22,6 +22,16 @@ Shown below is a sample link markup used to load the Roboto font from a CDN:
 
 {{"demo": "pages/components/typography/Component.js"}}
 
+## Color
+
+{{"demo": "pages/components/typography/Color.js"}}
+
+You can also use the CSS native "inherit" for a wider range of colors.
+
+## Font Weight
+
+{{"demo": "pages/components/typography/FontWeight.js"}}
+
 ## Changing the semantic element
 
 You can change the underlying element for a one time occasion with the `component` property:
