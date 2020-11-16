@@ -36,8 +36,11 @@ class Typography extends React.Component {
      * The color of the component. It supports those theme colors that make sense for this component.
      */
     color: PropTypes.oneOf([
-      "initial",
       "inherit",
+      "initial",
+      "grey600",
+      "grey800",
+      "greyA400",
       "primary",
       "secondary",
       "tertiary",
@@ -153,11 +156,95 @@ class Typography extends React.Component {
             margin-bottom: 0.35em;
           }
 
+          .align-center {
+            text-align: center;
+          }
+          .align-left {
+            text-align: left;
+          }
+          .align-right {
+            text-align: right;
+          }
+
+          .body1 {
+            color: ${theme.palette.grey[800]};
+            font-family: ${theme.typography.body1.fontFamily};
+            font-weight: ${theme.typography.body1.fontWeight};
+            font-size: ${theme.typography.body1.fontSize};
+            line-height: ${theme.typography.body1.lineHeight};
+            letter-spacing: ${theme.typography.body1.letterSpacing};
+          }
+          .body2 {
+            color: ${theme.palette.grey[800]};
+            font-family: ${theme.typography.body2.fontFamily};
+            font-weight: ${theme.typography.body2.fontWeight};
+            font-size: ${theme.typography.body2.fontSize};
+            line-height: ${theme.typography.body2.lineHeight};
+            letter-spacing: ${theme.typography.body2.letterSpacing};
+          }
+          .body3 {
+            color: ${theme.palette.grey[800]};
+            font-family: ${theme.typography.body3.fontFamily};
+            font-weight: ${theme.typography.body3.fontWeight};
+            font-size: ${theme.typography.body3.fontSize};
+            line-height: ${theme.typography.body3.lineHeight};
+            letter-spacing: ${theme.typography.body3.letterSpacing};
+          }
+          .h1 {
+            color: ${theme.palette.grey.A400};
+            font-family: ${theme.typography.h1.fontFamily};
+            font-weight: ${theme.typography.h1.fontWeight};
+            font-size: ${theme.typography.h1.fontSize};
+            line-height: ${theme.typography.h1.lineHeight};
+            letter-spacing: ${theme.typography.h1.letterSpacing};
+          }
+          .h2 {
+            color: ${theme.palette.grey.A400};
+            font-family: ${theme.typography.h2.fontFamily};
+            font-weight: ${theme.typography.h2.fontWeight};
+            font-size: ${theme.typography.h2.fontSize};
+            line-height: ${theme.typography.h2.lineHeight};
+            letter-spacing: ${theme.typography.h2.letterSpacing};
+          }
+          .h3 {
+            color: ${theme.palette.grey.A400};
+            font-family: ${theme.typography.h3.fontFamily};
+            font-weight: ${theme.typography.h3.fontWeight};
+            font-size: ${theme.typography.h3.fontSize};
+            line-height: ${theme.typography.h3.lineHeight};
+            letter-spacing: ${theme.typography.h3.letterSpacing};
+          }
+          .h4 {
+            color: ${theme.palette.grey.A400};
+            font-family: ${theme.typography.h4.fontFamily};
+            font-weight: ${theme.typography.h4.fontWeight};
+            font-size: ${theme.typography.h4.fontSize};
+            line-height: ${theme.typography.h4.lineHeight};
+            letter-spacing: ${theme.typography.h4.letterSpacing};
+          }
+          .h5 {
+            color: ${theme.palette.grey.A400};
+            font-family: ${theme.typography.h5.fontFamily};
+            font-weight: ${theme.typography.h5.fontWeight};
+            font-size: ${theme.typography.h5.fontSize};
+            line-height: ${theme.typography.h5.lineHeight};
+            letter-spacing: ${theme.typography.h5.letterSpacing};
+          }
+
           .color-inherit {
             color: inherit;
           }
           .color-initial {
             color: initial;
+          }
+          .color-grey600 {
+            color: ${theme.palette.grey[600]};
+          }
+          .color-grey800 {
+            color: ${theme.palette.grey[800]};
+          }
+          .color-greyA400 {
+            color: ${theme.palette.grey.A400};
           }
           .color-primary {
             color: ${theme.palette.primary.main};
@@ -173,73 +260,6 @@ class Typography extends React.Component {
           }
           .color-negative {
             color: ${theme.palette.negative.main};
-          }
-
-          .align-center {
-            text-align: center;
-          }
-          .align-left {
-            text-align: left;
-          }
-          .align-right {
-            text-align: right;
-          }
-
-          .body1 {
-            font-family: ${theme.typography.body1.fontFamily};
-            font-weight: ${theme.typography.body1.fontWeight};
-            font-size: ${theme.typography.body1.fontSize};
-            line-height: ${theme.typography.body1.lineHeight};
-            letter-spacing: ${theme.typography.body1.letterSpacing};
-          }
-          .body2 {
-            font-family: ${theme.typography.body2.fontFamily};
-            font-weight: ${theme.typography.body2.fontWeight};
-            font-size: ${theme.typography.body2.fontSize};
-            line-height: ${theme.typography.body2.lineHeight};
-            letter-spacing: ${theme.typography.body2.letterSpacing};
-          }
-          .body3 {
-            font-family: ${theme.typography.body3.fontFamily};
-            font-weight: ${theme.typography.body3.fontWeight};
-            font-size: ${theme.typography.body3.fontSize};
-            line-height: ${theme.typography.body3.lineHeight};
-            letter-spacing: ${theme.typography.body3.letterSpacing};
-          }
-          .h1 {
-            font-family: ${theme.typography.h1.fontFamily};
-            font-weight: ${theme.typography.h1.fontWeight};
-            font-size: ${theme.typography.h1.fontSize};
-            line-height: ${theme.typography.h1.lineHeight};
-            letter-spacing: ${theme.typography.h1.letterSpacing};
-          }
-          .h2 {
-            font-family: ${theme.typography.h2.fontFamily};
-            font-weight: ${theme.typography.h2.fontWeight};
-            font-size: ${theme.typography.h2.fontSize};
-            line-height: ${theme.typography.h2.lineHeight};
-            letter-spacing: ${theme.typography.h2.letterSpacing};
-          }
-          .h3 {
-            font-family: ${theme.typography.h3.fontFamily};
-            font-weight: ${theme.typography.h3.fontWeight};
-            font-size: ${theme.typography.h3.fontSize};
-            line-height: ${theme.typography.h3.lineHeight};
-            letter-spacing: ${theme.typography.h3.letterSpacing};
-          }
-          .h4 {
-            font-family: ${theme.typography.h4.fontFamily};
-            font-weight: ${theme.typography.h4.fontWeight};
-            font-size: ${theme.typography.h4.fontSize};
-            line-height: ${theme.typography.h4.lineHeight};
-            letter-spacing: ${theme.typography.h4.letterSpacing};
-          }
-          .h5 {
-            font-family: ${theme.typography.h5.fontFamily};
-            font-weight: ${theme.typography.h5.fontWeight};
-            font-size: ${theme.typography.h5.fontSize};
-            line-height: ${theme.typography.h5.lineHeight};
-            letter-spacing: ${theme.typography.h5.letterSpacing};
           }
 
           .bold {

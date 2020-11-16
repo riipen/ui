@@ -8,6 +8,15 @@ export default function Color() {
       <Typography color="initial" gutter>
         Initial
       </Typography>
+      <Typography color="grey600" gutter>
+        Grey 600
+      </Typography>
+      <Typography color="grey800" gutter>
+        Grey 800
+      </Typography>
+      <Typography color="greyA400" gutter>
+        Grey A400
+      </Typography>
       <Typography color="primary" gutter>
         Primary
       </Typography>

@@ -57,6 +57,7 @@
     "@babel/core": "^7.10.5",
     "@babel/node": "^7.6.3",
     "audit-ci": "3.0.1",
+    "chokidar": "^3.4.3",
     "eslint": "6.5.1",
     "lint-staged": "9.4.2",
     "prettier": "1.18.2"
