@@ -139,14 +139,21 @@ export default {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 400,
       fontSize: "14px",
-      lineHeight: 1.5,
+      lineHeight: "20px",
       letterSpacing: "0.00938em"
     },
     body2: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 400,
       fontSize: "12px",
-      lineHeight: 1.43,
+      lineHeight: "17px",
+      letterSpacing: "0.01071em"
+    },
+    body3: {
+      fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+      fontWeight: 400,
+      fontSize: "10px",
+      lineHeight: "14px",
       letterSpacing: "0.01071em"
     },
     button: {
@@ -155,13 +162,6 @@ export default {
       fontSize: "14px",
       lineHeight: 1.75,
       letterSpacing: "0.02857em"
-    },
-    caption: {
-      fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-      fontWeight: 400,
-      fontSize: "12",
-      lineHeight: 1.66,
-      letterSpacing: "0.03333em"
     },
     fontFamily: "Roboto, Helvetica, Arial, sans-serif",
     fontWeight: {
@@ -172,52 +172,38 @@ export default {
     },
     h1: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-      fontWeight: 300,
+      fontWeight: 500,
       fontSize: "40px",
-      lineHeight: 1,
+      lineHeight: "56px",
       letterSpacing: "-0.01562em"
     },
     h2: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-      fontWeight: 300,
-      fontSize: "25px",
-      lineHeight: 1,
+      fontWeight: 500,
+      fontSize: "30px",
+      lineHeight: "42px",
       letterSpacing: "-0.00833em"
     },
     h3: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-      fontWeight: 300,
-      fontSize: "20px",
-      lineHeight: 1.04,
+      fontWeight: 500,
+      fontSize: "22px",
+      lineHeight: "32px",
       letterSpacing: "0em"
     },
     h4: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-      fontWeight: 300,
-      fontSize: "14px",
-      lineHeight: 1.17,
+      fontWeight: 400,
+      fontSize: "20px",
+      lineHeight: "30px",
       letterSpacing: "-0.00735em"
     },
     h5: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-      fontWeight: 300,
-      fontSize: "10px",
-      lineHeight: 1.33,
-      letterSpacing: "0rem"
-    },
-    subtitle1: {
-      fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 400,
-      fontSize: "14px",
-      lineHeight: 1.75,
-      letterSpacing: "0.00938em"
-    },
-    subtitle2: {
-      fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-      fontWeight: 500,
-      fontSize: "12px",
-      lineHeight: 1.57,
-      letterSpacing: "0.00714em"
+      fontSize: "16px",
+      lineHeight: "23px",
+      letterSpacing: "0rem"
     }
   },
   zIndex: {
