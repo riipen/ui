@@ -256,6 +256,38 @@ const pages = [
         pathname: "/components-api/rich-text-editor"
       },
       {
+        name: "Table",
+        pathname: "/components-api/table"
+      },
+      {
+        name: "Table Body",
+        pathname: "/components-api/table-body"
+      },
+      {
+        name: "Table Cell",
+        pathname: "/components-api/table-cell"
+      },
+      {
+        name: "Table Cell Header",
+        pathname: "/components-api/table-cell-header"
+      },
+      {
+        name: "Table Column",
+        pathname: "/components-api/table-column"
+      },
+      {
+        name: "Table Header",
+        pathname: "/components-api/table-header"
+      },
+      {
+        name: "Table Header Cell",
+        pathname: "/components-api/table-header-cell"
+      },
+      {
+        name: "Table Row",
+        pathname: "/components-api/table-row"
+      },
+      {
         name: "Toolbar",
         pathname: "/components-api/toolbar"
       },

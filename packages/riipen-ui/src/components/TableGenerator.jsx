@@ -14,7 +14,6 @@ import TableRow from "./TableRow";
 import TableBody from "./TableBody";
 import TableCell from "./TableCell";
 import TableHeaderCell from "./TableHeaderCell";
-import Spinner from "./Spinner";
 
 class TableGenerator extends React.Component {
   static displayName = "TableGenerator";
@@ -30,9 +29,10 @@ class TableGenerator extends React.Component {
      */
     columns: PropTypes.arrayOf(
       PropTypes.shape({
-        align: PropTypes.oneOf(["left", "center", "right"]),
         cell: PropTypes.func.isRequired,
+        cellProps: PropTypes.func,
         header: PropTypes.func.isRequired,
+        headerProps: PropTypes.func,
         mobileFooter: PropTypes.bool,
         mobileHeader: PropTypes.bool
       })
@@ -44,30 +44,9 @@ class TableGenerator extends React.Component {
     data: PropTypes.array,
 
     /**
-     * Whether or not to highlight rows on highlight.
-     */
-    hover: PropTypes.bool,
-
-    /**
-     * Whether or not the table data is loading.
-     */
-    loading: PropTypes.bool,
-
-    /**
-     * Node to display when loading
-     * Defaults to Spinner
-     */
-    loadingNode: PropTypes.node,
-
-    /**
      * The react node to display if no data is provided.
      */
-    emptyNode: PropTypes.node,
-
-    /**
-     * Node to render for an expanded row.
-     */
-    expandedNode: PropTypes.func,
+    empty: PropTypes.node,
 
     /**
      * Function to determine if row should be expanded or not
@@ -75,14 +54,24 @@ class TableGenerator extends React.Component {
     expandRow: PropTypes.func,
 
     /**
+     * Node to render for an expanded row.
+     */
+    expandedNode: PropTypes.func,
+
+    /**
+     * Whether or not to highlight rows on highlight.
+     */
+    hover: PropTypes.bool,
+
+    /**
      * Size to change table render from desktop to mobile.
      */
     mobileBreakpoint: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
 
     /**
-     * Funtion to call if a row is clicked in the generated table.
+     * Properties to pass to a rendered row.
      */
-    onRowClick: PropTypes.func
+    rowProps: PropTypes.object
   };
 
   static defaultProps = {
@@ -124,12 +113,6 @@ class TableGenerator extends React.Component {
         overflow-x: auto;
       }
 
-      .centeredTable {
-        margin: auto;
-        min-width: 50%;
-        width: auto;
-      }
-
       .noPadding {
         padding: 0;
       }
@@ -137,34 +120,19 @@ class TableGenerator extends React.Component {
       .expandedRow {
         background-color: ${theme.palette.grey[100]};
       }
-
-      td,
-      th {
-        max-width: 400px;
-        vertical-align: middle;
-      }
     `;
   };
-
-  getCellAlignment(cell) {
-    return cell?.align || "left";
-  }
 
   static contextType = ThemeContext;
 
   handleRowMouseEnter = idx => () => this.setState({ hoverIdx: idx });
   handleRowMouseLeave = () => this.setState({ hoverIdx: null });
 
-  handleRowClick = entity => () => {
-    const { onRowClick } = this.props;
-    if (!onRowClick) return;
-    onRowClick(entity);
-  };
-
   updateWindowDimensions = () => {
     const theme = this.context;
     const windowWidth = window.innerWidth;
     const breakpoint = theme.breakpoints[this.props.mobileBreakpoint];
+
     this.setState({
       isMobile: windowWidth <= breakpoint
     });
@@ -174,16 +142,13 @@ class TableGenerator extends React.Component {
     const { isMobile } = this.state;
     const { columns } = this.props;
 
-    const linkedStyles = this.getLinkedStyles();
-
     return (
       <TableHeader>
         <TableRow border>
           {columns.map((col, i) => (
             <TableHeaderCell
-              classes={[linkedStyles.className]}
               key={`header-column-${i}`}
-              align={this.getCellAlignment(col)}
+              {...col.headerProps?.(isMobile)}
             >
               {col?.header(isMobile)}
             </TableHeaderCell>
@@ -198,21 +163,13 @@ class TableGenerator extends React.Component {
       hover,
       data,
       columns,
-      loading,
       expandedNode,
-      expandRow
+      expandRow,
+      rowProps
     } = this.props;
     const { isMobile, hoverIdx } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
-
-    if (loading) {
-      return this.renderLoading();
-    }
-
-    if (data.length === 0) {
-      return this.renderEmpty();
-    }
 
     const isExpandable = expandRow && expandedNode;
     const rowCount = data.length;
@@ -233,15 +190,15 @@ class TableGenerator extends React.Component {
                   forceHover={isHovering}
                   onMouseEnter={this.handleRowMouseEnter(i)}
                   onMouseLeave={this.handleRowMouseLeave}
-                  onClick={this.handleRowClick(row)}
+                  {...rowProps}
                 >
                   {columns.map((col, j) => (
                     <TableCell
                       classes={[linkedStyles.className]}
                       key={`default-cell-${i}-${j}`}
-                      align={this.getCellAlignment(col)}
+                      {...col.cellProps?.(row, i, isMobile)}
                     >
-                      {col?.cell(row, isMobile)}
+                      {col?.cell(row, i, isMobile)}
                     </TableCell>
                   ))}
                 </TableRow>
@@ -269,60 +226,20 @@ class TableGenerator extends React.Component {
     );
   }
 
-  renderEmpty() {
-    const { emptyNode, columns } = this.props;
-    return (
-      <React.Fragment>
-        {this.renderTableHeader()}
-        <TableBody>
-          <TableRow>
-            <TableCell colSpan={columns.length} align="center">
-              {emptyNode || "There doesn't appear to be anything here"}
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </React.Fragment>
-    );
-  }
-
-  renderLoading() {
-    const { columns, loadingNode } = this.props;
-    return (
-      <React.Fragment>
-        {this.renderTableHeader()}
-        <TableBody>
-          <TableRow>
-            <TableCell colSpan={columns.length} align="center">
-              {loadingNode || <Spinner loading color="secondary" />}
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </React.Fragment>
-    );
-  }
-
   renderMobile() {
     const {
       hover,
       columns,
       data,
-      loading,
       expandedNode,
-      expandRow
+      expandRow,
+      rowProps
     } = this.props;
     const { isMobile, hoverIdx } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
 
     const rowCount = data.length;
-
-    if (loading) {
-      return this.renderLoading();
-    }
-
-    if (rowCount === 0) {
-      return this.renderEmpty();
-    }
 
     const mobileHeader = columns.find(x => x.mobileHeader);
     const mobileFooter = columns.find(x => x.mobileFooter);
@@ -342,9 +259,9 @@ class TableGenerator extends React.Component {
               <TableRow
                 border={isNotLastRow}
                 forceHover={isHovering}
-                onClick={this.handleRowClick(row)}
                 onMouseEnter={this.handleRowMouseEnter(i)}
                 onMouseLeave={this.handleRowMouseLeave}
+                {...rowProps}
               >
                 <TableCell classes={[linkedStyles.className, "noPadding"]}>
                   {mobileHeader && (
@@ -352,17 +269,13 @@ class TableGenerator extends React.Component {
                       <TableBody>
                         <TableRow>
                           <TableCell classes={[linkedStyles.className]}>
-                            {mobileHeader?.cell(row, isMobile)}
+                            {mobileHeader?.cell(row, i, isMobile)}
                           </TableCell>
                         </TableRow>
                       </TableBody>
                     </Table>
                   )}
-                  <Table
-                    classes={[clsx(linkedStyles.className, "centeredTable")]}
-                    layout="fixed"
-                    backgroundColor="transparent"
-                  >
+                  <Table layout="fixed" backgroundColor="transparent">
                     <TableBody>
                       {bodyColumns.map((bodyColumn, j) => (
                         <TableRow border={false} key={`${i}-${j}`}>
@@ -373,7 +286,7 @@ class TableGenerator extends React.Component {
                             {bodyColumn?.header(isMobile)}
                           </TableHeaderCell>
                           <TableCell classes={[linkedStyles.className]}>
-                            {bodyColumn?.cell(row, isMobile)}
+                            {bodyColumn?.cell(row, i, isMobile)}
                           </TableCell>
                         </TableRow>
                       ))}
@@ -384,7 +297,7 @@ class TableGenerator extends React.Component {
                       <TableBody>
                         <TableRow border={false}>
                           <TableCell classes={[linkedStyles.className]}>
-                            {mobileFooter?.cell(row, isMobile)}
+                            {mobileFooter?.cell(row, i, isMobile)}
                           </TableCell>
                         </TableRow>
                       </TableBody>
@@ -412,7 +325,7 @@ class TableGenerator extends React.Component {
 
   render() {
     const { isMobile } = this.state;
-    const { classes } = this.props;
+    const { classes, data, empty } = this.props;
 
     const linkedStyles = this.getLinkedStyles();
 
@@ -420,6 +333,7 @@ class TableGenerator extends React.Component {
       <React.Fragment>
         <div className={clsx("container", linkedStyles.className, classes)}>
           <Table>{isMobile ? this.renderMobile() : this.renderDefault()}</Table>
+          {data.length === 0 && empty}
         </div>
         {linkedStyles.styles}
       </React.Fragment>

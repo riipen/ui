@@ -10,11 +10,6 @@ class TableCell extends React.Component {
 
   static propTypes = {
     /**
-     * Alignment property to apply to the td element
-     */
-    align: PropTypes.oneOf(["center", "left", "right", "justify", "char"]),
-
-    /**
      * Children to render in the td element
      */
     children: PropTypes.node,
@@ -37,26 +32,31 @@ class TableCell extends React.Component {
     /**
      * Number of rows the td element should span
      */
-    rowSpan: PropTypes.number
+    rowSpan: PropTypes.number,
+
+    /**
+     * Alignment of the text in the td element.
+     */
+    textAlign: PropTypes.oneOf(["center", "left", "right", "justify"])
   };
 
   static defaultProps = {
-    align: "left",
     colSpan: 1,
     padding: 3,
-    rowSpan: 1
+    rowSpan: 1,
+    textAlign: "left"
   };
 
   static contextType = ThemeContext;
 
   render() {
     const {
-      align,
       children,
       classes,
       colSpan,
       padding,
       rowSpan,
+      textAlign,
       ...other
     } = this.props;
 
@@ -66,7 +66,6 @@ class TableCell extends React.Component {
       <React.Fragment>
         <td
           className={clsx(classes)}
-          align={align}
           colSpan={colSpan}
           rowSpan={rowSpan}
           {...other}
@@ -81,6 +80,7 @@ class TableCell extends React.Component {
             letter-spacing: ${theme.typography.body2.letterSpacing};
             line-height: ${theme.typography.body2.lineHeight};
             padding: ${theme.spacing(padding)}px;
+            text-align: ${textAlign};
           }
         `}</style>
       </React.Fragment>
