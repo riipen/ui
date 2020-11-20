@@ -64,6 +64,11 @@ class TableGenerator extends React.Component {
     hover: PropTypes.bool,
 
     /**
+     * A react node to display if data is loading. will display if provided.
+     */
+    loading: PropTypes.node,
+
+    /**
      * Size to change table render from desktop to mobile.
      */
     mobileBreakpoint: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
@@ -325,7 +330,7 @@ class TableGenerator extends React.Component {
 
   render() {
     const { isMobile } = this.state;
-    const { classes, data, empty } = this.props;
+    const { classes, data, empty, loading } = this.props;
 
     const linkedStyles = this.getLinkedStyles();
 
@@ -333,7 +338,8 @@ class TableGenerator extends React.Component {
       <React.Fragment>
         <div className={clsx("container", linkedStyles.className, classes)}>
           <Table>{isMobile ? this.renderMobile() : this.renderDefault()}</Table>
-          {data.length === 0 && empty}
+          {loading}
+          {!loading && data.length === 0 && empty}
         </div>
         {linkedStyles.styles}
       </React.Fragment>

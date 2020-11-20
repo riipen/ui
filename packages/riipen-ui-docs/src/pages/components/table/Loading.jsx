@@ -3,7 +3,7 @@ import React from "react";
 import TableGenerator from "riipen-ui/components/TableGenerator";
 import Typography from "riipen-ui/components/Typography";
 
-export default function Empty() {
+export default function Loading() {
   const data = [];
 
   const columns = [
@@ -25,7 +25,7 @@ export default function Empty() {
     }
   ];
 
-  const empty = (
+  const loading = (
     <div
       style={{
         padding: "30px",
@@ -33,10 +33,10 @@ export default function Empty() {
       }}
     >
       <Typography color="grey600" variant="h5">
-        The table is empty!
+        Loading data...
       </Typography>
     </div>
   );
 
-  return <TableGenerator columns={columns} data={data} empty={empty} />;
+  return <TableGenerator columns={columns} data={data} loading={loading} />;
 }
