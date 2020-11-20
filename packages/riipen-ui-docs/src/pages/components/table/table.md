@@ -22,9 +22,15 @@ A generated table that provides options for mobile viewing.
 
 ### Empty
 
-A table that changes for better viewing on mobile.
+Optionally provide a node to render when the table is empty.
 
 {{"demo": "pages/components/table/Empty.js"}}
+
+### Loading Data
+
+Optionally provide a loading indicator.
+
+{{"demo": "pages/components/table/Loading.js"}}
 
 ### Expandable content
 

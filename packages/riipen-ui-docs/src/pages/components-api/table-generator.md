@@ -27,6 +27,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">expandRow</span> | <span class="prop-type">func</span> |  | Function to determine if row should be expanded or not |
 | <span class="prop-name">expandedNode</span> | <span class="prop-type">func</span> |  | Node to render for an expanded row. |
 | <span class="prop-name">hover</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether or not to highlight rows on highlight. |
+| <span class="prop-name">loading</span> | <span class="prop-type">node</span> |  | A react node to display if data is loading. will display if provided. |
 | <span class="prop-name">mobileBreakpoint</span> | <span class="prop-type">"xs"<br>&#124;&nbsp;"sm"<br>&#124;&nbsp;"md"<br>&#124;&nbsp;"lg"<br>&#124;&nbsp;"xl"</span> | <span class="prop-default">"md"</span> | Size to change table render from desktop to mobile. |
 | <span class="prop-name">rowProps</span> | <span class="prop-type">object</span> |  | Properties to pass to a rendered row. |
 
