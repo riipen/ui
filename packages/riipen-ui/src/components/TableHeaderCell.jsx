@@ -10,11 +10,6 @@ class TableHeaderCell extends React.Component {
 
   static propTypes = {
     /**
-     * Alignment property to apply to the th element
-     */
-    align: PropTypes.oneOf(["center", "left", "right", "justify", "char"]),
-
-    /**
      * Children to render in the th element
      */
     children: PropTypes.node,
@@ -22,23 +17,28 @@ class TableHeaderCell extends React.Component {
     /**
      * Classes to apply to the root element
      */
-    classes: PropTypes.arrayOf(PropTypes.string)
+    classes: PropTypes.arrayOf(PropTypes.string),
+
+    /**
+     * Alignment of the text in the header.
+     */
+    textAlign: PropTypes.oneOf(["center", "left", "right", "justify"])
   };
 
   static defaultProps = {
-    align: "left"
+    textAlign: "left"
   };
 
   static contextType = ThemeContext;
 
   render() {
-    const { align, children, classes, ...other } = this.props;
+    const { children, classes, textAlign, ...other } = this.props;
 
     const theme = this.context;
 
     return (
       <React.Fragment>
-        <th align={align} className={clsx(classes)} {...other}>
+        <th className={clsx(classes)} {...other}>
           {children}
         </th>
         <style jsx>{`
@@ -49,7 +49,7 @@ class TableHeaderCell extends React.Component {
             letter-spacing: ${theme.typography.body1.letterSpacing};
             line-height: ${theme.typography.body1.lineHeight};
             padding: ${theme.spacing(3)}px;
-            text-align: left;
+            text-align: ${textAlign};
           }
         `}</style>
       </React.Fragment>

@@ -1,10 +1,9 @@
 import React from "react";
 
 import TableGenerator from "riipen-ui/components/TableGenerator";
+import Typography from "riipen-ui/components/Typography";
 
-export default function Mobile() {
-  const [loading, setLoading] = React.useState(true);
-
+export default function Empty() {
   const createEntity = (firstName, lastName, email, age) => {
     return {
       firstName,
@@ -13,16 +12,6 @@ export default function Mobile() {
       age
     };
   };
-
-  React.useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  });
 
   const entities = [
     createEntity("Joanne", "Davies", "joanne.davies@riipen.com", 24),
@@ -41,27 +30,28 @@ export default function Mobile() {
   const columns = [
     {
       mobileHeader: true,
-      header: () => "First Name",
-      cell: entity => entity.firstName
+      header: () => <Typography>First Name</Typography>,
+      cell: entity => <Typography>{entity.firstName}</Typography>
     },
     {
-      header: () => "Last Name",
-      cell: entity => entity.lastName
+      header: () => <Typography>Last Name</Typography>,
+      cell: entity => <Typography>{entity.lastName}</Typography>
     },
     {
-      header: () => "Email",
-      cell: entity => entity.email
+      header: () => <Typography>Email</Typography>,
+      cell: entity => <Typography>{entity.email}</Typography>
     },
     {
-      align: "right",
-      header: () => "Age",
-      cell: entity => entity.age
+      header: () => <Typography>Age</Typography>,
+      headerProps: () => ({
+        textAlign: "center"
+      }),
+      cell: entity => <Typography>{entity.age}</Typography>,
+      cellProps: () => ({
+        textAlign: "center"
+      })
     }
   ];
 
-  return (
-    <div>
-      <TableGenerator loading={loading} columns={columns} data={entities} />
-    </div>
-  );
+  return <TableGenerator columns={columns} data={entities} />;
 }
