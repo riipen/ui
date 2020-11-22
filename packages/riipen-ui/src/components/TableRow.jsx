@@ -10,6 +10,11 @@ class TableRow extends React.Component {
 
   static propTypes = {
     /**
+     * Whether to render the border for the row
+     */
+    border: PropTypes.bool,
+
+    /**
      * Children to render in the tr element
      */
     children: PropTypes.node,
@@ -27,12 +32,7 @@ class TableRow extends React.Component {
     /**
      * Whether to highlight the row on hover
      */
-    hover: PropTypes.bool,
-
-    /**
-     * Whether to render the border for the row
-     */
-    border: PropTypes.bool
+    hover: PropTypes.bool
   };
 
   static defaultProps = {
@@ -66,7 +66,7 @@ class TableRow extends React.Component {
                 (theme.palette.divider
                   ? theme.palette.divider
                   : `transparent`)};
-            border-left: 3px solid transparent;
+            ${hover ? `border-left: 3px solid transparent` : ""};
           }
 
           tr.forceHover {
