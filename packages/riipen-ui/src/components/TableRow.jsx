@@ -66,7 +66,7 @@ class TableRow extends React.Component {
                 (theme.palette.divider
                   ? theme.palette.divider
                   : `transparent`)};
-            ${hover ? `border-left: 3px solid transparent` : ""};
+            border-left: 3px solid transparent;
           }
 
           tr.forceHover {
