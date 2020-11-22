@@ -5,19 +5,14 @@ import React from "react";
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
-const Container = ({ border, classes, children, color, header, maxWidth }) => {
+const Container = ({ classes, children, maxWidth }) => {
   const theme = React.useContext(ThemeContext);
 
   const className = clsx("root", classes);
 
   return (
-    <React.Fragment>
-      <div className={className}>
-        {header}
-        <div className={clsx(border && "border", color, header && "header")}>
-          {children}
-        </div>
-      </div>
+    <div className={className}>
+      {children}
       <style jsx>{`
         .root {
           box-sizing: border-box;
@@ -25,19 +20,6 @@ const Container = ({ border, classes, children, color, header, maxWidth }) => {
           max-width: ${maxWidth ? `${theme.breakpoints[maxWidth]}px` : "100%"};
           padding: 0 ${theme.spacing(6)}px;
           position: relative;
-        }
-
-        .border {
-          border: 1px solid ${theme.palette.divider};
-          box-shadow: ${theme.shadows[1]};
-        }
-
-        .border.header {
-          border-top: none;
-        }
-
-        .white {
-          background-color: ${theme.palette.common.white};
         }
 
         @media (max-width: ${theme.breakpoints.lg}px) {
@@ -52,16 +34,11 @@ const Container = ({ border, classes, children, color, header, maxWidth }) => {
           }
         }
       `}</style>
-    </React.Fragment>
+    </div>
   );
 };
 
 Container.propTypes = {
-  /**
-   * Whether to have a border around the container.
-   */
-  border: PropTypes.bool,
-
   /**
    * The content inside the container.
    */
@@ -73,16 +50,6 @@ Container.propTypes = {
   classes: PropTypes.array,
 
   /**
-   * The color of the container.
-   */
-  color: PropTypes.oneOf(["default", "white"]),
-
-  /**
-   * The header component.
-   */
-  header: PropTypes.node,
-
-  /**
    * Determine the max-width of the container.
    * The container width grows with the size of the screen.
    */
@@ -90,9 +57,7 @@ Container.propTypes = {
 };
 
 Container.defaultProps = {
-  border: false,
   classes: [],
-  color: "default",
   maxWidth: "lg"
 };
 
