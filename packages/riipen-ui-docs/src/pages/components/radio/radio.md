@@ -12,3 +12,7 @@ Radio buttons should have the most commonly used option selected by default.
 RadioGroup is a helpful wrapper used to group Radio components that provides an easier API.
 
 {{"demo": "pages/components/radio/Usage.js"}}
+
+## Button
+
+{{"demo": "pages/components/radio/Button.js"}}
