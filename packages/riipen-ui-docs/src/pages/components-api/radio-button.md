@@ -25,8 +25,8 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">disabled</span> | <span class="prop-type">bool</span> |  | If `true`, the radio will be disabled. |
 | <span class="prop-name">id</span> | <span class="prop-type">string</span> |  | The id of the input component. |
 | <span class="prop-name">label</span> | <span class="prop-type">string</span> |  | Label text to display for the radio. |
-| <span class="prop-name">prefix</span> | <span class="prop-type">elementType</span> |  | The component to render before the label text. |
-| <span class="prop-name">suffix</span> | <span class="prop-type">elementType</span> |  | The component to render after the label text. |
+| <span class="prop-name">prefix</span> | <span class="prop-type">node</span> |  | The component to render before the label text. |
+| <span class="prop-name">suffix</span> | <span class="prop-type">node</span> |  | The component to render after the label text. |
 
 
 Any other props supplied will be provided to the root element.

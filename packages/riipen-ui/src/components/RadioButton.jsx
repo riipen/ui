@@ -114,12 +114,12 @@ RadioButton.propTypes = {
   /**
    * The component to render before the label text.
    */
-  prefix: PropTypes.elementType,
+  prefix: PropTypes.node,
 
   /**
    * The component to render after the label text.
    */
-  suffix: PropTypes.elementType
+  suffix: PropTypes.node
 };
 
 RadioButton.displayName = "RadioButton";
