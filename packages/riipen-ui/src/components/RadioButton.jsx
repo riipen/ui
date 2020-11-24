@@ -11,11 +11,10 @@ const RadioButton = ({
   checked,
   classes,
   disabled,
+  id,
   label,
-  prefix: Prefix,
-  prefixProps,
-  suffix: Suffix,
-  suffixProps,
+  prefix,
+  suffix,
   ...other
 }) => {
   const theme = React.useContext(ThemeContext);
@@ -31,21 +30,19 @@ const RadioButton = ({
     >
       <label
         className={clsx(checked && "checked", disabled && "disabled")}
-        htmlFor={other.id}
+        htmlFor={id}
       >
-        <input checked={checked} disabled={disabled} type="radio" {...other} />
+        <input
+          checked={checked}
+          disabled={disabled}
+          id={id}
+          type="radio"
+          {...other}
+        />
         <Typography variant="body2" color={checked ? "initial" : "grey600"}>
-          {Prefix && (
-            <span className="content">
-              <Prefix {...prefixProps} />
-            </span>
-          )}
+          {prefix && <span className="content">{prefix}</span>}
           <span className="content">{label}</span>
-          {Suffix && (
-            <span className="content">
-              <Suffix {...suffixProps} />
-            </span>
-          )}
+          {suffix && <span className="content">{suffix}</span>}
         </Typography>
       </label>
       <style jsx>{`
@@ -105,6 +102,11 @@ RadioButton.propTypes = {
   disabled: PropTypes.bool,
 
   /**
+   * The id of the input component.
+   */
+  id: PropTypes.string,
+
+  /**
    * Label text to display for the radio.
    */
   label: PropTypes.string,
@@ -115,19 +117,9 @@ RadioButton.propTypes = {
   prefix: PropTypes.elementType,
 
   /**
-   * The props to supply to the prefix component.
-   */
-  prefixProps: PropTypes.object,
-
-  /**
    * The component to render after the label text.
    */
-  suffix: PropTypes.elementType,
-
-  /**
-   * The props to supply to the suffix component.
-   */
-  suffixProps: PropTypes.object
+  suffix: PropTypes.elementType
 };
 
 RadioButton.displayName = "RadioButton";
