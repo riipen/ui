@@ -109,7 +109,7 @@ RadioButton.propTypes = {
   /**
    * Label text to display for the radio.
    */
-  label: PropTypes.string,
+  label: PropTypes.node,
 
   /**
    * The component to render before the label text.
