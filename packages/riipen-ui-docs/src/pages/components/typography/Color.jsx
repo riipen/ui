@@ -8,6 +8,9 @@ export default function Color() {
       <Typography color="initial" gutter>
         Initial
       </Typography>
+      <Typography color="black" gutter>
+        Black
+      </Typography>
       <Typography color="grey600" gutter>
         Grey 600
       </Typography>
@@ -32,6 +35,11 @@ export default function Color() {
       <Typography color="negative" gutter>
         Negative
       </Typography>
+      <div style={{ backgroundColor: "#000" }}>
+        <Typography color="white" gutter>
+          White
+        </Typography>
+      </div>
     </div>
   );
 }
