@@ -44,6 +44,8 @@ export { default as Notice } from "./Notice";
 export { default as Popover } from "./Popover";
 export { default as ProgressBar } from "./ProgressBar";
 export { default as Radio } from "./Radio";
+export { default as RadioButton } from "./RadioButton";
+export { default as RadioButtonGroup } from "./RadioButtonGroup";
 export { default as RadioGroup } from "./RadioGroup";
 export { default as RichTextEditor } from "./RichTextEditor";
 export { default as Spinner } from "./Spinner";

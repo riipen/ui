@@ -38,14 +38,16 @@ class Typography extends React.Component {
     color: PropTypes.oneOf([
       "inherit",
       "initial",
+      "black",
       "grey600",
       "grey800",
       "greyA400",
+      "negative",
+      "positive",
       "primary",
       "secondary",
       "tertiary",
-      "positive",
-      "negative"
+      "white"
     ]),
 
     /**
@@ -237,6 +239,9 @@ class Typography extends React.Component {
           .color-initial {
             color: initial;
           }
+          .color-black {
+            color: ${theme.palette.common.black};
+          }
           .color-grey600 {
             color: ${theme.palette.grey[600]};
           }
@@ -260,6 +265,9 @@ class Typography extends React.Component {
           }
           .color-negative {
             color: ${theme.palette.negative.main};
+          }
+          .color-white {
+            color: ${theme.palette.common.white};
           }
 
           .bold {
