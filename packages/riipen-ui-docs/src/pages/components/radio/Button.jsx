@@ -25,24 +25,20 @@ export default function Button() {
           prefix={icon(faFlag)}
           label="Prefix"
           value="prefix"
-          checked={state.value === "prefix"}
+          checked={state === "prefix"}
         />
         <RadioButton
           suffix={icon(faFlag)}
           label="Suffix"
           value="suffix"
-          checked={state.value === "suffix"}
+          checked={state === "suffix"}
         />
-        <RadioButton
-          label="None"
-          value="none"
-          checked={state.value === "none"}
-        />
+        <RadioButton label="None" value="none" checked={state === "none"} />
         <RadioButton
           disabled
           label="Disabled"
           value="disabled"
-          checked={state.value === "disabled"}
+          checked={state === "disabled"}
         />
       </RadioButtonGroup>
     </Form>
