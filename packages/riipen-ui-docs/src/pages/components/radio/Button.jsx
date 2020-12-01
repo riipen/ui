@@ -11,10 +11,7 @@ const icon = i => <FontAwesomeIcon icon={i} />;
 export default function Button() {
   const [state, setState] = React.useState("none");
 
-  const handleChange = (e, value) => {
-    console.log(e, value);
-    setState(value);
-  };
+  const handleChange = (e, value) => setState(value);
 
   return (
     <Form>
