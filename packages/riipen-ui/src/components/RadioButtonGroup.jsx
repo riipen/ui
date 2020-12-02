@@ -41,12 +41,15 @@ const RadioButtonGroup = ({
     }
   };
 
-  const childrenWithProps = React.Children.map(children, child =>
-    React.cloneElement(child, {
-      onChange: handleChange,
-      classes: [linkedStyles.className, "radioButton"]
-    })
-  );
+  const childrenWithProps = React.Children.map(
+    children,
+    child =>
+      child &&
+      React.cloneElement(child, {
+        onChange: handleChange,
+        classes: [linkedStyles.className, "radioButton"]
+      })
+  ).filter(Boolean);
 
   return (
     <React.Fragment>
@@ -77,6 +80,7 @@ const RadioButtonGroup = ({
         fieldset {
           border: none;
           margin: 0;
+          padding: 0;
         }
       `}</style>
     </React.Fragment>
