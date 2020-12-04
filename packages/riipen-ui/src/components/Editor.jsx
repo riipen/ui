@@ -106,11 +106,6 @@ class Editor extends React.Component {
     actionControls: PropTypes.arrayOf(PropTypes.node),
 
     /**
-     * Additional action controls to display on the left side of the editor control bar.
-     */
-    stylingControls: PropTypes.arrayOf(PropTypes.node),
-
-    /**
      * The id of the element to use as the aria-label for the Editor.
      */
     ariaLabelledBy: PropTypes.string,
@@ -155,14 +150,19 @@ class Editor extends React.Component {
      * Optional style applied to parent div of editor.
      * Used to set a minimum height.
      */
-    style: PropTypes.object
+    style: PropTypes.object,
+
+    /**
+     * Additional action controls to display on the left side of the editor control bar.
+     */
+    stylingControls: PropTypes.arrayOf(PropTypes.node)
   };
 
   static defaultProps = {
     autoFocus: true,
-    stylingControls: [],
     actionControls: [],
-    controlPosition: "top"
+    controlPosition: "top",
+    stylingControls: []
   };
 
   constructor(props) {
