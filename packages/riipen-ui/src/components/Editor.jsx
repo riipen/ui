@@ -398,7 +398,7 @@ class Editor extends React.Component {
     }
   };
 
-  forceFocus = () => focus(true);
+  forceFocus = () => this.focus(true);
 
   // Control button callback for toggling block type
   toggleBlockType = blockType => {
