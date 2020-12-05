@@ -63,7 +63,7 @@ class Badge extends React.Component {
     overlap: PropTypes.oneOf(["circle", "rectangle"]),
 
     /**
-     * Controls whether the badge is hidden when `badgeContent` is zero.
+     * Controls whether the badge is hidden when `content` is zero.
      */
     showZero: PropTypes.bool,
 
@@ -109,18 +109,13 @@ class Badge extends React.Component {
       variant
     } = this.props;
 
-    const isStandardVariant = variant !== "dot";
-
-    if ((content === 0 && !showZero) || (content == null && isStandardVariant))
-      return null;
-
     const theme = this.context;
 
     const className = clsx("root");
 
     let value = "";
 
-    if (isStandardVariant) {
+    if (variant === "standard") {
       value = content > max ? `${max}+` : content;
     }
 
@@ -131,10 +126,11 @@ class Badge extends React.Component {
           <span
             className={clsx(
               "badge",
+              !content && !showZero ? "hidden" : null,
               `${anchor.vertical}-${anchor.horizontal}-${overlap}`,
               color,
               variant,
-              isStandardVariant && size,
+              variant === "standard" && size,
               classes
             )}
           >
@@ -162,6 +158,10 @@ class Badge extends React.Component {
             font-weight: ${theme.typography.fontWeight.medium};
             justify-content: center;
             position: absolute;
+          }
+
+          .hidden {
+            display: none;
           }
 
           .badge.small {
