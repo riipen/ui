@@ -20,8 +20,8 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">autoFocus</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether or not to move focus the Editor on first render. |
-| <span class="prop-name">actionControls</span> | <span class="prop-type">Array<node></span> | <span class="prop-default">[]</span> | action controls to display on the right side of the editor control bar. |
+| <span class="prop-name">autoFocus</span> | <span class="prop-type">bool</span> |  | Whether or not to move focus the Editor on first render. |
+| <span class="prop-name">actionControls</span> | <span class="prop-type">Array<node></span> | <span class="prop-default">[]</span> | Action controls to display on the right side of the editor control bar. |
 | <span class="prop-name">ariaLabelledBy</span> | <span class="prop-type">string</span> |  | The id of the element to use as the aria-label for the Editor. |
 | <span class="prop-name">controlWhitelist</span> | <span class="prop-type">Array<string></span> |  | Optional array of whitelisted styles ex. ['code-block', 'BOLD', 'LINK'] |
 | <span class="prop-name">controlPosition</span> | <span class="prop-type">"top"<br>&#124;&nbsp;"bottom"</span> | <span class="prop-default">"top"</span> | Position of controls for the editor |

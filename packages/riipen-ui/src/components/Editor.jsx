@@ -101,7 +101,7 @@ class Editor extends React.Component {
     autoFocus: PropTypes.bool,
 
     /**
-     * action controls to display on the right side of the editor control bar.
+     * Action controls to display on the right side of the editor control bar.
      */
     actionControls: PropTypes.arrayOf(PropTypes.node),
 
@@ -159,7 +159,6 @@ class Editor extends React.Component {
   };
 
   static defaultProps = {
-    autoFocus: true,
     actionControls: [],
     controlPosition: "top",
     stylingControls: []
@@ -203,7 +202,7 @@ class Editor extends React.Component {
     return css.resolve`
       .wrapper {
         background-color: ${theme.palette.common.white};
-        border: 1px solid #979797;
+        border: 1px solid ${theme.palette.grey[500]};
         border-radius: ${theme.shape.borderRadius.md};
         font-family: ${theme.typography.body1.fontFamily};
         font-size: ${theme.typography.body1.fontSize};
@@ -265,8 +264,8 @@ class Editor extends React.Component {
         flex-direction: row;
         justify-content: space-between;
         padding-left: ${theme.spacing(2)}px;
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: ${theme.shape.borderRadius.md};
+        border-bottom-right-radius: ${theme.shape.borderRadius.md};
       }
 
       .stylingControls > div:not(:last-child) {
@@ -398,6 +397,8 @@ class Editor extends React.Component {
       this.editor.current.focus();
     }
   };
+
+  forceFocus = () => focus(true);
 
   // Control button callback for toggling block type
   toggleBlockType = blockType => {
@@ -649,7 +650,7 @@ class Editor extends React.Component {
 
     return (
       <React.Fragment>
-        <div className={wrapperClasses} onClick={() => this.focus(true)}>
+        <div className={wrapperClasses} onClick={this.forceFocus}>
           {controlPosition === "top" && this.renderControls()}
           <div className={editorClasses} style={style}>
             <DraftJsEditor
