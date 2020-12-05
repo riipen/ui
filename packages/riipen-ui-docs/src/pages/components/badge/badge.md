@@ -10,7 +10,7 @@ Examples of badges containing text, using primary and secondary colors. The badg
 
 ## Visibility
 
-The badge auto hides with `content` is zero. You can override this with the showZero property.
+The badge auto hides with `content` is falesy. You can override this with the showZero property.
 
 {{"demo": "pages/components/badge/Visibility.js"}}
 
