@@ -96,9 +96,14 @@ class Editor extends React.Component {
 
   static propTypes = {
     /**
-     * Additional controls to display.
+     * Whether or not to move focus the Editor on first render.
      */
-    additionalControls: PropTypes.node,
+    autoFocus: PropTypes.bool,
+
+    /**
+     * Action controls to display on the right side of the editor control bar.
+     */
+    actionControls: PropTypes.arrayOf(PropTypes.node),
 
     /**
      * The id of the element to use as the aria-label for the Editor.
@@ -145,12 +150,18 @@ class Editor extends React.Component {
      * Optional style applied to parent div of editor.
      * Used to set a minimum height.
      */
-    style: PropTypes.object
+    style: PropTypes.object,
+
+    /**
+     * Additional action controls to display on the left side of the editor control bar.
+     */
+    stylingControls: PropTypes.arrayOf(PropTypes.node)
   };
 
   static defaultProps = {
-    additionalControls: [],
-    controlPosition: "top"
+    actionControls: [],
+    controlPosition: "top",
+    stylingControls: []
   };
 
   constructor(props) {
@@ -186,11 +197,12 @@ class Editor extends React.Component {
 
   getLinkedStyles = () => {
     const theme = this.context;
+    const { controlPosition } = this.props;
 
     return css.resolve`
       .wrapper {
         background-color: ${theme.palette.common.white};
-        border: 1px solid ${theme.palette.grey[400]};
+        border: 1px solid ${theme.palette.grey[500]};
         border-radius: ${theme.shape.borderRadius.md};
         font-family: ${theme.typography.body1.fontFamily};
         font-size: ${theme.typography.body1.fontSize};
@@ -214,11 +226,15 @@ class Editor extends React.Component {
       .editor.top {
         border-bottom-left-radius: ${theme.shape.borderRadius.md};
         border-bottom-right-radius: ${theme.shape.borderRadius.md};
-        border-top: 1px solid ${theme.palette.grey[400]};
+        border-top: ${controlPosition === "bottom"
+          ? `1px solid ${theme.palette.grey[400]}`
+          : "none"};
       }
 
       .editor.bottom {
-        border-bottom: 1px solid ${theme.palette.grey[400]};
+        border-bottom: ${controlPosition === "top"
+          ? `1px solid ${theme.palette.grey[400]}`
+          : "none"};
         border-top-left-radius: ${theme.shape.borderRadius.md};
         border-top-right-radius: ${theme.shape.borderRadius.md};
       }
@@ -242,15 +258,18 @@ class Editor extends React.Component {
       }
 
       .controlContainer {
-        margin: 0 ${theme.spacing(2)}px;
+        background-color: ${theme.palette.grey[100]};
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: ${theme.spacing(2)}px;
+        border-bottom-left-radius: ${theme.shape.borderRadius.md};
+        border-bottom-right-radius: ${theme.shape.borderRadius.md};
       }
 
-      .controlContainer > div {
+      .stylingControls > div:not(:last-child) {
         border-right: 1px solid ${theme.palette.divider};
-      }
-
-      .controlContainer > div:last-child {
-        border-right: none;
       }
 
       @media (max-width: ${theme.breakpoints.sm}px) {
@@ -323,13 +342,16 @@ class Editor extends React.Component {
    * Note: Does not keep editing history so use  sparingly.
    */
   setHtml = async html => {
-    const { decorator } = this.props;
+    const { decorator, autoFocus } = this.props;
 
     const contentState = convertFromHTML(fromHtmlConfig)(html || "");
     const editorState = EditorState.createWithContent(contentState, decorator);
 
     await this.onChange(editorState);
-    this.focus();
+
+    if (autoFocus) {
+      this.focus();
+    }
   };
 
   getHtml = () => {
@@ -369,9 +391,14 @@ class Editor extends React.Component {
     return getDefaultKeyBinding(e);
   };
 
-  focus = () => {
-    if (this.editor && this.editor.current) this.editor.current.focus();
+  focus = forceFocus => {
+    const { autoFocus } = this.props;
+    if ((this.editor && this.editor.current && autoFocus) || forceFocus) {
+      this.editor.current.focus();
+    }
   };
+
+  forceFocus = () => this.focus(true);
 
   // Control button callback for toggling block type
   toggleBlockType = blockType => {
@@ -542,7 +569,7 @@ class Editor extends React.Component {
   static contextType = ThemeContext;
 
   renderControls = () => {
-    const { additionalControls } = this.props;
+    const { stylingControls, actionControls } = this.props;
     const { editorState } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
@@ -550,27 +577,35 @@ class Editor extends React.Component {
     return (
       <React.Fragment>
         <div className={clsx(linkedStyles.className, "controlContainer")}>
-          <EditorBlockStyleControls
-            classes={[linkedStyles.className, "controlRow"]}
-            editorState={editorState}
-            toggle={this.toggleBlockType}
-            whitelist={this.props.controlWhitelist}
-          />
-          <EditorInlineStyleControls
-            classes={[linkedStyles.className, "controlRow"]}
-            editorState={editorState}
-            toggle={this.toggleInlineStyle}
-            whitelist={this.props.controlWhitelist}
-          />
-          {additionalControls &&
-            additionalControls.map((control, index) => (
-              <div
-                key={`control-${index}`}
-                className={clsx([linkedStyles.className, "controlRow"])}
-              >
-                {control}
-              </div>
-            ))}
+          <div className={clsx(linkedStyles.className, "stylingControls")}>
+            <EditorBlockStyleControls
+              classes={[linkedStyles.className, "controlRow"]}
+              editorState={editorState}
+              toggle={this.toggleBlockType}
+              whitelist={this.props.controlWhitelist}
+            />
+            <EditorInlineStyleControls
+              classes={[linkedStyles.className, "controlRow"]}
+              editorState={editorState}
+              toggle={this.toggleInlineStyle}
+              whitelist={this.props.controlWhitelist}
+            />
+            {stylingControls &&
+              stylingControls.map((control, index) => (
+                <div
+                  key={`control-${index}`}
+                  className={clsx([linkedStyles.className, "controlRow"])}
+                >
+                  {control}
+                </div>
+              ))}
+          </div>
+          <div>
+            {actionControls &&
+              actionControls.map((control, index) => (
+                <div key={`control-${index}`}>{control}</div>
+              ))}
+          </div>
         </div>
       </React.Fragment>
     );
@@ -615,7 +650,7 @@ class Editor extends React.Component {
 
     return (
       <React.Fragment>
-        <div className={wrapperClasses} onClick={this.focus}>
+        <div className={wrapperClasses} onClick={this.forceFocus}>
           {controlPosition === "top" && this.renderControls()}
           <div className={editorClasses} style={style}>
             <DraftJsEditor
