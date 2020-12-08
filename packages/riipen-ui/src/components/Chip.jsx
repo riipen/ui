@@ -180,8 +180,8 @@ class Chip extends React.Component {
             cursor: pointer;
           }
           .root.hover:hover {
-            border-color: ${theme.palette.grey[400]};
-            background-color: ${theme.palette.grey[400]};
+            background-color: transparent;
+            border: 1px solid ${theme.palette.text.primary};
           }
           .icon-start {
             align-items: center;
@@ -210,8 +210,8 @@ class Chip extends React.Component {
             color: ${theme.palette.primary.contrast};
           }
           .primary.hover:hover {
-            background-color: ${theme.palette.primary.dark};
-            border-color: ${theme.palette.primary.dark};
+            border-color: ${theme.palette.primary.main};
+            color: ${theme.palette.primary.main};
           }
           .primary.outlined {
             border-color: ${theme.palette.primary.main};
@@ -229,8 +229,8 @@ class Chip extends React.Component {
             color: ${theme.palette.secondary.contrast};
           }
           .secondary.hover:hover {
-            background-color: ${theme.palette.secondary.dark};
-            border-color: ${theme.palette.secondary.dark};
+            border-color: ${theme.palette.secondary.main};
+            color: ${theme.palette.secondary.main};
           }
           .secondary.outlined {
             border-color: ${theme.palette.secondary.main};
@@ -247,8 +247,8 @@ class Chip extends React.Component {
             color: ${theme.palette.tertiary.contrast};
           }
           .tertiary.hover:hover {
-            background-color: ${theme.palette.tertiary.dark};
-            border-color: ${theme.palette.tertiary.dark};
+            border-color: ${theme.palette.tertiary.main};
+            color: ${theme.palette.tertiary.main};
           }
           .tertiary.outlined {
             border-color: ${theme.palette.tertiary.main};
@@ -265,8 +265,8 @@ class Chip extends React.Component {
             color: ${theme.palette.negative.contrast};
           }
           .negative.hover:hover {
-            background-color: ${theme.palette.negative.dark};
-            border-color: ${theme.palette.negative.dark};
+            border-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.main};
           }
           .negative.outlined {
             border-color: ${theme.palette.negative.main};
@@ -283,8 +283,8 @@ class Chip extends React.Component {
             color: ${theme.palette.warning.contrast};
           }
           .warning.hover:hover {
-            background-color: ${theme.palette.warning.dark};
-            border-color: ${theme.palette.warning.dark};
+            border-color: ${theme.palette.warning.main};
+            color: ${theme.palette.warning.main};
           }
           .warning.outlined {
             border-color: ${theme.palette.warning.main};
@@ -301,8 +301,8 @@ class Chip extends React.Component {
             color: ${theme.palette.positive.contrast};
           }
           .positive.hover:hover {
-            background-color: ${theme.palette.positive.dark};
-            border-color: ${theme.palette.positive.dark};
+            border-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.main};
           }
           .positive.outlined {
             border-color: ${theme.palette.positive.main};
@@ -319,8 +319,7 @@ class Chip extends React.Component {
             color: ${theme.palette.common.white};
           }
           .dark.hover:hover {
-            background-color: ${theme.palette.common.white};
-            border-color: ${theme.palette.common.white};
+            border-color: ${theme.palette.grey.A400};
             color: ${theme.palette.grey.A400};
           }
           .dark.outlined {
