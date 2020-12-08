@@ -24,17 +24,17 @@ export default function Icons() {
   return (
     <div>
       <div>
-        <Chip iconStart={icon(faPlus)} color="primary" label="Icon Start" />
+        <Chip icon={icon(faPlus)} color="primary" label="Icon Start" />
         <span style={style} />
         <Chip
-          iconStart={icon(faTimes)}
+          icon={icon(faTimes)}
           onIconClick={iconClicked}
           color="secondary"
           label="Icon Click"
         />
         <span style={style} />
         <Chip
-          iconStart={icon(faExclamationCircle)}
+          icon={icon(faExclamationCircle)}
           disabled
           onIconClick={iconClicked}
           color="secondary"
