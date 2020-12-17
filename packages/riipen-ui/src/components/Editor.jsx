@@ -590,8 +590,6 @@ class Editor extends React.Component {
       ? ["controlContainer", "mobileControlRow"]
       : "controlContainer";
 
-    console.log({ props: this.props });
-
     return (
       <React.Fragment>
         <div className={clsx(linkedStyles.className, controlContainerClasses)}>
