@@ -134,7 +134,7 @@ class Editor extends React.Component {
     /**
      * Whether or not to hide the controls + control row when on smaller screens.
      */
-    hideControlRowOnMobile: PropTypes.bool,
+    mobileControlRow: PropTypes.bool,
 
     /**
      * Initial content to set in the editor
@@ -166,7 +166,7 @@ class Editor extends React.Component {
   static defaultProps = {
     actionControls: [],
     controlPosition: "top",
-    hideControlRowOnMobile: true,
+    mobileControlRow: false,
     stylingControls: []
   };
 
@@ -280,8 +280,12 @@ class Editor extends React.Component {
       }
 
       @media (max-width: ${theme.breakpoints.sm}px) {
-        .controlContainer.hideControlRowOnMobile {
+        .controlContainer {
           display: none;
+        }
+
+        .controlContainer.mobileControlRow {
+          display: flex;
         }
 
         .wrapper {
@@ -576,18 +580,14 @@ class Editor extends React.Component {
   static contextType = ThemeContext;
 
   renderControls = () => {
-    const {
-      stylingControls,
-      actionControls,
-      hideControlRowOnMobile
-    } = this.props;
+    const { stylingControls, actionControls, mobileControlRow } = this.props;
 
     const { editorState } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
 
-    const controlContainerClasses = hideControlRowOnMobile
-      ? ["controlContainer", "hideControlRowOnMobile"]
+    const controlContainerClasses = mobileControlRow
+      ? ["controlContainer", "mobileControlRow"]
       : "controlContainer";
 
     console.log({ props: this.props });
