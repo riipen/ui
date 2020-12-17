@@ -63,7 +63,7 @@ class Badge extends React.Component {
     overlap: PropTypes.oneOf(["circle", "rectangle"]),
 
     /**
-     * Controls whether the badge is hidden when `badgeContent` is zero.
+     * Controls whether the badge is hidden when `content` is zero.
      */
     showZero: PropTypes.bool,
 
@@ -109,18 +109,13 @@ class Badge extends React.Component {
       variant
     } = this.props;
 
-    const isStandardVariant = variant !== "dot";
-
-    if ((content === 0 && !showZero) || (content == null && isStandardVariant))
-      return null;
-
     const theme = this.context;
 
     const className = clsx("root");
 
     let value = "";
 
-    if (isStandardVariant) {
+    if (variant === "standard") {
       value = content > max ? `${max}+` : content;
     }
 
@@ -131,10 +126,11 @@ class Badge extends React.Component {
           <span
             className={clsx(
               "badge",
+              !content && !showZero ? "hidden" : null,
               `${anchor.vertical}-${anchor.horizontal}-${overlap}`,
               color,
               variant,
-              isStandardVariant && size,
+              variant === "standard" && size,
               classes
             )}
           >
@@ -164,17 +160,21 @@ class Badge extends React.Component {
             position: absolute;
           }
 
+          .hidden {
+            display: none;
+          }
+
           .badge.small {
-            font-size: ${theme.typography.h5.fontSize};
+            font-size: ${theme.typography.body3.fontSize};
             height: 14px;
             letter-spacing: 0;
-            line-height: ${theme.typography.h5.fontSize};
+            line-height: ${theme.typography.body3.lineHeight};
             min-width: 14px;
             padding: 1px 2px;
           }
 
           .badge.medium {
-            font-size: ${theme.typography.subtitle2.fontSize};
+            font-size: ${theme.typography.body2.fontSize};
             height: ${RADIUS_STANDARD * 2}px;
             line-height: 1;
             min-width: ${RADIUS_STANDARD * 2}px;

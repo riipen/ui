@@ -28,7 +28,8 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">content</span> | <span class="prop-type">node</span> |  | The content rendered within the badge. |
 | <span class="prop-name">max</span> | <span class="prop-type">number</span> | <span class="prop-default">99</span> | Max count to show. |
 | <span class="prop-name">overlap</span> | <span class="prop-type">"circle"<br>&#124;&nbsp;"rectangle"</span> | <span class="prop-default">"rectangle"</span> | Wrapped shape the badge should overlap. |
-| <span class="prop-name">showZero</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Controls whether the badge is hidden when `badgeContent` is zero. |
+| <span class="prop-name">showZero</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Controls whether the badge is hidden when `content` is zero. |
+| <span class="prop-name">size</span> | <span class="prop-type">"small"<br>&#124;&nbsp;"medium"</span> | <span class="prop-default">"medium"</span> | The size of the badge. Only applicable to 'standard' variant. |
 | <span class="prop-name">variant</span> | <span class="prop-type">"dot"<br>&#124;&nbsp;"standard"</span> | <span class="prop-default">"standard"</span> | The variant to use. |
 
 

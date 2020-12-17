@@ -21,16 +21,15 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">classes</span> | <span class="prop-type">Array<string></span> |  | Classes to apply to the root element. |
-| <span class="prop-name">columns</span> | <span class="prop-type">Array<{ align?: "left"<br>&#124;&nbsp;"center"<br>&#124;&nbsp;"right", cell: func, header: func, mobileFooter?: bool, mobileHeader?: bool }></span> | <span class="prop-default">[]</span> | The columns to render. |
+| <span class="prop-name">columns</span> | <span class="prop-type">Array<{ cell: func, cellProps?: func, header: func, headerProps?: func, mobileFooter?: bool, mobileHeader?: bool }></span> | <span class="prop-default">[]</span> | The columns to render. |
 | <span class="prop-name">data</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | The entities to render in the table rows. |
-| <span class="prop-name">hover</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether or not to highlight rows on highlight. |
-| <span class="prop-name">loading</span> | <span class="prop-type">bool</span> |  | Whether or not the table data is loading. |
-| <span class="prop-name">loadingNode</span> | <span class="prop-type">node</span> |  | Node to display when loading Defaults to Spinner |
-| <span class="prop-name">emptyNode</span> | <span class="prop-type">node</span> |  | The react node to display if no data is provided. |
-| <span class="prop-name">expandedNode</span> | <span class="prop-type">func</span> |  | Node to render for an expanded row. |
+| <span class="prop-name">empty</span> | <span class="prop-type">node</span> |  | The react node to display if no data is provided. |
 | <span class="prop-name">expandRow</span> | <span class="prop-type">func</span> |  | Function to determine if row should be expanded or not |
+| <span class="prop-name">expandedNode</span> | <span class="prop-type">func</span> |  | Node to render for an expanded row. |
+| <span class="prop-name">hover</span> | <span class="prop-type">bool</span> | <span class="prop-default">true</span> | Whether or not to highlight rows on highlight. |
+| <span class="prop-name">loading</span> | <span class="prop-type">node</span> |  | A react node to display if data is loading. will display if provided. |
 | <span class="prop-name">mobileBreakpoint</span> | <span class="prop-type">"xs"<br>&#124;&nbsp;"sm"<br>&#124;&nbsp;"md"<br>&#124;&nbsp;"lg"<br>&#124;&nbsp;"xl"</span> | <span class="prop-default">"md"</span> | Size to change table render from desktop to mobile. |
-| <span class="prop-name">onRowClick</span> | <span class="prop-type">func</span> |  | Funtion to call if a row is clicked in the generated table. |
+| <span class="prop-name">rowProps</span> | <span class="prop-type">object</span> |  | Properties to pass to a rendered row. |
 
 
 Any other props supplied will be provided to the root element.

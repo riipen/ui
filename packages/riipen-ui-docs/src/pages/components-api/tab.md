@@ -21,6 +21,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">active</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the tab indicator will be displayed. |
+| <span class="prop-name">breakpoint</span> | <span class="prop-type">"sm"<br>&#124;&nbsp;"md"<br>&#124;&nbsp;"lg"<br>&#124;&nbsp;"xl"<br>&#124;&nbsp;"none"</span> | <span class="prop-default">"sm"</span> | The breakpoint to display the mobile tab styling. Use "none" for no styling. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> |  | An array of custom CSS classes to apply. |
 | <span class="prop-name">color</span> | <span class="prop-type">"primary"<br>&#124;&nbsp;"secondary"</span> | <span class="prop-default">"secondary"</span> | Determines the color of the indicator. |
 | <span class="prop-name">disabled</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the tab will be disabled. |

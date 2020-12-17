@@ -81,10 +81,12 @@ const Checkbox = props => {
         /* Hide the browser's default checkbox */
         label input {
           cursor: pointer;
-          height: 0;
+          height: 100%;
+          left: 0;
           opacity: 0;
           position: absolute;
-          width: 0;
+          top: 0;
+          width: 100%;
         }
 
         /* Create a custom checkbox */

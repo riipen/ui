@@ -10,18 +10,30 @@ Tables can include:
 
 ## Simple Table
 
-A table rendered using the components of the library
+A table rendered using the components of the library.
 
 {{"demo": "pages/components/table/Simple.js"}}
 
-## Auto-generated Mobile Table
+## Generated Table
 
-A table view that changes for better viewing on mobile
+A generated table that provides options for mobile viewing.
 
-{{"demo": "pages/components/table/Mobile.js"}}
+{{"demo": "pages/components/table/Generated.js"}}
 
-## Expandable content
+### Empty
 
-Expandable content within tables
+Optionally provide a node to render when the table is empty.
+
+{{"demo": "pages/components/table/Empty.js"}}
+
+### Loading Data
+
+Optionally provide a loading indicator.
+
+{{"demo": "pages/components/table/Loading.js"}}
+
+### Expandable content
+
+Expandable content within tables.
 
 {{"demo": "pages/components/table/Expandable.js"}}

@@ -20,6 +20,10 @@ const Accordion = props => {
 
   const [expanded, setExpanded] = React.useState(defaultExpanded);
 
+  React.useEffect(() => {
+    setExpanded(defaultExpanded);
+  }, [defaultExpanded]);
+
   const handleChange = React.useCallback(() => {
     setExpanded(!expanded);
   }, [expanded, setExpanded]);
