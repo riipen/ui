@@ -36,6 +36,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
   SelectionState
 } from "draft-js"; }</span> |  | The decorator for the editor. |
 | <span class="prop-name">error</span> | <span class="prop-type">any</span> |  | If the error style should be shown or not |
+| <span class="prop-name">mobileControlRow</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Whether or not to hide the controls + control row when on smaller screens. |
 | <span class="prop-name">initialValue</span> | <span class="prop-type">any</span> |  | Initial content to set in the editor |
 | <span class="prop-name">onChange</span> | <span class="prop-type">func</span> |  | Function to execute when editor content changes, gets html value of editor |
 | <span class="prop-name">placeholder</span> | <span class="prop-type">node</span> |  | Optional placeholder. Shows when there is no text. |

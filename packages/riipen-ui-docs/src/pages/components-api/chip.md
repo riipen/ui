@@ -25,6 +25,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">color</span> | <span class="prop-type">"default"<br>&#124;&nbsp;"dark"<br>&#124;&nbsp;"primary"<br>&#124;&nbsp;"secondary"<br>&#124;&nbsp;"tertiary"<br>&#124;&nbsp;"positive"<br>&#124;&nbsp;"warning"<br>&#124;&nbsp;"negative"</span> | <span class="prop-default">"default"</span> | The color to use. |
 | <span class="prop-name">component</span> | <span class="prop-type">elementType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">disabled</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the chip should be displayed in a disabled state. |
+| <span class="prop-name">hover</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Whether the chip should invert its variant on hover. |
 | <span class="prop-name">icon</span> | <span class="prop-type">elementType</span> |  | Icon to display at start of chip. |
 | <span class="prop-name">label</span> | <span class="prop-type">node</span> |  | The content of the label. |
 | <span class="prop-name">onClick</span> | <span class="prop-type">func</span> |  | Action to perform when clicked. |

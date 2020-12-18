@@ -132,6 +132,11 @@ class Editor extends React.Component {
     error: PropTypes.any,
 
     /**
+     * Whether or not to hide the controls + control row when on smaller screens.
+     */
+    mobileControlRow: PropTypes.bool,
+
+    /**
      * Initial content to set in the editor
      */
     initialValue: PropTypes.any,
@@ -161,6 +166,7 @@ class Editor extends React.Component {
   static defaultProps = {
     actionControls: [],
     controlPosition: "top",
+    mobileControlRow: false,
     stylingControls: []
   };
 
@@ -263,6 +269,7 @@ class Editor extends React.Component {
         flex: 1 1 auto;
         flex-direction: row;
         justify-content: space-between;
+        align-items: flex-end;
         padding-left: ${theme.spacing(2)}px;
         border-bottom-left-radius: ${theme.shape.borderRadius.md};
         border-bottom-right-radius: ${theme.shape.borderRadius.md};
@@ -275,6 +282,10 @@ class Editor extends React.Component {
       @media (max-width: ${theme.breakpoints.sm}px) {
         .controlContainer {
           display: none;
+        }
+
+        .controlContainer.mobileControlRow {
+          display: flex;
         }
 
         .wrapper {
@@ -569,14 +580,19 @@ class Editor extends React.Component {
   static contextType = ThemeContext;
 
   renderControls = () => {
-    const { stylingControls, actionControls } = this.props;
+    const { stylingControls, actionControls, mobileControlRow } = this.props;
+
     const { editorState } = this.state;
 
     const linkedStyles = this.getLinkedStyles();
 
+    const controlContainerClasses = mobileControlRow
+      ? ["controlContainer", "mobileControlRow"]
+      : "controlContainer";
+
     return (
       <React.Fragment>
-        <div className={clsx(linkedStyles.className, "controlContainer")}>
+        <div className={clsx(linkedStyles.className, controlContainerClasses)}>
           <div className={clsx(linkedStyles.className, "stylingControls")}>
             <EditorBlockStyleControls
               classes={[linkedStyles.className, "controlRow"]}
