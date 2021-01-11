@@ -40,7 +40,4 @@ Start the documentation server:
 npm start
 ```
 
-And then visit
-```bash
-http://localhost:3000/
-```
+Visit `http://localhost:3000` in the browser
