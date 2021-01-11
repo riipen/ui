@@ -39,5 +39,3 @@ Start the documentation server:
 ```bash
 npm start
 ```
-
-And then visit `http://localhost:3000` in your browser.
