@@ -69,6 +69,9 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "audit-ci": "3.0.1",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.5",
+    "enzyme-to-json": "3.6.1",
     "eslint": "6.5.1",
     "lint-staged": "9.4.2",
     "prettier": "1.18.2"
