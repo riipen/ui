@@ -36,7 +36,8 @@
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
     "precommit": "lint-staged",
-    "release": "./scripts/update_version.sh"
+    "release": "./scripts/update_version.sh",
+    "test": "jest"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -60,17 +61,26 @@
     "draft-convert": "2.1.10",
     "popper.js": "1.16.1",
     "prop-types": "15.7.2",
-    "react-transition-group": "^4.4.1"
+    "react-test-renderer": "17.0.1",
+    "react-transition-group": "^4.4.1",
+    "styled-jsx": "^3.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
+    "@babel/core": "7.12.10",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-env": "7.12.11",
     "@babel/preset-react": "^7.10.4",
+    "@testing-library/react": "^11.2.3",
     "audit-ci": "3.0.1",
+    "babel-jest": "26.6.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1",
     "eslint": "6.5.1",
+    "jest": "26.6.3",
     "lint-staged": "9.4.2",
-    "prettier": "1.18.2"
+    "prettier": "1.18.2",
+    "react-dom": "^17.0.1"
   }
 }

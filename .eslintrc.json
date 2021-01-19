@@ -18,6 +18,18 @@
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
     "import/no-unresolved": "off",
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "import/no-extraneous-dependencies": "off"
+  }, 
+  "globals": {
+    "describe": false,
+    "context": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "expect": false,
+    "after": false,
+    "afterEach": false,
+    "jest": false
   }
 }
