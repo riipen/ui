@@ -1,27 +1,23 @@
-import React from "react";
-import Adapter from "enzyme-adapter-react-16";
-import { shallow, mount, configure } from "enzyme";
+import { mount } from "enzyme";
 import toJson from "enzyme-to-json";
+import React from "react";
 
 import Chip from "./Chip";
 
-configure({ adapter: new Adapter() });
-
-describe("Component: Chip", () => {
-  it("shallow renders succeessfully", () => {
+it("renders without errors", () => {
+  try {
     mount(<Chip />);
-  });
+  } catch (error) {
+    expect(true).toEqual(false);
+  }
+});
 
-  it("gets default props and renders correctly", () => {
-    const wrapper = mount(<Chip />);
+describe("default props", () => {
+  it("sets correct default props", () => {
     const defaultProps = new Chip().type.defaultProps;
     defaultProps.classes.push("riipen-chip", "riipen");
-    expect(
-      wrapper
-        .find("Chip")
-        .props()
-        .classes.sort()
-    ).toEqual(defaultProps.classes.sort());
+
+    const wrapper = mount(<Chip />);
 
     const component = wrapper.find("Chip").childAt(0);
     expect(component.name()).toEqual("div");
@@ -33,12 +29,66 @@ describe("Component: Chip", () => {
     expect(component.childAt(0).name()).toEqual("span");
 
     expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.unmount();
+  });
+});
+
+describe("variant prop", () => {
+  it("outlines chip given outlined variant", () => {
+    const wrapper = mount(<Chip variant="outlined" />);
+
+    expect(
+      wrapper
+        .find("Chip")
+        .childAt(0)
+        .hasClass("outlined")
+    ).toEqual(true);
+  });
+});
+
+describe("component prop", () => {
+  it("component can be any element", () => {
+    const wrapper = mount(<Chip component="a" />);
+
+    expect(wrapper.find("a")).toHaveLength(1);
+    expect(
+      wrapper
+        .find("Chip")
+        .childAt(0)
+        .name()
+    ).toEqual("a");
+  });
+});
+
+describe("color prop", () => {
+  it("sets custom color", () => {
+    const custom = "dark";
+
+    const wrapper = mount(<Chip color={custom} />);
+
+    expect(wrapper.find("Chip").props().color).toEqual(custom);
+    expect(
+      wrapper
+        .find("Chip")
+        .childAt(0)
+        .hasClass(custom)
+    ).toEqual(true);
   });
 
-  it("displays a given label through the label prop", () => {
+  it("gives an error when given an invalid color", () => {
+    const errors = jest.spyOn(console, "error").mockImplementation();
+
+    mount(<Chip color="red" />);
+
+    expect(errors).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("label prop", () => {
+  it("displays label given as the label prop", () => {
     const label = "A test label";
+
     const wrapper = mount(<Chip label={label} />);
+
     expect(wrapper.find("Chip").props().label).toEqual(label);
     expect(
       wrapper
@@ -46,13 +96,14 @@ describe("Component: Chip", () => {
         .find("span")
         .text()
     ).toEqual(label);
-    wrapper.unmount();
   });
 
-  it("displays a label given as a child of Chip", () => {
+  it("displays label from child", () => {
     const label = "A label given as a child";
     const child = <div>{label}</div>;
+
     const wrapper = mount(<Chip>{child}</Chip>);
+
     expect(
       wrapper
         .find(".label")
@@ -65,61 +116,21 @@ describe("Component: Chip", () => {
         .childAt(0)
         .text()
     ).toEqual(label);
-    wrapper.unmount();
-  });
-
-  it("gets custom prop color", () => {
-    const custom = "dark";
-    const wrapper = mount(<Chip color={custom} />);
-    expect(wrapper.find("Chip").props().color).toEqual(custom);
-    expect(
-      wrapper
-        .find("Chip")
-        .childAt(0)
-        .hasClass(custom)
-    ).toEqual(true);
-    wrapper.unmount();
-  });
-
-  it("gives an error when setting it to an invalid color", () => {
-    const errors = jest.spyOn(console, "error").mockImplementation();
-    shallow(<Chip color="red" />);
-    expect(errors).toHaveBeenCalledTimes(1);
-  });
-
-  it("variant prop is outlined", () => {
-    const wrapper = mount(<Chip variant="outlined" />);
-    expect(
-      wrapper
-        .find("Chip")
-        .childAt(0)
-        .hasClass("outlined")
-    ).toEqual(true);
-  });
-
-  it("component can be any element", () => {
-    const wrapper = mount(<Chip component="a"> </Chip>);
-
-    expect(wrapper.find("a")).toHaveLength(1);
-    expect(
-      wrapper
-        .find("Chip")
-        .childAt(0)
-        .name()
-    ).toEqual("a");
   });
 });
 
-describe("Chip component is interactive", () => {
-  it("triggers click handler on click", () => {
+describe("onClick event", () => {
+  it("invokes onClick handler when clicked", () => {
     const handler = jest.fn();
+
     const wrapper = mount(<Chip onClick={handler} />);
+
     expect(handler).toHaveBeenCalledTimes(0);
+
     wrapper.find("Chip").simulate("click");
     expect(handler).toHaveBeenCalledTimes(1);
 
     wrapper.find("Chip").simulate("click");
     expect(handler).toHaveBeenCalledTimes(2);
-    wrapper.unmount();
   });
 });

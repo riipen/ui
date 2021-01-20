@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component: Chip gets default props and renders correctly 1`] = `
+exports[`default props sets correct default props 1`] = `
 <withClasses(Chip)>
   <Chip
     classes={
