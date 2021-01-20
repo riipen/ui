@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Chip> default props sets correct default props 1`] = `
+<withClasses(Chip)>
+  <Chip
+    classes={
+      Array [
+        "riipen",
+        "riipen-chip",
+      ]
+    }
+    color="default"
+    component="div"
+    disabled={false}
+    hover={false}
+    size="medium"
+    variant="default"
+  >
+    <div
+      className="jsx-4154598291 root default medium default riipen riipen-chip"
+      onClick={[Function]}
+    >
+      <span
+        className="jsx-4154598291 label"
+      />
+    </div>
+    <JSXStyle
+      dynamic={
+        Array [
+          "#dddddd",
+          "#747474",
+          "Roboto, Helvetica, Arial, sans-serif",
+          "#cccbcb",
+          "#cccbcb",
+          "#fff",
+          "#373737",
+          "#1f71ae",
+          "#1f71ae",
+          "#fff",
+          "#1f71ae",
+          "#1f71ae",
+          "#1f71ae",
+          "#1f71ae",
+          "#1f71ae",
+          "#1f71ae",
+          "#fff",
+          "#f58632",
+          "#f58632",
+          "#fff",
+          "#f58632",
+          "#f58632",
+          "#f58632",
+          "#f58632",
+          "#f58632",
+          "#f58632",
+          "#fff",
+          "#3caabb",
+          "#3caabb",
+          "#fff",
+          "#3caabb",
+          "#3caabb",
+          "#3caabb",
+          "#3caabb",
+          "#3caabb",
+          "#3caabb",
+          "#fff",
+          "#e95353",
+          "#e95353",
+          "#fff",
+          "#e95353",
+          "#e95353",
+          "#e95353",
+          "#e95353",
+          "#e95353",
+          "#e95353",
+          "#fff",
+          "#febb46",
+          "#febb46",
+          "#fff",
+          "#febb46",
+          "#febb46",
+          "#febb46",
+          "#febb46",
+          "#febb46",
+          "#febb46",
+          "#fff",
+          "#4cc88d",
+          "#4cc88d",
+          "#fff",
+          "#4cc88d",
+          "#4cc88d",
+          "#4cc88d",
+          "#4cc88d",
+          "#4cc88d",
+          "#4cc88d",
+          "#fff",
+          "#373737",
+          "#373737",
+          "#fff",
+          "#373737",
+          "#373737",
+          "#373737",
+          "#373737",
+          "#373737",
+          "#373737",
+          "#fff",
+          "#373737",
+          "#dddddd",
+          "#dddddd",
+          "#747474",
+        ]
+      }
+      id="2412400459"
+    />
+  </Chip>
+</withClasses(Chip)>
+`;

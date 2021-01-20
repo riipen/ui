@@ -1,0 +1,19 @@
+{
+  globals: {
+    after: false,
+    afterEach: false,
+    before: false,
+    beforeEach: false,
+    context: false,
+    describe: false,
+    expect: false,
+    it: false,
+    jest: false,
+
+    _JSXStyle: false,
+  },
+  rules: {
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "no-unused-vars": ["error", { "varsIgnorePattern": "_JSXStyle" }]
+  }
+}

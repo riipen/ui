@@ -29,12 +29,6 @@ workflows:
           <<: *test_branches
           context:
             - DockerHub
-      - audit:
-          <<: *test_branches
-          context:
-            - DockerHub
-          requires:
-            - checkout
       - lint:
           <<: *test_branches
           context:
@@ -88,17 +82,6 @@ jobs:
           root: /home/circleci
           paths:
             - project
-
-  audit:
-    docker:
-      - image: circleci/node:14.4
-        <<: *docker-auth
-
-    steps:
-      - attach_workspace:
-          at: ~/
-
-      - run: npm run ci:audit
 
   lint:
     docker:
