@@ -40,7 +40,7 @@ If you need to allow people to perform actions an `onClick` event can be provide
 
 ## Icon
 
-If you need to allow people to perform actions an `icon` with/without an `onIconClick` event can be provided
+You can provide an icon at the start of the Chip.
 
 {{"demo": "pages/components/chip/Icon.js"}}
 
