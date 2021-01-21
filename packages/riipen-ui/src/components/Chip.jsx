@@ -66,11 +66,6 @@ class Chip extends React.Component {
     onClick: PropTypes.func,
 
     /**
-     * Callback function fired when the icon is clicked.
-     */
-    onIconClick: PropTypes.func,
-
-    /**
      * The size of the chip.
      */
     size: PropTypes.oneOf(["medium", "small", "xsmall"]),
@@ -101,7 +96,6 @@ class Chip extends React.Component {
       disabled,
       hover,
       icon: Icon,
-      onIconClick,
       onClick,
       size,
       variant
@@ -112,7 +106,6 @@ class Chip extends React.Component {
     const theme = this.context;
 
     const clickable = !!onClick;
-    const iconClickable = !!onIconClick;
 
     const className = clsx(
       "root",
@@ -133,12 +126,7 @@ class Chip extends React.Component {
       <React.Fragment>
         <Component onClick={handleClick} className={className}>
           {Icon && (
-            <span
-              onClick={onIconClick}
-              className={clsx("icon", "icon-start", {
-                iconClickable
-              })}
-            >
+            <span className={clsx("icon", "icon-start")}>
               <Icon />
             </span>
           )}
@@ -193,10 +181,6 @@ class Chip extends React.Component {
 
           .icon-start.disabled {
             cursor: initial;
-          }
-
-          .icon-start.iconClickable {
-            cursor: pointer;
           }
 
           .label {
