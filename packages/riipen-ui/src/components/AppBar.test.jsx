@@ -20,8 +20,10 @@ describe("<AppBar>", () => {
 
     const wrapper = mount(<AppBar />);
 
-    expect(defaultProps.color).toEqual("primary");
-    expect(defaultProps.position).toEqual("fixed");
+    const component = wrapper.find("AppBar").childAt(0);
+    expect(component.hasClass(defaultProps.color)).toEqual(true);
+    expect(component.hasClass(defaultProps.position)).toEqual(true);
+
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
