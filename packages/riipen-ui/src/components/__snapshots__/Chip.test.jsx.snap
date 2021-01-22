@@ -17,11 +17,11 @@ exports[`<Chip> default props sets correct default props 1`] = `
     variant="default"
   >
     <div
-      className="jsx-4154598291 root default medium default riipen riipen-chip"
+      className="jsx-3261788765 root default medium default riipen riipen-chip"
       onClick={[Function]}
     >
       <span
-        className="jsx-4154598291 label"
+        className="jsx-3261788765 label"
       />
     </div>
     <JSXStyle
@@ -110,7 +110,7 @@ exports[`<Chip> default props sets correct default props 1`] = `
           "#747474",
         ]
       }
-      id="2412400459"
+      id="3718248004"
     />
   </Chip>
 </withClasses(Chip)>
