@@ -3,5 +3,5 @@ module.exports = {
   name: "riipen-ui",
   roots: ["<rootDir>/packages/riipen-ui"],
   rootDir: "../..",
-  setupFiles: ["<rootDir>/packages/riipen-ui/test/setup.js"]
+  setupFilesAfterEnv: ["<rootDir>/packages/riipen-ui/test/setup.js"]
 };
