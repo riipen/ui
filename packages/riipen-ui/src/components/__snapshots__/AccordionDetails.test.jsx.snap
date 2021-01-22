@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccordianDetails snapshot test 1`] = `
+<AccordionDetails>
+  <div
+    className="jsx-1644707333 root"
+  />
+  <JSXStyle
+    id="1644707333"
+  />
+</AccordionDetails>
+`;

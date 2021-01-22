@@ -5,10 +5,6 @@ import React from "react";
 import Chip from "./Chip";
 
 describe("<Chip>", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("renders without errors", () => {
     let error;
     try {
