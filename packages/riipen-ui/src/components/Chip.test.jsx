@@ -5,6 +5,10 @@ import React from "react";
 import Chip from "./Chip";
 
 describe("<Chip>", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   it("renders without errors", () => {
     let error;
     try {
@@ -100,6 +104,45 @@ describe("<Chip>", () => {
           .childAt(0)
           .hasClass(color)
       ).toEqual(true);
+      expect(
+        wrapper
+          .find("Chip")
+          .childAt(0)
+          .hasClass(classes[1])
+      ).toEqual(true);
+    });
+
+    it("gives an error when classes are provided as one string", () => {
+      const classes = "classOne classTwo";
+      const errors = jest.spyOn(console, "error").mockImplementation();
+
+      mount(<Chip classes={classes} />);
+
+      expect(errors).toHaveBeenCalled();
+    });
+  });
+
+  describe("color prop", () => {
+    it("sets color class name with a valid color", () => {
+      const color = "dark";
+
+      const wrapper = mount(<Chip color={color} />);
+
+      expect(wrapper.find("Chip").props().color).toEqual(color);
+      expect(
+        wrapper
+          .find("Chip")
+          .childAt(0)
+          .hasClass(color)
+      ).toEqual(true);
+    });
+
+    it("gives an error when given an invalid color", () => {
+      const errors = jest.spyOn(console, "error").mockImplementation();
+
+      mount(<Chip color="red" />);
+
+      expect(errors).toHaveBeenCalledTimes(1);
     });
 
     it("gives an error when given an invalid color", () => {

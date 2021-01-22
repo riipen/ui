@@ -5,10 +5,6 @@ import React from "react";
 import AccordionDetails from "./AccordionDetails";
 
 describe("AccordianDetails", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   it("renders without errors", () => {
     let error;
     try {
