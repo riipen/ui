@@ -82,7 +82,7 @@ describe("<AppBar>", () => {
     it("sets position class name with invalid position", () => {
       const errors = jest.spyOn(console, "error").mockImplementation();
 
-      const wrapper = mount(<AppBar position="upright" />);
+      mount(<AppBar position="upright" />);
 
       expect(errors).toHaveBeenCalled();
     });
