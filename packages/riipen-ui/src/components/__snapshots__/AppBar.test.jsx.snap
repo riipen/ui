@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppBar> sets correct default props 1`] = `
+<withClasses(AppBar)>
+  <AppBar
+    classes={
+      Array [
+        "riipen",
+        "riipen-appbar",
+      ]
+    }
+    color="primary"
+    position="fixed"
+  >
+    <div
+      className="jsx-138222299 riipen riipen-appbar primary fixed"
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          "0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)",
+          15,
+          2,
+          "#1f71ae",
+          "#fff",
+          "#f58632",
+          "#fff",
+          "#fff",
+          "#000",
+          "#000",
+          "#fff",
+        ]
+      }
+      id="4181421979"
+    />
+  </AppBar>
+</withClasses(AppBar)>
+`;
