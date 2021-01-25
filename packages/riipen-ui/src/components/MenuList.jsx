@@ -74,6 +74,8 @@ class MenuList extends React.Component {
     return React.Children.map(
       this.handleFragmentChildren(children),
       (child, idx) => {
+        if (!child) return null;
+
         let newProps = {
           key: idx,
           color: this.props.color
