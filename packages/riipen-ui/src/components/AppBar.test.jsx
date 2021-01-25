@@ -28,14 +28,12 @@ describe("<AppBar>", () => {
   });
 
   describe("children prop", () => {
-    it("displays custom label from child", () => {
-      const label = "A label given as a child";
-      const child = <div>{label}</div>;
+    it("displays given children", () => {
+      const child = <div>A child</div>;
 
       const wrapper = mount(<AppBar>{child}</AppBar>);
 
       expect(wrapper.containsMatchingElement(child)).toBeTruthy();
-      expect(wrapper.text(".label")).toEqual(label);
     });
   });
 
@@ -63,7 +61,7 @@ describe("<AppBar>", () => {
       expect(wrapper.find("AppBar").props().color).toEqual(colorVariant);
     });
 
-    it("sets color class name with invalid colour", () => {
+    it("throws an error with invalid color", () => {
       const errors = jest.spyOn(console, "error").mockImplementation();
 
       mount(<AppBar color="orange" />);
@@ -76,17 +74,17 @@ describe("<AppBar>", () => {
     it("sets position class name with valid custom position", () => {
       const positionVariant = "absolute";
 
-      const wrapper = mount(<AppBar color={positionVariant} />);
+      const wrapper = mount(<AppBar position={positionVariant} />);
 
-      expect(wrapper.find("AppBar").props().color).toEqual(positionVariant);
+      expect(wrapper.find("AppBar").props().position).toEqual(positionVariant);
     });
 
-    it("sets position class name with invalid position", () => {
+    it("throws an error with invalid position", () => {
       const errors = jest.spyOn(console, "error").mockImplementation();
 
       mount(<AppBar position="upright" />);
 
-      expect(errors).toHaveBeenCalled();
+      expect(errors).toHaveBeenCalledTimes(1);
     });
   });
 });

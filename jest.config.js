@@ -1,5 +1,6 @@
 module.exports = {
-  moduleDirectories: ['node_modules', './'],
-  modulePaths: ['node_modules', './'],
-  projects: [ '<rootDir>/packages/*/jest.config.js']
+  displayName: "riipen-ui",
+  name: "riipen-ui",
+  roots: ["<rootDir>/packages/riipen-ui"],
+  setupFilesAfterEnv: ["<rootDir>/packages/riipen-ui/test/setup.js"]
 };
