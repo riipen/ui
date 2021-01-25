@@ -16,13 +16,10 @@ describe("<AppBar>", () => {
   });
 
   it("sets correct default props", () => {
-    const defaultProps = new AppBar().type.defaultProps;
-
     const wrapper = mount(<AppBar />);
 
-    const component = wrapper.find("AppBar").childAt(0);
-    expect(component.hasClass(defaultProps.color)).toEqual(true);
-    expect(component.hasClass(defaultProps.position)).toEqual(true);
+    expect(wrapper.find("AppBar").props().color).toEqual("primary");
+    expect(wrapper.find("AppBar").props().position).toEqual("fixed");
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -59,6 +56,12 @@ describe("<AppBar>", () => {
       const wrapper = mount(<AppBar color={colorVariant} />);
 
       expect(wrapper.find("AppBar").props().color).toEqual(colorVariant);
+      expect(
+        wrapper
+          .find("AppBar")
+          .childAt(0)
+          .hasClass(colorVariant)
+      ).toEqual(true);
     });
 
     it("throws an error with invalid color", () => {
@@ -77,6 +80,12 @@ describe("<AppBar>", () => {
       const wrapper = mount(<AppBar position={positionVariant} />);
 
       expect(wrapper.find("AppBar").props().position).toEqual(positionVariant);
+      expect(
+        wrapper
+          .find("AppBar")
+          .childAt(0)
+          .hasClass(positionVariant)
+      ).toEqual(true);
     });
 
     it("throws an error with invalid position", () => {
