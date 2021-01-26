@@ -21,3 +21,27 @@ exports[`<Backdrop> default props sets correct default props 1`] = `
   </Backdrop>
 </withClasses(Backdrop)>
 `;
+
+exports[`<Backdrop> open prop sets open prop to correct value 1`] = `
+<withClasses(Backdrop)
+  open={true}
+>
+  <Backdrop
+    classes={
+      Array [
+        "riipen",
+        "riipen-backdrop",
+      ]
+    }
+    open={true}
+  >
+    <div
+      aria-hidden={true}
+      className="jsx-1867827232 root riipen riipen-backdrop"
+    />
+    <JSXStyle
+      id="1867827232"
+    />
+  </Backdrop>
+</withClasses(Backdrop)>
+`;

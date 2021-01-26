@@ -76,7 +76,8 @@ describe("<Backdrop>", () => {
 
       const wrapper = mount(<Backdrop open={open} />);
 
-      expect(wrapper.find("Backdrop").props().open).toEqual(true);
+      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(wrapper.find("Backdrop").hasClass("open")).toEqual(true);
     });
   });
 });
