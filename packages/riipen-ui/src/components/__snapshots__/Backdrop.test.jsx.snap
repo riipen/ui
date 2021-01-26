@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Backdrop> snapshot test 1`] = `
+<withClasses(Backdrop)>
+  <Backdrop
+    classes={
+      Array [
+        "riipen",
+        "riipen-backdrop",
+      ]
+    }
+  >
+    <div
+      aria-hidden={true}
+      className="jsx-1867827232 root riipen riipen-backdrop"
+    />
+    <JSXStyle
+      id="1867827232"
+    />
+  </Backdrop>
+</withClasses(Backdrop)>
+`;

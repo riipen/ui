@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import withClasses from "../utils/withClasses";
 
@@ -16,22 +17,13 @@ class Backdrop extends React.Component {
     /**
      * An array of custom CSS classes to apply.
      */
-    classes: PropTypes.array,
-
-    /**
-     * If `true`, the backdrop is open.
-     */
-    open: PropTypes.bool.isRequired
-  };
-
-  static defaultProps = {
-    open: false
+    classes: PropTypes.array
   };
 
   render() {
-    const { children, classes, open, ...other } = this.props;
+    const { children, classes, ...other } = this.props;
 
-    const className = clsx("root", open, classes);
+    const className = clsx("root", classes);
 
     return (
       <React.Fragment>
