@@ -16,13 +16,10 @@ describe("<Backdrop>", () => {
     expect(error).toEqual(undefined);
   });
 
-  describe("default props", () => {
-    it("sets correct default props", () => {
-      const wrapper = mount(<Backdrop />);
+  it("snapshot test", () => {
+    const wrapper = mount(<Backdrop />);
 
-      expect(wrapper.find("Backdrop").props().open).toEqual(false);
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("children prop", () => {
@@ -67,17 +64,6 @@ describe("<Backdrop>", () => {
       mount(<Backdrop classes={classes} />);
 
       expect(errors).toHaveBeenCalled();
-    });
-  });
-
-  describe("open prop", () => {
-    it("sets open prop to correct value", () => {
-      const open = true;
-
-      const wrapper = mount(<Backdrop open={open} />);
-
-      expect(toJson(wrapper)).toMatchSnapshot();
-      expect(wrapper.find("Backdrop").hasClass("open")).toEqual(true);
     });
   });
 });
