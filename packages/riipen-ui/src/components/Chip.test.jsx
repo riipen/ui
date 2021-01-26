@@ -22,14 +22,13 @@ describe("<Chip>", () => {
 
       const wrapper = mount(<Chip />);
 
-      const component = wrapper.find("Chip").childAt(0);
-      expect(component.name()).toEqual("div");
-      expect(component.hasClass(defaultProps.color)).toEqual(true);
-      expect(component.hasClass("disabled")).toEqual(false);
-      expect(component.hasClass("hover")).toEqual(false);
-      expect(component.hasClass(defaultProps.size)).toEqual(true);
-      expect(component.hasClass(defaultProps.variant)).toEqual(true);
-      expect(component.childAt(0).name()).toEqual("span");
+      const component = wrapper.find("Chip");
+      expect(component.childAt(0).name()).toEqual("div");
+      expect(component.props().color).toEqual(defaultProps.color);
+      expect(component.props().disabled).toEqual(defaultProps.disabled);
+      expect(component.props().hover).toEqual(defaultProps.hover);
+      expect(component.props().size).toEqual(defaultProps.size);
+      expect(component.props().variant).toEqual(defaultProps.variant);
 
       expect(toJson(wrapper)).toMatchSnapshot();
     });
