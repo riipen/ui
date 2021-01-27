@@ -27,19 +27,6 @@ describe("<Divider>", () => {
 
       expect(toJson(wrapper)).toMatchSnapshot();
     });
-
-    it("appends higher order values to default classes prop with withClass decorator", () => {
-      const classes = ["riipen", "riipen-divider"];
-
-      const wrapper = mount(<Divider />);
-
-      expect(
-        wrapper
-          .find("Divider")
-          .props()
-          .classes.sort()
-      ).toEqual(classes.sort());
-    });
   });
 
   describe("classes prop", () => {
@@ -60,6 +47,19 @@ describe("<Divider>", () => {
           .childAt(0)
           .hasClass(classes[1])
       ).toEqual(true);
+    });
+
+    it("appends higher order values to classes prop with withClasses decorator", () => {
+      const classes = ["riipen", "riipen-divider"];
+
+      const wrapper = mount(<Divider />);
+
+      expect(
+        wrapper
+          .find("Divider")
+          .props()
+          .classes.sort()
+      ).toEqual(classes.sort());
     });
 
     it("gives an error when classes are provided as one string", () => {
