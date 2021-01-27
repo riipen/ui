@@ -36,25 +36,19 @@ describe("<Avatar>", () => {
   });
 
   describe("alt prop", () => {
-    it("sets inner class name given custom alt props", () => {
+    it("renders an img tag with alt value", () => {
       const altVariant = "Test String";
+      const srcVariant = "/static/images/avatars/jordan-ell.png";
 
-      const wrapper = mount(<Avatar alt={altVariant} />);
+      const wrapper = mount(<Avatar alt={altVariant} src={srcVariant} />);
 
-      expect(
-        wrapper
-          .find(".avatar")
-          .childAt(0)
-          .hasClass("inner")
-      ).toEqual(true);
-      expect(wrapper.find("Avatar").props().alt).toEqual(altVariant);
+      expect(wrapper.find("img").props().alt).toEqual(altVariant);
     });
   });
 
   describe("children prop", () => {
     it("displays given children", () => {
-      const initials = "ZZ";
-      const child = <div>{initials}</div>;
+      const child = <div>ZZ</div>;
 
       const wrapper = mount(<Avatar>{child}</Avatar>);
 
@@ -64,12 +58,6 @@ describe("<Avatar>", () => {
           .children()
           .contains(child)
       ).toEqual(true);
-      expect(
-        wrapper
-          .find(".inner")
-          .childAt(0)
-          .text()
-      ).toEqual(initials);
     });
   });
 
@@ -89,15 +77,7 @@ describe("<Avatar>", () => {
   });
 
   describe("size prop", () => {
-    it("sets valid custom size", () => {
-      const sizeVariant = "50px";
-
-      const wrapper = mount(<Avatar size={sizeVariant} />);
-
-      expect(wrapper.find("Avatar").props().size).toEqual(sizeVariant);
-    });
-
-    it("sets valid border size above 70", () => {
+    it("sets correct border size when size is above 70", () => {
       const sizeVariant = "75px";
 
       const wrapper = mount(<Avatar size={sizeVariant} />);
@@ -110,7 +90,7 @@ describe("<Avatar>", () => {
       ).toEqual("4px");
     });
 
-    it("sets valid border size below 70", () => {
+    it("sets correct border size when size is below 70", () => {
       const sizeVariant = "65px";
 
       const wrapper = mount(<Avatar size={sizeVariant} />);
@@ -125,19 +105,13 @@ describe("<Avatar>", () => {
   });
 
   describe("src prop", () => {
-    it("sets image class name given custom alt and src props", () => {
-      const altVariant = "Test String";
+    it("renders an img tag with src value", () => {
       const srcVariant = "/static/images/avatars/jordan-ell.png";
 
-      const wrapper = mount(<Avatar alt={altVariant} src={srcVariant} />);
+      const wrapper = mount(<Avatar src={srcVariant} />);
 
-      expect(
-        wrapper
-          .find(".avatar")
-          .childAt(0)
-          .hasClass("image")
-      ).toEqual(true);
-      expect(wrapper.find("Avatar").props().src).toEqual(srcVariant);
+      expect(wrapper.find("Avatar").find("img")).toHaveLength(1);
+      expect(wrapper.find("img").props().src).toEqual(srcVariant);
     });
   });
 
@@ -147,7 +121,6 @@ describe("<Avatar>", () => {
 
       const wrapper = mount(<Avatar variant={variant} />);
 
-      expect(wrapper.find("Avatar").props().variant).toEqual(variant);
       expect(
         wrapper
           .find("Avatar")
