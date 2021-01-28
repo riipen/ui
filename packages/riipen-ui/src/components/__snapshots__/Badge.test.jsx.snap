@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Badge> default props sets correct default props 1`] = `
+<withClasses(Badge)>
+  <Badge
+    anchor={
+      Object {
+        "horizontal": "right",
+        "vertical": "top",
+      }
+    }
+    classes={
+      Array [
+        "riipen",
+        "riipen-badge",
+      ]
+    }
+    color="primary"
+    component="span"
+    max={99}
+    overlap="rectangle"
+    showZero={false}
+    size="medium"
+    variant="standard"
+  >
+    <span
+      className="jsx-1015140608 root"
+    >
+      <span
+        className="jsx-1015140608 badge hidden top-right-rectangle primary standard medium riipen riipen-badge"
+      />
+    </span>
+    <JSXStyle
+      dynamic={
+        Array [
+          10,
+          "#373737",
+          "Roboto, Helvetica, Arial, sans-serif",
+          500,
+          "10px",
+          "14px",
+          "12px",
+          20,
+          20,
+          10,
+          10,
+          "#1f71ae",
+          "#fff",
+          "#f58632",
+          "#fff",
+          "#4cc88d",
+          "#fff",
+          "#e95353",
+          "#fff",
+          "#cccbcb",
+          "#fff",
+        ]
+      }
+      id="2138813230"
+    />
+  </Badge>
+</withClasses(Badge)>
+`;
