@@ -148,8 +148,10 @@ describe("<Badge>", () => {
   });
 
   describe("content prop", () => {
-    it("badge does not render when content is null and showZero is false", () => {
-      const wrapper = mount(<Badge />);
+    it("badge renders when content is 0 and showZero is false", () => {
+      const content = 0;
+
+      const wrapper = mount(<Badge content={content} />);
 
       expect(
         wrapper
@@ -158,21 +160,30 @@ describe("<Badge>", () => {
           .childAt(0)
           .hasClass("hidden")
       ).toEqual(true);
-      expect(wrapper.text()).toEqual("");
+      expect(Number(wrapper.text())).toEqual(content);
     });
 
-    it("badge renders with content and showZero props", () => {
-      const content = 2;
+    it("badge renders when content is 0 and showZero is true", () => {
+      const content = 0;
       const showZero = true;
 
       const wrapper = mount(<Badge content={content} showZero={showZero} />);
 
-      expect(Number(wrapper.find("Badge").text())).toEqual(2);
+      expect(Number(wrapper.find("Badge").text())).toEqual(content);
+    });
+
+    it("badge renders when content is greater than 0 and showZero is true", () => {
+      const content = 1;
+      const showZero = true;
+
+      const wrapper = mount(<Badge content={content} showZero={showZero} />);
+
+      expect(Number(wrapper.find("Badge").text())).toEqual(content);
     });
   });
 
   describe("max prop", () => {
-    it("displays max value given max greater than content value", () => {
+    it("displays max value given content greater than max value", () => {
       const max = 9;
       const content = 11;
 
@@ -181,7 +192,7 @@ describe("<Badge>", () => {
       expect(wrapper.text()).toEqual(`${max}+`);
     });
 
-    it("displays content value given content greater than max value", () => {
+    it("displays content value given content less than max value", () => {
       const max = 9;
       const content = 8;
 
@@ -248,7 +259,7 @@ describe("<Badge>", () => {
       ).toEqual(true);
     });
 
-    it("does not set size class name when invalid variant prop used", () => {
+    it("does not set size class name when non standard variant prop used", () => {
       const size = "small";
       const variant = "dot";
 
@@ -286,13 +297,6 @@ describe("<Badge>", () => {
           .childAt(0)
           .hasClass(variant)
       ).toEqual(true);
-      expect(
-        wrapper
-          .find("Badge")
-          .childAt(0)
-          .childAt(0)
-          .hasClass("size")
-      ).toEqual(false);
     });
 
     it("throws an error with with invalid variant", () => {
