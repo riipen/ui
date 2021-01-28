@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Divider> default props sets correct default props 1`] = `
+<withClasses(Divider)>
+  <Divider
+    classes={
+      Array [
+        "riipen",
+        "riipen-divider",
+      ]
+    }
+    variant="fullWidth"
+  >
+    <div
+      className="jsx-1411329934 fullWidth riipen riipen-divider"
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          "#ddd",
+          10,
+          10,
+        ]
+      }
+      id="3816656998"
+    />
+  </Divider>
+</withClasses(Divider)>
+`;
