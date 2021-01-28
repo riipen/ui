@@ -148,7 +148,7 @@ describe("<Badge>", () => {
   });
 
   describe("content prop", () => {
-    it("badge renders when content is 0 and showZero is false", () => {
+    it("hides badge when content is 0 and showZero is false", () => {
       const content = 0;
 
       const wrapper = mount(<Badge content={content} />);
@@ -160,10 +160,9 @@ describe("<Badge>", () => {
           .childAt(0)
           .hasClass("hidden")
       ).toEqual(true);
-      expect(Number(wrapper.text())).toEqual(content);
     });
 
-    it("badge renders when content is 0 and showZero is true", () => {
+    it("renders badge when content is 0 and showZero is true", () => {
       const content = 0;
       const showZero = true;
 
@@ -172,7 +171,7 @@ describe("<Badge>", () => {
       expect(Number(wrapper.find("Badge").text())).toEqual(content);
     });
 
-    it("badge renders when content is greater than 0 and showZero is true", () => {
+    it("renders badge when content is greater than 0 and showZero is true", () => {
       const content = 1;
       const showZero = true;
 
