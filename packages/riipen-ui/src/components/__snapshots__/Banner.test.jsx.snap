@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Banner> renders correct snapshot 1`] = `
+<withClasses(Banner)>
+  <Banner
+    classes={
+      Array [
+        "riipen",
+        "riipen-banner",
+      ]
+    }
+  >
+    <div
+      className="jsx-1905157259 banner riipen riipen-banner"
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          undefined,
+          undefined,
+          1,
+          2,
+          "#1f71ae",
+          "#f58632",
+          "#3caabb",
+          "#4cc88d",
+          "#e95353",
+        ]
+      }
+      id="638726877"
+    />
+  </Banner>
+</withClasses(Banner)>
+`;
