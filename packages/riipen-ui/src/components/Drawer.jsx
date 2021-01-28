@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -32,7 +33,7 @@ class Drawer extends React.Component {
      *
      * @param {object} event The event source of the callback.
      */
-    onClose: PropTypes.func,
+    onClose: PropTypes.func.isRequired,
 
     /**
      * If `true`, the drawer is open.
