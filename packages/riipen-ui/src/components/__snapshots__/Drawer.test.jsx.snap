@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Drawer> default props sets correct default props 1`] = `
-<withClasses(Drawer)>
+<withClasses(Drawer)
+  onClose={[MockFunction]}
+>
   <Drawer
     anchor="left"
     classes={
@@ -10,12 +12,13 @@ exports[`<Drawer> default props sets correct default props 1`] = `
         "riipen-drawer",
       ]
     }
+    onClose={[MockFunction]}
     open={false}
   />
 </withClasses(Drawer)>
 `;
 
-exports[`<Drawer> snapshot test when open is true and onClose is provided 1`] = `
+exports[`<Drawer> renders the correct snapshot when open is true and onClose is provided 1`] = `
 <withClasses(Drawer)
   onClose={[MockFunction]}
   open={true}

@@ -6,9 +6,10 @@ import Drawer from "./Drawer.jsx";
 
 describe("<Drawer>", () => {
   it("renders without errors", () => {
+    const onClose = jest.fn();
     let error;
     try {
-      mount(<Drawer />);
+      mount(<Drawer onClose={onClose} />);
     } catch (e) {
       error = e;
     }
@@ -16,7 +17,7 @@ describe("<Drawer>", () => {
     expect(error).toEqual(undefined);
   });
 
-  it("snapshot test when open is true and onClose is provided", () => {
+  it("renders the correct snapshot when open is true and onClose is provided", () => {
     const open = true;
     const onClose = jest.fn();
 
@@ -27,28 +28,16 @@ describe("<Drawer>", () => {
 
   describe("default props", () => {
     it("sets correct default props", () => {
-      const defaultProps = new Drawer().type.defaultProps;
+      const onClose = jest.fn();
+      const defaultProps = new Drawer({ onClose }).type.defaultProps;
 
-      const wrapper = mount(<Drawer />);
+      const wrapper = mount(<Drawer onClose={onClose} />);
 
       const component = wrapper.find("Drawer");
       expect(component.props().anchor).toEqual(defaultProps.anchor);
       expect(component.props().open).toEqual(defaultProps.open);
 
       expect(toJson(wrapper)).toMatchSnapshot();
-    });
-
-    it("appends higher order values to default classes prop with withClass decorator", () => {
-      const classes = ["riipen", "riipen-drawer"];
-
-      const wrapper = mount(<Drawer />);
-
-      expect(
-        wrapper
-          .find("Drawer")
-          .props()
-          .classes.sort()
-      ).toEqual(classes.sort());
     });
   });
 
@@ -74,8 +63,9 @@ describe("<Drawer>", () => {
     it("gives an error when given an invalid anchor", () => {
       const anchor = "leftright";
       const errors = jest.spyOn(console, "error").mockImplementation();
+      const onClose = jest.fn();
 
-      mount(<Drawer anchor={anchor} />);
+      mount(<Drawer anchor={anchor} onClose={onClose} />);
 
       expect(errors).toHaveBeenCalledTimes(1);
     });
@@ -121,11 +111,26 @@ describe("<Drawer>", () => {
       ).toEqual(true);
     });
 
+    it("appends higher order values to default classes prop with withClass decorator", () => {
+      const classes = ["riipen", "riipen-drawer"];
+      const onClose = jest.fn();
+
+      const wrapper = mount(<Drawer onClose={onClose} />);
+
+      expect(
+        wrapper
+          .find("Drawer")
+          .props()
+          .classes.sort()
+      ).toEqual(classes.sort());
+    });
+
     it("gives an error when classes are provided as one string", () => {
       const classes = "classOne classTwo";
+      const onClose = jest.fn();
       const errors = jest.spyOn(console, "error").mockImplementation();
 
-      mount(<Drawer classes={classes} />);
+      mount(<Drawer classes={classes} onClose={onClose} />);
 
       expect(errors).toHaveBeenCalled();
     });
@@ -150,6 +155,14 @@ describe("<Drawer>", () => {
       wrapper.find("ClickAway").simulate("click");
 
       expect(onClose).toHaveBeenCalledTimes(1);
+    });
+
+    it("gives a console error when onClose prop is not provided", () => {
+      const errors = jest.spyOn(console, "error").mockImplementation();
+
+      mount(<Drawer />);
+
+      expect(errors).toHaveBeenCalled();
     });
   });
 

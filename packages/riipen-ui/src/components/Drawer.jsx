@@ -33,7 +33,7 @@ class Drawer extends React.Component {
      *
      * @param {object} event The event source of the callback.
      */
-    onClose: PropTypes.func,
+    onClose: PropTypes.func.isRequired,
 
     /**
      * If `true`, the drawer is open.
