@@ -11,13 +11,17 @@ exports[`<Banner> renders correct snapshot 1`] = `
     }
   >
     <div
-      className="jsx-1905157259 banner riipen riipen-banner"
+      className="jsx-1351289181 banner riipen riipen-banner"
+      style={
+        Object {
+          "backgroundImage": "url(undefined)",
+          "height": undefined,
+        }
+      }
     />
     <JSXStyle
       dynamic={
         Array [
-          undefined,
-          undefined,
           1,
           2,
           "#1f71ae",
@@ -27,7 +31,7 @@ exports[`<Banner> renders correct snapshot 1`] = `
           "#e95353",
         ]
       }
-      id="638726877"
+      id="3877515695"
     />
   </Banner>
 </withClasses(Banner)>

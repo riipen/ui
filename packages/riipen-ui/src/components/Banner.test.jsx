@@ -82,14 +82,17 @@ describe("<Banner>", () => {
   });
 
   describe("height prop", () => {
-    it("sets Banner to a given height", () => {
+    it("sets the div inside Banner to a given height", () => {
       const height = "50px";
 
       const wrapper = mount(<Banner height={height} />);
 
-      expect(wrapper.find("JSXStyle").props().children).toContain(
-        "height:50px;"
-      );
+      expect(
+        wrapper
+          .find("Banner")
+          .childAt(0)
+          .props().style.height
+      ).toEqual(height);
     });
 
     it("gives an error when height is not given as a string", () => {
@@ -102,7 +105,20 @@ describe("<Banner>", () => {
     });
   });
 
-  describe("src prop", () => {});
+  describe("src prop", () => {
+    it("sets background image with given src value", () => {
+      const src = "/static/images/banners/folders.jpg";
+
+      const wrapper = mount(<Banner src={src} />);
+
+      expect(
+        wrapper
+          .find("Banner")
+          .childAt(0)
+          .props().style.backgroundImage
+      ).toContain(src);
+    });
+  });
 
   describe("tint prop", () => {
     it("applies tint class name given valid tint", () => {
