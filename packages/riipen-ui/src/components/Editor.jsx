@@ -56,8 +56,12 @@ const toHtmlConfig = {
         return <pre />;
       case "atomic":
         return <div />;
+      case "section":
+        return <section />;
+      case "unstyled":
+        return <p />;
       default:
-        return null;
+        return <span />;
     }
   },
   entityToHTML: (entity, originalText) => {
