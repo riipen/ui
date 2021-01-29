@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -48,18 +49,23 @@ class Banner extends React.Component {
 
     const theme = this.context;
 
+    const style = {
+      height,
+      backgroundImage: `url(${src})`
+    };
+
     const className = clsx("banner", tint, classes);
 
     return (
       <React.Fragment>
-        <div className={className}>{children}</div>
+        <div className={className} style={style}>
+          {children}
+        </div>
         <style jsx>{`
           .banner {
-            background-image: url(${src});
             background-position: center;
             background-size: cover;
             display: flex;
-            height: ${height};
             position: relative;
           }
           .banner::after {
