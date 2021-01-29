@@ -1,7 +1,6 @@
+import clsx from "clsx";
 import React from "react";
 import PropTypes from "prop-types";
-
-import clsx from "clsx";
 import css from "styled-jsx/css";
 
 import ThemeContext from "../styles/ThemeContext";

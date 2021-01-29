@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Transition } from "react-transition-group";
 import css from "styled-jsx/css";
+import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 

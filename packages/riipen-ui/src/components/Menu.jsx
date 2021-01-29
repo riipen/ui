@@ -1,6 +1,6 @@
-import React from "react";
-
 import PropTypes from "prop-types";
+import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import withClasses from "../utils/withClasses";
 

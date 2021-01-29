@@ -2,6 +2,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 import css from "styled-jsx/css";
+import _JSXStyle from "styled-jsx/style";
 
 import AccordionContext from "../contexts/AccordionContext";
 import ThemeContext from "../styles/ThemeContext";
