@@ -44,8 +44,6 @@ describe("<Breadcrumbs>", () => {
         </Breadcrumbs>
       );
 
-      expect(toJson(wrapper)).toMatchSnapshot();
-
       const list = wrapper
         .find("Breadcrumbs")
         .find("Typography")
