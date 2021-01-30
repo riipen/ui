@@ -9,16 +9,19 @@ import withClasses from "../utils/withClasses";
 const Container = ({ classes, children, maxWidth }) => {
   const theme = React.useContext(ThemeContext);
 
+  const style = {
+    maxWidth: `${maxWidth ? `${theme.breakpoints[maxWidth]}px` : "100%"}`
+  };
+
   const className = clsx("root", classes);
 
   return (
-    <div className={className}>
+    <div className={className} style={style}>
       {children}
       <style jsx>{`
         .root {
           box-sizing: border-box;
           margin: 0 auto;
-          max-width: ${maxWidth ? `${theme.breakpoints[maxWidth]}px` : "100%"};
           padding: 0 ${theme.spacing(6)}px;
           position: relative;
         }
