@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Breadcrumbs> default props sets correct default props 1`] = `
+<withClasses(Breadcrumbs)>
+  <Breadcrumbs
+    classes={
+      Array [
+        "riipen",
+        "riipen-breadcrumbs",
+      ]
+    }
+    component="nav"
+    separator="/"
+  >
+    <withClasses(Typography)
+      component="nav"
+    >
+      <Typography
+        classes={
+          Array [
+            "riipen",
+            "riipen-typography",
+          ]
+        }
+        color="inherit"
+        component="nav"
+        display="initial"
+        gutter={false}
+        textAlign="inherit"
+        variant="body1"
+      >
+        <nav
+          className="jsx-4149659077 root color-inherit initial body1 align-inherit riipen riipen-typography"
+        >
+          <ol
+            className="jsx-2183045356 riipen riipen-breadcrumbs"
+          >
+            <li
+              className="jsx-2183045356"
+              key="child-0/.0"
+            >
+              <h1>
+                hello hello
+              </h1>
+            </li>
+          </ol>
+        </nav>
+        <JSXStyle
+          dynamic={
+            Array [
+              "#424242",
+              "Roboto, Helvetica, Arial, sans-serif",
+              400,
+              "14px",
+              "20px",
+              "0.00938em",
+              "#424242",
+              "Roboto, Helvetica, Arial, sans-serif",
+              400,
+              "12px",
+              "17px",
+              "0.01071em",
+              "#424242",
+              "Roboto, Helvetica, Arial, sans-serif",
+              400,
+              "10px",
+              "14px",
+              "0.01071em",
+              "#373737",
+              "Roboto, Helvetica, Arial, sans-serif",
+              500,
+              "40px",
+              "56px",
+              "-0.01562em",
+              "#373737",
+              "Roboto, Helvetica, Arial, sans-serif",
+              500,
+              "30px",
+              "42px",
+              "-0.00833em",
+              "#373737",
+              "Roboto, Helvetica, Arial, sans-serif",
+              500,
+              "22px",
+              "32px",
+              "0em",
+              "#373737",
+              "Roboto, Helvetica, Arial, sans-serif",
+              400,
+              "20px",
+              "30px",
+              "-0.00735em",
+              "#373737",
+              "Roboto, Helvetica, Arial, sans-serif",
+              400,
+              "16px",
+              "23px",
+              "0rem",
+              "#000",
+              "#747474",
+              "#424242",
+              "#373737",
+              "#1f71ae",
+              "#f58632",
+              "#3caabb",
+              "#4cc88d",
+              "#e95353",
+              "#fff",
+              700,
+              300,
+              500,
+              400,
+            ]
+          }
+          id="489809676"
+        />
+      </Typography>
+    </withClasses(Typography)>
+    <JSXStyle
+      dynamic={
+        Array [
+          10,
+        ]
+      }
+      id="2237344651"
+    />
+  </Breadcrumbs>
+</withClasses(Breadcrumbs)>
+`;
