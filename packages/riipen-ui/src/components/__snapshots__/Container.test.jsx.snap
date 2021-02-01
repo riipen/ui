@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Container> default props sets correct default props 1`] = `
+<withClasses(Container)>
+  <Container
+    classes={
+      Array [
+        "riipen",
+        "riipen-container",
+      ]
+    }
+    maxWidth="lg"
+  >
+    <div
+      className="jsx-729050328 root riipen riipen-container"
+      style={
+        Object {
+          "maxWidth": "1380px",
+        }
+      }
+    >
+      <JSXStyle
+        dynamic={
+          Array [
+            30,
+            1380,
+            25,
+            960,
+            15,
+          ]
+        }
+        id="3932038445"
+      />
+    </div>
+  </Container>
+</withClasses(Container)>
+`;
