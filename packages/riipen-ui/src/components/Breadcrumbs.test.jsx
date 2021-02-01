@@ -8,6 +8,7 @@ describe("<Breadcrumbs>", () => {
   it("renders without errors", () => {
     let error;
     const child = <h1>hello hello</h1>;
+
     try {
       mount(<Breadcrumbs children={child} />);
     } catch (e) {
@@ -33,7 +34,7 @@ describe("<Breadcrumbs>", () => {
   });
 
   describe("children prop", () => {
-    it("renders children nodes as typography", () => {
+    it("renders children nodes as a list", () => {
       const child1 = <h1>hello hello</h1>;
       const child2 = <h1>hello 2</h1>;
 
