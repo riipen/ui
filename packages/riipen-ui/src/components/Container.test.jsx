@@ -9,11 +9,13 @@ import Container from "./Container";
 describe("<Container>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Container />);
     } catch (theError) {
       error = theError;
     }
+
     expect(error).toEqual(undefined);
   });
 
@@ -28,15 +30,6 @@ describe("<Container>", () => {
       );
 
       expect(toJson(wrapper)).toMatchSnapshot();
-    });
-
-    it("appends higher order values to default classes prop with withClass decorator", () => {
-      const wrapper = mount(<Container />);
-
-      expect(wrapper.find("Container").props().classes).toEqual([
-        "riipen",
-        "riipen-container"
-      ]);
     });
   });
 
@@ -62,6 +55,15 @@ describe("<Container>", () => {
           .childAt(0)
           .hasClass(classes[0])
       ).toEqual(true);
+    });
+
+    it("appends higher order values to default classes prop with withClass decorator", () => {
+      const wrapper = mount(<Container />);
+
+      expect(wrapper.find("Container").props().classes).toEqual([
+        "riipen",
+        "riipen-container"
+      ]);
     });
   });
 
