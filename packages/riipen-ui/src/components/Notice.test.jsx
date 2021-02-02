@@ -36,7 +36,7 @@ describe("<Notice>", () => {
     it("renders given children", () => {
       const child = <h5>hi hi</h5>;
 
-      const wrapper = mount(<Notice children={child} />);
+      const wrapper = mount(<Notice>{child}</Notice>);
 
       expect(
         wrapper
