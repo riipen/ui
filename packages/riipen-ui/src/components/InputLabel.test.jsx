@@ -7,6 +7,7 @@ import InputLabel from "./InputLabel.jsx";
 describe("<InputLabel>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<InputLabel />);
     } catch (e) {
@@ -38,7 +39,7 @@ describe("<InputLabel>", () => {
     it("renders given children inside the label and Typography element", () => {
       const child = <div>it's a label</div>;
 
-      const wrapper = mount(<InputLabel children={child} />);
+      const wrapper = mount(<InputLabel>{child}</InputLabel>);
 
       expect(
         wrapper
@@ -49,11 +50,10 @@ describe("<InputLabel>", () => {
       ).toEqual(true);
     });
 
-    it("does not render label and Typography elements when children is not given", () => {
+    it("does not render label element when children is not given", () => {
       const wrapper = mount(<InputLabel />);
 
       expect(wrapper.find("InputLabel").find("label")).toHaveLength(0);
-      expect(wrapper.find("InputLabel").find("Typography")).toHaveLength(0);
     });
   });
 
@@ -62,7 +62,7 @@ describe("<InputLabel>", () => {
       const classes = ["classOne"];
       const child = <div>it's a label</div>;
 
-      const wrapper = mount(<InputLabel classes={classes} children={child} />);
+      const wrapper = mount(<InputLabel classes={classes}>{child}</InputLabel>);
 
       expect(
         wrapper
@@ -99,11 +99,8 @@ describe("<InputLabel>", () => {
     it("applies color class to the label element with a valid color", () => {
       const color = "black";
       const child = <div>it's a label</div>;
-      const hint = <span>it's a hint</span>;
 
-      const wrapper = mount(
-        <InputLabel color={color} children={child} hint={hint} />
-      );
+      const wrapper = mount(<InputLabel color={color}>{child}</InputLabel>);
 
       expect(
         wrapper
@@ -115,12 +112,9 @@ describe("<InputLabel>", () => {
 
     it("applies color class to the InputHint element with a valid color", () => {
       const color = "black";
-      const child = <div>it's a label</div>;
       const hint = <span>it's a hint</span>;
 
-      const wrapper = mount(
-        <InputLabel color={color} children={child} hint={hint} />
-      );
+      const wrapper = mount(<InputLabel color={color} hint={hint} />);
 
       expect(
         wrapper
@@ -166,7 +160,7 @@ describe("<InputLabel>", () => {
       const required = true;
 
       const wrapper = mount(
-        <InputLabel children={child} required={required} />
+        <InputLabel required={required}>{child}</InputLabel>
       );
 
       expect(
@@ -178,12 +172,12 @@ describe("<InputLabel>", () => {
       ).toEqual("*");
     });
 
-    it("does not display an asterick when required is false", () => {
+    it("does not display an asterisk when required is false", () => {
       const child = <div>it's a label</div>;
       const required = false;
 
       const wrapper = mount(
-        <InputLabel children={child} required={required} />
+        <InputLabel required={required}>{child}</InputLabel>
       );
 
       expect(
@@ -201,7 +195,7 @@ describe("<InputLabel>", () => {
       const weight = "bold";
       const child = <div>it's a label</div>;
 
-      const wrapper = mount(<InputLabel children={child} weight={weight} />);
+      const wrapper = mount(<InputLabel weight={weight}>{child}</InputLabel>);
 
       expect(
         wrapper
@@ -216,7 +210,7 @@ describe("<InputLabel>", () => {
       const child = <div>it's a label</div>;
       const errors = jest.spyOn(console, "error").mockImplementation();
 
-      mount(<InputLabel children={child} weight={weight} />);
+      mount(<InputLabel weight={weight}>{child}</InputLabel>);
 
       expect(errors).toHaveBeenCalled();
     });
