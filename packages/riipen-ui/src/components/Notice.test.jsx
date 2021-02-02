@@ -7,11 +7,13 @@ import Notice from "./Notice.jsx";
 describe("<Notice>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Notice />);
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
   });
 
