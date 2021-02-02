@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProgressBar> default props sets correct default props 1`] = `
+<withClasses(ProgressBar)>
+  <ProgressBar
+    classes={
+      Array [
+        "riipen",
+        "riipen-progressbar",
+      ]
+    }
+    color="primary"
+    completion={0}
+    unfilled="light"
+  >
+    <div
+      className="jsx-1920417447"
+    >
+      <progress
+        className="jsx-1920417447 primary light riipen riipen-progressbar"
+        value={0}
+      />
+      <JSXStyle
+        dynamic={
+          Array [
+            "4px",
+            "4px",
+            "4px",
+            "4px",
+            "#1f71ae",
+            "#1f71ae",
+            "#fafafa",
+            "#fafafa",
+            "#dddddd",
+            "#dddddd",
+            "#f58632",
+            "#f58632",
+            "#3caabb",
+            "#3caabb",
+            "#4cc88d",
+            "#4cc88d",
+            "#e95353",
+            "#e95353",
+            "#febb46",
+            "#febb46",
+          ]
+        }
+        id="3168937156"
+      />
+    </div>
+  </ProgressBar>
+</withClasses(ProgressBar)>
+`;
