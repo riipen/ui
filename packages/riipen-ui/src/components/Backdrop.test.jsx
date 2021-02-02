@@ -27,7 +27,7 @@ describe("<Backdrop>", () => {
     it("has given child", () => {
       const child = <h1>The children prop</h1>;
 
-      const wrapper = mount(<Backdrop children={child} />);
+      const wrapper = mount(<Backdrop>{child}</Backdrop>);
 
       expect(
         wrapper

@@ -27,7 +27,7 @@ describe("AccordianDetails", () => {
     it("displays children", () => {
       const child = <h5>Accordian Details</h5>;
 
-      const wrapper = mount(<AccordionDetails children={child} />);
+      const wrapper = mount(<AccordionDetails>{child}</AccordionDetails>);
 
       expect(wrapper.contains(child)).toEqual(true);
     });

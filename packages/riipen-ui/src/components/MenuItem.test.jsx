@@ -38,7 +38,7 @@ describe("<MenuItem>", () => {
     it("pass given children into children prop of ListItem", () => {
       const child = <h1>hello hello</h1>;
 
-      const wrapper = mount(<MenuItem children={child} />);
+      const wrapper = mount(<MenuItem>{child}</MenuItem>);
 
       expect(
         wrapper

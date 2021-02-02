@@ -27,7 +27,7 @@ describe("<Toolbar>", () => {
     it("renders given children inside the div element", () => {
       const child = <h5>hello</h5>;
 
-      const wrapper = mount(<Toolbar children={child} />);
+      const wrapper = mount(<Toolbar>{child}</Toolbar>);
 
       expect(
         wrapper

@@ -27,7 +27,7 @@ describe("<Banner>", () => {
     it("renders given children", () => {
       const child = <h5>hi hi</h5>;
 
-      const wrapper = mount(<Banner children={child} />);
+      const wrapper = mount(<Banner>{child}</Banner>);
 
       expect(
         wrapper

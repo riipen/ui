@@ -79,7 +79,9 @@ describe("<Drawer>", () => {
       const onClose = jest.fn();
 
       const wrapper = mount(
-        <Drawer children={child} open={open} onClose={onClose} />
+        <Drawer open={open} onClose={onClose}>
+          {child}
+        </Drawer>
       );
 
       expect(wrapper.find("ClickAway").contains(child)).toEqual(true);
