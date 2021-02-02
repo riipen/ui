@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Badge> default props sets correct default props 1`] = `
+exports[`<Badge> renders correct snapshot 1`] = `
 <withClasses(Badge)>
   <Badge
     anchor={

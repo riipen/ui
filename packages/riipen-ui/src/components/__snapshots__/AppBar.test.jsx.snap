@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AppBar> sets correct default props 1`] = `
+exports[`<AppBar> renders correct snapshot 1`] = `
 <withClasses(AppBar)>
   <AppBar
     classes={

@@ -15,13 +15,17 @@ describe("<AppBar>", () => {
     expect(error).toEqual(undefined);
   });
 
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<AppBar />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it("sets correct default props", () => {
     const wrapper = mount(<AppBar />);
 
     expect(wrapper.find("AppBar").props().color).toEqual("primary");
     expect(wrapper.find("AppBar").props().position).toEqual("fixed");
-
-    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("children prop", () => {

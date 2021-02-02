@@ -17,6 +17,14 @@ describe("<Breadcrumbs>", () => {
     expect(error).toEqual(undefined);
   });
 
+  it("renders correct snapshot", () => {
+    const child = <h1>hello hello</h1>;
+
+    const wrapper = mount(<Breadcrumbs>{child}</Breadcrumbs>);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   describe("default props", () => {
     it("sets correct default props", () => {
       const child = <h1>hello hello</h1>;
@@ -28,8 +36,6 @@ describe("<Breadcrumbs>", () => {
       const component = wrapper.find("Breadcrumbs");
       expect(component.props().component).toEqual(defaultProps.component);
       expect(component.props().separator).toEqual(defaultProps.separator);
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 

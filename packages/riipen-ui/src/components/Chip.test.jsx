@@ -16,6 +16,12 @@ describe("<Chip>", () => {
     expect(error).toEqual(undefined);
   });
 
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<Chip />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   describe("default props", () => {
     it("sets correct default props", () => {
       const defaultProps = new Chip().type.defaultProps;
@@ -29,8 +35,6 @@ describe("<Chip>", () => {
       expect(component.props().hover).toEqual(defaultProps.hover);
       expect(component.props().size).toEqual(defaultProps.size);
       expect(component.props().variant).toEqual(defaultProps.variant);
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 

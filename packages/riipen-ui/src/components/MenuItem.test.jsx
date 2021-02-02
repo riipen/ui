@@ -16,6 +16,12 @@ describe("<MenuItem>", () => {
     expect(error).toEqual(undefined);
   });
 
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<MenuItem />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   describe("default props", () => {
     it("sets correct default props", () => {
       const defaultProps = new MenuItem().type.defaultProps;
@@ -24,8 +30,6 @@ describe("<MenuItem>", () => {
 
       const component = wrapper.find("MenuItem");
       expect(component.props().color).toEqual(defaultProps.color);
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 

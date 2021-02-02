@@ -15,6 +15,12 @@ describe("<Badge>", () => {
     expect(error).toEqual(undefined);
   });
 
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<Badge />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   describe("default props", () => {
     it("sets correct default props", () => {
       const defaultProps = new Badge().type.defaultProps;
@@ -42,8 +48,6 @@ describe("<Badge>", () => {
       expect(wrapper.find("Badge").props().variant).toEqual(
         defaultProps.variant
       );
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 

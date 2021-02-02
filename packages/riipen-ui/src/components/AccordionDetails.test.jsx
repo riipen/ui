@@ -7,6 +7,7 @@ import AccordionDetails from "./AccordionDetails";
 describe("AccordianDetails", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<AccordionDetails />);
     } catch (e) {
@@ -16,7 +17,7 @@ describe("AccordianDetails", () => {
     expect(error).toEqual(undefined);
   });
 
-  it("snapshot test", () => {
+  it("renders correct snapshot", () => {
     const wrapper = mount(<AccordionDetails />);
 
     expect(toJson(wrapper)).toMatchSnapshot();

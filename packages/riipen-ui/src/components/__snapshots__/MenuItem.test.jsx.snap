@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MenuItem> default props sets correct default props 1`] = `
+exports[`<MenuItem> renders correct snapshot 1`] = `
 <withClasses(MenuItem)>
   <MenuItem
     classes={
@@ -55,13 +55,10 @@ exports[`<MenuItem> default props sets correct default props 1`] = `
                 "50": "#fafafa",
                 "500": "#9a9a9a",
                 "600": "#747474",
-                "700": "#616161",
                 "800": "#424242",
                 "900": "#212121",
                 "A100": "#d5d5d5",
-                "A200": "#aaaaaa",
                 "A400": "#373737",
-                "A700": "#616161",
               },
               "negative": Object {
                 "contrast": "#fff",
@@ -243,7 +240,7 @@ exports[`<MenuItem> default props sets correct default props 1`] = `
         }
       >
         <div
-          className="jsx-1338442586 menu-item jsx-3531248961 riipen riipen-menuitem primary list-item"
+          className="jsx-2308247914 menu-item jsx-3531248961 riipen riipen-menuitem primary list-item"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -259,7 +256,7 @@ exports[`<MenuItem> default props sets correct default props 1`] = `
               "#1f71ae",
             ]
           }
-          id="397393447"
+          id="2016436227"
         />
       </ListItem>
     </Component>

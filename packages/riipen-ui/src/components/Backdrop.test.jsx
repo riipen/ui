@@ -16,7 +16,7 @@ describe("<Backdrop>", () => {
     expect(error).toEqual(undefined);
   });
 
-  it("snapshot test", () => {
+  it("renders correct snapshot", () => {
     const wrapper = mount(<Backdrop />);
 
     expect(toJson(wrapper)).toMatchSnapshot();

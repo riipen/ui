@@ -16,6 +16,12 @@ describe("<Divider>", () => {
     expect(error).toEqual(undefined);
   });
 
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<Divider />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   describe("default props", () => {
     it("sets correct default props", () => {
       const defaultProps = new Divider().type.defaultProps;
@@ -24,8 +30,6 @@ describe("<Divider>", () => {
 
       const component = wrapper.find("Divider");
       expect(component.props().variant).toEqual(defaultProps.variant);
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 

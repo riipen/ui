@@ -15,14 +15,18 @@ describe("<Avatar>", () => {
     expect(error).toEqual(undefined);
   });
 
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<Avatar />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   describe("default props", () => {
     it("sets correct default props", () => {
       const wrapper = mount(<Avatar />);
 
       expect(wrapper.find("Avatar").props().size).toEqual("96px");
       expect(wrapper.find("Avatar").props().variant).toEqual("circle");
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it("appends higher order values to default classes prop with withClass decorator", () => {
