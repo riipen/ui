@@ -77,12 +77,11 @@ describe("<Avatar>", () => {
     });
 
     it("appends higher order values to classes prop with withClass decorator", () => {
+      const classes = ["riipen", "riipen-avatar"];
+
       const wrapper = mount(<Avatar />);
 
-      expect(wrapper.find("Avatar").props().classes).toEqual([
-        "riipen",
-        "riipen-avatar"
-      ]);
+      expect(wrapper.find("Avatar").props().classes).toEqual(classes.sort());
     });
   });
 

@@ -48,12 +48,11 @@ describe("<List>", () => {
     });
 
     it("appends higher order values to classes prop with withClass decorator", () => {
+      const classes = ["riipen", "riipen-list"];
+
       const wrapper = mount(<List />);
 
-      expect(wrapper.find("List").props().classes).toEqual([
-        "riipen",
-        "riipen-list"
-      ]);
+      expect(wrapper.find("List").props().classes).toEqual(classes.sort());
     });
   });
 });
