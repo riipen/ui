@@ -16,6 +16,12 @@ describe("<ProgressBar>", () => {
     expect(error).toEqual(undefined);
   });
 
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<ProgressBar />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   describe("default props", () => {
     it("sets correct default props", () => {
       const defaultProps = new ProgressBar().type.defaultProps;
@@ -26,8 +32,6 @@ describe("<ProgressBar>", () => {
       expect(component.props().color).toEqual(defaultProps.color);
       expect(component.props().completion).toEqual(defaultProps.completion);
       expect(component.props().unfilled).toEqual(defaultProps.unfilled);
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 

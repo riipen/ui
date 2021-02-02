@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProgressBar> default props sets correct default props 1`] = `
+exports[`<ProgressBar> renders correct snapshot 1`] = `
 <withClasses(ProgressBar)>
   <ProgressBar
     classes={
