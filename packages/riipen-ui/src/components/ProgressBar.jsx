@@ -27,6 +27,9 @@ class ProgressBar extends React.Component {
       "warning"
     ]),
 
+    /**
+     * Either a light or dark unfilled color.
+     */
     unfilled: PropTypes.oneOf(["light", "dark"]),
 
     /**
