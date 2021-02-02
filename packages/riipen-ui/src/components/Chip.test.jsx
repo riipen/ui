@@ -63,7 +63,7 @@ describe("<Chip>", () => {
 
   describe("classes prop", () => {
     it("applies all classes to the root node of Chip", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
 
       const wrapper = mount(<Chip classes={classes} />);
 
@@ -72,12 +72,6 @@ describe("<Chip>", () => {
           .find("Chip")
           .childAt(0)
           .hasClass(classes[0])
-      ).toEqual(true);
-      expect(
-        wrapper
-          .find("Chip")
-          .childAt(0)
-          .hasClass(classes[1])
       ).toEqual(true);
     });
 

@@ -35,7 +35,7 @@ describe("AccordianDetails", () => {
 
   describe("classes prop", () => {
     it("applies classes to the root node of AccordianDetails", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
 
       const wrapper = mount(<AccordionDetails classes={classes} />);
 
@@ -44,12 +44,6 @@ describe("AccordianDetails", () => {
           .find("AccordionDetails")
           .childAt(0)
           .hasClass(classes[0])
-      ).toEqual(true);
-      expect(
-        wrapper
-          .find("AccordionDetails")
-          .childAt(0)
-          .hasClass(classes[1])
       ).toEqual(true);
     });
 

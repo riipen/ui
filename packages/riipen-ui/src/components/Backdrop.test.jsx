@@ -40,7 +40,7 @@ describe("<Backdrop>", () => {
 
   describe("classes prop", () => {
     it("applies classes to the root node of Backdrop", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
 
       const wrapper = mount(<Backdrop classes={classes} />);
 
@@ -49,12 +49,6 @@ describe("<Backdrop>", () => {
           .find("Backdrop")
           .childAt(0)
           .hasClass(classes[0])
-      ).toEqual(true);
-      expect(
-        wrapper
-          .find("Backdrop")
-          .childAt(0)
-          .hasClass(classes[1])
       ).toEqual(true);
     });
 

@@ -40,7 +40,7 @@ describe("<Banner>", () => {
 
   describe("classes prop", () => {
     it("applies all classes to the div inside of Banner", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
 
       const wrapper = mount(<Banner classes={classes} />);
 
@@ -50,13 +50,6 @@ describe("<Banner>", () => {
           .childAt(0)
           .find("div")
           .hasClass(classes[0])
-      ).toEqual(true);
-      expect(
-        wrapper
-          .find("Banner")
-          .childAt(0)
-          .find("div")
-          .hasClass(classes[1])
       ).toEqual(true);
     });
 

@@ -34,15 +34,6 @@ describe("<Avatar>", () => {
         defaultProps.variant
       );
     });
-
-    it("appends higher order values to default classes prop with withClass decorator", () => {
-      const wrapper = mount(<Avatar />);
-
-      expect(wrapper.find("Avatar").props().classes).toEqual([
-        "riipen",
-        "riipen-avatar"
-      ]);
-    });
   });
 
   describe("alt prop", () => {
@@ -83,6 +74,15 @@ describe("<Avatar>", () => {
           .childAt(0)
           .hasClass(classVariant[0])
       ).toEqual(true);
+    });
+
+    it("appends higher order values to default classes prop with withClass decorator", () => {
+      const wrapper = mount(<Avatar />);
+
+      expect(wrapper.find("Avatar").props().classes).toEqual([
+        "riipen",
+        "riipen-avatar"
+      ]);
     });
   });
 

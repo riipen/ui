@@ -83,7 +83,7 @@ describe("<Breadcrumbs>", () => {
 
   describe("classes prop", () => {
     it("applies all classes to the ol element", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
       const child = <h1>hello hello</h1>;
 
       const wrapper = mount(<Breadcrumbs classes={classes} children={child} />);
@@ -94,13 +94,6 @@ describe("<Breadcrumbs>", () => {
           .childAt(0)
           .find("ol")
           .hasClass(classes[0])
-      ).toEqual(true);
-      expect(
-        wrapper
-          .find("Breadcrumbs")
-          .childAt(0)
-          .find("ol")
-          .hasClass(classes[1])
       ).toEqual(true);
     });
 

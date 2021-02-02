@@ -88,7 +88,7 @@ describe("<Drawer>", () => {
 
   describe("classes prop", () => {
     it("applies all classes to the div inside of ClickAway", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
       const open = true;
       const onClose = jest.fn();
 
@@ -102,13 +102,6 @@ describe("<Drawer>", () => {
           .childAt(0)
           .childAt(0)
           .hasClass(classes[0])
-      ).toEqual(true);
-      expect(
-        wrapper
-          .find("ClickAway")
-          .childAt(0)
-          .childAt(0)
-          .hasClass(classes[1])
       ).toEqual(true);
     });
 
