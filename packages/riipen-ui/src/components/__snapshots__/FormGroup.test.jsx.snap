@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FormGroup> snapshot test renders correctly 1`] = `
+exports[`<FormGroup> renders correct snapshot 1`] = `
 <withClasses(FormGroup)>
   <FormGroup
     classes={

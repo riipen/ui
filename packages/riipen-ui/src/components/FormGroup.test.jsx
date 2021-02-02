@@ -17,12 +17,10 @@ describe("<FormGroup>", () => {
     expect(error).toEqual(undefined);
   });
 
-  describe("snapshot test", () => {
-    it("renders correctly", () => {
-      const wrapper = mount(<FormGroup />);
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<FormGroup />);
 
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("children prop", () => {
@@ -61,9 +59,9 @@ describe("<FormGroup>", () => {
 
   describe("title prop", () => {
     it("renders given title", () => {
-      const title = <FormGroup title="Title" />;
+      const title = "Title";
 
-      const wrapper = mount(<FormGroup>{title}</FormGroup>);
+      const wrapper = mount(<FormGroup title={title} />);
 
       expect(wrapper.containsMatchingElement(title)).toBeTruthy();
     });
@@ -71,9 +69,9 @@ describe("<FormGroup>", () => {
 
   describe("subtitle prop", () => {
     it("renders given subtitle", () => {
-      const subtitle = <FormGroup subtitle="Subtitle" />;
+      const subtitle = "Subtitle";
 
-      const wrapper = mount(<FormGroup>{subtitle}</FormGroup>);
+      const wrapper = mount(<FormGroup subtitle={subtitle} />);
 
       expect(wrapper.containsMatchingElement(subtitle)).toBeTruthy();
     });
