@@ -47,7 +47,7 @@ describe("<FormGroup>", () => {
       ).toEqual(true);
     });
 
-    it("appends higher order values to default classes prop with withClass decorator", () => {
+    it("appends higher order values to classes prop with withClass decorator", () => {
       const wrapper = mount(<FormGroup />);
 
       expect(wrapper.find("FormGroup").props().classes).toEqual([

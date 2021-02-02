@@ -102,6 +102,19 @@ describe("<Badge>", () => {
           .hasClass(classVariant[0])
       ).toEqual(true);
     });
+
+    it("appends higher order values to classes prop with withClasses decorator", () => {
+      const classes = ["riipen", "riipen-badge"];
+
+      const wrapper = mount(<Badge />);
+
+      expect(
+        wrapper
+          .find("Badge")
+          .props()
+          .classes.sort()
+      ).toEqual(classes.sort());
+    });
   });
 
   describe("color prop", () => {

@@ -57,6 +57,19 @@ describe("<AppBar>", () => {
           .hasClass(classVariant[0])
       ).toEqual(true);
     });
+
+    it("appends higher order values to classes prop with withClasses decorator", () => {
+      const classes = ["riipen", "riipen-appbar"];
+
+      const wrapper = mount(<AppBar />);
+
+      expect(
+        wrapper
+          .find("AppBar")
+          .props()
+          .classes.sort()
+      ).toEqual(classes.sort());
+    });
   });
 
   describe("color prop", () => {

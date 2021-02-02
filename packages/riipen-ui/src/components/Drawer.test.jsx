@@ -107,7 +107,7 @@ describe("<Drawer>", () => {
       ).toEqual(true);
     });
 
-    it("appends higher order values to default classes prop with withClass decorator", () => {
+    it("appends higher order values to classes prop with withClass decorator", () => {
       const classes = ["riipen", "riipen-drawer"];
       const onClose = jest.fn();
 

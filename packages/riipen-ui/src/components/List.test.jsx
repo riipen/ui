@@ -47,7 +47,7 @@ describe("<List>", () => {
       ).toEqual(true);
     });
 
-    it("appends higher order values to default classes prop with withClass decorator", () => {
+    it("appends higher order values to classes prop with withClass decorator", () => {
       const wrapper = mount(<List />);
 
       expect(wrapper.find("List").props().classes).toEqual([

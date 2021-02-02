@@ -52,6 +52,19 @@ describe("<Backdrop>", () => {
       ).toEqual(true);
     });
 
+    it("appends higher order values to classes prop with withClasses decorator", () => {
+      const classes = ["riipen", "riipen-backdrop"];
+
+      const wrapper = mount(<Backdrop />);
+
+      expect(
+        wrapper
+          .find("Backdrop")
+          .props()
+          .classes.sort()
+      ).toEqual(classes.sort());
+    });
+
     it("gives an error when classes are provided as one string", () => {
       const classes = "classOne classTwo";
       const errors = jest.spyOn(console, "error").mockImplementation();
