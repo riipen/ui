@@ -13,6 +13,7 @@ describe("<InputHint>", () => {
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
   });
 
@@ -72,7 +73,7 @@ describe("<InputHint>", () => {
   });
 
   describe("classes prop", () => {
-    it("applies all classes to the div inside of InputHint", () => {
+    it("applies classes to the div inside of InputHint", () => {
       const classes = ["classOne"];
 
       const wrapper = mount(<InputHint classes={classes} />);
