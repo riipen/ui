@@ -64,7 +64,8 @@ const ListItem = props => {
         }
 
         .list-item.focusVisible {
-          color: ${theme.palette[color]?.main} || ${theme.palette.primary.main};
+          color: ${theme.palette[color]?.main} ||
+            ${theme.palette[ListItem.defaultProps.color].main};
           outline: 5px auto -webkit-focus-ring-color;
         }
       `}</style>

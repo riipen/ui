@@ -243,7 +243,7 @@ exports[`<MenuItem> default props sets correct default props 1`] = `
         }
       >
         <div
-          className="jsx-1851010818 menu-item jsx-3531248961 riipen riipen-menuitem primary list-item"
+          className="jsx-1338442586 menu-item jsx-3531248961 riipen riipen-menuitem primary list-item"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -259,7 +259,7 @@ exports[`<MenuItem> default props sets correct default props 1`] = `
               "#1f71ae",
             ]
           }
-          id="2700275592"
+          id="397393447"
         />
       </ListItem>
     </Component>
