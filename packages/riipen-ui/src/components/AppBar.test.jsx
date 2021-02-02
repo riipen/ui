@@ -7,11 +7,13 @@ import AppBar from "./AppBar";
 describe("<AppBar>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<AppBar />);
     } catch (theError) {
       error = theError;
     }
+
     expect(error).toEqual(undefined);
   });
 
@@ -22,10 +24,14 @@ describe("<AppBar>", () => {
   });
 
   it("sets correct default props", () => {
+    const defaultProps = new AppBar().type.defaultProps;
+
     const wrapper = mount(<AppBar />);
 
-    expect(wrapper.find("AppBar").props().color).toEqual("primary");
-    expect(wrapper.find("AppBar").props().position).toEqual("fixed");
+    expect(wrapper.find("AppBar").props().color).toEqual(defaultProps.color);
+    expect(wrapper.find("AppBar").props().position).toEqual(
+      defaultProps.position
+    );
   });
 
   describe("children prop", () => {

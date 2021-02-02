@@ -8,6 +8,7 @@ describe("<Drawer>", () => {
   it("renders without errors", () => {
     const onClose = jest.fn();
     let error;
+
     try {
       mount(<Drawer onClose={onClose} />);
     } catch (e) {

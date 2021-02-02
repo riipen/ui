@@ -7,6 +7,7 @@ import Backdrop from "./Backdrop";
 describe("<Backdrop>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Backdrop />);
     } catch (e) {

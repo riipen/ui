@@ -7,6 +7,7 @@ import Divider from "./Divider";
 describe("<Divider>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Divider />);
     } catch (e) {

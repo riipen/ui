@@ -13,6 +13,7 @@ describe("<MenuItem>", () => {
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
   });
 

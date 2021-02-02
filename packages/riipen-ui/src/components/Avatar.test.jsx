@@ -7,11 +7,13 @@ import Avatar from "./Avatar";
 describe("<Avatar>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Avatar />);
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
   });
 
@@ -23,10 +25,14 @@ describe("<Avatar>", () => {
 
   describe("default props", () => {
     it("sets correct default props", () => {
+      const defaultProps = new Avatar().type.defaultProps;
+
       const wrapper = mount(<Avatar />);
 
-      expect(wrapper.find("Avatar").props().size).toEqual("96px");
-      expect(wrapper.find("Avatar").props().variant).toEqual("circle");
+      expect(wrapper.find("Avatar").props().size).toEqual(defaultProps.size);
+      expect(wrapper.find("Avatar").props().variant).toEqual(
+        defaultProps.variant
+      );
     });
 
     it("appends higher order values to default classes prop with withClass decorator", () => {

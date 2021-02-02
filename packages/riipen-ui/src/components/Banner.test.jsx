@@ -7,11 +7,13 @@ import Banner from "./Banner.jsx";
 describe("<Banner>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Banner />);
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
   });
 

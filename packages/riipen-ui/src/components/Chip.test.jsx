@@ -7,6 +7,7 @@ import Chip from "./Chip";
 describe("<Chip>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Chip />);
     } catch (e) {
