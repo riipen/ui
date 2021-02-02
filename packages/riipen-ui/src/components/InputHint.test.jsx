@@ -37,7 +37,7 @@ describe("<InputHint>", () => {
     it("renders given children inside the Typography element", () => {
       const child = <span>hello</span>;
 
-      const wrapper = mount(<InputHint children={child} />);
+      const wrapper = mount(<InputHint>{child}</InputHint>);
 
       expect(
         wrapper
