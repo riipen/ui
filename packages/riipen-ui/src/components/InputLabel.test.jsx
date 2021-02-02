@@ -13,6 +13,7 @@ describe("<InputLabel>", () => {
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
   });
 
