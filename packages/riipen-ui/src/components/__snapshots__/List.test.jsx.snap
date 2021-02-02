@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<List> snapshot test renders correctly 1`] = `
+<withClasses(List)>
+  <List
+    classes={
+      Array [
+        "riipen",
+        "riipen-list",
+      ]
+    }
+  >
+    <ul
+      className="jsx-1785636575 riipen riipen-list"
+    />
+    <JSXStyle
+      id="1785636575"
+    />
+  </List>
+</withClasses(List)>
+`;
