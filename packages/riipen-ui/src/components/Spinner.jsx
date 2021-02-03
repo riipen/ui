@@ -21,7 +21,7 @@ class Spinner extends React.Component {
     color: PropTypes.oneOf(["primary", "secondary", "tertiary"]),
 
     /**
-     * Wether to display the spinner or the content
+     * Whether to display the spinner or the content
      */
     loading: PropTypes.bool
   };
