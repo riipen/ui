@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Notice> renders correct snapshot 1`] = `
+<withClasses(Notice)>
+  <Notice
+    classes={
+      Array [
+        "riipen",
+        "riipen-notice",
+      ]
+    }
+    color="primary"
+  >
+    <div
+      className="jsx-3616308683 primary riipen riipen-notice"
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          "4px",
+          10,
+          20,
+          "#2c8ddc",
+          "#1f71ae",
+          "#f5bf95",
+          "#f58632",
+          "#78becc",
+          "#3caabb",
+          "#ea7e7e",
+          "#e95353",
+          "#78dbac",
+          "#4cc88d",
+        ]
+      }
+      id="483255525"
+    />
+  </Notice>
+</withClasses(Notice)>
+`;
