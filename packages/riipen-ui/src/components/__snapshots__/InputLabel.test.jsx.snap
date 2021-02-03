@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InputLabel> renders correct snapshot 1`] = `
+<withClasses(InputLabel)>
+  <InputLabel
+    classes={
+      Array [
+        "riipen",
+        "riipen-inputlabel",
+      ]
+    }
+    color="default"
+    required={false}
+    weight="regular"
+  >
+    <JSXStyle
+      dynamic={
+        Array [
+          "#747474",
+          "Roboto, Helvetica, Arial, sans-serif",
+          400,
+          "0.00938em",
+          15,
+          "#fff",
+          "#000",
+          300,
+          500,
+          700,
+        ]
+      }
+      id="2351364854"
+    />
+  </InputLabel>
+</withClasses(InputLabel)>
+`;
