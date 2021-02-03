@@ -61,7 +61,7 @@ const toHtmlConfig = {
       case "unstyled":
         return <p />;
       default:
-        return <span />;
+        return null;
     }
   },
   entityToHTML: (entity, originalText) => {

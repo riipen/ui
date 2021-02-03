@@ -17,12 +17,10 @@ describe("<List>", () => {
     expect(error).toEqual(undefined);
   });
 
-  describe("snapshot test", () => {
-    it("renders correctly", () => {
-      const wrapper = mount(<List />);
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<List />);
 
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("children prop", () => {

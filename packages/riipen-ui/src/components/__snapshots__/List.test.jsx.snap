@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<List> snapshot test renders correctly 1`] = `
+exports[`<List> renders correct snapshot 1`] = `
 <withClasses(List)>
   <List
     classes={

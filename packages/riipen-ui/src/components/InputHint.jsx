@@ -20,7 +20,7 @@ class InputHint extends React.Component {
     /**
      * Color of the hint text
      */
-    color: PropTypes.oneOf(["default", "white"]),
+    color: PropTypes.oneOf(["default", "white", "black"]),
 
     /**
      * An array of custom CSS classes to apply.
