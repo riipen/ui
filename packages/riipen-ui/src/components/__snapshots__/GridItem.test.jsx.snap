@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GridItem> renders correct snapshot 1`] = `
+<withClasses(GridItem)>
+  <GridItem
+    alignItems="stretch"
+    classes={
+      Array [
+        "riipen",
+        "riipen-griditem",
+      ]
+    }
+    flexDirection="column"
+    flexGrow={0}
+    flexShrink={0}
+    flexWrap="wrap"
+    justifyContent="flex-start"
+    lg={12}
+    size="lg"
+    spacing={3}
+  >
+    <div
+      className="jsx-812231540 riipen riipen-griditem lg"
+      style={
+        Object {
+          "alignItems": "stretch",
+          "display": "flex",
+          "flexDirection": "column",
+          "flexGrow": 0,
+          "flexShrink": 0,
+          "flexWrap": "wrap",
+          "justifyContent": "flex-start",
+          "marginBottom": "15px",
+          "paddingLeft": "15px",
+        }
+      }
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          "100%",
+        ]
+      }
+      id="3933275013"
+    />
+  </GridItem>
+</withClasses(GridItem)>
+`;

@@ -182,22 +182,27 @@ class GridItem extends React.Component {
 
     const className = clsx(classes, itemSize);
 
+    const style = {
+      alignItems,
+      display: `${hidden ? "none" : "flex"}`,
+      flexDirection,
+      flexGrow,
+      flexShrink,
+      flexWrap,
+      justifyContent,
+      marginBottom: `${theme.spacing(spacing)}px`,
+      paddingLeft: `${theme.spacing(spacing)}px`
+    };
+
     return (
       <React.Fragment>
-        <div className={className}>{children}</div>
+        <div className={className} style={style}>
+          {children}
+        </div>
         <style jsx>{`
           div {
-            align-items: ${alignItems};
             box-sizing: border-box;
-            display: ${hidden ? "none" : "flex"};
             flex-basis: ${flexBasis};
-            flex-direction: ${flexDirection};
-            flex-grow: ${flexGrow};
-            flex-shrink: ${flexShrink};
-            flex-wrap: ${flexWrap};
-            justify-content: ${justifyContent};
-            margin-bottom: ${theme.spacing(spacing)}px;
-            padding-left: ${theme.spacing(spacing)}px;
           }
         `}</style>
       </React.Fragment>
