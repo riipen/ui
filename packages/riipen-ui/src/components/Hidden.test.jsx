@@ -58,7 +58,6 @@ describe("<Hidden>", () => {
     it("applies given direction to the size-direction className on div", () => {
       const direction = "up";
       const size = "sm";
-      const className = new RegExp(`.+-${direction}`);
 
       const wrapper = mount(<Hidden direction={direction} size={size} />);
 
@@ -66,7 +65,7 @@ describe("<Hidden>", () => {
         wrapper
           .find("Hidden")
           .find("div")
-          .hasClass(className)
+          .hasClass(new RegExp(`.+-${direction}`))
       ).toEqual(true);
     });
 
@@ -85,7 +84,6 @@ describe("<Hidden>", () => {
   describe("size prop", () => {
     it("applies given size to the size-direction className on div", () => {
       const size = "sm";
-      const className = new RegExp(`${size}-.+`);
 
       const wrapper = mount(<Hidden size={size} />);
 
@@ -93,7 +91,7 @@ describe("<Hidden>", () => {
         wrapper
           .find("Hidden")
           .find("div")
-          .hasClass(className)
+          .hasClass(new RegExp(`${size}-.+`))
       ).toEqual(true);
     });
 
@@ -104,22 +102,6 @@ describe("<Hidden>", () => {
       mount(<Hidden size={size} />);
 
       expect(errors).toHaveBeenCalled();
-    });
-  });
-
-  describe("classes prop", () => {
-    it("appends higher order values to classes prop with withClass decorator", () => {
-      const classes = ["riipen", "riipen-hidden"];
-      const size = "xs";
-
-      const wrapper = mount(<Hidden size={size} />);
-
-      expect(
-        wrapper
-          .find("Hidden")
-          .props()
-          .classes.sort()
-      ).toEqual(classes.sort());
     });
   });
 });
