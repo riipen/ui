@@ -7,11 +7,13 @@ import Banner from "./Banner.jsx";
 describe("<Banner>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Banner />);
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
   });
 
@@ -25,7 +27,7 @@ describe("<Banner>", () => {
     it("renders given children", () => {
       const child = <h5>hi hi</h5>;
 
-      const wrapper = mount(<Banner children={child} />);
+      const wrapper = mount(<Banner>{child}</Banner>);
 
       expect(
         wrapper
@@ -38,7 +40,7 @@ describe("<Banner>", () => {
 
   describe("classes prop", () => {
     it("applies all classes to the div inside of Banner", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
 
       const wrapper = mount(<Banner classes={classes} />);
 
@@ -48,13 +50,6 @@ describe("<Banner>", () => {
           .childAt(0)
           .find("div")
           .hasClass(classes[0])
-      ).toEqual(true);
-      expect(
-        wrapper
-          .find("Banner")
-          .childAt(0)
-          .find("div")
-          .hasClass(classes[1])
       ).toEqual(true);
     });
 

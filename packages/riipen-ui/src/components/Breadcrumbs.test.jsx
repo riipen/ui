@@ -10,11 +10,20 @@ describe("<Breadcrumbs>", () => {
     const child = <h1>hello hello</h1>;
 
     try {
-      mount(<Breadcrumbs children={child} />);
+      mount(<Breadcrumbs>{child}</Breadcrumbs>);
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
+  });
+
+  it("renders correct snapshot", () => {
+    const child = <h1>hello hello</h1>;
+
+    const wrapper = mount(<Breadcrumbs>{child}</Breadcrumbs>);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("default props", () => {
@@ -23,13 +32,11 @@ describe("<Breadcrumbs>", () => {
       const defaultProps = new Breadcrumbs({ children: child }).type
         .defaultProps;
 
-      const wrapper = mount(<Breadcrumbs children={child} />);
+      const wrapper = mount(<Breadcrumbs>{child}</Breadcrumbs>);
 
       const component = wrapper.find("Breadcrumbs");
       expect(component.props().component).toEqual(defaultProps.component);
       expect(component.props().separator).toEqual(defaultProps.separator);
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 
@@ -76,10 +83,12 @@ describe("<Breadcrumbs>", () => {
 
   describe("classes prop", () => {
     it("applies all classes to the ol element", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
       const child = <h1>hello hello</h1>;
 
-      const wrapper = mount(<Breadcrumbs classes={classes} children={child} />);
+      const wrapper = mount(
+        <Breadcrumbs classes={classes}>{child}</Breadcrumbs>
+      );
 
       expect(
         wrapper
@@ -88,20 +97,13 @@ describe("<Breadcrumbs>", () => {
           .find("ol")
           .hasClass(classes[0])
       ).toEqual(true);
-      expect(
-        wrapper
-          .find("Breadcrumbs")
-          .childAt(0)
-          .find("ol")
-          .hasClass(classes[1])
-      ).toEqual(true);
     });
 
     it("appends higher order values to classes prop with withClass decorator", () => {
       const classes = ["riipen", "riipen-breadcrumbs"];
       const child = <h1>hello hello</h1>;
 
-      const wrapper = mount(<Breadcrumbs children={child} />);
+      const wrapper = mount(<Breadcrumbs>{child}</Breadcrumbs>);
 
       expect(
         wrapper
@@ -116,7 +118,7 @@ describe("<Breadcrumbs>", () => {
       const child = <h1>hello hello</h1>;
       const errors = jest.spyOn(console, "error").mockImplementation();
 
-      mount(<Breadcrumbs classes={classes} children={child} />);
+      mount(<Breadcrumbs classes={classes}>{child}</Breadcrumbs>);
 
       expect(errors).toHaveBeenCalled();
     });
@@ -129,7 +131,7 @@ describe("<Breadcrumbs>", () => {
       const child = <h1>hello hello</h1>;
 
       const wrapper = mount(
-        <Breadcrumbs component={component} children={child} />
+        <Breadcrumbs component={component}>{child}</Breadcrumbs>
       );
 
       expect(

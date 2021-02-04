@@ -8,6 +8,7 @@ describe("<Drawer>", () => {
   it("renders without errors", () => {
     const onClose = jest.fn();
     let error;
+
     try {
       mount(<Drawer onClose={onClose} />);
     } catch (e) {
@@ -78,7 +79,9 @@ describe("<Drawer>", () => {
       const onClose = jest.fn();
 
       const wrapper = mount(
-        <Drawer children={child} open={open} onClose={onClose} />
+        <Drawer open={open} onClose={onClose}>
+          {child}
+        </Drawer>
       );
 
       expect(wrapper.find("ClickAway").contains(child)).toEqual(true);
@@ -87,7 +90,7 @@ describe("<Drawer>", () => {
 
   describe("classes prop", () => {
     it("applies all classes to the div inside of ClickAway", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
       const open = true;
       const onClose = jest.fn();
 
@@ -102,16 +105,9 @@ describe("<Drawer>", () => {
           .childAt(0)
           .hasClass(classes[0])
       ).toEqual(true);
-      expect(
-        wrapper
-          .find("ClickAway")
-          .childAt(0)
-          .childAt(0)
-          .hasClass(classes[1])
-      ).toEqual(true);
     });
 
-    it("appends higher order values to default classes prop with withClass decorator", () => {
+    it("appends higher order values to classes prop with withClass decorator", () => {
       const classes = ["riipen", "riipen-drawer"];
       const onClose = jest.fn();
 

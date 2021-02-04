@@ -13,7 +13,14 @@ describe("<MenuItem>", () => {
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
+  });
+
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<MenuItem />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("default props", () => {
@@ -24,8 +31,6 @@ describe("<MenuItem>", () => {
 
       const component = wrapper.find("MenuItem");
       expect(component.props().color).toEqual(defaultProps.color);
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 
@@ -33,7 +38,7 @@ describe("<MenuItem>", () => {
     it("pass given children into children prop of ListItem", () => {
       const child = <h1>hello hello</h1>;
 
-      const wrapper = mount(<MenuItem children={child} />);
+      const wrapper = mount(<MenuItem>{child}</MenuItem>);
 
       expect(
         wrapper

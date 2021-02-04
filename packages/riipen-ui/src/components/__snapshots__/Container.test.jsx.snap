@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Container> default props sets correct default props 1`] = `
+exports[`<Container> renders correct snapshot 1`] = `
 <withClasses(Container)>
   <Container
     classes={
