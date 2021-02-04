@@ -7,31 +7,32 @@ import Avatar from "./Avatar";
 describe("<Avatar>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Avatar />);
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
+  });
+
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<Avatar />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("default props", () => {
     it("sets correct default props", () => {
+      const defaultProps = new Avatar().type.defaultProps;
+
       const wrapper = mount(<Avatar />);
 
-      expect(wrapper.find("Avatar").props().size).toEqual("96px");
-      expect(wrapper.find("Avatar").props().variant).toEqual("circle");
-
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
-
-    it("appends higher order values to default classes prop with withClass decorator", () => {
-      const wrapper = mount(<Avatar />);
-
-      expect(wrapper.find("Avatar").props().classes).toEqual([
-        "riipen",
-        "riipen-avatar"
-      ]);
+      expect(wrapper.find("Avatar").props().size).toEqual(defaultProps.size);
+      expect(wrapper.find("Avatar").props().variant).toEqual(
+        defaultProps.variant
+      );
     });
   });
 
@@ -73,6 +74,14 @@ describe("<Avatar>", () => {
           .childAt(0)
           .hasClass(classVariant[0])
       ).toEqual(true);
+    });
+
+    it("appends higher order values to classes prop with withClass decorator", () => {
+      const classes = ["riipen", "riipen-avatar"];
+
+      const wrapper = mount(<Avatar />);
+
+      expect(wrapper.find("Avatar").props().classes).toEqual(classes.sort());
     });
   });
 

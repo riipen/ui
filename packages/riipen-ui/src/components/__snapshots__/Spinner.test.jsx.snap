@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Spinner> renders correct snapshot 1`] = `
+<withClasses(Spinner)>
+  <Spinner
+    classes={
+      Array [
+        "riipen",
+        "riipen-spinner",
+      ]
+    }
+    color="primary"
+  >
+    <div
+      className="jsx-671880185 loadingContainer"
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          "#1f71ae",
+          "#f58632",
+          "#3caabb",
+          "#1f71ae",
+          "#f58632",
+          "#3caabb",
+        ]
+      }
+      id="975642710"
+    />
+  </Spinner>
+</withClasses(Spinner)>
+`;

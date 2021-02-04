@@ -7,21 +7,31 @@ import AppBar from "./AppBar";
 describe("<AppBar>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<AppBar />);
     } catch (theError) {
       error = theError;
     }
+
     expect(error).toEqual(undefined);
   });
 
-  it("sets correct default props", () => {
+  it("renders correct snapshot", () => {
     const wrapper = mount(<AppBar />);
 
-    expect(wrapper.find("AppBar").props().color).toEqual("primary");
-    expect(wrapper.find("AppBar").props().position).toEqual("fixed");
-
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("sets correct default props", () => {
+    const defaultProps = new AppBar().type.defaultProps;
+
+    const wrapper = mount(<AppBar />);
+
+    expect(wrapper.find("AppBar").props().color).toEqual(defaultProps.color);
+    expect(wrapper.find("AppBar").props().position).toEqual(
+      defaultProps.position
+    );
   });
 
   describe("children prop", () => {
@@ -46,6 +56,19 @@ describe("<AppBar>", () => {
           .childAt(0)
           .hasClass(classVariant[0])
       ).toEqual(true);
+    });
+
+    it("appends higher order values to classes prop with withClasses decorator", () => {
+      const classes = ["riipen", "riipen-appbar"];
+
+      const wrapper = mount(<AppBar />);
+
+      expect(
+        wrapper
+          .find("AppBar")
+          .props()
+          .classes.sort()
+      ).toEqual(classes.sort());
     });
   });
 

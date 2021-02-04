@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Hidden> renders correct snapshot 1`] = `
+<withClasses(Hidden)
+  size="sm"
+>
+  <Hidden
+    classes={
+      Array [
+        "riipen",
+        "riipen-hidden",
+      ]
+    }
+    direction="down"
+    size="sm"
+  >
+    <div
+      className="jsx-679367177 sm-down"
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          0,
+          0,
+          600,
+          600,
+          960,
+          960,
+          1380,
+          1380,
+          1920,
+          1920,
+        ]
+      }
+      id="1718998684"
+    />
+  </Hidden>
+</withClasses(Hidden)>
+`;

@@ -13,6 +13,7 @@ describe("<ProgressBar>", () => {
     } catch (e) {
       error = e;
     }
+
     expect(error).toEqual(undefined);
   });
 

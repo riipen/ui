@@ -47,13 +47,12 @@ describe("<FormGroup>", () => {
       ).toEqual(true);
     });
 
-    it("appends higher order values to default classes prop with withClass decorator", () => {
+    it("appends higher order values to classes prop with withClass decorator", () => {
+      const classes = ["riipen", "riipen-formgroup"];
+
       const wrapper = mount(<FormGroup />);
 
-      expect(wrapper.find("FormGroup").props().classes).toEqual([
-        "riipen",
-        "riipen-formgroup"
-      ]);
+      expect(wrapper.find("FormGroup").props().classes).toEqual(classes.sort());
     });
   });
 

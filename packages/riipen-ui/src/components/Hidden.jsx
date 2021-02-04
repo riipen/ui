@@ -16,7 +16,7 @@ class Hidden extends React.Component {
     children: PropTypes.node,
 
     /**
-     * Given some size, will hide content at that size and up / down (direction).
+     * Given some size, will hide content at size larger than min (up) or smaller than max (down).
      */
     direction: PropTypes.oneOf(["down", "up"]),
 

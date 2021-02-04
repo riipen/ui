@@ -7,6 +7,7 @@ import AccordionDetails from "./AccordionDetails";
 describe("AccordianDetails", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<AccordionDetails />);
     } catch (e) {
@@ -16,7 +17,7 @@ describe("AccordianDetails", () => {
     expect(error).toEqual(undefined);
   });
 
-  it("snapshot test", () => {
+  it("renders correct snapshot", () => {
     const wrapper = mount(<AccordionDetails />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -25,7 +26,8 @@ describe("AccordianDetails", () => {
   describe("children prop", () => {
     it("displays children", () => {
       const child = <h5>Accordian Details</h5>;
-      const wrapper = mount(<AccordionDetails children={child} />);
+
+      const wrapper = mount(<AccordionDetails>{child}</AccordionDetails>);
 
       expect(wrapper.contains(child)).toEqual(true);
     });
@@ -33,7 +35,7 @@ describe("AccordianDetails", () => {
 
   describe("classes prop", () => {
     it("applies classes to the root node of AccordianDetails", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
 
       const wrapper = mount(<AccordionDetails classes={classes} />);
 
@@ -42,12 +44,6 @@ describe("AccordianDetails", () => {
           .find("AccordionDetails")
           .childAt(0)
           .hasClass(classes[0])
-      ).toEqual(true);
-      expect(
-        wrapper
-          .find("AccordionDetails")
-          .childAt(0)
-          .hasClass(classes[1])
       ).toEqual(true);
     });
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Backdrop> snapshot test 1`] = `
+exports[`<Backdrop> renders correct snapshot 1`] = `
 <withClasses(Backdrop)>
   <Backdrop
     classes={

@@ -19,6 +19,12 @@ describe("<Container>", () => {
     expect(error).toEqual(undefined);
   });
 
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<Container />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   describe("default props", () => {
     it("sets correct default props", () => {
       const defaultProps = new Container().type.defaultProps;
@@ -28,8 +34,6 @@ describe("<Container>", () => {
       expect(wrapper.find("Container").props().maxWidth).toEqual(
         defaultProps.maxWidth
       );
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 

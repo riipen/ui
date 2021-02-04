@@ -7,6 +7,7 @@ import Backdrop from "./Backdrop";
 describe("<Backdrop>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Backdrop />);
     } catch (e) {
@@ -16,7 +17,7 @@ describe("<Backdrop>", () => {
     expect(error).toEqual(undefined);
   });
 
-  it("snapshot test", () => {
+  it("renders correct snapshot", () => {
     const wrapper = mount(<Backdrop />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -26,7 +27,7 @@ describe("<Backdrop>", () => {
     it("has given child", () => {
       const child = <h1>The children prop</h1>;
 
-      const wrapper = mount(<Backdrop children={child} />);
+      const wrapper = mount(<Backdrop>{child}</Backdrop>);
 
       expect(
         wrapper
@@ -39,7 +40,7 @@ describe("<Backdrop>", () => {
 
   describe("classes prop", () => {
     it("applies classes to the root node of Backdrop", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
 
       const wrapper = mount(<Backdrop classes={classes} />);
 
@@ -49,12 +50,19 @@ describe("<Backdrop>", () => {
           .childAt(0)
           .hasClass(classes[0])
       ).toEqual(true);
+    });
+
+    it("appends higher order values to classes prop with withClasses decorator", () => {
+      const classes = ["riipen", "riipen-backdrop"];
+
+      const wrapper = mount(<Backdrop />);
+
       expect(
         wrapper
           .find("Backdrop")
-          .childAt(0)
-          .hasClass(classes[1])
-      ).toEqual(true);
+          .props()
+          .classes.sort()
+      ).toEqual(classes.sort());
     });
 
     it("gives an error when classes are provided as one string", () => {

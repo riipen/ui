@@ -7,12 +7,20 @@ import Badge from "./Badge";
 describe("<Badge>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Badge />);
     } catch (theError) {
       error = theError;
     }
+
     expect(error).toEqual(undefined);
+  });
+
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<Badge />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("default props", () => {
@@ -42,8 +50,6 @@ describe("<Badge>", () => {
       expect(wrapper.find("Badge").props().variant).toEqual(
         defaultProps.variant
       );
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 
@@ -95,6 +101,19 @@ describe("<Badge>", () => {
           .childAt(0)
           .hasClass(classVariant[0])
       ).toEqual(true);
+    });
+
+    it("appends higher order values to classes prop with withClasses decorator", () => {
+      const classes = ["riipen", "riipen-badge"];
+
+      const wrapper = mount(<Badge />);
+
+      expect(
+        wrapper
+          .find("Badge")
+          .props()
+          .classes.sort()
+      ).toEqual(classes.sort());
     });
   });
 

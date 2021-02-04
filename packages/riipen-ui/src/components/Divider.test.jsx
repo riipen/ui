@@ -7,6 +7,7 @@ import Divider from "./Divider";
 describe("<Divider>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Divider />);
     } catch (e) {
@@ -14,6 +15,12 @@ describe("<Divider>", () => {
     }
 
     expect(error).toEqual(undefined);
+  });
+
+  it("renders correct snapshot", () => {
+    const wrapper = mount(<Divider />);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("default props", () => {
@@ -24,14 +31,12 @@ describe("<Divider>", () => {
 
       const component = wrapper.find("Divider");
       expect(component.props().variant).toEqual(defaultProps.variant);
-
-      expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
 
   describe("classes prop", () => {
     it("applies all classes to the root node of Divider", () => {
-      const classes = ["classOne", "classTwo"];
+      const classes = ["classOne"];
 
       const wrapper = mount(<Divider classes={classes} />);
 
@@ -40,12 +45,6 @@ describe("<Divider>", () => {
           .find("Divider")
           .childAt(0)
           .hasClass(classes[0])
-      ).toEqual(true);
-      expect(
-        wrapper
-          .find("Divider")
-          .childAt(0)
-          .hasClass(classes[1])
       ).toEqual(true);
     });
 
