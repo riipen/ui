@@ -3,7 +3,6 @@ import toJson from "enzyme-to-json";
 import React from "react";
 
 import Typography from "./Typography";
-// import { variantMapping } from "./Typography";
 
 describe("<Typography>", () => {
   it("renders without errors", () => {
