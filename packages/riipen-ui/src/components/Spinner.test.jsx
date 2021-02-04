@@ -39,6 +39,15 @@ describe("<Spinner>", () => {
 
       expect(wrapper.containsMatchingElement(child)).toBeTruthy();
     });
+
+    it("does not display children when loading is true", () => {
+      const child = <div>child</div>;
+      const loading = true;
+
+      const wrapper = mount(<Spinner loading={loading}>{child}</Spinner>);
+
+      expect(wrapper.containsMatchingElement(child)).toBeFalsy();
+    });
   });
 
   describe("color prop", () => {
