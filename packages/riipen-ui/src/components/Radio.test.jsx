@@ -9,7 +9,7 @@ describe("<Radio>", () => {
     let error;
 
     try {
-      mount(<Radio />);
+      mount(<Radio readOnly />);
     } catch (theError) {
       error = theError;
     }
@@ -18,7 +18,7 @@ describe("<Radio>", () => {
   });
 
   it("renders correct snapshot", () => {
-    const wrapper = mount(<Radio />);
+    const wrapper = mount(<Radio readOnly />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -27,7 +27,7 @@ describe("<Radio>", () => {
     it("sets correct default props", () => {
       const defaultProps = new Radio().type.defaultProps;
 
-      const wrapper = mount(<Radio />);
+      const wrapper = mount(<Radio readOnly />);
 
       expect(wrapper.find("Radio").props().checked).toEqual(
         defaultProps.checked
@@ -42,7 +42,7 @@ describe("<Radio>", () => {
     it("sets valid custom checked", () => {
       const checked = true;
 
-      const wrapper = mount(<Radio checked={checked} />);
+      const wrapper = mount(<Radio checked={checked} readOnly />);
 
       expect(
         wrapper
@@ -57,7 +57,7 @@ describe("<Radio>", () => {
     it("sets custom class", () => {
       const classes = ["newClass"];
 
-      const wrapper = mount(<Radio classes={classes} />);
+      const wrapper = mount(<Radio classes={classes} readOnly />);
 
       expect(
         wrapper
@@ -70,7 +70,7 @@ describe("<Radio>", () => {
     it("appends higher order values to classes prop with withClass decorator", () => {
       const classes = ["riipen", "riipen-radio"];
 
-      const wrapper = mount(<Radio />);
+      const wrapper = mount(<Radio readOnly />);
 
       expect(wrapper.find("Radio").props().classes).toEqual(classes.sort());
     });
@@ -80,7 +80,7 @@ describe("<Radio>", () => {
     it("sets valid custom  color", () => {
       const color = "default";
 
-      const wrapper = mount(<Radio color={color} />);
+      const wrapper = mount(<Radio color={color} readOnly />);
 
       expect(
         wrapper
@@ -95,7 +95,7 @@ describe("<Radio>", () => {
       const errors = jest.spyOn(console, "error").mockImplementation();
       const color = "purple";
 
-      mount(<Radio color={color} />);
+      mount(<Radio color={color} readOnly />);
 
       expect(errors).toHaveBeenCalledTimes(1);
     });
@@ -105,7 +105,7 @@ describe("<Radio>", () => {
     it("renders radio as disabled when disabled prop is true", () => {
       const disabled = true;
 
-      const wrapper = mount(<Radio disabled={disabled} />);
+      const wrapper = mount(<Radio disabled={disabled} readOnly />);
 
       expect(
         wrapper
@@ -118,7 +118,7 @@ describe("<Radio>", () => {
     it("renders radio with color when disabled prop is false", () => {
       const color = "primary";
 
-      const wrapper = mount(<Radio color={color} />);
+      const wrapper = mount(<Radio color={color} readOnly />);
 
       expect(
         wrapper
@@ -139,7 +139,7 @@ describe("<Radio>", () => {
     it("renders custom label", () => {
       const label = "Pizza";
 
-      const wrapper = mount(<Radio label={label} />);
+      const wrapper = mount(<Radio label={label} readOnly />);
 
       expect(
         wrapper

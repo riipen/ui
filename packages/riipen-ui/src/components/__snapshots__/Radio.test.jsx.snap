@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Radio> renders correct snapshot 1`] = `
-<withClasses(Radio)>
+<withClasses(Radio)
+  readOnly={true}
+>
   <Radio
     checked={false}
     classes={
@@ -11,6 +13,7 @@ exports[`<Radio> renders correct snapshot 1`] = `
       ]
     }
     disabled={false}
+    readOnly={true}
   >
     <div
       className="jsx-741275437 riipen riipen-radio"
@@ -22,6 +25,7 @@ exports[`<Radio> renders correct snapshot 1`] = `
           checked={false}
           className="jsx-741275437 jsx-835554889"
           disabled={false}
+          readOnly={true}
           type="radio"
         />
         <withClasses(Typography)
