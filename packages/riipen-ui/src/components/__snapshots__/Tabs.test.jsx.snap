@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tabs> renders correct snapshot 1`] = `
+<withClasses(Tabs)>
+  <Tabs
+    breakpoint="sm"
+    classes={
+      Array [
+        "riipen",
+        "riipen-tabs",
+      ]
+    }
+    color="secondary"
+    component="div"
+    orientation="horizontal"
+    variant="standard"
+  >
+    <div
+      className="jsx-3443918914 root horizontal riipen riipen-tabs"
+      role="tablist"
+    >
+      <div
+        className="jsx-3443918914 scroller"
+      >
+        <div
+          className="jsx-3443918914 horizontal"
+        />
+      </div>
+    </div>
+    <JSXStyle
+      id="3443918914"
+    />
+  </Tabs>
+</withClasses(Tabs)>
+`;
