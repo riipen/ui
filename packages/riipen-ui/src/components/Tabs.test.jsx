@@ -60,20 +60,18 @@ describe("<Tabs>", () => {
   });
 
   describe("children prop", () => {
-    it("renders multiple given children with different value", () => {
+    it("renders all non null children", () => {
       const child1 = <Tab value="one" />;
-      const child2 = <Tab value="two" />;
 
       const wrapper = mount(
         <Tabs>
+          {null}
           {child1}
-          {child2}
         </Tabs>
       );
 
       const childrenNodes = wrapper.find("Tab");
       expect(childrenNodes.at(0).props().value).toEqual("one");
-      expect(childrenNodes.at(1).props().value).toEqual("two");
     });
   });
 
@@ -103,15 +101,6 @@ describe("<Tabs>", () => {
           .classes.sort()
       ).toEqual(classes.sort());
     });
-
-    it("gives an error when classes are provided as one string", () => {
-      const classes = "classOne classTwo";
-      const errors = jest.spyOn(console, "error").mockImplementation();
-
-      mount(<Tabs classes={classes} />);
-
-      expect(errors).toHaveBeenCalled();
-    });
   });
 
   describe("color prop", () => {
@@ -139,7 +128,12 @@ describe("<Tabs>", () => {
 
       const wrapper = mount(<Tabs component={component} />);
 
-      expect(wrapper.find("Tabs").childAt());
+      expect(
+        wrapper
+          .find("Tabs")
+          .childAt(0)
+          .name()
+      ).toEqual(component);
     });
 
     it("gives an error when given an invalid component", () => {
@@ -153,7 +147,15 @@ describe("<Tabs>", () => {
   });
 
   describe("onChange prop", () => {
-    it("passes valid handler to the onClick prop of children nodes", () => {
+    it("sets onClick prop of children nodes", () => {
+      const child = <Tab label="Item one" value="one" />;
+
+      const wrapper = mount(<Tabs>{child}</Tabs>);
+
+      expect(wrapper.find("Tab").props().onClick).not.toBeNull();
+    });
+
+    it("invokes handler when child Tab is clicked", () => {
       const onChange = jest.fn();
       const child = <Tab label="Item one" value="one" />;
 
@@ -173,6 +175,21 @@ describe("<Tabs>", () => {
       const wrapper = mount(<Tabs orientation={orientation}>{child}</Tabs>);
 
       expect(wrapper.find("Tab").props().orientation).toEqual(orientation);
+    });
+
+    it("sets valid custom orientation", () => {
+      const orientation = "vertical";
+
+      const wrapper = mount(<Tabs orientation={orientation} />);
+
+      expect(
+        wrapper
+          .find("Tabs")
+          .childAt(0)
+          .childAt(0)
+          .childAt(0)
+          .hasClass(orientation)
+      ).toEqual(true);
     });
 
     it("gives an error with invalid orientation", () => {
