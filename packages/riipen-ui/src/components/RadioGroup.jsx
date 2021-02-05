@@ -69,9 +69,11 @@ class RadioGroup extends React.Component {
       ...other
     } = this.props;
 
-    const childrenWithProps = React.Children.map(children, child =>
-      React.cloneElement(child, { onChange: this.handleChange })
-    );
+    const childrenWithProps = React.Children.map(children, child => {
+      if (!child) return null;
+
+      return React.cloneElement(child, { onChange: this.handleChange });
+    });
 
     return (
       <React.Fragment>
