@@ -72,20 +72,13 @@ describe("<RadioGroup>", () => {
   });
 
   describe("label prop", () => {
-    it("renders InputLabel when label is provided", () => {
-      const label = "it's a label";
-
-      const wrapper = mount(<RadioGroup label={label} />);
-
-      expect(wrapper.find("InputLabel")).toHaveLength(1);
-    });
-
-    it("passes given label to InputLabel as children", () => {
+    it("renders Inputlabel and passes label to InputLabel as children", () => {
       const label = "it's a label";
 
       const wrapper = mount(<RadioGroup label={label} />);
 
       expect(wrapper.find("InputLabel").props().children).toEqual(label);
+      expect(wrapper.find("InputLabel")).toHaveLength(1);
     });
 
     it("does not render InputLabel when both label and hint are not provided", () => {
@@ -122,18 +115,9 @@ describe("<RadioGroup>", () => {
   });
 
   describe("required prop", () => {
-    it("sets required prop of InputLabel to true when required is true", () => {
+    it("passes required prop to InputLabel", () => {
       const label = "it's a label";
       const required = true;
-
-      const wrapper = mount(<RadioGroup label={label} required={required} />);
-
-      expect(wrapper.find("InputLabel").props().required).toEqual(required);
-    });
-
-    it("sets required prop of InputLabel to false when required is false", () => {
-      const label = "it's a label";
-      const required = false;
 
       const wrapper = mount(<RadioGroup label={label} required={required} />);
 
