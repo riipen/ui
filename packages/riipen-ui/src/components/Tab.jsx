@@ -228,7 +228,7 @@ Tab.propTypes = {
   icon: PropTypes.elementType,
 
   /**
-   * The label element.
+   * The label element
    */
   label: PropTypes.node,
 

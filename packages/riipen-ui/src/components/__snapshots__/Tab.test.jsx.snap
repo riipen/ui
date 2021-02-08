@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Tab> renders correct snapshot 1`] = `
-<Component>
+<Component
+  value={true}
+>
   <Tab
     active={false}
     breakpoint="sm"
@@ -219,6 +221,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
         },
       }
     }
+    value={true}
   >
     <div
       aria-disabled={false}
