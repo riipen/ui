@@ -56,7 +56,7 @@ describe("<TableHeader>", () => {
   });
 
   describe("classes prop", () => {
-    it("applies classes to the root node of Typography", () => {
+    it("applies classes to the root node", () => {
       const classes = ["classOne"];
 
       const wrapper = mount(
