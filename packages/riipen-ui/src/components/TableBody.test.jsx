@@ -34,16 +34,19 @@ describe("<TableBody>", () => {
 
   describe("children prop", () => {
     it("displays given children", () => {
-      const child = <td>Test</td>;
-      const childContent = <tr>{child}</tr>;
+      const child = (
+        <tr>
+          <td>Test</td>
+        </tr>
+      );
 
       const wrapper = mount(
         <Table>
-          <TableBody>{childContent}</TableBody>
+          <TableBody>{child}</TableBody>
         </Table>
       );
 
-      expect(wrapper.containsMatchingElement(childContent)).toBeTruthy();
+      expect(wrapper.containsMatchingElement(child)).toBeTruthy();
     });
   });
 
