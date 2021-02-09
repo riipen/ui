@@ -135,8 +135,31 @@ describe("<TableCell>", () => {
     });
   });
 
+  describe("colSpan prop", () => {
+    it("sets custom colSpan", () => {
+      const colSpan = 2;
+
+      const wrapper = mount(
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell colSpan={colSpan} />
+            </TableRow>
+          </TableBody>
+        </Table>
+      );
+
+      expect(
+        wrapper
+          .find("TableCell")
+          .find("td")
+          .props().colSpan
+      ).toEqual(colSpan);
+    });
+  });
+
   describe("padding prop", () => {
-    it("sets custom valid padding", () => {
+    it("sets custom padding", () => {
       const padding = 2;
 
       const wrapper = mount(
@@ -155,6 +178,29 @@ describe("<TableCell>", () => {
           .childAt(0)
           .props().style.padding
       ).toContain(`${defaultTheme.spacing(padding)}px`);
+    });
+  });
+
+  describe("rowSpan prop", () => {
+    it("sets custom rowSpan", () => {
+      const rowSpan = 2;
+
+      const wrapper = mount(
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell rowSpan={rowSpan} />
+            </TableRow>
+          </TableBody>
+        </Table>
+      );
+
+      expect(
+        wrapper
+          .find("TableCell")
+          .find("td")
+          .props().rowSpan
+      ).toEqual(rowSpan);
     });
   });
 

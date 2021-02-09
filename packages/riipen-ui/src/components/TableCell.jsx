@@ -72,9 +72,9 @@ class TableCell extends React.Component {
       <React.Fragment>
         <td
           className={clsx(classes)}
-          style={style}
           colSpan={colSpan}
           rowSpan={rowSpan}
+          style={style}
           {...other}
         >
           {children}

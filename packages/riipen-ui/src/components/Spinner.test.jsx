@@ -7,11 +7,13 @@ import Spinner from "./Spinner";
 describe("<Spinner>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(<Spinner />);
     } catch (theError) {
       error = theError;
     }
+
     expect(error).toEqual(undefined);
   });
 
