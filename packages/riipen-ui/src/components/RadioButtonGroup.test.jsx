@@ -95,6 +95,14 @@ describe("<RadioButtonGroup>", () => {
 
       expect(wrapper.find("InputLabel").props().children).toEqual(label);
     });
+
+    it("does not render InputLabel when both label and hint are not provided", () => {
+      const child = <RadioButton id="one" />;
+
+      const wrapper = mount(<RadioButtonGroup>{child}</RadioButtonGroup>);
+
+      expect(wrapper.find("InputLabel")).toHaveLength(0);
+    });
   });
 
   describe("name prop", () => {
