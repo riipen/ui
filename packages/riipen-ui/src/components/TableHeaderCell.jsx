@@ -35,11 +35,15 @@ class TableHeaderCell extends React.Component {
   render() {
     const { children, classes, textAlign, ...other } = this.props;
 
+    const style = {
+      textAlign
+    };
+
     const theme = this.context;
 
     return (
       <React.Fragment>
-        <th className={clsx(classes)} {...other}>
+        <th className={clsx(classes)} style={style} {...other}>
           {children}
         </th>
         <style jsx>{`
@@ -50,7 +54,6 @@ class TableHeaderCell extends React.Component {
             letter-spacing: ${theme.typography.body1.letterSpacing};
             line-height: ${theme.typography.body1.lineHeight};
             padding: ${theme.spacing(3)}px;
-            text-align: ${textAlign};
           }
         `}</style>
       </React.Fragment>
