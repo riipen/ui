@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RadioGroup> renders correct snapshot 1`] = `
+<withClasses(RadioGroup)>
+  <RadioGroup
+    classes={
+      Array [
+        "riipen",
+        "riipen-radiogroup",
+      ]
+    }
+  >
+    <fieldset
+      className="jsx-4088605537"
+    />
+    <JSXStyle
+      id="4088605537"
+    />
+  </RadioGroup>
+</withClasses(RadioGroup)>
+`;
