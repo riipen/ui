@@ -41,118 +41,77 @@ describe("<Tab>", () => {
     });
   });
 
-  describe("active and displayActive props", () => {
-    const props = {};
-    const color = "primary";
-    const orientation = "horizontal";
+  describe("active props", () => {
+    it("sets correct class name based on color when active is true", () => {
+      const active = true;
+      const color = "primary";
 
-    const tests = [
-      {
-        active: false,
-        displayActive: false,
-        argument: `${color}-active`,
-        expected: false
-      },
-      {
-        active: true,
-        displayActive: false,
-        argument: `${color}-active`,
-        expected: true
-      },
-      {
-        active: false,
-        displayActive: true,
-        argument: `${color}-active`,
-        expected: true
-      },
-      {
-        active: true,
-        displayActive: true,
-        argument: `${color}-active`,
-        expected: true
-      },
-      {
-        active: false,
-        displayActive: false,
-        argument: `${orientation}-active`,
-        expected: false
-      },
-      {
-        active: true,
-        displayActive: false,
-        argument: `${orientation}-active`,
-        expected: true
-      },
-      {
-        active: false,
-        displayActive: true,
-        argument: `${orientation}-active`,
-        expected: true
-      },
-      {
-        active: true,
-        displayActive: true,
-        argument: `${orientation}-active`,
-        expected: true
-      }
-    ];
+      const wrapper = mount(<Tab active={active} color={color} value />);
 
-    tests.forEach(test => {
-      it(`sets ${test.expected} class name with custom active and displayActive prop values`, () => {
-        props.active = test.active;
-        props.displayActive = test.displayActive;
-        props.color = "primary";
-        props.orientation = "horizontal";
+      expect(
+        wrapper
+          .find("Tab")
+          .childAt(0)
+          .hasClass(`${color}-active`)
+      ).toEqual(true);
+    });
 
-        const wrapper = mount(<Tab {...props} value />);
+    it("sets correct class name based on orientation when active is true", () => {
+      const active = true;
+      const orientation = "horizontal";
 
-        expect(
-          wrapper
-            .find("Tab")
-            .childAt(0)
-            .hasClass(test.argument)
-        ).toEqual(test.expected);
-      });
+      const wrapper = mount(
+        <Tab active={active} orientation={orientation} value />
+      );
+
+      expect(
+        wrapper
+          .find("Tab")
+          .childAt(0)
+          .hasClass(`${orientation}-active`)
+      ).toEqual(true);
     });
   });
 
   describe("breakpoint prop", () => {
     describe("custom breakpoint and orientation props", () => {
-      const props = {};
-
       const tests = [
         {
-          breakpoint: "md",
-          orientation: "horizontal",
-          argument: "breakpoint",
+          props: {
+            breakpoint: "md",
+            orientation: "horizontal"
+          },
           expected: true
         },
         {
-          breakpoint: "md",
-          orientation: "vertical",
-          argument: "breakpoint",
+          props: {
+            breakpoint: "md",
+            orientation: "vertical"
+          },
           expected: false
         },
         {
-          breakpoint: "none",
-          orientation: "horizontal",
-          argument: "breakpoint",
+          props: {
+            breakpoint: "none",
+            orientation: "horizontal"
+          },
           expected: false
         }
       ];
 
       tests.forEach(test => {
-        it(`sets ${test.expected} class name with custom breakpoint and orientation prop values`, () => {
-          props.breakpoint = test.breakpoint;
-          props.orientation = test.orientation;
-
-          const wrapper = mount(<Tab {...props} value />);
+        it(`${
+          test.expected ? "does" : "does not"
+        } set breakpoint class name with breakpoint of ${
+          test.props.breakpoint
+        } and orientation of ${test.props.orientation}`, () => {
+          const wrapper = mount(<Tab {...test.props} value />);
 
           expect(
             wrapper
               .find("Tab")
               .childAt(0)
-              .hasClass(test.argument)
+              .hasClass("breakpoint")
           ).toEqual(test.expected);
         });
       });
@@ -184,7 +143,7 @@ describe("<Tab>", () => {
   });
 
   describe("color prop", () => {
-    it("sets custom color", () => {
+    it("sets custom valid color", () => {
       const color = "secondary";
 
       const wrapper = mount(<Tab color={color} value />);
@@ -218,6 +177,40 @@ describe("<Tab>", () => {
           .find("Tab")
           .childAt(0)
           .hasClass("disabled")
+      ).toEqual(true);
+    });
+  });
+
+  describe("displayActive props", () => {
+    it("sets correct class name based on color when displayActive is true", () => {
+      const displayActive = true;
+      const color = "primary";
+
+      const wrapper = mount(
+        <Tab displayActive={displayActive} color={color} value />
+      );
+
+      expect(
+        wrapper
+          .find("Tab")
+          .childAt(0)
+          .hasClass(`${color}-active`)
+      ).toEqual(true);
+    });
+
+    it("sets correct class name based on orientation when displayActive is true", () => {
+      const displayActive = true;
+      const orientation = "horizontal";
+
+      const wrapper = mount(
+        <Tab displayActive={displayActive} orientation={orientation} value />
+      );
+
+      expect(
+        wrapper
+          .find("Tab")
+          .childAt(0)
+          .hasClass(`${orientation}-active`)
       ).toEqual(true);
     });
   });
@@ -264,11 +257,12 @@ describe("<Tab>", () => {
           .childAt(0)
           .hasClass("label")
       ).toEqual(true);
+      expect(wrapper.text()).toEqual(label);
     });
   });
 
   describe("onClick prop", () => {
-    it("onClick prop correctly handles click event", () => {
+    it("invokes onClick prop on click", () => {
       const handler = jest.fn();
 
       const wrapper = mount(<Tab onClick={handler} value />);
@@ -277,7 +271,7 @@ describe("<Tab>", () => {
       expect(handler).toHaveBeenCalledTimes(1);
     });
 
-    it("onClick prop correctly handles click event when disabled", () => {
+    it("does not invoke onClick prop on click when disabled", () => {
       const handler = jest.fn();
       const disabled = true;
 
@@ -289,7 +283,7 @@ describe("<Tab>", () => {
       expect(handler).toHaveBeenCalledTimes(0);
     });
 
-    it("onClick prop correctly handles valid keydown event", () => {
+    it("invokes onClick prop on valid keydown event", () => {
       const handler = jest.fn();
 
       const wrapper = mount(<Tab onClick={handler} value />);
@@ -298,7 +292,7 @@ describe("<Tab>", () => {
       expect(handler).toHaveBeenCalledTimes(1);
     });
 
-    it("onClick prop correctly handles invalid keydown event", () => {
+    it("does not invoke onClick prop on invalid keydown event", () => {
       const handler = jest.fn();
 
       const wrapper = mount(<Tab onClick={handler} value />);

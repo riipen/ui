@@ -213,12 +213,12 @@ Tab.propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * If `true` will force the tab to be displayed active
+   * If `true` will force the tab to be displayed active.
    */
   displayActive: PropTypes.bool,
 
   /**
-   * If `true`, will make the tab grow to use all the available space,
+   * If `true`, will make the tab grow to use all the available space.
    */
   fullWidth: PropTypes.bool,
 
@@ -228,15 +228,15 @@ Tab.propTypes = {
   icon: PropTypes.elementType,
 
   /**
-   * The label element
+   * The label element.
    */
   label: PropTypes.node,
 
   /**
    * Callback fired when the tab is clicked.
    *
-   * @param {object} event The event source of the callback
-   * @param {any} value We default to the index of the child (number)
+   * @param {object} event The event source of the callback.
+   * @param {any} value We default to the index of the child (number).
    */
   onClick: PropTypes.func,
 
@@ -247,7 +247,7 @@ Tab.propTypes = {
 
   /**
    * @ignore
-   * The theme context object
+   * The theme context object.
    */
   theme: PropTypes.object,
 
