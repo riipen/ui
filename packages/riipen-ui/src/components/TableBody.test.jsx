@@ -8,6 +8,7 @@ import Table from "./Table";
 describe("<TableBody>", () => {
   it("renders without errors", () => {
     let error;
+
     try {
       mount(
         <Table>
@@ -17,6 +18,7 @@ describe("<TableBody>", () => {
     } catch (theError) {
       error = theError;
     }
+
     expect(error).toEqual(undefined);
   });
 
@@ -46,7 +48,7 @@ describe("<TableBody>", () => {
   });
 
   describe("classes prop", () => {
-    it("applies all classes to the root node", () => {
+    it("applies all classes to the tbody node", () => {
       const classes = ["classOne"];
 
       const wrapper = mount(
