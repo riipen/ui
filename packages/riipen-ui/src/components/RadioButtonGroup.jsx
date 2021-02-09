@@ -94,7 +94,7 @@ RadioButtonGroup.propTypes = {
   /**
    * The content of the component.
    */
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 
   /**
    * An error to display below the input.
