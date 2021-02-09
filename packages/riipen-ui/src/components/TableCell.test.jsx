@@ -177,7 +177,7 @@ describe("<TableCell>", () => {
           .find("TableCell")
           .childAt(0)
           .props().style.padding
-      ).toContain(`${defaultTheme.spacing(padding)}px`);
+      ).toEqual(`${defaultTheme.spacing(padding)}px`);
     });
   });
 
@@ -223,7 +223,7 @@ describe("<TableCell>", () => {
           .find("TableCell")
           .childAt(0)
           .props().style.textAlign
-      ).toContain(textAlign);
+      ).toEqual(textAlign);
     });
 
     it("gives an error when given an invalid textAlign", () => {
