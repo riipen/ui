@@ -63,12 +63,18 @@ class TableCell extends React.Component {
 
     const theme = this.context;
 
+    const style = {
+      textAlign,
+      padding: `${theme.spacing(padding)}px`
+    };
+
     return (
       <React.Fragment>
         <td
           className={clsx(classes)}
           colSpan={colSpan}
           rowSpan={rowSpan}
+          style={style}
           {...other}
         >
           {children}
@@ -80,8 +86,6 @@ class TableCell extends React.Component {
             font-weight: ${theme.typography.body2.fontWeight};
             letter-spacing: ${theme.typography.body2.letterSpacing};
             line-height: ${theme.typography.body2.lineHeight};
-            padding: ${theme.spacing(padding)}px;
-            text-align: ${textAlign};
           }
         `}</style>
       </React.Fragment>
