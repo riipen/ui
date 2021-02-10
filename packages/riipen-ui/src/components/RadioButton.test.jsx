@@ -29,7 +29,7 @@ describe("<RadioButton>", () => {
   });
 
   describe("checked prop", () => {
-    it("sets class name as checked and color as initial when checked is true", () => {
+    it("sets element's class name or prop value when checked is true", () => {
       const checked = true;
 
       const wrapper = mount(<RadioButton checked={checked} readOnly />);
@@ -40,6 +40,8 @@ describe("<RadioButton>", () => {
           .childAt(0)
           .hasClass("checked")
       ).toEqual(true);
+      expect(wrapper.find("label").hasClass("checked")).toEqual(true);
+      expect(wrapper.find("input").props().checked).toEqual(checked);
       expect(wrapper.find("Typography").props().color).toEqual("initial");
     });
 
@@ -81,7 +83,7 @@ describe("<RadioButton>", () => {
   });
 
   describe("disabled prop", () => {
-    it("sets class name as disabled when disabled is true", () => {
+    it("sets element's class name or disabled value when disabled is true", () => {
       const disabled = true;
 
       const wrapper = mount(<RadioButton disabled={disabled} readOnly />);
@@ -92,6 +94,8 @@ describe("<RadioButton>", () => {
           .childAt(0)
           .hasClass("disabled")
       ).toEqual(true);
+      expect(wrapper.find("label").hasClass("disabled")).toEqual(true);
+      expect(wrapper.find("input").props().disabled).toEqual(disabled);
     });
   });
 
