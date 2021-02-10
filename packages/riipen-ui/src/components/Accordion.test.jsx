@@ -40,6 +40,7 @@ describe("<Accordion>", () => {
 
       const wrapper = mount(<Accordion>{child}</Accordion>);
 
+      expect(wrapper.find("Accordion").props().classes).toEqual([]);
       expect(wrapper.find("Accordion").props().defaultExpanded).toEqual(false);
       expect(wrapper.find("Accordion").props().disabled).toEqual(false);
     });
@@ -118,7 +119,7 @@ describe("<Accordion>", () => {
   });
 
   describe("disabled prop", () => {
-    it("applies disabled class when true", () => {
+    it("applies disabled class name when disabled is true", () => {
       const disabled = true;
       const child = <AccordionDetails>hello</AccordionDetails>;
 
@@ -132,7 +133,7 @@ describe("<Accordion>", () => {
       ).toEqual(true);
     });
 
-    it("does not apply disabled class when false", () => {
+    it("applies disabled class name when disabled is false", () => {
       const disabled = false;
       const child = <AccordionDetails>hello</AccordionDetails>;
 
