@@ -93,7 +93,7 @@ describe("<Accordion>", () => {
   });
 
   describe("expanded state", () => {
-    it("sets correct expanded class when change occurs", () => {
+    it("sets correct expanded class when summary is clicked", () => {
       const defaultExpanded = true;
       const summary = <AccordionSummary>summary</AccordionSummary>;
       const child = <AccordionDetails>hello</AccordionDetails>;
