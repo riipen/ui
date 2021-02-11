@@ -29,7 +29,7 @@ describe("<RadioButton>", () => {
   });
 
   describe("checked prop", () => {
-    it("sets element's class name or prop value when checked is true", () => {
+    it("sets RadioButton element class name as checked when checked is true", () => {
       const checked = true;
 
       const wrapper = mount(<RadioButton checked={checked} readOnly />);
@@ -40,12 +40,33 @@ describe("<RadioButton>", () => {
           .childAt(0)
           .hasClass("checked")
       ).toEqual(true);
+    });
+
+    it("sets label element class name as checked when checked is true", () => {
+      const checked = true;
+
+      const wrapper = mount(<RadioButton checked={checked} readOnly />);
+
       expect(wrapper.find("label").hasClass("checked")).toEqual(true);
+    });
+
+    it("sets input element class name as checked when checked is true", () => {
+      const checked = true;
+
+      const wrapper = mount(<RadioButton checked={checked} readOnly />);
+
       expect(wrapper.find("input").props().checked).toEqual(checked);
+    });
+
+    it("sets color prop as initial when checked is true", () => {
+      const checked = true;
+
+      const wrapper = mount(<RadioButton checked={checked} readOnly />);
+
       expect(wrapper.find("Typography").props().color).toEqual("initial");
     });
 
-    it("sets color as grey600 when checked is false", () => {
+    it("sets color prop as grey600 when checked is false", () => {
       const checked = false;
 
       const wrapper = mount(<RadioButton checked={checked} readOnly />);
@@ -83,7 +104,7 @@ describe("<RadioButton>", () => {
   });
 
   describe("disabled prop", () => {
-    it("sets element's class name or disabled value when disabled is true", () => {
+    it("sets RadioButton element class name as disabled when disabled is true", () => {
       const disabled = true;
 
       const wrapper = mount(<RadioButton disabled={disabled} readOnly />);
@@ -94,18 +115,39 @@ describe("<RadioButton>", () => {
           .childAt(0)
           .hasClass("disabled")
       ).toEqual(true);
+    });
+
+    it("sets label element class name as disabled when disabled is true", () => {
+      const disabled = true;
+
+      const wrapper = mount(<RadioButton disabled={disabled} readOnly />);
+
       expect(wrapper.find("label").hasClass("disabled")).toEqual(true);
-      expect(wrapper.find("input").props().disabled).toEqual(disabled);
     });
   });
 
+  it("sets custom disabled for input element", () => {
+    const disabled = true;
+
+    const wrapper = mount(<RadioButton disabled={disabled} readOnly />);
+
+    expect(wrapper.find("input").props().disabled).toEqual(disabled);
+  });
+
   describe("id prop", () => {
-    it("sets custom id", () => {
+    it("sets custom id for input element", () => {
       const id = "Test";
 
       const wrapper = mount(<RadioButton id={id} readOnly />);
 
       expect(wrapper.find("input").props().id).toEqual(id);
+    });
+
+    it("sets custom id for label element", () => {
+      const id = "Test";
+
+      const wrapper = mount(<RadioButton id={id} readOnly />);
+
       expect(wrapper.find("label").props().htmlFor).toEqual(id);
     });
   });
