@@ -9,10 +9,13 @@ import AccordionSummary from "./AccordionSummary";
 describe("<Accordion>", () => {
   it("renders without errors", () => {
     let error;
-    const child = <AccordionDetails />;
 
     try {
-      mount(<Accordion>{child}</Accordion>);
+      mount(
+        <Accordion>
+          <AccordionDetails />
+        </Accordion>
+      );
     } catch (e) {
       error = e;
     }
@@ -21,13 +24,10 @@ describe("<Accordion>", () => {
   });
 
   it("renders correct snapshot", () => {
-    const summary = <AccordionSummary />;
-    const child = <AccordionDetails />;
-
     const wrapper = mount(
       <Accordion>
-        {summary}
-        {child}
+        <AccordionSummary />
+        <AccordionDetails />
       </Accordion>
     );
 
@@ -36,9 +36,11 @@ describe("<Accordion>", () => {
 
   describe("default props", () => {
     it("sets correct default props", () => {
-      const child = <AccordionDetails />;
-
-      const wrapper = mount(<Accordion>{child}</Accordion>);
+      const wrapper = mount(
+        <Accordion>
+          <AccordionDetails />
+        </Accordion>
+      );
 
       expect(wrapper.find("Accordion").props().classes).toEqual([]);
       expect(wrapper.find("Accordion").props().defaultExpanded).toEqual(false);
@@ -52,18 +54,19 @@ describe("<Accordion>", () => {
 
       const wrapper = mount(<Accordion>{child}</Accordion>);
 
-      expect(wrapper.find("AccordionDetails").props().children).toEqual(
-        "hello"
-      );
+      expect(wrapper.find("Accordion").contains(child)).toEqual(true);
     });
   });
 
   describe("classes prop", () => {
     it("applies custom classes", () => {
       const classes = ["classOne"];
-      const child = <AccordionDetails>hello</AccordionDetails>;
 
-      const wrapper = mount(<Accordion classes={classes}>{child}</Accordion>);
+      const wrapper = mount(
+        <Accordion classes={classes}>
+          <AccordionDetails>hello</AccordionDetails>
+        </Accordion>
+      );
 
       expect(
         wrapper
@@ -75,15 +78,15 @@ describe("<Accordion>", () => {
   });
 
   describe("defaultExpanded prop", () => {
-    it("sets expanded class with given defaultExpanded", () => {
+    it("applies explanded class to root given defaultExpanded is true", () => {
       const defaultExpanded = true;
-      const child = <AccordionDetails>hello</AccordionDetails>;
 
       const wrapper = mount(
-        <Accordion defaultExpanded={defaultExpanded}>{child}</Accordion>
+        <Accordion defaultExpanded={defaultExpanded}>
+          <AccordionDetails>hello</AccordionDetails>
+        </Accordion>
       );
 
-      expect(wrapper.find("Collapse").props().in).toEqual(defaultExpanded);
       expect(
         wrapper
           .find("Accordion")
@@ -91,24 +94,16 @@ describe("<Accordion>", () => {
           .hasClass("expanded")
       ).toEqual(true);
     });
-  });
 
-  describe("expanded state", () => {
-    it("sets correct expanded class when summary is clicked", () => {
-      const defaultExpanded = true;
-      const summary = <AccordionSummary>summary</AccordionSummary>;
-      const child = <AccordionDetails>hello</AccordionDetails>;
+    it("does not apply explanded class to root given defaultExpanded is false", () => {
+      const defaultExpanded = false;
 
       const wrapper = mount(
         <Accordion defaultExpanded={defaultExpanded}>
-          {summary}
-          {child}
+          <AccordionDetails>hello</AccordionDetails>
         </Accordion>
       );
 
-      wrapper.find("AccordionSummary").simulate("click");
-
-      expect(wrapper.find("Collapse").props().in).toEqual(!defaultExpanded);
       expect(
         wrapper
           .find("Accordion")
@@ -116,14 +111,66 @@ describe("<Accordion>", () => {
           .hasClass("expanded")
       ).toEqual(false);
     });
+
+    it("sets expanded class with given defaultExpanded", () => {
+      const defaultExpanded = true;
+
+      const wrapper = mount(
+        <Accordion defaultExpanded={defaultExpanded}>
+          <AccordionDetails>hello</AccordionDetails>
+        </Accordion>
+      );
+
+      expect(wrapper.find("Collapse").props().in).toEqual(defaultExpanded);
+    });
+  });
+
+  describe("expanded state", () => {
+    it("sets correct expanded class to root when summary is clicked", () => {
+      const defaultExpanded = true;
+
+      const wrapper = mount(
+        <Accordion defaultExpanded={defaultExpanded}>
+          <AccordionSummary>summary</AccordionSummary>
+          <AccordionDetails>hello</AccordionDetails>
+        </Accordion>
+      );
+
+      wrapper.find("AccordionSummary").simulate("click");
+
+      expect(
+        wrapper
+          .find("Accordion")
+          .childAt(0)
+          .hasClass("expanded")
+      ).toEqual(false);
+    });
+
+    it("sets correct expanded class to Collaspe element when summary is clicked", () => {
+      const defaultExpanded = true;
+
+      const wrapper = mount(
+        <Accordion defaultExpanded={defaultExpanded}>
+          <AccordionSummary>summary</AccordionSummary>
+          <AccordionDetails>hello</AccordionDetails>
+        </Accordion>
+      );
+
+      wrapper.find("AccordionSummary").simulate("click");
+
+      expect(wrapper.find("Collapse").props().in).toEqual(!defaultExpanded);
+    });
   });
 
   describe("disabled prop", () => {
     it("applies disabled class name when disabled is true", () => {
       const disabled = true;
-      const child = <AccordionDetails>hello</AccordionDetails>;
 
-      const wrapper = mount(<Accordion disabled={disabled}>{child}</Accordion>);
+      const wrapper = mount(
+        <Accordion disabled={disabled}>
+          <AccordionDetails>hello</AccordionDetails>
+        </Accordion>
+      );
 
       expect(
         wrapper
@@ -135,9 +182,12 @@ describe("<Accordion>", () => {
 
     it("applies disabled class name when disabled is false", () => {
       const disabled = false;
-      const child = <AccordionDetails>hello</AccordionDetails>;
 
-      const wrapper = mount(<Accordion disabled={disabled}>{child}</Accordion>);
+      const wrapper = mount(
+        <Accordion disabled={disabled}>
+          <AccordionDetails>hello</AccordionDetails>
+        </Accordion>
+      );
 
       expect(
         wrapper
