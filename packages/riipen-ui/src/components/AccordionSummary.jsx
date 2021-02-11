@@ -14,8 +14,6 @@ const AccordionSummary = props => {
 
   const theme = React.useContext(ThemeContext);
 
-  const [focusedState, setFocusedState] = React.useState(false);
-
   const getLinkedStyles = () => {
     return css.resolve`
       .root {
@@ -47,14 +45,6 @@ const AccordionSummary = props => {
     `;
   };
 
-  const handleFocusVisible = () => {
-    setFocusedState(true);
-  };
-
-  const handleBlur = () => {
-    setFocusedState(false);
-  };
-
   const { disabled = false, expanded, toggle } = React.useContext(
     AccordionContext
   );
@@ -76,14 +66,11 @@ const AccordionSummary = props => {
         "root",
         {
           disabled,
-          expanded,
-          focused: focusedState
+          expanded
         },
         classes
       )}
       onClick={handleClick}
-      onFocusVisible={handleFocusVisible}
-      onBlur={handleBlur}
       {...other}
     >
       <div
