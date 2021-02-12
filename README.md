@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/473c04015f0b92b25bcf/maintainability)](https://codeclimate.com/github/riipen/ui/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/473c04015f0b92b25bcf/test_coverage)](https://codeclimate.com/github/riipen/ui/test_coverage)
+
 # UI
 
 A monorepository containing the Riipen UI kit and its documentation.
