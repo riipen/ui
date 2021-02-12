@@ -99,7 +99,7 @@ describe("<ButtonIcon>", () => {
       ).toEqual(component);
     });
 
-    it("sets component with 'button' when component prop is not provided", () => {
+    it("sets component type to button when component prop is not provided", () => {
       const wrapper = mount(<ButtonIcon>children</ButtonIcon>);
 
       expect(
@@ -110,7 +110,7 @@ describe("<ButtonIcon>", () => {
       ).toEqual("button");
     });
 
-    it("sets component with 'a' when href is defined", () => {
+    it("sets component type to a when href is defined", () => {
       const href = "www.google.com";
 
       const wrapper = mount(<ButtonIcon href={href}>children</ButtonIcon>);
@@ -162,6 +162,21 @@ describe("<ButtonIcon>", () => {
           .childAt(0)
           .hasClass("disabled")
       ).toEqual(false);
+    });
+
+    it("passes given disabled value to button", () => {
+      const disabled = true;
+
+      const wrapper = mount(
+        <ButtonIcon disabled={disabled}>children</ButtonIcon>
+      );
+
+      expect(
+        wrapper
+          .find("ButtonIcon")
+          .childAt(0)
+          .props().disabled
+      ).toEqual(disabled);
     });
   });
 
@@ -220,7 +235,7 @@ describe("<ButtonIcon>", () => {
       ).toEqual(true);
     });
 
-    it("ddoes not apply focusVisible class when blur event occurs", () => {
+    it("does not apply focusVisible class when blur event occurs", () => {
       const wrapper = mount(<ButtonIcon>children</ButtonIcon>);
 
       wrapper.simulate("focus");

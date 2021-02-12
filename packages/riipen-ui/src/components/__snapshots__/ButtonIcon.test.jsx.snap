@@ -219,13 +219,13 @@ exports[`<ButtonIcon> renders correct snapshot 1`] = `
     }
   >
     <button
-      className="jsx-3409994392 root default medium"
+      className="jsx-3914853681 root default medium"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
     >
       <span
-        className="jsx-3409994392 label icon-medium font-medium"
+        className="jsx-3914853681 label icon-medium font-medium"
       >
         children
       </span>
@@ -250,7 +250,7 @@ exports[`<ButtonIcon> renders correct snapshot 1`] = `
           "#fff",
         ]
       }
-      id="3023204076"
+      id="1014529143"
     />
   </ButtonIcon>
 </Component>
