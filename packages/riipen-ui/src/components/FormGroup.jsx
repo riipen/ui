@@ -83,7 +83,7 @@ class FormGroup extends React.Component {
               classes={[linkedStyles.className, "subtitle"]}
               component="p"
               gutter
-              variant="h4"
+              variant="body1"
             >
               {subtitle}
               {linkedStyles.styles}
