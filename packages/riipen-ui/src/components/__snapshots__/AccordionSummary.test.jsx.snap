@@ -8,9 +8,7 @@ exports[`<AccordionSummary> renders correct snapshot 1`] = `
   <div
     className="jsx-3687637527 root"
     disabled={false}
-    onBlur={[Function]}
     onClick={[Function]}
-    onFocusVisible={[Function]}
   >
     <div
       className="jsx-3687637527 content"

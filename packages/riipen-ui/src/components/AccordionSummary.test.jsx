@@ -66,7 +66,9 @@ describe("<AccordionSummary>", () => {
 
       const wrapper = mount(<AccordionSummary icon={icon} />);
 
-      expect(wrapper.find(".icon").type()).toEqual("div");
+      expect(
+        wrapper.find("AccordionSummary").containsMatchingElement(icon)
+      ).toEqual(true);
     });
   });
 
