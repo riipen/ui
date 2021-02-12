@@ -92,6 +92,17 @@ describe("<Button>", () => {
       ).toEqual(component);
     });
 
+    it("sets component type to button when component prop is not provided", () => {
+      const wrapper = mount(<Button />);
+
+      expect(
+        wrapper
+          .find("Button")
+          .childAt(0)
+          .name()
+      ).toEqual("button");
+    });
+
     it("gives an error when given an invalid component", () => {
       const errors = jest.spyOn(console, "error").mockImplementation();
       const component = "abcd";
@@ -144,7 +155,6 @@ describe("<Button>", () => {
           .childAt(0)
           .name()
       ).toEqual("a");
-      expect(wrapper.find("Button").props().href).toEqual(href);
     });
   });
 
