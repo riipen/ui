@@ -126,6 +126,19 @@ describe("<Button>", () => {
           .hasClass("disabled")
       ).toEqual(true);
     });
+
+    it("sets valid custom disabled", () => {
+      const disabled = true;
+
+      const wrapper = mount(<Button disabled={disabled} />);
+
+      expect(
+        wrapper
+          .find("Button")
+          .childAt(0)
+          .props().disabled
+      ).toEqual(disabled);
+    });
   });
 
   describe("fullWidth prop", () => {
@@ -171,6 +184,20 @@ describe("<Button>", () => {
           .hasClass("icon-end")
       ).toEqual(true);
     });
+
+    it("renders iconEnd", () => {
+      const iconEnd = icon(faTrash);
+
+      const wrapper = mount(<Button iconEnd={iconEnd} />);
+
+      expect(
+        wrapper
+          .find(".icon-end")
+          .childAt(0)
+          .childAt(0)
+          .name()
+      ).toEqual("FontAwesomeIcon");
+    });
   });
 
   describe("iconStart prop", () => {
@@ -185,6 +212,20 @@ describe("<Button>", () => {
           .childAt(0)
           .hasClass("icon-start")
       ).toEqual(true);
+    });
+
+    it("renders iconStart", () => {
+      const iconStart = icon(faTrash);
+
+      const wrapper = mount(<Button iconStart={iconStart} />);
+
+      expect(
+        wrapper
+          .find(".icon-start")
+          .childAt(0)
+          .childAt(0)
+          .name()
+      ).toEqual("FontAwesomeIcon");
     });
   });
 
