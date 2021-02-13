@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   aws-cli: circleci/aws-cli@0.1.4
+  code-climate: travelaudience/code-climate@0.1.2
 
 test_branches: &test_branches
   filters:
@@ -49,6 +50,17 @@ workflows:
             - DockerHub
           requires:
             - checkout
+  
+  unit_test:
+    jobs: 
+      - build
+      - frontend-tests:
+        requires:
+          - build
+      - upload-coverage:
+        requires:
+          - build
+          - frontend-tests
 
 jobs:
   checkout:
@@ -121,3 +133,38 @@ jobs:
           name: S3 Static Host Deploy
           command: |
             aws s3 sync --delete packages/riipen-ui-docs/out s3://ui-${CIRCLE_BRANCH}-docs
+  
+  build:
+    steps:
+      - run:
+        name:  Download cc-test-reporter
+        command: |
+          mkdir -p tmp/
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
+          chmod +x ./tmp/cc-test-reporter
+      - persist_to_workspace:
+        root: tmp
+        paths:
+          - cc-test-reporter
+
+  frontend-tests:
+    steps:
+      - checkout
+      - run:
+        name: Run riipen-ui unit tests
+        command: |
+          npm run test packages/riipen-ui/src/
+          ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json -prefix packages/riipen-ui/src/ coverage/frontend/lcov.info
+
+  
+  upload-coverage:
+    environment: 
+    - CC_TEST_REPORTER_ID: e4e2a1ec9b699662c12051a74b65b5199e03b18917ad850e3cd99c51f161f7e1
+
+    steps:
+      - run: 
+        name: Upload coverage results to Code Climate
+        command: |
+          ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json -p 1 -o tmp/codeclimate.total.json
+          ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.total.json
+
