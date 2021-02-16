@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccordionSummary> renders correct snapshot 1`] = `
+<AccordionSummary
+  classes={Array []}
+  iconProps={Object {}}
+>
+  <div
+    className="jsx-3687637527 root"
+    disabled={false}
+    onClick={[Function]}
+  >
+    <div
+      className="jsx-3687637527 content"
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          "background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), min-height 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+          "margin 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+          "transform 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+        ]
+      }
+      id="1644211938"
+    />
+  </div>
+</AccordionSummary>
+`;
