@@ -184,4 +184,44 @@ describe("<Checkbox>", () => {
       expect(wrapper.childAt(0).contains(warning)).toEqual(true);
     });
   });
+
+  describe("focusVisible state", () => {
+    it("does not apply focusVisible class when component is rendered", () => {
+      const wrapper = mount(<Checkbox readOnly />);
+
+      expect(
+        wrapper
+          .find("Checkbox")
+          .find("input")
+          .hasClass("focusVisible")
+      ).toEqual(false);
+    });
+
+    it("applies focusVisible class when focus event occurs", () => {
+      const wrapper = mount(<Checkbox readOnly />);
+
+      wrapper.find("input").simulate("focus");
+
+      expect(
+        wrapper
+          .find("Checkbox")
+          .find("input")
+          .hasClass("focusVisible")
+      ).toEqual(true);
+    });
+
+    it("does not apply focusVisible class when blur event occurs", () => {
+      const wrapper = mount(<Checkbox readOnly />);
+
+      wrapper.find("input").simulate("focus");
+      wrapper.find("input").simulate("blur");
+
+      expect(
+        wrapper
+          .find("Checkbox")
+          .find("input")
+          .hasClass("focusVisible")
+      ).toEqual(false);
+    });
+  });
 });
