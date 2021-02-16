@@ -83,5 +83,18 @@ describe("<AccordionSummary>", () => {
 
       expect(wrapper.find("ButtonIcon").props().size).toEqual(iconProps.size);
     });
+
+    it("passes iconProp classes to icon classes", () => {
+      const icon = Icon;
+      const iconProps = { classes: ["small"] };
+
+      const wrapper = mount(
+        <AccordionSummary icon={icon} iconProps={iconProps} />
+      );
+
+      expect(wrapper.find("ButtonIcon").props().classes[0]).toContain(
+        iconProps.classes
+      );
+    });
   });
 });
