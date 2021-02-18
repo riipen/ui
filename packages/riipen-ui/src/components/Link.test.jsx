@@ -139,8 +139,6 @@ describe("<Link>", () => {
     });
   });
 
-  describe("underline prop", () => {});
-
   describe("focusVisible state", () => {
     it("does not apply focusVisible class when component is rendered", () => {
       const wrapper = mount(
