@@ -140,21 +140,6 @@ describe("<Link>", () => {
   });
 
   describe("focusVisible state", () => {
-    it("does not apply focusVisible class when component is rendered", () => {
-      const wrapper = mount(
-        <Link href="google.com">
-          <span>link</span>
-        </Link>
-      );
-
-      expect(
-        wrapper
-          .find("Link")
-          .childAt(0)
-          .hasClass("focusVisible")
-      ).toEqual(false);
-    });
-
     it("applies focusVisible class when focus event occurs", () => {
       const wrapper = mount(
         <Link href="google.com">
