@@ -70,8 +70,6 @@ describe("<Checkbox>", () => {
 
       const wrapper = mount(<Checkbox color={color} readOnly />);
 
-      expect(toJson(wrapper)).toMatchSnapshot();
-
       expect(
         wrapper
           .find("Checkbox")
@@ -186,17 +184,6 @@ describe("<Checkbox>", () => {
   });
 
   describe("focusVisible state", () => {
-    it("does not apply focusVisible class when component is rendered", () => {
-      const wrapper = mount(<Checkbox readOnly />);
-
-      expect(
-        wrapper
-          .find("Checkbox")
-          .find("input")
-          .hasClass("focusVisible")
-      ).toEqual(false);
-    });
-
     it("applies focusVisible class when focus event occurs", () => {
       const wrapper = mount(<Checkbox readOnly />);
 
