@@ -3,7 +3,6 @@ import toJson from "enzyme-to-json";
 import React from "react";
 
 import Input from "./Input";
-import Typography from "./Typography";
 import InputLabel from "./InputLabel";
 
 describe("<Input>", () => {
@@ -99,12 +98,7 @@ describe("<Input>", () => {
 
       const wrapper = mount(<Input error={error} />);
 
-      expect(
-        wrapper
-          .find("Input")
-          .children()
-          .contains(Typography)
-      ).toEqual(true);
+      expect(wrapper.find("Typography").contains(error)).toEqual(true);
     });
   });
 
@@ -114,14 +108,26 @@ describe("<Input>", () => {
 
       const wrapper = mount(<Input hint={hint} />);
 
+      expect(wrapper.find("InputLabel").props().hint).toEqual(hint);
+    });
+
+    it("renders hint", () => {
+      const hint = "Test";
+
+      const wrapper = mount(<Input hint={hint} />);
+
+      expect(wrapper.text()).toEqual(hint);
+    });
+
+    it("does not render InputLabel element when hint is not given", () => {
+      const wrapper = mount(<Input />);
+
       expect(
         wrapper
           .find("Input")
-          .childAt(0)
-          .childAt(0)
-          .type()
-      ).toEqual(InputLabel);
-      expect(wrapper.find("InputLabel").props().hint).toEqual(hint);
+          .children()
+          .contains("InputLabel")
+      ).toEqual(false);
     });
   });
 
@@ -138,16 +144,34 @@ describe("<Input>", () => {
           .childAt(0)
           .type()
       ).toEqual(InputLabel);
+    });
+
+    it("renders label", () => {
+      const label = "Test";
+
+      const wrapper = mount(<Input label={label} />);
+
       expect(wrapper.text()).toEqual(label);
+    });
+
+    it("does not render InputLabel element when label is not given", () => {
+      const wrapper = mount(<Input />);
+
+      expect(
+        wrapper
+          .find("Input")
+          .children()
+          .contains("InputLabel")
+      ).toEqual(false);
     });
   });
 
   describe("labelColor prop", () => {
     it("sets valid custom labelColor", () => {
-      const hint = "Test";
+      const label = "Test";
       const labelColor = "black";
 
-      const wrapper = mount(<Input hint={hint} labelColor={labelColor} />);
+      const wrapper = mount(<Input label={label} labelColor={labelColor} />);
 
       expect(wrapper.find("InputLabel").props().color).toEqual(labelColor);
     });
@@ -155,12 +179,81 @@ describe("<Input>", () => {
 
   describe("labelWeight prop", () => {
     it("sets valid custom labelWeight", () => {
-      const hint = "Test";
+      const label = "Test";
       const labelWeight = "bold";
 
-      const wrapper = mount(<Input hint={hint} labelWeight={labelWeight} />);
+      const wrapper = mount(<Input label={label} labelWeight={labelWeight} />);
 
       expect(wrapper.find("InputLabel").props().weight).toEqual(labelWeight);
+    });
+  });
+
+  describe("multiline prop", () => {
+    it("sets component as textarea with true multiline prop", () => {
+      const multiline = true;
+
+      const wrapper = mount(<Input multiline={multiline} />);
+
+      expect(
+        wrapper
+          .find("Input")
+          .childAt(0)
+          .childAt(0)
+          .name()
+      ).toEqual("textarea");
+    });
+
+    it("sets component as input with default multiline prop", () => {
+      const wrapper = mount(<Input />);
+
+      expect(
+        wrapper
+          .find("Input")
+          .childAt(0)
+          .childAt(0)
+          .name()
+      ).toEqual("input");
+    });
+  });
+
+  describe("required prop", () => {
+    it("sets valid custom required", () => {
+      const label = "Test";
+      const required = true;
+
+      const wrapper = mount(<Input label={label} required={required} />);
+
+      expect(wrapper.find("InputLabel").props().required).toEqual(required);
+    });
+
+    it("displays an asterisk at the end of the label when required is true", () => {
+      const label = "Test";
+      const required = true;
+
+      const wrapper = mount(<Input label={label} required={required} />);
+
+      expect(
+        wrapper
+          .find("InputLabel")
+          .find("label")
+          .text()
+          .substr(-1)
+      ).toEqual("*");
+    });
+
+    it("does not display an asterisk when required is false", () => {
+      const label = "Test";
+      const required = false;
+
+      const wrapper = mount(<Input label={label} required={required} />);
+
+      expect(
+        wrapper
+          .find("InputLabel")
+          .find("label")
+          .text()
+          .substr(-1)
+      ).not.toEqual("*");
     });
   });
 
@@ -184,23 +277,47 @@ describe("<Input>", () => {
 
       const wrapper = mount(<Input warning={warning} />);
 
-      expect(
-        wrapper
-          .find("Input")
-          .children()
-          .contains(Typography)
-      ).toEqual(true);
+      expect(wrapper.find("Typography").contains(warning)).toEqual(true);
     });
   });
 
   describe("focusVisible state", () => {
+    it("sets correct class name when focus event occurs", () => {
+      const wrapper = mount(<Input />);
+
+      wrapper
+        .find("input")
+        .last()
+        .simulate("focus");
+
+      expect(
+        wrapper
+          .find("Input")
+          .childAt(0)
+          .childAt(0)
+          .hasClass("focusVisible")
+      ).toEqual(true);
+    });
+
     it("sets correct class name when blur event occurs", () => {
       const wrapper = mount(<Input />);
 
-      wrapper.simulate("focus");
-      wrapper.simulate("blur");
+      wrapper
+        .find("input")
+        .last()
+        .simulate("focus");
+      wrapper
+        .find("input")
+        .last()
+        .simulate("blur");
 
-      expect(wrapper.find("Input").hasClass("focusVisible")).toEqual(false);
+      expect(
+        wrapper
+          .find("Input")
+          .childAt(0)
+          .childAt(0)
+          .hasClass("focusVisible")
+      ).toEqual(false);
     });
   });
 });
