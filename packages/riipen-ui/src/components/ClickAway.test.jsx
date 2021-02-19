@@ -44,9 +44,7 @@ describe("<ClickAway>", () => {
         .children();
       expect(childrenNodes.at(0).containsMatchingElement(child)).toEqual(true);
     });
-  });
 
-  describe("onClickAway prop", () => {
     it("sets onClick prop of children node", () => {
       const child = <span>cheesecakes</span>;
       const onClickAway = jest.fn();
@@ -58,26 +56,13 @@ describe("<ClickAway>", () => {
       expect(
         wrapper
           .find("ClickAway")
-          .childAt(0)
-          .children()
-          .at(0)
+          .find("span")
           .props().onClick
       ).toBeDefined();
     });
+  });
 
-    it("sets onClick prop of div element", () => {
-      const onClickAway = jest.fn();
-
-      const wrapper = mount(<ClickAway onClickAway={onClickAway} />);
-
-      expect(
-        wrapper
-          .find("ClickAway")
-          .find("div")
-          .props().onClick
-      ).toBeDefined();
-    });
-
+  describe("onClickAway prop", () => {
     it("invokes onClickAway when div node is clicked", () => {
       const child = <span>cheesecakes</span>;
       const onClickAway = jest.fn();
