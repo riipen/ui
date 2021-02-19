@@ -3,7 +3,6 @@ import toJson from "enzyme-to-json";
 import React from "react";
 
 import Input from "./Input";
-import InputLabel from "./InputLabel";
 
 describe("<Input>", () => {
   it("renders without errors", () => {
@@ -49,7 +48,7 @@ describe("<Input>", () => {
   });
 
   describe("disabled prop", () => {
-    it("sets disabled class name with valid custom disabled", () => {
+    it("sets disabled class name when disabled prop is true", () => {
       const disabled = true;
 
       const wrapper = mount(<Input disabled={disabled} />);
@@ -137,13 +136,7 @@ describe("<Input>", () => {
 
       const wrapper = mount(<Input label={label} />);
 
-      expect(
-        wrapper
-          .find("Input")
-          .childAt(0)
-          .childAt(0)
-          .type()
-      ).toEqual(InputLabel);
+      expect(wrapper.find("InputLabel").props().children).toEqual(label);
     });
 
     it("renders label", () => {
@@ -224,36 +217,6 @@ describe("<Input>", () => {
       const wrapper = mount(<Input label={label} required={required} />);
 
       expect(wrapper.find("InputLabel").props().required).toEqual(required);
-    });
-
-    it("displays an asterisk at the end of the label when required is true", () => {
-      const label = "Test";
-      const required = true;
-
-      const wrapper = mount(<Input label={label} required={required} />);
-
-      expect(
-        wrapper
-          .find("InputLabel")
-          .find("label")
-          .text()
-          .substr(-1)
-      ).toEqual("*");
-    });
-
-    it("does not display an asterisk when required is false", () => {
-      const label = "Test";
-      const required = false;
-
-      const wrapper = mount(<Input label={label} required={required} />);
-
-      expect(
-        wrapper
-          .find("InputLabel")
-          .find("label")
-          .text()
-          .substr(-1)
-      ).not.toEqual("*");
     });
   });
 
