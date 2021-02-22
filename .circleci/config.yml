@@ -36,6 +36,18 @@ workflows:
             - DockerHub
           requires:
             - checkout
+      - test-unit:
+          <<: *test_branches
+          context:
+            - DockerHub
+          requires:
+            - checkout
+      - coverage:
+          <<: *test_branches
+          context:
+            - DockerHub
+          requires:
+            - test-unit
 
   docs:
     jobs:
@@ -50,17 +62,6 @@ workflows:
             - DockerHub
           requires:
             - checkout
-  
-  unit_test:
-    jobs: 
-      - build
-      - frontend-tests:
-        requires:
-          - build
-      - upload-coverage:
-        requires:
-          - build
-          - frontend-tests
 
 jobs:
   checkout:
@@ -76,11 +77,10 @@ jobs:
           name: Update NPM
           command: |
             sudo npm install -g npm
-
       - restore_cache:
           keys:
-            - v2-cache-{{ checksum "package.json" }}
-            - v2-cache-
+            - v4-cache-{{ checksum "package.json" }}
+            - v4-cache-
 
       - run: npm install
       - run: npm run bootstrap
@@ -88,7 +88,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v2-cache-{{ checksum "package.json" }}
+          key: v4-cache-{{ checksum "package.json" }}
 
       - persist_to_workspace:
           root: /home/circleci
@@ -133,38 +133,41 @@ jobs:
           name: S3 Static Host Deploy
           command: |
             aws s3 sync --delete packages/riipen-ui-docs/out s3://ui-${CIRCLE_BRANCH}-docs
-  
-  build:
+  test-unit:
+    docker:
+      - image: circleci/node:14.4
+        <<: *docker-auth
+
     steps:
+      - attach_workspace:
+          at: ~/
       - run:
-        name:  Download cc-test-reporter
-        command: |
-          mkdir -p tmp/
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
-          chmod +x ./tmp/cc-test-reporter
+          name: Run riipen-ui unit tests
+          command: |
+            npm run test packages/riipen-ui/src/ -- --collect-coverage
       - persist_to_workspace:
-        root: tmp
-        paths:
-          - cc-test-reporter
-
-  frontend-tests:
-    steps:
-      - checkout
-      - run:
-        name: Run riipen-ui unit tests
-        command: |
-          npm run test packages/riipen-ui/src/
-          ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json -prefix packages/riipen-ui/src/ coverage/frontend/lcov.info
-
+          root: /home/circleci
+          paths: 
+            - project/coverage/lcov.info
   
-  upload-coverage:
+  coverage:
+    docker:
+      - image: circleci/node:14.4
+        <<: *docker-auth
+
     environment: 
-    - CC_TEST_REPORTER_ID: e4e2a1ec9b699662c12051a74b65b5199e03b18917ad850e3cd99c51f161f7e1
+      CC_TEST_REPORTER_ID: e4e2a1ec9b699662c12051a74b65b5199e03b18917ad850e3cd99c51f161f7e1
 
     steps:
-      - run: 
-        name: Upload coverage results to Code Climate
-        command: |
-          ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json -p 1 -o tmp/codeclimate.total.json
-          ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.total.json
+      - attach_workspace:
+          at: ~/
 
+      - code-climate/install
+      - code-climate/format_coverage:
+          coverage_file: ./coverage/lcov.info
+          input_type: lcov
+          output: coverage/codeclimate.json
+      - code-climate/sum_coverage:
+          input: coverage/codeclimate.json
+          parts: 1
+      - code-climate/upload_coverage
