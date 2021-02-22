@@ -53,7 +53,7 @@ describe("<Link>", () => {
 
       const wrapper = mount(<Link href="google.com">{child}</Link>);
 
-      expect(wrapper.contains(child)).toEqual(true);
+      expect(wrapper.find("Link").contains(child)).toEqual(true);
     });
   });
 

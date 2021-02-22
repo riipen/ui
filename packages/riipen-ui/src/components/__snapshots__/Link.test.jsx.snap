@@ -1,11 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Link> renders correct snapshot 1`] = `
-<Component>
+<Component
+  href="google.com"
+>
   <Link
     classes={Array []}
     color="primary"
     component="a"
+    href="google.com"
     theme={
       Object {
         "breakpoints": Object {
@@ -220,6 +223,7 @@ exports[`<Link> renders correct snapshot 1`] = `
   >
     <a
       className="jsx-179614999 primary"
+      href="google.com"
       onBlur={[Function]}
       onFocus={[Function]}
     >
