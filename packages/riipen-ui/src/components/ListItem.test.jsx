@@ -64,19 +64,6 @@ describe("<ListItem>", () => {
   });
 
   describe("color prop", () => {
-    it("applies valid custom color", () => {
-      const color = "secondary";
-
-      const wrapper = mount(<ListItem color={color} />);
-
-      expect(
-        wrapper
-          .find("ListItem")
-          .childAt(0)
-          .hasClass(color)
-      ).toEqual(true);
-    });
-
     it("gives an error when given an invalid color", () => {
       const errors = jest.spyOn(console, "error").mockImplementation();
 
