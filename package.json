@@ -14,7 +14,7 @@
     "format": "lerna run format",
     "lint": "lerna run lint",
     "start": "lerna --scope riipen-ui-docs run start --stream",
-    "test": "jest"
+    "test": "jest --max-old-space-size=6144"
   },
   "husky": {
     "hooks": {
