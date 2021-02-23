@@ -47,14 +47,6 @@ describe("<Table>", () => {
       );
     });
 
-    it("sets transparent color given transparent backgroundColor", () => {
-      const color = "transparent";
-
-      const wrapper = mount(<Table backgroundColor={color} />);
-
-      expect(wrapper.find("JSXStyle").props().dynamic).toContain(color);
-    });
-
     it("gives an error given an invalid backgroundColor", () => {
       const errors = jest.spyOn(console, "error").mockImplementation();
       const color = "white";
