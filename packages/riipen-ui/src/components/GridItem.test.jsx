@@ -63,12 +63,7 @@ describe("<GridItem>", () => {
 
       const wrapper = mount(<GridItem alignItems={alignItems} />);
 
-      expect(
-        wrapper
-          .find("GridItem")
-          .childAt(0)
-          .props().style.alignItems
-      ).toEqual(alignItems);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(alignItems);
     });
 
     it("gives an error when given an invalid alignItem", () => {
@@ -120,12 +115,7 @@ describe("<GridItem>", () => {
 
       const wrapper = mount(<GridItem flexDirection={flexDirection} />);
 
-      expect(
-        wrapper
-          .find("GridItem")
-          .childAt(0)
-          .props().style.flexDirection
-      ).toContain(flexDirection);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(flexDirection);
     });
 
     it("gives an error when given an invalid flexDirection", () => {
@@ -144,12 +134,7 @@ describe("<GridItem>", () => {
 
       const wrapper = mount(<GridItem flexGrow={flexGrow} />);
 
-      expect(
-        wrapper
-          .find("GridItem")
-          .childAt(0)
-          .props().style.flexGrow
-      ).toEqual(flexGrow);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(flexGrow);
     });
   });
 
@@ -159,12 +144,7 @@ describe("<GridItem>", () => {
 
       const wrapper = mount(<GridItem flexShrink={flexShrink} />);
 
-      expect(
-        wrapper
-          .find("GridItem")
-          .childAt(0)
-          .props().style.flexShrink
-      ).toEqual(flexShrink);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(flexShrink);
     });
   });
 
@@ -174,12 +154,7 @@ describe("<GridItem>", () => {
 
       const wrapper = mount(<GridItem flexWrap={flexWrap} />);
 
-      expect(
-        wrapper
-          .find("GridItem")
-          .childAt(0)
-          .props().style.flexWrap
-      ).toContain(flexWrap);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(flexWrap);
     });
 
     it("gives an error when given an invalid flexWrap", () => {
@@ -198,12 +173,9 @@ describe("<GridItem>", () => {
 
       const wrapper = mount(<GridItem justifyContent={justifyContent} />);
 
-      expect(
-        wrapper
-          .find("GridItem")
-          .childAt(0)
-          .props().style.justifyContent
-      ).toContain(justifyContent);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(
+        justifyContent
+      );
     });
 
     it("gives an error when given an invalid justifyContent", () => {
@@ -232,12 +204,9 @@ describe("<GridItem>", () => {
 
         const wrapper = mount(<GridItem {...props} />);
 
-        expect(
-          wrapper
-            .find("GridItem")
-            .childAt(0)
-            .props().style.display
-        ).toContain(test.expected);
+        expect(wrapper.find("JSXStyle").props().dynamic).toContain(
+          test.expected
+        );
       });
     });
 
@@ -268,12 +237,9 @@ describe("<GridItem>", () => {
 
         const wrapper = mount(<GridItem {...props} />);
 
-        expect(
-          wrapper
-            .find("GridItem")
-            .childAt(0)
-            .props().style.display
-        ).toContain(test.expected);
+        expect(wrapper.find("JSXStyle").props().dynamic).toContain(
+          test.expected
+        );
       });
     });
 
@@ -304,12 +270,9 @@ describe("<GridItem>", () => {
 
         const wrapper = mount(<GridItem {...props} />);
 
-        expect(
-          wrapper
-            .find("GridItem")
-            .childAt(0)
-            .props().style.display
-        ).toContain(test.expected);
+        expect(wrapper.find("JSXStyle").props().dynamic).toContain(
+          test.expected
+        );
       });
     });
 
@@ -330,18 +293,9 @@ describe("<GridItem>", () => {
 
       const wrapper = mount(<GridItem spacing={spacing} />);
 
-      expect(
-        wrapper
-          .find("GridItem")
-          .childAt(0)
-          .props().style.marginBottom
-      ).toContain(`${defaultTheme.spacing(spacing)}px`);
-      expect(
-        wrapper
-          .find("GridItem")
-          .childAt(0)
-          .props().style.paddingLeft
-      ).toContain(`${defaultTheme.spacing(spacing)}px`);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(
+        defaultTheme.spacing(spacing)
+      );
     });
 
     it("gives an error when given an invalid spacing", () => {
@@ -361,12 +315,7 @@ describe("<GridItem>", () => {
 
       const wrapper = mount(<GridItem size={size} md={md} />);
 
-      expect(
-        wrapper
-          .find("GridItem")
-          .childAt(0)
-          .props().style.display
-      ).toContain("flex");
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain("flex");
     });
 
     it("gives an error when given an invalid size", () => {
@@ -395,12 +344,9 @@ describe("<GridItem>", () => {
 
         const wrapper = mount(<GridItem {...props} />);
 
-        expect(
-          wrapper
-            .find("GridItem")
-            .childAt(0)
-            .props().style.display
-        ).toContain(test.expected);
+        expect(wrapper.find("JSXStyle").props().dynamic).toContain(
+          test.expected
+        );
       });
     });
 

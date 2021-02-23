@@ -57,12 +57,7 @@ exports[`<TableHeaderCell> renders correct snapshot 1`] = `
                         textAlign="left"
                       >
                         <th
-                          className="jsx-3829003528 riipen riipen-tableheadercell"
-                          style={
-                            Object {
-                              "textAlign": "left",
-                            }
-                          }
+                          className="jsx-3551769341 riipen riipen-tableheadercell"
                         />
                         <JSXStyle
                           dynamic={
@@ -73,9 +68,10 @@ exports[`<TableHeaderCell> renders correct snapshot 1`] = `
                               "0.00938em",
                               "20px",
                               15,
+                              "left",
                             ]
                           }
-                          id="1251753159"
+                          id="4244621093"
                         />
                       </TableHeaderCell>
                     </withClasses(TableHeaderCell)>
