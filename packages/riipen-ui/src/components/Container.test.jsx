@@ -77,12 +77,9 @@ describe("<Container>", () => {
 
       const wrapper = mount(<Container maxWidth={max} />);
 
-      expect(
-        wrapper
-          .find("Container")
-          .childAt(0)
-          .props().style.maxWidth
-      ).toEqual(`${defaultTheme.breakpoints[max]}px`);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(
+        `${defaultTheme.breakpoints[max]}px`
+      );
     });
 
     it("container renders at 100% width", () => {
@@ -90,12 +87,7 @@ describe("<Container>", () => {
 
       const wrapper = mount(<Container maxWidth={max} />);
 
-      expect(
-        wrapper
-          .find("Container")
-          .childAt(0)
-          .props().style.maxWidth
-      ).toEqual("100%");
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain("100%");
     });
 
     it("throws an error with invalid maxWidth variant", () => {

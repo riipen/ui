@@ -60,15 +60,9 @@ exports[`<TableCell> renders correct snapshot 1`] = `
                         textAlign="left"
                       >
                         <td
-                          className="jsx-3180503567 riipen riipen-tablecell"
+                          className="jsx-1050854348 riipen riipen-tablecell"
                           colSpan={1}
                           rowSpan={1}
-                          style={
-                            Object {
-                              "padding": "15px",
-                              "textAlign": "left",
-                            }
-                          }
                         />
                         <JSXStyle
                           dynamic={
@@ -78,9 +72,11 @@ exports[`<TableCell> renders correct snapshot 1`] = `
                               400,
                               "0.01071em",
                               "17px",
+                              15,
+                              "left",
                             ]
                           }
-                          id="2743467501"
+                          id="498164393"
                         />
                       </TableCell>
                     </withClasses(TableCell)>
