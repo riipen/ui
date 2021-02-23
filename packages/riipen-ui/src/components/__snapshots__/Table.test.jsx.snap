@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Table> renders correct snapshot 1`] = `
+<ForwardRef(withForwardedRef(withClasses(Table)))>
+  <withClasses(Table)
+    forwardedRef={null}
+  >
+    <Table
+      backgroundColor="grey50"
+      classes={
+        Array [
+          "riipen",
+          "riipen-table",
+        ]
+      }
+      forwardedRef={null}
+      layout="auto"
+    >
+      <table
+        border="0"
+        className="jsx-1059775881 riipen riipen-table"
+      />
+      <JSXStyle
+        dynamic={
+          Array [
+            "#fafafa",
+            "auto",
+          ]
+        }
+        id="4123435624"
+      />
+    </Table>
+  </withClasses(Table)>
+</ForwardRef(withForwardedRef(withClasses(Table)))>
+`;
