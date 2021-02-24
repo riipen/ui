@@ -65,7 +65,7 @@ describe("<MenuList>", () => {
       expect(selectChange).toHaveBeenLastCalledWith(0, undefined);
     });
 
-    it("does not select first element with false autoFocus", () => {
+    it("does not select first item of list with false autoFocus", () => {
       const autoFocus = false;
       const selectChange = jest.fn();
 
