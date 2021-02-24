@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   aws-cli: circleci/aws-cli@0.1.4
+  code-climate: travelaudience/code-climate@0.1.2
 
 test_branches: &test_branches
   filters:
@@ -35,6 +36,18 @@ workflows:
             - DockerHub
           requires:
             - checkout
+      - test-unit:
+          <<: *test_branches
+          context:
+            - DockerHub
+          requires:
+            - checkout
+      - coverage:
+          <<: *test_branches
+          context:
+            - DockerHub
+          requires:
+            - test-unit
 
   docs:
     jobs:
@@ -64,11 +77,10 @@ jobs:
           name: Update NPM
           command: |
             sudo npm install -g npm
-
       - restore_cache:
           keys:
-            - v2-cache-{{ checksum "package.json" }}
-            - v2-cache-
+            - v4-cache-{{ checksum "package.json" }}
+            - v4-cache-
 
       - run: npm install
       - run: npm run bootstrap
@@ -76,7 +88,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v2-cache-{{ checksum "package.json" }}
+          key: v4-cache-{{ checksum "package.json" }}
 
       - persist_to_workspace:
           root: /home/circleci
@@ -121,3 +133,41 @@ jobs:
           name: S3 Static Host Deploy
           command: |
             aws s3 sync --delete packages/riipen-ui-docs/out s3://ui-${CIRCLE_BRANCH}-docs
+  test-unit:
+    docker:
+      - image: circleci/node:14.4
+        <<: *docker-auth
+
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Run riipen-ui unit tests
+          command: |
+            npm run test packages/riipen-ui/src/ -- --collect-coverage
+      - persist_to_workspace:
+          root: /home/circleci
+          paths: 
+            - project/coverage/lcov.info
+  
+  coverage:
+    docker:
+      - image: circleci/node:14.4
+        <<: *docker-auth
+
+    environment: 
+      CC_TEST_REPORTER_ID: e4e2a1ec9b699662c12051a74b65b5199e03b18917ad850e3cd99c51f161f7e1
+
+    steps:
+      - attach_workspace:
+          at: ~/
+
+      - code-climate/install
+      - code-climate/format_coverage:
+          coverage_file: ./coverage/lcov.info
+          input_type: lcov
+          output: coverage/codeclimate.json
+      - code-climate/sum_coverage:
+          input: coverage/codeclimate.json
+          parts: 1
+      - code-climate/upload_coverage
