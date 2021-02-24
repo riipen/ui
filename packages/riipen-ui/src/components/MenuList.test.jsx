@@ -254,6 +254,32 @@ describe("<MenuList>", () => {
           .props().selected
       ).toBeUndefined();
     });
+
+    it("prioritizes selectedIndex over autoFocus when autoFocus is true", () => {
+      const autoFocus = true;
+      const selectChange = jest.fn();
+      const selectedIndex = 1;
+
+      const wrapper = mount(
+        <MenuList
+          selectedIndex={selectedIndex}
+          autoFocus={autoFocus}
+          selectChange={selectChange}
+          variant="selection"
+        >
+          <MenuItem>one</MenuItem>
+          <MenuItem>two</MenuItem>
+        </MenuList>
+      );
+
+      expect(selectChange).not.toHaveBeenCalled();
+      expect(
+        wrapper
+          .find("MenuItem")
+          .at(selectedIndex)
+          .props().selected
+      ).toEqual(true);
+    });
   });
 
   describe("variant prop", () => {
