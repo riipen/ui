@@ -10,7 +10,7 @@ class MenuList extends React.Component {
 
   static propTypes = {
     /**
-     * Wether to select the first element on list open
+     * Whether to select the first element on list open
      */
     autoFocus: PropTypes.bool,
 
