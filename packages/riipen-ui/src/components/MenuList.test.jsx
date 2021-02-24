@@ -51,7 +51,7 @@ describe("<MenuList>", () => {
   });
 
   describe("autoFocus prop", () => {
-    it("selects first element on list open with true autoFocus and default selectedIndex", () => {
+    it("selects first item of list with true autoFocus and default selectedIndex", () => {
       const autoFocus = true;
       const selectChange = jest.fn();
 
@@ -65,7 +65,7 @@ describe("<MenuList>", () => {
       expect(selectChange).toHaveBeenLastCalledWith(0, undefined);
     });
 
-    it("does not select first element on list open with false autoFocus", () => {
+    it("does not select first element with false autoFocus", () => {
       const autoFocus = false;
       const selectChange = jest.fn();
 
@@ -97,6 +97,44 @@ describe("<MenuList>", () => {
         .children();
       expect(childrenNodes.containsMatchingElement(child)).toEqual(true);
       expect(childrenNodes).toHaveLength(1);
+    });
+
+    it("invokes selectChange when child clicked", () => {
+      const selectChange = jest.fn();
+
+      const wrapper = mount(
+        <MenuList selectChange={selectChange} variant="selection">
+          <MenuItem disabled={false} />
+          <MenuItem />
+        </MenuList>
+      );
+
+      wrapper
+        .find("MenuItem")
+        .at(0)
+        .childAt(0)
+        .simulate("click");
+
+      expect(selectChange).toHaveBeenCalledWith(0, expect.any(Object));
+    });
+
+    it("does not invoke selectChange when child clicked and child is disabled", () => {
+      const selectChange = jest.fn();
+      const disabled = true;
+
+      const wrapper = mount(
+        <MenuList selectChange={selectChange} variant="selection">
+          <MenuItem disabled={disabled}>one</MenuItem>
+        </MenuList>
+      );
+
+      wrapper
+        .find("MenuItem")
+        .at(0)
+        .childAt(0)
+        .simulate("click");
+
+      expect(selectChange).not.toHaveBeenCalled();
     });
   });
 
@@ -177,46 +215,6 @@ describe("<MenuList>", () => {
         .simulate("click");
 
       expect(selectChange).toHaveBeenLastCalledWith(null, expect.any(Object));
-    });
-
-    describe("when variant is selection", () => {
-      it("invokes selectChange when child clicked", () => {
-        const selectChange = jest.fn();
-
-        const wrapper = mount(
-          <MenuList selectChange={selectChange} variant="selection">
-            <MenuItem disabled={false} />
-            <MenuItem />
-          </MenuList>
-        );
-
-        wrapper
-          .find("MenuItem")
-          .at(0)
-          .childAt(0)
-          .simulate("click");
-
-        expect(selectChange).toHaveBeenCalledWith(0, expect.any(Object));
-      });
-
-      it("does not invoke selectChange when child clicked and child is disabled", () => {
-        const selectChange = jest.fn();
-        const disabled = true;
-
-        const wrapper = mount(
-          <MenuList selectChange={selectChange} variant="selection">
-            <MenuItem disabled={disabled}>one</MenuItem>
-          </MenuList>
-        );
-
-        wrapper
-          .find("MenuItem")
-          .at(0)
-          .childAt(0)
-          .simulate("click");
-
-        expect(selectChange).not.toHaveBeenCalled();
-      });
     });
   });
 
