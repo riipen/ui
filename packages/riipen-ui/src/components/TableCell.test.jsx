@@ -174,10 +174,10 @@ describe("<TableCell>", () => {
 
       expect(
         wrapper
-          .find("TableCell")
-          .childAt(0)
-          .props().style.padding
-      ).toEqual(`${defaultTheme.spacing(padding)}px`);
+          .find("JSXStyle")
+          .at(0)
+          .props().dynamic
+      ).toContain(defaultTheme.spacing(padding));
     });
   });
 
@@ -220,10 +220,10 @@ describe("<TableCell>", () => {
 
       expect(
         wrapper
-          .find("TableCell")
-          .childAt(0)
-          .props().style.textAlign
-      ).toEqual(textAlign);
+          .find("JSXStyle")
+          .at(0)
+          .props().dynamic
+      ).toContain(textAlign);
     });
 
     it("gives an error when given an invalid textAlign", () => {

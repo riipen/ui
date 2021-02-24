@@ -82,12 +82,7 @@ describe("<Banner>", () => {
 
       const wrapper = mount(<Banner height={height} />);
 
-      expect(
-        wrapper
-          .find("Banner")
-          .childAt(0)
-          .props().style.height
-      ).toEqual(height);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(height);
     });
 
     it("gives an error when height is not given as a string", () => {
@@ -106,12 +101,7 @@ describe("<Banner>", () => {
 
       const wrapper = mount(<Banner src={src} />);
 
-      expect(
-        wrapper
-          .find("Banner")
-          .childAt(0)
-          .props().style.backgroundImage
-      ).toContain(src);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(src);
     });
   });
 
