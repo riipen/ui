@@ -50,7 +50,7 @@ describe("<Menu>", () => {
   });
 
   describe("anchorEl prop", () => {
-    it("", () => {
+    it("renders anchor element that menu is attached to", () => {
       const anchorEl = ReactTestUtils.renderIntoDocument(<AppBar />);
 
       const wrapper = mount(<Menu anchorEl={anchorEl} />);
@@ -60,7 +60,7 @@ describe("<Menu>", () => {
   });
 
   describe("anchorPosition prop", () => {
-    it("sets anchor class name with valid custom anchor", () => {
+    it("passes anchorPosition prop to correct child", () => {
       const anchorPosition = { horizontal: "left", vertical: "bottom" };
 
       const wrapper = mount(<Menu anchorPosition={anchorPosition} />);
@@ -72,7 +72,7 @@ describe("<Menu>", () => {
   });
 
   describe("autoFocus prop", () => {
-    it("sets valid custom anchor", () => {
+    it("passes autoFocus prop to correct child", () => {
       const autoFocus = true;
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
@@ -91,7 +91,7 @@ describe("<Menu>", () => {
   });
 
   describe("children prop", () => {
-    it("", () => {
+    it("renders given children", () => {
       const child = <div>child</div>;
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
@@ -143,7 +143,7 @@ describe("<Menu>", () => {
   });
 
   describe("color prop", () => {
-    it("sets color class name with a valid color", () => {
+    it("passes color prop to correct child", () => {
       const color = "secondary";
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
@@ -170,7 +170,7 @@ describe("<Menu>", () => {
   });
 
   describe("contentPosition prop", () => {
-    it("sets valid custom contentPosition", () => {
+    it("passes contentPosition prop to correct child", () => {
       const contentPosition = { horizontal: "left", vertical: "bottom" };
 
       const wrapper = mount(<Menu contentPosition={contentPosition} />);
@@ -182,7 +182,7 @@ describe("<Menu>", () => {
   });
 
   describe("fullWidth prop", () => {
-    it("sets valid custom fullWidth", () => {
+    it("passes fullWidth prop to correct child", () => {
       const fullWidth = true;
 
       const wrapper = mount(<Menu fullWidth={fullWidth} />);
@@ -192,7 +192,7 @@ describe("<Menu>", () => {
   });
 
   describe("isOpen prop", () => {
-    it("sets valid custom anchor", () => {
+    it("passes isOpen prop to correct child", () => {
       const isOpen = true;
 
       const wrapper = mount(<Menu isOpen={isOpen} />);
@@ -202,7 +202,7 @@ describe("<Menu>", () => {
   });
 
   describe("keepOnScreen prop", () => {
-    it("sets valid custom keepOnScreen", () => {
+    it("passes keepOnScreen prop to correct child", () => {
       const keepOnScreen = true;
 
       const wrapper = mount(<Menu keepOnScreen={keepOnScreen} />);
@@ -214,7 +214,7 @@ describe("<Menu>", () => {
   });
 
   describe("marginThreshold prop", () => {
-    it("sets valid custom marginThreshold", () => {
+    it("passes marginThreshold prop to correct child", () => {
       const marginThreshold = 2;
 
       const wrapper = mount(<Menu marginThreshold={marginThreshold} />);
@@ -250,15 +250,7 @@ describe("<Menu>", () => {
   });
 
   describe("onClose prop", () => {
-    it("sets valid custom onClose", () => {
-      const onClose = jest.fn();
-
-      const wrapper = mount(<Menu onClose={onClose} />);
-
-      expect(wrapper.find("Popover").props().onClose).toEqual(onClose);
-    });
-
-    it("sets valid custom onClose", () => {
+    it("invokes onClose when child is clicked", () => {
       const onClose = jest.fn();
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
@@ -282,7 +274,7 @@ describe("<Menu>", () => {
   });
 
   describe("popoverStyles prop", () => {
-    it("sets valid custom popoverStyles", () => {
+    it("passes popoverStyles prop to correct child", () => {
       const styles = ReactTestUtils.renderIntoDocument(<style />);
 
       const wrapper = mount(<Menu popoverStyles={styles} />);
@@ -292,7 +284,7 @@ describe("<Menu>", () => {
   });
 
   describe("selectedIndex prop", () => {
-    it("sets valid custom selectedIndex", () => {
+    it("passes selectedIndex prop to correct child", () => {
       const selectedIndex = 0;
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
@@ -313,7 +305,7 @@ describe("<Menu>", () => {
   });
 
   describe("variant prop", () => {
-    it("sets valid custom variant", () => {
+    it("passes variant prop to correct child", () => {
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
           <AppBar />
