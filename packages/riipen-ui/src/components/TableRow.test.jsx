@@ -128,7 +128,7 @@ describe("<TableRow>", () => {
         </Table>
       );
 
-      expect(wrapper.find("TableRow").props().classes).toContain(classes[0]);
+      expect(wrapper.find("tr").hasClass(classes[0])).toEqual(true);
     });
 
     it("appends higher order values to classes prop with withClass decorator", () => {
