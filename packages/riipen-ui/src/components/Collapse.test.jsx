@@ -83,7 +83,7 @@ describe("<Collapse>", () => {
   });
 
   describe("in prop", () => {
-    it("sets state to entered when in prop is true", () => {
+    it("sets class name as entered when in prop is true", () => {
       const isTransition = true;
 
       const wrapper = mount(<Collapse in={isTransition} />);
@@ -97,7 +97,7 @@ describe("<Collapse>", () => {
       ).toEqual(true);
     });
 
-    it("sets state to exited when in prop is false", () => {
+    it("sets class name as exited when in prop is false", () => {
       const isTransition = false;
 
       const wrapper = mount(<Collapse in={isTransition} />);
