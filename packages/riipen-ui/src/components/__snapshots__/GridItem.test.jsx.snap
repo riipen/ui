@@ -20,28 +20,24 @@ exports[`<GridItem> renders correct snapshot 1`] = `
     spacing={3}
   >
     <div
-      className="jsx-812231540 riipen riipen-griditem lg"
-      style={
-        Object {
-          "alignItems": "stretch",
-          "display": "flex",
-          "flexDirection": "column",
-          "flexGrow": 0,
-          "flexShrink": 0,
-          "flexWrap": "wrap",
-          "justifyContent": "flex-start",
-          "marginBottom": "15px",
-          "paddingLeft": "15px",
-        }
-      }
+      className="jsx-2484176405 riipen riipen-griditem lg"
     />
     <JSXStyle
       dynamic={
         Array [
+          "stretch",
+          "flex",
           "100%",
+          "column",
+          0,
+          0,
+          "wrap",
+          "flex-start",
+          15,
+          15,
         ]
       }
-      id="3933275013"
+      id="1025619962"
     />
   </GridItem>
 </withClasses(GridItem)>

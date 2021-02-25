@@ -144,10 +144,10 @@ describe("<TableHeaderCell>", () => {
 
       expect(
         wrapper
-          .find("TableHeaderCell")
-          .find("th")
-          .props().style.textAlign
-      ).toEqual(textAlign);
+          .find("JSXStyle")
+          .at(0)
+          .props().dynamic
+      ).toContain(textAlign);
     });
 
     it("gives an error given an invalid textAlign", () => {

@@ -24,13 +24,15 @@ describe("<ButtonIcon>", () => {
   });
 
   describe("default props", () => {
-    const wrapper = mount(<ButtonIcon>children</ButtonIcon>);
+    it("sets correct default props", () => {
+      const wrapper = mount(<ButtonIcon>children</ButtonIcon>);
 
-    const component = wrapper.find("ButtonIcon");
-    expect(component.props().classes).toEqual([]);
-    expect(component.props().color).toEqual("default");
-    expect(component.props().disabled).toEqual(false);
-    expect(component.props().size).toEqual("medium");
+      const component = wrapper.find("ButtonIcon");
+      expect(component.props().classes).toEqual([]);
+      expect(component.props().color).toEqual("default");
+      expect(component.props().disabled).toEqual(false);
+      expect(component.props().size).toEqual("medium");
+    });
   });
 
   describe("children prop", () => {

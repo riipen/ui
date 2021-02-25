@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TableCell> renders correct snapshot 1`] = `
+exports[`<TableRow> renders correct snapshot 1`] = `
 <ForwardRef(withForwardedRef(withClasses(Table)))>
   <withClasses(Table)
     forwardedRef={null}
@@ -20,17 +20,17 @@ exports[`<TableCell> renders correct snapshot 1`] = `
         border="0"
         className="jsx-1059775881 riipen riipen-table"
       >
-        <withClasses(TableBody)>
-          <TableBody
+        <withClasses(TableHeader)>
+          <TableHeader
             classes={
               Array [
                 "riipen",
-                "riipen-tablebody",
+                "riipen-tableheader",
               ]
             }
           >
-            <tbody
-              classes="riipen riipen-tablebody"
+            <thead
+              className="riipen riipen-tableheader"
             >
               <withClasses(TableRow)>
                 <TableRow
@@ -45,42 +45,7 @@ exports[`<TableCell> renders correct snapshot 1`] = `
                 >
                   <tr
                     className="jsx-4111142428 riipen riipen-tablerow"
-                  >
-                    <withClasses(TableCell)>
-                      <TableCell
-                        classes={
-                          Array [
-                            "riipen",
-                            "riipen-tablecell",
-                          ]
-                        }
-                        colSpan={1}
-                        padding={3}
-                        rowSpan={1}
-                        textAlign="left"
-                      >
-                        <td
-                          className="jsx-1050854348 riipen riipen-tablecell"
-                          colSpan={1}
-                          rowSpan={1}
-                        />
-                        <JSXStyle
-                          dynamic={
-                            Array [
-                              "Roboto, Helvetica, Arial, sans-serif",
-                              "12px",
-                              400,
-                              "0.01071em",
-                              "17px",
-                              15,
-                              "left",
-                            ]
-                          }
-                          id="498164393"
-                        />
-                      </TableCell>
-                    </withClasses(TableCell)>
-                  </tr>
+                  />
                   <JSXStyle
                     dynamic={
                       Array [
@@ -95,9 +60,9 @@ exports[`<TableCell> renders correct snapshot 1`] = `
                   />
                 </TableRow>
               </withClasses(TableRow)>
-            </tbody>
-          </TableBody>
-        </withClasses(TableBody)>
+            </thead>
+          </TableHeader>
+        </withClasses(TableHeader)>
       </table>
       <JSXStyle
         dynamic={
