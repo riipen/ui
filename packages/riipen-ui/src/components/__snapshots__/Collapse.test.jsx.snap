@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Collapse> renders correct snapshot 1`] = `
+<Collapse
+  classes={Array []}
+  component="div"
+>
+  <Transition
+    appear={false}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  >
+    <div
+      className="jsx-2207988454 root exited"
+    >
+      <div />
+      <JSXStyle
+        dynamic={
+          Array [
+            "height 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+          ]
+        }
+        id="4123931595"
+      />
+    </div>
+  </Transition>
+</Collapse>
+`;
