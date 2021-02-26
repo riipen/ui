@@ -50,7 +50,7 @@ describe("<Menu>", () => {
   });
 
   describe("anchorEl prop", () => {
-    it("renders anchor element that menu is attached to", () => {
+    it("passes anchorEl prop to correct child", () => {
       const anchorEl = ReactTestUtils.renderIntoDocument(<AppBar />);
 
       const wrapper = mount(<Menu anchorEl={anchorEl} />);
@@ -139,6 +139,31 @@ describe("<Menu>", () => {
           .props()
           .classes.sort()
       ).toEqual(classes.sort());
+    });
+  });
+
+  describe("closeOnClick prop", () => {
+    it("does not invoke onClose when closeOnClick is false", () => {
+      const closeOnClick = false;
+      const onClose = jest.fn();
+      const anchorEl = ReactTestUtils.renderIntoDocument(
+        <div>
+          <AppBar />
+        </div>
+      );
+
+      const wrapper = mount(
+        <Menu anchorEl={anchorEl} closeOnClick={closeOnClick} onClose={onClose}>
+          <MenuItem />
+        </Menu>
+      );
+
+      wrapper
+        .find("MenuItem")
+        .childAt(0)
+        .simulate("click");
+
+      expect(onClose).toHaveBeenCalledTimes(0);
     });
   });
 
@@ -270,6 +295,28 @@ describe("<Menu>", () => {
         .simulate("click");
 
       expect(onClose).toHaveBeenCalledTimes(1);
+    });
+
+    it("does not invoke onClose when event type is not a click event", () => {
+      const onClose = jest.fn();
+      const anchorEl = ReactTestUtils.renderIntoDocument(
+        <div>
+          <AppBar />
+        </div>
+      );
+
+      const wrapper = mount(
+        <Menu anchorEl={anchorEl} onClose={onClose}>
+          <MenuItem />
+        </Menu>
+      );
+
+      wrapper
+        .find("MenuItem")
+        .childAt(0)
+        .simulate("submit");
+
+      expect(onClose).toHaveBeenCalledTimes(0);
     });
   });
 
