@@ -102,6 +102,31 @@ describe("<Form>", () => {
           .hasClass("errorContainer")
       ).toEqual(true);
     });
+
+    it("renders error", () => {
+      const error = "Yay";
+
+      const wrapper = mount(<Form error={error} />);
+
+      expect(wrapper.find("Form").text()).toEqual(error);
+    });
+
+    it("renders error within Typography element if error is a string", () => {
+      const error = "Yay";
+
+      const wrapper = mount(<Form error={error} />);
+
+      expect(wrapper.find("Typography").contains(error)).toEqual(true);
+    });
+
+    it("renders error as given element", () => {
+      const error = <Typography>Please provide a name</Typography>;
+
+      const wrapper = mount(<Form error={error} />);
+
+      expect(wrapper.find("Typography").contains(error)).toEqual(false);
+      expect(wrapper.find("Form").props().error.type).toEqual(Typography);
+    });
   });
 
   describe("errors prop", () => {
@@ -156,6 +181,67 @@ describe("<Form>", () => {
           .childAt(0)
           .hasClass("errorContainer")
       ).toEqual(false);
+    });
+
+    it("renders errors from given string array", () => {
+      const errors = ["Error", "Sad"];
+
+      const wrapper = mount(<Form errors={errors} />);
+
+      expect(
+        wrapper
+          .find(".errors")
+          .childAt(0)
+          .childAt(0)
+          .childAt(0)
+          .childAt(0)
+          .text()
+      ).toEqual(errors[0]);
+      expect(
+        wrapper
+          .find(".errors")
+          .childAt(1)
+          .childAt(0)
+          .childAt(0)
+          .childAt(0)
+          .text()
+      ).toEqual(errors[1]);
+    });
+
+    it("renders errors within Typography element if errors are strings", () => {
+      const errors = ["Error", "Sad"];
+
+      const wrapper = mount(<Form errors={errors} />);
+
+      expect(wrapper.find("Typography").contains(errors[0])).toEqual(true);
+    });
+
+    it("renders errors from given object", () => {
+      const errors = {
+        Error: "Please provide more cheese",
+        Warning: "Minimum cheese added"
+      };
+
+      const wrapper = mount(<Form errors={errors} />);
+
+      expect(
+        wrapper
+          .find(".errors")
+          .childAt(0)
+          .childAt(0)
+          .childAt(0)
+          .childAt(0)
+          .text()
+      ).toEqual("Error: Please provide more cheese");
+      expect(
+        wrapper
+          .find(".errors")
+          .childAt(1)
+          .childAt(0)
+          .childAt(0)
+          .childAt(0)
+          .text()
+      ).toEqual("Warning: Minimum cheese added");
     });
   });
 });
