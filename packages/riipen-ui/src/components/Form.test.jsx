@@ -208,14 +208,6 @@ describe("<Form>", () => {
       ).toEqual(errors[1]);
     });
 
-    it("renders errors within Typography element if errors are strings", () => {
-      const errors = ["Error", "Sad"];
-
-      const wrapper = mount(<Form errors={errors} />);
-
-      expect(wrapper.find("Typography").contains(errors[0])).toEqual(true);
-    });
-
     it("renders errors from given object", () => {
       const errors = {
         Error: "Please provide more cheese",
