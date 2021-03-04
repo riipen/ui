@@ -26,7 +26,7 @@
   },
   "homepage": "https://ui.riipen.com/",
   "engines": {
-    "npm": ">=8.0.0"
+    "npm": ">=7.0.0"
   },
   "sideEffects": false,
   "scripts": {
