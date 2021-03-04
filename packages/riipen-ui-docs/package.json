@@ -11,7 +11,7 @@
   "repository": "https://github.com/riipen/ui/packages/riipen-ui-docs",
   "private": true,
   "engines": {
-    "npm": ">=6.12.0"
+    "npm": ">=7.0.0"
   },
   "scripts": {
     "build": "npm run build:api && npm run build:next",
@@ -50,7 +50,7 @@
     "prismjs": "^1.21.0",
     "prop-types": "15.7.2",
     "raw-loader": "^3.1.0",
-    "react-docgen": "^4.1.1",
+    "react-docgen": "^5.3.1",
     "recast": "^0.18.5",
     "riipen-ui": "^0.1.24"
   },
