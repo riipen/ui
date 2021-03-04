@@ -140,6 +140,10 @@ const pages = [
       {
         name: "Typography",
         pathname: "/components/typography"
+      },
+      {
+        name: "Switch",
+        pathname: "/components/switch"
       }
     ]
   },

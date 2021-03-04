@@ -61,3 +61,4 @@ export { default as Tabs } from "./Tabs";
 export { default as Toolbar } from "./Toolbar";
 export { default as Tooltip } from "./Tooltip";
 export { default as Typography } from "./Typography";
+export { default as Switch } from "./Switch";
