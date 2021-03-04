@@ -138,7 +138,12 @@ function getComponents(directory, components) {
     .map(item => ({
       filename: path.resolve(directory, item)
     }))
-    .filter(item => !item.filename.endsWith("/index.js"));
+    .filter(
+      item =>
+        !item.filename.endsWith("/index.js") &&
+        !item.filename.endsWith(".snap") &&
+        !item.filename.endsWith(".test.jsx")
+    );
 
   items.forEach(item => {
     if (!item.filename.endsWith(".jsx")) {

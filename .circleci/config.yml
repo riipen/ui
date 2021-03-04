@@ -79,8 +79,8 @@ jobs:
             sudo npm install -g npm
       - restore_cache:
           keys:
-            - v4-cache-{{ checksum "package.json" }}
-            - v4-cache-
+            - v5-cache-{{ checksum "package.json" }}
+            - v5-cache-
 
       - run: npm install
       - run: npm run bootstrap
@@ -88,7 +88,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v4-cache-{{ checksum "package.json" }}
+          key: v5-cache-{{ checksum "package.json" }}
 
       - persist_to_workspace:
           root: /home/circleci
@@ -147,15 +147,15 @@ jobs:
             npm run test packages/riipen-ui/src/ -- --collect-coverage
       - persist_to_workspace:
           root: /home/circleci
-          paths: 
+          paths:
             - project/coverage/lcov.info
-  
+
   coverage:
     docker:
       - image: circleci/node:14.4
         <<: *docker-auth
 
-    environment: 
+    environment:
       CC_TEST_REPORTER_ID: e4e2a1ec9b699662c12051a74b65b5199e03b18917ad850e3cd99c51f161f7e1
 
     steps:
