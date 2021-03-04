@@ -2,7 +2,11 @@ import React from "react";
 
 import MarkdownPage from "src/modules/components/MarkdownPage";
 
-const req = require.context("src/pages/components-api", false, /checkbox.md$/);
+const req = require.context(
+  "src/pages/components-api",
+  false,
+  /checkbox.md$/
+);
 
 export default function Page() {
   return (

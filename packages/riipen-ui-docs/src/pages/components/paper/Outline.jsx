@@ -4,7 +4,7 @@ import Paper from "riipen-ui/components/Paper";
 
 export default function Outline() {
   const style = {
-    marginRight: "10px"
+    marginRight: "20px"
   };
 
   return (

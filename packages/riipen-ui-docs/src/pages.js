@@ -244,6 +244,10 @@ const pages = [
         pathname: "/components-api/menu-item"
       },
       {
+        name: "Paper",
+        pathname: "/components-api/paper"
+      },
+      {
         name: "Popover",
         pathname: "/components-api/popover"
       },
