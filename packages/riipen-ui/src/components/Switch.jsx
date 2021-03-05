@@ -3,70 +3,42 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import _JSXStyle from "styled-jsx/style";
 
-// import ThemeContext from "../styles/ThemeContext";
-import { useIsFocusVisible, withThemeContext } from "../utils";
+import { withThemeContext } from "../utils";
 
 const Switch = props => {
   const {
     checked: checkedProp,
     classes,
-    // color,
+    color,
     disabled,
     id,
     onChange,
     required,
-    // size,
+    size,
     theme,
     value
-    // ...other
   } = props;
 
   const [checked, setChecked] = useState(checkedProp);
-  const [focusVisible, setFocusVisible] = useState(false);
-  const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
-  const handleFocus = e => {
-    setFocusVisible(isFocusVisible(e));
-  };
-
-  const handleBlur = () => {
-    setFocusVisible(false);
-    onBlurVisible();
-  };
-
-  const handleInputChange = event => {
+  const handleChange = event => {
     const newChecked = !checked;
 
     setChecked(newChecked);
 
     if (onChange) {
-      // TODO v5: remove the second argument.
       onChange(event, newChecked);
     }
   };
 
   return (
-    <span
-      ref={ref}
-      className={clsx(classes, {
-        focusVisible
-      })}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-    >
+    <span className={clsx(classes)}>
       <input
         checked={checked}
-        className={clsx(
-          classes
-          // focusVisible ? "focusVisible" : null,
-          // {
-          //   focusVisible
-          // }
-        )}
+        className={clsx(color, size)}
         disabled={disabled}
         id={id}
-        // name={name}
-        onChange={handleInputChange}
+        onChange={handleChange}
         required={required}
         type="checkbox"
         value={value}
@@ -75,38 +47,99 @@ const Switch = props => {
         input {
           -webkit-appearance: none;
           outline: none;
-          width: 40px;
-          height: 20px;
-          border-radius: 12px;
           background-color: ${theme.palette.grey[400]};
           position: relative;
-          z-index: 0; 
-        }
-        input:checked {
-          background-color: ${theme.palette.primary.light};
+          transition: ${theme.transitions.create(["background-color"], {
+            duration: theme.transitions.duration.standard
+          })};
         }
         input:before {
           content: "";
           position: absolute;
           top: 0;
           left: 0;
-          height: 20px;
-          width: 20px;
           background-color: ${theme.palette.grey[600]};
-          border-radius: 50%;
-          transition: ${theme.transitions.create(["transform"], {
-            duration: theme.transitions.duration.standard
-          })};;
-        }
-        input:checked:before {
-          transform: translate(20px);
-          background-color: ${theme.palette.primary.dark};
+          transition: ${theme.transitions.create(
+            ["transform", "background-color"],
+            {
+              duration: theme.transitions.duration.standard
+            }
+          )};
         }
         input:hover:before {
-          box-shadow: 0px 0px 10px 3px ${theme.palette.grey[600]};
+          box-shadow: 0px 0px 15px 3px ${theme.palette.grey[500]};
         }
 
+        input:disabled, input:checked:disabled {
+          background-color: ${theme.palette.grey[600]};
+          pointer-events: none;
+        }
+        input:disabled:before, input:disabled:checked:before {
+          background-color: ${theme.palette.grey[800]};
+        }
+
+        .medium {
+          width: 40px;
+          height: 20px;
+          border-radius: 12px;
+        }
+        .medium:before {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+        }
+        .medium:checked:before {
+          transform: translate(20px);
+        }
+
+        .small {
+          width: 30px;
+          height: 15px;
+          border-radius: 10px;
+        }
+        .small:before {
+          height: 15px;
+          width: 15px;
+          border-radius: 50%;
+        }
+        .small:checked:before {
+          transform: translate(15px);
+        }
         
+        .primary:checked {
+          background-color: ${theme.palette.primary.light};
+        }
+        .primary:checked:before {
+          background-color: ${theme.palette.primary.dark};
+        }
+
+        .secondary:checked {
+          background-color: ${theme.palette.secondary.light};
+        }
+        .secondary:checked:before {
+          background-color: ${theme.palette.secondary.dark};
+        }
+
+        .tertiary:checked {
+          background-color: ${theme.palette.tertiary.light};
+        }
+        .tertiary:checked:before {
+          background-color: ${theme.palette.tertiary.dark};
+        }
+
+        .negative:checked {
+          background-color: ${theme.palette.negative.light};
+        }
+        .negative:checked:before {
+          background-color: ${theme.palette.negative.dark};
+        }
+
+        .positive:checked {
+          background-color: ${theme.palette.positive.light};
+        }
+        .positive:checked:before {
+          background-color: ${theme.palette.positive.dark};
+        }
       `}</style>
     </span>
   );
@@ -133,11 +166,6 @@ Switch.propTypes = {
     "positive",
     "negative"
   ]),
-
-  /**
-   * @ignore
-   */
-  defaultChecked: PropTypes.bool,
 
   /**
    * If true, the switch will be disabled.
