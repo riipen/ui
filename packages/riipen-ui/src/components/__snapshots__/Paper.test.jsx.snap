@@ -15,7 +15,7 @@ exports[`<Paper> renders correct snapshot 1`] = `
     variant="elevation"
   >
     <div
-      className="jsx-1659224659 root riipen riipen-paper elevation"
+      className="jsx-2091330480 root riipen riipen-paper elevation"
     />
     <JSXStyle
       dynamic={
@@ -27,7 +27,7 @@ exports[`<Paper> renders correct snapshot 1`] = `
           "4px",
         ]
       }
-      id="2575703554"
+      id="2757293669"
     />
   </Paper>
 </withClasses(Paper)>
