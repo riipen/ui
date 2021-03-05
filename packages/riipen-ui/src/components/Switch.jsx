@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import _JSXStyle from "styled-jsx/style";
 
-import { withThemeContext } from "../utils";
+import ThemeContext from "../styles/ThemeContext";
 
 const Switch = props => {
   const {
@@ -15,9 +15,10 @@ const Switch = props => {
     onChange,
     required,
     size,
-    theme,
     value
   } = props;
+
+  const theme = React.useContext(ThemeContext);
 
   const [checked, setChecked] = useState(checkedProp);
 
@@ -215,4 +216,4 @@ Switch.defaultProps = {
 
 Switch.displayName = "Switch";
 
-export default withThemeContext(Switch);
+export default Switch;
