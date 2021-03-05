@@ -260,6 +260,10 @@ const pages = [
         pathname: "/components-api/rich-text-editor"
       },
       {
+        name: "Switch",
+        pathname: "/components-api/switch"
+      },
+      {
         name: "Table",
         pathname: "/components-api/table"
       },
