@@ -113,7 +113,7 @@ describe("<Paper>", () => {
   });
 
   describe("padding prop", () => {
-    it("sets padding for the component cell", () => {
+    it("sets padding for the component", () => {
       const padding = 3;
 
       const wrapper = mount(<Paper padding={padding} />);

@@ -35,8 +35,8 @@ const Paper = props => {
       <style jsx>{`
         .root {
           background-color: ${theme.palette.common.white};
-          padding: ${theme.spacing[padding]};
-          display: inline-block;  
+          display: inline-block; 
+          padding: ${theme.spacing[padding]};  
         }
 
         .elevation {
@@ -78,7 +78,7 @@ Paper.propTypes = {
   elevation: PropTypes.number,
 
   /**
-   * The amount of padding the cell should have.
+   * The amount of padding the paper should have.
    */
   padding: PropTypes.number,
 
