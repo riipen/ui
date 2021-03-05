@@ -10,25 +10,24 @@ exports[`<Paper> renders correct snapshot 1`] = `
       ]
     }
     component="div"
+    padding={2}
     rounded={false}
     variant="elevation"
   >
     <div
-      className="jsx-3190772292 root riipen riipen-paper elevation"
+      className="jsx-1659224659 root riipen riipen-paper elevation"
     />
     <JSXStyle
       dynamic={
         Array [
           "#fff",
-          "#373737",
-          15,
-          2,
+          undefined,
           undefined,
           "#ddd",
           "4px",
         ]
       }
-      id="1353998539"
+      id="2575703554"
     />
   </Paper>
 </withClasses(Paper)>

@@ -11,8 +11,9 @@ const Paper = props => {
     children,
     classes,
     component: Component,
-    rounded,
     elevation,
+    padding,
+    rounded,
     variant,
     ...other
   } = props;
@@ -25,43 +26,31 @@ const Paper = props => {
     rounded ? "rounded" : null,
     variant === "outlined" ? "outlined" : "elevation"
   );
-  
+
   return (
     <React.Fragment>
-    <Component 
-    className={className}
-      {...other}
-    >
-      {children}
+      <Component className={className} {...other} >
+        {children}
       </Component>
-     
-      <style jsx>
-        {`
-          .root {
-            background-color: ${theme.palette.common.white};
-            color: ${theme.palette.text.primary}
-            padding: ${theme.spacing(3)}px;
-            z-index: ${theme.zIndex.low};
-            display: inline-block;
-            border-radius: 0px;
-            },
-
-            .elevation {
-              box-shadow: ${theme.shadows[elevation]};
-              box-sizing: border-box;
-              border: 0px
-          }
-
-          .outlined {
-            border: 1px solid ${theme.palette.divider};
+      <style jsx>{`
+        .root {
+          background-color: ${theme.palette.common.white};
+          padding: ${theme.spacing[padding]};
+          display: inline-block;  
         }
-            
-            .rounded {
-                border-radius: ${theme.shape.borderRadius.md};
-            }
-      `}
-      </style>
 
+        .elevation {
+          box-shadow: ${theme.shadows[elevation]};
+        }
+
+        .outlined {
+          border: 1px solid ${theme.palette.divider};
+        }
+
+        .rounded {
+          border-radius: ${theme.shape.borderRadius.md};
+        }
+      `}</style>
     </React.Fragment>
   );
 };
@@ -84,12 +73,17 @@ Paper.propTypes = {
   component: PropTypes.elementType,
 
   /**
-   * The elevation of the box shadow.
+   * The elevation of the box shadow with respect to the current theme.
    */
   elevation: PropTypes.number,
 
   /**
-   * If `false`, rounded corners are disabled.
+   * The amount of padding the cell should have.
+   */
+  padding: PropTypes.number,
+
+  /**
+   * If `true`, rounded corners are enabled.
    */
   rounded: PropTypes.bool,
 
@@ -102,6 +96,7 @@ Paper.propTypes = {
 Paper.defaultProps = {
   classes: [],
   component: "div",
+  padding: 2,
   rounded: false,
   variant: "elevation"
 };

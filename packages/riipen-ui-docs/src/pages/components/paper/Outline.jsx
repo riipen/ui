@@ -10,18 +10,14 @@ export default function Outline() {
   return (
     <React.Fragment>
       <Paper
-        variant="outlined"
         style={{
           height: "100px",
           width: "100px"
         }}
       />
-
       <span style={style} />
-
       <Paper
         variant="outlined"
-        rounded={true}
         style={{
           height: "100px",
           width: "100px"

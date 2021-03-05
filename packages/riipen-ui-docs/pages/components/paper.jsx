@@ -20,7 +20,7 @@ export default function Page() {
       path="pages/components/paper"
       req={req}
       reqSource={reqSource}
-      title="paper"
+      title="Paper"
     />
   );
 }

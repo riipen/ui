@@ -12,6 +12,12 @@ The `elevation` prop adjusts the height of the box shadow displayed behind the p
 
 ## Outline
 
-If you need an outlined surface, use the `variant` prop. Outlines can either be square or rounded, which are determined by the `rounded` prop.
+If you need an outlined surface, use the `variant` prop. 
 
 {{"demo": "pages/components/paper/Outline.js"}}
+
+## Rounded Corners
+
+Corners are set as square by default. To add in rounded corners, set the `rounded` prop as true.
+
+{{"demo": "pages/components/paper/Rounded.js"}}

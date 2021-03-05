@@ -112,6 +112,21 @@ describe("<Paper>", () => {
     });
   });
 
+  describe("padding prop", () => {
+    it("sets padding for the component cell", () => {
+      const padding = 3;
+
+      const wrapper = mount(<Paper padding={padding} />);
+
+      expect(
+        wrapper
+          .find("Paper")
+          .find("JSXStyle")
+          .props().dynamic
+      ).toContain(defaultTheme.spacing[padding]);
+    });
+  });
+
   describe("rounded prop", () => {
     it("sets class name as rounded when rounded is true", () => {
       const rounded = true;
