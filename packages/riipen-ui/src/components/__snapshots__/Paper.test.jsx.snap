@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paper> renders correct snapshot 1`] = `
+<withClasses(Paper)>
+  <Paper
+    classes={
+      Array [
+        "riipen",
+        "riipen-paper",
+      ]
+    }
+    component="div"
+    padding={2}
+    rounded={false}
+    variant="elevation"
+  >
+    <div
+      className="jsx-2091330480 root riipen riipen-paper elevation"
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          "#fff",
+          undefined,
+          undefined,
+          "#ddd",
+          "4px",
+        ]
+      }
+      id="2757293669"
+    />
+  </Paper>
+</withClasses(Paper)>
+`;

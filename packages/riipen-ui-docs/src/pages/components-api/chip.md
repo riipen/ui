@@ -29,7 +29,6 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">icon</span> | <span class="prop-type">elementType</span> |  | Icon to display at start of chip. |
 | <span class="prop-name">label</span> | <span class="prop-type">node</span> |  | The content of the label. |
 | <span class="prop-name">onClick</span> | <span class="prop-type">func</span> |  | Action to perform when clicked. |
-| <span class="prop-name">onIconClick</span> | <span class="prop-type">func</span> |  | Callback function fired when the icon is clicked. |
 | <span class="prop-name">size</span> | <span class="prop-type">"medium"<br>&#124;&nbsp;"small"<br>&#124;&nbsp;"xsmall"</span> | <span class="prop-default">"medium"</span> | The size of the chip. |
 | <span class="prop-name">variant</span> | <span class="prop-type">"default"<br>&#124;&nbsp;"outlined"</span> | <span class="prop-default">"default"</span> | The variant to use. |
 

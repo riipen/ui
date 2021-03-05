@@ -23,7 +23,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">anchor</span> | <span class="prop-type">"left"<br>&#124;&nbsp;"top"<br>&#124;&nbsp;"right"<br>&#124;&nbsp;"bottom"</span> | <span class="prop-default">"left"</span> | Side from which the drawer will appear. |
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | The content of the component. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> |  | An array of custom CSS classes to apply. |
-| <span class="prop-name">onClose</span> | <span class="prop-type">func</span> |  | Callback fired when the component requests to be closed.<br><br>**Signature:**<br>`function(event: object) => void`<br>*event:* The event source of the callback. |
+| <span class="prop-name required">onClose&nbsp;*</span> | <span class="prop-type">func</span> |  | Callback fired when the component requests to be closed.<br><br>**Signature:**<br>`function(event: object) => void`<br>*event:* The event source of the callback. |
 | <span class="prop-name">open</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the drawer is open. |
 
 

@@ -106,6 +106,10 @@ const pages = [
         pathname: "/components/notice"
       },
       {
+        name: "Paper",
+        pathname: "/components/paper"
+      },
+      {
         name: "Popover",
         pathname: "/components/popover"
       },
@@ -238,6 +242,10 @@ const pages = [
       {
         name: "Menu Item",
         pathname: "/components-api/menu-item"
+      },
+      {
+        name: "Paper",
+        pathname: "/components-api/paper"
       },
       {
         name: "Popover",
