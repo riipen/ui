@@ -3,34 +3,14 @@ import React from "react";
 import Switch from "riipen-ui/components/Switch";
 
 export default function Switches() {
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: false
-  });
-
-  const handleChange = event => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
-
   return (
     <div>
-      <Switch
-        checked={state.checkedA}
-        onChange={handleChange}
-        name="checkedA"
-        inputProps={{ "aria-label": "secondary checkbox" }}
-      />
-      <Switch
-        checked={state.checkedB}
-        onChange={handleChange}
-        color="primary"
-        name="checkedB"
-        inputProps={{ "aria-label": "primary checkbox" }}
-      />
-      <Switch inputProps={{ "aria-label": "primary checkbox" }} />
-      <Switch disabled />
-      <Switch checked={false} />
-      <Switch inputProps={{ "aria-label": "checkbox with default color" }} />
+      <Switch checked color="primary" />
+      <Switch checked color="secondary" />
+      <Switch checked color="tertiary" />
+      <Switch checked color="positive" />
+      <Switch checked color="negative" />
+      <Switch color="primary" disabled label="disabled" />
     </div>
   );
 }
