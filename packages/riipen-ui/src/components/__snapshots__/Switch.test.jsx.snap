@@ -5,6 +5,7 @@ exports[`<Switch> renders correct snapshot 1`] = `
   checked={false}
   classes={Array []}
   color="secondary"
+  readOnly={true}
   size="medium"
 >
   <span
@@ -13,6 +14,7 @@ exports[`<Switch> renders correct snapshot 1`] = `
     <input
       checked={false}
       className="jsx-3579722788 secondary medium"
+      readOnly={true}
       type="checkbox"
     />
     <JSXStyle

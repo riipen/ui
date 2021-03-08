@@ -9,7 +9,7 @@ describe("<Switch>", () => {
     let error;
 
     try {
-      mount(<Switch />);
+      mount(<Switch readOnly />);
     } catch (e) {
       error = e;
     }
@@ -18,14 +18,14 @@ describe("<Switch>", () => {
   });
 
   it("renders correct snapshot", () => {
-    const wrapper = mount(<Switch />);
+    const wrapper = mount(<Switch readOnly />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("default props", () => {
     it("sets correct default props", () => {
-      const wrapper = mount(<Switch />);
+      const wrapper = mount(<Switch readOnly />);
 
       const component = wrapper.find("Switch");
       expect(component.props().checked).toEqual(false);
@@ -39,7 +39,7 @@ describe("<Switch>", () => {
     it("passes given checked value to input element", () => {
       const checked = true;
 
-      const wrapper = mount(<Switch checked={checked} />);
+      const wrapper = mount(<Switch checked={checked} readOnly />);
 
       expect(wrapper.find("input").props().checked).toEqual(checked);
     });
@@ -49,7 +49,7 @@ describe("<Switch>", () => {
     it("applies given classes to the root node", () => {
       const classes = ["classOne"];
 
-      const wrapper = mount(<Switch classes={classes} />);
+      const wrapper = mount(<Switch classes={classes} readOnly />);
 
       expect(
         wrapper
@@ -64,7 +64,7 @@ describe("<Switch>", () => {
     it("applies valid custom color class name", () => {
       const color = "positive";
 
-      const wrapper = mount(<Switch color={color} />);
+      const wrapper = mount(<Switch color={color} readOnly />);
 
       expect(wrapper.find("input").hasClass(color)).toEqual(true);
     });
@@ -73,7 +73,7 @@ describe("<Switch>", () => {
       const errors = jest.spyOn(console, "error").mockImplementation();
       const color = "default";
 
-      mount(<Switch color={color} />);
+      mount(<Switch color={color} readOnly />);
 
       expect(errors).toHaveBeenCalledTimes(1);
     });
@@ -93,7 +93,7 @@ describe("<Switch>", () => {
     it("passes given id value to input element", () => {
       const id = "ID";
 
-      const wrapper = mount(<Switch id={id} />);
+      const wrapper = mount(<Switch id={id} readOnly />);
 
       expect(wrapper.find("input").props().id).toEqual(id);
     });
@@ -114,7 +114,7 @@ describe("<Switch>", () => {
     it("passes given required value to input element", () => {
       const required = true;
 
-      const wrapper = mount(<Switch required={required} />);
+      const wrapper = mount(<Switch required={required} readOnly />);
 
       expect(wrapper.find("input").props().required).toEqual(required);
     });
@@ -124,7 +124,7 @@ describe("<Switch>", () => {
     it("applies valid custom size class name to input element", () => {
       const size = "small";
 
-      const wrapper = mount(<Switch size={size} />);
+      const wrapper = mount(<Switch size={size} readOnly />);
 
       expect(wrapper.find("input").hasClass(size)).toEqual(true);
     });
@@ -133,7 +133,7 @@ describe("<Switch>", () => {
       const errors = jest.spyOn(console, "error").mockImplementation();
       const size = "large";
 
-      mount(<Switch size={size} />);
+      mount(<Switch size={size} readOnly />);
 
       expect(errors).toHaveBeenCalledTimes(1);
     });
@@ -143,7 +143,7 @@ describe("<Switch>", () => {
     it("passes given value to input element", () => {
       const value = "pizza";
 
-      const wrapper = mount(<Switch value={value} />);
+      const wrapper = mount(<Switch value={value} readOnly />);
 
       expect(wrapper.find("input").props().value).toEqual(value);
     });
