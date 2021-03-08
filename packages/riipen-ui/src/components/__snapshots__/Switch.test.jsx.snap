@@ -2,111 +2,43 @@
 
 exports[`<Switch> renders correct snapshot 1`] = `
 <Switch
+  checked={false}
   classes={Array []}
   color="secondary"
   size="medium"
 >
   <span
-    className=""
+    className="jsx-3579722788 "
   >
     <input
-      className="secondary medium"
-      onChange={[Function]}
+      checked={false}
+      className="jsx-3579722788 secondary medium"
       type="checkbox"
     />
-    <style>
-      
-        input {
-          -webkit-appearance: none;
-          outline: none;
-          background-color: #cccbcb;
-          position: relative;
-          transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        input:before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          background-color: #747474;
-          transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        input:hover:before {
-          box-shadow: 0px 0px 15px 3px #9a9a9a;
-        }
-
-        input:disabled, input:checked:disabled {
-          background-color: #747474;
-          pointer-events: none;
-        }
-        input:disabled:before, input:disabled:checked:before {
-          background-color: #424242;
-        }
-
-        .medium {
-          width: 40px;
-          height: 20px;
-          border-radius: 12px;
-        }
-        .medium:before {
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-        }
-        .medium:checked:before {
-          transform: translate(20px);
-        }
-
-        .small {
-          width: 30px;
-          height: 15px;
-          border-radius: 10px;
-        }
-        .small:before {
-          height: 15px;
-          width: 15px;
-          border-radius: 50%;
-        }
-        .small:checked:before {
-          transform: translate(15px);
-        }
-        
-        .primary:checked {
-          background-color: #2c8ddc;
-        }
-        .primary:checked:before {
-          background-color: #254364;
-        }
-
-        .secondary:checked {
-          background-color: #f5bf95;
-        }
-        .secondary:checked:before {
-          background-color: #ed7321;
-        }
-
-        .tertiary:checked {
-          background-color: #78becc;
-        }
-        .tertiary:checked:before {
-          background-color: #41978a;
-        }
-
-        .negative:checked {
-          background-color: #ea7e7e;
-        }
-        .negative:checked:before {
-          background-color: #ba2222;
-        }
-
-        .positive:checked {
-          background-color: #78dbac;
-        }
-        .positive:checked:before {
-          background-color: #1b965c;
-        }
-      
-    </style>
+    <JSXStyle
+      dynamic={
+        Array [
+          "#cccbcb",
+          "background-color 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+          "#747474",
+          "transform 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+          "#9a9a9a",
+          "#747474",
+          "#424242",
+          "#2c8ddc",
+          "#254364",
+          "#f5bf95",
+          "#ed7321",
+          "#78becc",
+          "#41978a",
+          "#ea7e7e",
+          "#ba2222",
+          "#78dbac",
+          "#1b965c",
+        ]
+      }
+      id="3878942598"
+    />
   </span>
 </Switch>
 `;

@@ -28,6 +28,7 @@ describe("<Switch>", () => {
       const wrapper = mount(<Switch />);
 
       const component = wrapper.find("Switch");
+      expect(component.props().checked).toEqual(false);
       expect(component.props().classes).toEqual([]);
       expect(component.props().color).toEqual("secondary");
       expect(component.props().size).toEqual("medium");
@@ -41,18 +42,6 @@ describe("<Switch>", () => {
       const wrapper = mount(<Switch checked={checked} />);
 
       expect(wrapper.find("input").props().checked).toEqual(checked);
-    });
-  });
-
-  describe("checked state", () => {
-    it("changes checked state on change event", () => {
-      const checked = false;
-
-      const wrapper = mount(<Switch checked={checked} />);
-
-      wrapper.find("input").simulate("change");
-
-      expect(wrapper.find("input").props().checked).toEqual(!checked);
     });
   });
 
