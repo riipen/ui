@@ -1,13 +1,13 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 
 const Switch = props => {
   const {
-    checked: checkedProp,
+    checked,
     classes,
     color,
     disabled,
@@ -15,22 +15,11 @@ const Switch = props => {
     onChange,
     required,
     size,
-    value
+    value,
+    ...other
   } = props;
 
   const theme = React.useContext(ThemeContext);
-
-  const [checked, setChecked] = useState(checkedProp);
-
-  const handleChange = event => {
-    const newChecked = !checked;
-
-    setChecked(newChecked);
-
-    if (onChange) {
-      onChange(event, newChecked);
-    }
-  };
 
   return (
     <span className={clsx(classes)}>
@@ -39,14 +28,16 @@ const Switch = props => {
         className={clsx(color, size)}
         disabled={disabled}
         id={id}
-        onChange={handleChange}
+        onChange={onChange}
         required={required}
         type="checkbox"
         value={value}
+        {...other}
       />
       <style jsx>{`
         input {
           background-color: ${theme.palette.grey[400]};
+          cursor: pointer;
           outline: none;
           position: relative;
           transition: ${theme.transitions.create(["background-color"], {
@@ -211,6 +202,7 @@ Switch.propTypes = {
 };
 
 Switch.defaultProps = {
+  checked: false,
   classes: [],
   color: "secondary",
   size: "medium"
