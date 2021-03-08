@@ -44,22 +44,22 @@ const Switch = props => {
         type="checkbox"
         value={value}
       />
-      <style>{`
+      <style jsx>{`
         input {
-          -webkit-appearance: none;
-          outline: none;
           background-color: ${theme.palette.grey[400]};
+          outline: none;
           position: relative;
           transition: ${theme.transitions.create(["background-color"], {
             duration: theme.transitions.duration.standard
           })};
+          -webkit-appearance: none;
         }
         input:before {
+          background-color: ${theme.palette.grey[600]};
           content: "";
+          left: 0;
           position: absolute;
           top: 0;
-          left: 0;
-          background-color: ${theme.palette.grey[600]};
           transition: ${theme.transitions.create(
             ["transform", "background-color"],
             {
@@ -68,45 +68,47 @@ const Switch = props => {
           )};
         }
         input:hover:before {
-          box-shadow: 0px 0px 15px 3px ${theme.palette.grey[500]};
+          box-shadow: 0px 0px 7px 1px ${theme.palette.grey[500]};
         }
 
-        input:disabled, input:checked:disabled {
+        input:disabled,
+        input:checked:disabled {
           background-color: ${theme.palette.grey[600]};
           pointer-events: none;
         }
-        input:disabled:before, input:disabled:checked:before {
+        input:disabled:before,
+        input:disabled:checked:before {
           background-color: ${theme.palette.grey[800]};
         }
 
         .medium {
-          width: 40px;
-          height: 20px;
           border-radius: 12px;
+          height: 20px;
+          width: 40px;
         }
         .medium:before {
+          border-radius: 50%;
           height: 20px;
           width: 20px;
-          border-radius: 50%;
         }
         .medium:checked:before {
           transform: translate(20px);
         }
 
         .small {
-          width: 30px;
-          height: 15px;
           border-radius: 10px;
+          height: 15px;
+          width: 30px;
         }
         .small:before {
+          border-radius: 50%;
           height: 15px;
           width: 15px;
-          border-radius: 50%;
         }
         .small:checked:before {
           transform: translate(15px);
         }
-        
+
         .primary:checked {
           background-color: ${theme.palette.primary.light};
         }
@@ -148,7 +150,7 @@ const Switch = props => {
 
 Switch.propTypes = {
   /**
-   * If true, the component is checked.
+   * If true, the input is checked.
    */
   checked: PropTypes.bool,
 
@@ -158,7 +160,7 @@ Switch.propTypes = {
   classes: PropTypes.array,
 
   /**
-   * The color of the spinner.
+   * The color of the switch.
    */
   color: PropTypes.oneOf([
     "primary",
