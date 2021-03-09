@@ -25,7 +25,7 @@ const Switch = props => {
     <span className={clsx(classes)}>
       <input
         checked={checked}
-        className={clsx(color, size)}
+        className={clsx(color, other.readOnly ? "read-only" : null, size)}
         disabled={disabled}
         id={id}
         onChange={onChange}
@@ -60,6 +60,11 @@ const Switch = props => {
         }
         input:hover:before {
           box-shadow: 0px 0px 7px 1px ${theme.palette.grey[500]};
+        }
+
+        .read-only {
+          cursor: initial;
+          pointer-events: none;
         }
 
         input:disabled,
