@@ -20,9 +20,9 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">checked</span> | <span class="prop-type">bool</span> |  | If true, the component is checked. |
+| <span class="prop-name">checked</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If true, the input is checked. |
 | <span class="prop-name">classes</span> | <span class="prop-type">array</span> | <span class="prop-default">[]</span> | An array of custom CSS classes to apply. |
-| <span class="prop-name">color</span> | <span class="prop-type">"primary"<br>&#124;&nbsp;"secondary"<br>&#124;&nbsp;"tertiary"<br>&#124;&nbsp;"positive"<br>&#124;&nbsp;"negative"</span> | <span class="prop-default">"secondary"</span> | The color of the spinner. |
+| <span class="prop-name">color</span> | <span class="prop-type">"primary"<br>&#124;&nbsp;"secondary"<br>&#124;&nbsp;"tertiary"<br>&#124;&nbsp;"positive"<br>&#124;&nbsp;"negative"</span> | <span class="prop-default">"secondary"</span> | The color of the switch. |
 | <span class="prop-name">disabled</span> | <span class="prop-type">bool</span> |  | If true, the switch will be disabled. |
 | <span class="prop-name">id</span> | <span class="prop-type">string</span> |  | The id of the input element. |
 | <span class="prop-name">onChange</span> | <span class="prop-type">func</span> |  | Callback fired when the state is changed.<br><br>**Signature:**<br>`function(event: object) => void`<br>*event:* The event source of the callback. You can pull out the new value by accessing event.target.value (string). You can pull out the new checked state by accessing event.target.checked (boolean). |
