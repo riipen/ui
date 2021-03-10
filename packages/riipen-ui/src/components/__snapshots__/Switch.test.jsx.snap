@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Switch> renders correct snapshot 1`] = `
+<Switch
+  checked={false}
+  classes={Array []}
+  color="secondary"
+  readOnly={true}
+  size="medium"
+>
+  <span
+    className="jsx-2072486733 "
+  >
+    <input
+      checked={false}
+      className="jsx-2072486733 secondary read-only medium"
+      readOnly={true}
+      type="checkbox"
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          "#cccbcb",
+          "background-color 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+          "#747474",
+          "transform 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+          "#9a9a9a",
+          "#747474",
+          "#424242",
+          "#2c8ddc",
+          "#254364",
+          "#f5bf95",
+          "#ed7321",
+          "#78becc",
+          "#41978a",
+          "#ea7e7e",
+          "#ba2222",
+          "#78dbac",
+          "#1b965c",
+        ]
+      }
+      id="4073567938"
+    />
+  </span>
+</Switch>
+`;
