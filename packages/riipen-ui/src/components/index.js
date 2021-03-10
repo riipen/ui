@@ -49,6 +49,7 @@ export { default as RadioButtonGroup } from "./RadioButtonGroup";
 export { default as RadioGroup } from "./RadioGroup";
 export { default as RichTextEditor } from "./RichTextEditor";
 export { default as Spinner } from "./Spinner";
+export { default as Switch } from "./Switch";
 export { default as Tab } from "./Tab";
 export { default as Table } from "./Table";
 export { default as TableBody } from "./TableBody";
