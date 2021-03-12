@@ -212,7 +212,7 @@ Checkbox.propTypes = {
   /**
    * A warning to display below the checkbox.
    */
-  warning: PropTypes.node,
+  warning: PropTypes.node
 };
 
 Checkbox.defaultProps = {

@@ -213,14 +213,14 @@ describe("<Checkbox>", () => {
   });
 
   describe("onKeyDown event", () => {
-  it("invokes handleKeyDown on valid keydown event", () => {
-    const handler = jest.fn();
+    it("invokes handleKeyDown on valid keydown event", () => {
+      const handler = jest.fn();
 
-    const wrapper = mount(<Checkbox onKeyDown={handler} readOnly />);
+      const wrapper = mount(<Checkbox onKeyDown={handler} readOnly />);
 
-    wrapper.find("input").simulate("keydown", { key: "Enter" });
+      wrapper.find("input").simulate("keydown", { key: "Enter" });
 
-   expect(handler).toHaveBeenCalledTimes(1);
+      expect(handler).toHaveBeenCalledTimes(1);
+    });
   });
-});
 });
