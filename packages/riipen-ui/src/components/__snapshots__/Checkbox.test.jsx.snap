@@ -320,6 +320,7 @@ exports[`<Checkbox> renders correct snapshot 1`] = `
           disabled={false}
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           readOnly={true}
           type="checkbox"
         />
