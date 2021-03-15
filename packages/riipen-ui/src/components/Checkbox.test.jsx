@@ -212,7 +212,7 @@ describe("<Checkbox>", () => {
     });
   });
 
-  describe("onKeyDown event", () => {
+  describe("handleKeyDown event", () => {
     it("invokes handleKeyDown on valid keydown event", () => {
       const handler = jest.fn();
 
