@@ -33,6 +33,13 @@ const Checkbox = props => {
     onBlurVisible();
   };
 
+  const handleKeyDown = e => {    
+    if (e.key === "Enter") {
+      e.target.checked = !checked;
+      other.onChange?.(e);
+    }
+  };
+
   const className = clsx("checkbox", focusVisible ? "focusVisible" : null);
 
   return (
@@ -50,6 +57,7 @@ const Checkbox = props => {
           type="checkbox"
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
           {...other}
         />
         <span

@@ -211,4 +211,16 @@ describe("<Checkbox>", () => {
       ).toEqual(false);
     });
   });
+
+  describe("handleKeyDown event", () => {
+    it("invokes handleKeyDown on valid keydown event", () => {
+      const handler = jest.fn();
+
+      const wrapper = mount(<Checkbox onKeyDown={handler} readOnly />);
+
+      wrapper.find("input").simulate("keydown", { key: "Enter" });
+
+      expect(handler).toHaveBeenCalledTimes(1);
+    });
+  });
 });
