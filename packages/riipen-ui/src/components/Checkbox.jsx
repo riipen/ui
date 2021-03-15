@@ -111,7 +111,7 @@ const Checkbox = props => {
         }
 
         label input.focusVisible ~ .checkmark {
-          outline: -webkit-focus-ring-color auto 5px;
+          outline: auto 5px;
         }
 
         /* When the checkbox is checked */
