@@ -134,6 +134,8 @@ jobs:
           command: |
             aws s3 sync --delete packages/riipen-ui-docs/out s3://ui-${CIRCLE_BRANCH}-docs
   test-unit:
+    resource_class: large
+
     docker:
       - image: circleci/node:14.4
         <<: *docker-auth
