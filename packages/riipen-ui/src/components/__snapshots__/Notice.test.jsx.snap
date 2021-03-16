@@ -12,7 +12,7 @@ exports[`<Notice> renders correct snapshot 1`] = `
     color="primary"
   >
     <div
-      className="jsx-3616308683 primary riipen riipen-notice"
+      className="jsx-2692547272 primary riipen riipen-notice"
     />
     <JSXStyle
       dynamic={
@@ -28,11 +28,13 @@ exports[`<Notice> renders correct snapshot 1`] = `
           "#3caabb",
           "#ea7e7e",
           "#e95353",
+          "#ffd894",
+          "#febb46",
           "#78dbac",
           "#4cc88d",
         ]
       }
-      id="483255525"
+      id="3699188109"
     />
   </Notice>
 </withClasses(Notice)>
