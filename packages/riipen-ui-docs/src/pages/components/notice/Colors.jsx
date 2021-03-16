@@ -26,6 +26,10 @@ export default function Colors() {
         <Typography>Some notice text.</Typography>
       </Notice>
       <div style={style} />
+      <Notice color="warning">
+        <Typography>Some notice text.</Typography>
+      </Notice>
+      <div style={style} />
       <Notice color="negative">
         <Typography>Some notice text.</Typography>
       </Notice>
