@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import { useIsFocusVisible, withThemeContext } from "../utils";
 
@@ -63,7 +64,8 @@ const ListItem = props => {
         }
 
         .list-item.focusVisible {
-          color: ${theme.palette[color].main};
+          color: ${theme.palette[color]?.main} ||
+            ${theme.palette[ListItem.defaultProps.color].main};
           outline: 5px auto -webkit-focus-ring-color;
         }
       `}</style>

@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -19,7 +20,7 @@ class InputHint extends React.Component {
     /**
      * Color of the hint text
      */
-    color: PropTypes.oneOf(["default", "white"]),
+    color: PropTypes.oneOf(["default", "white", "black"]),
 
     /**
      * An array of custom CSS classes to apply.

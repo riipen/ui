@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Toolbar> renders correct snapshot 1`] = `
+<withClasses(Toolbar)>
+  <Toolbar
+    classes={
+      Array [
+        "riipen",
+        "riipen-toolbar",
+      ]
+    }
+  >
+    <div
+      className="jsx-842450902 riipen riipen-toolbar"
+    />
+    <JSXStyle
+      id="842450902"
+    />
+  </Toolbar>
+</withClasses(Toolbar)>
+`;

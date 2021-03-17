@@ -2,7 +2,6 @@ import React from "react";
 
 import Grid from "riipen-ui/components/Grid";
 import GridItem from "riipen-ui/components/GridItem";
-import Typography from "riipen-ui/components/Typography";
 
 export default function CenteredGrid() {
   const itemStyle = {
@@ -35,7 +34,6 @@ export default function CenteredGrid() {
       <GridItem lg={3}>
         <div style={itemStyle}>lg=3</div>
       </GridItem>
-      <Typography>Test</Typography>
     </Grid>
   );
 }

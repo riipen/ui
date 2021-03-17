@@ -2,6 +2,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 import css from "styled-jsx/css";
+import _JSXStyle from "styled-jsx/style";
 
 import AccordionContext from "../contexts/AccordionContext";
 import ThemeContext from "../styles/ThemeContext";
@@ -12,8 +13,6 @@ const AccordionSummary = props => {
   const { children, classes, iconProps, icon, ...other } = props;
 
   const theme = React.useContext(ThemeContext);
-
-  const [focusedState, setFocusedState] = React.useState(false);
 
   const getLinkedStyles = () => {
     return css.resolve`
@@ -46,14 +45,6 @@ const AccordionSummary = props => {
     `;
   };
 
-  const handleFocusVisible = () => {
-    setFocusedState(true);
-  };
-
-  const handleBlur = () => {
-    setFocusedState(false);
-  };
-
   const { disabled = false, expanded, toggle } = React.useContext(
     AccordionContext
   );
@@ -75,14 +66,11 @@ const AccordionSummary = props => {
         "root",
         {
           disabled,
-          expanded,
-          focused: focusedState
+          expanded
         },
         classes
       )}
       onClick={handleClick}
-      onFocusVisible={handleFocusVisible}
-      onBlur={handleBlur}
       {...other}
     >
       <div

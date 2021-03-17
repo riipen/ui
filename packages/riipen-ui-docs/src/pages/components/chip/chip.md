@@ -32,9 +32,15 @@ If you need a more condensed view of the pill, use the `size` prop.
 
 {{"demo": "pages/components/chip/Compact.js"}}
 
+## Click
+
+If you need to allow people to perform actions an `onClick` event can be provided.
+
+{{"demo": "pages/components/chip/Click.js"}}
+
 ## Icon
 
-If you need to allow people to perform actions an `iconStart` with/without an `onIconClick` event can be provided
+You can provide an icon at the start of the Chip.
 
 {{"demo": "pages/components/chip/Icon.js"}}
 

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -39,9 +40,11 @@ class ClickAway extends React.Component {
 
     const theme = this.context;
 
-    const childrenWithProps = React.Children.map(children, child =>
-      React.cloneElement(child, { onClick: this.handleClick })
-    );
+    const childrenWithProps = React.Children.map(children, child => {
+      if (!child) return null;
+
+      return React.cloneElement(child, { onClick: this.handleClick });
+    });
 
     return (
       <React.Fragment>

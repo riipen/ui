@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import { withThemeContext, useIsFocusVisible } from "../utils";
 
@@ -32,6 +33,14 @@ const Checkbox = props => {
     onBlurVisible();
   };
 
+  const handleKeyDown = e => {
+    if (e.key === "Enter") {
+      e.target.checked = !checked;
+
+      if (other.onChange) other.onChange(e);
+    }
+  };
+
   const className = clsx("checkbox", focusVisible ? "focusVisible" : null);
 
   return (
@@ -49,6 +58,7 @@ const Checkbox = props => {
           type="checkbox"
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
           {...other}
         />
         <span
@@ -102,7 +112,7 @@ const Checkbox = props => {
         }
 
         label input.focusVisible ~ .checkmark {
-          outline: -webkit-focus-ring-color auto 5px;
+          outline: auto 5px;
         }
 
         /* When the checkbox is checked */

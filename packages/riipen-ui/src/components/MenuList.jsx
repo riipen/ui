@@ -10,7 +10,7 @@ class MenuList extends React.Component {
 
   static propTypes = {
     /**
-     * Wether to select the first element on list open
+     * Whether to select the first element on list open
      */
     autoFocus: PropTypes.bool,
 
@@ -74,6 +74,8 @@ class MenuList extends React.Component {
     return React.Children.map(
       this.handleFragmentChildren(children),
       (child, idx) => {
+        if (!child) return null;
+
         let newProps = {
           key: idx,
           color: this.props.color

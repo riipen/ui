@@ -44,5 +44,5 @@ git tag "$NEW_VERSION"
 git push --tags
 
 # Run release script
-npm run build 
-npm publish build --tag latest
+npm run build
+npm publish ./build --tag latest

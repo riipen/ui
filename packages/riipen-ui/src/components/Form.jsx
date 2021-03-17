@@ -2,6 +2,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import React, { useEffect, useRef } from "react";
 import css from "styled-jsx/css";
+import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";

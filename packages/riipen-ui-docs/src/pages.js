@@ -106,6 +106,10 @@ const pages = [
         pathname: "/components/notice"
       },
       {
+        name: "Paper",
+        pathname: "/components/paper"
+      },
+      {
         name: "Popover",
         pathname: "/components/popover"
       },
@@ -120,6 +124,14 @@ const pages = [
       {
         name: "Radio",
         pathname: "/components/radio"
+      },
+      {
+        name: "Spinner",
+        pathname: "/components/spinner"
+      },
+      {
+        name: "Switch",
+        pathname: "/components/switch"
       },
       {
         name: "Rich Text Editor",
@@ -240,6 +252,10 @@ const pages = [
         pathname: "/components-api/menu-item"
       },
       {
+        name: "Paper",
+        pathname: "/components-api/paper"
+      },
+      {
         name: "Popover",
         pathname: "/components-api/popover"
       },
@@ -254,6 +270,26 @@ const pages = [
       {
         name: "Rich Text Editor",
         pathname: "/components-api/rich-text-editor"
+      },
+      {
+        name: "Spinner",
+        pathname: "/components-api/spinner"
+      },
+      {
+        name: "SpinnerClip",
+        pathname: "/components-api/spinner-clip"
+      },
+      {
+        name: "SpinnerPulse",
+        pathname: "/components-api/spinner-pulse"
+      },
+      {
+        name: "SpinnerScale",
+        pathname: "/components-api/spinner-scale"
+      },
+      {
+        name: "Switch",
+        pathname: "/components-api/switch"
       },
       {
         name: "Table",

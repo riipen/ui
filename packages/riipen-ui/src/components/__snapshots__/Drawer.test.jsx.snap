@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Drawer> default props sets correct default props 1`] = `
+<withClasses(Drawer)
+  onClose={[MockFunction]}
+>
+  <Drawer
+    anchor="left"
+    classes={
+      Array [
+        "riipen",
+        "riipen-drawer",
+      ]
+    }
+    onClose={[MockFunction]}
+    open={false}
+  />
+</withClasses(Drawer)>
+`;
+
+exports[`<Drawer> renders the correct snapshot when open is true and onClose is provided 1`] = `
+<withClasses(Drawer)
+  onClose={[MockFunction]}
+  open={true}
+>
+  <Drawer
+    anchor="left"
+    classes={
+      Array [
+        "riipen",
+        "riipen-drawer",
+      ]
+    }
+    onClose={[MockFunction]}
+    open={true}
+  >
+    <withClasses(Backdrop)>
+      <Backdrop
+        classes={
+          Array [
+            "riipen",
+            "riipen-backdrop",
+          ]
+        }
+      >
+        <div
+          aria-hidden={true}
+          className="jsx-1867827232 root riipen riipen-backdrop"
+        />
+        <JSXStyle
+          id="1867827232"
+        />
+      </Backdrop>
+    </withClasses(Backdrop)>
+    <withClasses(ClickAway)
+      onClickAway={[MockFunction]}
+    >
+      <ClickAway
+        classes={
+          Array [
+            "riipen",
+            "riipen-clickaway",
+          ]
+        }
+        onClickAway={[MockFunction]}
+      >
+        <div
+          className="jsx-3334867826"
+          onClick={[Function]}
+        >
+          <div
+            className="jsx-2439981594 drawer left riipen riipen-drawer"
+            key=".0"
+            onClick={[Function]}
+          />
+        </div>
+        <JSXStyle
+          dynamic={
+            Array [
+              3,
+            ]
+          }
+          id="1169064260"
+        />
+      </ClickAway>
+    </withClasses(ClickAway)>
+    <JSXStyle
+      dynamic={
+        Array [
+          "#fff",
+          3,
+        ]
+      }
+      id="3412078254"
+    />
+  </Drawer>
+</withClasses(Drawer)>
+`;

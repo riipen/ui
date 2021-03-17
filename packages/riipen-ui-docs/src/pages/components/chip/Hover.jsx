@@ -28,6 +28,26 @@ export default function Hover() {
         <Chip label="Warning" hover color="warning" />
         <span style={style} />
         <Chip label="Negative" hover color="negative" />
+        <span style={style} />
+        <Chip label="Dark" hover color="dark" />
+      </div>
+      <div style={breakStyle}>
+        <Chip label="Default" hover variant="outlined" />
+        <span style={style} />
+        <Chip label="Primary" hover color="primary" variant="outlined" />
+        <span style={style} />
+        <Chip label="Secondary" hover color="secondary" variant="outlined" />
+        <span style={style} />
+        <Chip label="Tertiary" hover color="tertiary" variant="outlined" />
+      </div>
+      <div style={breakStyle}>
+        <Chip label="Positive" hover color="positive" variant="outlined" />
+        <span style={style} />
+        <Chip label="Warning" hover color="warning" variant="outlined" />
+        <span style={style} />
+        <Chip label="Negative" hover color="negative" variant="outlined" />
+        <span style={style} />
+        <Chip label="Dark" hover color="dark" variant="outlined" />
       </div>
     </div>
   );

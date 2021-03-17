@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -15,7 +16,7 @@ class Hidden extends React.Component {
     children: PropTypes.node,
 
     /**
-     * Given some size, will hide content at that size and up / down (direction).
+     * Given some size, will hide content at size larger than min (up) or smaller than max (down).
      */
     direction: PropTypes.oneOf(["down", "up"]),
 

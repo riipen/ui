@@ -20,7 +20,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |  | The content of the component. |
+| <span class="prop-name required">children&nbsp;*</span> | <span class="prop-type">node</span> |  | The content of the component. |
 | <span class="prop-name">error</span> | <span class="prop-type">node</span> |  | An error to display below the input. |
 | <span class="prop-name">hint</span> | <span class="prop-type">node</span> |  | Hint text to display under the label of the input. |
 | <span class="prop-name">label</span> | <span class="prop-type">node</span> |  | Label text to display for the input. |

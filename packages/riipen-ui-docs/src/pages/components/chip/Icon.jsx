@@ -16,29 +16,18 @@ export default function Icons() {
     marginRight: "10px"
   };
 
-  const iconClicked = () => {
-    // eslint-disable-next-line no-alert
-    alert("Icon Clicked");
-  };
-
   return (
     <div>
       <div>
-        <Chip iconStart={icon(faPlus)} color="primary" label="Icon Start" />
+        <Chip icon={icon(faPlus)} color="primary" label="Icon Start" />
+        <span style={style} />
+        <Chip icon={icon(faTimes)} color="secondary" label="Icon" />
         <span style={style} />
         <Chip
-          iconStart={icon(faTimes)}
-          onIconClick={iconClicked}
-          color="secondary"
-          label="Icon Click"
-        />
-        <span style={style} />
-        <Chip
-          iconStart={icon(faExclamationCircle)}
+          icon={icon(faExclamationCircle)}
           disabled
-          onIconClick={iconClicked}
           color="secondary"
-          label="Icon Click Disabled"
+          label="Icon Disabled"
         />
       </div>
     </div>

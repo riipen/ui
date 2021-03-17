@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ClickAway> renders correct snapshot 1`] = `
+<withClasses(ClickAway)
+  onClickAway={[MockFunction]}
+>
+  <ClickAway
+    classes={
+      Array [
+        "riipen",
+        "riipen-clickaway",
+      ]
+    }
+    onClickAway={[MockFunction]}
+  >
+    <div
+      className="jsx-3334867826"
+      onClick={[Function]}
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          3,
+        ]
+      }
+      id="1169064260"
+    />
+  </ClickAway>
+</withClasses(ClickAway)>
+`;

@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -26,6 +27,9 @@ class ProgressBar extends React.Component {
       "warning"
     ]),
 
+    /**
+     * Either a light or dark unfilled color.
+     */
     unfilled: PropTypes.oneOf(["light", "dark"]),
 
     /**

@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -27,7 +28,8 @@ class Notice extends React.Component {
       "positive",
       "primary",
       "secondary",
-      "tertiary"
+      "tertiary",
+      "warning"
     ])
   };
 
@@ -71,6 +73,10 @@ class Notice extends React.Component {
           .negative {
             background-color: ${theme.palette.negative.light};
             border-color: ${theme.palette.negative.main};
+          }
+          .warning {
+            background-color: ${theme.palette.warning.light};
+            border-color: ${theme.palette.warning.main};
           }
           .positive {
             background-color: ${theme.palette.positive.light};

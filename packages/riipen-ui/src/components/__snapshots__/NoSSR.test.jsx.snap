@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NoSSR> renders correct snapshot 1`] = `
+<NoSSR
+  fallback={null}
+/>
+`;

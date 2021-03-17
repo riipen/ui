@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
+<withClasses(RadioButtonGroup)>
+  <RadioButtonGroup
+    classes={
+      Array [
+        "riipen",
+        "riipen-radiobuttongroup",
+      ]
+    }
+  >
+    <fieldset
+      className="jsx-3241897731"
+    >
+      <span
+        className="jsx-3241897731 radioButtons jsx-3248853724"
+      >
+        <withClasses(RadioButton)
+          classes={
+            Array [
+              "jsx-3248853724",
+              "radioButton",
+            ]
+          }
+          key=".0"
+          onChange={[Function]}
+        >
+          <RadioButton
+            classes={
+              Array [
+                "riipen",
+                "riipen-radiobutton",
+                "jsx-3248853724",
+                "radioButton",
+              ]
+            }
+            onChange={[Function]}
+          >
+            <div
+              className="jsx-1306841623 riipen riipen-radiobutton jsx-3248853724 radioButton root"
+            >
+              <label
+                className="jsx-1306841623 "
+              >
+                <input
+                  className="jsx-1306841623 "
+                  onChange={[Function]}
+                  type="radio"
+                />
+                <withClasses(Typography)
+                  color="grey600"
+                  variant="body2"
+                >
+                  <Typography
+                    classes={
+                      Array [
+                        "riipen",
+                        "riipen-typography",
+                      ]
+                    }
+                    color="grey600"
+                    display="initial"
+                    gutter={false}
+                    textAlign="inherit"
+                    variant="body2"
+                  >
+                    <p
+                      className="jsx-4149659077 root color-grey600 initial body2 align-inherit riipen riipen-typography"
+                    >
+                      <span
+                        className="jsx-1306841623 content"
+                      />
+                    </p>
+                    <JSXStyle
+                      dynamic={
+                        Array [
+                          "#424242",
+                          "Roboto, Helvetica, Arial, sans-serif",
+                          400,
+                          "14px",
+                          "20px",
+                          "0.00938em",
+                          "#424242",
+                          "Roboto, Helvetica, Arial, sans-serif",
+                          400,
+                          "12px",
+                          "17px",
+                          "0.01071em",
+                          "#424242",
+                          "Roboto, Helvetica, Arial, sans-serif",
+                          400,
+                          "10px",
+                          "14px",
+                          "0.01071em",
+                          "#373737",
+                          "Roboto, Helvetica, Arial, sans-serif",
+                          500,
+                          "40px",
+                          "56px",
+                          "-0.01562em",
+                          "#373737",
+                          "Roboto, Helvetica, Arial, sans-serif",
+                          500,
+                          "30px",
+                          "42px",
+                          "-0.00833em",
+                          "#373737",
+                          "Roboto, Helvetica, Arial, sans-serif",
+                          500,
+                          "22px",
+                          "32px",
+                          "0em",
+                          "#373737",
+                          "Roboto, Helvetica, Arial, sans-serif",
+                          400,
+                          "20px",
+                          "30px",
+                          "-0.00735em",
+                          "#373737",
+                          "Roboto, Helvetica, Arial, sans-serif",
+                          400,
+                          "16px",
+                          "23px",
+                          "0rem",
+                          "#000",
+                          "#747474",
+                          "#424242",
+                          "#373737",
+                          "#1f71ae",
+                          "#f58632",
+                          "#3caabb",
+                          "#4cc88d",
+                          "#e95353",
+                          "#fff",
+                          700,
+                          300,
+                          500,
+                          400,
+                        ]
+                      }
+                      id="489809676"
+                    />
+                  </Typography>
+                </withClasses(Typography)>
+              </label>
+              <JSXStyle
+                dynamic={
+                  Array [
+                    "#dddddd",
+                    "#eeeeee",
+                  ]
+                }
+                id="547299733"
+              />
+            </div>
+          </RadioButton>
+        </withClasses(RadioButton)>
+      </span>
+    </fieldset>
+    <JSXStyle
+      id="3248853724"
+    />
+    <JSXStyle
+      id="3241897731"
+    />
+  </RadioButtonGroup>
+</withClasses(RadioButtonGroup)>
+`;

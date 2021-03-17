@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Container> renders correct snapshot 1`] = `
+<withClasses(Container)>
+  <Container
+    classes={
+      Array [
+        "riipen",
+        "riipen-container",
+      ]
+    }
+    maxWidth="lg"
+  >
+    <div
+      className="jsx-1592274223 root riipen riipen-container"
+    >
+      <JSXStyle
+        dynamic={
+          Array [
+            "1380px",
+            30,
+            1380,
+            25,
+            960,
+            15,
+          ]
+        }
+        id="578709594"
+      />
+    </div>
+  </Container>
+</withClasses(Container)>
+`;

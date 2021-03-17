@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -45,6 +46,11 @@ class Chip extends React.Component {
     disabled: PropTypes.bool,
 
     /**
+     * Whether the chip should invert its variant on hover.
+     */
+    hover: PropTypes.bool,
+
+    /**
      * Icon to display at start of chip.
      */
     icon: PropTypes.elementType,
@@ -58,11 +64,6 @@ class Chip extends React.Component {
      * Action to perform when clicked.
      */
     onClick: PropTypes.func,
-
-    /**
-     * Callback function fired when the icon is clicked.
-     */
-    onIconClick: PropTypes.func,
 
     /**
      * The size of the chip.
@@ -80,6 +81,7 @@ class Chip extends React.Component {
     color: "default",
     component: "div",
     disabled: false,
+    hover: false,
     size: "medium",
     variant: "default"
   };
@@ -92,8 +94,8 @@ class Chip extends React.Component {
       color,
       component: Component,
       disabled,
+      hover,
       icon: Icon,
-      onIconClick,
       onClick,
       size,
       variant
@@ -104,7 +106,6 @@ class Chip extends React.Component {
     const theme = this.context;
 
     const clickable = !!onClick;
-    const iconClickable = !!onIconClick;
 
     const className = clsx(
       "root",
@@ -113,7 +114,8 @@ class Chip extends React.Component {
       size,
       variant,
       classes,
-      { clickable }
+      { clickable },
+      hover ? "hover" : null
     );
 
     const handleClick = () => {
@@ -124,12 +126,7 @@ class Chip extends React.Component {
       <React.Fragment>
         <Component onClick={handleClick} className={className}>
           {Icon && (
-            <span
-              onClick={onIconClick}
-              className={clsx("icon", "icon-start", {
-                iconClickable
-              })}
-            >
+            <span className={clsx("icon", "icon-start")}>
               <Icon />
             </span>
           )}
@@ -171,7 +168,10 @@ class Chip extends React.Component {
           .root.clickable {
             cursor: pointer;
           }
-
+          .root.hover:hover {
+            background-color: transparent;
+            border: 1px solid ${theme.palette.text.primary};
+          }
           .icon-start {
             align-items: center;
             display: flex;
@@ -181,10 +181,6 @@ class Chip extends React.Component {
 
           .icon-start.disabled {
             cursor: initial;
-          }
-
-          .icon-start.iconClickable {
-            cursor: pointer;
           }
 
           .label {
@@ -197,6 +193,10 @@ class Chip extends React.Component {
             background-color: ${theme.palette.primary.main};
             border-color: ${theme.palette.primary.main};
             color: ${theme.palette.primary.contrast};
+          }
+          .primary.hover:hover {
+            border-color: ${theme.palette.primary.main};
+            color: ${theme.palette.primary.main};
           }
           .primary.outlined {
             border-color: ${theme.palette.primary.main};
@@ -213,6 +213,10 @@ class Chip extends React.Component {
             border-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.contrast};
           }
+          .secondary.hover:hover {
+            border-color: ${theme.palette.secondary.main};
+            color: ${theme.palette.secondary.main};
+          }
           .secondary.outlined {
             border-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.main};
@@ -222,60 +226,104 @@ class Chip extends React.Component {
             border-color: ${theme.palette.secondary.main};
             color: ${theme.palette.secondary.contrast};
           }
-
           .tertiary {
             background-color: ${theme.palette.tertiary.main};
             border-color: ${theme.palette.tertiary.main};
             color: ${theme.palette.tertiary.contrast};
           }
+          .tertiary.hover:hover {
+            border-color: ${theme.palette.tertiary.main};
+            color: ${theme.palette.tertiary.main};
+          }
           .tertiary.outlined {
             border-color: ${theme.palette.tertiary.main};
             color: ${theme.palette.tertiary.main};
           }
-
+          .tertiary.outlined.hover:hover {
+            background-color: ${theme.palette.tertiary.main};
+            border-color: ${theme.palette.tertiary.main};
+            color: ${theme.palette.tertiary.contrast};
+          }
           .negative {
             background-color: ${theme.palette.negative.main};
             border-color: ${theme.palette.negative.main};
             color: ${theme.palette.negative.contrast};
           }
+          .negative.hover:hover {
+            border-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.main};
+          }
           .negative.outlined {
             border-color: ${theme.palette.negative.main};
             color: ${theme.palette.negative.main};
           }
-
+          .negative.outlined.hover:hover {
+            background-color: ${theme.palette.negative.main};
+            border-color: ${theme.palette.negative.main};
+            color: ${theme.palette.negative.contrast};
+          }
           .warning {
             background-color: ${theme.palette.warning.main};
             border-color: ${theme.palette.warning.main};
             color: ${theme.palette.warning.contrast};
           }
+          .warning.hover:hover {
+            border-color: ${theme.palette.warning.main};
+            color: ${theme.palette.warning.main};
+          }
           .warning.outlined {
             border-color: ${theme.palette.warning.main};
             color: ${theme.palette.warning.main};
           }
-
+          .warning.outlined.hover:hover {
+            background-color: ${theme.palette.warning.main};
+            border-color: ${theme.palette.warning.main};
+            color: ${theme.palette.warning.contrast};
+          }
           .positive {
             background-color: ${theme.palette.positive.main};
             border-color: ${theme.palette.positive.main};
             color: ${theme.palette.positive.contrast};
           }
+          .positive.hover:hover {
+            border-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.main};
+          }
           .positive.outlined {
             border-color: ${theme.palette.positive.main};
             color: ${theme.palette.positive.main};
           }
-
+          .positive.outlined.hover:hover {
+            background-color: ${theme.palette.positive.main};
+            border-color: ${theme.palette.positive.main};
+            color: ${theme.palette.positive.contrast};
+          }
           .dark {
             background-color: ${theme.palette.grey.A400};
             border-color: ${theme.palette.grey.A400};
             color: ${theme.palette.common.white};
           }
+          .dark.hover:hover {
+            border-color: ${theme.palette.grey.A400};
+            color: ${theme.palette.grey.A400};
+          }
           .dark.outlined {
             border-color: ${theme.palette.grey.A400};
             color: ${theme.palette.grey.A400};
           }
-
+          .dark.outlined.hover:hover {
+            background-color: ${theme.palette.grey.A400};
+            border-color: ${theme.palette.grey.A400};
+            color: ${theme.palette.common.white};
+          }
           .outlined {
             background-color: transparent;
             border: 1px solid ${theme.palette.text.primary};
+          }
+          .outlined.default.hover:hover {
+            background-color: ${theme.palette.grey[300]};
+            border-color: ${theme.palette.grey[300]};
+            color: ${theme.palette.text.secondary};
           }
         `}</style>
       </React.Fragment>

@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Typography> renders correct snapshot 1`] = `
+<withClasses(Typography)>
+  <Typography
+    classes={
+      Array [
+        "riipen",
+        "riipen-typography",
+      ]
+    }
+    color="inherit"
+    display="initial"
+    gutter={false}
+    textAlign="inherit"
+    variant="body1"
+  >
+    <p
+      className="jsx-4149659077 root color-inherit initial body1 align-inherit riipen riipen-typography"
+    />
+    <JSXStyle
+      dynamic={
+        Array [
+          "#424242",
+          "Roboto, Helvetica, Arial, sans-serif",
+          400,
+          "14px",
+          "20px",
+          "0.00938em",
+          "#424242",
+          "Roboto, Helvetica, Arial, sans-serif",
+          400,
+          "12px",
+          "17px",
+          "0.01071em",
+          "#424242",
+          "Roboto, Helvetica, Arial, sans-serif",
+          400,
+          "10px",
+          "14px",
+          "0.01071em",
+          "#373737",
+          "Roboto, Helvetica, Arial, sans-serif",
+          500,
+          "40px",
+          "56px",
+          "-0.01562em",
+          "#373737",
+          "Roboto, Helvetica, Arial, sans-serif",
+          500,
+          "30px",
+          "42px",
+          "-0.00833em",
+          "#373737",
+          "Roboto, Helvetica, Arial, sans-serif",
+          500,
+          "22px",
+          "32px",
+          "0em",
+          "#373737",
+          "Roboto, Helvetica, Arial, sans-serif",
+          400,
+          "20px",
+          "30px",
+          "-0.00735em",
+          "#373737",
+          "Roboto, Helvetica, Arial, sans-serif",
+          400,
+          "16px",
+          "23px",
+          "0rem",
+          "#000",
+          "#747474",
+          "#424242",
+          "#373737",
+          "#1f71ae",
+          "#f58632",
+          "#3caabb",
+          "#4cc88d",
+          "#e95353",
+          "#fff",
+          700,
+          300,
+          500,
+          400,
+        ]
+      }
+      id="489809676"
+    />
+  </Typography>
+</withClasses(Typography)>
+`;

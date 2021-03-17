@@ -1,0 +1,19 @@
+version: "2"
+checks:
+  file-lines:
+    config:
+      threshold: 400
+  identical-code:
+    enabled: false
+  method-complexity:
+    config:
+      threshold: 20
+  method-count:
+    config:
+      threshold: 50
+  method-lines:
+    enabled: false
+  similar-code:
+    enabled: false
+exclude_patterns:
+  - "packages/riipen-ui/src/components/*.test.jsx"

@@ -1,6 +1,6 @@
 {
   "name": "riipen-ui",
-  "version": "0.2.9",
+  "version": "0.2.23",
   "private": false,
   "author": {
     "name": "Riipen",
@@ -26,12 +26,11 @@
   },
   "homepage": "https://ui.riipen.com/",
   "engines": {
-    "npm": ">=8.0.0"
+    "npm": ">=7.0.0"
   },
   "sideEffects": false,
   "scripts": {
     "build": "babel ./src --out-dir ./temp && cp ./package.json ./temp && cp ./README.md ./temp && rsync ./temp/ ./build/ -r --delete-after && rm -rf ./temp",
-    "ci:audit": "audit-ci --moderate",
     "ci:test:coverage": "NODE_ENV=test NODE_PATH=./ nyc mocha --opts ./test/unit/ci.mocha.opts",
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
@@ -68,7 +67,9 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
-    "audit-ci": "3.0.1",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.5",
+    "enzyme-to-json": "3.6.1",
     "eslint": "6.5.1",
     "lint-staged": "9.4.2",
     "prettier": "1.18.2"

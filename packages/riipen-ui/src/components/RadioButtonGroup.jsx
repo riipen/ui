@@ -1,6 +1,7 @@
 import css from "styled-jsx/css";
 import PropTypes from "prop-types";
 import React from "react";
+import _JSXStyle from "styled-jsx/style";
 
 import clsx from "clsx";
 
@@ -93,7 +94,7 @@ RadioButtonGroup.propTypes = {
   /**
    * The content of the component.
    */
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 
   /**
    * An error to display below the input.
