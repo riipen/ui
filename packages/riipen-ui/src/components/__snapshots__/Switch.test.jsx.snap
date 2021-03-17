@@ -9,11 +9,11 @@ exports[`<Switch> renders correct snapshot 1`] = `
   size="medium"
 >
   <span
-    className="jsx-2072486733 "
+    className="jsx-2614455360 "
   >
     <input
       checked={false}
-      className="jsx-2072486733 secondary read-only medium"
+      className="jsx-2614455360 secondary read-only medium"
       readOnly={true}
       type="checkbox"
     />
@@ -39,7 +39,7 @@ exports[`<Switch> renders correct snapshot 1`] = `
           "#1b965c",
         ]
       }
-      id="4073567938"
+      id="3454303973"
     />
   </span>
 </Switch>
