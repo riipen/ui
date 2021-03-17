@@ -1,5 +1,4 @@
 import { mount } from "enzyme";
-import toJson from "enzyme-to-json";
 import React from "react";
 
 import Spinner from "./Spinner";
@@ -15,12 +14,6 @@ describe("<Spinner>", () => {
     }
 
     expect(error).toEqual(undefined);
-  });
-
-  it("renders correct snapshot", () => {
-    const wrapper = mount(<Spinner />);
-
-    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("default props", () => {
