@@ -126,6 +126,10 @@ const pages = [
         pathname: "/components/radio"
       },
       {
+        name: "Spinner",
+        pathname: "/components/spinner"
+      },
+      {
         name: "Switch",
         pathname: "/components/switch"
       },
@@ -266,6 +270,22 @@ const pages = [
       {
         name: "Rich Text Editor",
         pathname: "/components-api/rich-text-editor"
+      },
+      {
+        name: "Spinner",
+        pathname: "/components-api/spinner"
+      },
+      {
+        name: "SpinnerClip",
+        pathname: "/components-api/spinner-clip"
+      },
+      {
+        name: "SpinnerPulse",
+        pathname: "/components-api/spinner-pulse"
+      },
+      {
+        name: "SpinnerScale",
+        pathname: "/components-api/spinner-scale"
       },
       {
         name: "Switch",

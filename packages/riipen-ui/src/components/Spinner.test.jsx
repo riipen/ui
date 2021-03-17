@@ -25,85 +25,35 @@ describe("<Spinner>", () => {
 
   describe("default props", () => {
     it("sets correct default props", () => {
-      const defaultProps = new Spinner().type.defaultProps;
-
       const wrapper = mount(<Spinner />);
 
-      expect(wrapper.find("Spinner").props().color).toEqual(defaultProps.color);
+      expect(wrapper.find("Spinner").props().variant).toEqual("scale");
     });
   });
 
-  describe("children prop", () => {
-    it("displays given children", () => {
-      const child = <div>child</div>;
+  describe("variant prop", () => {
+    it("renders the correct spinner when set to clip", () => {
+      const variant = "clip";
 
-      const wrapper = mount(<Spinner>{child}</Spinner>);
+      const wrapper = mount(<Spinner variant={variant} />);
 
-      expect(wrapper.containsMatchingElement(child)).toBeTruthy();
+      expect(wrapper.find("SpinnerClip").length).toEqual(1);
     });
 
-    it("does not display children when loading is true", () => {
-      const child = <div>child</div>;
-      const loading = true;
+    it("renders the correct spinner when set to pulse", () => {
+      const variant = "pulse";
 
-      const wrapper = mount(<Spinner loading={loading}>{child}</Spinner>);
+      const wrapper = mount(<Spinner variant={variant} />);
 
-      expect(wrapper.containsMatchingElement(child)).toBeFalsy();
-    });
-  });
-
-  describe("color prop", () => {
-    it("sets color class name with a valid color", () => {
-      const color = "tertiary";
-      const loading = true;
-
-      const wrapper = mount(<Spinner color={color} loading={loading} />);
-
-      expect(
-        wrapper
-          .find("Spinner")
-          .childAt(0)
-          .childAt(0)
-          .hasClass(color)
-      ).toBeTruthy();
+      expect(wrapper.find("SpinnerPulse").length).toEqual(1);
     });
 
-    it("gives an error when given an invalid color", () => {
-      const errors = jest.spyOn(console, "error").mockImplementation();
-      const color = "blue";
+    it("renders the correct spinner when set to scale", () => {
+      const variant = "scale";
 
-      mount(<Spinner color={color} />);
+      const wrapper = mount(<Spinner variant={variant} />);
 
-      expect(errors).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe("loading prop", () => {
-    it("renders spinner given truthy loading prop", () => {
-      const loading = true;
-
-      const wrapper = mount(<Spinner loading={loading} />);
-
-      expect(
-        wrapper
-          .find("Spinner")
-          .childAt(0)
-          .childAt(0)
-          .hasClass("loader")
-      ).toBeTruthy();
-    });
-
-    it("does not render spinner given falsey loading prop", () => {
-      const loading = false;
-
-      const wrapper = mount(<Spinner loading={loading} />);
-
-      expect(
-        wrapper
-          .find("Spinner")
-          .childAt(0)
-          .hasClass("loader")
-      ).toBeFalsy();
+      expect(wrapper.find("SpinnerScale").length).toEqual(1);
     });
   });
 });

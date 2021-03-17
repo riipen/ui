@@ -2,14 +2,18 @@ import React from "react";
 
 import MarkdownPage from "src/modules/components/MarkdownPage";
 
-const req = require.context("src/pages/components-api", false, /table.md$/);
+const req = require.context(
+  "src/pages/components-api",
+  false,
+  /spinner-clip.md$/
+);
 
 export default function Page() {
   return (
     <MarkdownPage
-      path="pages/components-api/table"
+      path="pages/components-api/spinner-clip"
       req={req}
-      title="Table API"
+      title="Spinner Clip API"
     />
   );
 }

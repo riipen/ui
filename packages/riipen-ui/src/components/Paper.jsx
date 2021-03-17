@@ -20,7 +20,7 @@ const Paper = props => {
 
   const theme = React.useContext(ThemeContext);
 
-  const className=clsx(
+  const className = clsx(
     "root",
     classes,
     rounded ? "rounded" : null,
@@ -29,14 +29,14 @@ const Paper = props => {
 
   return (
     <React.Fragment>
-      <Component className={className} {...other} >
+      <Component className={className} {...other}>
         {children}
       </Component>
       <style jsx>{`
         .root {
           background-color: ${theme.palette.common.white};
-          display: inline-block; 
-          padding: ${theme.spacing[padding]};  
+          display: inline-block;
+          padding: ${theme.spacing[padding]};
         }
 
         .elevation {

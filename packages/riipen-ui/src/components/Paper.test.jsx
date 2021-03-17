@@ -60,17 +60,17 @@ describe("<Paper>", () => {
     });
 
     it("appends higher order values to classes prop with withClasses decorator", () => {
-        const classes = ["riipen", "riipen-paper"];
-  
-        const wrapper = mount(<Paper />);
-  
-        expect(
-          wrapper
-            .find("Paper")
-            .props()
-            .classes.sort()
-        ).toEqual(classes.sort());
-      });
+      const classes = ["riipen", "riipen-paper"];
+
+      const wrapper = mount(<Paper />);
+
+      expect(
+        wrapper
+          .find("Paper")
+          .props()
+          .classes.sort()
+      ).toEqual(classes.sort());
+    });
   });
 
   describe("component prop", () => {
@@ -144,20 +144,20 @@ describe("<Paper>", () => {
 
   describe("variant prop", () => {
     it("sets class name as elevation by default", () => {
-        const wrapper = mount(<Paper />);
-  
-        expect(
-          wrapper
-            .find("Paper")
-            .childAt(0)
-            .hasClass("elevation")
-        ).toEqual(true);
-      });
+      const wrapper = mount(<Paper />);
+
+      expect(
+        wrapper
+          .find("Paper")
+          .childAt(0)
+          .hasClass("elevation")
+      ).toEqual(true);
+    });
 
     it("sets class name as outlined for outlined variant", () => {
       const variant = "outlined";
 
-      const wrapper = mount(<Paper variant={variant}  />);
+      const wrapper = mount(<Paper variant={variant} />);
 
       expect(
         wrapper
@@ -176,5 +176,4 @@ describe("<Paper>", () => {
       expect(errors).toHaveBeenCalledTimes(1);
     });
   });
-
 });

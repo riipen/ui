@@ -33,10 +33,11 @@ const Checkbox = props => {
     onBlurVisible();
   };
 
-  const handleKeyDown = e => {    
+  const handleKeyDown = e => {
     if (e.key === "Enter") {
       e.target.checked = !checked;
-      other.onChange?.(e);
+
+      if (other.onChange) other.onChange(e);
     }
   };
 

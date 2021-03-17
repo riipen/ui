@@ -132,7 +132,7 @@ const Switch = props => {
         .negative:checked:before {
           background-color: ${theme.palette.negative.dark};
         }
-        
+
         .positive:checked {
           background-color: ${theme.palette.positive.light};
         }
