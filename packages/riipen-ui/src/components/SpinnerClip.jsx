@@ -36,6 +36,18 @@ const SpinnerClip = ({ classes, color, size }) => {
         width: ${size}px;
       }
 
+      .black {
+        border-color: ${theme.palette.common.black};
+      }
+      .grey600 {
+        border-color: ${theme.palette.grey[600]};
+      }
+      .grey800 {
+        border-color: ${theme.palette.grey[800]};
+      }
+      .greyA400 {
+        border-color: ${theme.palette.grey.A400};
+      }
       .primary {
         border-color: ${theme.palette.primary.main};
       }
@@ -67,7 +79,15 @@ SpinnerClip.propTypes = {
   /**
    * The color of the spinner.
    */
-  color: PropTypes.oneOf(["primary", "secondary", "tertiary"]),
+  color: PropTypes.oneOf([
+    "black",
+    "grey600",
+    "grey800",
+    "greyA400",
+    "primary",
+    "secondary",
+    "tertiary"
+  ]),
 
   /**
    * The size in pixels the spinner should be.
