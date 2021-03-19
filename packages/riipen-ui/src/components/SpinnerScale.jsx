@@ -37,6 +37,18 @@ const SpinnerScale = ({ classes, color, height, margin, width }) => {
         width: ${width}px;
       }
 
+      .black {
+        border-color: ${theme.palette.common.black};
+      }
+      .grey600 {
+        border-color: ${theme.palette.grey[600]};
+      }
+      .grey800 {
+        border-color: ${theme.palette.grey[800]};
+      }
+      .greyA400 {
+        border-color: ${theme.palette.grey.A400};
+      }
       .primary {
         background-color: ${theme.palette.primary.main};
       }
@@ -74,7 +86,15 @@ SpinnerScale.propTypes = {
   /**
    * The color of the spinner.
    */
-  color: PropTypes.oneOf(["primary", "secondary", "tertiary"]),
+  color: PropTypes.oneOf([
+    "black",
+    "grey600",
+    "grey800",
+    "greyA400",
+    "primary",
+    "secondary",
+    "tertiary"
+  ]),
 
   /**
    * The height in pixels each element should be.
