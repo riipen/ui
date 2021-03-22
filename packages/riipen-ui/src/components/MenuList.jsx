@@ -73,8 +73,6 @@ class MenuList extends React.Component {
   };
 
   handleSelect = (child, index) => event => {
-    if (child.props.disabled) return;
-
     const { onSelect } = this.props;
 
     onSelect(index, event);

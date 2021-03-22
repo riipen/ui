@@ -4,7 +4,7 @@ exports[`<ListItem> renders correct snapshot 1`] = `
 <Component>
   <ListItem
     classes={Array []}
-    color="primary"
+    spacing={2}
     theme={
       Object {
         "breakpoints": Object {
@@ -215,25 +215,19 @@ exports[`<ListItem> renders correct snapshot 1`] = `
         },
       }
     }
+    variant="vertical"
   >
-    <div
-      className="jsx-2308247914 primary list-item"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      role=""
-      tabIndex="0"
+    <li
+      className="jsx-104000867 list-item vertical"
     />
     <JSXStyle
       dynamic={
         Array [
           10,
-          "#1f71ae",
-          "#1f71ae",
+          10,
         ]
       }
-      id="2016436227"
+      id="4198676004"
     />
   </ListItem>
 </Component>

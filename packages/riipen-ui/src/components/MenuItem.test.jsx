@@ -25,27 +25,25 @@ describe("<MenuItem>", () => {
 
   describe("default props", () => {
     it("sets correct default props", () => {
-      const defaultProps = new MenuItem().type.defaultProps;
-
       const wrapper = mount(<MenuItem />);
 
       const component = wrapper.find("MenuItem");
-      expect(component.props().color).toEqual(defaultProps.color);
+      expect(component.props().classes).toEqual(["riipen", "riipen-menuitem"]);
     });
   });
 
   describe("children prop", () => {
-    it("pass given children into children prop of ListItem", () => {
-      const child = <h1>hello hello</h1>;
+    it("render given children", () => {
+      const child = <div>hello hello</div>;
 
       const wrapper = mount(<MenuItem>{child}</MenuItem>);
 
       expect(
         wrapper
           .find("MenuItem")
-          .find("ListItem")
-          .props().children
-      ).toEqual(child);
+          .childAt(0)
+          .contains(child)
+      ).toEqual(true);
     });
   });
 
@@ -58,9 +56,9 @@ describe("<MenuItem>", () => {
       expect(
         wrapper
           .find("MenuItem")
-          .find("ListItem")
-          .props().classes[0]
-      ).toContain(classes[0]);
+          .childAt(0)
+          .hasClass(classes[0])
+      ).toEqual(true);
     });
 
     it("appends higher order values to classes prop with withClass decorator", () => {
@@ -87,25 +85,30 @@ describe("<MenuItem>", () => {
   });
 
   describe("color prop", () => {
-    it("passes valid custom colour into ListItem", () => {
-      const color = "secondary";
+    it("sets color class name with valid custom color", () => {
+      const color = "primary";
 
       const wrapper = mount(<MenuItem color={color} />);
 
-      expect(wrapper.find("ListItem").props().color).toEqual(color);
+      expect(
+        wrapper
+          .find("MenuItem")
+          .childAt(0)
+          .hasClass(color)
+      ).toEqual(true);
     });
 
-    it("gives an error with invalid color", () => {
+    it("throws an error with with invalid color", () => {
       const errors = jest.spyOn(console, "error").mockImplementation();
 
-      mount(<MenuItem color="yellow" />);
+      mount(<MenuItem color="star" />);
 
-      expect(errors).toHaveBeenCalled();
+      expect(errors).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("disabled prop", () => {
-    it("applies disabled class to ListItem when disabled prop is true", () => {
+    it("sets disabled class name with valid custom disabled", () => {
       const disabled = true;
 
       const wrapper = mount(<MenuItem disabled={disabled} />);
@@ -113,70 +116,52 @@ describe("<MenuItem>", () => {
       expect(
         wrapper
           .find("MenuItem")
-          .find("ListItem")
-          .props().classes[0]
-      ).toContain("disabled");
-    });
-
-    it("does not apply disabled class when disabled prop is false", () => {
-      const disabled = false;
-
-      const wrapper = mount(<MenuItem disabled={disabled} />);
-
-      expect(
-        wrapper
-          .find("MenuItem")
-          .find("ListItem")
-          .props().classes[0]
-      ).not.toContain("disabled");
+          .childAt(0)
+          .hasClass("disabled")
+      ).toEqual(true);
     });
   });
 
-  describe("onClick prop", () => {
-    it("invokes onClick handler when ListItem is clicked", () => {
+  describe("onSelect prop", () => {
+    it("invokes onSelect handler when ListItem is clicked", () => {
       const handler = jest.fn();
 
-      const wrapper = mount(<MenuItem onClick={handler} />);
+      const wrapper = mount(<MenuItem onSelect={handler} />);
 
-      wrapper
-        .find("MenuItem")
-        .find("ListItem")
-        .simulate("click");
+      wrapper.find("MenuItem").simulate("click");
 
       expect(handler).toHaveBeenCalledTimes(1);
     });
 
-    it("does not invoke onClick handler when ListItem is clicked and disabled prop is true", () => {
+    it("does not invoke onSelect handler when ListItem is clicked and disabled prop is true", () => {
       const disabled = true;
       const handler = jest.fn();
 
-      const wrapper = mount(<MenuItem disabled={disabled} onClick={handler} />);
+      const wrapper = mount(
+        <MenuItem disabled={disabled} onSelect={handler} />
+      );
 
-      wrapper
-        .find("MenuItem")
-        .find("ListItem")
-        .simulate("click");
+      wrapper.find("MenuItem").simulate("click");
 
       expect(handler).not.toHaveBeenCalled();
     });
 
-    it("invokes onClick handler when ListItem is clicked and disabled prop is false", () => {
+    it("invokes onSelect handler when ListItem is clicked and disabled prop is false", () => {
       const disabled = false;
       const handler = jest.fn();
 
-      const wrapper = mount(<MenuItem disabled={disabled} onClick={handler} />);
+      const wrapper = mount(
+        <MenuItem disabled={disabled} onSelect={handler} />
+      );
 
-      wrapper
-        .find("MenuItem")
-        .find("ListItem")
-        .simulate("click");
+      wrapper.find("MenuItem").simulate("click");
 
       expect(handler).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("selected prop", () => {
-    it("applies seleted class to ListItem when selected prop is true", () => {
+    it("applies seleted class when selected prop is true", () => {
       const selected = true;
 
       const wrapper = mount(<MenuItem selected={selected} />);
@@ -184,12 +169,12 @@ describe("<MenuItem>", () => {
       expect(
         wrapper
           .find("MenuItem")
-          .find("ListItem")
-          .props().classes[0]
-      ).toContain("selected");
+          .childAt(0)
+          .hasClass("selected")
+      ).toEqual(true);
     });
 
-    it("does not apply selected class to ListItem when selected prop is false", () => {
+    it("does not apply selected class when selected prop is false", () => {
       const selected = false;
 
       const wrapper = mount(<MenuItem selected={selected} />);
@@ -197,9 +182,9 @@ describe("<MenuItem>", () => {
       expect(
         wrapper
           .find("MenuItem")
-          .find("ListItem")
-          .props().classes[0]
-      ).not.toContain("selected");
+          .childAt(0)
+          .hasClass("selected")
+      ).toEqual(false);
     });
   });
 });

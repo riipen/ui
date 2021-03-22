@@ -9,12 +9,10 @@ exports[`<Menu> renders correct snapshot 1`] = `
         "riipen-menu",
       ]
     }
-    closeOnClick={true}
-    color="primary"
+    closeOnSelect={true}
     isOpen={true}
     keepOnScreen={false}
     popoverStyles={Object {}}
-    variant="menu"
   >
     <withClasses(Popover)
       isOpen={true}

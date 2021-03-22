@@ -34,8 +34,6 @@ describe("<MenuList>", () => {
 
   describe("default props", () => {
     it("sets correct default props", () => {
-      const defaultProps = new MenuList().type.defaultProps;
-
       const wrapper = mount(
         <MenuList>
           <MenuItem />
@@ -43,40 +41,7 @@ describe("<MenuList>", () => {
       );
 
       const component = wrapper.find("MenuList");
-      expect(component.props().selectedIndex).toEqual(
-        defaultProps.selectedIndex
-      );
-      expect(component.props().variant).toEqual(defaultProps.variant);
-    });
-  });
-
-  describe("autoFocus prop", () => {
-    it("selects first item of list with true autoFocus and default selectedIndex", () => {
-      const autoFocus = true;
-      const selectChange = jest.fn();
-
-      mount(
-        <MenuList autoFocus={autoFocus} selectChange={selectChange}>
-          <MenuItem>one</MenuItem>
-          <MenuItem>two</MenuItem>
-        </MenuList>
-      );
-
-      expect(selectChange).toHaveBeenLastCalledWith(0, undefined);
-    });
-
-    it("does not select first item of list with false autoFocus", () => {
-      const autoFocus = false;
-      const selectChange = jest.fn();
-
-      mount(
-        <MenuList autoFocus={autoFocus} selectChange={selectChange}>
-          <MenuItem>one</MenuItem>
-          <MenuItem>two</MenuItem>
-        </MenuList>
-      );
-
-      expect(selectChange).not.toHaveBeenCalled();
+      expect(component.props().selectedIndex).toEqual(-1);
     });
   });
 
@@ -99,11 +64,11 @@ describe("<MenuList>", () => {
       expect(childrenNodes).toHaveLength(1);
     });
 
-    it("invokes selectChange when child clicked", () => {
-      const selectChange = jest.fn();
+    it("invokes onSelect when child clicked", () => {
+      const onSelect = jest.fn();
 
       const wrapper = mount(
-        <MenuList selectChange={selectChange} variant="selection">
+        <MenuList onSelect={onSelect} variant="selection">
           <MenuItem disabled={false} />
           <MenuItem />
         </MenuList>
@@ -112,29 +77,9 @@ describe("<MenuList>", () => {
       wrapper
         .find("MenuItem")
         .at(0)
-        .childAt(0)
         .simulate("click");
 
-      expect(selectChange).toHaveBeenCalledWith(0, expect.any(Object));
-    });
-
-    it("does not invoke selectChange when child clicked and child is disabled", () => {
-      const selectChange = jest.fn();
-      const disabled = true;
-
-      const wrapper = mount(
-        <MenuList selectChange={selectChange} variant="selection">
-          <MenuItem disabled={disabled}>one</MenuItem>
-        </MenuList>
-      );
-
-      wrapper
-        .find("MenuItem")
-        .at(0)
-        .childAt(0)
-        .simulate("click");
-
-      expect(selectChange).not.toHaveBeenCalled();
+      expect(onSelect).toHaveBeenCalledWith(0, expect.any(Object));
     });
   });
 
@@ -199,22 +144,22 @@ describe("<MenuList>", () => {
     });
   });
 
-  describe("selectChange prop", () => {
-    it("invokes selectChange with a null idx when div is clicked", () => {
-      const selectChange = jest.fn();
+  describe("onSelect prop", () => {
+    it("invokes onSelect with a null idx when div is clicked", () => {
+      const onSelect = jest.fn();
 
       const wrapper = mount(
-        <MenuList selectChange={selectChange}>
+        <MenuList onSelect={onSelect}>
           <MenuItem>one</MenuItem>
         </MenuList>
       );
 
       wrapper
-        .find("MenuList")
-        .childAt(0)
+        .find("MenuItem")
+        .at(0)
         .simulate("click");
 
-      expect(selectChange).toHaveBeenLastCalledWith(null, expect.any(Object));
+      expect(onSelect).toHaveBeenLastCalledWith(0, expect.any(Object));
     });
   });
 
@@ -223,7 +168,7 @@ describe("<MenuList>", () => {
       const selectedIndex = 1;
 
       const wrapper = mount(
-        <MenuList selectedIndex={selectedIndex} variant="selection">
+        <MenuList selectedIndex={selectedIndex}>
           <MenuItem>one</MenuItem>
           <MenuItem>two</MenuItem>
         </MenuList>
@@ -241,7 +186,7 @@ describe("<MenuList>", () => {
       const selectedIndex = 1;
 
       const wrapper = mount(
-        <MenuList selectedIndex={selectedIndex} variant="selection">
+        <MenuList selectedIndex={selectedIndex}>
           <MenuItem>one</MenuItem>
           <MenuItem>two</MenuItem>
         </MenuList>
@@ -252,72 +197,7 @@ describe("<MenuList>", () => {
           .find("MenuItem")
           .at(0)
           .props().selected
-      ).toBeUndefined();
-    });
-
-    it("prioritizes selectedIndex over autoFocus when autoFocus is true", () => {
-      const autoFocus = true;
-      const selectChange = jest.fn();
-      const selectedIndex = 1;
-
-      const wrapper = mount(
-        <MenuList
-          selectedIndex={selectedIndex}
-          autoFocus={autoFocus}
-          selectChange={selectChange}
-          variant="selection"
-        >
-          <MenuItem>one</MenuItem>
-          <MenuItem>two</MenuItem>
-        </MenuList>
-      );
-
-      expect(selectChange).not.toHaveBeenCalled();
-      expect(
-        wrapper
-          .find("MenuItem")
-          .at(selectedIndex)
-          .props().selected
-      ).toEqual(true);
-    });
-  });
-
-  describe("variant prop", () => {
-    it("sets onClick prop of children nodes when variant is selection", () => {
-      const variant = "selection";
-
-      const wrapper = mount(
-        <MenuList variant={variant}>
-          <MenuItem />
-        </MenuList>
-      );
-
-      expect(wrapper.find("MenuItem").props().onClick).toBeDefined();
-    });
-
-    it("does not set onClick prop of children nodes when variant is menu", () => {
-      const variant = "menu";
-
-      const wrapper = mount(
-        <MenuList variant={variant}>
-          <MenuItem />
-        </MenuList>
-      );
-
-      expect(wrapper.find("MenuItem").props().onClick).toBeUndefined();
-    });
-
-    it("gives an error with invalid variant", () => {
-      const variant = "middle";
-      const errors = jest.spyOn(console, "error").mockImplementation();
-
-      mount(
-        <MenuList variant={variant}>
-          <MenuItem />
-        </MenuList>
-      );
-
-      expect(errors).toHaveBeenCalled();
+      ).toEqual(false);
     });
   });
 });

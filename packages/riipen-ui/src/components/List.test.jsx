@@ -3,6 +3,7 @@ import toJson from "enzyme-to-json";
 import React from "react";
 
 import List from "./List";
+import ListItem from "./ListItem";
 
 describe("<List>", () => {
   it("renders without errors", () => {
@@ -53,6 +54,34 @@ describe("<List>", () => {
       const wrapper = mount(<List />);
 
       expect(wrapper.find("List").props().classes).toEqual(classes.sort());
+    });
+  });
+
+  describe("spacing prop", () => {
+    it("passes spacing prop into children nodes", () => {
+      const spacing = 3;
+
+      const wrapper = mount(
+        <List spacing={spacing}>
+          <ListItem>one</ListItem>
+        </List>
+      );
+
+      expect(wrapper.find("ListItem").props().spacing).toEqual(spacing);
+    });
+  });
+
+  describe("variant prop", () => {
+    it("passes variant prop into children nodes", () => {
+      const variant = "horizontal";
+
+      const wrapper = mount(
+        <List variant={variant}>
+          <ListItem>one</ListItem>
+        </List>
+      );
+
+      expect(wrapper.find("ListItem").props().variant).toEqual(variant);
     });
   });
 });
