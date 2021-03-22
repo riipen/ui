@@ -1,60 +1,30 @@
 import clsx from "clsx";
-import React from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import css from "styled-jsx/css";
 import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
+import useIsFocusVisible from "../utils/useIsFocusVisible";
 import withClasses from "../utils/withClasses";
 
-import ListItem from "./ListItem";
+const MenuItem = ({
+  children,
+  classes,
+  color,
+  disabled,
+  onSelect,
+  selected,
+  ...other
+}) => {
+  const theme = useContext(ThemeContext);
 
-class MenuItem extends React.Component {
-  static displayName = "MenuItem";
+  const [focusVisible, setFocusVisible] = useState(false);
+  const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
-  static propTypes = {
-    /**
-     * The content of the component.
-     */
-    children: PropTypes.node,
-
-    /**
-     * Array of additional CSS classes to use.
-     */
-    classes: PropTypes.array,
-
-    /**
-     * The color of the component. It supports those theme colors that make sense for this component.
-     */
-    color: PropTypes.oneOf(["primary", "secondary"]),
-
-    /**
-     * Whether or not the item is disabled
-     */
-    disabled: PropTypes.bool,
-
-    /**
-     * The function callback for when a menu item is selected
-     */
-    onClick: PropTypes.func,
-
-    /**
-     * Whether or not the item is selected
-     */
-    selected: PropTypes.bool
-  };
-
-  static defaultProps = {
-    color: "primary",
-    classes: []
-  };
-
-  getLinkedStyles = () => {
-    const theme = this.context;
-
+  const getLinkedStyles = () => {
     return css.resolve`
       .menu-item {
-        border-left: 3px solid transparent;
         box-sizing: border-box;
         color: ${theme.palette.text.secondary};
         cursor: pointer;
@@ -69,6 +39,10 @@ class MenuItem extends React.Component {
         text-align: inherit;
       }
 
+      .menu-item.focusVisible {
+        color: ${theme.palette.primary.main};
+        outline: 5px auto;
+      }
       .menu-item:hover {
         background-color: ${theme.palette.grey[100]};
       }
@@ -86,13 +60,18 @@ class MenuItem extends React.Component {
         outline: 0;
       }
 
+      .menu-item.primary,
+      .menu-item.secondary {
+        border-left: 3px solid transparent;
+      }
+
       .menu-item.primary:hover {
         border-color: ${theme.palette.primary.main};
       }
 
       .menu-item.primary.focusVisible {
         color: ${theme.palette.primary.main};
-        outline: 5px auto -webkit-focus-ring-color;
+        outline: 5px auto;
       }
 
       .menu-item.secondary:hover {
@@ -101,7 +80,7 @@ class MenuItem extends React.Component {
 
       .menu-item.secondary.focusVisible {
         color: ${theme.palette.secondary.main};
-        outline: 5px auto -webkit-focus-ring-color;
+        outline: 5px auto;
       }
 
       .menu-item.selected {
@@ -132,46 +111,101 @@ class MenuItem extends React.Component {
     `;
   };
 
-  static contextType = ThemeContext;
+  const handleBlur = () => {
+    setFocusVisible(false);
+    onBlurVisible();
+  };
 
-  render() {
-    const {
-      onClick,
-      classes,
-      children,
-      disabled,
+  const handleClick = e => {
+    if (disabled) {
+      e.stopPropagation();
+    }
+
+    if (onSelect && !disabled) {
+      onSelect(e);
+    }
+  };
+
+  const handleFocus = e => {
+    setFocusVisible(isFocusVisible(e));
+  };
+
+  const handleKeyDown = e => {
+    if (onSelect && e.type === "keydown" && e.key === "Enter") {
+      onSelect(e);
+    }
+  };
+
+  const linkedStyles = getLinkedStyles();
+
+  const className = clsx(
+    "menu-item",
+    linkedStyles.className,
+    color,
+    {
+      focusVisible,
       selected,
-      ...other
-    } = this.props;
+      disabled
+    },
+    classes
+  );
 
-    const linkedStyles = this.getLinkedStyles();
+  return (
+    <React.Fragment>
+      <div
+        ref={ref}
+        tabIndex="0"
+        role={onSelect ? "button" : ""}
+        className={className}
+        onKeyDown={handleKeyDown}
+        onClick={handleClick}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        {...other}
+      >
+        {children}
+      </div>
+      {linkedStyles.styles}
+    </React.Fragment>
+  );
+};
 
-    const className = clsx(
-      "menu-item",
-      linkedStyles.className,
-      {
-        selected,
-        disabled
-      },
-      classes
-    );
+MenuItem.displayName = "MenuItem";
 
-    const handleClick = e => {
-      if (disabled) {
-        e.stopPropagation();
-      }
-      if (onClick && !disabled) onClick(e);
-    };
+MenuItem.propTypes = {
+  /**
+   * The content of the component.
+   */
+  children: PropTypes.node,
 
-    return (
-      <React.Fragment>
-        <ListItem onClick={handleClick} classes={[className]} {...other}>
-          {children}
-        </ListItem>
-        {linkedStyles.styles}
-      </React.Fragment>
-    );
-  }
-}
+  /**
+   * Array of additional CSS classes to use.
+   */
+  classes: PropTypes.array,
+
+  /**
+   * The color of the component. It supports those theme colors that make sense for this component.
+   */
+  color: PropTypes.oneOf(["primary", "secondary"]),
+
+  /**
+   * Whether or not the item is disabled
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * The function callback for when a menu item is selected
+   */
+  onSelect: PropTypes.func,
+
+  /**
+   * Whether or not the item is selected
+   */
+  selected: PropTypes.bool
+};
+
+MenuItem.defaultProps = {
+  classes: []
+};
 
 export default withClasses(MenuItem);

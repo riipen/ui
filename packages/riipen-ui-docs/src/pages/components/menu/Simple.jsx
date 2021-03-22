@@ -8,7 +8,7 @@ export default function Simple() {
   const [anchorState, setAnchorState] = React.useState(null);
   const [indexState, setIndexState] = React.useState(-1);
 
-  const handleClick = event => {
+  const handleOpen = event => {
     setAnchorState(event.currentTarget);
   };
 
@@ -16,20 +16,22 @@ export default function Simple() {
     setAnchorState(null);
   };
 
-  const handleOnChange = index => {
+  const handleSelect = index => {
     setIndexState(index);
   };
 
   return (
     <React.Fragment>
-      <Button color="primary" variant="contained" onClick={handleClick}>
+      <Button color="primary" variant="contained" onClick={handleOpen}>
         Open Menu
       </Button>
       <Menu
-        onChange={handleOnChange}
-        selectedIndex={indexState}
         anchorEl={anchorState}
+        closeOnSelect
+        color="primary"
         onClose={handleClose}
+        onSelect={handleSelect}
+        selectedIndex={indexState}
         variant="selection"
       >
         <MenuItem>Riipen 1</MenuItem>

@@ -28,8 +28,9 @@ describe("<ListItem>", () => {
       const wrapper = mount(<ListItem />);
 
       const component = wrapper.find("ListItem");
-      expect(component.props().color).toEqual("primary");
       expect(component.props().classes).toEqual([]);
+      expect(component.props().spacing).toEqual(2);
+      expect(component.props().variant).toEqual("vertical");
     });
   });
 
@@ -63,107 +64,36 @@ describe("<ListItem>", () => {
     });
   });
 
-  describe("color prop", () => {
-    it("gives an error when given an invalid color", () => {
-      const errors = jest.spyOn(console, "error").mockImplementation();
+  describe("spacing prop", () => {
+    it("applies custom spacing", () => {
+      const spacing = 5;
 
-      mount(<ListItem color="pink" />);
+      const wrapper = mount(<ListItem spacing={spacing} />);
 
-      expect(errors).toHaveBeenCalledTimes(1);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(25);
     });
   });
 
-  describe("onClick prop", () => {
-    it("sets role as button when onClick prop is provided", () => {
-      const onClick = jest.fn();
+  describe("variant prop", () => {
+    it("sets variant class name with valid custom variant", () => {
+      const variant = "horizontal";
 
-      const wrapper = mount(<ListItem onClick={onClick} />);
-
-      expect(
-        wrapper
-          .find("ListItem")
-          .childAt(0)
-          .props().role
-      ).toEqual("button");
-    });
-
-    it("does not set role when onClick prop is not provided", () => {
-      const wrapper = mount(<ListItem />);
+      const wrapper = mount(<ListItem variant={variant} />);
 
       expect(
         wrapper
           .find("ListItem")
           .childAt(0)
-          .props().role
-      ).toEqual("");
-    });
-
-    it("invokes onClick handler when clicked", () => {
-      const onClick = jest.fn();
-
-      const wrapper = mount(<ListItem onClick={onClick} />);
-
-      wrapper
-        .find("ListItem")
-        .childAt(0)
-        .simulate("click");
-
-      expect(onClick).toHaveBeenCalledTimes(1);
-    });
-
-    it("invokes onClick handler on enter keydown", () => {
-      const onClick = jest.fn();
-
-      const wrapper = mount(<ListItem onClick={onClick} />);
-
-      wrapper
-        .find("ListItem")
-        .childAt(0)
-        .simulate("keydown", { key: "Enter" });
-
-      expect(onClick).toHaveBeenCalledTimes(1);
-    });
-
-    it("does not invoke onClick handler on invalid keydown", () => {
-      const onClick = jest.fn();
-
-      const wrapper = mount(<ListItem onClick={onClick} />);
-
-      wrapper
-        .find("ListItem")
-        .childAt(0)
-        .simulate("keydown", { key: "a" });
-
-      expect(onClick).toHaveBeenCalledTimes(0);
-    });
-  });
-
-  describe("focusVisible state", () => {
-    it("applies focusVisible class when focus event occurs", () => {
-      const wrapper = mount(<ListItem />);
-
-      wrapper.simulate("focus");
-
-      expect(
-        wrapper
-          .find("ListItem")
-          .childAt(0)
-          .hasClass("focusVisible")
+          .hasClass(variant)
       ).toEqual(true);
     });
 
-    it("does not apply focusVisible class when blur event occurs", () => {
-      const wrapper = mount(<ListItem />);
+    it("throws an error with with invalid variant", () => {
+      const errors = jest.spyOn(console, "error").mockImplementation();
 
-      wrapper.simulate("focus");
-      wrapper.simulate("blur");
+      mount(<ListItem variant="star" />);
 
-      expect(
-        wrapper
-          .find("ListItem")
-          .childAt(0)
-          .hasClass("focusVisible")
-      ).toEqual(false);
+      expect(errors).toHaveBeenCalledTimes(1);
     });
   });
 });

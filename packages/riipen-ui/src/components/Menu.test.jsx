@@ -28,24 +28,12 @@ describe("<Menu>", () => {
 
   describe("default props", () => {
     it("sets correct default props", () => {
-      const defaultProps = new Menu().type.defaultProps;
-
       const wrapper = mount(<Menu />);
 
-      expect(wrapper.find("Menu").props().color).toEqual(defaultProps.color);
-      expect(wrapper.find("Menu").props().closeOnClick).toEqual(
-        defaultProps.closeOnClick
-      );
-      expect(wrapper.find("Menu").props().isOpen).toEqual(defaultProps.isOpen);
-      expect(wrapper.find("Menu").props().keepOnScreen).toEqual(
-        defaultProps.keepOnScreen
-      );
-      expect(wrapper.find("Menu").props().popoverStyles).toEqual(
-        defaultProps.popoverStyles
-      );
-      expect(wrapper.find("Menu").props().variant).toEqual(
-        defaultProps.variant
-      );
+      expect(wrapper.find("Menu").props().closeOnSelect).toEqual(true);
+      expect(wrapper.find("Menu").props().isOpen).toEqual(true);
+      expect(wrapper.find("Menu").props().keepOnScreen).toEqual(false);
+      expect(wrapper.find("Menu").props().popoverStyles).toEqual({});
     });
   });
 
@@ -68,25 +56,6 @@ describe("<Menu>", () => {
       expect(wrapper.find("Popover").props().anchorPosition).toEqual(
         anchorPosition
       );
-    });
-  });
-
-  describe("autoFocus prop", () => {
-    it("passes autoFocus prop to correct child", () => {
-      const autoFocus = true;
-      const anchorEl = ReactTestUtils.renderIntoDocument(
-        <div>
-          <AppBar />
-        </div>
-      );
-
-      const wrapper = mount(
-        <Menu anchorEl={anchorEl} autoFocus={autoFocus}>
-          <MenuItem />
-        </Menu>
-      );
-
-      expect(wrapper.find("MenuList").props().autoFocus).toEqual(autoFocus);
     });
   });
 
@@ -142,9 +111,9 @@ describe("<Menu>", () => {
     });
   });
 
-  describe("closeOnClick prop", () => {
-    it("does not invoke onClose when closeOnClick is false", () => {
-      const closeOnClick = false;
+  describe("closeOnSelect prop", () => {
+    it("does not invoke onClose when closeOnSelect is false", () => {
+      const closeOnSelect = false;
       const onClose = jest.fn();
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
@@ -153,7 +122,11 @@ describe("<Menu>", () => {
       );
 
       const wrapper = mount(
-        <Menu anchorEl={anchorEl} closeOnClick={closeOnClick} onClose={onClose}>
+        <Menu
+          anchorEl={anchorEl}
+          closeOnSelect={closeOnSelect}
+          onClose={onClose}
+        >
           <MenuItem />
         </Menu>
       );
@@ -250,30 +223,6 @@ describe("<Menu>", () => {
     });
   });
 
-  describe("onChange prop", () => {
-    it("invokes onChange when child is clicked", () => {
-      const onChange = jest.fn();
-      const anchorEl = ReactTestUtils.renderIntoDocument(
-        <div>
-          <AppBar />
-        </div>
-      );
-
-      const wrapper = mount(
-        <Menu anchorEl={anchorEl} onChange={onChange}>
-          <MenuItem />
-        </Menu>
-      );
-
-      wrapper
-        .find("MenuItem")
-        .childAt(0)
-        .simulate("click");
-
-      expect(onChange).toHaveBeenCalledWith(null, expect.any(Object));
-    });
-  });
-
   describe("onClose prop", () => {
     it("invokes onClose when child is clicked", () => {
       const onClose = jest.fn();
@@ -320,6 +269,30 @@ describe("<Menu>", () => {
     });
   });
 
+  describe("onSelect prop", () => {
+    it("invokes onSelect when child is clicked", () => {
+      const onSelect = jest.fn();
+      const anchorEl = ReactTestUtils.renderIntoDocument(
+        <div>
+          <AppBar />
+        </div>
+      );
+
+      const wrapper = mount(
+        <Menu anchorEl={anchorEl} onSelect={onSelect}>
+          <MenuItem />
+        </Menu>
+      );
+
+      wrapper
+        .find("MenuItem")
+        .childAt(0)
+        .simulate("click");
+
+      expect(onSelect).toHaveBeenCalledWith(0, expect.any(Object));
+    });
+  });
+
   describe("popoverStyles prop", () => {
     it("passes popoverStyles prop to correct child", () => {
       const styles = ReactTestUtils.renderIntoDocument(<style />);
@@ -348,33 +321,6 @@ describe("<Menu>", () => {
       expect(wrapper.find("MenuList").props().selectedIndex).toEqual(
         selectedIndex
       );
-    });
-  });
-
-  describe("variant prop", () => {
-    it("passes variant prop to correct child", () => {
-      const anchorEl = ReactTestUtils.renderIntoDocument(
-        <div>
-          <AppBar />
-        </div>
-      );
-      const variant = "menu";
-
-      const wrapper = mount(
-        <Menu anchorEl={anchorEl} variant={variant}>
-          <MenuItem />
-        </Menu>
-      );
-
-      expect(wrapper.find("MenuList").props().variant).toEqual(variant);
-    });
-
-    it("throws an error with with invalid variant", () => {
-      const errors = jest.spyOn(console, "error").mockImplementation();
-
-      mount(<Menu variant="default" />);
-
-      expect(errors).toHaveBeenCalledTimes(1);
     });
   });
 });
