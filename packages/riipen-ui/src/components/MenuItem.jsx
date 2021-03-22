@@ -14,7 +14,7 @@ const MenuItem = ({
   color,
   disabled,
   onSelect,
-  onSelected,
+  afterSelect,
   selected,
   ...other
 }) => {
@@ -125,7 +125,7 @@ const MenuItem = ({
     if (!disabled) {
       if (onSelect) onSelect(e);
 
-      if (onSelected) onSelected(e);
+      if (afterSelect) afterSelect(e);
     }
   };
 
@@ -138,7 +138,7 @@ const MenuItem = ({
       if (!disabled) {
         if (onSelect) onSelect(e);
 
-        if (onSelected) onSelected(e);
+        if (afterSelect) afterSelect(e);
       }
     }
   };
@@ -201,14 +201,15 @@ MenuItem.propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * The function callback for when a menu item is selected
+   * A function to invoke when the menu item is selected. Can be overwritten by `<Menu>` `onSelect` handler.
    */
   onSelect: PropTypes.func,
 
   /**
-   * The function callback after a menu item is selected
+   * @ignore
+   * A function to invoke after a selection is made.
    */
-  onSelected: PropTypes.func,
+  afterSelect: PropTypes.func,
 
   /**
    * Whether or not the item is selected

@@ -12,17 +12,17 @@ class Menu extends React.Component {
 
   static propTypes = {
     /**
-     * The element the menu is attached too
+     * The element the menu is attached too.
      */
     anchorEl: PropTypes.object,
 
     /**
-     * The location to attach the content too on the anchor element
+     * The location to attach the content too on the anchor element.
      */
     anchorPosition: PropTypes.object,
 
     /**
-     * The content of the component.
+     * The content of the menu, provided in a list of `<MenuItem>` components.
      */
     children: PropTypes.node,
 
@@ -32,17 +32,12 @@ class Menu extends React.Component {
     classes: PropTypes.array,
 
     /**
-     * Whether or not the menu should close when an option is selected
+     * If set, will invoke `onClose` any time a menu item is selected.
      */
     closeOnSelect: PropTypes.bool,
 
     /**
-     * The color of the component. It supports those theme colors that make sense for this component.
-     */
-    color: PropTypes.oneOf(["primary", "secondary"]),
-
-    /**
-     * The location to attach the anchor to on the content element
+     * The location to attach the anchor to on the content element.
      */
     contentPosition: PropTypes.object,
 
@@ -52,37 +47,32 @@ class Menu extends React.Component {
     fullWidth: PropTypes.bool,
 
     /**
-     * Whether or not the menu should be rendered
+     * Whether or not the menu should be rendered.
      */
     isOpen: PropTypes.bool,
 
     /**
-     * Whether or not the popout should be forced to stay on screen
+     * Whether or not the popout should be forced to stay on screen.
      */
     keepOnScreen: PropTypes.bool,
 
     /**
-     * The function callback to use when the menu closes
+     * A function to be invoked to use when the menu closes.
      */
     onClose: PropTypes.func,
 
     /**
-     * The function callback for when the selection is made
-     */
-    onSelect: PropTypes.func,
-
-    /**
-     * The styles to be applied to the popover list
+     * The styles to be applied to the popover list.
      */
     popoverStyles: PropTypes.object,
 
     /**
-     * The index of the item selected in the list
+     * The index of the item currently selected in the list.
      */
     selectedIndex: PropTypes.number,
 
     /**
-     * The margins of the page the popover should respect
+     * The margins of the page the popover should respect.
      */
     marginThreshold: PropTypes.number
   };
@@ -104,7 +94,7 @@ class Menu extends React.Component {
     }
   }
 
-  handleSelected = (idx, event) => {
+  handleAfterSelect = (idx, event) => {
     const { closeOnSelect, onClose } = this.props;
 
     if (onClose && closeOnSelect) onClose(idx, event);
@@ -139,7 +129,7 @@ class Menu extends React.Component {
           onClose={onClose}
           styles={popoverStyles}
         >
-          <MenuList {...other} onSelected={this.handleSelected}>
+          <MenuList {...other} afterSelect={this.handleAfterSelect}>
             {children}
           </MenuList>
         </Popover>

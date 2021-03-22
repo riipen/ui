@@ -140,33 +140,6 @@ describe("<Menu>", () => {
     });
   });
 
-  describe("color prop", () => {
-    it("passes color prop to correct child", () => {
-      const color = "secondary";
-      const anchorEl = ReactTestUtils.renderIntoDocument(
-        <div>
-          <AppBar />
-        </div>
-      );
-
-      const wrapper = mount(
-        <Menu anchorEl={anchorEl} color={color}>
-          <MenuItem />
-        </Menu>
-      );
-
-      expect(wrapper.find("MenuList").props().color).toEqual(color);
-    });
-
-    it("gives an error when given an invalid color", () => {
-      const errors = jest.spyOn(console, "error").mockImplementation();
-
-      mount(<Menu color="blue" />);
-
-      expect(errors).toHaveBeenCalledTimes(1);
-    });
-  });
-
   describe("contentPosition prop", () => {
     it("passes contentPosition prop to correct child", () => {
       const contentPosition = { horizontal: "left", vertical: "bottom" };
