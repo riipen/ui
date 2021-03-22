@@ -9,7 +9,7 @@ class MenuList extends React.Component {
 
   static propTypes = {
     /**
-     * The content of the component.
+     * The content of the menu list, provided in a list of `<MenuItem>` components.
      */
     children: PropTypes.node,
 
@@ -24,12 +24,20 @@ class MenuList extends React.Component {
     color: PropTypes.oneOf(["primary", "secondary"]),
 
     /**
-     * The function callback when an item is selected
+     * A function to invoke when any menu item is selected. If provided, will override any menu item's
+     * individual `onSelect` handler.
      */
     onSelect: PropTypes.func,
 
     /**
-     * The selected index of the list
+     * @ignore
+     * The function callback after an item is selected. Used for internal purposes only to support
+     * `closeOnSelect` from `<Menu>`.
+     */
+    afterSelect: PropTypes.func,
+
+    /**
+     * The selected index of the list.
      */
     selectedIndex: PropTypes.number
   };
@@ -72,7 +80,7 @@ class MenuList extends React.Component {
     }
   };
 
-  handleSelect = (child, index) => event => {
+  handleSelect = index => event => {
     const { onSelect } = this.props;
 
     onSelect(index, event);
@@ -97,7 +105,7 @@ class MenuList extends React.Component {
   };
 
   renderChildren() {
-    const { children, onSelect, selectedIndex } = this.props;
+    const { afterSelect, children, onSelect, selectedIndex } = this.props;
 
     return React.Children.map(
       children.type === React.Fragment ? children.props.children : children,
@@ -105,15 +113,19 @@ class MenuList extends React.Component {
         if (!child) return null;
 
         const newProps = {
-          key: index,
+          afterSelect,
           color: this.props.color,
-          onSelect: onSelect ? this.handleSelect(child, index) : undefined,
+          key: index,
           selected: index === selectedIndex
         };
 
+        if (onSelect) {
+          newProps.onSelect = this.handleSelect(index);
+        }
+
         return React.cloneElement(child, {
-          ...child.props,
-          ...newProps
+          ...newProps,
+          ...child.props
         });
       }
     );

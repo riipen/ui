@@ -4,7 +4,7 @@ import Menu from "riipen-ui/components/Menu";
 import MenuItem from "riipen-ui/components/MenuItem";
 import Button from "riipen-ui/components/Button";
 
-export default function Simple() {
+export default function Robust() {
   const [anchorState, setAnchorState] = React.useState(null);
   const [indexState, setIndexState] = React.useState(-1);
 
@@ -16,8 +16,12 @@ export default function Simple() {
     setAnchorState(null);
   };
 
-  const handleSelect = index => {
-    setIndexState(index);
+  const handleItemOne = () => {
+    setIndexState(1);
+  };
+
+  const handleItemTwo = () => {
+    setIndexState(2);
   };
 
   return (
@@ -30,14 +34,9 @@ export default function Simple() {
         closeOnSelect
         color="primary"
         onClose={handleClose}
-        onSelect={handleSelect}
-        selectedIndex={indexState}
       >
-        <MenuItem>Riipen 1</MenuItem>
-        <MenuItem disabled>Riipen 2</MenuItem>
-        <MenuItem>Riipen 3</MenuItem>
-        <MenuItem>Riipen 4</MenuItem>
-        <MenuItem>Riipen 5</MenuItem>
+        <MenuItem onSelect={handleItemOne}>Item 1</MenuItem>
+        <MenuItem onSelect={handleItemTwo}>Item 2</MenuItem>
       </Menu>
       <div>Selected Index: {indexState === -1 ? "None" : indexState}</div>
     </React.Fragment>

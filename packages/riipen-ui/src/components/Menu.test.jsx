@@ -61,7 +61,7 @@ describe("<Menu>", () => {
 
   describe("children prop", () => {
     it("renders given children", () => {
-      const child = <div>child</div>;
+      const child = <MenuItem>child</MenuItem>;
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
           <AppBar />
@@ -140,33 +140,6 @@ describe("<Menu>", () => {
     });
   });
 
-  describe("color prop", () => {
-    it("passes color prop to correct child", () => {
-      const color = "secondary";
-      const anchorEl = ReactTestUtils.renderIntoDocument(
-        <div>
-          <AppBar />
-        </div>
-      );
-
-      const wrapper = mount(
-        <Menu anchorEl={anchorEl} color={color}>
-          <MenuItem />
-        </Menu>
-      );
-
-      expect(wrapper.find("MenuList").props().color).toEqual(color);
-    });
-
-    it("gives an error when given an invalid color", () => {
-      const errors = jest.spyOn(console, "error").mockImplementation();
-
-      mount(<Menu color="blue" />);
-
-      expect(errors).toHaveBeenCalledTimes(1);
-    });
-  });
-
   describe("contentPosition prop", () => {
     it("passes contentPosition prop to correct child", () => {
       const contentPosition = { horizontal: "left", vertical: "bottom" };
@@ -224,7 +197,8 @@ describe("<Menu>", () => {
   });
 
   describe("onClose prop", () => {
-    it("invokes onClose when child is clicked", () => {
+    it("invokes onClose when child is clicked with closeOnSelect", () => {
+      const closeOnSelect = true;
       const onClose = jest.fn();
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
@@ -233,7 +207,11 @@ describe("<Menu>", () => {
       );
 
       const wrapper = mount(
-        <Menu anchorEl={anchorEl} onClose={onClose}>
+        <Menu
+          anchorEl={anchorEl}
+          closeOnSelect={closeOnSelect}
+          onClose={onClose}
+        >
           <MenuItem />
         </Menu>
       );
