@@ -224,7 +224,8 @@ describe("<Menu>", () => {
   });
 
   describe("onClose prop", () => {
-    it("invokes onClose when child is clicked", () => {
+    it("invokes onClose when child is clicked with closeOnSelect", () => {
+      const closeOnSelect = true;
       const onClose = jest.fn();
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
@@ -233,7 +234,11 @@ describe("<Menu>", () => {
       );
 
       const wrapper = mount(
-        <Menu anchorEl={anchorEl} onClose={onClose}>
+        <Menu
+          anchorEl={anchorEl}
+          closeOnSelect={closeOnSelect}
+          onClose={onClose}
+        >
           <MenuItem />
         </Menu>
       );

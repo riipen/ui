@@ -112,10 +112,13 @@ class MenuList extends React.Component {
         const newProps = {
           key: index,
           color: this.props.color,
-          onSelect: onSelect ? this.handleSelect(index) : undefined,
           onSelected,
           selected: index === selectedIndex
         };
+
+        if (onSelect) {
+          newProps.onSelect = this.handleSelect(index);
+        }
 
         return React.cloneElement(child, {
           ...newProps,

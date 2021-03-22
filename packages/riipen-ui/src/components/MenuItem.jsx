@@ -122,8 +122,8 @@ const MenuItem = ({
       e.stopPropagation();
     }
 
-    if (onSelect && !disabled) {
-      onSelect(e);
+    if (!disabled) {
+      if (onSelect) onSelect(e);
 
       if (onSelected) onSelected(e);
     }
@@ -135,9 +135,11 @@ const MenuItem = ({
 
   const handleKeyDown = e => {
     if (onSelect && e.type === "keydown" && e.key === "Enter") {
-      onSelect(e);
+      if (!disabled) {
+        if (onSelect) onSelect(e);
 
-      if (onSelected) onSelected(e);
+        if (onSelected) onSelected(e);
+      }
     }
   };
 
