@@ -22,11 +22,6 @@ class Menu extends React.Component {
     anchorPosition: PropTypes.object,
 
     /**
-     * Whether to autofocus the first element on first open
-     */
-    autoFocus: PropTypes.bool,
-
-    /**
      * The content of the component.
      */
     children: PropTypes.node,
@@ -37,9 +32,9 @@ class Menu extends React.Component {
     classes: PropTypes.array,
 
     /**
-     * Whether or not the menu should close when an option is chosen with a click event
+     * Whether or not the menu should close when an option is selected
      */
-    closeOnClick: PropTypes.bool,
+    closeOnSelect: PropTypes.bool,
 
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
@@ -67,14 +62,14 @@ class Menu extends React.Component {
     keepOnScreen: PropTypes.bool,
 
     /**
-     * The function callback for when the selection is changed
-     */
-    onChange: PropTypes.func,
-
-    /**
      * The function callback to use when the menu closes
      */
     onClose: PropTypes.func,
+
+    /**
+     * The function callback for when the selection is made
+     */
+    onSelect: PropTypes.func,
 
     /**
      * The styles to be applied to the popover list
@@ -89,23 +84,15 @@ class Menu extends React.Component {
     /**
      * The margins of the page the popover should respect
      */
-    marginThreshold: PropTypes.number,
-
-    /**
-     * The type of menu to create
-     * Use 'menu' for lists of links
-     */
-    variant: PropTypes.oneOf(["menu", "selection"])
+    marginThreshold: PropTypes.number
   };
 
   static defaultProps = {
-    color: "primary",
     classes: [],
-    closeOnClick: true,
+    closeOnSelect: true,
     isOpen: true,
     keepOnScreen: false,
-    popoverStyles: {},
-    variant: "menu"
+    popoverStyles: {}
   };
 
   componentDidUpdate(oldProps) {
@@ -117,11 +104,14 @@ class Menu extends React.Component {
     }
   }
 
-  handleChange = (idx, event) => {
-    const { onChange, closeOnClick, onClose } = this.props;
-    if (onClose && closeOnClick && event && event.type === "click")
+  handleSelect = (idx, event) => {
+    const { onSelect, closeOnSelect, onClose } = this.props;
+
+    if (onClose && closeOnSelect) {
       onClose(idx);
-    if (onChange) onChange(idx, event);
+    }
+
+    if (onSelect) onSelect(idx, event);
   };
 
   render() {
@@ -135,8 +125,6 @@ class Menu extends React.Component {
       isOpen,
       onClose,
       popoverStyles,
-      selectedIndex,
-      variant,
       marginThreshold,
       ...other
     } = this.props;
@@ -155,12 +143,7 @@ class Menu extends React.Component {
           onClose={onClose}
           styles={popoverStyles}
         >
-          <MenuList
-            selectChange={this.handleChange}
-            selectedIndex={selectedIndex}
-            variant={variant}
-            {...other}
-          >
+          <MenuList {...other} onSelect={this.handleSelect}>
             {children}
           </MenuList>
         </Popover>

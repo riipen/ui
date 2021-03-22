@@ -1,72 +1,39 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 import _JSXStyle from "styled-jsx/style";
 
-import { useIsFocusVisible, withThemeContext } from "../utils";
+import { withThemeContext } from "../utils";
 
 const ListItem = props => {
-  const { children, classes, color, theme, onClick, ...other } = props;
+  const { children, classes, spacing, theme, variant, ...other } = props;
 
-  const handleChange = e => {
-    if (!onClick) {
-      return;
-    }
-
-    if (e.type === "click" || (e.type === "keydown" && e.key === "Enter")) {
-      onClick(e);
-    }
-
-    return;
-  };
-
-  const [focusVisible, setFocusVisible] = useState(false);
-  const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
-
-  const handleFocus = e => {
-    setFocusVisible(isFocusVisible(e));
-  };
-
-  const handleBlur = () => {
-    setFocusVisible(false);
-    onBlurVisible();
-  };
-
-  const className = clsx(
-    classes,
-    focusVisible ? "focusVisible" : null,
-    color,
-    "list-item"
-  );
+  const className = clsx(classes, "list-item", variant);
 
   return (
     <React.Fragment>
-      <div
-        ref={ref}
-        tabIndex="0"
-        role={onClick ? "button" : ""}
-        className={className}
-        onKeyDown={handleChange}
-        onClick={handleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        {...other}
-      >
+      <li className={className} {...other}>
         {children}
-      </div>
+      </li>
       <style jsx>{`
         .list-item {
-          border: none;
-          box-sizing: border-box;
+          list-style-type: none;
           margin: 0;
-          outline: 0;
-          padding: ${theme.spacing(2)}px 0;
         }
 
-        .list-item.focusVisible {
-          color: ${theme.palette[color]?.main} ||
-            ${theme.palette[ListItem.defaultProps.color].main};
-          outline: 5px auto -webkit-focus-ring-color;
+        .horizontal {
+          display: inline-block;
+          margin-right: ${theme.spacing(spacing)}px;
+        }
+        .horizontal:last-child {
+          margin-right: 0;
+        }
+        .vertical {
+          display: block;
+          margin-bottom: ${theme.spacing(spacing)}px;
+        }
+        .vertical:last-child {
+          margin-bottom: 0;
         }
       `}</style>
     </React.Fragment>
@@ -85,25 +52,26 @@ ListItem.propTypes = {
   classes: PropTypes.array,
 
   /**
-   * The color of the component. It supports those theme colors that make sense for this component.
+   * Additional spacing based in theme spacing multiplier to apply after list item.
    */
-  color: PropTypes.oneOf(["primary", "secondary"]),
-
-  /**
-   * function to call when the list item is selected.
-   */
-  onClick: PropTypes.func,
+  spacing: PropTypes.number,
 
   /**
    * @ignore
    * The theme context object
    */
-  theme: PropTypes.object
+  theme: PropTypes.object,
+
+  /**
+   * The orientation variant to display the list item as.
+   */
+  variant: PropTypes.oneOf(["horizontal", "vertical"])
 };
 
 ListItem.defaultProps = {
-  color: "primary",
-  classes: []
+  classes: [],
+  spacing: 2,
+  variant: "vertical"
 };
 
 ListItem.displayName = "ListItem";

@@ -17,7 +17,17 @@ class List extends React.Component {
     /**
      * Array of additional CSS classes to use.
      */
-    classes: PropTypes.array
+    classes: PropTypes.array,
+
+    /**
+     * Additional spacing based in theme spacing multiplier to apply after each list item.
+     */
+    spacing: PropTypes.number,
+
+    /**
+     * The orientation variant to display each list item as.
+     */
+    variant: PropTypes.oneOf(["horizontal", "vertical"])
   };
 
   static defaultProps = {
@@ -25,13 +35,19 @@ class List extends React.Component {
   };
 
   render() {
-    const { classes, children } = this.props;
+    const { classes, children, spacing, variant } = this.props;
 
     const className = clsx(classes);
 
+    const childrenWithProps = React.Children.map(children, child => {
+      if (!child) return null;
+
+      return React.cloneElement(child, { spacing, variant });
+    });
+
     return (
       <React.Fragment>
-        <ul className={className}>{children}</ul>
+        <ul className={className}>{childrenWithProps}</ul>
         <style jsx>{`
           ul {
             list-style-type: none;
