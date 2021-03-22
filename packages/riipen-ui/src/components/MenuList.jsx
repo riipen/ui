@@ -24,9 +24,14 @@ class MenuList extends React.Component {
     color: PropTypes.oneOf(["primary", "secondary"]),
 
     /**
-     * The function callback when an item is selected
+     * The function callback when an item is selected.
      */
     onSelect: PropTypes.func,
+
+    /**
+     * The function callback after an item is selected.
+     */
+    onSelected: PropTypes.func,
 
     /**
      * The selected index of the list
@@ -72,7 +77,7 @@ class MenuList extends React.Component {
     }
   };
 
-  handleSelect = (child, index) => event => {
+  handleSelect = index => event => {
     const { onSelect } = this.props;
 
     onSelect(index, event);
@@ -97,7 +102,7 @@ class MenuList extends React.Component {
   };
 
   renderChildren() {
-    const { children, onSelect, selectedIndex } = this.props;
+    const { children, onSelect, onSelected, selectedIndex } = this.props;
 
     return React.Children.map(
       children.type === React.Fragment ? children.props.children : children,
@@ -107,13 +112,14 @@ class MenuList extends React.Component {
         const newProps = {
           key: index,
           color: this.props.color,
-          onSelect: onSelect ? this.handleSelect(child, index) : undefined,
+          onSelect: onSelect ? this.handleSelect(index) : undefined,
+          onSelected,
           selected: index === selectedIndex
         };
 
         return React.cloneElement(child, {
-          ...child.props,
-          ...newProps
+          ...newProps,
+          ...child.props
         });
       }
     );

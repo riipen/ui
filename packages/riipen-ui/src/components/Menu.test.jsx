@@ -61,7 +61,7 @@ describe("<Menu>", () => {
 
   describe("children prop", () => {
     it("renders given children", () => {
-      const child = <div>child</div>;
+      const child = <MenuItem>child</MenuItem>;
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
           <AppBar />

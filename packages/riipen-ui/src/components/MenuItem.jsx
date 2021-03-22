@@ -14,6 +14,7 @@ const MenuItem = ({
   color,
   disabled,
   onSelect,
+  onSelected,
   selected,
   ...other
 }) => {
@@ -123,6 +124,8 @@ const MenuItem = ({
 
     if (onSelect && !disabled) {
       onSelect(e);
+
+      if (onSelected) onSelected(e);
     }
   };
 
@@ -133,6 +136,8 @@ const MenuItem = ({
   const handleKeyDown = e => {
     if (onSelect && e.type === "keydown" && e.key === "Enter") {
       onSelect(e);
+
+      if (onSelected) onSelected(e);
     }
   };
 
@@ -197,6 +202,11 @@ MenuItem.propTypes = {
    * The function callback for when a menu item is selected
    */
   onSelect: PropTypes.func,
+
+  /**
+   * The function callback after a menu item is selected
+   */
+  onSelected: PropTypes.func,
 
   /**
    * Whether or not the item is selected

@@ -6,7 +6,13 @@ The Menu can display a list of choices for a user to select from when the user i
 
 ## Simple Menu
 
-A Simple menu can display a list of choices overtop another element when it is interacted with. When close to the screen edge the menu will adjust itself so that all items are visible. 
+A menu can display a list of choices overtop another element when it is interacted with.
 
 {{"demo": "pages/components/menu/Simple.js"}}
+
+## Robust Menu
+
+A robust manu can handle individual actions given the menu item selected.
+
+{{"demo": "pages/components/menu/Robust.js"}}
 

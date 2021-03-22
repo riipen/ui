@@ -105,13 +105,15 @@ class Menu extends React.Component {
   }
 
   handleSelect = (idx, event) => {
-    const { onSelect, closeOnSelect, onClose } = this.props;
-
-    if (onClose && closeOnSelect) {
-      onClose(idx);
-    }
+    const { onSelect } = this.props;
 
     if (onSelect) onSelect(idx, event);
+  };
+
+  handleSelected = (idx, event) => {
+    const { closeOnSelect, onClose } = this.props;
+
+    if (onClose && closeOnSelect) onClose(idx, event);
   };
 
   render() {
@@ -143,7 +145,11 @@ class Menu extends React.Component {
           onClose={onClose}
           styles={popoverStyles}
         >
-          <MenuList {...other} onSelect={this.handleSelect}>
+          <MenuList
+            {...other}
+            onSelect={this.handleSelect}
+            onSelected={this.handleSelected}
+          >
             {children}
           </MenuList>
         </Popover>
