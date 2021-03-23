@@ -37,19 +37,22 @@ class List extends React.Component {
   render() {
     const { classes, children, spacing, variant } = this.props;
 
-    const className = clsx(classes);
+    const className = clsx("list", classes);
 
     const childrenWithProps = React.Children.map(children, child => {
       if (!child) return null;
 
-      return React.cloneElement(child, { spacing, variant });
+      return React.cloneElement(child, {
+        spacing: child.props.spacing || spacing,
+        variant: child.props.variant || variant
+      });
     });
 
     return (
       <React.Fragment>
         <ul className={className}>{childrenWithProps}</ul>
         <style jsx>{`
-          ul {
+          .list {
             list-style-type: none;
             margin: 0;
             padding: 0;

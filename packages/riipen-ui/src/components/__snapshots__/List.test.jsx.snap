@@ -11,10 +11,10 @@ exports[`<List> renders correct snapshot 1`] = `
     }
   >
     <ul
-      className="jsx-1785636575 riipen riipen-list"
+      className="jsx-2898758054 list riipen riipen-list"
     />
     <JSXStyle
-      id="1785636575"
+      id="2898758054"
     />
   </List>
 </withClasses(List)>
