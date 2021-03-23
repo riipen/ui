@@ -3,8 +3,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const icon = i => props => <FontAwesomeIcon icon={i} {...props} />;
-
 import Button from "riipen-ui/components/Button";
 import ButtonIcon from "riipen-ui/components/ButtonIcon";
 
@@ -15,13 +13,17 @@ export default function Icons() {
 
   return (
     <div>
-      <Button color="default" iconStart={icon(faTrash)} variant="contained">
+      <Button
+        color="default"
+        iconStart={<FontAwesomeIcon icon={faTrash} />}
+        variant="contained"
+      >
         Delete
       </Button>
       <span style={style} />
       <Button
         color="default"
-        iconEnd={icon(faChevronRight)}
+        iconEnd={<FontAwesomeIcon icon={faChevronRight} />}
         variant="contained"
       >
         Continue
