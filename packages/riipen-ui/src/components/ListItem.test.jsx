@@ -28,7 +28,7 @@ describe("<ListItem>", () => {
       const wrapper = mount(<ListItem />);
 
       const component = wrapper.find("ListItem");
-      expect(component.props().classes).toEqual([]);
+      expect(component.props().classes).toEqual(["riipen", "riipen-listitem"]);
       expect(component.props().spacing).toEqual(2);
       expect(component.props().variant).toEqual("vertical");
     });
