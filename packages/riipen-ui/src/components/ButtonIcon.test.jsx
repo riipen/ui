@@ -28,10 +28,14 @@ describe("<ButtonIcon>", () => {
       const wrapper = mount(<ButtonIcon>children</ButtonIcon>);
 
       const component = wrapper.find("ButtonIcon");
-      expect(component.props().classes).toEqual([]);
+      expect(component.props().classes).toEqual([
+        "riipen",
+        "riipen-buttonicon"
+      ]);
       expect(component.props().color).toEqual("default");
       expect(component.props().disabled).toEqual(false);
       expect(component.props().size).toEqual("medium");
+      expect(component.props().variant).toEqual("icon");
     });
   });
 
@@ -64,7 +68,7 @@ describe("<ButtonIcon>", () => {
 
   describe("color prop", () => {
     it("sets color class name with a valid color", () => {
-      const color = "muted";
+      const color = "secondary";
 
       const wrapper = mount(<ButtonIcon color={color}>children</ButtonIcon>);
 
@@ -72,7 +76,7 @@ describe("<ButtonIcon>", () => {
         wrapper
           .find("ButtonIcon")
           .childAt(0)
-          .hasClass(color)
+          .hasClass(`icon-${color}`)
       ).toEqual(true);
     });
 
@@ -207,6 +211,31 @@ describe("<ButtonIcon>", () => {
       const size = "sm";
 
       mount(<ButtonIcon size={size}>children</ButtonIcon>);
+
+      expect(errors).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("variant prop", () => {
+    it("sets variant class name with a valid variant", () => {
+      const variant = "outlined";
+
+      const wrapper = mount(
+        <ButtonIcon variant={variant}>children</ButtonIcon>
+      );
+
+      expect(
+        wrapper
+          .find("ButtonIcon")
+          .childAt(0)
+          .hasClass(`${variant}-default`)
+      ).toEqual(true);
+    });
+
+    it("gives an error when given an invalid variant", () => {
+      const errors = jest.spyOn(console, "error").mockImplementation();
+
+      mount(<ButtonIcon variant="bad">children</ButtonIcon>);
 
       expect(errors).toHaveBeenCalledTimes(1);
     });

@@ -37,7 +37,7 @@ export default function Icons() {
         <FontAwesomeIcon icon={faTrash} />
       </ButtonIcon>
       <span style={style} />
-      <ButtonIcon color="secondary" size="large">
+      <ButtonIcon color="secondary" size="large" variant="outlined">
         <FontAwesomeIcon icon={faTrash} />
       </ButtonIcon>
     </div>
