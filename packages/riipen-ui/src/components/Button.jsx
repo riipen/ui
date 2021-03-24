@@ -65,13 +65,13 @@ const Button = props => {
         <span className={clsx("label")}>
           {IconStart && (
             <span className={clsx("icon", "icon-start")}>
-              <IconStart />
+              {typeof IconStart === "function" ? <IconStart /> : IconStart}
             </span>
           )}
           {children}
           {IconEnd && (
             <span className={clsx("icon", "icon-end")}>
-              <IconEnd />
+              {typeof IconEnd === "function" ? <IconEnd /> : IconEnd}
             </span>
           )}
         </span>
@@ -463,12 +463,12 @@ Button.propTypes = {
   /**
    * Element placed after the children.
    */
-  iconEnd: PropTypes.elementType,
+  iconEnd: PropTypes.oneOfType([PropTypes.elementType, PropTypes.node]),
 
   /**
    * Element placed before the children.
    */
-  iconStart: PropTypes.elementType,
+  iconStart: PropTypes.oneOfType([PropTypes.elementType, PropTypes.node]),
 
   /**
    * The size of the chip.
