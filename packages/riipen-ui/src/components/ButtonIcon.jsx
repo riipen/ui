@@ -61,6 +61,7 @@ const ButtonIcon = props => {
       </Component>
       <style jsx>{`
         .root {
+          background-color: transparent;
           border: 0;
           cursor: pointer;
           display: inline-flex;
