@@ -4,11 +4,12 @@ import React from "react";
 import _JSXStyle from "styled-jsx/style";
 
 import { withThemeContext } from "../utils";
+import withClasses from "../utils/withClasses";
 
 const ListItem = props => {
   const { children, classes, spacing, theme, variant, ...other } = props;
 
-  const className = clsx(classes, "list-item", variant);
+  const className = clsx("list-item", variant, classes);
 
   return (
     <React.Fragment>
@@ -76,4 +77,4 @@ ListItem.defaultProps = {
 
 ListItem.displayName = "ListItem";
 
-export default withThemeContext(ListItem);
+export default withThemeContext(withClasses(ListItem));

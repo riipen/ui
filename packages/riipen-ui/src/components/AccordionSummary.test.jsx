@@ -92,7 +92,7 @@ describe("<AccordionSummary>", () => {
         <AccordionSummary icon={icon} iconProps={iconProps} />
       );
 
-      expect(wrapper.find("ButtonIcon").props().classes[0]).toContain(
+      expect(wrapper.find("ButtonIcon").props().classes[2]).toContain(
         iconProps.classes
       );
     });

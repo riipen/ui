@@ -185,7 +185,7 @@ describe("<Button>", () => {
       ).toEqual(true);
     });
 
-    it("renders iconEnd", () => {
+    it("renders iconEnd with a component icon", () => {
       const iconEnd = icon(faTrash);
 
       const wrapper = mount(<Button iconEnd={iconEnd} />);
@@ -194,6 +194,19 @@ describe("<Button>", () => {
         wrapper
           .find(".icon-end")
           .childAt(0)
+          .childAt(0)
+          .name()
+      ).toEqual("FontAwesomeIcon");
+    });
+
+    it("renders iconEnd with a jsx icon", () => {
+      const wrapper = mount(
+        <Button iconEnd={<FontAwesomeIcon icon={faTrash} />} />
+      );
+
+      expect(
+        wrapper
+          .find(".icon-end")
           .childAt(0)
           .name()
       ).toEqual("FontAwesomeIcon");
@@ -214,7 +227,7 @@ describe("<Button>", () => {
       ).toEqual(true);
     });
 
-    it("renders iconStart", () => {
+    it("renders iconStart with a component icon", () => {
       const iconStart = icon(faTrash);
 
       const wrapper = mount(<Button iconStart={iconStart} />);
@@ -223,6 +236,19 @@ describe("<Button>", () => {
         wrapper
           .find(".icon-start")
           .childAt(0)
+          .childAt(0)
+          .name()
+      ).toEqual("FontAwesomeIcon");
+    });
+
+    it("renders iconStart with a jsx icon", () => {
+      const wrapper = mount(
+        <Button iconStart={<FontAwesomeIcon icon={faTrash} />} />
+      );
+
+      expect(
+        wrapper
+          .find(".icon-start")
           .childAt(0)
           .name()
       ).toEqual("FontAwesomeIcon");
