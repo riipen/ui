@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import _JSXStyle from "styled-jsx/style";
 
 import { withThemeContext, useIsFocusVisible } from "../utils";
+import withClasses from "../utils/withClasses";
 
 const ButtonIcon = props => {
   const {
@@ -14,6 +15,7 @@ const ButtonIcon = props => {
     disabled,
     size,
     theme,
+    variant,
     ...other
   } = props;
 
@@ -31,10 +33,11 @@ const ButtonIcon = props => {
 
   const className = clsx(
     "root",
-    color,
     disabled ? "disabled" : null,
     focusVisible ? "focusVisible" : null,
     size,
+    variant,
+    `${variant}-${color}`,
     classes
   );
 
@@ -58,9 +61,7 @@ const ButtonIcon = props => {
       </Component>
       <style jsx>{`
         .root {
-          background-color: transparent;
           border: 0;
-          color: ${theme.palette.text.secondary};
           cursor: pointer;
           display: inline-flex;
           padding: ${theme.spacing(2)}px;
@@ -69,17 +70,15 @@ const ButtonIcon = props => {
           transition: all ${theme.transitions.duration.standard}ms;
           user-select: none;
         }
-        .root.focusVisible {
-          outline: 5px auto -webkit-focus-ring-color;
+
+        a.root {
+          border: none;
+          text-decoration: none;
         }
-        .root:active,
-        .root.focusVisible,
-        .root:hover {
-          background-color: transparent;
-          color: ${theme.palette.secondary.main};
-        }
-        .root:hover::before {
-          background-color: ${theme.palette.secondary.main};
+
+        .icon:active::before,
+        .icon.focusVisible::before,
+        .icon:hover::before {
           border-radius: 50%;
           bottom: 0;
           content: "";
@@ -90,47 +89,138 @@ const ButtonIcon = props => {
           top: 0;
         }
 
-        a.root {
-          border: none;
-          text-decoration: none;
+        .icon-default,
+        .icon-default:hover {
+          color: ${theme.palette.text.secondary};
         }
-
-        .muted:hover {
-          color: ${theme.palette.text.primary};
+        .icon-default:active::before,
+        .icon-default.focusVisible::before,
+        .icon-default:hover::before {
+          background-color: ${theme.palette.text.secondary};
         }
-
-        .muted:hover::before {
-          background-color: ${theme.palette.grey[600]};
-        }
-
-        .primary,
-        .primary:hover {
+        .icon-primary,
+        .icon-primary:hover {
           color: ${theme.palette.primary.main};
         }
-
-        .primary:hover::before {
+        .icon-primary:active::before,
+        .icon-primary.focusVisible::before,
+        .icon-primary:hover::before {
           background-color: ${theme.palette.primary.main};
         }
-        .secondary,
-        .secondary:hover {
+        .icon-secondary,
+        .icon-secondary:hover {
           color: ${theme.palette.secondary.main};
         }
-        .secondary:hover::before {
+        .icon-secondary:active::before,
+        .icon-secondary.focusVisible::before,
+        .icon-secondary:hover::before {
           background-color: ${theme.palette.secondary.main};
         }
-        .tertiary,
-        .tertiary:hover {
+        .icon-tertiary,
+        .icon-tertiary:hover {
           color: ${theme.palette.tertiary.main};
         }
-        .tertiary:hover::before {
-          background-color: ${theme.palette.tertiary.main};
+        .icon-tertiary:hover::before {
+          .icon-tertiary: active: : before,
+            .icon-tertiary.focusVisible: : before,
+            background-color: ${theme.palette.tertiary.main};
         }
-        .white,
-        .white:hover {
+        .icon-white,
+        .icon-white:hover {
           color: ${theme.palette.common.white};
         }
-        .white:hover::before {
-          background-color: ${theme.palette.common.white};
+        .icon-white:hover::before {
+          .icon-white: active: : before, .icon-white.focusVisible: : before,
+            background-color: ${theme.palette.common.white};
+        }
+
+        .outlined {
+          background-color: transparent;
+          overflow: hidden;
+          position: relative;
+        }
+        .outlined::after {
+          border: 1px solid rgba(0, 0, 0, 0.23);
+          border-radius: 50%;
+          bottom: 0;
+          content: "";
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        .outlined:active::before,
+        .outlined.focusVisible::before,
+        .outlined:hover::before {
+          border-radius: 50%;
+          bottom: 0;
+          content: "";
+          left: 0;
+          opacity: 0.1;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+
+        .outlined-default::after {
+          border-color: ${theme.palette.text.secondary};
+        }
+        .outlined-default,
+        .outlined-default:hover {
+          color: ${theme.palette.text.secondary};
+        }
+        .outlined-default:active::before,
+        .outlined-default.focusVisible::before,
+        .outlined-default:hover::before {
+          background-color: ${theme.palette.text.secondary};
+        }
+        .outlined-primary::after {
+          border-color: ${theme.palette.primary.main};
+        }
+        .outlined-primary,
+        .outlined-primary:hover {
+          color: ${theme.palette.primary.main};
+        }
+        .outlined-primary:active::before,
+        .outlined-primary.focusVisible::before,
+        .outlined-primary:hover::before {
+          background-color: ${theme.palette.primary.main};
+        }
+        .outlined-secondary::after {
+          border-color: ${theme.palette.secondary.main};
+        }
+        .outlined-secondary,
+        .outlined-secondary:hover {
+          color: ${theme.palette.secondary.main};
+        }
+        .outlined-secondary:active::before,
+        .outlined-secondary.focusVisible::before,
+        .outlined-secondary:hover::before {
+          background-color: ${theme.palette.secondary.main};
+        }
+        .outlined-tertiary::after {
+          border-color: ${theme.palette.tertiary.main};
+        }
+        .outlined-tertiary,
+        .outlined-tertiary:hover {
+          color: ${theme.palette.tertiary.main};
+        }
+        .outlined-tertiary:hover::before {
+          .outlined-tertiary: active: : before,
+            .outlined-tertiary.focusVisible: : before,
+            background-color: ${theme.palette.tertiary.main};
+        }
+        .outlined-white::after {
+          border-color: ${theme.palette.common.white};
+        }
+        .outlined-white,
+        .outlined-white:hover {
+          color: ${theme.palette.common.white};
+        }
+        .outlined-white:hover::before {
+          .outlined-white: active: : before,
+            .outlined-white.focusVisible: : before,
+            background-color: ${theme.palette.common.white};
         }
 
         .disabled {
@@ -187,7 +277,6 @@ ButtonIcon.propTypes = {
    */
   color: PropTypes.oneOf([
     "default",
-    "muted",
     "primary",
     "secondary",
     "tertiary",
@@ -214,16 +303,22 @@ ButtonIcon.propTypes = {
    * @ignore
    * The theme context object
    */
-  theme: PropTypes.object
+  theme: PropTypes.object,
+
+  /**
+   * The variant to use.
+   */
+  variant: PropTypes.oneOf(["icon", "outlined"])
 };
 
 ButtonIcon.defaultProps = {
   classes: [],
   color: "default",
   disabled: false,
-  size: "medium"
+  size: "medium",
+  variant: "icon"
 };
 
 ButtonIcon.displayName = "ButtonIcon";
 
-export default withThemeContext(ButtonIcon);
+export default withThemeContext(withClasses(ButtonIcon));
