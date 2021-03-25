@@ -53,7 +53,7 @@ class Chip extends React.Component {
     /**
      * Icon to display at start of chip.
      */
-    icon: PropTypes.elementType,
+    icon: PropTypes.node,
 
     /**
      * The content of the label.
@@ -95,7 +95,7 @@ class Chip extends React.Component {
       component: Component,
       disabled,
       hover,
-      icon: Icon,
+      icon,
       onClick,
       size,
       variant
@@ -125,11 +125,7 @@ class Chip extends React.Component {
     return (
       <React.Fragment>
         <Component onClick={handleClick} className={className}>
-          {Icon && (
-            <span className={clsx("icon", "icon-start")}>
-              <Icon />
-            </span>
-          )}
+          {icon && <span className="icon">{icon}</span>}
           <span className={clsx("label")}>{label}</span>
         </Component>
         <style jsx>{`
@@ -172,14 +168,14 @@ class Chip extends React.Component {
             background-color: transparent;
             border: 1px solid ${theme.palette.text.primary};
           }
-          .icon-start {
+          .icon {
             align-items: center;
             display: flex;
             padding-right: 10px;
             white-space: nowrap;
           }
 
-          .icon-start.disabled {
+          .icon.disabled {
             cursor: initial;
           }
 

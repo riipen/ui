@@ -204,27 +204,17 @@ describe("<Chip>", () => {
   });
 
   describe("icon prop", () => {
-    it("displays icon with valid custom elementType", () => {
-      const icon = "a";
+    it("displays icon when given", () => {
+      const icon = <span>{"icon"}</span>;
 
       const wrapper = mount(<Chip icon={icon} />);
 
-      expect(wrapper.find(icon)).toHaveLength(1);
       expect(
         wrapper
           .find(".icon")
-          .childAt(0)
-          .name()
-      ).toEqual(icon);
-    });
-
-    it("gives an error given an invalid icon type", () => {
-      const errors = jest.spyOn(console, "error").mockImplementation();
-      const icon = "aaaaaaaaa";
-
-      mount(<Chip icon={icon} />);
-
-      expect(errors).toHaveBeenCalledTimes(1);
+          .children()
+          .contains(icon)
+      ).toEqual(true);
     });
   });
 
