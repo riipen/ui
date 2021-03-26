@@ -256,8 +256,9 @@ class Editor extends React.Component {
         font-size: ${theme.typography.body1.fontSize};
 
         /* 80px - 2 * 1px borders  */
+        max-height: 300px;
         min-height: 78px;
-        overflow: auto;
+        overflow-y: scroll;
         padding: ${theme.spacing(3)}px;
         transition: ${theme.transitions.duration.standard}ms all;
       }
