@@ -1,5 +1,7 @@
 import clsx from "clsx";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import css from "styled-jsx/css";
 
@@ -8,6 +10,10 @@ import ThemeContext from "../styles/ThemeContext";
 import debounce from "../utils/debounce";
 import withClasses from "../utils/withClasses";
 
+import Badge from "./Badge";
+import ButtonIcon from "./ButtonIcon";
+import Grid from "./Grid";
+import GridItem from "./GridItem";
 import TableHeader from "./TableHeader";
 import Table from "./Table";
 import TableRow from "./TableRow";
@@ -19,6 +25,11 @@ class TableGenerator extends React.Component {
   static displayName = "TableGenerator";
 
   static propTypes = {
+    /**
+     * The number of filters that are currently active.
+     */
+    activeFiltersCount: PropTypes.number,
+
     /**
      * Classes to apply to the root element.
      */
@@ -59,6 +70,11 @@ class TableGenerator extends React.Component {
     expandedNode: PropTypes.func,
 
     /**
+     * Node to render for filters
+     */
+    filters: PropTypes.func,
+
+    /**
      * Whether or not to highlight rows on highlight.
      */
     hover: PropTypes.bool,
@@ -89,6 +105,7 @@ class TableGenerator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      filtersOpen: false,
       isMobile: false,
       hoverIdx: null
     };
@@ -124,6 +141,16 @@ class TableGenerator extends React.Component {
       .expandedRow {
         background-color: ${theme.palette.grey[100]};
       }
+
+      .filters {
+        margin-bottom: ${theme.spacing(2)}px;
+        margin-top: ${theme.spacing(2)}px;
+      }
+
+      .toggle {
+        display: inline-block;
+        margin-right: ${theme.spacing(1)}px;
+      }
     `;
   };
 
@@ -131,6 +158,9 @@ class TableGenerator extends React.Component {
 
   handleRowMouseEnter = idx => () => this.setState({ hoverIdx: idx });
   handleRowMouseLeave = () => this.setState({ hoverIdx: null });
+
+  handleFiltersClick = () =>
+    this.setState({ filtersOpen: !this.state.filtersOpen });
 
   updateWindowDimensions = () => {
     const theme = this.context;
@@ -328,13 +358,57 @@ class TableGenerator extends React.Component {
   }
 
   render() {
-    const { isMobile } = this.state;
-    const { classes, data, empty, loading } = this.props;
+    const {
+      activeFiltersCount,
+      classes,
+      data,
+      empty,
+      filters,
+      loading
+    } = this.props;
+
+    const { filtersOpen, isMobile } = this.state;
+
+    const BadgeComponent = activeFiltersCount > 0 ? Badge : "span";
 
     const linkedStyles = this.getLinkedStyles();
 
     return (
       <React.Fragment>
+        {!!filters && (
+          <React.Fragment>
+            <Grid alignItems="center">
+              <GridItem
+                alignItems="center"
+                flexDirection="row"
+                flexGrow={1}
+                flexShrink={1}
+                lg="auto"
+              >
+                <div className={clsx("toggle", linkedStyles.className)}>
+                  <BadgeComponent
+                    color="secondary"
+                    content={activeFiltersCount}
+                    max={9}
+                    overlap="circle"
+                  >
+                    <ButtonIcon
+                      color={filtersOpen ? "secondary" : "default"}
+                      onClick={this.handleFiltersClick}
+                    >
+                      <FontAwesomeIcon icon={faFilter} />
+                    </ButtonIcon>
+                  </BadgeComponent>
+                </div>
+              </GridItem>
+            </Grid>
+            {filtersOpen && (
+              <div className={clsx("filters", linkedStyles.className)}>
+                {filters}
+              </div>
+            )}
+          </React.Fragment>
+        )}
         <div className={clsx("container", linkedStyles.className, classes)}>
           <Table>{isMobile ? this.renderMobile() : this.renderDefault()}</Table>
           {loading}
