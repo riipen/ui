@@ -31,6 +31,12 @@ export default function Usage() {
       />
       <div style={style} />
       <RichTextEditor
+        id="editor-max-height"
+        label="Max Height"
+        maxHeight="200px"
+      />
+      <div style={style} />
+      <RichTextEditor
         id="editor-placeholder"
         label="Placeholder"
         placeholder="I'm holding the place!"

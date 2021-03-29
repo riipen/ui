@@ -115,13 +115,13 @@ class Editor extends React.Component {
     ariaLabelledBy: PropTypes.string,
 
     /**
-     * Optional array of whitelisted styles
+     * Optional array of whitelisted styles.
      * ex. ['code-block', 'BOLD', 'LINK']
      */
     controlWhitelist: PropTypes.arrayOf(PropTypes.string),
 
     /**
-     * Position of controls for the editor
+     * Position of controls for the editor.
      */
     controlPosition: PropTypes.oneOf(["top", "bottom"]),
 
@@ -131,7 +131,7 @@ class Editor extends React.Component {
     decorator: PropTypes.shape({ type: PropTypes.oneOf([CompositeDecorator]) }),
 
     /**
-     * If the error style should be shown or not
+     * If the error style should be shown or not.
      */
     error: PropTypes.any,
 
@@ -141,14 +141,19 @@ class Editor extends React.Component {
     mobileControlRow: PropTypes.bool,
 
     /**
-     * Initial content to set in the editor
+     * Initial content to set in the editor.
      */
     initialValue: PropTypes.any,
 
     /**
-     * Function to execute when editor content changes, gets html value of editor
+     * Function to execute when editor content changes, gets html value of editor.
      */
     onChange: PropTypes.func,
+
+    /**
+     * The max height of the Editor text area.
+     */
+    maxHeight: PropTypes.number,
 
     /**
      * Optional placeholder. Shows when there is no text.
@@ -207,7 +212,7 @@ class Editor extends React.Component {
 
   getLinkedStyles = () => {
     const theme = this.context;
-    const { controlPosition } = this.props;
+    const { controlPosition, maxHeight } = this.props;
 
     return css.resolve`
       .wrapper {
@@ -256,9 +261,9 @@ class Editor extends React.Component {
         font-size: ${theme.typography.body1.fontSize};
 
         /* 80px - 2 * 1px borders  */
-        max-height: 300px;
+        max-height: ${maxHeight || "auto"};
         min-height: 78px;
-        overflow-y: scroll;
+        overflow-y: auto;
         padding: ${theme.spacing(3)}px;
         transition: ${theme.transitions.duration.standard}ms all;
       }
