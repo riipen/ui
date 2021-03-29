@@ -153,7 +153,7 @@ class Editor extends React.Component {
     /**
      * The max height of the Editor text area.
      */
-    maxHeight: PropTypes.number,
+    maxHeight: PropTypes.string,
 
     /**
      * Optional placeholder. Shows when there is no text.
@@ -175,6 +175,7 @@ class Editor extends React.Component {
   static defaultProps = {
     actionControls: [],
     controlPosition: "top",
+    maxHeight: "auto",
     mobileControlRow: false,
     stylingControls: []
   };
@@ -261,7 +262,7 @@ class Editor extends React.Component {
         font-size: ${theme.typography.body1.fontSize};
 
         /* 80px - 2 * 1px borders  */
-        max-height: ${maxHeight || "auto"};
+        max-height: ${maxHeight};
         min-height: 78px;
         overflow-y: auto;
         padding: ${theme.spacing(3)}px;

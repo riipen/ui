@@ -46,7 +46,7 @@ class RichTextEditor extends React.Component {
     /**
      * The max height of the Editor text area.
      */
-    maxHeight: PropTypes.number,
+    maxHeight: PropTypes.string,
 
     /**
      * A warning to display below the input.
@@ -55,7 +55,8 @@ class RichTextEditor extends React.Component {
   };
 
   static defaultProps = {
-    isRequired: false
+    isRequired: false,
+    maxHeight: "auto"
   };
 
   render() {
