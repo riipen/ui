@@ -44,13 +44,19 @@ class RichTextEditor extends React.Component {
     label: PropTypes.string,
 
     /**
+     * The max height of the Editor text area.
+     */
+    maxHeight: PropTypes.string,
+
+    /**
      * A warning to display below the input.
      */
     warning: PropTypes.node
   };
 
   static defaultProps = {
-    isRequired: false
+    isRequired: false,
+    maxHeight: "auto"
   };
 
   render() {
@@ -61,6 +67,7 @@ class RichTextEditor extends React.Component {
       label,
       id,
       isRequired,
+      maxHeight,
       warning,
       ...other
     } = this.props;
@@ -76,6 +83,7 @@ class RichTextEditor extends React.Component {
         <Editor
           ariaLabelledBy={ariaLabel}
           error={error}
+          maxHeight={maxHeight}
           ref={forwardedRef}
           {...other}
         />
