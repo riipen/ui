@@ -2,7 +2,7 @@ import React from "react";
 
 import Typography from "riipen-ui/components/Typography";
 
-export default function FontWeight() {
+export default function TextTransform() {
   return (
     <div>
       <Typography textTransform="capitalize" gutter>
