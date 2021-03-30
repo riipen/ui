@@ -17,7 +17,7 @@ exports[`<Typography> renders correct snapshot 1`] = `
     variant="body1"
   >
     <p
-      className="jsx-98241654 root color-inherit initial body1 align-inherit transform-inherit riipen riipen-typography"
+      className="jsx-3017984631 root color-inherit initial body1 align-inherit transform-inherit riipen riipen-typography"
     />
     <JSXStyle
       dynamic={
@@ -86,7 +86,7 @@ exports[`<Typography> renders correct snapshot 1`] = `
           400,
         ]
       }
-      id="2262779049"
+      id="3990007342"
     />
   </Typography>
 </withClasses(Typography)>
