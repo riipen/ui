@@ -249,6 +249,30 @@ describe("<Typography>", () => {
     });
   });
 
+  describe("textTransform prop", () => {
+    it("sets textTransform class given a valid textTransform prop", () => {
+      const textTransform = "capitalize";
+
+      const wrapper = mount(<Typography textTransform={textTransform} />);
+
+      expect(
+        wrapper
+          .find("Typography")
+          .childAt(0)
+          .hasClass(`transform-${textTransform}`)
+      ).toEqual(true);
+    });
+
+    it("gives an error given an invalid textTransform prop", () => {
+      const textTransform = "invalid";
+      const errors = jest.spyOn(console, "error").mockImplementation();
+
+      mount(<Typography textTransform={textTransform} />);
+
+      expect(errors).toHaveBeenCalled();
+    });
+  });
+
   describe("variant prop", () => {
     it("sets valid, mapped variant to component", () => {
       const variant = "h5";

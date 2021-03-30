@@ -85,6 +85,18 @@ class Typography extends React.Component {
     ]),
 
     /**
+     * Set the text-transform on the component.
+     */
+    textTransform: PropTypes.oneOf([
+      "inherit",
+      "capitalize",
+      "uppercase",
+      "lowercase",
+      "full-width",
+      "full-size-kana"
+    ]),
+
+    /**
      * Applies the theme typography styles.
      */
     variant: PropTypes.oneOf([
@@ -107,6 +119,7 @@ class Typography extends React.Component {
     display: "initial",
     gutter: false,
     textAlign: "inherit",
+    textTransform: "inherit",
     variant: "body1"
   };
 
@@ -122,6 +135,7 @@ class Typography extends React.Component {
       fontWeight,
       gutter,
       textAlign,
+      textTransform,
       variant
     } = this.props;
 
@@ -135,6 +149,7 @@ class Typography extends React.Component {
       gutter ? "gutter" : null,
       variant,
       `align-${textAlign}`,
+      `transform-${textTransform}`,
       classes
     );
 
@@ -282,6 +297,22 @@ class Typography extends React.Component {
           }
           .regular {
             font-weight: ${theme.typography.fontWeight.regular};
+          }
+
+          .transform-capitalize {
+            text-transform: capitalize;
+          }
+          .transform-uppercase {
+            text-transform: uppercase;
+          }
+          .transform-lowercase {
+            text-transform: lowercase;
+          }
+          .transform-full-width {
+            text-transform: full-width;
+          }
+          .transform-full-size-kana {
+            text-transform: full-size-kana;
           }
         `}</style>
       </React.Fragment>

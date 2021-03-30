@@ -27,10 +27,11 @@ exports[`<Breadcrumbs> renders correct snapshot 1`] = `
         display="initial"
         gutter={false}
         textAlign="inherit"
+        textTransform="inherit"
         variant="body1"
       >
         <nav
-          className="jsx-4149659077 root color-inherit initial body1 align-inherit riipen riipen-typography"
+          className="jsx-98241654 root color-inherit initial body1 align-inherit transform-inherit riipen riipen-typography"
         >
           <ol
             className="jsx-2183045356 riipen riipen-breadcrumbs"
@@ -112,7 +113,7 @@ exports[`<Breadcrumbs> renders correct snapshot 1`] = `
               400,
             ]
           }
-          id="489809676"
+          id="2262779049"
         />
       </Typography>
     </withClasses(Typography)>

@@ -32,6 +32,10 @@ You can also use the CSS native "inherit" for a wider range of colors.
 
 {{"demo": "pages/components/typography/FontWeight.js"}}
 
+## Text Transform
+
+{{"demo": "pages/components/typography/TextTransform.js"}}
+
 ## Changing the semantic element
 
 You can change the underlying element for a one time occasion with the `component` property:
