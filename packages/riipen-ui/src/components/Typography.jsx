@@ -91,9 +91,7 @@ class Typography extends React.Component {
       "inherit",
       "capitalize",
       "uppercase",
-      "lowercase",
-      "full-width",
-      "full-size-kana"
+      "lowercase"
     ]),
 
     /**
@@ -307,12 +305,6 @@ class Typography extends React.Component {
           }
           .transform-lowercase {
             text-transform: lowercase;
-          }
-          .transform-full-width {
-            text-transform: full-width;
-          }
-          .transform-full-size-kana {
-            text-transform: full-size-kana;
           }
         `}</style>
       </React.Fragment>

@@ -14,12 +14,6 @@ export default function TextTransform() {
       <Typography textTransform="lowercase" gutter>
         lowercase
       </Typography>
-      <Typography textTransform="full-width" gutter>
-        full-width
-      </Typography>
-      <Typography textTransform="full-size-kana" gutter>
-        full-size-kana
-      </Typography>
     </div>
   );
 }
