@@ -48,6 +48,7 @@ class Typography extends React.Component {
       "primary",
       "secondary",
       "tertiary",
+      "warning",
       "white"
     ]),
 
@@ -279,6 +280,9 @@ class Typography extends React.Component {
           }
           .color-negative {
             color: ${theme.palette.negative.main};
+          }
+          .color-warning {
+            color: ${theme.palette.warning.main};
           }
           .color-white {
             color: ${theme.palette.common.white};
