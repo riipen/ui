@@ -35,6 +35,9 @@ export default function Color() {
       <Typography color="negative" gutter>
         Negative
       </Typography>
+      <Typography color="warning" gutter>
+        Warning
+      </Typography>
       <div style={{ backgroundColor: "#000" }}>
         <Typography color="white" gutter>
           White
