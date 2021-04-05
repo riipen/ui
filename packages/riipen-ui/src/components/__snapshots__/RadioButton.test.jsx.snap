@@ -39,7 +39,7 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
             variant="body2"
           >
             <p
-              className="jsx-3132880061 root color-grey600 initial body2 align-inherit transform-inherit riipen riipen-typography"
+              className="jsx-42457783 root color-grey600 initial body2 align-inherit transform-inherit riipen riipen-typography"
             >
               <span
                 className="jsx-1306841623 content"
@@ -97,6 +97,7 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
                   "23px",
                   "0rem",
                   "#000",
+                  "#cccbcb",
                   "#747474",
                   "#424242",
                   "#373737",
@@ -113,7 +114,7 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
                   400,
                 ]
               }
-              id="1786047853"
+              id="1840119567"
             />
           </Typography>
         </withClasses(Typography)>
