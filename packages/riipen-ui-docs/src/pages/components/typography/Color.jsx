@@ -11,6 +11,9 @@ export default function Color() {
       <Typography color="black" gutter>
         Black
       </Typography>
+      <Typography color="disabled" gutter>
+        Disabled
+      </Typography>
       <Typography color="grey600" gutter>
         Grey 600
       </Typography>
