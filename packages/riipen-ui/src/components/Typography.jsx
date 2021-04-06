@@ -40,6 +40,7 @@ class Typography extends React.Component {
       "inherit",
       "initial",
       "black",
+      "disabled",
       "grey600",
       "grey800",
       "greyA400",
@@ -48,6 +49,7 @@ class Typography extends React.Component {
       "primary",
       "secondary",
       "tertiary",
+      "warning",
       "white"
     ]),
 
@@ -85,6 +87,16 @@ class Typography extends React.Component {
     ]),
 
     /**
+     * Set the text-transform on the component.
+     */
+    textTransform: PropTypes.oneOf([
+      "inherit",
+      "capitalize",
+      "uppercase",
+      "lowercase"
+    ]),
+
+    /**
      * Applies the theme typography styles.
      */
     variant: PropTypes.oneOf([
@@ -107,6 +119,7 @@ class Typography extends React.Component {
     display: "initial",
     gutter: false,
     textAlign: "inherit",
+    textTransform: "inherit",
     variant: "body1"
   };
 
@@ -122,6 +135,7 @@ class Typography extends React.Component {
       fontWeight,
       gutter,
       textAlign,
+      textTransform,
       variant
     } = this.props;
 
@@ -135,6 +149,7 @@ class Typography extends React.Component {
       gutter ? "gutter" : null,
       variant,
       `align-${textAlign}`,
+      `transform-${textTransform}`,
       classes
     );
 
@@ -243,6 +258,9 @@ class Typography extends React.Component {
           .color-black {
             color: ${theme.palette.common.black};
           }
+          .color-disabled {
+            color: ${theme.palette.text.disabled};
+          }
           .color-grey600 {
             color: ${theme.palette.grey[600]};
           }
@@ -267,6 +285,9 @@ class Typography extends React.Component {
           .color-negative {
             color: ${theme.palette.negative.main};
           }
+          .color-warning {
+            color: ${theme.palette.warning.main};
+          }
           .color-white {
             color: ${theme.palette.common.white};
           }
@@ -282,6 +303,16 @@ class Typography extends React.Component {
           }
           .regular {
             font-weight: ${theme.typography.fontWeight.regular};
+          }
+
+          .transform-capitalize {
+            text-transform: capitalize;
+          }
+          .transform-uppercase {
+            text-transform: uppercase;
+          }
+          .transform-lowercase {
+            text-transform: lowercase;
           }
         `}</style>
       </React.Fragment>
