@@ -26,7 +26,7 @@ class InputLabel extends React.Component {
     /**
      * Color of the label text
      */
-    color: PropTypes.oneOf(["default", "white", "black"]),
+    color: PropTypes.oneOf(["default", "white", "black", "grey"]),
 
     /**
      * Hint text to display under the label.
@@ -99,6 +99,10 @@ class InputLabel extends React.Component {
 
           .black {
             color: ${theme.palette.common.black};
+          }
+
+          .grey {
+            color: ${theme.palette.grey.A400};
           }
 
           .light {
