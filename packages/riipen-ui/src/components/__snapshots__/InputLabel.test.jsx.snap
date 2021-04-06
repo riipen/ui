@@ -23,12 +23,13 @@ exports[`<InputLabel> renders correct snapshot 1`] = `
           15,
           "#fff",
           "#000",
+          "#373737",
           300,
           500,
           700,
         ]
       }
-      id="2351364854"
+      id="190238727"
     />
   </InputLabel>
 </withClasses(InputLabel)>
