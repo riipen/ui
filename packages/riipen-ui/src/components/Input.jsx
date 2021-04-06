@@ -8,26 +8,25 @@ import { withThemeContext, useIsFocusVisible } from "../utils";
 import InputLabel from "./InputLabel";
 import Typography from "./Typography";
 
-const Input = props => {
-  const {
-    classes,
-    disabled,
-    error,
-    hint,
-    label,
-    labelColor,
-    labelWeight,
-    multiline,
-    required,
-    theme,
-    warning,
-    ...other
-  } = props;
-
+const Input = ({
+  classes,
+  disabled,
+  error,
+  hint,
+  label,
+  labelColor,
+  labelWeight,
+  multiline,
+  required,
+  theme,
+  variant,
+  warning,
+  ...other
+}) => {
   const [focusVisible, setFocusVisible] = useState(false);
   const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
-  const handleFocus = e => {
+  const handleFocus = (e) => {
     setFocusVisible(isFocusVisible(e));
   };
 
@@ -48,7 +47,8 @@ const Input = props => {
     error ? "error" : null,
     disabled ? "disabled" : null,
     warning ? "warning" : null,
-    focusVisible ? "focusVisible" : null
+    focusVisible ? "focusVisible" : null,
+    variant
   );
 
   return (
@@ -86,9 +86,6 @@ const Input = props => {
       <style jsx>{`
         input,
         textarea {
-          background-color: ${theme.palette.common.white};
-          border: 1px solid rgba(0, 0, 0, 0.23);
-          border-radius: ${theme.shape.borderRadius.md};
           box-sizing: border-box;
           color: ${theme.palette.text.primary};
           font-family: ${theme.typography.fontFamily};
@@ -112,6 +109,12 @@ const Input = props => {
           outline: 5px auto -webkit-focus-ring-color;
         }
 
+        .default {
+          background-color: ${theme.palette.common.white};
+          border: 1px solid rgba(0, 0, 0, 0.23);
+          border-radius: ${theme.shape.borderRadius.md};
+        }
+
         .disabled {
           opacity: 0.5;
           pointer-events: none;
@@ -119,6 +122,12 @@ const Input = props => {
 
         .error {
           border-color: ${theme.palette.negative.main};
+        }
+
+        .underlined {
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.23);
         }
 
         .warning {
@@ -131,7 +140,8 @@ const Input = props => {
 
 Input.defaultProps = {
   disabled: false,
-  multiline: false
+  multiline: false,
+  variant: "default"
 };
 
 Input.propTypes = {
@@ -186,6 +196,10 @@ Input.propTypes = {
    */
   theme: PropTypes.object,
 
+  /**
+   * The input variant styling to apply.
+   */
+  variant: PropTypes.oneOf(["default", "underlined"]),
   /**
    * A warning to display below the input.
    */
