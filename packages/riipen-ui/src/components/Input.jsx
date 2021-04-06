@@ -74,12 +74,12 @@ const Input = ({
         {...other}
       />
       {error && (
-        <Typography color="negative" variant="body2">
+        <Typography color="negative" component="span" variant="body2">
           {error}
         </Typography>
       )}
       {warning && (
-        <Typography color="secondary" variant="body2">
+        <Typography color="secondary" component="span" variant="body2">
           {warning}
         </Typography>
       )}
