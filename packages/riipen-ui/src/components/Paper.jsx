@@ -35,7 +35,6 @@ const Paper = props => {
       <style jsx>{`
         .root {
           background-color: ${theme.palette.common.white};
-          display: inline-block;
           padding: ${theme.spacing[padding]};
         }
 

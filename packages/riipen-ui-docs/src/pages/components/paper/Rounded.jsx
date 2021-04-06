@@ -11,14 +11,16 @@ export default function Rounded() {
     <React.Fragment>
       <Paper
         style={{
+          display: "inline-block",
           height: "100px",
           width: "100px"
         }}
       />
       <span style={style} />
       <Paper
-        rounded={true}
+        rounded
         style={{
+          display: "inline-block",
           height: "100px",
           width: "100px"
         }}
