@@ -6,6 +6,7 @@ import _JSXStyle from "styled-jsx/style";
 import { withThemeContext, useIsFocusVisible } from "../utils";
 
 import Typography from "./Typography";
+import Chip from "./Chip";
 
 const Checkbox = props => {
   const {
@@ -17,6 +18,7 @@ const Checkbox = props => {
     label,
     required,
     theme,
+    variant,
     warning,
     ...other
   } = props;
@@ -45,26 +47,48 @@ const Checkbox = props => {
 
   return (
     <div className={clsx(classes)}>
-      <label htmlFor={other.id}>
-        <Typography>
-          {label}
-          {required && " *"}
-        </Typography>
-        <input
-          ref={ref}
-          checked={checked}
-          className={className}
-          disabled={disabled}
-          type="checkbox"
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onKeyDown={handleKeyDown}
-          {...other}
-        />
-        <span
-          className={clsx("checkmark", disabled ? "disabled" : null, color)}
-        />
-      </label>
+      {variant === "chip" ? (
+        <label htmlFor={other.id}>
+          <Chip variant={checked ? "default" : "outlined"} color={color}>
+            <Typography>
+              {label}
+              {required && " *"}
+            </Typography>
+            <input
+              ref={ref}
+              checked={checked}
+              className={className}
+              disabled={disabled}
+              type="checkbox"
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              onKeyDown={handleKeyDown}
+              {...other}
+            />
+          </Chip>
+        </label>
+      ) : (
+        <label htmlFor={other.id}>
+          <Typography>
+            {label}
+            {required && " *"}
+          </Typography>
+          <input
+            ref={ref}
+            checked={checked}
+            className={className}
+            disabled={disabled}
+            type="checkbox"
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
+            {...other}
+          />
+          <span
+            className={clsx("checkmark", disabled ? "disabled" : null, color)}
+          />
+        </label>
+      )}
       {error && (
         <Typography classes={[clsx("error")]} color="negative" variant="body2">
           {error}
@@ -211,6 +235,11 @@ Checkbox.propTypes = {
   theme: PropTypes.object,
 
   /**
+   * The checkbox variant
+   */
+  variant: PropTypes.oneOf(["default", "chip"]),
+
+  /**
    * A warning to display below the checkbox.
    */
   warning: PropTypes.node
@@ -219,7 +248,8 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   checked: false,
   disabled: false,
-  required: false
+  required: false,
+  variant: "default"
 };
 
 Checkbox.displayName = "Checkbox";
