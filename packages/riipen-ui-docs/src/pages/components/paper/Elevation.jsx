@@ -11,6 +11,7 @@ export default function Elevation() {
     <React.Fragment>
       <Paper
         style={{
+          display: "inline-block",
           height: "100px",
           width: "100px"
         }}
@@ -19,6 +20,7 @@ export default function Elevation() {
       <Paper
         elevation={1}
         style={{
+          display: "inline-block",
           height: "100px",
           width: "100px"
         }}
@@ -27,6 +29,7 @@ export default function Elevation() {
       <Paper
         elevation={10}
         style={{
+          display: "inline-block",
           height: "100px",
           width: "100px"
         }}
