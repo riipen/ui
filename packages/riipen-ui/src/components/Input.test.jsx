@@ -220,6 +220,14 @@ describe("<Input>", () => {
     });
   });
 
+  describe("variant prop", () => {
+    it("sets valid variant", () => {
+      const wrapper = mount(<Input variant="underlined" />);
+
+      expect(wrapper.find("input").hasClass("underlined")).toEqual(true);
+    });
+  });
+
   describe("warning prop", () => {
     it("sets valid custom warning", () => {
       const warning = <span>Error</span>;

@@ -215,13 +215,14 @@ exports[`<Input> renders correct snapshot 1`] = `
         },
       }
     }
+    variant="default"
   >
     <div
-      className="jsx-2918390004 "
+      className="jsx-3113390966 "
     >
       <input
         aria-disabled={false}
-        className="jsx-2918390004 "
+        className="jsx-3113390966 default"
         disabled={false}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -229,19 +230,19 @@ exports[`<Input> renders correct snapshot 1`] = `
       <JSXStyle
         dynamic={
           Array [
-            "#fff",
-            "4px",
             "#373737",
             "Roboto, Helvetica, Arial, sans-serif",
             "14px",
             10,
             300,
             "#3caabb",
+            "#fff",
+            "4px",
             "#e95353",
             "#febb46",
           ]
         }
-        id="4179543332"
+        id="1265023844"
       />
     </div>
   </Input>
