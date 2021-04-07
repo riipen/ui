@@ -11,9 +11,9 @@ import Typography from "./Typography";
 const Input = ({
   classes,
   disabled,
+  end,
   error,
   hint,
-  icon: Icon,
   label,
   labelColor,
   labelWeight,
@@ -21,6 +21,7 @@ const Input = ({
   multiline,
   required,
   size,
+  start,
   theme,
   variant,
   warning,
@@ -38,7 +39,7 @@ const Input = ({
     onBlurVisible();
   };
 
-  const className = clsx(classes);
+  const className = clsx(classes, "wrapper");
 
   let Component = "input";
 
@@ -47,9 +48,10 @@ const Input = ({
   }
 
   const componentClassName = clsx(
+    end ? "endPadding" : null,
     error ? "error" : null,
     disabled ? "disabled" : null,
-    Icon ? "iconPadding" : null,
+    start ? "startPadding" : null,
     warning ? "warning" : null,
     focusVisible ? "focusVisible" : null,
     variant,
@@ -78,11 +80,10 @@ const Input = ({
         aria-disabled={disabled}
         {...other}
       />
-      {Icon && (
-        <span className={clsx("icon", size)}>
-          {typeof Icon === "function" ? <Icon /> : Icon}
-        </span>
+      {start && (
+        <span className={clsx("controls", "start", size)}>{start}</span>
       )}
+      {end && <span className={clsx("controls", "end", size)}>{end}</span>}
       {(error || warning || meta) && (
         <div className="bottom">
           <div>
@@ -110,6 +111,55 @@ const Input = ({
           justify-content: space-between;
         }
 
+        .controls {
+          position: absolute;
+        }
+
+        .controls.large {
+          font-size: ${theme.typography.h4.fontSize};
+          padding: 17px;
+        }
+
+        .controls.medium {
+          font-size: ${theme.typography.h5.fontSize};
+        }
+
+        .controls.small {
+          font-size: ${theme.typography.body2.fontSize};
+          padding: 7px;
+        }
+
+        .default {
+          background-color: ${theme.palette.common.white};
+          border: 1px solid rgba(0, 0, 0, 0.23);
+          border-radius: ${theme.shape.borderRadius.md};
+        }
+
+        .disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        .end {
+          right: 0;
+        }
+
+        .endPadding.large {
+          padding-right: ${theme.spacing(12)}px;
+        }
+
+        .endPadding.medium {
+          padding-right: ${theme.spacing(9)}px;
+        }
+
+        .endPadding.small {
+          padding-right: ${theme.spacing(9)}px;
+        }
+
+        .error {
+          border-color: ${theme.palette.negative.main};
+        }
+
         input,
         textarea {
           box-sizing: border-box;
@@ -135,51 +185,12 @@ const Input = ({
           outline: 5px auto -webkit-focus-ring-color;
         }
 
-        .default {
-          background-color: ${theme.palette.common.white};
-          border: 1px solid rgba(0, 0, 0, 0.23);
-          border-radius: ${theme.shape.borderRadius.md};
+        .large {
+          font-size: ${theme.typography.h2.fontSize};
         }
 
-        .disabled {
-          opacity: 0.5;
-          pointer-events: none;
-        }
-
-        .error {
-          border-color: ${theme.palette.negative.main};
-        }
-
-        .icon {
-          color: ${theme.palette.grey[500]};
-          left: ${theme.spacing(4)}px;
-          position: absolute;
-        }
-
-        .icon.small {
-          font-size: ${theme.typography.body2.fontSize};
-          padding: 7px;
-        }
-
-        .icon.medium {
-          font-size: ${theme.typography.h5.fontSize};
-        }
-
-        .icon.large {
-          font-size: ${theme.typography.h4.fontSize};
-          padding: 17px;
-        }
-
-        .iconPadding.small {
-          padding-left: ${theme.spacing(9)}px;
-        }
-
-        .iconPadding.medium {
-          padding-left: ${theme.spacing(9)}px;
-        }
-
-        .iconPadding.large {
-          padding-left: ${theme.spacing(12)}px;
+        .medium {
+          padding: ${theme.spacing(2)}px;
         }
 
         .small {
@@ -187,12 +198,20 @@ const Input = ({
           padding-top: ${theme.spacing(1)}px;
         }
 
-        .medium {
-          padding: ${theme.spacing(2)}px;
+        .start {
+          left: 0;
         }
 
-        .large {
-          font-size: ${theme.typography.h2.fontSize};
+        .startPadding.large {
+          padding-left: ${theme.spacing(12)}px;
+        }
+
+        .startPadding.medium {
+          padding-left: ${theme.spacing(9)}px;
+        }
+
+        .startPadding.small {
+          padding-left: ${theme.spacing(9)}px;
         }
 
         .underlined {
@@ -203,6 +222,10 @@ const Input = ({
 
         .warning {
           border-color: ${theme.palette.warning.main};
+        }
+
+        .wrapper {
+          position: relative;
         }
       `}</style>
     </div>
@@ -228,6 +251,11 @@ Input.propTypes = {
   disabled: PropTypes.bool,
 
   /**
+   * An end adornment to render on the right side of the input.
+   */
+  end: PropTypes.node,
+
+  /**
    * An error to display below the input.
    */
   error: PropTypes.node,
@@ -236,11 +264,6 @@ Input.propTypes = {
    * Hint text to display under the label of the input.
    */
   hint: PropTypes.string,
-
-  /**
-   * A icon to render on the left side of the input.
-   */
-  icon: PropTypes.oneOfType([PropTypes.elementType, PropTypes.node]),
 
   /**
    * Label text to display for the input.
@@ -276,6 +299,11 @@ Input.propTypes = {
    * A whitelisted set of sizes that the input can be rendered at.
    */
   size: PropTypes.oneOf(["large", "medium", "small"]),
+
+  /**
+   * A start adornment to render on the left side of the input.
+   */
+  start: PropTypes.node,
 
   /**
    * @ignore
