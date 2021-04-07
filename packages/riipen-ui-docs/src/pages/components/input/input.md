@@ -29,7 +29,7 @@ The `multiline` prop transforms the input into a `textarea`.
 
 {{"demo": "pages/components/input/Multiline.js"}}
 
-## Start and End
+## Controls
 
 You can use the `start` and `end` props to add additional content inside the input.
 

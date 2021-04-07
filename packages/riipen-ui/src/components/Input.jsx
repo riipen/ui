@@ -251,7 +251,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * An end adornment to render on the right side of the input.
+   * Content to render on the right side of the input.
    */
   end: PropTypes.node,
 
@@ -301,7 +301,7 @@ Input.propTypes = {
   size: PropTypes.oneOf(["large", "medium", "small"]),
 
   /**
-   * A start adornment to render on the left side of the input.
+   * Content to render on the left side of the input.
    */
   start: PropTypes.node,
 
