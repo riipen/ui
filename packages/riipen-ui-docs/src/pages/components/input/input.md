@@ -35,6 +35,12 @@ The `labelWeight` prop can change the weight of the label.
 
 {{"demo": "pages/components/input/Weight.js"}}
 
+## Size
+
+The `size` prop changes the size of the input field.
+
+{{"demo": "pages/components/input/Size.js"}}
+
 ## Variant
 
 The `variant` prop can change the styling of the input field.
