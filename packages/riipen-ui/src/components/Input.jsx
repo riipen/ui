@@ -13,6 +13,7 @@ const Input = ({
   disabled,
   error,
   hint,
+  icon: Icon,
   label,
   labelColor,
   labelWeight,
@@ -47,6 +48,7 @@ const Input = ({
   const componentClassName = clsx(
     error ? "error" : null,
     disabled ? "disabled" : null,
+    Icon ? "iconInput" : null,
     warning ? "warning" : null,
     focusVisible ? "focusVisible" : null,
     variant,
@@ -75,6 +77,11 @@ const Input = ({
         aria-disabled={disabled}
         {...other}
       />
+      {Icon && (
+        <span className={clsx("icon", size)}>
+          {typeof Icon === "function" ? <Icon /> : Icon}
+        </span>
+      )}
       {error && (
         <Typography color="negative" component="span" variant="body2">
           {error}
@@ -126,14 +133,36 @@ const Input = ({
           border-color: ${theme.palette.negative.main};
         }
 
-        .underlined {
-          background-color: transparent;
-          border: none;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.23);
+        .icon {
+          color: ${theme.palette.grey[500]};
+          left: ${theme.spacing(4)}px;
+          position: absolute;
         }
 
-        .warning {
-          border-color: ${theme.palette.warning.main};
+        .icon.small {
+          font-size: ${theme.typography.body2.fontSize};
+          padding: 7px;
+        }
+
+        .icon.medium {
+          font-size: ${theme.typography.h5.fontSize};
+        }
+
+        .icon.large {
+          font-size: ${theme.typography.h4.fontSize};
+          padding: 17px;
+        }
+
+        .iconInput.small {
+          padding-left: ${theme.spacing(9)}px;
+        }
+
+        .iconInput.medium {
+          padding-left: ${theme.spacing(9)}px;
+        }
+
+        .iconInput.large {
+          padding-left: ${theme.spacing(12)}px;
         }
 
         .small {
@@ -143,6 +172,16 @@ const Input = ({
 
         .large {
           font-size: ${theme.typography.h2.fontSize};
+        }
+
+        .underlined {
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.23);
+        }
+
+        .warning {
+          border-color: ${theme.palette.warning.main};
         }
       `}</style>
     </div>
@@ -176,6 +215,11 @@ Input.propTypes = {
    * Hint text to display under the label of the input.
    */
   hint: PropTypes.string,
+
+  /**
+   * A icon to render on the left side of the input.
+   */
+  icon: PropTypes.oneOfType([PropTypes.elementType, PropTypes.node]),
 
   /**
    * Label text to display for the input.
