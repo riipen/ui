@@ -7,7 +7,7 @@ export default function Size() {
   const style = { marginBottom: "10px" };
   return (
     <Form>
-      <Input id="name" label="Small" value="Anchovy" size="small" />
+      <Input id="name" label="Small" value="Sardine" size="small" />
       <div style={style} />
       <Input id="name" label="Medium" value="Cat" size="medium" />
       <div style={style} />

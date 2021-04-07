@@ -136,7 +136,7 @@ const Input = ({
         }
 
         .small {
-          padding: ${theme.spacing(1)}px;
+          padding: ${theme.spacing(1)}px ${theme.spacing(2)}px;
         }
 
         .medium {
@@ -144,7 +144,8 @@ const Input = ({
         }
 
         .large {
-          padding: ${theme.spacing(4)}px;
+          font-size: ${theme.typography.h2.fontSize};
+          padding: ${theme.spacing(2)}px;
         }
       `}</style>
     </div>
