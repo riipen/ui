@@ -220,6 +220,14 @@ describe("<Input>", () => {
     });
   });
 
+  describe("size prop", () => {
+    it("sets valid size", () => {
+      const wrapper = mount(<Input size="small" />);
+
+      expect(wrapper.find("input").hasClass("small")).toEqual(true);
+    });
+  });
+
   describe("variant prop", () => {
     it("sets valid variant", () => {
       const wrapper = mount(<Input variant="underlined" />);
