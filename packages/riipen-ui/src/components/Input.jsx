@@ -18,6 +18,7 @@ const Input = ({
   labelWeight,
   multiline,
   required,
+  size,
   theme,
   variant,
   warning,
@@ -48,7 +49,8 @@ const Input = ({
     disabled ? "disabled" : null,
     warning ? "warning" : null,
     focusVisible ? "focusVisible" : null,
-    variant
+    variant,
+    size
   );
 
   return (
@@ -92,7 +94,6 @@ const Input = ({
           font-size: ${theme.typography.body1.fontSize};
           line-height: 1;
           outline: none;
-          padding: ${theme.spacing(2)}px;
           position: relative;
           transition: all ${theme.transitions.duration.standard}ms;
           width: 100%;
@@ -133,6 +134,18 @@ const Input = ({
         .warning {
           border-color: ${theme.palette.warning.main};
         }
+
+        .small {
+          padding: ${theme.spacing(1)}px;
+        }
+
+        .medium {
+          padding: ${theme.spacing(2)}px;
+        }
+
+        .large {
+          padding: ${theme.spacing(4)}px;
+        }
       `}</style>
     </div>
   );
@@ -141,6 +154,7 @@ const Input = ({
 Input.defaultProps = {
   disabled: false,
   multiline: false,
+  size: "medium",
   variant: "default"
 };
 
@@ -189,6 +203,11 @@ Input.propTypes = {
    * If true, an asterisk will be appended to the end of the label.
    */
   required: PropTypes.bool,
+
+  /**
+   * A whitelisted set of sizes that the input can be rendered at.
+   */
+  size: PropTypes.oneOf(["large", "medium", "small"]),
 
   /**
    * @ignore
