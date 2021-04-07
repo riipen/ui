@@ -17,6 +17,12 @@ The `error` prop toggles the error state.
 
 {{"demo": "pages/components/input/Validation.js"}}
 
+## Meta
+
+The `meta` prop displays additional text in the bottom right.
+
+{{"demo": "pages/components/input/Meta.js"}}
+
 ## Multiline
 
 The `multiline` prop transforms the input into a `textarea`.
