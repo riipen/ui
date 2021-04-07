@@ -167,7 +167,7 @@ describe("<Input>", () => {
 
       const wrapper = mount(<Input icon={icon} />);
 
-      expect(wrapper.find("input").hasClass("iconInput")).toEqual(true);
+      expect(wrapper.find("input").hasClass("iconPadding")).toEqual(true);
     });
   });
   describe("label prop", () => {

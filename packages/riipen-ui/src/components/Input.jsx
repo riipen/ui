@@ -48,7 +48,7 @@ const Input = ({
   const componentClassName = clsx(
     error ? "error" : null,
     disabled ? "disabled" : null,
-    Icon ? "iconInput" : null,
+    Icon ? "iconPadding" : null,
     warning ? "warning" : null,
     focusVisible ? "focusVisible" : null,
     variant,
@@ -153,15 +153,15 @@ const Input = ({
           padding: 17px;
         }
 
-        .iconInput.small {
+        .iconPadding.small {
           padding-left: ${theme.spacing(9)}px;
         }
 
-        .iconInput.medium {
+        .iconPadding.medium {
           padding-left: ${theme.spacing(9)}px;
         }
 
-        .iconInput.large {
+        .iconPadding.large {
           padding-left: ${theme.spacing(12)}px;
         }
 
