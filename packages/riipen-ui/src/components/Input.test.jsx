@@ -2,9 +2,6 @@ import { mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import React from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
 import Input from "./Input";
 
 describe("<Input>", () => {
@@ -80,6 +77,21 @@ describe("<Input>", () => {
     });
   });
 
+  describe("end prop", () => {
+    it("renders custom end", () => {
+      const end = "end";
+      const wrapper = mount(<Input end={end} />);
+
+      expect(wrapper.text()).toContain(end);
+    });
+
+    it("sets correct end classes", () => {
+      const wrapper = mount(<Input end="end" />);
+
+      expect(wrapper.find("input").hasClass("endPadding")).toEqual(true);
+    });
+  });
+
   describe("error prop", () => {
     it("sets valid custom error", () => {
       const error = <span>Error</span>;
@@ -133,43 +145,21 @@ describe("<Input>", () => {
     });
   });
 
-  describe("icon prop", () => {
-    it("renders icon with a component icon", () => {
-      const iconFn = (i) => (props) => <FontAwesomeIcon icon={i} {...props} />;
-      const icon = iconFn(faTrash);
+  describe("start prop", () => {
+    it("renders custom start", () => {
+      const start = "start";
+      const wrapper = mount(<Input start={start} />);
 
-      const wrapper = mount(<Input icon={icon} />);
-
-      expect(
-        wrapper
-          .find(".icon")
-          .childAt(0)
-          .childAt(0)
-          .name()
-      ).toEqual("FontAwesomeIcon");
+      expect(wrapper.text()).toContain(start);
     });
 
-    it("renders icon with a jsx icon", () => {
-      const wrapper = mount(
-        <Input icon={<FontAwesomeIcon icon={faTrash} />} />
-      );
+    it("sets correct start classes", () => {
+      const wrapper = mount(<Input start="start" />);
 
-      expect(
-        wrapper
-          .find(".icon")
-          .childAt(0)
-          .name()
-      ).toEqual("FontAwesomeIcon");
-    });
-
-    it("sets correct input classes", () => {
-      const icon = "flex";
-
-      const wrapper = mount(<Input icon={icon} />);
-
-      expect(wrapper.find("input").hasClass("iconPadding")).toEqual(true);
+      expect(wrapper.find("input").hasClass("startPadding")).toEqual(true);
     });
   });
+
   describe("label prop", () => {
     it("sets valid custom label", () => {
       const label = "Test";
