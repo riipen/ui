@@ -221,6 +221,16 @@ describe("<Input>", () => {
     });
   });
 
+  describe("meta prop", () => {
+    it("renders meta", () => {
+      const meta = <span>Meta</span>;
+
+      const wrapper = mount(<Input meta={meta} />);
+
+      expect(wrapper.find("Typography").contains(meta)).toEqual(true);
+    });
+  });
+
   describe("multiline prop", () => {
     it("sets component as textarea with true multiline prop", () => {
       const multiline = true;
