@@ -219,11 +219,11 @@ exports[`<Input> renders correct snapshot 1`] = `
     variant="default"
   >
     <div
-      className="jsx-2909188789 "
+      className="jsx-2098638671 "
     >
       <input
         aria-disabled={false}
-        className="jsx-2909188789 default medium"
+        className="jsx-2098638671 default medium"
         disabled={false}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -254,7 +254,7 @@ exports[`<Input> renders correct snapshot 1`] = `
             "#febb46",
           ]
         }
-        id="853995106"
+        id="1259296040"
       />
     </div>
   </Input>
