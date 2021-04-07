@@ -94,6 +94,7 @@ const Input = ({
           font-size: ${theme.typography.body1.fontSize};
           line-height: 1;
           outline: none;
+          padding: ${theme.spacing(2)}px;
           position: relative;
           transition: all ${theme.transitions.duration.standard}ms;
           width: 100%;
@@ -136,16 +137,12 @@ const Input = ({
         }
 
         .small {
-          padding: ${theme.spacing(1)}px ${theme.spacing(2)}px;
-        }
-
-        .medium {
-          padding: ${theme.spacing(2)}px;
+          padding-bottom: ${theme.spacing(1)}px;
+          padding-top: ${theme.spacing(1)}px;
         }
 
         .large {
           font-size: ${theme.typography.h2.fontSize};
-          padding: ${theme.spacing(2)}px;
         }
       `}</style>
     </div>
