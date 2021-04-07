@@ -17,6 +17,7 @@ const Input = ({
   label,
   labelColor,
   labelWeight,
+  meta,
   multiline,
   required,
   size,
@@ -82,17 +83,33 @@ const Input = ({
           {typeof Icon === "function" ? <Icon /> : Icon}
         </span>
       )}
-      {error && (
-        <Typography color="negative" component="span" variant="body2">
-          {error}
-        </Typography>
-      )}
-      {warning && (
-        <Typography color="secondary" component="span" variant="body2">
-          {warning}
-        </Typography>
+      {(error || warning || meta) && (
+        <div className="bottom">
+          <div>
+            {error && (
+              <Typography color="negative" component="div" variant="body2">
+                {error}
+              </Typography>
+            )}
+            {warning && (
+              <Typography color="secondary" component="div" variant="body2">
+                {warning}
+              </Typography>
+            )}
+          </div>
+          {meta && (
+            <Typography color="grey600" component="span" variant="body2">
+              {meta}
+            </Typography>
+          )}
+        </div>
       )}
       <style jsx>{`
+        .bottom {
+          display: flex;
+          justify-content: space-between;
+        }
+
         input,
         textarea {
           box-sizing: border-box;
@@ -170,6 +187,10 @@ const Input = ({
           padding-top: ${theme.spacing(1)}px;
         }
 
+        .medium {
+          padding: ${theme.spacing(2)}px;
+        }
+
         .large {
           font-size: ${theme.typography.h2.fontSize};
         }
@@ -235,6 +256,11 @@ Input.propTypes = {
    * Label text weight.
    */
   labelWeight: PropTypes.string,
+
+  /**
+   * Any text to display under the right side of the input.
+   */
+  meta: PropTypes.node,
 
   /**
    * If `true`, a textarea element will be rendered.
