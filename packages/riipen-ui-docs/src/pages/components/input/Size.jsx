@@ -7,11 +7,11 @@ export default function Size() {
   const style = { marginBottom: "10px" };
   return (
     <Form>
-      <Input id="name" label="Animal" value="Anchovy" size="small" />
+      <Input id="name" label="Small" value="Anchovy" size="small" />
       <div style={style} />
-      <Input id="name" label="Animal" value="Cat" size="medium" />
+      <Input id="name" label="Medium" value="Cat" size="medium" />
       <div style={style} />
-      <Input id="name" label="Animal" value="Elephant" size="large" />
+      <Input id="name" label="Large" value="Elephant" size="large" />
     </Form>
   );
 }
