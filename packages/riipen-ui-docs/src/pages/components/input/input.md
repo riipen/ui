@@ -23,6 +23,12 @@ The `multiline` prop transforms the input into a `textarea`.
 
 {{"demo": "pages/components/input/Multiline.js"}}
 
+## Icon
+
+An `icon` can be added to the left side of the input.
+
+{{"demo": "pages/components/input/Icon.js"}}
+
 ## Label Color
 
 The `labelColor` prop can change the color of the label.
@@ -34,6 +40,12 @@ The `labelColor` prop can change the color of the label.
 The `labelWeight` prop can change the weight of the label.
 
 {{"demo": "pages/components/input/Weight.js"}}
+
+## Size
+
+The `size` prop changes the size of the input field.
+
+{{"demo": "pages/components/input/Size.js"}}
 
 ## Variant
 

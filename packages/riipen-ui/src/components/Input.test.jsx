@@ -2,6 +2,9 @@ import { mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import React from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 import Input from "./Input";
 
 describe("<Input>", () => {
@@ -130,6 +133,43 @@ describe("<Input>", () => {
     });
   });
 
+  describe("icon prop", () => {
+    it("renders icon with a component icon", () => {
+      const iconFn = (i) => (props) => <FontAwesomeIcon icon={i} {...props} />;
+      const icon = iconFn(faTrash);
+
+      const wrapper = mount(<Input icon={icon} />);
+
+      expect(
+        wrapper
+          .find(".icon")
+          .childAt(0)
+          .childAt(0)
+          .name()
+      ).toEqual("FontAwesomeIcon");
+    });
+
+    it("renders icon with a jsx icon", () => {
+      const wrapper = mount(
+        <Input icon={<FontAwesomeIcon icon={faTrash} />} />
+      );
+
+      expect(
+        wrapper
+          .find(".icon")
+          .childAt(0)
+          .name()
+      ).toEqual("FontAwesomeIcon");
+    });
+
+    it("sets correct input classes", () => {
+      const icon = "flex";
+
+      const wrapper = mount(<Input icon={icon} />);
+
+      expect(wrapper.find("input").hasClass("iconPadding")).toEqual(true);
+    });
+  });
   describe("label prop", () => {
     it("sets valid custom label", () => {
       const label = "Test";
@@ -217,6 +257,14 @@ describe("<Input>", () => {
       const wrapper = mount(<Input label={label} required={required} />);
 
       expect(wrapper.find("InputLabel").props().required).toEqual(required);
+    });
+  });
+
+  describe("size prop", () => {
+    it("sets valid size", () => {
+      const wrapper = mount(<Input size="small" />);
+
+      expect(wrapper.find("input").hasClass("small")).toEqual(true);
     });
   });
 

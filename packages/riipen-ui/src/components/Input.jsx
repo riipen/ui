@@ -13,11 +13,13 @@ const Input = ({
   disabled,
   error,
   hint,
+  icon: Icon,
   label,
   labelColor,
   labelWeight,
   multiline,
   required,
+  size,
   theme,
   variant,
   warning,
@@ -46,9 +48,11 @@ const Input = ({
   const componentClassName = clsx(
     error ? "error" : null,
     disabled ? "disabled" : null,
+    Icon ? "iconPadding" : null,
     warning ? "warning" : null,
     focusVisible ? "focusVisible" : null,
-    variant
+    variant,
+    size
   );
 
   return (
@@ -73,6 +77,11 @@ const Input = ({
         aria-disabled={disabled}
         {...other}
       />
+      {Icon && (
+        <span className={clsx("icon", size)}>
+          {typeof Icon === "function" ? <Icon /> : Icon}
+        </span>
+      )}
       {error && (
         <Typography color="negative" component="span" variant="body2">
           {error}
@@ -124,6 +133,47 @@ const Input = ({
           border-color: ${theme.palette.negative.main};
         }
 
+        .icon {
+          color: ${theme.palette.grey[500]};
+          left: ${theme.spacing(4)}px;
+          position: absolute;
+        }
+
+        .icon.small {
+          font-size: ${theme.typography.body2.fontSize};
+          padding: 7px;
+        }
+
+        .icon.medium {
+          font-size: ${theme.typography.h5.fontSize};
+        }
+
+        .icon.large {
+          font-size: ${theme.typography.h4.fontSize};
+          padding: 17px;
+        }
+
+        .iconPadding.small {
+          padding-left: ${theme.spacing(9)}px;
+        }
+
+        .iconPadding.medium {
+          padding-left: ${theme.spacing(9)}px;
+        }
+
+        .iconPadding.large {
+          padding-left: ${theme.spacing(12)}px;
+        }
+
+        .small {
+          padding-bottom: ${theme.spacing(1)}px;
+          padding-top: ${theme.spacing(1)}px;
+        }
+
+        .large {
+          font-size: ${theme.typography.h2.fontSize};
+        }
+
         .underlined {
           background-color: transparent;
           border: none;
@@ -141,6 +191,7 @@ const Input = ({
 Input.defaultProps = {
   disabled: false,
   multiline: false,
+  size: "medium",
   variant: "default"
 };
 
@@ -166,6 +217,11 @@ Input.propTypes = {
   hint: PropTypes.string,
 
   /**
+   * A icon to render on the left side of the input.
+   */
+  icon: PropTypes.oneOfType([PropTypes.elementType, PropTypes.node]),
+
+  /**
    * Label text to display for the input.
    */
   label: PropTypes.string,
@@ -189,6 +245,11 @@ Input.propTypes = {
    * If true, an asterisk will be appended to the end of the label.
    */
   required: PropTypes.bool,
+
+  /**
+   * A whitelisted set of sizes that the input can be rendered at.
+   */
+  size: PropTypes.oneOf(["large", "medium", "small"]),
 
   /**
    * @ignore

@@ -5,6 +5,7 @@ exports[`<Input> renders correct snapshot 1`] = `
   <Input
     disabled={false}
     multiline={false}
+    size="medium"
     theme={
       Object {
         "breakpoints": Object {
@@ -218,11 +219,11 @@ exports[`<Input> renders correct snapshot 1`] = `
     variant="default"
   >
     <div
-      className="jsx-3113390966 "
+      className="jsx-2098638671 "
     >
       <input
         aria-disabled={false}
-        className="jsx-3113390966 default"
+        className="jsx-2098638671 default medium"
         disabled={false}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -239,10 +240,21 @@ exports[`<Input> renders correct snapshot 1`] = `
             "#fff",
             "4px",
             "#e95353",
+            "#9a9a9a",
+            20,
+            "12px",
+            "16px",
+            "20px",
+            45,
+            45,
+            60,
+            5,
+            5,
+            "30px",
             "#febb46",
           ]
         }
-        id="1265023844"
+        id="1259296040"
       />
     </div>
   </Input>
