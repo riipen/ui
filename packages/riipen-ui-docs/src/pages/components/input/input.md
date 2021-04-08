@@ -29,11 +29,11 @@ The `multiline` prop transforms the input into a `textarea`.
 
 {{"demo": "pages/components/input/Multiline.js"}}
 
-## Icon
+## Adornments
 
-An `icon` can be added to the left side of the input.
+You can use the `startAdornment` and `endAdornment` props to add additional content inside the input.
 
-{{"demo": "pages/components/input/Icon.js"}}
+{{"demo": "pages/components/input/Adornments.js"}}
 
 ## Label Color
 
