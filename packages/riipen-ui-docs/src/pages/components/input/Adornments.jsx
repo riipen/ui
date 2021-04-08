@@ -19,7 +19,7 @@ export default function Adornments() {
         <Input
           id="name"
           label="Sports"
-          start={<FontAwesomeIcon icon={faQuidditch} />}
+          startAdornment={<FontAwesomeIcon icon={faQuidditch} />}
           size="small"
         />
       </div>
@@ -27,14 +27,14 @@ export default function Adornments() {
         <Input
           id="name"
           label="Sports"
-          start={<FontAwesomeIcon icon={faQuidditch} />}
+          startAdornment={<FontAwesomeIcon icon={faQuidditch} />}
           size="medium"
         />
       </div>
       <div style={section}>
         <Input
           id="name"
-          start={<FontAwesomeIcon icon={faQuidditch} />}
+          startAdornment={<FontAwesomeIcon icon={faQuidditch} />}
           label="Sports"
           size="large"
         />
@@ -42,7 +42,7 @@ export default function Adornments() {
       <div style={{ marginBottom: "10px" }} />
       <div style={section}>
         <Input
-          end={<FontAwesomeIcon icon={faQuidditch} />}
+          endAdornment={<FontAwesomeIcon icon={faQuidditch} />}
           id="name"
           label="Sports"
           size="small"
@@ -50,7 +50,7 @@ export default function Adornments() {
       </div>
       <div style={section}>
         <Input
-          end={<FontAwesomeIcon icon={faQuidditch} />}
+          endAdornment={<FontAwesomeIcon icon={faQuidditch} />}
           id="name"
           label="Sports"
           size="medium"
@@ -58,7 +58,7 @@ export default function Adornments() {
       </div>
       <div style={section}>
         <Input
-          end={<FontAwesomeIcon icon={faQuidditch} />}
+          endAdornment={<FontAwesomeIcon icon={faQuidditch} />}
           id="name"
           label="Sports"
           size="large"
