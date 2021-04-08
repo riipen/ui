@@ -21,6 +21,11 @@ class Chip extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * If the chip is clickable
+     */
+    clickable: PropTypes.bool,
+
+    /**
      * The color to use.
      */
     color: PropTypes.oneOf([
@@ -91,6 +96,7 @@ class Chip extends React.Component {
   render() {
     const {
       classes,
+      clickable,
       color,
       component: Component,
       disabled,
@@ -105,8 +111,6 @@ class Chip extends React.Component {
 
     const theme = this.context;
 
-    const clickable = !!onClick;
-
     const className = clsx(
       "root",
       color,
@@ -114,7 +118,7 @@ class Chip extends React.Component {
       size,
       variant,
       classes,
-      { clickable },
+      !!onClick || clickable ? "clickable" : null,
       hover ? "hover" : null
     );
 

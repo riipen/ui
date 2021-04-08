@@ -223,4 +223,12 @@ describe("<Checkbox>", () => {
       expect(handler).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe("variant", () => {
+    it("displays the chip variant", () => {
+      const wrapper = mount(<Checkbox readOnly variant="chip" />);
+
+      expect(wrapper.find("Chip").length).toEqual(1);
+    });
+  });
 });

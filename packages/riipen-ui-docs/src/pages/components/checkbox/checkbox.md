@@ -12,7 +12,7 @@ on/off switch instead.
 
 {{"demo": "pages/components/checkbox/Usage.js"}}
 
-## Variant
+## Chip Variant
 
 The `variant` prop can be used to change the checkbox display.
 

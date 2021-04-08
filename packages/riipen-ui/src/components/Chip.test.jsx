@@ -98,6 +98,34 @@ describe("<Chip>", () => {
     });
   });
 
+  describe("clickable prop", () => {
+    it("applies hover class when hover prop is true", () => {
+      const clickable = true;
+
+      const wrapper = mount(<Chip clickable={clickable} />);
+
+      expect(
+        wrapper
+          .find("Chip")
+          .childAt(0)
+          .hasClass("clickable")
+      ).toEqual(true);
+    });
+
+    it("does not apply clickable class when clickable prop is false", () => {
+      const clickable = false;
+
+      const wrapper = mount(<Chip clickable={clickable} />);
+
+      expect(
+        wrapper
+          .find("Chip")
+          .childAt(0)
+          .hasClass("hover")
+      ).toEqual(false);
+    });
+  });
+
   describe("color prop", () => {
     it("sets color class name with a valid color", () => {
       const color = "dark";

@@ -8,30 +8,40 @@ export default function Usage() {
     marginBottom: "10px"
   };
 
-  const [defaultState, setDefaultState] = React.useState(true);
-  const [chipState, setChipState] = React.useState(true);
+  const [chipMdState, setChipMdState] = React.useState(true);
+  const [chipSmState, setChipSmState] = React.useState(true);
+  const [chipXsState, setChipXsState] = React.useState(true);
 
   return (
     <Form>
-      {"asda"}
-      {defaultState}
-      {"asda"}
       <Checkbox
-        checked={defaultState}
-        color="secondary"
-        onChange={e => setDefaultState(e.target.checked)}
-        id="defatul"
-        label="default"
-        variant="default"
+        checked={chipMdState}
+        color="primary"
+        onChange={e => setChipMdState(e.target.checked)}
+        id="chipmd"
+        label="medium"
+        variant="chip"
+        size="medium"
       />
       <div style={style} />
       <Checkbox
-        checked={chipState}
+        checked={chipSmState}
         color="secondary"
-        onChange={e => setChipState(e.target.checked)}
-        id="chip"
-        label="chip"
+        onChange={e => setChipSmState(e.target.checked)}
+        id="chipsm"
+        label="small"
         variant="chip"
+        size="small"
+      />
+      <div style={style} />
+      <Checkbox
+        checked={chipXsState}
+        color="default"
+        onChange={e => setChipXsState(e.target.checked)}
+        id="chipxs"
+        label="xsmall"
+        variant="chip"
+        size="xsmall"
       />
     </Form>
   );

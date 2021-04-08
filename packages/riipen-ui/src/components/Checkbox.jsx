@@ -49,7 +49,12 @@ const Checkbox = props => {
     <div className={clsx(classes)}>
       {variant === "chip" ? (
         <label htmlFor={other.id}>
-          <Chip variant={checked ? "default" : "outlined"} color={color}>
+          <Chip
+            {...other}
+            variant={checked ? "default" : "outlined"}
+            color={color}
+            clickable
+          >
             <Typography>
               {label}
               {required && " *"}
@@ -68,7 +73,7 @@ const Checkbox = props => {
           </Chip>
         </label>
       ) : (
-        <label htmlFor={other.id}>
+        <label className={"shift-label"} htmlFor={other.id}>
           <Typography>
             {label}
             {required && " *"}
@@ -104,10 +109,13 @@ const Checkbox = props => {
           min-height: 20px;
         }
 
+        .shift-label {
+          padding-left: 35px;
+        }
+
         label {
           cursor: pointer;
           display: block;
-          padding-left: 35px;
           position: relative;
           user-select: none;
         }
@@ -115,12 +123,10 @@ const Checkbox = props => {
         /* Hide the browser's default checkbox */
         label input {
           cursor: pointer;
-          height: 100%;
           left: 0;
           opacity: 0;
           position: absolute;
           top: 0;
-          width: 100%;
         }
 
         /* Create a custom checkbox */
