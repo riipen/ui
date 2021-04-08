@@ -11,7 +11,7 @@ import Typography from "./Typography";
 const Input = ({
   classes,
   disabled,
-  end,
+  endAdornment,
   error,
   hint,
   label,
@@ -21,7 +21,7 @@ const Input = ({
   multiline,
   required,
   size,
-  start,
+  startAdornment,
   theme,
   variant,
   warning,
@@ -48,10 +48,10 @@ const Input = ({
   }
 
   const componentClassName = clsx(
-    end ? "endPadding" : null,
+    endAdornment ? "endPadding" : null,
     error ? "error" : null,
     disabled ? "disabled" : null,
-    start ? "startPadding" : null,
+    startAdornment ? "startPadding" : null,
     warning ? "warning" : null,
     focusVisible ? "focusVisible" : null,
     variant,
@@ -80,10 +80,14 @@ const Input = ({
         aria-disabled={disabled}
         {...other}
       />
-      {start && (
-        <span className={clsx("controls", "start", size)}>{start}</span>
+      {startAdornment && (
+        <span className={clsx("adornment", "start", size)}>
+          {startAdornment}
+        </span>
       )}
-      {end && <span className={clsx("controls", "end", size)}>{end}</span>}
+      {endAdornment && (
+        <span className={clsx("adornment", "end", size)}>{endAdornment}</span>
+      )}
       {(error || warning || meta) && (
         <div className="bottom">
           <div>
@@ -111,20 +115,20 @@ const Input = ({
           justify-content: space-between;
         }
 
-        .controls {
+        .adornment {
           position: absolute;
         }
 
-        .controls.large {
+        .adornment.large {
           font-size: ${theme.typography.h4.fontSize};
           padding: 17px;
         }
 
-        .controls.medium {
+        .adornment.medium {
           font-size: ${theme.typography.h5.fontSize};
         }
 
-        .controls.small {
+        .adornment.small {
           font-size: ${theme.typography.body2.fontSize};
           padding: 7px;
         }
@@ -253,7 +257,7 @@ Input.propTypes = {
   /**
    * Content to render on the right side of the input.
    */
-  end: PropTypes.node,
+  endAdornment: PropTypes.node,
 
   /**
    * An error to display below the input.
@@ -303,7 +307,7 @@ Input.propTypes = {
   /**
    * Content to render on the left side of the input.
    */
-  start: PropTypes.node,
+  startAdornment: PropTypes.node,
 
   /**
    * @ignore

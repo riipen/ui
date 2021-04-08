@@ -29,11 +29,11 @@ The `multiline` prop transforms the input into a `textarea`.
 
 {{"demo": "pages/components/input/Multiline.js"}}
 
-## Controls
+## Adornments
 
-You can use the `start` and `end` props to add additional content inside the input.
+You can use the `startAdornment` and `endAdornment` props to add additional content inside the input.
 
-{{"demo": "pages/components/input/Controls.js"}}
+{{"demo": "pages/components/input/Adornments.js"}}
 
 ## Label Color
 

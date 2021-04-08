@@ -77,16 +77,16 @@ describe("<Input>", () => {
     });
   });
 
-  describe("end prop", () => {
-    it("renders custom end", () => {
-      const end = "end";
-      const wrapper = mount(<Input end={end} />);
+  describe("endAdornment prop", () => {
+    it("renders custom endAdornment", () => {
+      const endAdornment = "endAdornment";
+      const wrapper = mount(<Input endAdornment={endAdornment} />);
 
-      expect(wrapper.text()).toContain(end);
+      expect(wrapper.text()).toContain(endAdornment);
     });
 
-    it("sets correct end classes", () => {
-      const wrapper = mount(<Input end="end" />);
+    it("sets correct endAdornment classes", () => {
+      const wrapper = mount(<Input endAdornment="endAdornment" />);
 
       expect(wrapper.find("input").hasClass("endPadding")).toEqual(true);
     });
@@ -145,16 +145,16 @@ describe("<Input>", () => {
     });
   });
 
-  describe("start prop", () => {
-    it("renders custom start", () => {
-      const start = "start";
-      const wrapper = mount(<Input start={start} />);
+  describe("startAdornment prop", () => {
+    it("renders custom startAdornment", () => {
+      const startAdornment = "startAdornment";
+      const wrapper = mount(<Input startAdornment={startAdornment} />);
 
-      expect(wrapper.text()).toContain(start);
+      expect(wrapper.text()).toContain(startAdornment);
     });
 
-    it("sets correct start classes", () => {
-      const wrapper = mount(<Input start="start" />);
+    it("sets correct startAdornment classes", () => {
+      const wrapper = mount(<Input startAdornment="startAdornment" />);
 
       expect(wrapper.find("input").hasClass("startPadding")).toEqual(true);
     });

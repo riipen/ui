@@ -6,7 +6,7 @@ import { faQuidditch } from "@fortawesome/free-solid-svg-icons";
 import Form from "riipen-ui/components/Form";
 import Input from "riipen-ui/components/Input";
 
-export default function Controls() {
+export default function Adornments() {
   const section = {
     display: "inline-block",
     padding: "10px",
