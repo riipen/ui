@@ -144,20 +144,17 @@ const Input = ({
           pointer-events: none;
         }
 
-        .end {
-          right: 0;
+        .large {
+          font-size: ${theme.typography.h2.fontSize};
         }
 
-        .endPadding.large {
-          padding-right: ${theme.spacing(12)}px;
+        .medium {
+          padding: ${theme.spacing(2)}px;
         }
 
-        .endPadding.medium {
-          padding-right: ${theme.spacing(9)}px;
-        }
-
-        .endPadding.small {
-          padding-right: ${theme.spacing(9)}px;
+        .small {
+          padding-bottom: ${theme.spacing(1)}px;
+          padding-top: ${theme.spacing(1)}px;
         }
 
         .error {
@@ -189,33 +186,38 @@ const Input = ({
           outline: 5px auto -webkit-focus-ring-color;
         }
 
-        .large {
-          font-size: ${theme.typography.h2.fontSize};
+        .end {
+          margin-right: ${theme.spacing(2)}px;
+          right: 0;
         }
 
-        .medium {
-          padding: ${theme.spacing(2)}px;
+        .end.large {
+          margin-right: 0;
         }
 
-        .small {
-          padding-bottom: ${theme.spacing(1)}px;
-          padding-top: ${theme.spacing(1)}px;
+        .endPadding {
+          padding-right: ${theme.spacing(9)}px;
+        }
+
+        .endPadding.large {
+          padding-right: ${theme.spacing(11)}px;
         }
 
         .start {
           left: 0;
+          margin-left: ${theme.spacing(2)}px;
+        }
+
+        .start.large {
+          margin-left: 0;
+        }
+
+        .startPadding {
+          padding-left: ${theme.spacing(9)}px;
         }
 
         .startPadding.large {
-          padding-left: ${theme.spacing(12)}px;
-        }
-
-        .startPadding.medium {
-          padding-left: ${theme.spacing(9)}px;
-        }
-
-        .startPadding.small {
-          padding-left: ${theme.spacing(9)}px;
+          padding-left: ${theme.spacing(11)}px;
         }
 
         .underlined {
