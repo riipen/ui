@@ -219,11 +219,11 @@ exports[`<Input> renders correct snapshot 1`] = `
     variant="default"
   >
     <div
-      className="jsx-4006585590 wrapper"
+      className="jsx-1488736700 wrapper"
     >
       <input
         aria-disabled={false}
-        className="jsx-4006585590 default medium"
+        className="jsx-1488736700 default medium"
         disabled={false}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -236,9 +236,10 @@ exports[`<Input> renders correct snapshot 1`] = `
             "12px",
             "#fff",
             "4px",
-            60,
-            45,
-            45,
+            "30px",
+            10,
+            5,
+            5,
             "#e95353",
             "#373737",
             "Roboto, Helvetica, Arial, sans-serif",
@@ -246,17 +247,16 @@ exports[`<Input> renders correct snapshot 1`] = `
             10,
             300,
             "#3caabb",
-            "30px",
             10,
-            5,
-            5,
-            60,
             45,
+            55,
+            10,
             45,
+            55,
             "#febb46",
           ]
         }
-        id="1907175915"
+        id="2428254620"
       />
     </div>
   </Input>
