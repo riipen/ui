@@ -5,6 +5,7 @@ exports[`<Input> renders correct snapshot 1`] = `
   <Input
     disabled={false}
     multiline={false}
+    size="medium"
     theme={
       Object {
         "breakpoints": Object {
@@ -215,13 +216,14 @@ exports[`<Input> renders correct snapshot 1`] = `
         },
       }
     }
+    variant="default"
   >
     <div
-      className="jsx-2918390004 "
+      className="jsx-1488736700 wrapper"
     >
       <input
         aria-disabled={false}
-        className="jsx-2918390004 "
+        className="jsx-1488736700 default medium"
         disabled={false}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -229,19 +231,32 @@ exports[`<Input> renders correct snapshot 1`] = `
       <JSXStyle
         dynamic={
           Array [
+            "20px",
+            "16px",
+            "12px",
             "#fff",
             "4px",
+            "30px",
+            10,
+            5,
+            5,
+            "#e95353",
             "#373737",
             "Roboto, Helvetica, Arial, sans-serif",
             "14px",
             10,
             300,
             "#3caabb",
-            "#e95353",
+            10,
+            45,
+            55,
+            10,
+            45,
+            55,
             "#febb46",
           ]
         }
-        id="4179543332"
+        id="2428254620"
       />
     </div>
   </Input>

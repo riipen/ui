@@ -77,6 +77,21 @@ describe("<Input>", () => {
     });
   });
 
+  describe("endAdornment prop", () => {
+    it("renders custom endAdornment", () => {
+      const endAdornment = "endAdornment";
+      const wrapper = mount(<Input endAdornment={endAdornment} />);
+
+      expect(wrapper.text()).toContain(endAdornment);
+    });
+
+    it("sets correct endAdornment classes", () => {
+      const wrapper = mount(<Input endAdornment="endAdornment" />);
+
+      expect(wrapper.find("input").hasClass("endPadding")).toEqual(true);
+    });
+  });
+
   describe("error prop", () => {
     it("sets valid custom error", () => {
       const error = <span>Error</span>;
@@ -127,6 +142,21 @@ describe("<Input>", () => {
           .children()
           .contains("InputLabel")
       ).toEqual(false);
+    });
+  });
+
+  describe("startAdornment prop", () => {
+    it("renders custom startAdornment", () => {
+      const startAdornment = "startAdornment";
+      const wrapper = mount(<Input startAdornment={startAdornment} />);
+
+      expect(wrapper.text()).toContain(startAdornment);
+    });
+
+    it("sets correct startAdornment classes", () => {
+      const wrapper = mount(<Input startAdornment="startAdornment" />);
+
+      expect(wrapper.find("input").hasClass("startPadding")).toEqual(true);
     });
   });
 
@@ -181,6 +211,16 @@ describe("<Input>", () => {
     });
   });
 
+  describe("meta prop", () => {
+    it("renders meta", () => {
+      const meta = <span>Meta</span>;
+
+      const wrapper = mount(<Input meta={meta} />);
+
+      expect(wrapper.find("Typography").contains(meta)).toEqual(true);
+    });
+  });
+
   describe("multiline prop", () => {
     it("sets component as textarea with true multiline prop", () => {
       const multiline = true;
@@ -217,6 +257,22 @@ describe("<Input>", () => {
       const wrapper = mount(<Input label={label} required={required} />);
 
       expect(wrapper.find("InputLabel").props().required).toEqual(required);
+    });
+  });
+
+  describe("size prop", () => {
+    it("sets valid size", () => {
+      const wrapper = mount(<Input size="small" />);
+
+      expect(wrapper.find("input").hasClass("small")).toEqual(true);
+    });
+  });
+
+  describe("variant prop", () => {
+    it("sets valid variant", () => {
+      const wrapper = mount(<Input variant="underlined" />);
+
+      expect(wrapper.find("input").hasClass("underlined")).toEqual(true);
     });
   });
 

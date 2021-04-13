@@ -8,26 +8,29 @@ import { withThemeContext, useIsFocusVisible } from "../utils";
 import InputLabel from "./InputLabel";
 import Typography from "./Typography";
 
-const Input = props => {
-  const {
-    classes,
-    disabled,
-    error,
-    hint,
-    label,
-    labelColor,
-    labelWeight,
-    multiline,
-    required,
-    theme,
-    warning,
-    ...other
-  } = props;
-
+const Input = ({
+  classes,
+  disabled,
+  endAdornment,
+  error,
+  hint,
+  label,
+  labelColor,
+  labelWeight,
+  meta,
+  multiline,
+  required,
+  size,
+  startAdornment,
+  theme,
+  variant,
+  warning,
+  ...other
+}) => {
   const [focusVisible, setFocusVisible] = useState(false);
   const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
-  const handleFocus = e => {
+  const handleFocus = (e) => {
     setFocusVisible(isFocusVisible(e));
   };
 
@@ -36,7 +39,7 @@ const Input = props => {
     onBlurVisible();
   };
 
-  const className = clsx(classes);
+  const className = clsx(classes, "wrapper");
 
   let Component = "input";
 
@@ -45,10 +48,14 @@ const Input = props => {
   }
 
   const componentClassName = clsx(
+    endAdornment ? "endPadding" : null,
     error ? "error" : null,
     disabled ? "disabled" : null,
+    startAdornment ? "startPadding" : null,
     warning ? "warning" : null,
-    focusVisible ? "focusVisible" : null
+    focusVisible ? "focusVisible" : null,
+    variant,
+    size
   );
 
   return (
@@ -73,22 +80,89 @@ const Input = props => {
         aria-disabled={disabled}
         {...other}
       />
-      {error && (
-        <Typography color="negative" variant="body2">
-          {error}
-        </Typography>
+      {startAdornment && (
+        <span className={clsx("adornment", "start", size)}>
+          {startAdornment}
+        </span>
       )}
-      {warning && (
-        <Typography color="secondary" variant="body2">
-          {warning}
-        </Typography>
+      {endAdornment && (
+        <span className={clsx("adornment", "end", size)}>{endAdornment}</span>
+      )}
+      {(error || warning || meta) && (
+        <div className="bottom">
+          <div>
+            {error && (
+              <Typography color="negative" component="div" variant="body2">
+                {error}
+              </Typography>
+            )}
+            {warning && (
+              <Typography color="secondary" component="div" variant="body2">
+                {warning}
+              </Typography>
+            )}
+          </div>
+          {meta && (
+            <Typography color="grey600" component="span" variant="body2">
+              {meta}
+            </Typography>
+          )}
+        </div>
       )}
       <style jsx>{`
-        input,
-        textarea {
+        .bottom {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .adornment {
+          position: absolute;
+        }
+
+        .adornment.large {
+          font-size: ${theme.typography.h4.fontSize};
+          padding: 17px;
+        }
+
+        .adornment.medium {
+          font-size: ${theme.typography.h5.fontSize};
+        }
+
+        .adornment.small {
+          font-size: ${theme.typography.body2.fontSize};
+          padding: 7px;
+        }
+
+        .default {
           background-color: ${theme.palette.common.white};
           border: 1px solid rgba(0, 0, 0, 0.23);
           border-radius: ${theme.shape.borderRadius.md};
+        }
+
+        .disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        .large {
+          font-size: ${theme.typography.h2.fontSize};
+        }
+
+        .medium {
+          padding: ${theme.spacing(2)}px;
+        }
+
+        .small {
+          padding-bottom: ${theme.spacing(1)}px;
+          padding-top: ${theme.spacing(1)}px;
+        }
+
+        .error {
+          border-color: ${theme.palette.negative.main};
+        }
+
+        input,
+        textarea {
           box-sizing: border-box;
           color: ${theme.palette.text.primary};
           font-family: ${theme.typography.fontFamily};
@@ -112,17 +186,52 @@ const Input = props => {
           outline: 5px auto -webkit-focus-ring-color;
         }
 
-        .disabled {
-          opacity: 0.5;
-          pointer-events: none;
+        .end {
+          margin-right: ${theme.spacing(2)}px;
+          right: 0;
         }
 
-        .error {
-          border-color: ${theme.palette.negative.main};
+        .end.large {
+          margin-right: 0;
+        }
+
+        .endPadding {
+          padding-right: ${theme.spacing(9)}px;
+        }
+
+        .endPadding.large {
+          padding-right: ${theme.spacing(11)}px;
+        }
+
+        .start {
+          left: 0;
+          margin-left: ${theme.spacing(2)}px;
+        }
+
+        .start.large {
+          margin-left: 0;
+        }
+
+        .startPadding {
+          padding-left: ${theme.spacing(9)}px;
+        }
+
+        .startPadding.large {
+          padding-left: ${theme.spacing(11)}px;
+        }
+
+        .underlined {
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.23);
         }
 
         .warning {
           border-color: ${theme.palette.warning.main};
+        }
+
+        .wrapper {
+          position: relative;
         }
       `}</style>
     </div>
@@ -131,7 +240,9 @@ const Input = props => {
 
 Input.defaultProps = {
   disabled: false,
-  multiline: false
+  multiline: false,
+  size: "medium",
+  variant: "default"
 };
 
 Input.propTypes = {
@@ -144,6 +255,11 @@ Input.propTypes = {
    * If true, disables the input.
    */
   disabled: PropTypes.bool,
+
+  /**
+   * Content to render on the right side of the input.
+   */
+  endAdornment: PropTypes.node,
 
   /**
    * An error to display below the input.
@@ -171,6 +287,11 @@ Input.propTypes = {
   labelWeight: PropTypes.string,
 
   /**
+   * Any text to display under the right side of the input.
+   */
+  meta: PropTypes.node,
+
+  /**
    * If `true`, a textarea element will be rendered.
    */
   multiline: PropTypes.bool,
@@ -181,11 +302,25 @@ Input.propTypes = {
   required: PropTypes.bool,
 
   /**
+   * A whitelisted set of sizes that the input can be rendered at.
+   */
+  size: PropTypes.oneOf(["large", "medium", "small"]),
+
+  /**
+   * Content to render on the left side of the input.
+   */
+  startAdornment: PropTypes.node,
+
+  /**
    * @ignore
    * The theme context object
    */
   theme: PropTypes.object,
 
+  /**
+   * The input variant styling to apply.
+   */
+  variant: PropTypes.oneOf(["default", "underlined"]),
   /**
    * A warning to display below the input.
    */
