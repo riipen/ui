@@ -146,6 +146,10 @@ const pages = [
         pathname: "/components/table"
       },
       {
+        name: "Toggle",
+        pathname: "/components/toggle"
+      },
+      {
         name: "Tooltip",
         pathname: "/components/tooltip"
       },
@@ -322,6 +326,10 @@ const pages = [
       {
         name: "Table Row",
         pathname: "/components-api/table-row"
+      },
+      {
+        name: "Toggle",
+        pathname: "/components-api/toggle"
       },
       {
         name: "Toolbar",
