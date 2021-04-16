@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import RadioButton from "./RadioButton";
 
-const icon = i => <FontAwesomeIcon icon={i} />;
-
 describe("<RadioButton>", () => {
   it("renders without errors", () => {
     let error;
@@ -57,22 +55,6 @@ describe("<RadioButton>", () => {
 
       expect(wrapper.find("input").props().checked).toEqual(checked);
     });
-
-    it("sets color prop as initial when checked is true", () => {
-      const checked = true;
-
-      const wrapper = mount(<RadioButton checked={checked} readOnly />);
-
-      expect(wrapper.find("Typography").props().color).toEqual("initial");
-    });
-
-    it("sets color prop as grey600 when checked is false", () => {
-      const checked = false;
-
-      const wrapper = mount(<RadioButton checked={checked} readOnly />);
-
-      expect(wrapper.find("Typography").props().color).toEqual("grey600");
-    });
   });
 
   describe("classes prop", () => {
@@ -100,6 +82,21 @@ describe("<RadioButton>", () => {
           .props()
           .classes.sort()
       ).toEqual(classes.sort());
+    });
+  });
+
+  describe("color prop", () => {
+    it("sets the color class", () => {
+      const color = "primary";
+
+      const wrapper = mount(<RadioButton color={color} />);
+
+      expect(
+        wrapper
+          .find("RadioButton")
+          .childAt(0)
+          .hasClass(color)
+      ).toEqual(true);
     });
   });
 
@@ -170,7 +167,7 @@ describe("<RadioButton>", () => {
 
   describe("prefix prop", () => {
     it("sets custom prefix", () => {
-      const prefix = icon(faFlag);
+      const prefix = <FontAwesomeIcon icon={faFlag} />;
 
       const wrapper = mount(<RadioButton prefix={prefix} readOnly />);
 
@@ -185,7 +182,7 @@ describe("<RadioButton>", () => {
 
   describe("suffix prop", () => {
     it("sets custom suffix", () => {
-      const suffix = icon(faFlag);
+      const suffix = <FontAwesomeIcon icon={faFlag} />;
 
       const wrapper = mount(<RadioButton suffix={suffix} readOnly />);
 
@@ -194,6 +191,21 @@ describe("<RadioButton>", () => {
           .find(".content")
           .children()
           .contains(suffix)
+      ).toEqual(true);
+    });
+  });
+
+  describe("size prop", () => {
+    it("sets the size class", () => {
+      const size = "small";
+
+      const wrapper = mount(<RadioButton size={size} />);
+
+      expect(
+        wrapper
+          .find("RadioButton")
+          .childAt(0)
+          .hasClass(size)
       ).toEqual(true);
     });
   });

@@ -6,6 +6,7 @@ import _JSXStyle from "styled-jsx/style";
 import clsx from "clsx";
 
 import withClasses from "../utils/withClasses";
+import withThemeContext from "../utils/withThemeContext";
 
 import InputLabel from "./InputLabel";
 import Typography from "./Typography";
@@ -18,21 +19,37 @@ const RadioButtonGroup = ({
   name,
   onChange,
   required,
-  warning
+  theme,
+  value,
+  variant,
+  warning,
+  ...other
 }) => {
   const linkedStyles = css.resolve`
-    .radioButtons .radioButton:first-child {
-      border-top-left-radius: 15px;
-      border-bottom-left-radius: 15px;
+    .connected.radioButtons .radioButton:first-child {
+      border-top-left-radius: ${theme.shape.borderRadius.md};
+      border-bottom-left-radius: ${theme.shape.borderRadius.md};
     }
 
-    .radioButtons .radioButton:not(:first-child) {
-      border-left: none;
+    .connected.radioButtons .radioButton:last-child {
+      border-top-right-radius: ${theme.shape.borderRadius.md};
+      border-bottom-right-radius: ${theme.shape.borderRadius.md};
     }
 
-    .radioButtons .radioButton:last-child {
-      border-top-right-radius: 15px;
-      border-bottom-right-radius: 15px;
+    .connected..radioButtons .radioButton:not(:first-child) {
+      border-left-color: transparent;
+    }
+
+    .connected.radioButtons .radioButton:not(:first-child .checked):hover {
+      border-left-color: inherit;
+    }
+
+    .separate.radioButtons .radioButton {
+      border-radius: ${theme.shape.borderRadius.md};
+    }
+
+    .separate.radioButtons .radioButton:not(:last-child) {
+      margin-right: ${theme.spacing(4)}px;
     }
   `;
 
@@ -47,8 +64,15 @@ const RadioButtonGroup = ({
     child =>
       child &&
       React.cloneElement(child, {
+        checked: value === child.props.value,
         onChange: handleChange,
-        classes: [linkedStyles.className, "radioButton"]
+        ...other,
+        ...child.props,
+        classes: [
+          linkedStyles.className,
+          "radioButton",
+          ...(child.props.classes || [])
+        ]
       })
   ).filter(Boolean);
 
@@ -61,9 +85,9 @@ const RadioButtonGroup = ({
           </InputLabel>
         )}
 
-        <span className={clsx("radioButtons", linkedStyles.className)}>
+        <div className={clsx("radioButtons", variant, linkedStyles.className)}>
           {childrenWithProps}
-        </span>
+        </div>
 
         {error && (
           <Typography color="negative" variant="body2">
@@ -130,9 +154,29 @@ RadioButtonGroup.propTypes = {
   required: PropTypes.bool,
 
   /**
+   * @ignore
+   * The theme context object
+   */
+  theme: PropTypes.object,
+
+  /**
+   * The value of the selected radio button
+   */
+  value: PropTypes.any,
+
+  /**
+   * Radio button group variant to display
+   */
+  variant: PropTypes.oneOf(["connected", "separate"]),
+
+  /**
    * A warning to display below the input.
    */
   warning: PropTypes.node
 };
 
-export default withClasses(RadioButtonGroup);
+RadioButtonGroup.defaultProps = {
+  variant: "connected"
+};
+
+export default withThemeContext(withClasses(RadioButtonGroup));

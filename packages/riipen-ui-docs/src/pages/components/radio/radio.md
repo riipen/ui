@@ -16,3 +16,19 @@ RadioGroup is a helpful wrapper used to group Radio components that provides an 
 ## Button
 
 {{"demo": "pages/components/radio/Button.js"}}
+
+### Color
+
+RadioButton color is controlled with the color prop
+
+{{"demo": "pages/components/radio/ButtonColor.js"}}
+
+### Size
+
+RadioButton size is controlled with the size prop
+
+{{"demo": "pages/components/radio/ButtonSize.js"}}
+
+### Variant
+
+{{"demo": "pages/components/radio/ButtonVariant.js"}}
