@@ -13,8 +13,8 @@ const RadioButton = ({
   classes,
   color,
   disabled,
-  id,
   label,
+  id,
   prefix,
   size,
   suffix,
@@ -44,14 +44,12 @@ const RadioButton = ({
         className={clsx(checked && "checked", disabled && "disabled")}
         htmlFor={id}
       >
-        <input
-          checked={checked}
-          disabled={disabled}
-          id={id}
-          type="radio"
-          {...other}
-        />
-        <Typography variant={typographyVariant} color="inherit">
+        <input checked={checked} disabled={disabled} type="radio" {...other} />
+        <Typography
+          component="span"
+          variant={typographyVariant}
+          color="inherit"
+        >
           {prefix && <span className="content">{prefix}</span>}
           <span className="content">{label}</span>
           {suffix && <span className="content">{suffix}</span>}
@@ -162,12 +160,6 @@ const RadioButton = ({
         .root.disabled {
           background-color: ${theme.palette.disabled};
           border-color: ${theme.palette.disabled};
-          color: ${theme.palette.grey[200]};
-        }
-
-        .root.disabled.checked {
-          background-color: ${theme.palette.disabled};
-          border-color: ${theme.palette.grey[500]};
           color: ${theme.palette.grey[200]};
         }
       `}</style>
