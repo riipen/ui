@@ -131,24 +131,6 @@ describe("<RadioButton>", () => {
     expect(wrapper.find("input").props().disabled).toEqual(disabled);
   });
 
-  describe("id prop", () => {
-    it("sets custom id for input element", () => {
-      const id = "Test";
-
-      const wrapper = mount(<RadioButton id={id} readOnly />);
-
-      expect(wrapper.find("input").props().id).toEqual(id);
-    });
-
-    it("sets custom id for label element", () => {
-      const id = "Test";
-
-      const wrapper = mount(<RadioButton id={id} readOnly />);
-
-      expect(wrapper.find("label").props().htmlFor).toEqual(id);
-    });
-  });
-
   describe("label prop", () => {
     it("sets custom label", () => {
       const label = "Test";

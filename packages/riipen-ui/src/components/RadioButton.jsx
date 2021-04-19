@@ -14,7 +14,6 @@ const RadioButton = ({
   color,
   disabled,
   label,
-  id,
   prefix,
   size,
   suffix,
@@ -42,15 +41,9 @@ const RadioButton = ({
     >
       <label
         className={clsx(checked && "checked", disabled && "disabled")}
-        htmlFor={id}
+        htmlFor={other.id || other.name}
       >
-        <input
-          checked={checked}
-          disabled={disabled}
-          type="radio"
-          id={id}
-          {...other}
-        />
+        <input checked={checked} disabled={disabled} type="radio" {...other} />
         <Typography
           component="span"
           variant={typographyVariant}
@@ -193,11 +186,6 @@ RadioButton.propTypes = {
    * If `true`, the radio will be disabled.
    */
   disabled: PropTypes.bool,
-
-  /**
-   * The id of the input component.
-   */
-  id: PropTypes.string,
 
   /**
    * Label text to display for the radio.
