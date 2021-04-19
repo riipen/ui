@@ -44,7 +44,13 @@ const RadioButton = ({
         className={clsx(checked && "checked", disabled && "disabled")}
         htmlFor={id}
       >
-        <input checked={checked} disabled={disabled} type="radio" {...other} />
+        <input
+          checked={checked}
+          disabled={disabled}
+          type="radio"
+          id={id}
+          {...other}
+        />
         <Typography
           component="span"
           variant={typographyVariant}
@@ -59,7 +65,7 @@ const RadioButton = ({
         /* Common */
 
         .content {
-          margin: 0 5px;
+          margin: 0 ${theme.spacing(1)}px;
         }
 
         .root {

@@ -448,6 +448,7 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
               ]
             }
             key=".0"
+            name="undefined-undefined"
             onChange={[Function]}
           >
             <RadioButton
@@ -461,23 +462,26 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                 ]
               }
               color="default"
+              name="undefined-undefined"
               onChange={[Function]}
               size="medium"
             >
               <div
-                className="jsx-1533644705 riipen riipen-radiobutton jsx-1715781368 radioButton default checked root medium"
+                className="jsx-4157259141 riipen riipen-radiobutton jsx-1715781368 radioButton default checked root medium"
               >
                 <label
-                  className="jsx-1533644705 checked"
+                  className="jsx-4157259141 checked"
                 >
                   <input
                     checked={true}
-                    className="jsx-1533644705 "
+                    className="jsx-4157259141 "
+                    name="undefined-undefined"
                     onChange={[Function]}
                     type="radio"
                   />
                   <withClasses(Typography)
                     color="inherit"
+                    component="span"
                   >
                     <Typography
                       classes={
@@ -487,19 +491,20 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                         ]
                       }
                       color="inherit"
+                      component="span"
                       display="initial"
                       gutter={false}
                       textAlign="inherit"
                       textTransform="inherit"
                       variant="body1"
                     >
-                      <p
+                      <span
                         className="jsx-42457783 root color-inherit initial body1 align-inherit transform-inherit riipen riipen-typography"
                       >
                         <span
-                          className="jsx-1533644705 content"
+                          className="jsx-4157259141 content"
                         />
-                      </p>
+                      </span>
                       <JSXStyle
                         dynamic={
                           Array [
@@ -577,6 +582,7 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                 <JSXStyle
                   dynamic={
                     Array [
+                      5,
                       "#dddddd",
                       "#dddddd",
                       "#747474",
@@ -603,12 +609,9 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                       "#cccbcb",
                       "#cccbcb",
                       "#eeeeee",
-                      "#cccbcb",
-                      "#9a9a9a",
-                      "#eeeeee",
                     ]
                   }
-                  id="2419504198"
+                  id="2108214458"
                 />
               </div>
             </RadioButton>
