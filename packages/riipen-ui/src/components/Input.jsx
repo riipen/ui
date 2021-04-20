@@ -15,8 +15,6 @@ const Input = ({
   error,
   hint,
   label,
-  labelColor,
-  labelWeight,
   meta,
   multiline,
   required,
@@ -30,7 +28,7 @@ const Input = ({
   const [focusVisible, setFocusVisible] = useState(false);
   const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
-  const handleFocus = e => {
+  const handleFocus = (e) => {
     setFocusVisible(isFocusVisible(e));
   };
 
@@ -62,11 +60,9 @@ const Input = ({
     <div className={className}>
       {(label || hint) && (
         <InputLabel
-          color={labelColor}
           hint={hint}
           htmlFor={other.id || other.name}
           required={required}
-          weight={labelWeight}
         >
           {label}
         </InputLabel>
@@ -274,17 +270,7 @@ Input.propTypes = {
   /**
    * Label text to display for the input.
    */
-  label: PropTypes.string,
-
-  /**
-   * Label text colour.
-   */
-  labelColor: PropTypes.string,
-
-  /**
-   * Label text weight.
-   */
-  labelWeight: PropTypes.string,
+  label: PropTypes.node,
 
   /**
    * Any text to display under the right side of the input.

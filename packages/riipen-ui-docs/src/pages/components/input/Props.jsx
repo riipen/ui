@@ -2,6 +2,7 @@ import React from "react";
 
 import Form from "riipen-ui/components/Form";
 import Input from "riipen-ui/components/Input";
+import Typography from "riipen-ui/components/Typography";
 
 export default function Props() {
   const style = {
@@ -22,7 +23,16 @@ export default function Props() {
       <div style={style} />
       <Input id="age" label="Age" type="number" />
       <div style={style} />
-      <Input id="name" label="Name" defaultValue="Jane Doe" readOnly />
+      <Input
+        id="name"
+        label={
+          <Typography color="secondary" variant="h3">
+            {"Name"}
+          </Typography>
+        }
+        defaultValue="Jane Doe"
+        readOnly
+      />
     </Form>
   );
 }
