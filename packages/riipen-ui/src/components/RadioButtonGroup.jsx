@@ -61,7 +61,7 @@ const RadioButtonGroup = ({
   };
 
   const childrenWithProps = React.Children.map(
-    children || [],
+    children,
     child =>
       child &&
       React.cloneElement(child, {
