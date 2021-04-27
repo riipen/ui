@@ -29,7 +29,9 @@ export default function Variants() {
         <span style={style} />
         <Chip label="Negative" variant="outlined" color="negative" />
         <span style={style} />
-        <Chip label="Dark" variant="outlined" color="dark" />
+        <Chip label="Grey 600" variant="outlined" color="grey600" />
+        <span style={style} />
+        <Chip label="Grey A400" variant="outlined" color="greyA400" />
       </div>
     </div>
   );
