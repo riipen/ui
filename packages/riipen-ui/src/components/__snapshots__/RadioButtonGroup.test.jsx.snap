@@ -471,7 +471,6 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
               >
                 <label
                   className="jsx-4157259141 checked"
-                  htmlFor="undefined-undefined"
                 >
                   <input
                     checked={true}
