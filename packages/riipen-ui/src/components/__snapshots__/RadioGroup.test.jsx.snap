@@ -11,10 +11,10 @@ exports[`<RadioGroup> renders correct snapshot 1`] = `
     }
   >
     <fieldset
-      className="jsx-4088605537"
+      className="jsx-3241897731"
     />
     <JSXStyle
-      id="4088605537"
+      id="3241897731"
     />
   </RadioGroup>
 </withClasses(RadioGroup)>
