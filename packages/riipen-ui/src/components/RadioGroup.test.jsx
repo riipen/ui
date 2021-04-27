@@ -88,6 +88,22 @@ describe("<RadioGroup>", () => {
     });
   });
 
+  describe("name prop", () => {
+    it("passes given name to InputLabel as htmlFor prop", () => {
+      const name = "hello";
+      const label = "it's a label";
+      const child = <Radio id="one" />;
+
+      const wrapper = mount(
+        <RadioGroup name={name} label={label}>
+          {child}
+        </RadioGroup>
+      );
+
+      expect(wrapper.find("InputLabel").props().htmlFor).toEqual(name);
+    });
+  });
+
   describe("onChange prop", () => {
     it("sets onChange prop of children nodes", () => {
       const child = <Radio label="one" readOnly />;
@@ -122,6 +138,16 @@ describe("<RadioGroup>", () => {
       const wrapper = mount(<RadioGroup label={label} required={required} />);
 
       expect(wrapper.find("InputLabel").props().required).toEqual(required);
+    });
+  });
+
+  describe("value prop", () => {
+    it("sets the childs checked prop according to the value", () => {
+      const child = <Radio value="one" id="one" />;
+
+      const wrapper = mount(<RadioGroup value="one">{child}</RadioGroup>);
+
+      expect(wrapper.find("Radio").props().checked).toEqual(true);
     });
   });
 

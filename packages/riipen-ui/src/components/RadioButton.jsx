@@ -39,10 +39,7 @@ const RadioButton = ({
         size
       )}
     >
-      <label
-        className={clsx(checked && "checked", disabled && "disabled")}
-        htmlFor={other.id || other.name}
-      >
+      <label className={clsx(checked && "checked", disabled && "disabled")}>
         <input checked={checked} disabled={disabled} type="radio" {...other} />
         <Typography
           component="span"
