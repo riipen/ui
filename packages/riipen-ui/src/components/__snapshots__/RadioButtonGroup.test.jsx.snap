@@ -448,7 +448,6 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
               ]
             }
             key=".0"
-            name="undefined-undefined"
             onChange={[Function]}
           >
             <RadioButton
@@ -462,7 +461,6 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                 ]
               }
               color="default"
-              name="undefined-undefined"
               onChange={[Function]}
               size="medium"
             >
@@ -475,7 +473,6 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                   <input
                     checked={true}
                     className="jsx-4157259141 "
-                    name="undefined-undefined"
                     onChange={[Function]}
                     type="radio"
                   />
