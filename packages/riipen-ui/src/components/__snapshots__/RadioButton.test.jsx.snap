@@ -9,20 +9,22 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
         "riipen-radiobutton",
       ]
     }
+    color="default"
+    size="medium"
   >
     <div
-      className="jsx-1306841623 riipen riipen-radiobutton root"
+      className="jsx-4157259141 riipen riipen-radiobutton default root medium"
     >
       <label
-        className="jsx-1306841623 "
+        className="jsx-4157259141 "
       >
         <input
-          className="jsx-1306841623 "
+          className="jsx-4157259141 "
           type="radio"
         />
         <withClasses(Typography)
-          color="grey600"
-          variant="body2"
+          color="inherit"
+          component="span"
         >
           <Typography
             classes={
@@ -31,20 +33,21 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
                 "riipen-typography",
               ]
             }
-            color="grey600"
+            color="inherit"
+            component="span"
             display="initial"
             gutter={false}
             textAlign="inherit"
             textTransform="inherit"
-            variant="body2"
+            variant="body1"
           >
-            <p
-              className="jsx-42457783 root color-grey600 initial body2 align-inherit transform-inherit riipen riipen-typography"
+            <span
+              className="jsx-42457783 root color-inherit initial body1 align-inherit transform-inherit riipen riipen-typography"
             >
               <span
-                className="jsx-1306841623 content"
+                className="jsx-4157259141 content"
               />
-            </p>
+            </span>
             <JSXStyle
               dynamic={
                 Array [
@@ -122,11 +125,36 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
       <JSXStyle
         dynamic={
           Array [
+            5,
             "#dddddd",
+            "#dddddd",
+            "#747474",
+            "#747474",
+            "#373737",
+            "#dddddd",
+            "#dddddd",
+            "#000",
+            "#2c8ddc",
+            "#254364",
+            "#1f71ae",
+            "#1f71ae",
+            "#fff",
+            "#f5bf95",
+            "#ed7321",
+            "#f58632",
+            "#f58632",
+            "#fff",
+            "#78becc",
+            "#41978a",
+            "#3caabb",
+            "#3caabb",
+            "#fff",
+            "#cccbcb",
+            "#cccbcb",
             "#eeeeee",
           ]
         }
-        id="547299733"
+        id="2108214458"
       />
     </div>
   </RadioButton>

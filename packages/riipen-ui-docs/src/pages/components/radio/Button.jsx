@@ -6,8 +6,6 @@ import Form from "riipen-ui/components/Form";
 import RadioButton from "riipen-ui/components/RadioButton";
 import RadioButtonGroup from "riipen-ui/components/RadioButtonGroup";
 
-const icon = i => <FontAwesomeIcon icon={i} />;
-
 export default function Button() {
   const [state, setState] = React.useState("none");
 
@@ -22,13 +20,13 @@ export default function Button() {
         required
       >
         <RadioButton
-          prefix={icon(faFlag)}
+          prefix={<FontAwesomeIcon icon={faFlag} />}
           label="Prefix"
           value="prefix"
           checked={state === "prefix"}
         />
         <RadioButton
-          suffix={icon(faFlag)}
+          suffix={<FontAwesomeIcon icon={faFlag} />}
           label="Suffix"
           value="suffix"
           checked={state === "suffix"}

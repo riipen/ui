@@ -38,10 +38,7 @@ describe("<RadioButtonGroup>", () => {
         </RadioButtonGroup>
       );
 
-      const childrenNodes = wrapper
-        .find("fieldset")
-        .find("span")
-        .children();
+      const childrenNodes = wrapper.find(".radioButtons").children();
 
       expect(childrenNodes.at(0).props().id).toEqual("one");
     });
@@ -160,6 +157,40 @@ describe("<RadioButtonGroup>", () => {
       );
 
       expect(wrapper.find("InputLabel").props().required).toEqual(required);
+    });
+  });
+
+  describe("value prop", () => {
+    it("sets the childs checked prop according to the value", () => {
+      const child = <RadioButton value="one" id="one" />;
+
+      const wrapper = mount(
+        <RadioButtonGroup value="one">{child}</RadioButtonGroup>
+      );
+
+      expect(wrapper.find("RadioButton").props().checked).toEqual(true);
+    });
+  });
+
+  describe("variant prop", () => {
+    it("sets the connected variant class when variant is connected", () => {
+      const child = <RadioButton value="one" id="one" />;
+
+      const wrapper = mount(
+        <RadioButtonGroup variant="connected">{child}</RadioButtonGroup>
+      );
+
+      expect(wrapper.find(".radioButtons.connected").length).toEqual(1);
+    });
+
+    it("sets the separate variant class when variant is separate", () => {
+      const child = <RadioButton value="one" id="one" />;
+
+      const wrapper = mount(
+        <RadioButtonGroup variant="separate">{child}</RadioButtonGroup>
+      );
+
+      expect(wrapper.find(".radioButtons.separate").length).toEqual(1);
     });
   });
 

@@ -29,7 +29,9 @@ export default function Colors() {
         <span style={style} />
         <Chip label="Negative" color="negative" />
         <span style={style} />
-        <Chip label="Dark" color="dark" />
+        <Chip label="Grey 600" color="grey600" />
+        <span style={style} />
+        <Chip label="Grey A400" color="greyA400" />
       </div>
     </div>
   );

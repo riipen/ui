@@ -30,7 +30,7 @@ const Input = ({
   const [focusVisible, setFocusVisible] = useState(false);
   const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
-  const handleFocus = (e) => {
+  const handleFocus = e => {
     setFocusVisible(isFocusVisible(e));
   };
 
