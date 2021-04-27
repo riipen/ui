@@ -43,10 +43,6 @@ const Chip = ({
     onBlurVisible();
   };
 
-  const handleClick = () => {
-    if (onClick) onClick();
-  };
-
   const handleFocus = e => {
     setFocusVisible(isFocusVisible(e));
   };
@@ -56,7 +52,7 @@ const Chip = ({
       <Component
         className={className}
         onBlur={handleBlur}
-        onClick={handleClick}
+        onClick={onClick}
         onFocus={handleFocus}
         ref={ref}
         tabIndex={clickable ? "0" : undefined}
@@ -75,20 +71,20 @@ const Chip = ({
           cursor: default;
           display: inline-flex;
           font-family: ${theme.typography.fontFamily};
-          font-size: 13px;
+          font-size: ${theme.typography.body1.fontSize};
           justify-content: center;
           outline: 0;
           vertical-align: middle;
           white-space: nowrap;
         }
         .root.xsmall {
-          padding: 1px 5px;
+          padding: 1px ${theme.spacing(1)}px;
         }
         .root.small {
-          padding: 5px 10px;
+          padding: ${theme.spacing(1)}px ${theme.spacing(2)}px;
         }
         .root.medium {
-          padding: 10px 15px;
+          padding: ${theme.spacing(2)}px ${theme.spacing(3)}px;
         }
         .root.disabled {
           opacity: 0.6;
@@ -106,7 +102,7 @@ const Chip = ({
         .icon {
           align-items: center;
           display: flex;
-          padding-right: 10px;
+          padding-right: ${theme.spacing(2)}px;
           white-space: nowrap;
         }
 

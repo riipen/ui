@@ -439,13 +439,12 @@ exports[`<Chip> renders correct snapshot 1`] = `
       variant="default"
     >
       <div
-        className="jsx-4014573261 root default medium default riipen riipen-chip"
+        className="jsx-1000837380 root default medium default riipen riipen-chip"
         onBlur={[Function]}
-        onClick={[Function]}
         onFocus={[Function]}
       >
         <span
-          className="jsx-4014573261 label"
+          className="jsx-1000837380 label"
         />
       </div>
       <JSXStyle
@@ -454,7 +453,14 @@ exports[`<Chip> renders correct snapshot 1`] = `
             "#dddddd",
             "#747474",
             "Roboto, Helvetica, Arial, sans-serif",
+            "14px",
+            5,
+            5,
+            10,
+            10,
+            15,
             "#373737",
+            10,
             "#1f71ae",
             "#1f71ae",
             "#fff",
@@ -542,7 +548,7 @@ exports[`<Chip> renders correct snapshot 1`] = `
             "#747474",
           ]
         }
-        id="2800331535"
+        id="3610061240"
       />
     </Chip>
   </withClasses(Chip)>
