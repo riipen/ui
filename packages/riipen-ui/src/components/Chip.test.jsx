@@ -25,17 +25,15 @@ describe("<Chip>", () => {
 
   describe("default props", () => {
     it("sets correct default props", () => {
-      const defaultProps = new Chip().type.defaultProps;
-
       const wrapper = mount(<Chip />);
 
       const component = wrapper.find("Chip");
       expect(component.childAt(0).name()).toEqual("div");
-      expect(component.props().color).toEqual(defaultProps.color);
-      expect(component.props().disabled).toEqual(defaultProps.disabled);
-      expect(component.props().hover).toEqual(defaultProps.hover);
-      expect(component.props().size).toEqual(defaultProps.size);
-      expect(component.props().variant).toEqual(defaultProps.variant);
+      expect(component.props().color).toEqual("default");
+      expect(component.props().disabled).toEqual(false);
+      expect(component.props().hover).toEqual(false);
+      expect(component.props().size).toEqual("medium");
+      expect(component.props().variant).toEqual("default");
     });
   });
 
@@ -100,7 +98,7 @@ describe("<Chip>", () => {
 
   describe("color prop", () => {
     it("sets color class name with a valid color", () => {
-      const color = "dark";
+      const color = "greyA400";
 
       const wrapper = mount(<Chip color={color} />);
 
@@ -254,6 +252,19 @@ describe("<Chip>", () => {
   });
 
   describe("onClick prop", () => {
+    it("sets clickable class name ", () => {
+      const handler = jest.fn();
+
+      const wrapper = mount(<Chip onClick={handler} />);
+
+      expect(
+        wrapper
+          .find("Chip")
+          .childAt(0)
+          .hasClass("clickable")
+      ).toEqual(true);
+    });
+
     it("invokes onClick handler when clicked", () => {
       const handler = jest.fn();
 
@@ -310,6 +321,35 @@ describe("<Chip>", () => {
       mount(<Chip variant={variant} />);
 
       expect(errors).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("focusVisible state", () => {
+    it("applies focusVisible class when focus event occurs", () => {
+      const wrapper = mount(<Chip label="test" />);
+
+      wrapper.simulate("focus");
+
+      expect(
+        wrapper
+          .find("Chip")
+          .childAt(0)
+          .hasClass("focusVisible")
+      ).toEqual(true);
+    });
+
+    it("does not apply focusVisible class when blur event occurs", () => {
+      const wrapper = mount(<Chip label="test" />);
+
+      wrapper.simulate("focus");
+      wrapper.simulate("blur");
+
+      expect(
+        wrapper
+          .find("Chip")
+          .childAt(0)
+          .hasClass("focusVisible")
+      ).toEqual(false);
     });
   });
 });
