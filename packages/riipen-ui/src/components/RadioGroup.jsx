@@ -31,6 +31,7 @@ const RadioGroup = ({
       React.cloneElement(child, {
         checked: value === child.props.value,
         onChange: handleChange,
+        ...other,
         ...child.props
       })
   ).filter(Boolean);

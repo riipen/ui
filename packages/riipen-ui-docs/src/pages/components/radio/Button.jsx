@@ -18,8 +18,6 @@ export default function Button() {
         hint="Pick your favorite variant."
         onChange={handleChange}
         required
-        name="buttons"
-        id="button-group"
       >
         <RadioButton
           prefix={<FontAwesomeIcon icon={faFlag} />}
