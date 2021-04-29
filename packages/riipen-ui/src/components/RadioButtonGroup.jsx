@@ -17,6 +17,7 @@ const RadioButtonGroup = ({
   hint,
   id,
   label,
+  labelProps,
   onChange,
   required,
   theme,
@@ -80,7 +81,12 @@ const RadioButtonGroup = ({
     <React.Fragment>
       <fieldset id={id}>
         {(label || hint) && (
-          <InputLabel hint={hint} htmlFor={other.name} required={required}>
+          <InputLabel
+            hint={hint}
+            htmlFor={other.name}
+            required={required}
+            {...labelProps}
+          >
             {label}
           </InputLabel>
         )}
@@ -139,6 +145,11 @@ RadioButtonGroup.propTypes = {
    * Label text to display for the input.
    */
   label: PropTypes.node,
+
+  /**
+   * Any props to pass through to the InputLabel
+   */
+  labelProps: PropTypes.object,
 
   /**
    * Callback fired when a radio button is selected.
