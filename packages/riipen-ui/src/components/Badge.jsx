@@ -142,6 +142,7 @@ class Badge extends React.Component {
           .root {
             display: inline-flex;
             flex-shrink: 0;
+            justify-content: flex-end;
             position: relative;
             vertical-align: middle;
           }
