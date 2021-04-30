@@ -3,123 +3,105 @@ import PropTypes from "prop-types";
 import React from "react";
 import _JSXStyle from "styled-jsx/style";
 
-import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
+import withThemeContext from "../utils/withThemeContext";
 
 import InputHint from "./InputHint";
 import Typography from "./Typography";
 
-class InputLabel extends React.Component {
-  static displayName = "InputLabel";
+const InputLabel = ({
+  children,
+  color,
+  classes,
+  fontWeight,
+  hint,
+  required,
+  theme,
+  variant,
+  ...other
+}) => {
+  const className = clsx(classes);
 
-  static propTypes = {
-    /**
-     * The content of the component.
-     */
-    children: PropTypes.node,
+  const marginBottom = hint ? 1 : 3;
 
-    /**
-     * An array of custom CSS classes to apply.
-     */
-    classes: PropTypes.array,
+  return (
+    <React.Fragment>
+      {children && (
+        <label className={className} {...other}>
+          <Typography
+            component="span"
+            color={color}
+            fontWeight={fontWeight}
+            variant={variant}
+          >
+            {children}
+            {required && " *"}
+          </Typography>
+        </label>
+      )}
+      {hint && <InputHint color={color}>{hint}</InputHint>}
+      <style jsx>{`
+        label {
+          color: ${theme.palette.text.secondary};
+          display: inline-block;
+          margin-bottom: ${theme.spacing(marginBottom)}px;
+        }
+      `}</style>
+    </React.Fragment>
+  );
+};
 
-    /**
-     * Color of the label text
-     */
-    color: PropTypes.oneOf(["default", "white", "black", "grey"]),
+InputLabel.displayName = "InputLabel";
 
-    /**
-     * Hint text to display under the label.
-     */
-    hint: PropTypes.node,
+InputLabel.propTypes = {
+  /**
+   * The content of the component.
+   */
+  children: PropTypes.node,
 
-    /**
-     * If true, an asterisk will be appended to the end of the label.
-     */
-    required: PropTypes.bool,
+  /**
+   * An array of custom CSS classes to apply.
+   */
+  classes: PropTypes.array,
 
-    /**
-     * Weight of the label text
-     */
-    weight: PropTypes.oneOf(["light", "regular", "medium", "bold"])
-  };
+  /**
+   * Color of the label text. Passed through to Typopgraphy
+   */
+  color: PropTypes.string,
 
-  static defaultProps = {
-    classes: [],
-    color: "default",
-    required: false,
-    weight: "regular"
-  };
+  /**
+   * Font weight for the label text. Passed through to Typopgraphy
+   */
+  fontWeight: PropTypes.string,
 
-  static contextType = ThemeContext;
+  /**
+   * Hint text to display under the label.
+   */
+  hint: PropTypes.node,
 
-  render() {
-    const {
-      children,
-      color,
-      classes,
-      hint,
-      required,
-      weight,
-      ...other
-    } = this.props;
+  /**
+   * If true, an asterisk will be appended to the end of the label.
+   */
+  required: PropTypes.bool,
 
-    const theme = this.context;
+  /**
+   * @ignore
+   * The theme context object
+   */
+  theme: PropTypes.object,
 
-    const className = clsx(classes, color, weight);
+  /**
+   * Variant for the label text. Passed through to Typopgraphy
+   */
+  variant: PropTypes.string
+};
 
-    const marginBottom = hint ? 1 : 3;
+InputLabel.defaultProps = {
+  classes: [],
+  color: "inherit",
+  required: false,
+  weight: "regular",
+  variant: "h5"
+};
 
-    return (
-      <React.Fragment>
-        {children && (
-          <label className={className} {...other}>
-            <Typography color="inherit" variant="inherit">
-              {children}
-              {required && " *"}
-            </Typography>
-          </label>
-        )}
-        {hint && <InputHint color={color}>{hint}</InputHint>}
-        <style jsx>{`
-          label {
-            color: ${theme.palette.text.secondary};
-            display: inline-block;
-            font-family: ${theme.typography.body1.fontFamily};
-            font-size: 16px;
-            font-weight: ${theme.typography.body1.fontWeight};
-            letter-spacing: ${theme.typography.body1.letterSpacing};
-            line-height: 1.4;
-            margin-bottom: ${theme.spacing(marginBottom)}px;
-          }
-
-          .white {
-            color: ${theme.palette.common.white};
-          }
-
-          .black {
-            color: ${theme.palette.common.black};
-          }
-
-          .grey {
-            color: ${theme.palette.grey.A400};
-          }
-
-          .light {
-            font-weight: ${theme.typography.fontWeight.light};
-          }
-
-          .medium {
-            font-weight: ${theme.typography.fontWeight.medium};
-          }
-
-          .bold {
-            font-weight: ${theme.typography.fontWeight.bold};
-          }
-        `}</style>
-      </React.Fragment>
-    );
-  }
-}
-
-export default withClasses(InputLabel);
+export default withThemeContext(withClasses(InputLabel));

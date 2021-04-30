@@ -15,8 +15,7 @@ const Input = ({
   error,
   hint,
   label,
-  labelColor,
-  labelWeight,
+  labelProps,
   meta,
   multiline,
   required,
@@ -62,11 +61,10 @@ const Input = ({
     <div className={className}>
       {(label || hint) && (
         <InputLabel
-          color={labelColor}
           hint={hint}
           htmlFor={other.id || other.name}
           required={required}
-          weight={labelWeight}
+          {...labelProps}
         >
           {label}
         </InputLabel>
@@ -277,14 +275,9 @@ Input.propTypes = {
   label: PropTypes.string,
 
   /**
-   * Label text colour.
+   * Props passed through to the InputLabel.
    */
-  labelColor: PropTypes.string,
-
-  /**
-   * Label text weight.
-   */
-  labelWeight: PropTypes.string,
+  labelProps: PropTypes.object,
 
   /**
    * Any text to display under the right side of the input.

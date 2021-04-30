@@ -3,63 +3,59 @@ import PropTypes from "prop-types";
 import React from "react";
 import _JSXStyle from "styled-jsx/style";
 
-import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
+import withThemeContext from "../utils/withThemeContext";
 
 import Typography from "./Typography";
 
-class InputHint extends React.Component {
-  static displayName = "InputHint";
+const InputHint = ({ children, classes, color, theme }) => {
+  const className = clsx(classes);
 
-  static propTypes = {
-    /**
-     * The content of the component.
-     */
-    children: PropTypes.node,
+  return (
+    <React.Fragment>
+      <div className={className}>
+        <Typography variant="body2" color={color}>
+          {children}
+        </Typography>
+      </div>
+      <style jsx>{`
+        div {
+          color: ${theme.palette.text.secondary};
+          margin-bottom: ${theme.spacing(2)}px;
+        }
+      `}</style>
+    </React.Fragment>
+  );
+};
 
-    /**
-     * Color of the hint text
-     */
-    color: PropTypes.oneOf(["default", "white", "black"]),
+InputHint.displayName = "InputHint";
 
-    /**
-     * An array of custom CSS classes to apply.
-     */
-    classes: PropTypes.array
-  };
+InputHint.propTypes = {
+  /**
+   * The content of the component.
+   */
+  children: PropTypes.node,
 
-  static defaultProps = {
-    classes: [],
-    color: "default"
-  };
+  /**
+   * Color of the hint text. Passed through to Typography
+   */
+  color: PropTypes.string,
 
-  static contextType = ThemeContext;
+  /**
+   * An array of custom CSS classes to apply.
+   */
+  classes: PropTypes.array,
 
-  render() {
-    const { children, color, classes } = this.props;
+  /**
+   * @ignore
+   * The theme context object
+   */
+  theme: PropTypes.object
+};
 
-    const theme = this.context;
+InputHint.defaultProps = {
+  classes: [],
+  color: "inherit"
+};
 
-    const className = clsx(classes, color);
-
-    return (
-      <React.Fragment>
-        <div className={className}>
-          <Typography variant="body2">{children}</Typography>
-        </div>
-        <style jsx>{`
-          div {
-            color: ${theme.palette.text.secondary};
-            margin-bottom: ${theme.spacing(2)}px;
-          }
-
-          .white {
-            color: ${theme.palette.common.white};
-          }
-        `}</style>
-      </React.Fragment>
-    );
-  }
-}
-
-export default withClasses(InputHint);
+export default withThemeContext(withClasses(InputHint));
