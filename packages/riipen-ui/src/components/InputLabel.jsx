@@ -28,7 +28,12 @@ const InputLabel = ({
     <React.Fragment>
       {children && (
         <label className={className} {...other}>
-          <Typography color={color} fontWeight={fontWeight} variant={variant}>
+          <Typography
+            component="span"
+            color={color}
+            fontWeight={fontWeight}
+            variant={variant}
+          >
             {children}
             {required && " *"}
           </Typography>
@@ -39,11 +44,6 @@ const InputLabel = ({
         label {
           color: ${theme.palette.text.secondary};
           display: inline-block;
-          font-family: ${theme.typography.body1.fontFamily};
-          font-size: 16px;
-          font-weight: ${theme.typography.body1.fontWeight};
-          letter-spacing: ${theme.typography.body1.letterSpacing};
-          line-height: 1.4;
           margin-bottom: ${theme.spacing(marginBottom)}px;
         }
       `}</style>
@@ -101,7 +101,7 @@ InputLabel.defaultProps = {
   color: "inherit",
   required: false,
   weight: "regular",
-  variant: "inherit"
+  variant: "h5"
 };
 
 export default withThemeContext(withClasses(InputLabel));

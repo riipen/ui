@@ -433,20 +433,17 @@ exports[`<InputLabel> renders correct snapshot 1`] = `
           },
         }
       }
-      variant="inherit"
+      variant="h5"
       weight="regular"
     >
       <JSXStyle
         dynamic={
           Array [
             "#747474",
-            "Roboto, Helvetica, Arial, sans-serif",
-            400,
-            "0.00938em",
             15,
           ]
         }
-        id="621375575"
+        id="873900508"
       />
     </InputLabel>
   </withClasses(InputLabel)>
