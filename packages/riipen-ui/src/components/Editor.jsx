@@ -69,6 +69,11 @@ class Editor extends React.Component {
     controlPosition: PropTypes.oneOf(["top", "bottom"]),
 
     /**
+     * Disable the editor or not
+     */
+    disabled: PropTypes.bool,
+
+    /**
      * The decorator for the editor.
      */
     decorator: PropTypes.shape({ type: PropTypes.oneOf([CompositeDecorator]) }),
@@ -171,6 +176,12 @@ class Editor extends React.Component {
         transition: ${theme.transitions.duration.standard}ms all;
         width: 100%;
         word-break: break-word;
+      }
+
+      .wrapper.disabled {
+        border-color: ${theme.palette.grey[400]};
+        opacity: 0.5;
+        pointer-events: none;
       }
 
       .wrapper.focus {
@@ -576,6 +587,7 @@ class Editor extends React.Component {
   render() {
     const {
       ariaLabelledBy,
+      disabled,
       error,
       controlPosition,
       placeholder,
@@ -591,6 +603,7 @@ class Editor extends React.Component {
     const wrapperClasses = clsx(
       linkedStyles.className,
       "wrapper",
+      disabled && "disabled",
       editorState.getSelection().getHasFocus() && "focus",
       error && "error"
     );
@@ -606,6 +619,7 @@ class Editor extends React.Component {
     const editorClasses = clsx(
       linkedStyles.className,
       "editor",
+      disabled && "disabled",
       controlPosition,
       hidePlaceholder && "richTextEditor-hidePlaceholder"
     );
@@ -627,6 +641,7 @@ class Editor extends React.Component {
               placeholder={placeholder}
               ref={this.editor}
               spellCheck
+              readOnly={disabled}
             />
           </div>
           {controlPosition === "bottom" && this.renderControls()}
