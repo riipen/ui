@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { convertFromHTML, convertToHTML } from "draft-convert";
 import {
   AtomicBlockUtils,
   CompositeDecorator,
@@ -19,63 +18,7 @@ import ThemeContext from "../styles/ThemeContext";
 import EditorBlockStyleControls from "./EditorBlockStyleControls";
 import EditorInlineStyleControls from "./EditorInlineStyleControls";
 import EditorImage from "./EditorImage";
-
-// draft-convert configuration for converting HTML to EditorState.
-export const fromHtmlConfig = {
-  htmlToEntity: (nodeName, node, createEntity) => {
-    switch (nodeName) {
-      case "a":
-        return createEntity("LINK", "MUTABLE", { url: node.href });
-      case "img":
-        return createEntity("IMAGE", "IMMUTABLE", {
-          alt: node.alt,
-          src: node.src
-        });
-      default:
-        return null;
-    }
-  },
-  htmlToBlock: nodeName => {
-    switch (nodeName) {
-      case "div":
-        return {
-          type: "atomic",
-          data: {}
-        };
-      default:
-        return null;
-    }
-  }
-};
-
-// draft-convert configuration for converting EditorState to HTML.
-const toHtmlConfig = {
-  blockToHTML: block => {
-    switch (block.type) {
-      case "code-block":
-        return <pre />;
-      case "atomic":
-        return <div />;
-      case "section":
-        return <section />;
-      case "unstyled":
-        return <p />;
-      default:
-        return null;
-    }
-  },
-  entityToHTML: (entity, originalText) => {
-    switch (entity.type) {
-      case "LINK":
-        return <a href={entity.data.url}>{originalText}</a>;
-
-      case "IMAGE":
-        return <img alt={entity.data.alt} src={entity.data.src} />;
-      default:
-        return originalText;
-    }
-  }
-};
+import EditorUtils from "./EditorUtils";
 
 // draft-js map of inline style types to the corresponding style displayed in the editor.
 const styleMap = {
@@ -124,6 +67,11 @@ class Editor extends React.Component {
      * Position of controls for the editor.
      */
     controlPosition: PropTypes.oneOf(["top", "bottom"]),
+
+    /**
+     * Disable the editor or not
+     */
+    disabled: PropTypes.bool,
 
     /**
      * The decorator for the editor.
@@ -194,7 +142,7 @@ class Editor extends React.Component {
     // Sets editor state after mount (because SSR)
     const editorState = initialValue
       ? EditorState.createWithContent(
-          convertFromHTML(fromHtmlConfig)(initialValue || ""),
+          EditorUtils.fromHtml(initialValue || ""),
           decorator
         )
       : EditorState.createEmpty(decorator);
@@ -228,6 +176,12 @@ class Editor extends React.Component {
         transition: ${theme.transitions.duration.standard}ms all;
         width: 100%;
         word-break: break-word;
+      }
+
+      .wrapper.disabled {
+        border-color: ${theme.palette.grey[400]};
+        opacity: 0.5;
+        pointer-events: none;
       }
 
       .wrapper.focus {
@@ -366,7 +320,7 @@ class Editor extends React.Component {
   setHtml = async html => {
     const { decorator, autoFocus } = this.props;
 
-    const contentState = convertFromHTML(fromHtmlConfig)(html || "");
+    const contentState = EditorUtils.fromHtml(html || "");
     const editorState = EditorState.createWithContent(contentState, decorator);
 
     await this.onChange(editorState);
@@ -377,9 +331,7 @@ class Editor extends React.Component {
   };
 
   getHtml = () => {
-    const html = convertToHTML(toHtmlConfig)(
-      this.state.editorState.getCurrentContent()
-    );
+    const html = EditorUtils.toHtml(this.state.editorState.getCurrentContent());
     return this.hasContent() ? html : "";
   };
 
@@ -476,7 +428,7 @@ class Editor extends React.Component {
       text
     );
     const contentStateWithEntity = newContentState.createEntity(
-      "LINK",
+      EditorUtils.EDITOR_ENTITY_TYPES.LINK,
       "MUTABLE",
       { url }
     );
@@ -514,12 +466,6 @@ class Editor extends React.Component {
 
     this.onChange(editorStateWithLink);
   };
-
-  /**
-   * @typedef {Object} Block - object containing range which to remove links from
-   * @property {number} start - start position of selection range
-   * @property {number} end - end position of selection range
-   */
 
   /**
    * Control button callback for toggling removing links.
@@ -566,7 +512,7 @@ class Editor extends React.Component {
 
     const contentState = editorState.getCurrentContent();
     const contentStateWithEntity = contentState.createEntity(
-      "IMAGE",
+      EditorUtils.EDITOR_ENTITY_TYPES.IMAGE,
       "IMMUTABLE",
       {
         alt: altText,
@@ -641,6 +587,7 @@ class Editor extends React.Component {
   render() {
     const {
       ariaLabelledBy,
+      disabled,
       error,
       controlPosition,
       placeholder,
@@ -656,6 +603,7 @@ class Editor extends React.Component {
     const wrapperClasses = clsx(
       linkedStyles.className,
       "wrapper",
+      disabled && "disabled",
       editorState.getSelection().getHasFocus() && "focus",
       error && "error"
     );
@@ -671,6 +619,7 @@ class Editor extends React.Component {
     const editorClasses = clsx(
       linkedStyles.className,
       "editor",
+      disabled && "disabled",
       controlPosition,
       hidePlaceholder && "richTextEditor-hidePlaceholder"
     );
@@ -692,6 +641,7 @@ class Editor extends React.Component {
               placeholder={placeholder}
               ref={this.editor}
               spellCheck
+              readOnly={disabled}
             />
           </div>
           {controlPosition === "bottom" && this.renderControls()}
