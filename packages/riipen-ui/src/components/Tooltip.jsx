@@ -150,7 +150,7 @@ class Tooltip extends React.Component {
       /* Sizes */
 
       .popover.small {
-        padding: ${theme.spacing(2)}px ${theme.spacing(4)}px;
+        padding: ${theme.spacing(1)}px ${theme.spacing(4)}px;
       }
 
       .popover.medium {
