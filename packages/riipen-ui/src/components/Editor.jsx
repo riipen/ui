@@ -284,7 +284,7 @@ class Editor extends React.Component {
       }
 
       :global(.public-DraftEditorPlaceholder-inner) {
-        color: ${theme.palette.text.disabled};
+        color: ${theme.palette.grey[400]};
       }
 
       :global(.public-DraftEditorPlaceholder-root) {
