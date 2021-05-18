@@ -99,6 +99,11 @@ class Editor extends React.Component {
     onChange: PropTypes.func,
 
     /**
+     * Function to execute when editor is out of focus.
+     */
+    onBlur: PropTypes.func,
+
+    /**
      * The max height of the Editor text area.
      */
     maxHeight: PropTypes.string,
@@ -587,9 +592,10 @@ class Editor extends React.Component {
   render() {
     const {
       ariaLabelledBy,
+      controlPosition,
       disabled,
       error,
-      controlPosition,
+      onBlur,
       placeholder,
       style
     } = this.props;
@@ -637,6 +643,7 @@ class Editor extends React.Component {
               editorState={editorState}
               handleKeyCommand={this.handleKeyCommand}
               keyBindingFn={this.myKeyBindingFn}
+              onBlur={onBlur}
               onChange={this.onChange}
               placeholder={placeholder}
               ref={this.editor}
