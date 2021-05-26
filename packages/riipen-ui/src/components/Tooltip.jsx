@@ -62,6 +62,11 @@ class Tooltip extends React.Component {
     isControlledByProps: PropTypes.bool,
 
     /**
+     * Whether the popover should stay open after leaving the content.
+     */
+    keepOpenOnMouseLeave: PropTypes.bool,
+
+    /**
      * Function to call on tooltip close.
      */
     onClose: PropTypes.func,
@@ -77,11 +82,6 @@ class Tooltip extends React.Component {
      * [Default] false
      */
     open: PropTypes.bool,
-
-    /**
-     * Whether the popover should stay open after leaving the content
-     */
-    openOnLeave: PropTypes.bool,
 
     /**
      * Where to display the tooltip in relation to element.
@@ -116,7 +116,7 @@ class Tooltip extends React.Component {
     hover: true,
     isControlledByProps: false,
     open: false,
-    openOnLeave: false,
+    keepOpenOnMouseLeave: false,
     position: "bottom-center",
     size: "small"
   };
@@ -462,9 +462,9 @@ class Tooltip extends React.Component {
   };
 
   handleMouseLeave = () => {
-    const { hover, openOnLeave } = this.props;
+    const { hover, keepOpenOnMouseLeave } = this.props;
 
-    if (hover && !openOnLeave) {
+    if (hover && !keepOpenOnMouseLeave) {
       this.handleClose();
     }
   };
