@@ -27,8 +27,8 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">disabled</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the button will be disabled. |
 | <span class="prop-name">fullWidth</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the button will take up the full width of its container. |
 | <span class="prop-name">href</span> | <span class="prop-type">string</span> |  | The URL to link to when the button is clicked. If defined, an `a` element will be used as the root node. |
-| <span class="prop-name">iconEnd</span> | <span class="prop-type">elementType</span> |  | Element placed after the children. |
-| <span class="prop-name">iconStart</span> | <span class="prop-type">elementType</span> |  | Element placed before the children. |
+| <span class="prop-name">iconEnd</span> | <span class="prop-type">elementType<br>&#124;&nbsp;node</span> |  | Element placed after the children. |
+| <span class="prop-name">iconStart</span> | <span class="prop-type">elementType<br>&#124;&nbsp;node</span> |  | Element placed before the children. |
 | <span class="prop-name">size</span> | <span class="prop-type">"small"<br>&#124;&nbsp;"medium"<br>&#124;&nbsp;"large"</span> | <span class="prop-default">"medium"</span> | The size of the chip. |
 | <span class="prop-name">type</span> | <span class="prop-type">"button"<br>&#124;&nbsp;"reset"<br>&#124;&nbsp;"submit"</span> | <span class="prop-default">"button"</span> | The type of button, determining functionality. |
 | <span class="prop-name">variant</span> | <span class="prop-type">"text"<br>&#124;&nbsp;"outlined"<br>&#124;&nbsp;"contained"<br>&#124;&nbsp;"inverted"</span> | <span class="prop-default">"text"</span> | The variant to use. |
