@@ -222,6 +222,7 @@ exports[`<InputLabel> renders correct snapshot 1`] = `
         ]
       }
       color="inherit"
+      fontWeight="regular"
       required={false}
       theme={
         Object {
@@ -434,7 +435,6 @@ exports[`<InputLabel> renders correct snapshot 1`] = `
         }
       }
       variant="h5"
-      weight="regular"
     >
       <JSXStyle
         dynamic={

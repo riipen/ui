@@ -99,8 +99,8 @@ InputLabel.propTypes = {
 InputLabel.defaultProps = {
   classes: [],
   color: "inherit",
+  fontWeight: "regular",
   required: false,
-  weight: "regular",
   variant: "h5"
 };
 

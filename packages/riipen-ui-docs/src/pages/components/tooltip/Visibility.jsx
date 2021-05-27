@@ -5,16 +5,18 @@ import Form from "riipen-ui/components/Form";
 import Tooltip from "riipen-ui/components/Tooltip";
 
 export default function Component() {
-  const [click, setClick] = React.useState(false);
-  const [hover, setHover] = React.useState(true);
+  const [state, setState] = React.useState({
+    click: false,
+    hover: true,
+    keepOpenOnMouseLeave: false
+  });
 
-  const handleHover = e => {
-    setHover(e.target.checked);
+  const handleCheckbox = e => {
+    const { name, checked } = e.target;
+    setState(prev => ({ ...prev, [name]: checked }));
   };
 
-  const handleClick = e => {
-    setClick(e.target.checked);
-  };
+  const { click, hover, keepOpenOnMouseLeave } = state;
 
   return (
     <React.Fragment>
@@ -26,20 +28,35 @@ export default function Component() {
                 checked={hover}
                 color="primary"
                 label="Show Tooltip On Hover"
-                onChange={handleHover}
+                name="hover"
+                onChange={handleCheckbox}
               />
               <div className="spacer" />
               <Checkbox
                 checked={click}
                 color="primary"
                 label="Show Tooltip On Click"
-                onChange={handleClick}
+                name="click"
+                onChange={handleCheckbox}
+              />
+              <div className="spacer" />
+              <Checkbox
+                checked={keepOpenOnMouseLeave}
+                color="primary"
+                label="Keep Showing Tooltip On Leave"
+                name="keepOpenOnMouseLeave"
+                onChange={handleCheckbox}
               />
             </div>
           </Form>
         </div>
         <div className="half elementContainer">
-          <Tooltip click={click} hover={hover} tooltip={<div>Hi!</div>}>
+          <Tooltip
+            click={click}
+            hover={hover}
+            keepOpenOnMouseLeave={keepOpenOnMouseLeave}
+            tooltip={<div>Hi!</div>}
+          >
             <div className={"element"}>Anchor Element</div>
           </Tooltip>
         </div>

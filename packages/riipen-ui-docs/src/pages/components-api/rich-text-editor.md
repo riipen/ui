@@ -26,6 +26,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">id</span> | <span class="prop-type">string</span> |  | An ID to set on the wrapper div of this component. |
 | <span class="prop-name">isRequired</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Optional indicator to show if field is required. Defaults to false. |
 | <span class="prop-name">label</span> | <span class="prop-type">string</span> |  | Optional form field label string. |
+| <span class="prop-name">maxHeight</span> | <span class="prop-type">string</span> | <span class="prop-default">"auto"</span> | The max height of the Editor text area. |
 | <span class="prop-name">warning</span> | <span class="prop-type">node</span> |  | A warning to display below the input. |
 
 

@@ -23,6 +23,11 @@ class Tooltip extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * Whether tooltip should display on click.
+     */
+    click: PropTypes.bool,
+
+    /**
      * Color of tooltip.
      */
     color: PropTypes.oneOf([
@@ -32,11 +37,6 @@ class Tooltip extends React.Component {
       "negative",
       "warning"
     ]),
-
-    /**
-     * Whether tooltip should display on click.
-     */
-    click: PropTypes.bool,
 
     /**
      * The component used for the root node.
@@ -60,6 +60,11 @@ class Tooltip extends React.Component {
      * true: by this component's props.
      */
     isControlledByProps: PropTypes.bool,
+
+    /**
+     * Whether the popover should stay open after leaving the content.
+     */
+    keepOpenOnMouseLeave: PropTypes.bool,
 
     /**
      * Function to call on tooltip close.
@@ -111,6 +116,7 @@ class Tooltip extends React.Component {
     hover: true,
     isControlledByProps: false,
     open: false,
+    keepOpenOnMouseLeave: false,
     position: "bottom-center",
     size: "small"
   };
@@ -449,6 +455,20 @@ class Tooltip extends React.Component {
     );
   };
 
+  handleMouseEnter = () => {
+    if (this.props.hover) {
+      this.handleOpen();
+    }
+  };
+
+  handleMouseLeave = () => {
+    const { hover, keepOpenOnMouseLeave } = this.props;
+
+    if (hover && !keepOpenOnMouseLeave) {
+      this.handleClose();
+    }
+  };
+
   renderPopover = () => {
     const {
       classes,
@@ -509,8 +529,9 @@ class Tooltip extends React.Component {
       </Popover>
     );
   };
+
   render() {
-    const { children, click, hover, component: Component } = this.props;
+    const { children, click, component: Component } = this.props;
 
     const linkedStyles = this.getLinkedStyles();
 
@@ -519,8 +540,8 @@ class Tooltip extends React.Component {
         <Component
           ref={this.tooltipRootRef}
           onClick={click ? this.clickCallback : undefined}
-          onMouseEnter={hover ? this.handleOpen : undefined}
-          onMouseLeave={hover ? this.handleClose : undefined}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
         >
           {children}
         </Component>
