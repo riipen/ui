@@ -20,6 +20,8 @@ export default function Usage() {
         hint="Pick your favorite color."
         onChange={handleChange}
         required
+        name="radios"
+        id="radio-group"
       >
         <Radio
           label="Grey"

@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+/**
+ * This HoC must be the immediate parent of the wrapped component to correctly get the name
+ */
 const withClasses = WrappedComponent => {
   const name = WrappedComponent.displayName || WrappedComponent.name;
 

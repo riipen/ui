@@ -19,7 +19,8 @@ const Chip = ({
   onClick,
   size,
   theme,
-  variant
+  variant,
+  ...other
 }) => {
   const [focusVisible, setFocusVisible] = useState(false);
   const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
@@ -56,6 +57,7 @@ const Chip = ({
         onFocus={handleFocus}
         ref={ref}
         tabIndex={clickable ? "0" : undefined}
+        {...other}
       >
         {icon && <span className="icon">{icon}</span>}
         <span className={clsx("label")}>{label || children}</span>

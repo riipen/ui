@@ -35,17 +35,11 @@ You can use the `startAdornment` and `endAdornment` props to add additional cont
 
 {{"demo": "pages/components/input/Adornments.js"}}
 
-## Label Color
+## Label Props
 
-The `labelColor` prop can change the color of the label.
+The `labelProps` prop is used to pass props to the InputLabel.
 
-{{"demo": "pages/components/input/Color.js"}}
-
-## Label Weight
-
-The `labelWeight` prop can change the weight of the label.
-
-{{"demo": "pages/components/input/Weight.js"}}
+{{"demo": "pages/components/input/LabelProps.js"}}
 
 ## Size
 

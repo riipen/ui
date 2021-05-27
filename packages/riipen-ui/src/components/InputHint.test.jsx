@@ -23,17 +23,6 @@ describe("<InputHint>", () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  describe("default prop", () => {
-    it("sets correct default props", () => {
-      const defaultProps = new InputHint().type.defaultProps;
-
-      const wrapper = mount(<InputHint />);
-
-      const component = wrapper.find("InputHint");
-      expect(component.props().color).toEqual(defaultProps.color);
-    });
-  });
-
   describe("children prop", () => {
     it("renders given children inside the Typography element", () => {
       const child = <span>hello</span>;
@@ -50,25 +39,12 @@ describe("<InputHint>", () => {
   });
 
   describe("color prop", () => {
-    it("sets color class name to the div element with a valid colour", () => {
+    it("passes color prop through to Typography", () => {
       const color = "white";
 
       const wrapper = mount(<InputHint color={color} />);
 
-      expect(
-        wrapper
-          .find("InputHint")
-          .find("div")
-          .hasClass(color)
-      ).toEqual(true);
-    });
-
-    it("gives an error with invalid color", () => {
-      const errors = jest.spyOn(console, "error").mockImplementation();
-
-      mount(<InputHint color="yellow" />);
-
-      expect(errors).toHaveBeenCalled();
+      expect(wrapper.find("Typography").props().color).toEqual(color);
     });
   });
 

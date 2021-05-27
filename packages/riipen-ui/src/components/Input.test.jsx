@@ -189,25 +189,15 @@ describe("<Input>", () => {
     });
   });
 
-  describe("labelColor prop", () => {
-    it("sets valid custom labelColor", () => {
+  describe("labelProps prop", () => {
+    it("passes props to InputLabel", () => {
       const label = "Test";
-      const labelColor = "black";
+      const labelProps = { color: "black", variant: "h2" };
 
-      const wrapper = mount(<Input label={label} labelColor={labelColor} />);
+      const wrapper = mount(<Input label={label} labelProps={labelProps} />);
 
-      expect(wrapper.find("InputLabel").props().color).toEqual(labelColor);
-    });
-  });
-
-  describe("labelWeight prop", () => {
-    it("sets valid custom labelWeight", () => {
-      const label = "Test";
-      const labelWeight = "bold";
-
-      const wrapper = mount(<Input label={label} labelWeight={labelWeight} />);
-
-      expect(wrapper.find("InputLabel").props().weight).toEqual(labelWeight);
+      expect(wrapper.find("InputLabel").props().color).toEqual("black");
+      expect(wrapper.find("InputLabel").props().variant).toEqual("h2");
     });
   });
 

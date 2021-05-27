@@ -17,7 +17,7 @@ const RadioButtonGroup = ({
   hint,
   id,
   label,
-  name,
+  labelProps,
   onChange,
   required,
   theme,
@@ -66,7 +66,6 @@ const RadioButtonGroup = ({
       child &&
       React.cloneElement(child, {
         checked: value === child.props.value,
-        name: `${name}-${child.props.value}`,
         onChange: handleChange,
         ...other,
         ...child.props,
@@ -82,7 +81,12 @@ const RadioButtonGroup = ({
     <React.Fragment>
       <fieldset id={id}>
         {(label || hint) && (
-          <InputLabel hint={hint} htmlFor={name} required={required}>
+          <InputLabel
+            hint={hint}
+            htmlFor={other.name}
+            required={required}
+            {...labelProps}
+          >
             {label}
           </InputLabel>
         )}
@@ -143,9 +147,9 @@ RadioButtonGroup.propTypes = {
   label: PropTypes.node,
 
   /**
-   * The name of the form element the label is bound to.
+   * Any props to pass through to the InputLabel
    */
-  name: PropTypes.string,
+  labelProps: PropTypes.object,
 
   /**
    * Callback fired when a radio button is selected.

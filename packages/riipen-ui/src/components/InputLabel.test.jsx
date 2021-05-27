@@ -23,19 +23,6 @@ describe("<InputLabel>", () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  describe("default props", () => {
-    it("sets correct default props", () => {
-      const defaultProps = new InputLabel().type.defaultProps;
-
-      const wrapper = mount(<InputLabel />);
-
-      const component = wrapper.find("InputLabel");
-      expect(component.props().color).toEqual(defaultProps.color);
-      expect(component.props().required).toEqual(defaultProps.required);
-      expect(component.props().weight).toEqual(defaultProps.weight);
-    });
-  });
-
   describe("children prop", () => {
     it("renders given children inside the label and Typography element", () => {
       const child = <div>it's a label</div>;
@@ -97,40 +84,27 @@ describe("<InputLabel>", () => {
   });
 
   describe("color prop", () => {
-    it("applies color class to the label element with a valid color", () => {
-      const color = "black";
+    it("passes color prop through to Typography", () => {
+      const color = "white";
       const child = <div>it's a label</div>;
 
       const wrapper = mount(<InputLabel color={color}>{child}</InputLabel>);
 
       expect(
         wrapper
-          .find("InputLabel")
-          .find("label")
-          .hasClass(color)
-      ).toEqual(true);
-    });
-
-    it("applies color class to the InputHint element with a valid color", () => {
-      const color = "black";
-      const hint = <span>it's a hint</span>;
-
-      const wrapper = mount(<InputLabel color={color} hint={hint} />);
-
-      expect(
-        wrapper
-          .find("InputLabel")
-          .find("InputHint")
+          .find("Typography")
+          .at(0)
           .props().color
       ).toEqual(color);
     });
 
-    it("gives an error when given an invalid color", () => {
-      const errors = jest.spyOn(console, "error").mockImplementation();
+    it("applies color class to the InputHint element with a valid color", () => {
+      const color = "black";
+      const hint = "hint";
 
-      mount(<InputLabel color="red" />);
+      const wrapper = mount(<InputLabel color={color} hint={hint} />);
 
-      expect(errors).toHaveBeenCalled();
+      expect(wrapper.find("InputHint").props().color).toEqual(color);
     });
   });
 
@@ -191,29 +165,37 @@ describe("<InputLabel>", () => {
     });
   });
 
-  describe("weight prop", () => {
-    it("applies weight class name on label element with a valid weight", () => {
-      const weight = "bold";
+  describe("fontWeight prop", () => {
+    it("Passes fontWeight to the underlying typography", () => {
+      const fontWeight = "bold";
       const child = <div>it's a label</div>;
 
-      const wrapper = mount(<InputLabel weight={weight}>{child}</InputLabel>);
+      const wrapper = mount(
+        <InputLabel fontWeight={fontWeight}>{child}</InputLabel>
+      );
 
       expect(
         wrapper
-          .find("InputLabel")
-          .find("label")
-          .hasClass(weight)
-      ).toEqual(true);
+          .find("Typography")
+          .at(0)
+          .props().fontWeight
+      ).toEqual(fontWeight);
     });
+  });
 
-    it("gives an error when given an invalid weight", () => {
-      const weight = "heavy";
+  describe("variant prop", () => {
+    it("Passes variant to the underlying typography", () => {
+      const variant = "h4";
       const child = <div>it's a label</div>;
-      const errors = jest.spyOn(console, "error").mockImplementation();
 
-      mount(<InputLabel weight={weight}>{child}</InputLabel>);
+      const wrapper = mount(<InputLabel variant={variant}>{child}</InputLabel>);
 
-      expect(errors).toHaveBeenCalled();
+      expect(
+        wrapper
+          .find("Typography")
+          .at(0)
+          .props().variant
+      ).toEqual(variant);
     });
   });
 });

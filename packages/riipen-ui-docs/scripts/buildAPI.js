@@ -161,13 +161,20 @@ function run() {
 
   const components = getComponents(directory, []);
 
-  components.forEach(component => {
-    buildDocs({ component }).catch(error => {
-      console.warn(`error building docs for ${component.filename}`);
-      console.error(error);
-      process.exit(1);
+  const blacklist = [
+    "components/EditorDecorator.jsx",
+    "components/EditorUtils.jsx"
+  ];
+
+  components
+    .filter(c => !blacklist.some(b => c.filename.endsWith(b)))
+    .forEach(component => {
+      buildDocs({ component }).catch(error => {
+        console.warn(`error building docs for ${component.filename}`);
+        console.error(error);
+        process.exit(1);
+      });
     });
-  });
 }
 
 run();

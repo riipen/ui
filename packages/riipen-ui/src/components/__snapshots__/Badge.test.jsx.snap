@@ -24,10 +24,10 @@ exports[`<Badge> renders correct snapshot 1`] = `
     variant="standard"
   >
     <span
-      className="jsx-1015140608 root"
+      className="jsx-2728802926 root"
     >
       <span
-        className="jsx-1015140608 badge hidden top-right-rectangle primary standard medium riipen riipen-badge"
+        className="jsx-2728802926 badge hidden top-right-rectangle primary standard medium riipen riipen-badge"
       />
     </span>
     <JSXStyle
@@ -56,7 +56,7 @@ exports[`<Badge> renders correct snapshot 1`] = `
           "#fff",
         ]
       }
-      id="2138813230"
+      id="4120284361"
     />
   </Badge>
 </withClasses(Badge)>

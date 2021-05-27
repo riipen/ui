@@ -47,6 +47,8 @@ export default function Usage() {
         label="Style"
         style={{ backgroundColor: "#ed7321", minHeight: "200px", opacity: 0.3 }}
       />
+      <div style={style} />
+      <RichTextEditor id="editor-disabled" label="Disabled" disabled />
     </Form>
   );
 }
