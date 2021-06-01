@@ -26,6 +26,11 @@ class Avatar extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * The color of the background for the Avatar
+     */
+    color: PropTypes.oneOf(["grey", "white"]),
+
+    /**
      * The height and width size to render the Avatar at.
      */
     size: PropTypes.string.isRequired,
@@ -38,13 +43,14 @@ class Avatar extends React.Component {
     /**
      * The shape of the avatar.
      */
-    variant: PropTypes.oneOf(["circle", "rounded", "square"])
+    variant: PropTypes.oneOf(["circle", "rounded", "square"]),
   };
 
   static defaultProps = {
     classes: [],
+    color: "grey",
     size: "96px",
-    variant: "circle"
+    variant: "circle",
   };
 
   getBorderSize() {
@@ -64,11 +70,20 @@ class Avatar extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { alt, children, classes, size, src, variant, ...other } = this.props;
+    const {
+      alt,
+      children,
+      classes,
+      color,
+      size,
+      src,
+      variant,
+      ...other
+    } = this.props;
 
     const theme = this.context;
 
-    const className = clsx("avatar", variant, classes);
+    const className = clsx("avatar", variant, classes, color);
 
     return (
       <React.Fragment>
@@ -83,7 +98,6 @@ class Avatar extends React.Component {
         </span>
         <style jsx>{`
           .avatar {
-            background-color: ${theme.palette.grey[200]};
             border: ${this.getBorderSize()} solid ${theme.palette.common.white};
             display: inline-block;
             font-family: ${theme.typography.fontFamily};
@@ -96,6 +110,10 @@ class Avatar extends React.Component {
             min-width: ${size};
             overflow: hidden;
             user-select: none;
+          }
+
+          .grey {
+            background-color: ${theme.palette.grey[200]};
           }
 
           .circle {
@@ -119,8 +137,13 @@ class Avatar extends React.Component {
           .rounded {
             border-radius: ${theme.shape.borderRadius.md};
           }
+
           .square {
             border-radius: 0px;
+          }
+
+          .white {
+            background-color: ${theme.palette.common.white};
           }
         `}</style>
       </React.Fragment>

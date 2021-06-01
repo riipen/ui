@@ -9,20 +9,20 @@ exports[`<Avatar> renders correct snapshot 1`] = `
         "riipen-avatar",
       ]
     }
+    color="grey"
     size="96px"
     variant="circle"
   >
     <span
-      className="jsx-3881544049 avatar circle riipen riipen-avatar"
+      className="jsx-888354494 avatar circle riipen riipen-avatar grey"
     >
       <span
-        className="jsx-3881544049 inner"
+        className="jsx-888354494 inner"
       />
     </span>
     <JSXStyle
       dynamic={
         Array [
-          "#eeeeee",
           "4px",
           "#fff",
           "Roboto, Helvetica, Arial, sans-serif",
@@ -32,10 +32,12 @@ exports[`<Avatar> renders correct snapshot 1`] = `
           "96px",
           "96px",
           "96px",
+          "#eeeeee",
           "4px",
+          "#fff",
         ]
       }
-      id="4017156812"
+      id="1416698901"
     />
   </Avatar>
 </withClasses(Avatar)>
