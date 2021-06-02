@@ -28,7 +28,7 @@ class Avatar extends React.Component {
     /**
      * The color of the background for the Avatar
      */
-    color: PropTypes.oneOf(["grey", "white"]),
+    backgroundColor: PropTypes.oneOf(["grey", "white"]),
 
     /**
      * The height and width size to render the Avatar at.
@@ -43,14 +43,14 @@ class Avatar extends React.Component {
     /**
      * The shape of the avatar.
      */
-    variant: PropTypes.oneOf(["circle", "rounded", "square"]),
+    variant: PropTypes.oneOf(["circle", "rounded", "square"])
   };
 
   static defaultProps = {
     classes: [],
-    color: "grey",
+    backgroundColor: "grey",
     size: "96px",
-    variant: "circle",
+    variant: "circle"
   };
 
   getBorderSize() {
@@ -72,9 +72,9 @@ class Avatar extends React.Component {
   render() {
     const {
       alt,
+      backgroundColor,
       children,
       classes,
-      color,
       size,
       src,
       variant,
@@ -83,7 +83,12 @@ class Avatar extends React.Component {
 
     const theme = this.context;
 
-    const className = clsx("avatar", variant, classes, color);
+    const className = clsx(
+      "avatar",
+      variant,
+      classes,
+      `background-${backgroundColor}`
+    );
 
     return (
       <React.Fragment>
@@ -112,8 +117,12 @@ class Avatar extends React.Component {
             user-select: none;
           }
 
-          .grey {
+          .background-grey {
             background-color: ${theme.palette.grey[200]};
+          }
+
+          .background-white {
+            background-color: ${theme.palette.common.white};
           }
 
           .circle {
@@ -140,10 +149,6 @@ class Avatar extends React.Component {
 
           .square {
             border-radius: 0px;
-          }
-
-          .white {
-            background-color: ${theme.palette.common.white};
           }
         `}</style>
       </React.Fragment>

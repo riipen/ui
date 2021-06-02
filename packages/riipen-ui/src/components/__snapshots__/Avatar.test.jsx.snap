@@ -3,21 +3,21 @@
 exports[`<Avatar> renders correct snapshot 1`] = `
 <withClasses(Avatar)>
   <Avatar
+    backgroundColor="grey"
     classes={
       Array [
         "riipen",
         "riipen-avatar",
       ]
     }
-    color="grey"
     size="96px"
     variant="circle"
   >
     <span
-      className="jsx-888354494 avatar circle riipen riipen-avatar grey"
+      className="jsx-3275828585 avatar circle riipen riipen-avatar background-grey"
     >
       <span
-        className="jsx-888354494 inner"
+        className="jsx-3275828585 inner"
       />
     </span>
     <JSXStyle
@@ -33,11 +33,11 @@ exports[`<Avatar> renders correct snapshot 1`] = `
           "96px",
           "96px",
           "#eeeeee",
-          "4px",
           "#fff",
+          "4px",
         ]
       }
-      id="1416698901"
+      id="364247947"
     />
   </Avatar>
 </withClasses(Avatar)>
