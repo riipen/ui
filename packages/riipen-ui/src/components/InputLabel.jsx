@@ -42,7 +42,6 @@ const InputLabel = ({
       {hint && <InputHint color={color}>{hint}</InputHint>}
       <style jsx>{`
         label {
-          color: ${theme.palette.text.secondary};
           display: inline-block;
           margin-bottom: ${theme.spacing(marginBottom)}px;
         }
@@ -98,8 +97,8 @@ InputLabel.propTypes = {
 
 InputLabel.defaultProps = {
   classes: [],
-  color: "inherit",
-  fontWeight: "regular",
+  color: "greyA400",
+  fontWeight: "medium",
   required: false,
   variant: "h5"
 };
