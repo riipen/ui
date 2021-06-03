@@ -28,7 +28,7 @@ class Avatar extends React.Component {
     /**
      * The color of the background for the Avatar
      */
-    backgroundColor: PropTypes.oneOf(["grey", "white"]),
+    backgroundColor: PropTypes.oneOf(["grey200", "white"]),
 
     /**
      * The height and width size to render the Avatar at.
@@ -48,7 +48,7 @@ class Avatar extends React.Component {
 
   static defaultProps = {
     classes: [],
-    backgroundColor: "grey",
+    backgroundColor: "grey200",
     size: "96px",
     variant: "circle"
   };
@@ -117,7 +117,7 @@ class Avatar extends React.Component {
             user-select: none;
           }
 
-          .background-grey {
+          .background-grey200 {
             background-color: ${theme.palette.grey[200]};
           }
 
