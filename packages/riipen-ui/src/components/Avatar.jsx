@@ -26,6 +26,11 @@ class Avatar extends React.Component {
     classes: PropTypes.array,
 
     /**
+     * The color of the background for the Avatar
+     */
+    backgroundColor: PropTypes.oneOf(["grey200", "white"]),
+
+    /**
      * The height and width size to render the Avatar at.
      */
     size: PropTypes.string.isRequired,
@@ -43,6 +48,7 @@ class Avatar extends React.Component {
 
   static defaultProps = {
     classes: [],
+    backgroundColor: "grey200",
     size: "96px",
     variant: "circle"
   };
@@ -64,11 +70,25 @@ class Avatar extends React.Component {
   static contextType = ThemeContext;
 
   render() {
-    const { alt, children, classes, size, src, variant, ...other } = this.props;
+    const {
+      alt,
+      backgroundColor,
+      children,
+      classes,
+      size,
+      src,
+      variant,
+      ...other
+    } = this.props;
 
     const theme = this.context;
 
-    const className = clsx("avatar", variant, classes);
+    const className = clsx(
+      "avatar",
+      variant,
+      classes,
+      `background-${backgroundColor}`
+    );
 
     return (
       <React.Fragment>
@@ -83,7 +103,6 @@ class Avatar extends React.Component {
         </span>
         <style jsx>{`
           .avatar {
-            background-color: ${theme.palette.grey[200]};
             border: ${this.getBorderSize()} solid ${theme.palette.common.white};
             display: inline-block;
             font-family: ${theme.typography.fontFamily};
@@ -96,6 +115,14 @@ class Avatar extends React.Component {
             min-width: ${size};
             overflow: hidden;
             user-select: none;
+          }
+
+          .background-grey200 {
+            background-color: ${theme.palette.grey[200]};
+          }
+
+          .background-white {
+            background-color: ${theme.palette.common.white};
           }
 
           .circle {
@@ -119,6 +146,7 @@ class Avatar extends React.Component {
           .rounded {
             border-radius: ${theme.shape.borderRadius.md};
           }
+
           .square {
             border-radius: 0px;
           }
