@@ -25,6 +25,7 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   const handleMenuOpen = (event) => {
+    document.body.style.overflow = menuOpen ? "auto" : "hidden";
     setAnchorState(menuOpen ? null : event.currentTarget);
     setMenuOpen(!menuOpen);
   };
@@ -55,29 +56,28 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
       <Head>
         <title>{title ? `${title} | ` : ""}Riipen UI</title>
       </Head>
-      <AppBar>
+      <AppBar classes={["appBar"]}>
         <Link href="/" color="inherit">
           Riipen-UI
         </Link>
         <div className="menuMobile">
-          <React.Fragment>
-            <ButtonIcon color="white" onClick={handleMenuOpen}>
-              <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
-            </ButtonIcon>
-            <Popover
-              anchorEl={anchorState}
-              anchorPosition={{
-                vertical: "bottom",
-                horizontal: "center"
-              }}
-              closeOnScrolled={false}
-              fullWidth
-              isOpen={menuOpen}
-              lockScroll
-            >
-              <Menu />
-            </Popover>
-          </React.Fragment>
+          <ButtonIcon color="white" onClick={handleMenuOpen}>
+            <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+          </ButtonIcon>
+          <Popover
+            anchorEl={anchorState}
+            anchorPosition={{ horizontal: "center", vertical: "bottom" }}
+            classes={["menuPopover"]}
+            contentPosition={{
+              horizontal: "center",
+              vertical: "top"
+            }}
+            closeOnScrolled={false}
+            fullWidth
+            isOpen={menuOpen}
+          >
+            <Menu />
+          </Popover>
         </div>
       </AppBar>
       <div className="page">
@@ -122,6 +122,9 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
         </div>
       </div>
       <style jsx>{`
+        :global(.appBar) {
+          justify-content: space-between;
+        }
         .page {
           display: flex;
           justify-content: space-between;
@@ -144,7 +147,11 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
         .menuMobile {
           display: none;
         }
-        .menuMobile :global(.popover) {
+        :global(.menuPopover) {
+          margin: ${theme.spacing(3)}px ${theme.spacing(2)}px;
+          max-height: calc(100% - ${theme.spacing(13)}px) !important;
+          max-width: calc(100% - ${theme.spacing(4)}px) !important;
+          padding: ${theme.spacing(2)}px;
           overflow-y: auto;
         }
         .toc {
@@ -161,7 +168,6 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
 
           .menuMobile {
             display: initial;
-            margin-left: auto;
           }
         }
         .footer {
