@@ -221,8 +221,8 @@ exports[`<InputLabel> renders correct snapshot 1`] = `
           "riipen-inputlabel",
         ]
       }
-      color="inherit"
-      fontWeight="regular"
+      color="greyA400"
+      fontWeight="medium"
       required={false}
       theme={
         Object {
@@ -439,11 +439,10 @@ exports[`<InputLabel> renders correct snapshot 1`] = `
       <JSXStyle
         dynamic={
           Array [
-            "#747474",
             15,
           ]
         }
-        id="873900508"
+        id="517714963"
       />
     </InputLabel>
   </withClasses(InputLabel)>
