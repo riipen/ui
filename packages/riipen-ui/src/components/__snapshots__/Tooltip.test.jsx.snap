@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tooltip> renders correct snapshot 1`] = `
+<withClasses(Tooltip)>
+  <Tooltip
+    classes={
+      Array [
+        "riipen",
+        "riipen-tooltip",
+      ]
+    }
+    click={false}
+    color="default"
+    component="div"
+    hover={true}
+    isControlledByProps={false}
+    keepOpenOnMouseLeave={false}
+    open={false}
+    position="bottom-center"
+    size="small"
+  >
+    <div
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    />
+    <withClasses(Popover)
+      anchorEl={null}
+      anchorPosition={
+        Object {
+          "horizontal": "center",
+          "vertical": "bottom",
+        }
+      }
+      classes={
+        Array [
+          "riipen",
+          "riipen-tooltip",
+          "jsx-3429463278",
+          "popover",
+          "default",
+          "bottom-center",
+          "bottom",
+          "small",
+          false,
+        ]
+      }
+      contentPosition={
+        Object {
+          "horizontal": "center",
+          "vertical": "top",
+        }
+      }
+      isOpen={false}
+      keepOnScreen={true}
+      lockScroll={false}
+      onClose={[Function]}
+    >
+      <Popover
+        anchorEl={null}
+        anchorPosition={
+          Object {
+            "horizontal": "center",
+            "vertical": "bottom",
+          }
+        }
+        classes={
+          Array [
+            "riipen",
+            "riipen-popover",
+            "riipen",
+            "riipen-tooltip",
+            "jsx-3429463278",
+            "popover",
+            "default",
+            "bottom-center",
+            "bottom",
+            "small",
+            false,
+          ]
+        }
+        closeOnScrolled={true}
+        component="span"
+        contentPosition={
+          Object {
+            "horizontal": "center",
+            "vertical": "top",
+          }
+        }
+        fullWidth={false}
+        isOpen={false}
+        keepOnScreen={true}
+        lockScroll={false}
+        marginThreshold={16}
+        onClose={[Function]}
+        styles={Object {}}
+      >
+        <JSXStyle
+          dynamic={
+            Array [
+              "#fff",
+              "4px",
+              "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
+              "calc(100% - 32px)",
+              "",
+              3,
+            ]
+          }
+          id="631859544"
+        />
+      </Popover>
+    </withClasses(Popover)>
+    <JSXStyle
+      dynamic={
+        Array [
+          "#fff",
+          250,
+          "cubic-bezier(0.4, 0, 1, 1)",
+          5,
+          20,
+          20,
+          "#747474",
+          "#747474",
+          "#747474",
+          "#747474",
+          "#e95353",
+          "#e95353",
+          "#e95353",
+          "#e95353",
+          "#4cc88d",
+          "#4cc88d",
+          "#4cc88d",
+          "#4cc88d",
+          "#febb46",
+          "#febb46",
+          "#febb46",
+          "#febb46",
+          "#fff",
+          "#dddddd",
+          "#fff",
+          "#dddddd",
+          "#373737",
+          10,
+          10,
+          15,
+          -20,
+          10,
+          10,
+          10,
+          -20,
+          10,
+          10,
+          15,
+          -20,
+          10,
+          -20,
+          -15,
+          -20,
+          10,
+          -20,
+          -15,
+          -20,
+          10,
+          10,
+          10,
+          -20,
+          10,
+        ]
+      }
+      id="4063941441"
+    />
+  </Tooltip>
+</withClasses(Tooltip)>
+`;

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useRef, useState } from "react";
 import css from "styled-jsx/css";
 
 import ThemeContext from "../styles/ThemeContext";
@@ -8,130 +8,29 @@ import withClasses from "../utils/withClasses";
 
 import Popover from "./Popover";
 
-class Tooltip extends React.Component {
-  static displayName = "Tooltip";
+const Tooltip = ({
+  children,
+  classes,
+  click,
+  color,
+  component: Component,
+  hover,
+  isControlledByProps,
+  keepOpenOnMouseLeave,
+  onClose,
+  onKeyDown,
+  onOpen,
+  open,
+  position,
+  size,
+  tooltip,
+  ...other
+}) => {
+  const theme = React.useContext(ThemeContext);
+  const [isOpen, setIsOpen] = useState(false);
+  const tooltipRootRef = useRef(null);
 
-  static propTypes = {
-    /**
-     * The content to trigger the tooltip with.
-     */
-    children: PropTypes.node,
-
-    /**
-     * Any additional classes to apply.
-     */
-    classes: PropTypes.array,
-
-    /**
-     * Whether tooltip should display on click.
-     */
-    click: PropTypes.bool,
-
-    /**
-     * Color of tooltip.
-     */
-    color: PropTypes.oneOf([
-      "default",
-      "white",
-      "positive",
-      "negative",
-      "warning"
-    ]),
-
-    /**
-     * The component used for the root node.
-     * Either a string to use a DOM element or a component.
-     */
-    component: PropTypes.elementType,
-
-    /**
-     * Function to call on tooltip keydown.
-     */
-    onKeyDown: PropTypes.func,
-
-    /**
-     * Whether tooltip should display on hover.
-     */
-    hover: PropTypes.bool,
-
-    /**
-     * How the open/close state will be determined:
-     * [Default] false: by this component's state,
-     * true: by this component's props.
-     */
-    isControlledByProps: PropTypes.bool,
-
-    /**
-     * Whether the popover should stay open after leaving the content.
-     */
-    keepOpenOnMouseLeave: PropTypes.bool,
-
-    /**
-     * Function to call on tooltip close.
-     */
-    onClose: PropTypes.func,
-
-    /**
-     * Function to call on tooltip open.
-     */
-    onOpen: PropTypes.func,
-
-    /**
-     * Whether the popover should be open/shown.
-     * Only used when props.isControlledByProps is true
-     * [Default] false
-     */
-    open: PropTypes.bool,
-
-    /**
-     * Where to display the tooltip in relation to element.
-     */
-    position: PropTypes.oneOf([
-      "top-right",
-      "top-center",
-      "top-left",
-      "center-right",
-      "center-left",
-      "bottom-right",
-      "bottom-center",
-      "bottom-left"
-    ]),
-
-    /**
-     * The size of the tooltip.
-     */
-    size: PropTypes.oneOf(["small", "medium"]),
-
-    /**
-     * The tooltip content to display.
-     */
-    tooltip: PropTypes.node
-  };
-
-  static defaultProps = {
-    classes: [],
-    click: false,
-    color: "default",
-    component: "div",
-    hover: true,
-    isControlledByProps: false,
-    open: false,
-    keepOpenOnMouseLeave: false,
-    position: "bottom-center",
-    size: "small"
-  };
-
-  constructor() {
-    super();
-    this.tooltipRootRef = React.createRef();
-    this.state = {
-      open: false
-    };
-  }
-
-  getLinkedStyles = () => {
-    const theme = this.context;
-
+  const getLinkedStyles = () => {
     return css.resolve`
       .popover {
         border-radius: 2px;
@@ -406,16 +305,18 @@ class Tooltip extends React.Component {
    * @param {string} value - value to compare
    * @returns {string} Opposing direciton, or just value if directions do not oppose.
    */
-  getOppositeDirection = (direction1, direction2, value) => {
-    if (value === direction1) {
-      return direction2;
-    } else if (value === direction2) {
-      return direction1;
+  const getOppositeDirection = (direction, oppositeDirection, value) => {
+    if (value === direction) {
+      return oppositeDirection;
+    } else if (value === oppositeDirection) {
+      return direction;
     }
     return value;
   };
 
-  blur = () => {
+  const getOpen = () => (isControlledByProps ? open : isOpen);
+
+  const blur = () => {
     // Unfocus if it is still active
     const activeElement = document.activeElement;
     if (activeElement) {
@@ -423,80 +324,51 @@ class Tooltip extends React.Component {
     }
   };
 
-  clickCallback = () => {
-    const { open } = this.state;
+  const clickCallback = () => {
+    const callback = !getOpen() ? onOpen : onClose;
 
-    const callback = !open ? this.props.onOpen : this.props.onClose;
+    blur();
 
-    this.blur();
-
-    this.setState(
-      {
-        open: !open
-      },
-      callback
-    );
+    if (!isControlledByProps) setIsOpen(!isOpen);
+    if (callback) callback();
   };
 
-  static contextType = ThemeContext;
-
-  handleOpen = () => {
-    this.setState({ open: true }, this.props.onOpen);
-  };
-
-  handleClose = () => {
-    this.blur();
-
-    this.setState(
-      {
-        open: false
-      },
-      this.props.onClose
-    );
-  };
-
-  handleMouseEnter = () => {
-    if (this.props.hover) {
-      this.handleOpen();
+  const handleOpen = () => {
+    if (!isControlledByProps) setIsOpen(true);
+    if (onOpen) {
+      onOpen();
     }
   };
 
-  handleMouseLeave = () => {
-    const { hover, keepOpenOnMouseLeave } = this.props;
+  const handleClose = () => {
+    blur();
+    if (!isControlledByProps) setIsOpen(false);
+    if (onClose) {
+      onClose();
+    }
+  };
 
+  const handleMouseEnter = () => {
+    if (hover) {
+      handleOpen();
+    }
+  };
+
+  const handleMouseLeave = () => {
     if (hover && !keepOpenOnMouseLeave) {
-      this.handleClose();
+      handleClose();
     }
   };
 
-  renderPopover = () => {
-    const {
-      classes,
-      color,
-      onKeyDown,
-      isControlledByProps,
-      position,
-      size,
-      tooltip,
-      ...other
-    } = this.props;
+  const renderPopover = () => {
+    const popoverOpen = getOpen();
 
-    const { open } = isControlledByProps ? this.props : this.state;
-
-    const linkedStyles = this.getLinkedStyles();
+    const linkedStyles = getLinkedStyles();
 
     const [vertical, horizontal] = position.split("-");
 
-    const contentVertical = this.getOppositeDirection(
-      "top",
-      "bottom",
-      vertical
-    );
-    const contentHorizontal = this.getOppositeDirection(
-      "left",
-      "right",
-      horizontal
-    );
+    const contentVertical = getOppositeDirection("top", "bottom", vertical);
+    const contentHorizontal = getOppositeDirection("left", "right", horizontal);
 
     return (
       <Popover
@@ -507,7 +379,7 @@ class Tooltip extends React.Component {
           position,
           vertical,
           size,
-          open && "show"
+          popoverOpen && "show"
         ])}
         anchorPosition={{
           horizontal,
@@ -518,11 +390,11 @@ class Tooltip extends React.Component {
           vertical: contentVertical
         }}
         onKeyDown={onKeyDown}
-        anchorEl={this.tooltipRootRef.current}
-        isOpen={open}
+        anchorEl={tooltipRootRef.current}
+        isOpen={popoverOpen}
         keepOnScreen
         lockScroll={false}
-        onClose={this.handleClose}
+        onClose={handleClose}
         {...other}
       >
         <React.Fragment>{tooltip}</React.Fragment>
@@ -530,26 +402,134 @@ class Tooltip extends React.Component {
     );
   };
 
-  render() {
-    const { children, click, component: Component } = this.props;
+  const linkedStyles = getLinkedStyles();
 
-    const linkedStyles = this.getLinkedStyles();
+  return (
+    <React.Fragment>
+      <Component
+        ref={tooltipRootRef}
+        onClick={click ? clickCallback : undefined}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {children}
+      </Component>
+      {renderPopover()}
+      {linkedStyles.styles}
+    </React.Fragment>
+  );
+};
 
-    return (
-      <React.Fragment>
-        <Component
-          ref={this.tooltipRootRef}
-          onClick={click ? this.clickCallback : undefined}
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-        >
-          {children}
-        </Component>
-        {this.renderPopover()}
-        {linkedStyles.styles}
-      </React.Fragment>
-    );
-  }
-}
+Tooltip.displayName = "Tooltip";
+
+Tooltip.propTypes = {
+  /**
+   * The content to trigger the tooltip with.
+   */
+  children: PropTypes.node,
+
+  /**
+   * Any additional classes to apply.
+   */
+  classes: PropTypes.array,
+
+  /**
+   * Whether tooltip should display on click.
+   */
+  click: PropTypes.bool,
+
+  /**
+   * Color of tooltip.
+   */
+  color: PropTypes.oneOf([
+    "default",
+    "white",
+    "positive",
+    "negative",
+    "warning"
+  ]),
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a DOM element or a component.
+   */
+  component: PropTypes.elementType,
+
+  /**
+   * Function to call on tooltip keydown.
+   */
+  onKeyDown: PropTypes.func,
+
+  /**
+   * Whether tooltip should display on hover.
+   */
+  hover: PropTypes.bool,
+
+  /**
+   * How the open/close state will be determined:
+   * [Default] false: by this component's state,
+   * true: by this component's props.
+   */
+  isControlledByProps: PropTypes.bool,
+
+  /**
+   * Whether the popover should stay open after leaving the content.
+   */
+  keepOpenOnMouseLeave: PropTypes.bool,
+
+  /**
+   * Function to call on tooltip close.
+   */
+  onClose: PropTypes.func,
+
+  /**
+   * Function to call on tooltip open.
+   */
+  onOpen: PropTypes.func,
+
+  /**
+   * Whether the popover should be open/shown.
+   * Only used when props.isControlledByProps is true
+   * [Default] false
+   */
+  open: PropTypes.bool,
+
+  /**
+   * Where to display the tooltip in relation to element.
+   */
+  position: PropTypes.oneOf([
+    "top-right",
+    "top-center",
+    "top-left",
+    "center-right",
+    "center-left",
+    "bottom-right",
+    "bottom-center",
+    "bottom-left"
+  ]),
+
+  /**
+   * The size of the tooltip.
+   */
+  size: PropTypes.oneOf(["small", "medium"]),
+
+  /**
+   * The tooltip content to display.
+   */
+  tooltip: PropTypes.node
+};
+
+Tooltip.defaultProps = {
+  classes: [],
+  click: false,
+  color: "default",
+  component: "div",
+  hover: true,
+  isControlledByProps: false,
+  open: false,
+  keepOpenOnMouseLeave: false,
+  position: "bottom-center",
+  size: "small"
+};
 
 export default withClasses(Tooltip);
