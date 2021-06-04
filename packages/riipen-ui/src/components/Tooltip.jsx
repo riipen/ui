@@ -8,6 +8,22 @@ import withClasses from "../utils/withClasses";
 
 import Popover from "./Popover";
 
+/**
+ * Gets the opposing direction of direction1 and direction2.
+ * @param {string} direction1 - first direction
+ * @param {string} direction2 - opposing direction of direction1
+ * @param {string} value - value to compare
+ * @returns {string} Opposing direciton, or just value if directions do not oppose.
+ */
+const getOppositeDirection = (direction, oppositeDirection, value) => {
+  if (value === direction) {
+    return oppositeDirection;
+  } else if (value === oppositeDirection) {
+    return direction;
+  }
+  return value;
+};
+
 const Tooltip = ({
   children,
   classes,
@@ -304,37 +320,12 @@ const Tooltip = ({
     `;
   };
 
-  /**
-   * Gets the opposing direction of direction1 and direction2.
-   * @param {string} direction1 - first direction
-   * @param {string} direction2 - opposing direction of direction1
-   * @param {string} value - value to compare
-   * @returns {string} Opposing direciton, or just value if directions do not oppose.
-   */
-  const getOppositeDirection = (direction, oppositeDirection, value) => {
-    if (value === direction) {
-      return oppositeDirection;
-    } else if (value === oppositeDirection) {
-      return direction;
-    }
-    return value;
-  };
-
   const blur = () => {
     // Unfocus if it is still active
     const activeElement = document.activeElement;
     if (activeElement) {
       activeElement.blur();
     }
-  };
-
-  const clickCallback = () => {
-    const callback = isOpen ? onClose : onOpen;
-
-    blur();
-
-    if (!isControlledByProps) setIsOpen(!isOpen);
-    if (callback) callback();
   };
 
   const handleOpen = () => {
@@ -352,58 +343,13 @@ const Tooltip = ({
     }
   };
 
-  const handleMouseEnter = () => {
-    if (hover) {
-      handleOpen();
-    }
+  const clickCallback = () => (isOpen ? handleClose() : handleOpen());
+
+  const [vertical, horizontal] = position.split("-");
+  const contentPosition = {
+    horizontal: getOppositeDirection("left", "right", horizontal),
+    vertical: getOppositeDirection("top", "bottom", vertical)
   };
-
-  const handleMouseLeave = () => {
-    if (hover && !keepOpenOnMouseLeave) {
-      handleClose();
-    }
-  };
-
-  const renderPopover = () => {
-    const linkedStyles = getLinkedStyles();
-
-    const [vertical, horizontal] = position.split("-");
-
-    const contentVertical = getOppositeDirection("top", "bottom", vertical);
-    const contentHorizontal = getOppositeDirection("left", "right", horizontal);
-
-    return (
-      <Popover
-        classes={classes.concat([
-          linkedStyles.className,
-          "popover",
-          color,
-          position,
-          vertical,
-          size,
-          isOpen && "show"
-        ])}
-        anchorPosition={{
-          horizontal,
-          vertical
-        }}
-        contentPosition={{
-          horizontal: contentHorizontal,
-          vertical: contentVertical
-        }}
-        onKeyDown={onKeyDown}
-        anchorEl={tooltipRootRef.current}
-        isOpen={isOpen}
-        keepOnScreen
-        lockScroll={false}
-        onClose={handleClose}
-        {...other}
-      >
-        <React.Fragment>{tooltip}</React.Fragment>
-      </Popover>
-    );
-  };
-
   const linkedStyles = getLinkedStyles();
 
   return (
@@ -411,12 +357,38 @@ const Tooltip = ({
       <Component
         ref={tooltipRootRef}
         onClick={click ? clickCallback : undefined}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={hover ? handleOpen : null}
+        onMouseLeave={hover && !keepOpenOnMouseLeave ? handleClose : null}
       >
         {children}
       </Component>
-      {renderPopover()}
+      {
+        <Popover
+          classes={classes.concat([
+            linkedStyles.className,
+            "popover",
+            color,
+            position,
+            vertical,
+            size,
+            isOpen && "show"
+          ])}
+          anchorPosition={{
+            horizontal,
+            vertical
+          }}
+          contentPosition={contentPosition}
+          onKeyDown={onKeyDown}
+          anchorEl={tooltipRootRef.current}
+          isOpen={isOpen}
+          keepOnScreen
+          lockScroll={false}
+          onClose={handleClose}
+          {...other}
+        >
+          <React.Fragment>{tooltip}</React.Fragment>
+        </Popover>
+      }
       {linkedStyles.styles}
     </React.Fragment>
   );
