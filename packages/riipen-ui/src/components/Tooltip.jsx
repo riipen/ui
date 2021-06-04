@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import css from "styled-jsx/css";
 
 import ThemeContext from "../styles/ThemeContext";
@@ -27,8 +27,14 @@ const Tooltip = ({
   ...other
 }) => {
   const theme = React.useContext(ThemeContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(isControlledByProps ? open : false);
   const tooltipRootRef = useRef(null);
+
+  useEffect(() => {
+    if (isControlledByProps) {
+      setIsOpen(open);
+    }
+  }, [isControlledByProps, open]);
 
   const getLinkedStyles = () => {
     return css.resolve`
@@ -314,8 +320,6 @@ const Tooltip = ({
     return value;
   };
 
-  const getOpen = () => (isControlledByProps ? open : isOpen);
-
   const blur = () => {
     // Unfocus if it is still active
     const activeElement = document.activeElement;
@@ -325,7 +329,7 @@ const Tooltip = ({
   };
 
   const clickCallback = () => {
-    const callback = !getOpen() ? onOpen : onClose;
+    const callback = isOpen ? onClose : onOpen;
 
     blur();
 
@@ -361,8 +365,6 @@ const Tooltip = ({
   };
 
   const renderPopover = () => {
-    const popoverOpen = getOpen();
-
     const linkedStyles = getLinkedStyles();
 
     const [vertical, horizontal] = position.split("-");
@@ -379,7 +381,7 @@ const Tooltip = ({
           position,
           vertical,
           size,
-          popoverOpen && "show"
+          isOpen && "show"
         ])}
         anchorPosition={{
           horizontal,
@@ -391,7 +393,7 @@ const Tooltip = ({
         }}
         onKeyDown={onKeyDown}
         anchorEl={tooltipRootRef.current}
-        isOpen={popoverOpen}
+        isOpen={isOpen}
         keepOnScreen
         lockScroll={false}
         onClose={handleClose}
@@ -456,11 +458,6 @@ Tooltip.propTypes = {
   component: PropTypes.elementType,
 
   /**
-   * Function to call on tooltip keydown.
-   */
-  onKeyDown: PropTypes.func,
-
-  /**
    * Whether tooltip should display on hover.
    */
   hover: PropTypes.bool,
@@ -481,6 +478,11 @@ Tooltip.propTypes = {
    * Function to call on tooltip close.
    */
   onClose: PropTypes.func,
+
+  /**
+   * Function to call on tooltip keydown.
+   */
+  onKeyDown: PropTypes.func,
 
   /**
    * Function to call on tooltip open.
