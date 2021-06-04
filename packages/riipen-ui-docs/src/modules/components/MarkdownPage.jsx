@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import PropTypes from "prop-types";
 import React from "react";
@@ -62,10 +62,14 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
         <div className="menuMobile">
           <React.Fragment>
             <ButtonIcon color="white" onClick={handleMenuOpen}>
-              <FontAwesomeIcon icon={faBars} />
+              <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
             </ButtonIcon>
             <Popover
               anchorEl={anchorState}
+              anchorPosition={{
+                vertical: "bottom",
+                horizontal: "center"
+              }}
               closeOnScrolled={false}
               fullWidth
               isOpen={menuOpen}
