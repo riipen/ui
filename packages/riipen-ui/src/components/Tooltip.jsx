@@ -320,14 +320,6 @@ const Tooltip = ({
     `;
   };
 
-  const blur = () => {
-    // Unfocus if it is still active
-    const activeElement = document.activeElement;
-    if (activeElement) {
-      activeElement.blur();
-    }
-  };
-
   const handleOpen = () => {
     if (!isControlledByProps) setIsOpen(true);
     if (onOpen) {
@@ -336,7 +328,6 @@ const Tooltip = ({
   };
 
   const handleClose = () => {
-    blur();
     if (!isControlledByProps) setIsOpen(false);
     if (onClose) {
       onClose();
