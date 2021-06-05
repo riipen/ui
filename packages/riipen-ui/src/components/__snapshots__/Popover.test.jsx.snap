@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paper> renders correct snapshot 1`] = `
+<withClasses(Popover)>
+  <Popover
+    classes={
+      Array [
+        "riipen",
+        "riipen-popover",
+      ]
+    }
+    closeOnScrolled={true}
+    component="span"
+    fullWidth={false}
+    isOpen={true}
+    lockScroll={true}
+    marginThreshold={16}
+    styles={Object {}}
+  >
+    <JSXStyle
+      dynamic={
+        Array [
+          "#fff",
+          "4px",
+          "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
+          "calc(100% - 32px)",
+          "",
+          3,
+        ]
+      }
+      id="631859544"
+    />
+  </Popover>
+</withClasses(Popover)>
+`;
+
+exports[`<Popover> renders correct snapshot 1`] = `
+<withClasses(Popover)>
+  <Popover
+    anchorPosition={
+      Object {
+        "horizontal": "left",
+        "vertical": "top",
+      }
+    }
+    classes={
+      Array [
+        "riipen",
+        "riipen-popover",
+      ]
+    }
+    closeOnScrolled={true}
+    component="span"
+    contentPosition={
+      Object {
+        "horizontal": "left",
+        "vertical": "top",
+      }
+    }
+    fullWidth={false}
+    isOpen={true}
+    lockScroll={true}
+    marginThreshold={16}
+    styles={Object {}}
+  >
+    <JSXStyle
+      dynamic={
+        Array [
+          "#fff",
+          "4px",
+          "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)",
+          "calc(100% - 32px)",
+          "",
+          3,
+        ]
+      }
+      id="631859544"
+    />
+  </Popover>
+</withClasses(Popover)>
+`;
