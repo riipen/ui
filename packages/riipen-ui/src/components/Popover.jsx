@@ -47,7 +47,6 @@ const Popover = ({
 }) => {
   const theme = React.useContext(ThemeContext);
   const contentRef = useRef(null);
-
   const [contentStyles, setContentStyles] = useState({
     top: 0,
     left: 0,
