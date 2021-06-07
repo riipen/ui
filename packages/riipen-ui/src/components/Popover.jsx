@@ -15,6 +15,9 @@ import {
 } from "../utils";
 import withClasses from "../utils/withClasses";
 
+const getAnchorEl = anchorEl =>
+  typeof anchorEl === "function" ? anchorEl() : anchorEl;
+
 const isDescendant = (parent, child) => {
   const node = child.parentNode;
   if (node == null) {
@@ -45,17 +48,14 @@ const Popover = ({
   const theme = React.useContext(ThemeContext);
   const contentRef = useRef(null);
 
-  const getAnchorEl = () => {
-    return typeof anchorEl === "function" ? anchorEl() : anchorEl;
-  };
-  const [currentAnchorEl, setCurrentAnchorEl] = useState(getAnchorEl());
-  const [scrollContainer, setScrollContainer] = useState(null);
-  const [scrollContainerStyle, setScrollContainerStyle] = useState(null);
   const [contentStyles, setContentStyles] = useState({
     top: 0,
     left: 0,
     visibility: "hidden"
   });
+  const [currentAnchorEl, setCurrentAnchorEl] = useState(getAnchorEl(anchorEl));
+  const [scrollContainer, setScrollContainer] = useState(null);
+  const [scrollContainerStyle, setScrollContainerStyle] = useState(null);
 
   const setPositioningStyle = () => {
     if (!currentAnchorEl || !contentRef.current) return;
@@ -226,7 +226,7 @@ const Popover = ({
   // Updates currentAnchorEl if anchorEl changes.
   useEffect(() => {
     if (currentAnchorEl === null && anchorEl !== null)
-      setCurrentAnchorEl(getAnchorEl());
+      setCurrentAnchorEl(getAnchorEl(anchorEl));
   }, [anchorEl]);
 
   // Updates positioning style and listeners
