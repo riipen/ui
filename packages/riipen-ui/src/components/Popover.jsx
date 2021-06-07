@@ -153,13 +153,18 @@ const Popover = ({
         return;
       }
       handleClose();
-    } else if (event.type === "keydown" && event.key === "Escape") {
+    } else if (
+      ["resize", "scroll"].includes(event.type) ||
+      (event.type === "keydown" && event.key === "Escape")
+    ) {
       handleClose();
     } else if (event.type === "keydown" && onKeyDown) {
       // stop this event from triggering other keydown listeners
       event.stopImmediatePropagation();
 
       onKeyDown(event);
+    } else {
+      handleClose();
     }
   };
 
@@ -291,7 +296,7 @@ Popover.propTypes = {
   /**
    * The content of the component
    */
-  children: PropTypes.object,
+  children: PropTypes.node,
 
   /**
    * Array of additional CSS classes to use.
