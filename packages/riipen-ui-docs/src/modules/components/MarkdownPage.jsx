@@ -8,6 +8,7 @@ import ButtonIcon from "riipen-ui/components/ButtonIcon";
 import Divider from "riipen-ui/components/Divider";
 import Popover from "riipen-ui/components/Popover";
 import ThemeContext from "riipen-ui/styles/ThemeContext";
+import css from "styled-jsx/css";
 
 import constants from "src/constants";
 import Demo from "src/modules/components/Demo";
@@ -29,6 +30,19 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
     setAnchorState(menuOpen ? null : event.currentTarget);
     setMenuOpen(!menuOpen);
   };
+
+  const linkedStyles = css.resolve`
+    .appBar {
+      justify-content: space-between;
+    }
+    .menuPopover {
+      margin: ${theme.spacing(3)}px ${theme.spacing(2)}px;
+      max-height: calc(100% - ${theme.spacing(13)}px) !important;
+      max-width: calc(100% - ${theme.spacing(4)}px) !important;
+      padding: ${theme.spacing(2)}px;
+      overflow-y: auto;
+    }
+  `;
 
   const demos = {};
   let markdown;
@@ -56,7 +70,7 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
       <Head>
         <title>{title ? `${title} | ` : ""}Riipen UI</title>
       </Head>
-      <AppBar classes={["appBar"]}>
+      <AppBar classes={[linkedStyles.className, "appBar"]}>
         <Link href="/" color="inherit">
           Riipen-UI
         </Link>
@@ -67,7 +81,7 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
           <Popover
             anchorEl={anchorState}
             anchorPosition={{ horizontal: "center", vertical: "bottom" }}
-            classes={["menuPopover"]}
+            classes={[linkedStyles.className, "menuPopover"]}
             contentPosition={{
               horizontal: "center",
               vertical: "top"
@@ -122,9 +136,6 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
         </div>
       </div>
       <style jsx>{`
-        :global(.appBar) {
-          justify-content: space-between;
-        }
         .page {
           display: flex;
           justify-content: space-between;
@@ -146,13 +157,6 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
         }
         .menuMobile {
           display: none;
-        }
-        :global(.menuPopover) {
-          margin: ${theme.spacing(3)}px ${theme.spacing(2)}px;
-          max-height: calc(100% - ${theme.spacing(13)}px) !important;
-          max-width: calc(100% - ${theme.spacing(4)}px) !important;
-          padding: ${theme.spacing(2)}px;
-          overflow-y: auto;
         }
         .toc {
           top: 70px;
@@ -177,6 +181,7 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
           margin-top: ${theme.spacing(10)}px;
         }
       `}</style>
+      {linkedStyles.styles}
     </div>
   );
 };
