@@ -15,14 +15,14 @@ import {
 } from "../utils";
 import withClasses from "../utils/withClasses";
 
-const isDecendant = (parent, child) => {
+const isDescendant = (parent, child) => {
   const node = child.parentNode;
   if (node == null) {
     return false;
   } else if (node === parent) {
     return true;
   }
-  return isDecendant(parent, node);
+  return isDescendant(parent, node);
 };
 
 const Popover = ({
@@ -147,8 +147,8 @@ const Popover = ({
       if (
         contentRef.current === target ||
         anchorEl === target ||
-        isDecendant(contentRef.current, target) ||
-        isDecendant(anchorEl, target)
+        isDescendant(contentRef.current, target) ||
+        isDescendant(anchorEl, target)
       ) {
         return;
       }
