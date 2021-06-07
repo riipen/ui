@@ -43,7 +43,7 @@ $ npm start
 
 ### Deployment
 
-Given you have a `staging` or `production` cloud environment (see below), push to `staging` or `production`, CircleCI will handle the rest.
+To update the documentation website, simply merge the latest changes into the `docs` branch and push to `origin`.
 
 ### Cloud Environments
 
