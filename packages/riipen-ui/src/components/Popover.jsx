@@ -44,6 +44,11 @@ const Popover = ({
 }) => {
   const theme = React.useContext(ThemeContext);
   const contentRef = useRef(null);
+
+  const getAnchorEl = () => {
+    return typeof anchorEl === "function" ? anchorEl() : anchorEl;
+  };
+  const [currentAnchorEl, setCurrentAnchorEl] = useState(getAnchorEl());
   const [scrollContainer, setScrollContainer] = useState(null);
   const [scrollContainerStyle, setScrollContainerStyle] = useState(null);
   const [contentStyles, setContentStyles] = useState({
@@ -52,16 +57,11 @@ const Popover = ({
     visibility: "hidden"
   });
 
-  const getAnchorEl = () => {
-    return typeof anchorEl === "function" ? anchorEl() : anchorEl;
-  };
-
   const setPositioningStyle = () => {
-    const anchorElement = getAnchorEl();
-    if (!anchorElement || !contentRef.current) return;
+    if (!currentAnchorEl || !contentRef.current) return;
 
     // Set top and left of element based on location of anchor
-    const anchorRect = anchorElement.getBoundingClientRect();
+    const anchorRect = currentAnchorEl.getBoundingClientRect();
     let top = anchorRect.top;
     let left = anchorRect.left;
 
@@ -128,7 +128,7 @@ const Popover = ({
   };
 
   const updatePosition = () => {
-    if (!anchorEl) return undefined;
+    if (!currentAnchorEl) return undefined;
     return setPositioningStyle();
   };
 
@@ -142,13 +142,13 @@ const Popover = ({
     if (!contentRef.current || !isOpen) return;
     if (event.type === "mousedown") {
       // Check if mouse click happened inside popover
-      // Or on the anchorEl
+      // Or on the currentAnchorEl
       const target = event.target;
       if (
         contentRef.current === target ||
-        anchorEl === target ||
+        currentAnchorEl === target ||
         isDescendant(contentRef.current, target) ||
-        isDescendant(anchorEl, target)
+        isDescendant(currentAnchorEl, target)
       ) {
         return;
       }
@@ -168,79 +168,96 @@ const Popover = ({
     }
   };
 
-  const manageScrollableParentEventListeners = (remove = true) => {
-    if (anchorEl) {
-      const closestScrollableParent = getClosestScrollableParent(anchorEl);
+  const manageScrollableParentEventListeners = (addListeners = true) => {
+    if (currentAnchorEl) {
+      const closestScrollableParent = getClosestScrollableParent(
+        currentAnchorEl
+      );
       if (closestScrollableParent) {
         const events = ["resize", "scroll"];
         const onCloseHandler = closeOnScrolled
           ? handleClose
           : positionChangeEventHandler;
 
-        if (remove) {
+        if (addListeners) {
           events.forEach(event =>
-            closestScrollableParent.removeEventListener(event, onCloseHandler)
+            closestScrollableParent.addEventListener(event, onCloseHandler)
           );
         } else {
           events.forEach(event =>
-            closestScrollableParent.addEventListener(event, onCloseHandler)
+            closestScrollableParent.removeEventListener(event, onCloseHandler)
           );
         }
       }
     }
   };
 
+  const resetParentScroll = () => {
+    scrollContainer.style.overflow = scrollContainerStyle;
+    setScrollContainer(null);
+    setScrollContainerStyle(null);
+  };
+
+  // Adds the window event listeners and the anchorEl listeners.
   useEffect(() => {
     window.addEventListener("resize", positionChangeEventHandler);
     window.addEventListener("scroll", positionChangeEventHandler);
     window.addEventListener("mousedown", handleCloseEvent);
     window.addEventListener("keydown", handleCloseEvent);
 
-    if (anchorEl) {
-      manageScrollableParentEventListeners(false);
+    if (currentAnchorEl) {
+      manageScrollableParentEventListeners(true);
     }
 
     setPositioningStyle();
 
+    // Calls on unmount; remove event listeners
     return () => {
       window.removeEventListener("resize", positionChangeEventHandler);
       window.removeEventListener("scroll", positionChangeEventHandler);
       window.removeEventListener("mousedown", handleCloseEvent);
       window.removeEventListener("keydown", handleCloseEvent);
 
-      manageScrollableParentEventListeners(true);
+      manageScrollableParentEventListeners(false);
+      resetParentScroll();
     };
   }, []);
 
+  // Updates currentAnchorEl if anchorEl changes.
   useEffect(() => {
-    if (lockScroll && anchorEl) {
-      const anchorElement = getAnchorEl();
-      const parent = anchorElement.parentElement;
+    if (currentAnchorEl === null && anchorEl !== null)
+      setCurrentAnchorEl(getAnchorEl());
+  }, [anchorEl]);
+
+  // Updates positioning style and listeners
+  useEffect(() => {
+    if (currentAnchorEl) {
+      manageScrollableParentEventListeners(true);
+    }
+    if (isOpen || currentAnchorEl) {
+      // need to use requestAnimationFrame in order for popover to get proper position on first open
+      window.requestAnimationFrame(setPositioningStyle);
+    }
+  }, [anchorPosition, contentPosition, currentAnchorEl]);
+
+  /* Add/remove scroll of parent element of popover when popover open
+    and lockScroll is true. */
+  useEffect(() => {
+    if (lockScroll && currentAnchorEl) {
+      const parent = currentAnchorEl.parentElement;
       const outerNode =
         parent.nodeName === "HTML" &&
         window.getComputedStyle(parent)["overflow-y"] === "scroll"
           ? parent
-          : getDocument(anchorElement).body;
+          : getDocument(currentAnchorEl).body;
+
       setScrollContainer(outerNode);
       setScrollContainerStyle(outerNode.style.overflow);
       outerNode.style.overflow = "hidden";
-    } else if (lockScroll && scrollContainer && !anchorEl) {
-      scrollContainer.style.overflow = scrollContainerStyle;
-      setScrollContainer(null);
-      setScrollContainerStyle(null);
+    } else if (lockScroll && scrollContainer && !currentAnchorEl) {
+      resetParentScroll();
     }
-  }, [anchorEl, lockScroll]);
-
-  useEffect(() => {
-    manageScrollableParentEventListeners(false);
-  }, [anchorPosition, contentPosition]);
-
-  useEffect(() => {
-    if (isOpen && anchorEl) {
-      // need to use requestAnimationFrame in order for popover to get proper position on first open
-      window.requestAnimationFrame(setPositioningStyle);
-    }
-  }, [anchorEl, anchorPosition, contentPosition]);
+  }, [currentAnchorEl, lockScroll]);
 
   return (
     <React.Fragment>
