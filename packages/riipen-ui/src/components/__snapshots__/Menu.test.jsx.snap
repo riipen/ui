@@ -21,6 +21,12 @@ exports[`<Menu> renders correct snapshot 1`] = `
       styles={Object {}}
     >
       <Popover
+        anchorPosition={
+          Object {
+            "horizontal": "left",
+            "vertical": "top",
+          }
+        }
         classes={
           Array [
             "riipen",
@@ -29,6 +35,12 @@ exports[`<Menu> renders correct snapshot 1`] = `
         }
         closeOnScrolled={true}
         component="span"
+        contentPosition={
+          Object {
+            "horizontal": "left",
+            "vertical": "top",
+          }
+        }
         fullWidth={false}
         isOpen={true}
         keepOnScreen={false}
