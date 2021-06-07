@@ -241,11 +241,11 @@ const Popover = ({
   }, [anchorPosition, contentPosition]);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && anchorEl) {
       // need to use requestAnimationFrame in order for popover to get proper position on first open
       window.requestAnimationFrame(setPositioningStyle);
     }
-  }, [anchorEl, anchorPosition, contentPosition, isOpen]);
+  }, [anchorEl, anchorPosition, contentPosition]);
 
   return (
     <React.Fragment>
