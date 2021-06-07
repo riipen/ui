@@ -172,23 +172,18 @@ const Popover = ({
     if (anchorEl) {
       const closestScrollableParent = getClosestScrollableParent(anchorEl);
       if (closestScrollableParent) {
+        const events = ["resize", "scroll"];
+        const onCloseHandler = closeOnScrolled
+          ? handleClose
+          : positionChangeEventHandler;
+
         if (remove) {
-          closestScrollableParent.removeEventListener(
-            "resize",
-            closeOnScrolled ? handleClose : positionChangeEventHandler
-          );
-          closestScrollableParent.removeEventListener(
-            "scroll",
-            closeOnScrolled ? handleClose : positionChangeEventHandler
+          events.forEach(event =>
+            closestScrollableParent.removeEventListener(event, onCloseHandler)
           );
         } else {
-          closestScrollableParent.addEventListener(
-            "resize",
-            closeOnScrolled ? handleClose : positionChangeEventHandler
-          );
-          closestScrollableParent.addEventListener(
-            "scroll",
-            closeOnScrolled ? handleClose : positionChangeEventHandler
+          events.forEach(event =>
+            closestScrollableParent.addEventListener(event, onCloseHandler)
           );
         }
       }
