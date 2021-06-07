@@ -15,12 +15,9 @@ import {
 } from "../utils";
 import withClasses from "../utils/withClasses";
 
-<<<<<<< HEAD
 const getAnchorEl = anchorEl =>
   typeof anchorEl === "function" ? anchorEl() : anchorEl;
 
-=======
->>>>>>> Fix typo
 const isDescendant = (parent, child) => {
   const node = child.parentNode;
   if (node == null) {
