@@ -34,8 +34,7 @@
     "ci:test:coverage": "NODE_ENV=test NODE_PATH=./ nyc mocha --opts ./test/unit/ci.mocha.opts",
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
-    "precommit": "lint-staged",
-    "release": "./scripts/update_version.sh"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx}": [

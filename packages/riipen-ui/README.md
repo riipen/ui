@@ -41,12 +41,7 @@ Check out our [documentation website](https://ui.riipen.com).
 
 ## Releases
 
-In order to release the current version run `npm run release` from the `master` or `staging` branches.
-
-If ran on the master branch it will release a patch (x.y.z)
-If ran on the staging branch it will release a prerelease (x.y.z-#)
-
-Releases for minor or major builds will still need to be done manually.
+In order to release the current version run `./scripts/release.sh [patch|minor|major]`  and pass the new semantic version.
 
 ## License
 

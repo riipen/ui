@@ -8,13 +8,13 @@ test_branches: &test_branches
   filters:
     branches:
       ignore:
-        - production
+        - docs
 
 docs_branches: &docs_branches
   filters:
     branches:
       only:
-        - production
+        - docs
 
 docker-auth: &docker-auth
   auth:
@@ -36,7 +36,7 @@ workflows:
             - DockerHub
           requires:
             - checkout
-      - test-unit:
+      - test:
           <<: *test_branches
           context:
             - DockerHub
@@ -47,7 +47,7 @@ workflows:
           context:
             - DockerHub
           requires:
-            - test-unit
+            - test
 
   docs:
     jobs:
@@ -70,7 +70,6 @@ jobs:
         <<: *docker-auth
 
     steps:
-      # Init
       - checkout
 
       - run:
@@ -133,7 +132,7 @@ jobs:
           name: S3 Static Host Deploy
           command: |
             aws s3 sync --delete packages/riipen-ui-docs/out s3://ui-${CIRCLE_BRANCH}-docs
-  test-unit:
+  test:
     resource_class: large
 
     docker:
