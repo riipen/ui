@@ -13,6 +13,7 @@ describe("<Popover>", () => {
       anchorEl: ReactTestUtils.renderIntoDocument(<div />)
     };
   });
+
   it("renders without errors", () => {
     let error;
 
