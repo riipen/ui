@@ -1,10 +1,9 @@
 import clsx from "clsx";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import _JSXStyle from "styled-jsx/style";
 
 import ThemeContext from "../styles/ThemeContext";
-
 import {
   getContainer,
   getDocument,
