@@ -191,7 +191,7 @@ const Popover = ({
   };
 
   const resetParentScroll = () => {
-    scrollContainer.style.overflow = scrollContainerStyle;
+    if (scrollContainer) scrollContainer.style.overflow = scrollContainerStyle;
     setScrollContainer(null);
     setScrollContainerStyle(null);
   };
