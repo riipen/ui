@@ -32,7 +32,7 @@ class Popover extends React.Component {
     /**
      * The content of the component
      */
-    children: PropTypes.object,
+    children: PropTypes.node,
 
     /**
      * Array of additional CSS classes to use.

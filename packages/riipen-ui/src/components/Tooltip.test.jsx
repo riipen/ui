@@ -372,7 +372,7 @@ describe("<Tooltip>", () => {
         wrapper
           .find("Tooltip")
           .find("Popover")
-          .props().children.props.children
+          .props().children
       ).toBe(tooltip);
     });
   });

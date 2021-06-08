@@ -377,7 +377,7 @@ const Tooltip = ({
           onClose={handleClose}
           {...other}
         >
-          <React.Fragment>{tooltip}</React.Fragment>
+          {tooltip}
         </Popover>
       }
       {linkedStyles.styles}
