@@ -1,10 +1,9 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import React from "react";
 import PropTypes from "prop-types";
 import css from "styled-jsx/css";
 import _JSXStyle from "styled-jsx/style";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
@@ -12,7 +11,7 @@ import withClasses from "../utils/withClasses";
 import Grid from "./Grid";
 import GridItem from "./GridItem";
 
-const VerticalProgressBarItem = ({ progress }) => {
+const VerticalProgressBarItem = ({ bar, children, classes, color, icon }) => {
   const theme = React.useContext(ThemeContext);
 
   const getLinkedStyles = () => {
@@ -30,35 +29,29 @@ const VerticalProgressBarItem = ({ progress }) => {
 
   const linkedStyles = getLinkedStyles();
 
-  const iconClasses = [
-    "iconWrapper",
-    progress.color && `${progress.color}`
-  ].filter(Boolean);
-
-  const className = clsx(
-    "progress",
-    progress.color && !progress.noBar && `progress-${progress.color}`,
-    progress.noBar && "progress-none"
-  );
-
   return (
-    <React.Fragment>
-      <div className={className}>
-        <Grid classes={[linkedStyles.className, "wrapper"]} spacing={0}>
-          <GridItem lg={2}>
-            <div className={clsx(iconClasses)}>
-              {!!progress.icon && (
-                <FontAwesomeIcon
-                  className={clsx(linkedStyles.className, "icon")}
-                  size="sm"
-                  icon={progress.icon}
-                />
-              )}
-            </div>
-          </GridItem>
-          <GridItem lg={10}>{progress.children}</GridItem>
-        </Grid>
-      </div>
+    <div
+      className={clsx(
+        "progress",
+        color && bar && `progress-${color}`,
+        !bar && "progress-none",
+        classes
+      )}
+    >
+      <Grid classes={[linkedStyles.className, "wrapper"]} spacing={0}>
+        <GridItem lg={2}>
+          <div className={clsx("iconWrapper", color && `${color}`)}>
+            {!!icon && (
+              <FontAwesomeIcon
+                className={clsx(linkedStyles.className, "icon")}
+                size="sm"
+                icon={icon}
+              />
+            )}
+          </div>
+        </GridItem>
+        <GridItem lg={10}>{children}</GridItem>
+      </Grid>
       <style jsx>{`
         .default {
           background-color: ${theme.palette.grey[300]};
@@ -107,7 +100,7 @@ const VerticalProgressBarItem = ({ progress }) => {
         }
       `}</style>
       {linkedStyles.styles}
-    </React.Fragment>
+    </div>
   );
 };
 
@@ -115,29 +108,34 @@ VerticalProgressBarItem.propTypes = {
   // external
 
   /**
-   * The progress to render.
+   * The content to render inside.
    */
-  progress: PropTypes.shape({
-    /**
-     * The content to render inside.
-     */
-    children: PropTypes.node,
+  children: PropTypes.node,
 
-    /**
-     * The colour of the progress icon.
-     */
-    color: PropTypes.oneOf(["positive", "warning", "default"]),
+  /**
+   * Additional classes to style with.
+   */
+  classes: PropTypes.array,
 
-    /**
-     * The progress icon.
-     */
-    icon: PropTypes.object,
+  /**
+   * The colour of the progress icon.
+   */
+  color: PropTypes.oneOf(["positive", "warning", "default"]),
 
-    /**
-     * Whether to not have bar.
-     */
-    noBar: PropTypes.bool
-  }).isRequired
+  /**
+   * The progress icon.
+   */
+  icon: PropTypes.object,
+
+  /**
+   * Whether to not have bar.
+   */
+  bar: PropTypes.bool
+};
+
+VerticalProgressBarItem.defaultProps = {
+  bar: true,
+  classes: []
 };
 
 export default withClasses(VerticalProgressBarItem);
