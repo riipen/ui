@@ -1,18 +1,16 @@
+import { faChevronRight, faAtom } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 import VerticalProgressBar from "riipen-ui/components/VerticalProgressBar";
-
-import { faChevronRight, faAtom } from "@fortawesome/free-solid-svg-icons";
+import VerticalProgressBarItem from "riipen-ui/components/VerticalProgressBarItem";
 
 export default function Icon() {
   return (
-    <VerticalProgressBar
-      progresses={[
-        { icon: faAtom, color: "positive" },
-        { icon: faChevronRight, color: "positive" },
-        { icon: faAtom, color: "positive" },
-        { icon: faChevronRight, color: "positive" }
-      ]}
-    />
+    <VerticalProgressBar>
+      <VerticalProgressBarItem color="positive" icon={faAtom} />
+      <VerticalProgressBarItem color="positive" icon={faChevronRight} />
+      <VerticalProgressBarItem color="positive" icon={faAtom} />
+      <VerticalProgressBarItem color="positive" icon={faChevronRight} />
+    </VerticalProgressBar>
   );
 }

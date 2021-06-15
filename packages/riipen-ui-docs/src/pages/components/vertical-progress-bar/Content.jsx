@@ -1,34 +1,24 @@
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 import VerticalProgressBar from "riipen-ui/components/VerticalProgressBar";
-
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import VerticalProgressBarItem from "riipen-ui/components/VerticalProgressBarItem";
 
 export default function Content() {
   return (
-    <VerticalProgressBar
-      progresses={[
-        {
-          icon: faChevronRight,
-          color: "positive",
-          children: "content 1"
-        },
-        {
-          icon: faChevronRight,
-          color: "positive",
-          children: "content 2"
-        },
-        {
-          icon: faChevronRight,
-          color: "positive",
-          children: "content 3"
-        },
-        {
-          icon: faChevronRight,
-          color: "positive",
-          children: "content 4"
-        }
-      ]}
-    />
+    <VerticalProgressBar>
+      <VerticalProgressBarItem color="positive" icon={faChevronRight}>
+        content 1
+      </VerticalProgressBarItem>
+      <VerticalProgressBarItem color="warning" icon={faChevronRight}>
+        content 2
+      </VerticalProgressBarItem>
+      <VerticalProgressBarItem color="warning" icon={faChevronRight}>
+        content 3
+      </VerticalProgressBarItem>
+      <VerticalProgressBarItem color="warning" icon={faChevronRight}>
+        content 4
+      </VerticalProgressBarItem>
+    </VerticalProgressBar>
   );
 }
