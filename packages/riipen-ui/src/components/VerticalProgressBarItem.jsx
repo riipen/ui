@@ -39,7 +39,7 @@ const VerticalProgressBarItem = ({ bar, children, classes, color, icon }) => {
       )}
     >
       <Grid classes={[linkedStyles.className, "wrapper"]} spacing={0}>
-        <GridItem lg={2}>
+        <GridItem lg="auto">
           <div className={clsx("iconWrapper", color && `${color}`)}>
             {!!icon && (
               <FontAwesomeIcon
@@ -50,7 +50,9 @@ const VerticalProgressBarItem = ({ bar, children, classes, color, icon }) => {
             )}
           </div>
         </GridItem>
-        <GridItem lg={10}>{children}</GridItem>
+        <GridItem flexGrow={1} flexShrink={1} lg={10}>
+          {children}
+        </GridItem>
       </Grid>
       <style jsx>{`
         .default {
@@ -94,8 +96,10 @@ const VerticalProgressBarItem = ({ bar, children, classes, color, icon }) => {
           display: flex;
           height: 24px;
           justify-content: center;
-          margin: ${theme.spacing(2)}px 0 ${theme.spacing(7)}px -23px;
-          padding: 7px;
+          margin-bottom: ${theme.spacing(7)}px;
+          margin-left: -16px;
+          margin-right: ${theme.spacing(5)}px;
+          margin-top: ${theme.spacing(2) - 1}px;
           width: 24px;
         }
       `}</style>
