@@ -12,12 +12,12 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
     }
   >
     <div
-      className="jsx-4120898643 progress riipen riipen-verticalprogressbaritem"
+      className="jsx-1821936519 progress riipen riipen-verticalprogressbaritem"
     >
       <withClasses(Grid)
         classes={
           Array [
-            "jsx-2412793688",
+            "jsx-358841745",
             "wrapper",
           ]
         }
@@ -29,7 +29,7 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
             Array [
               "riipen",
               "riipen-grid",
-              "jsx-2412793688",
+              "jsx-358841745",
               "wrapper",
             ]
           }
@@ -42,7 +42,7 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
           spacing={0}
         >
           <div
-            className="jsx-2773517404 riipen riipen-grid jsx-2412793688 wrapper md"
+            className="jsx-2773517404 riipen riipen-grid jsx-358841745 wrapper md"
           >
             <withClasses(GridItem)
               key=".0"
@@ -71,7 +71,7 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
                   className="jsx-2183797102 riipen riipen-griditem lg"
                 >
                   <div
-                    className="jsx-4120898643 iconWrapper"
+                    className="jsx-1821936519 iconWrapper"
                   />
                 </div>
                 <JSXStyle
@@ -165,26 +165,23 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
             "#4cc88d",
             "#febb46",
             15,
-            20,
             "#dddddd",
             "#4cc88d",
             "#febb46",
             35,
             25,
-            9,
           ]
         }
-        id="32634603"
+        id="3229497486"
       />
       <JSXStyle
         dynamic={
           Array [
             "#fff",
             2,
-            -30,
           ]
         }
-        id="2622978946"
+        id="3174789173"
       />
     </div>
   </VerticalProgressBarItem>

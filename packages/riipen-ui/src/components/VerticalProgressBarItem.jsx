@@ -20,10 +20,6 @@ const VerticalProgressBarItem = ({ bar, children, classes, color, icon }) => {
         color: ${theme.palette.common.white};
         z-index: ${theme.zIndex.low};
       }
-
-      .wrapper {
-        margin-top: ${theme.spacing(-6)}px;
-      }
     `;
   };
 
@@ -70,7 +66,6 @@ const VerticalProgressBarItem = ({ bar, children, classes, color, icon }) => {
         .progress {
           border-left: 8px solid var(--border-color);
           margin-left: ${theme.spacing(3)}px;
-          padding: ${theme.spacing(4)}px 0;
         }
 
         /* Progress bar colors. */
@@ -99,7 +94,7 @@ const VerticalProgressBarItem = ({ bar, children, classes, color, icon }) => {
           margin-bottom: ${theme.spacing(7)}px;
           margin-left: -16px;
           margin-right: ${theme.spacing(5)}px;
-          margin-top: ${theme.spacing(2) - 1}px;
+          margin-top: -1px;
           width: 24px;
         }
       `}</style>
