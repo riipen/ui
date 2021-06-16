@@ -31,9 +31,7 @@ describe("<VerticalProgressBarItem>", () => {
         <VerticalProgressBarItem>{child}</VerticalProgressBarItem>
       );
 
-      expect(wrapper.find("VerticalProgressBarItem").contains(child)).toEqual(
-        true
-      );
+      expect(wrapper.text()).toContain("this is a child");
     });
   });
 

@@ -30,7 +30,7 @@ describe("<VerticalProgressBar>", () => {
 
       const wrapper = mount(<VerticalProgressBar>{child}</VerticalProgressBar>);
 
-      expect(wrapper.find("VerticalProgressBar").contains(child)).toEqual(true);
+      expect(wrapper.text()).toContain("this is a child");
     });
 
     it("passes bar = false to last child", () => {
