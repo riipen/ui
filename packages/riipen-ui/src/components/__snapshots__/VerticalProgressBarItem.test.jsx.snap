@@ -12,7 +12,7 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
     }
   >
     <div
-      className="jsx-3958355838 progress riipen riipen-verticalprogressbaritem"
+      className="jsx-4120898643 progress riipen riipen-verticalprogressbaritem"
     >
       <withClasses(Grid)
         classes={
@@ -46,7 +46,7 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
           >
             <withClasses(GridItem)
               key=".0"
-              lg={2}
+              lg="auto"
               size="md"
               spacing={0}
             >
@@ -63,15 +63,15 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
                 flexShrink={0}
                 flexWrap="wrap"
                 justifyContent="flex-start"
-                lg={2}
+                lg="auto"
                 size="md"
                 spacing={0}
               >
                 <div
-                  className="jsx-3535199865 riipen riipen-griditem lg"
+                  className="jsx-2183797102 riipen riipen-griditem lg"
                 >
                   <div
-                    className="jsx-3958355838 iconWrapper"
+                    className="jsx-4120898643 iconWrapper"
                   />
                 </div>
                 <JSXStyle
@@ -79,7 +79,7 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
                     Array [
                       "stretch",
                       "flex",
-                      "16.666666666666664%",
+                      "auto",
                       "column",
                       0,
                       0,
@@ -94,6 +94,8 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
               </GridItem>
             </withClasses(GridItem)>
             <withClasses(GridItem)
+              flexGrow={1}
+              flexShrink={1}
               key=".1"
               lg={10}
               size="md"
@@ -108,8 +110,8 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
                   ]
                 }
                 flexDirection="column"
-                flexGrow={0}
-                flexShrink={0}
+                flexGrow={1}
+                flexShrink={1}
                 flexWrap="wrap"
                 justifyContent="flex-start"
                 lg={10}
@@ -117,7 +119,7 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
                 spacing={0}
               >
                 <div
-                  className="jsx-2265208582 riipen riipen-griditem lg"
+                  className="jsx-4088224518 riipen riipen-griditem lg"
                 />
                 <JSXStyle
                   dynamic={
@@ -126,8 +128,8 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
                       "flex",
                       "83.33333333333334%",
                       "column",
-                      0,
-                      0,
+                      1,
+                      1,
                       "wrap",
                       "flex-start",
                       0,
@@ -167,11 +169,12 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
             "#dddddd",
             "#4cc88d",
             "#febb46",
-            10,
             35,
+            25,
+            9,
           ]
         }
-        id="248956935"
+        id="32634603"
       />
       <JSXStyle
         dynamic={
