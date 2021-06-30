@@ -272,7 +272,7 @@ Input.propTypes = {
   /**
    * Label text to display for the input.
    */
-  label: PropTypes.string,
+  label: PropTypes.node,
 
   /**
    * Props passed through to the InputLabel.
