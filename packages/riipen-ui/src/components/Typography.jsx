@@ -41,6 +41,7 @@ class Typography extends React.Component {
       "initial",
       "black",
       "disabled",
+      "grey500",
       "grey600",
       "grey800",
       "greyA400",
@@ -260,6 +261,9 @@ class Typography extends React.Component {
           }
           .color-disabled {
             color: ${theme.palette.text.disabled};
+          }
+          .color-grey500 {
+            color: ${theme.palette.grey[500]};
           }
           .color-grey600 {
             color: ${theme.palette.grey[600]};
