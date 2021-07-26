@@ -53,7 +53,7 @@ exports[`<Radio> renders correct snapshot 1`] = `
             variant="body1"
           >
             <p
-              className="jsx-42457783 root color-inherit initial body1 align-inherit transform-inherit riipen riipen-typography jsx-835554889"
+              className="jsx-1194261709 root color-inherit initial body1 align-inherit transform-inherit riipen riipen-typography jsx-835554889"
             >
               <JSXStyle
                 dynamic={
@@ -119,6 +119,7 @@ exports[`<Radio> renders correct snapshot 1`] = `
                   "0rem",
                   "#000",
                   "#cccbcb",
+                  "#9a9a9a",
                   "#747474",
                   "#424242",
                   "#373737",
@@ -135,7 +136,7 @@ exports[`<Radio> renders correct snapshot 1`] = `
                   400,
                 ]
               }
-              id="1840119567"
+              id="3194901921"
             />
           </Typography>
         </withClasses(Typography)>
