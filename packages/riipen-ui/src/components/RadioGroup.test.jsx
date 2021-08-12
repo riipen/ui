@@ -141,6 +141,16 @@ describe("<RadioGroup>", () => {
     });
   });
 
+  describe("tooltip prop", () => {
+    it("passes tooltip prop to InputLabel", () => {
+      const tooltip = <span>"Tooltip"</span>;
+
+      const wrapper = mount(<RadioGroup tooltip={tooltip} />);
+
+      expect(wrapper.find("InputLabel").props().tooltip).toEqual(tooltip);
+    });
+  });
+
   describe("value prop", () => {
     it("sets the childs checked prop according to the value", () => {
       const child = <Radio value="one" id="one" />;

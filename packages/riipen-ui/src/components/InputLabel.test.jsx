@@ -165,6 +165,22 @@ describe("<InputLabel>", () => {
     });
   });
 
+  describe("tooltip prop", () => {
+    it("renders tooltip inside the label and Typography element", () => {
+      const tooltip = <span>Tooltip</span>;
+
+      const wrapper = mount(<InputLabel>{tooltip}</InputLabel>);
+
+      expect(
+        wrapper
+          .find("InputLabel")
+          .find("label")
+          .find("Typography")
+          .contains(tooltip)
+      ).toEqual(true);
+    });
+  });
+
   describe("fontWeight prop", () => {
     it("Passes fontWeight to the underlying typography", () => {
       const fontWeight = "bold";

@@ -15,6 +15,7 @@ const RadioGroup = ({
   labelProps,
   onChange,
   required,
+  tooltip,
   value,
   warning,
   ...other
@@ -39,12 +40,13 @@ const RadioGroup = ({
   return (
     <React.Fragment>
       <fieldset>
-        {(label || hint) && (
+        {(label || hint || tooltip) && (
           <InputLabel
             hint={hint}
             htmlFor={other.name}
             required={required}
             {...labelProps}
+            tooltip={tooltip}
           >
             {label}
           </InputLabel>
@@ -94,7 +96,7 @@ RadioGroup.propTypes = {
   label: PropTypes.node,
 
   /**
-   * Any props to pass through to the InputLabel
+   * Any props to pass through to the InputLabel.
    */
   labelProps: PropTypes.object,
 
@@ -112,7 +114,12 @@ RadioGroup.propTypes = {
   required: PropTypes.bool,
 
   /**
-   * The value of the selected radio button
+   * Any tooltip info to display beside the label.
+   */
+  tooltip: PropTypes.node,
+
+  /**
+   * The value of the selected radio button.
    */
   value: PropTypes.any,
 

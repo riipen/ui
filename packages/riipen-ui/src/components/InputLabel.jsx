@@ -17,6 +17,7 @@ const InputLabel = ({
   hint,
   required,
   theme,
+  tooltip,
   variant,
   ...other
 }) => {
@@ -36,6 +37,7 @@ const InputLabel = ({
           >
             {children}
             {required && " *"}
+            <span className="tooltip">{tooltip}</span>
           </Typography>
         </label>
       )}
@@ -44,6 +46,10 @@ const InputLabel = ({
         label {
           display: inline-block;
           margin-bottom: ${theme.spacing(marginBottom)}px;
+        }
+
+        .tooltip {
+          margin-left: ${theme.spacing(1)}px;
         }
       `}</style>
     </React.Fragment>
@@ -64,12 +70,12 @@ InputLabel.propTypes = {
   classes: PropTypes.array,
 
   /**
-   * Color of the label text. Passed through to Typopgraphy
+   * Color of the label text. Passed through to Typopgraphy.
    */
   color: PropTypes.string,
 
   /**
-   * Font weight for the label text. Passed through to Typopgraphy
+   * Font weight for the label text. Passed through to Typopgraphy.
    */
   fontWeight: PropTypes.string,
 
@@ -85,12 +91,17 @@ InputLabel.propTypes = {
 
   /**
    * @ignore
-   * The theme context object
+   * The theme context object.
    */
   theme: PropTypes.object,
 
   /**
-   * Variant for the label text. Passed through to Typopgraphy
+   * Any tooltip info to display beside the label.
+   */
+  tooltip: PropTypes.node,
+
+  /**
+   * Variant for the label text. Passed through to Typopgraphy.
    */
   variant: PropTypes.string
 };

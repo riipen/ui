@@ -440,9 +440,10 @@ exports[`<InputLabel> renders correct snapshot 1`] = `
         dynamic={
           Array [
             15,
+            5,
           ]
         }
-        id="517714963"
+        id="803353257"
       />
     </InputLabel>
   </withClasses(InputLabel)>
