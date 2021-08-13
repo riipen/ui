@@ -31,7 +31,7 @@ const Link = props => {
   const className = clsx(color, focusVisible ? "focusVisible" : null, classes);
 
   return (
-    <React.Fragment>
+    <>
       <Component
         ref={ref}
         className={className}
@@ -119,7 +119,7 @@ const Link = props => {
           color: ${theme.palette.grey[200]};
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

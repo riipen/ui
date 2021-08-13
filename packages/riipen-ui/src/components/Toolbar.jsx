@@ -30,7 +30,7 @@ class Toolbar extends React.Component {
     const className = clsx(classes);
 
     return (
-      <React.Fragment>
+      <>
         <div className={className}>{children}</div>
         <style jsx>{`
           div {
@@ -39,7 +39,7 @@ class Toolbar extends React.Component {
             position: relative;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

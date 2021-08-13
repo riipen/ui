@@ -91,7 +91,7 @@ class Avatar extends React.Component {
     );
 
     return (
-      <React.Fragment>
+      <>
         <span className={className}>
           {src ? (
             <img alt={alt} src={src} className="image" {...other} />
@@ -151,7 +151,7 @@ class Avatar extends React.Component {
             border-radius: 0px;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

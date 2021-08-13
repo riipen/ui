@@ -48,7 +48,7 @@ class Breadcrumbs extends React.Component {
     const theme = this.context;
 
     return (
-      <React.Fragment>
+      <>
         <Typography component={component} {...other}>
           <ol className={clsx(classes)}>
             {React.Children.map(children, (child, index) => {
@@ -80,7 +80,7 @@ class Breadcrumbs extends React.Component {
             margin-right: 0;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

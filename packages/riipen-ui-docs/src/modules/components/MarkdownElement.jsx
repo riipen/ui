@@ -60,7 +60,7 @@ class MarkdownElement extends React.Component {
     const theme = this.context;
 
     return (
-      <React.Fragment>
+      <>
         <div
           dangerouslySetInnerHTML={{ __html: marked(text, markedOptions) }}
         />
@@ -177,7 +177,7 @@ class MarkdownElement extends React.Component {
             white-space: pre;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -25,7 +25,7 @@ export default function Robust() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Button color="primary" variant="contained" onClick={handleOpen}>
         Open Menu
       </Button>
@@ -39,6 +39,6 @@ export default function Robust() {
         <MenuItem onSelect={handleItemTwo}>Item 2</MenuItem>
       </Menu>
       <div>Selected Index: {indexState === -1 ? "None" : indexState}</div>
-    </React.Fragment>
+    </>
   );
 }

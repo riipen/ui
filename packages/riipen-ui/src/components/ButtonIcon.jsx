@@ -46,7 +46,7 @@ const ButtonIcon = props => {
   if (component) Component = component;
 
   return (
-    <React.Fragment>
+    <>
       <Component
         ref={ref}
         onFocus={handleFocus}
@@ -258,7 +258,7 @@ const ButtonIcon = props => {
           font-size: 20px;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

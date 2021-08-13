@@ -157,7 +157,7 @@ class Typography extends React.Component {
     const Component = component || variantMapping[variant] || "span";
 
     return (
-      <React.Fragment>
+      <>
         <Component className={className}>{children}</Component>
         <style jsx>{`
           .root {
@@ -319,7 +319,7 @@ class Typography extends React.Component {
             text-transform: lowercase;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

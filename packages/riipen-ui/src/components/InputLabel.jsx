@@ -25,7 +25,7 @@ const InputLabel = ({
   const marginBottom = hint ? 1 : 3;
 
   return (
-    <React.Fragment>
+    <>
       {children && (
         <label className={className} {...other}>
           <Typography
@@ -46,7 +46,7 @@ const InputLabel = ({
           margin-bottom: ${theme.spacing(marginBottom)}px;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

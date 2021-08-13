@@ -8,7 +8,7 @@ export default function Elevation() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Paper
         style={{
           display: "inline-block",
@@ -34,6 +34,6 @@ export default function Elevation() {
           width: "100px"
         }}
       />
-    </React.Fragment>
+    </>
   );
 }

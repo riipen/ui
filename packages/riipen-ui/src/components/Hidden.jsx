@@ -40,7 +40,7 @@ class Hidden extends React.Component {
     const className = clsx(`${size}-${direction}`);
 
     return (
-      <React.Fragment>
+      <>
         <div className={className}>{children}</div>
         <style jsx>{`
           @media (min-width: ${theme.breakpoints.xs}px) {
@@ -98,7 +98,7 @@ class Hidden extends React.Component {
             }
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

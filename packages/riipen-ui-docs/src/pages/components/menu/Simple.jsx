@@ -21,7 +21,7 @@ export default function Simple() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Button color="primary" variant="contained" onClick={handleOpen}>
         Open Menu
       </Button>
@@ -40,6 +40,6 @@ export default function Simple() {
         <MenuItem>Riipen 5</MenuItem>
       </Menu>
       <div>Selected Index: {indexState === -1 ? "None" : indexState}</div>
-    </React.Fragment>
+    </>
   );
 }

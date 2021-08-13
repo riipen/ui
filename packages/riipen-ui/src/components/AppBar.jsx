@@ -54,7 +54,7 @@ class AppBar extends React.Component {
     const className = clsx(classes, color, position);
 
     return (
-      <React.Fragment>
+      <>
         <div className={className}>{children}</div>
         <style jsx>{`
           div {
@@ -109,7 +109,7 @@ class AppBar extends React.Component {
             color: ${theme.palette.common.white};
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }
