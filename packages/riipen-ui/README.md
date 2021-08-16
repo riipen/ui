@@ -18,11 +18,10 @@ $ yarn add riipen-ui
 
 Here is a quick example to get you started, **it's all you need**:
 
-
 ```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from 'riipen-ui/components/Button';
+import React from "react";
+import ReactDOM from "react-dom";
+import Button from "riipen-ui/components/Button";
 
 function App() {
   return (
@@ -32,7 +31,7 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+ReactDOM.render(<App />, document.querySelector("#app"));
 ```
 
 ## Documentation
@@ -41,7 +40,10 @@ Check out our [documentation website](https://ui.riipen.com).
 
 ## Releases
 
-In order to release the current version run `./scripts/release.sh [patch|minor|major]`  and pass the new semantic version.
+In order to release the new version run
+
+1. `cd packages/riipen-ui`
+2. `./scripts/release.sh [major|minor|patch]`
 
 ## License
 
