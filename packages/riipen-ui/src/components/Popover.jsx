@@ -397,7 +397,7 @@ class Popover extends React.Component {
     const Component = component;
 
     return (
-      <React.Fragment>
+      <>
         {anchorEl && isOpen && (
           <Component
             style={{ ...styles, ...this.state.contentStyles }}
@@ -427,7 +427,7 @@ class Popover extends React.Component {
             display: none;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -49,7 +49,7 @@ class List extends React.Component {
     });
 
     return (
-      <React.Fragment>
+      <>
         <ul className={className}>{childrenWithProps}</ul>
         <style jsx>{`
           .list {
@@ -58,7 +58,7 @@ class List extends React.Component {
             padding: 0;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

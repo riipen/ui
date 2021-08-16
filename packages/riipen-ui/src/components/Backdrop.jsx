@@ -26,7 +26,7 @@ class Backdrop extends React.Component {
     const className = clsx("root", classes);
 
     return (
-      <React.Fragment>
+      <>
         <div className={className} aria-hidden {...other}>
           {children}
         </div>
@@ -43,7 +43,7 @@ class Backdrop extends React.Component {
             top: 0;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

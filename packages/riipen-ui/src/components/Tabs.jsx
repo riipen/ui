@@ -109,7 +109,7 @@ class Tabs extends React.Component {
     });
 
     return (
-      <React.Fragment>
+      <>
         <Component role="tablist" className={className}>
           <div className={clsx("scroller")}>
             <div className={clsx(orientation)}>{childrenWithProps}</div>
@@ -135,7 +135,7 @@ class Tabs extends React.Component {
             white-space: nowrap;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

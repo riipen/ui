@@ -78,7 +78,7 @@ const RadioButtonGroup = ({
   ).filter(Boolean);
 
   return (
-    <React.Fragment>
+    <>
       <fieldset id={id}>
         {(label || hint) && (
           <InputLabel
@@ -114,7 +114,7 @@ const RadioButtonGroup = ({
           padding: 0;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

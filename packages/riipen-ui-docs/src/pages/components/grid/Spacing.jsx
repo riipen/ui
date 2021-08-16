@@ -12,7 +12,7 @@ export default function CenteredGrid() {
   };
 
   return (
-    <React.Fragment>
+    <>
       {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(spacing => (
         <div key={spacing} style={{ marginBottom: "5px" }}>
           <Grid spacing={spacing}>
@@ -31,6 +31,6 @@ export default function CenteredGrid() {
           </Grid>
         </div>
       ))}
-    </React.Fragment>
+    </>
   );
 }

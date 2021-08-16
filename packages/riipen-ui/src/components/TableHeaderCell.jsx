@@ -38,7 +38,7 @@ class TableHeaderCell extends React.Component {
     const theme = this.context;
 
     return (
-      <React.Fragment>
+      <>
         <th className={clsx(classes)} {...other}>
           {children}
         </th>
@@ -53,7 +53,7 @@ class TableHeaderCell extends React.Component {
             text-align: ${textAlign};
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

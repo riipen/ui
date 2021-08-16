@@ -48,7 +48,7 @@ export default function Simple() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <div className="container">
         <div className="half">
           <Form>
@@ -178,6 +178,6 @@ export default function Simple() {
           border: 1px solid black;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 }
