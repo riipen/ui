@@ -25,7 +25,7 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
   const [anchorState, setAnchorState] = React.useState(null);
   const [menuOpen, setMenuOpen] = React.useState(false);
 
-  const handleMenuOpen = (event) => {
+  const handleMenuOpen = event => {
     document.body.style.overflow = menuOpen ? "auto" : "hidden";
     setAnchorState(menuOpen ? null : event.currentTarget);
     setMenuOpen(!menuOpen);
@@ -47,7 +47,7 @@ const MarkdownPage = ({ req, path, reqSource, title }) => {
   const demos = {};
   let markdown;
 
-  req.keys().forEach((filename) => {
+  req.keys().forEach(filename => {
     if (filename.indexOf(".md") !== -1) {
       markdown = req(filename).default;
     } else if (filename.indexOf(".jsx") !== -1) {

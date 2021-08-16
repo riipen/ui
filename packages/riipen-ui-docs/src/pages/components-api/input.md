@@ -25,7 +25,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">endAdornment</span> | <span class="prop-type">node</span> |  | Content to render on the right side of the input. |
 | <span class="prop-name">error</span> | <span class="prop-type">node</span> |  | An error to display below the input. |
 | <span class="prop-name">hint</span> | <span class="prop-type">string</span> |  | Hint text to display under the label of the input. |
-| <span class="prop-name">label</span> | <span class="prop-type">string</span> |  | Label text to display for the input. |
+| <span class="prop-name">label</span> | <span class="prop-type">node</span> |  | Label text to display for the input. |
 | <span class="prop-name">labelProps</span> | <span class="prop-type">object</span> |  | Props passed through to the InputLabel. |
 | <span class="prop-name">meta</span> | <span class="prop-type">node</span> |  | Any text to display under the right side of the input. |
 | <span class="prop-name">multiline</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, a textarea element will be rendered. |
