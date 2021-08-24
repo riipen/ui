@@ -48,7 +48,7 @@ class Notice extends React.Component {
     const className = clsx(color, classes);
 
     return (
-      <React.Fragment>
+      <>
         <div className={className}>{children}</div>
         <style jsx>{`
           div {
@@ -83,7 +83,7 @@ class Notice extends React.Component {
             border-color: ${theme.palette.positive.main};
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

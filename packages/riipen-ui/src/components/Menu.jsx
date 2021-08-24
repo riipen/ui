@@ -116,7 +116,7 @@ class Menu extends React.Component {
     } = this.props;
 
     return (
-      <React.Fragment>
+      <>
         <Popover
           anchorEl={anchorEl}
           anchorPosition={anchorPosition}
@@ -133,7 +133,7 @@ class Menu extends React.Component {
             {children}
           </MenuList>
         </Popover>
-      </React.Fragment>
+      </>
     );
   }
 }

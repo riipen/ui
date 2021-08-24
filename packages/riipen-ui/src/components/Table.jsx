@@ -74,7 +74,7 @@ class Table extends React.Component {
     };
 
     return (
-      <React.Fragment>
+      <>
         <table
           ref={forwardedRef}
           className={clsx(classes)}
@@ -92,7 +92,7 @@ class Table extends React.Component {
             width: 100%;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

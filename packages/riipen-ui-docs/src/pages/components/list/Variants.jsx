@@ -9,7 +9,7 @@ export default function Variants() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <List variant="horizontal">
         <ListItem>List Item 1</ListItem>
         <ListItem>List Item 2</ListItem>
@@ -21,6 +21,6 @@ export default function Variants() {
         <ListItem>List Item 2</ListItem>
         <ListItem>List Item 3</ListItem>
       </List>
-    </React.Fragment>
+    </>
   );
 }

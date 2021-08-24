@@ -183,7 +183,7 @@ class GridItem extends React.Component {
     const className = clsx(classes, itemSize);
 
     return (
-      <React.Fragment>
+      <>
         <div className={className}>{children}</div>
         <style jsx>{`
           div {
@@ -200,7 +200,7 @@ class GridItem extends React.Component {
             padding-left: ${theme.spacing(spacing)}px;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -7,14 +7,14 @@ const AccordionDetails = props => {
   const { classes, ...other } = props;
 
   return (
-    <React.Fragment>
+    <>
       <div className={clsx("root", classes)} {...other} />
       <style jsx>{`
         .root {
           display: flex;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

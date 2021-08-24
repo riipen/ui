@@ -1,19 +1,24 @@
 {
-  globals: {
-    after: false,
-    afterEach: false,
-    before: false,
-    beforeEach: false,
-    context: false,
-    describe: false,
-    expect: false,
-    it: false,
-    jest: false,
-
-    _JSXStyle: false,
+  "globals": {
+    "after": false,
+    "afterEach": false,
+    "before": false,
+    "beforeEach": false,
+    "context": false,
+    "describe": false,
+    "expect": false,
+    "it": false,
+    "jest": false,
+    "_JSXStyle": false
   },
-  rules: {
+  "rules": {
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "no-unused-vars": ["error", { "varsIgnorePattern": "_JSXStyle" }]
+    "no-unused-vars": ["error", { "varsIgnorePattern": "_JSXStyle" }],
+    "react/jsx-fragments": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

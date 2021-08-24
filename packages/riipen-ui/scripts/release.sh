@@ -8,6 +8,12 @@ if [[ "$BRANCH" != "master" ]]; then
   exit 1;
 fi
 
+if [[ $1 -eq 0 ]]; then
+  echo "Must pass the new semantic version as the first argument"
+  echo "Usage: ./scripts/release.sh 0.4.xx"
+  exit 1;
+fi
+
 NPM_VERSION=$(npm version $SEMANTIC_VERSION)
 
 # Commit updated files to git
