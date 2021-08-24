@@ -45,8 +45,8 @@ const RadioGroup = ({
             hint={hint}
             htmlFor={other.name}
             required={required}
-            {...labelProps}
             suffix={suffix}
+            {...labelProps}
           >
             {label}
           </InputLabel>
