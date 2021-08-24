@@ -443,7 +443,7 @@ exports[`<InputLabel> renders correct snapshot 1`] = `
             5,
           ]
         }
-        id="803353257"
+        id="3813465581"
       />
     </InputLabel>
   </withClasses(InputLabel)>
