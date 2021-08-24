@@ -165,18 +165,18 @@ describe("<InputLabel>", () => {
     });
   });
 
-  describe("tooltip prop", () => {
-    it("renders tooltip inside the label and Typography element", () => {
-      const tooltip = <span>Tooltip</span>;
+  describe("suffix prop", () => {
+    it("renders suffix inside the label and Typography element", () => {
+      const suffix = <span>Test</span>;
 
-      const wrapper = mount(<InputLabel>{tooltip}</InputLabel>);
+      const wrapper = mount(<InputLabel>{suffix}</InputLabel>);
 
       expect(
         wrapper
           .find("InputLabel")
           .find("label")
           .find("Typography")
-          .contains(tooltip)
+          .contains(suffix)
       ).toEqual(true);
     });
   });

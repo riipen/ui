@@ -141,13 +141,13 @@ describe("<RadioGroup>", () => {
     });
   });
 
-  describe("tooltip prop", () => {
-    it("passes tooltip prop to InputLabel", () => {
-      const tooltip = <span>"Tooltip"</span>;
+  describe("suffix prop", () => {
+    it("passes suffix prop to InputLabel", () => {
+      const suffix = <span>"Test"</span>;
 
-      const wrapper = mount(<RadioGroup tooltip={tooltip} />);
+      const wrapper = mount(<RadioGroup suffix={suffix} />);
 
-      expect(wrapper.find("InputLabel").props().tooltip).toEqual(tooltip);
+      expect(wrapper.find("InputLabel").props().suffix).toEqual(suffix);
     });
   });
 
