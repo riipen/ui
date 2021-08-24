@@ -141,6 +141,16 @@ describe("<RadioGroup>", () => {
     });
   });
 
+  describe("suffix prop", () => {
+    it("passes suffix prop to InputLabel", () => {
+      const suffix = <span>"Test"</span>;
+
+      const wrapper = mount(<RadioGroup suffix={suffix} />);
+
+      expect(wrapper.find("InputLabel").props().suffix).toEqual(suffix);
+    });
+  });
+
   describe("value prop", () => {
     it("sets the childs checked prop according to the value", () => {
       const child = <Radio value="one" id="one" />;
