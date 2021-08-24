@@ -17,7 +17,7 @@ const InputLabel = ({
   hint,
   required,
   theme,
-  tooltip,
+  suffix,
   variant,
   ...other
 }) => {
@@ -37,7 +37,7 @@ const InputLabel = ({
           >
             {children}
             {required && " *"}
-            <span className="tooltip">{tooltip}</span>
+            <span className="suffix">{suffix}</span>
           </Typography>
         </label>
       )}
@@ -48,7 +48,7 @@ const InputLabel = ({
           margin-bottom: ${theme.spacing(marginBottom)}px;
         }
 
-        .tooltip {
+        .suffix {
           margin-left: ${theme.spacing(1)}px;
         }
       `}</style>
@@ -96,9 +96,9 @@ InputLabel.propTypes = {
   theme: PropTypes.object,
 
   /**
-   * Any tooltip info to display beside the label.
+   * Any suffix to display beside the label.
    */
-  tooltip: PropTypes.node,
+  suffix: PropTypes.node,
 
   /**
    * Variant for the label text. Passed through to Typopgraphy.
