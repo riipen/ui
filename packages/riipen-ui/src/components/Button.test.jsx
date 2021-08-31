@@ -380,7 +380,7 @@ describe("<Button>", () => {
     it("sets correct class name when focus event occurs", () => {
       const wrapper = mount(<Button value />);
 
-      wrapper.simulate("focus");
+      wrapper.find("button").invoke("onFocus")({});
 
       expect(
         wrapper
@@ -393,8 +393,8 @@ describe("<Button>", () => {
     it("sets correct class name when blur event occurs", () => {
       const wrapper = mount(<Button value />);
 
-      wrapper.simulate("focus");
-      wrapper.simulate("blur");
+      wrapper.find("button").invoke("onFocus")({});
+      wrapper.find("button").invoke("onBlur")({});
 
       expect(
         wrapper
