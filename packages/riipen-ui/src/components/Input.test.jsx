@@ -297,7 +297,7 @@ describe("<Input>", () => {
       wrapper
         .find("input")
         .last()
-        .simulate("focus");
+        .invoke("onFocus")({});
 
       expect(
         wrapper
@@ -314,11 +314,11 @@ describe("<Input>", () => {
       wrapper
         .find("input")
         .last()
-        .simulate("focus");
+        .invoke("onFocus")({});
       wrapper
         .find("input")
         .last()
-        .simulate("blur");
+        .invoke("onBlur")();
 
       expect(
         wrapper
