@@ -394,7 +394,7 @@ describe("<Button>", () => {
       const wrapper = mount(<Button value />);
 
       wrapper.find("button").invoke("onFocus")({});
-      wrapper.find("button").invoke("onBlur")({});
+      wrapper.find("button").invoke("onBlur")();
 
       expect(
         wrapper

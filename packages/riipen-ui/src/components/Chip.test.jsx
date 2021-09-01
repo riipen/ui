@@ -270,7 +270,10 @@ describe("<Chip>", () => {
 
       const wrapper = mount(<Chip onClick={handler} />);
 
-      wrapper.find("Chip").simulate("click");
+      wrapper
+        .find("div")
+        .at(0)
+        .invoke("onClick")();
 
       expect(handler).toHaveBeenCalledTimes(1);
     });
@@ -328,7 +331,10 @@ describe("<Chip>", () => {
     it("applies focusVisible class when focus event occurs", () => {
       const wrapper = mount(<Chip label="test" />);
 
-      wrapper.simulate("focus");
+      wrapper
+        .find("div")
+        .at(0)
+        .invoke("onFocus")({});
 
       expect(
         wrapper
@@ -341,8 +347,14 @@ describe("<Chip>", () => {
     it("does not apply focusVisible class when blur event occurs", () => {
       const wrapper = mount(<Chip label="test" />);
 
-      wrapper.simulate("focus");
-      wrapper.simulate("blur");
+      wrapper
+        .find("div")
+        .at(0)
+        .invoke("onFocus")({});
+      wrapper
+        .find("div")
+        .at(0)
+        .invoke("onBlur")();
 
       expect(
         wrapper

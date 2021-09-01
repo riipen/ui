@@ -201,7 +201,7 @@ describe("<Checkbox>", () => {
       const wrapper = mount(<Checkbox readOnly />);
 
       wrapper.find("input").invoke("onFocus")({});
-      wrapper.find("input").invoke("onBlur")({});
+      wrapper.find("input").invoke("onBlur")();
 
       expect(
         wrapper
