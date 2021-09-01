@@ -256,7 +256,7 @@ describe("<ButtonIcon>", () => {
     it("applies focusVisible class when focus event occurs", () => {
       const wrapper = mount(<ButtonIcon>children</ButtonIcon>);
 
-      wrapper.simulate("focus");
+      wrapper.find("button").invoke("onFocus")({});
 
       expect(
         wrapper
@@ -269,8 +269,8 @@ describe("<ButtonIcon>", () => {
     it("does not apply focusVisible class when blur event occurs", () => {
       const wrapper = mount(<ButtonIcon>children</ButtonIcon>);
 
-      wrapper.simulate("focus");
-      wrapper.simulate("blur");
+      wrapper.find("button").invoke("onFocus")({});
+      wrapper.find("button").invoke("onBlur")({});
 
       expect(
         wrapper
