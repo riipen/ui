@@ -138,7 +138,7 @@ describe("<RadioButtonGroup>", () => {
       wrapper
         .find("RadioButton")
         .find("input")
-        .simulate("change");
+        .invoke("onChange")({ target: { value: "a" } });
 
       expect(onChange).toHaveBeenCalledTimes(1);
     });
