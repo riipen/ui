@@ -187,7 +187,7 @@ describe("<Checkbox>", () => {
     it("applies focusVisible class when focus event occurs", () => {
       const wrapper = mount(<Checkbox readOnly />);
 
-      wrapper.find("input").simulate("focus");
+      wrapper.find("input").invoke("onFocus")({});
 
       expect(
         wrapper
@@ -200,8 +200,8 @@ describe("<Checkbox>", () => {
     it("does not apply focusVisible class when blur event occurs", () => {
       const wrapper = mount(<Checkbox readOnly />);
 
-      wrapper.find("input").simulate("focus");
-      wrapper.find("input").simulate("blur");
+      wrapper.find("input").invoke("onFocus")({});
+      wrapper.find("input").invoke("onBlur")({});
 
       expect(
         wrapper
@@ -218,7 +218,7 @@ describe("<Checkbox>", () => {
 
       const wrapper = mount(<Checkbox onKeyDown={handler} readOnly />);
 
-      wrapper.find("input").simulate("keydown", { key: "Enter" });
+      wrapper.find("input").invoke("onKeyDown")({ key: "Enter" });
 
       expect(handler).toHaveBeenCalledTimes(1);
     });
