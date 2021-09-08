@@ -104,7 +104,7 @@ describe("<Switch>", () => {
       const onChange = jest.fn();
       const wrapper = mount(<Switch onChange={onChange} checked />);
 
-      wrapper.find("input").simulate("change");
+      wrapper.find("input").invoke("onChange")();
 
       expect(onChange).toHaveBeenCalledTimes(1);
     });
