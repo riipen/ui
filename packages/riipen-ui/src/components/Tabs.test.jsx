@@ -161,7 +161,10 @@ describe("<Tabs>", () => {
 
       const wrapper = mount(<Tabs onChange={onChange}>{child}</Tabs>);
 
-      wrapper.find("Tab").simulate("click");
+      wrapper
+        .find("Tab")
+        .childAt(0)
+        .invoke("onClick")({ type: "click" });
 
       expect(onChange).toHaveBeenCalledWith(expect.any(Object), "one");
     });

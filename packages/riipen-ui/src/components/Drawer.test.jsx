@@ -148,7 +148,7 @@ describe("<Drawer>", () => {
 
       const wrapper = mount(<Drawer open={open} onClose={onClose} />);
 
-      wrapper.find("ClickAway").simulate("click");
+      wrapper.find("ClickAway").invoke("onClickAway")();
 
       expect(onClose).toHaveBeenCalledTimes(1);
     });

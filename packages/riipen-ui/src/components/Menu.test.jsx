@@ -134,7 +134,7 @@ describe("<Menu>", () => {
       wrapper
         .find("MenuItem")
         .childAt(0)
-        .simulate("click");
+        .invoke("onClick")();
 
       expect(onClose).toHaveBeenCalledTimes(0);
     });
@@ -218,8 +218,8 @@ describe("<Menu>", () => {
 
       wrapper
         .find("MenuItem")
-        .childAt(0)
-        .simulate("click");
+        .find("div")
+        .invoke("onClick")();
 
       expect(onClose).toHaveBeenCalledTimes(1);
     });
@@ -234,14 +234,14 @@ describe("<Menu>", () => {
 
       const wrapper = mount(
         <Menu anchorEl={anchorEl} onClose={onClose}>
-          <MenuItem />
+          <MenuItem onSubmit={jest.fn()} />
         </Menu>
       );
 
       wrapper
         .find("MenuItem")
         .childAt(0)
-        .simulate("submit");
+        .invoke("onSubmit")();
 
       expect(onClose).toHaveBeenCalledTimes(0);
     });
@@ -249,6 +249,7 @@ describe("<Menu>", () => {
 
   describe("onSelect prop", () => {
     it("invokes onSelect when child is clicked", () => {
+      const event = {};
       const onSelect = jest.fn();
       const anchorEl = ReactTestUtils.renderIntoDocument(
         <div>
@@ -265,9 +266,9 @@ describe("<Menu>", () => {
       wrapper
         .find("MenuItem")
         .childAt(0)
-        .simulate("click");
+        .invoke("onClick")(event);
 
-      expect(onSelect).toHaveBeenCalledWith(0, expect.any(Object));
+      expect(onSelect).toHaveBeenCalledWith(0, event);
     });
   });
 
