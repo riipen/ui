@@ -290,9 +290,41 @@ describe("<Input>", () => {
     });
   });
 
+  describe("onFocus prop", () => {
+    it("calls onFocus prop", () => {
+      const onFocus = jest.fn();
+
+      const wrapper = mount(<Input onFocus={onFocus} />);
+
+      wrapper
+        .find("input")
+        .last()
+        .invoke("onFocus")({});
+
+      expect(onFocus.mock.calls.length).toBe(1);
+    });
+  });
+
+  describe("onBlur prop", () => {
+    it("calls onBlur prop", () => {
+      const onBlur = jest.fn();
+
+      const wrapper = mount(<Input onBlur={onBlur} />);
+
+      wrapper
+        .find("input")
+        .last()
+        .invoke("onBlur")({});
+
+      expect(onBlur.mock.calls.length).toBe(1);
+    });
+  });
+
   describe("focusVisible state", () => {
     it("sets correct class name when focus event occurs", () => {
-      const wrapper = mount(<Input />);
+      const onFocus = jest.fn();
+
+      const wrapper = mount(<Input onFocus={onFocus} />);
 
       wrapper
         .find("input")
@@ -309,7 +341,9 @@ describe("<Input>", () => {
     });
 
     it("sets correct class name when blur event occurs", () => {
-      const wrapper = mount(<Input />);
+      const onBlur = jest.fn();
+
+      const wrapper = mount(<Input onBlur={onBlur} />);
 
       wrapper
         .find("input")
