@@ -32,12 +32,12 @@ const Input = ({
   const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
   const handleFocus = e => {
-    if (onFocus) onFocus();
+    if (onFocus) onFocus(e);
     setFocusVisible(isFocusVisible(e));
   };
 
-  const handleBlur = () => {
-    if (onBlur) onBlur();
+  const handleBlur = e => {
+    if (onBlur) onBlur(e);
     setFocusVisible(false);
     onBlurVisible();
   };
