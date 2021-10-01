@@ -18,6 +18,8 @@ const Input = ({
   labelProps,
   meta,
   multiline,
+  onBlur,
+  onFocus,
   required,
   size,
   startAdornment,
@@ -30,10 +32,12 @@ const Input = ({
   const { ref, isFocusVisible, onBlurVisible } = useIsFocusVisible();
 
   const handleFocus = e => {
+    if (onFocus) onFocus();
     setFocusVisible(isFocusVisible(e));
   };
 
   const handleBlur = () => {
+    if (onBlur) onBlur();
     setFocusVisible(false);
     onBlurVisible();
   };
@@ -288,6 +292,16 @@ Input.propTypes = {
    * If `true`, a textarea element will be rendered.
    */
   multiline: PropTypes.bool,
+
+  /**
+   * Function to execute when input is out of focus.
+   */
+  onBlur: PropTypes.func,
+
+  /**
+   * Function to execute when input is in focus.
+   */
+  onFocus: PropTypes.func,
 
   /**
    * If true, an asterisk will be appended to the end of the label.
