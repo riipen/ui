@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRANCH=$(git branch --show-current 2> /dev/null || git branch | grep '*' | cut -d ' ' -f2)
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 SEMANTIC_VERSION=$1
 
 if [[ "$BRANCH" != "master" ]]; then
