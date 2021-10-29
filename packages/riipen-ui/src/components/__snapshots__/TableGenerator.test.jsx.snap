@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TableGenerator> renders correct snapshot 1`] = `
+<withClasses(TableGeneratorRow)>
+  <TableGeneratorRow
+    classes={
+      Array [
+        "riipen",
+        "riipen-tablegeneratorrow",
+      ]
+    }
+    columns={Array []}
+    data={Object {}}
+    hover={true}
+    isLastRow={false}
+    mobile={false}
+  >
+    <withClasses(TableRow)
+      border={true}
+      forceHover={false}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <TableRow
+        border={true}
+        classes={
+          Array [
+            "riipen",
+            "riipen-tablerow",
+          ]
+        }
+        forceHover={false}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <tr
+          className="jsx-4111142428 riipen riipen-tablerow"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        />
+        <JSXStyle
+          dynamic={
+            Array [
+              "#ddd",
+              "#fff",
+              "#f58632",
+              "",
+              "",
+            ]
+          }
+          id="2808869914"
+        />
+      </TableRow>
+    </withClasses(TableRow)>
+    <JSXStyle
+      dynamic={
+        Array [
+          "#f5f5f5",
+        ]
+      }
+      id="725096434"
+    />
+  </TableGeneratorRow>
+</withClasses(TableGeneratorRow)>
+`;
