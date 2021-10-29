@@ -67,7 +67,7 @@ class TOC extends React.Component {
     return (
       <nav>
         {items.length > 0 ? (
-          <React.Fragment>
+          <>
             <p>Content</p>
             <ul>
               {items.map((item, i) => (
@@ -83,7 +83,7 @@ class TOC extends React.Component {
                 </li>
               ))}
             </ul>
-          </React.Fragment>
+          </>
         ) : null}
         <style jsx>{`
           nav {

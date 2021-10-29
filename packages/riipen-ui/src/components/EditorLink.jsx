@@ -36,7 +36,7 @@ class EditorLink extends React.Component {
     const theme = this.context;
 
     return (
-      <React.Fragment>
+      <>
         <a href={url} className={"link"}>
           {children}
         </a>
@@ -47,7 +47,7 @@ class EditorLink extends React.Component {
             text-decoration: none;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -40,7 +40,7 @@ class NoSSR extends React.Component {
     const { mounted } = this.state;
 
     // We need the Fragment here to force react-docgen to recognise NoSSR as a component.
-    return <React.Fragment>{mounted ? children : fallback}</React.Fragment>;
+    return <>{mounted ? children : fallback}</>;
   }
 }
 

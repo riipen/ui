@@ -266,7 +266,10 @@ describe("<Tab>", () => {
       const handler = jest.fn();
 
       const wrapper = mount(<Tab onClick={handler} value />);
-      wrapper.simulate("click");
+      wrapper
+        .find("Tab")
+        .childAt(0)
+        .invoke("onClick")({ type: "click" });
 
       expect(handler).toHaveBeenCalledTimes(1);
     });
@@ -278,7 +281,10 @@ describe("<Tab>", () => {
       const wrapper = mount(
         <Tab onClick={handler} disabled={disabled} value />
       );
-      wrapper.simulate("click");
+      wrapper
+        .find("Tab")
+        .childAt(0)
+        .invoke("onClick")({ type: "click" });
 
       expect(handler).toHaveBeenCalledTimes(0);
     });
@@ -287,7 +293,10 @@ describe("<Tab>", () => {
       const handler = jest.fn();
 
       const wrapper = mount(<Tab onClick={handler} value />);
-      wrapper.simulate("keydown", { key: "Enter" });
+      wrapper
+        .find("Tab")
+        .childAt(0)
+        .invoke("onClick")({ key: "Enter", type: "keydown" });
 
       expect(handler).toHaveBeenCalledTimes(1);
     });
@@ -296,7 +305,10 @@ describe("<Tab>", () => {
       const handler = jest.fn();
 
       const wrapper = mount(<Tab onClick={handler} value />);
-      wrapper.simulate("keydown", { key: "3" });
+      wrapper
+        .find("Tab")
+        .childAt(0)
+        .invoke("onClick")({ key: "3", type: "keydown" });
 
       expect(handler).toHaveBeenCalledTimes(0);
     });
@@ -330,7 +342,10 @@ describe("<Tab>", () => {
     it("sets correct class name when focus event occurs", () => {
       const wrapper = mount(<Tab value />);
 
-      wrapper.simulate("focus");
+      wrapper
+        .find("Tab")
+        .childAt(0)
+        .invoke("onFocus")({});
 
       expect(
         wrapper
@@ -343,8 +358,14 @@ describe("<Tab>", () => {
     it("sets correct class name when blur event occurs", () => {
       const wrapper = mount(<Tab value />);
 
-      wrapper.simulate("focus");
-      wrapper.simulate("blur");
+      wrapper
+        .find("Tab")
+        .childAt(0)
+        .invoke("onFocus")({});
+      wrapper
+        .find("Tab")
+        .childAt(0)
+        .invoke("onBlur")();
 
       expect(
         wrapper

@@ -128,7 +128,10 @@ describe("<MenuItem>", () => {
 
       const wrapper = mount(<MenuItem onSelect={handler} />);
 
-      wrapper.find("MenuItem").simulate("click");
+      wrapper
+        .find("MenuItem")
+        .childAt(0)
+        .invoke("onClick")();
 
       expect(handler).toHaveBeenCalledTimes(1);
     });
@@ -136,14 +139,19 @@ describe("<MenuItem>", () => {
     it("does not invoke onSelect handler when ListItem is clicked and disabled prop is true", () => {
       const disabled = true;
       const handler = jest.fn();
+      const event = { stopPropagation: jest.fn(0) };
 
       const wrapper = mount(
         <MenuItem disabled={disabled} onSelect={handler} />
       );
 
-      wrapper.find("MenuItem").simulate("click");
+      wrapper
+        .find("MenuItem")
+        .childAt(0)
+        .invoke("onClick")(event);
 
       expect(handler).not.toHaveBeenCalled();
+      expect(event.stopPropagation).toHaveBeenCalledTimes(1);
     });
 
     it("invokes onSelect handler when ListItem is clicked and disabled prop is false", () => {
@@ -154,7 +162,10 @@ describe("<MenuItem>", () => {
         <MenuItem disabled={disabled} onSelect={handler} />
       );
 
-      wrapper.find("MenuItem").simulate("click");
+      wrapper
+        .find("MenuItem")
+        .childAt(0)
+        .invoke("onClick")();
 
       expect(handler).toHaveBeenCalledTimes(1);
     });

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VerticalProgressBar> renders correct snapshot 1`] = `
+<withClasses(VerticalProgressBar)>
+  <VerticalProgressBar
+    classes={
+      Array [
+        "riipen",
+        "riipen-verticalprogressbar",
+      ]
+    }
+  >
+    <withClasses(Grid)
+      classes={
+        Array [
+          "riipen",
+          "riipen-verticalprogressbar",
+        ]
+      }
+      spacing={0}
+    >
+      <Grid
+        alignItems="flex-start"
+        classes={
+          Array [
+            "riipen",
+            "riipen-grid",
+            "riipen",
+            "riipen-verticalprogressbar",
+          ]
+        }
+        flexDirection="row"
+        flexGrow={1}
+        flexShrink={1}
+        flexWrap="wrap"
+        justifyContent="flex-start"
+        onResize={[Function]}
+        spacing={0}
+      >
+        <div
+          className="jsx-2773517404 riipen riipen-grid riipen riipen-verticalprogressbar md"
+        />
+        <JSXStyle
+          dynamic={
+            Array [
+              "flex-start",
+              "row",
+              1,
+              1,
+              "wrap",
+              "flex-start",
+              0,
+              0,
+            ]
+          }
+          id="3466573101"
+        />
+      </Grid>
+    </withClasses(Grid)>
+  </VerticalProgressBar>
+</withClasses(VerticalProgressBar)>
+`;

@@ -47,7 +47,7 @@ class ClickAway extends React.Component {
     });
 
     return (
-      <React.Fragment>
+      <>
         <div onClick={this.handleClickAway}>{childrenWithProps}</div>
         <style jsx>{`
           div {
@@ -59,7 +59,7 @@ class ClickAway extends React.Component {
             z-index: ${theme.zIndex.middle};
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

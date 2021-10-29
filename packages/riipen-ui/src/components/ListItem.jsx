@@ -12,7 +12,7 @@ const ListItem = props => {
   const className = clsx("list-item", variant, classes);
 
   return (
-    <React.Fragment>
+    <>
       <li className={className} {...other}>
         {children}
       </li>
@@ -37,7 +37,7 @@ const ListItem = props => {
           margin-bottom: 0;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

@@ -17,6 +17,7 @@ const InputLabel = ({
   hint,
   required,
   theme,
+  suffix,
   variant,
   ...other
 }) => {
@@ -25,7 +26,7 @@ const InputLabel = ({
   const marginBottom = hint ? 1 : 3;
 
   return (
-    <React.Fragment>
+    <>
       {children && (
         <label className={className} {...other}>
           <Typography
@@ -36,6 +37,7 @@ const InputLabel = ({
           >
             {children}
             {required && " *"}
+            <span className="suffix">{suffix}</span>
           </Typography>
         </label>
       )}
@@ -45,8 +47,12 @@ const InputLabel = ({
           display: inline-block;
           margin-bottom: ${theme.spacing(marginBottom)}px;
         }
+
+        .suffix {
+          margin-left: ${theme.spacing(1)}px;
+        }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 
@@ -64,12 +70,12 @@ InputLabel.propTypes = {
   classes: PropTypes.array,
 
   /**
-   * Color of the label text. Passed through to Typopgraphy
+   * Color of the label text. Passed through to Typopgraphy.
    */
   color: PropTypes.string,
 
   /**
-   * Font weight for the label text. Passed through to Typopgraphy
+   * Font weight for the label text. Passed through to Typopgraphy.
    */
   fontWeight: PropTypes.string,
 
@@ -85,12 +91,17 @@ InputLabel.propTypes = {
 
   /**
    * @ignore
-   * The theme context object
+   * The theme context object.
    */
   theme: PropTypes.object,
 
   /**
-   * Variant for the label text. Passed through to Typopgraphy
+   * Any suffix to display beside the label.
+   */
+  suffix: PropTypes.node,
+
+  /**
+   * Variant for the label text. Passed through to Typopgraphy.
    */
   variant: PropTypes.string
 };

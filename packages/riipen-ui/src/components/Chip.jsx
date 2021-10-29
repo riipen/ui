@@ -49,7 +49,7 @@ const Chip = ({
   };
 
   return (
-    <React.Fragment>
+    <>
       <Component
         className={className}
         onBlur={handleBlur}
@@ -304,7 +304,7 @@ const Chip = ({
           color: ${theme.palette.text.secondary};
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

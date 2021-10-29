@@ -19,7 +19,7 @@ export default function Component() {
   const { click, hover, keepOpenOnMouseLeave } = state;
 
   return (
-    <React.Fragment>
+    <>
       <div className="container">
         <div className="half">
           <Form>
@@ -93,6 +93,6 @@ export default function Component() {
           margin-bottom: 10px;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 }

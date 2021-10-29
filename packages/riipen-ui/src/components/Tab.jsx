@@ -60,7 +60,7 @@ const Tab = props => {
   );
 
   return (
-    <React.Fragment>
+    <>
       <div
         tabIndex="0"
         role="button"
@@ -173,7 +173,7 @@ const Tab = props => {
           }
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

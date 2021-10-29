@@ -124,9 +124,9 @@ describe("<RadioGroup>", () => {
       wrapper
         .find("Radio")
         .find("input")
-        .simulate("change");
+        .invoke("onChange")({ target: { value: "a" } });
 
-      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith({ target: { value: "a" } }, "a");
     });
   });
 
@@ -138,6 +138,16 @@ describe("<RadioGroup>", () => {
       const wrapper = mount(<RadioGroup label={label} required={required} />);
 
       expect(wrapper.find("InputLabel").props().required).toEqual(required);
+    });
+  });
+
+  describe("suffix prop", () => {
+    it("passes suffix prop to InputLabel", () => {
+      const suffix = <span>"Test"</span>;
+
+      const wrapper = mount(<RadioGroup suffix={suffix} />);
+
+      expect(wrapper.find("InputLabel").props().suffix).toEqual(suffix);
     });
   });
 

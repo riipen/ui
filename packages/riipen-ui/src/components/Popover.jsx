@@ -32,7 +32,7 @@ class Popover extends React.Component {
     /**
      * The content of the component
      */
-    children: PropTypes.object,
+    children: PropTypes.node,
 
     /**
      * Array of additional CSS classes to use.
@@ -397,7 +397,7 @@ class Popover extends React.Component {
     const Component = component;
 
     return (
-      <React.Fragment>
+      <>
         {anchorEl && isOpen && (
           <Component
             style={{ ...styles, ...this.state.contentStyles }}
@@ -427,7 +427,7 @@ class Popover extends React.Component {
             display: none;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

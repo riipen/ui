@@ -344,7 +344,7 @@ const Tooltip = ({
   const linkedStyles = getLinkedStyles();
 
   return (
-    <React.Fragment>
+    <>
       <Component
         ref={tooltipRootRef}
         onClick={click ? clickCallback : undefined}
@@ -377,11 +377,11 @@ const Tooltip = ({
           onClose={handleClose}
           {...other}
         >
-          <React.Fragment>{tooltip}</React.Fragment>
+          {tooltip}
         </Popover>
       }
       {linkedStyles.styles}
-    </React.Fragment>
+    </>
   );
 };
 

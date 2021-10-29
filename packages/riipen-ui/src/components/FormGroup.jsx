@@ -66,7 +66,7 @@ class FormGroup extends React.Component {
     const className = clsx(classes);
 
     return (
-      <React.Fragment>
+      <>
         <fieldset className={className}>
           {title && (
             <Typography
@@ -106,7 +106,7 @@ class FormGroup extends React.Component {
             margin-top: ${theme.spacing(4)}px;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

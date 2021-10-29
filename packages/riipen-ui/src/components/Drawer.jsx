@@ -58,7 +58,7 @@ class Drawer extends React.Component {
     const className = clsx("drawer", anchor, classes);
 
     return (
-      <React.Fragment>
+      <>
         <Backdrop />
         <ClickAway onClickAway={onClose}>
           <div className={className}>{children}</div>
@@ -101,7 +101,7 @@ class Drawer extends React.Component {
             max-height: 100%;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

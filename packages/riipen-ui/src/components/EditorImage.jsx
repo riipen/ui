@@ -36,14 +36,14 @@ class EditorImage extends React.Component {
     const { src, alt } = entity.getData();
 
     return (
-      <React.Fragment>
+      <>
         <img alt={alt} src={src} className={"image"} />
         <style jsx>{`
           .image {
             max-width: 100%;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

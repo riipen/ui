@@ -12,7 +12,7 @@ const InputHint = ({ children, classes, color, theme }) => {
   const className = clsx(classes);
 
   return (
-    <React.Fragment>
+    <>
       <div className={className}>
         <Typography variant="body2" color={color}>
           {children}
@@ -24,7 +24,7 @@ const InputHint = ({ children, classes, color, theme }) => {
           margin-bottom: ${theme.spacing(2)}px;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

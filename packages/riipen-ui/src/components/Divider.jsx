@@ -36,7 +36,7 @@ class Divider extends React.Component {
     const className = clsx(variant, classes);
 
     return (
-      <React.Fragment>
+      <>
         <div className={className} />
         <style jsx>{`
           div {
@@ -49,7 +49,7 @@ class Divider extends React.Component {
             margin-right: ${theme.spacing(2)}px;
           },
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }
