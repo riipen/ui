@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import css from "styled-jsx/css";
 
 import ThemeContext from "../styles/ThemeContext";
 
@@ -11,8 +10,8 @@ import withClasses from "../utils/withClasses";
 import TableHeader from "./TableHeader";
 import Table from "./Table";
 import TableRow from "./TableRow";
+import TableGeneratorRow from "./TableGeneratorRow";
 import TableBody from "./TableBody";
-import TableCell from "./TableCell";
 import TableHeaderCell from "./TableHeaderCell";
 
 class TableGenerator extends React.Component {
@@ -89,8 +88,7 @@ class TableGenerator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMobile: false,
-      hoverIdx: null
+      isMobile: false
     };
 
     this.updateWindowDimensions = debounce(this.updateWindowDimensions);
@@ -105,32 +103,7 @@ class TableGenerator extends React.Component {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
 
-  getLinkedStyles = () => {
-    const theme = this.context;
-
-    return css.resolve`
-      .container {
-        border: 1px solid ${theme.palette.grey[400]};
-        border-radius: 4px;
-        display: inline-block;
-        min-width: 100%;
-        overflow-x: auto;
-      }
-
-      .noPadding {
-        padding: 0;
-      }
-
-      .expandedRow {
-        background-color: ${theme.palette.grey[100]};
-      }
-    `;
-  };
-
   static contextType = ThemeContext;
-
-  handleRowMouseEnter = idx => () => this.setState({ hoverIdx: idx });
-  handleRowMouseLeave = () => this.setState({ hoverIdx: null });
 
   updateWindowDimensions = () => {
     const theme = this.context;
@@ -142,205 +115,75 @@ class TableGenerator extends React.Component {
     });
   };
 
-  renderTableHeader() {
-    const { isMobile } = this.state;
-    const { columns } = this.props;
-
-    return (
-      <TableHeader>
-        <TableRow border>
-          {columns.map((col, i) => (
-            <TableHeaderCell
-              key={`header-column-${i}`}
-              {...col.headerProps?.(isMobile)}
-            >
-              {col?.header(isMobile)}
-            </TableHeaderCell>
-          ))}
-        </TableRow>
-      </TableHeader>
-    );
-  }
-
-  renderDefault() {
-    const {
-      hover,
-      data,
-      columns,
-      expandedNode,
-      expandRow,
-      rowProps
-    } = this.props;
-    const { isMobile, hoverIdx } = this.state;
-
-    const linkedStyles = this.getLinkedStyles();
-
-    const isExpandable = expandRow && expandedNode;
-    const rowCount = data.length;
-
-    return (
-      <>
-        {this.renderTableHeader()}
-        <TableBody>
-          {data.map((row, i) => {
-            const isExpanded = isExpandable && expandRow(row);
-            const isHovering = hover && hoverIdx === i;
-            const isNotLastRow = i !== rowCount - 1;
-
-            return (
-              <React.Fragment key={`default-row-${i}`}>
-                <TableRow
-                  border={isNotLastRow || isExpanded}
-                  forceHover={isHovering}
-                  onMouseEnter={this.handleRowMouseEnter(i)}
-                  onMouseLeave={this.handleRowMouseLeave}
-                  {...rowProps}
-                >
-                  {columns.map((col, j) => (
-                    <TableCell
-                      classes={[linkedStyles.className]}
-                      key={`default-cell-${i}-${j}`}
-                      {...col.cellProps?.(row, i, isMobile)}
-                    >
-                      {col?.cell(row, i, isMobile)}
-                    </TableCell>
-                  ))}
-                </TableRow>
-                {isExpanded && (
-                  <TableRow
-                    border={isNotLastRow}
-                    forceHover={isHovering}
-                    onMouseEnter={this.handleRowMouseEnter(i)}
-                    onMouseLeave={this.handleRowMouseLeave}
-                  >
-                    <TableCell
-                      classes={[linkedStyles.className, "expandedRow"]}
-                      padding={0}
-                      colSpan={columns.length}
-                    >
-                      {expandedNode(row)}
-                    </TableCell>
-                  </TableRow>
-                )}
-              </React.Fragment>
-            );
-          })}
-        </TableBody>
-      </>
-    );
-  }
-
-  renderMobile() {
-    const {
-      hover,
-      columns,
-      data,
-      expandedNode,
-      expandRow,
-      rowProps
-    } = this.props;
-    const { isMobile, hoverIdx } = this.state;
-
-    const linkedStyles = this.getLinkedStyles();
-
-    const rowCount = data.length;
-
-    const mobileHeader = columns.find(x => x.mobileHeader);
-    const mobileFooter = columns.find(x => x.mobileFooter);
-    const bodyColumns = columns.filter(x => !x.mobileFooter && !x.mobileHeader);
-
-    const isExpandable = expandRow && expandedNode;
-
-    return (
-      <TableBody>
-        {data.map((row, i) => {
-          const isExpanded = isExpandable && expandRow(row);
-          const isHovering = hover && hoverIdx === i;
-          const isNotLastRow = i !== rowCount - 1;
-
-          return (
-            <React.Fragment key={`entity-${i}`}>
-              <TableRow
-                border={isNotLastRow}
-                forceHover={isHovering}
-                onMouseEnter={this.handleRowMouseEnter(i)}
-                onMouseLeave={this.handleRowMouseLeave}
-                {...rowProps}
-              >
-                <TableCell classes={[linkedStyles.className, "noPadding"]}>
-                  {mobileHeader && (
-                    <Table backgroundColor="transparent">
-                      <TableBody>
-                        <TableRow>
-                          <TableCell classes={[linkedStyles.className]}>
-                            {mobileHeader?.cell(row, i, isMobile)}
-                          </TableCell>
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  )}
-                  <Table layout="fixed" backgroundColor="transparent">
-                    <TableBody>
-                      {bodyColumns.map((bodyColumn, j) => (
-                        <TableRow border={false} key={`${i}-${j}`}>
-                          <TableHeaderCell
-                            align="left"
-                            classes={[linkedStyles.className]}
-                          >
-                            {bodyColumn?.header(isMobile)}
-                          </TableHeaderCell>
-                          <TableCell classes={[linkedStyles.className]}>
-                            {bodyColumn?.cell(row, i, isMobile)}
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                  {mobileFooter && (
-                    <Table backgroundColor="transparent">
-                      <TableBody>
-                        <TableRow border={false}>
-                          <TableCell classes={[linkedStyles.className]}>
-                            {mobileFooter?.cell(row, i, isMobile)}
-                          </TableCell>
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  )}
-                </TableCell>
-              </TableRow>
-              {isExpanded && (
-                <TableRow
-                  classes={[linkedStyles.className, "expandedRow"]}
-                  border={isNotLastRow}
-                  forceHover={isHovering}
-                  onMouseEnter={this.handleRowMouseEnter(i)}
-                  onMouseLeave={this.handleRowMouseLeave}
-                >
-                  <TableCell padding={0}>{expandedNode(row)}</TableCell>
-                </TableRow>
-              )}
-            </React.Fragment>
-          );
-        })}
-      </TableBody>
-    );
-  }
-
   render() {
     const { isMobile } = this.state;
-    const { classes, data, empty, loading } = this.props;
+    const {
+      classes,
+      data,
+      empty,
+      loading,
+      hover,
+      columns,
+      expandedNode,
+      expandRow,
+      rowProps
+    } = this.props;
 
-    const linkedStyles = this.getLinkedStyles();
+    const theme = this.context;
+
+    const rowCount = data.length;
 
     return (
       <>
-        <div className={clsx("container", linkedStyles.className, classes)}>
-          <Table>{isMobile ? this.renderMobile() : this.renderDefault()}</Table>
+        <div className={clsx("container", classes)}>
+          <Table>
+            {!isMobile && (
+              <TableHeader>
+                <TableRow border>
+                  {columns.map((col, i) => (
+                    <TableHeaderCell
+                      key={`header-column-${i}`}
+                      {...col.headerProps?.(isMobile)}
+                    >
+                      {col?.header(isMobile)}
+                    </TableHeaderCell>
+                  ))}
+                </TableRow>
+              </TableHeader>
+            )}
+            <TableBody>
+              {data.map((row, i) => {
+                const isLastRow = i === rowCount - 1;
+
+                return (
+                  <TableGeneratorRow
+                    key={`row-${i}`}
+                    columns={columns}
+                    data={row}
+                    expandedNode={expandedNode}
+                    expandRow={expandRow}
+                    hover={hover}
+                    isLastRow={isLastRow}
+                    mobile={isMobile}
+                    rowProps={rowProps}
+                    rowNum={i}
+                  />
+                );
+              })}
+            </TableBody>
+          </Table>
           {loading}
           {!loading && data.length === 0 && empty}
         </div>
-        {linkedStyles.styles}
+        <style jsx>{`
+          .container {
+            border: 1px solid ${theme.palette.grey[400]};
+            border-radius: 4px;
+            display: inline-block;
+            min-width: 100%;
+            overflow-x: auto;
+          }
+        `}</style>
       </>
     );
   }
