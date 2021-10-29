@@ -121,7 +121,7 @@ class Badge extends React.Component {
     }
 
     return (
-      <React.Fragment>
+      <>
         <Component className={className}>
           {children}
           <span
@@ -259,7 +259,7 @@ class Badge extends React.Component {
             transform-origin: 0% 100%;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

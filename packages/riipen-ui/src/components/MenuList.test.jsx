@@ -66,6 +66,7 @@ describe("<MenuList>", () => {
 
     it("invokes onSelect when child clicked", () => {
       const onSelect = jest.fn();
+      const event = {};
 
       const wrapper = mount(
         <MenuList onSelect={onSelect} variant="selection">
@@ -77,9 +78,10 @@ describe("<MenuList>", () => {
       wrapper
         .find("MenuItem")
         .at(0)
-        .simulate("click");
+        .find("div")
+        .invoke("onClick")(event);
 
-      expect(onSelect).toHaveBeenCalledWith(0, expect.any(Object));
+      expect(onSelect).toHaveBeenCalledWith(0, event);
     });
   });
 
@@ -147,6 +149,7 @@ describe("<MenuList>", () => {
   describe("onSelect prop", () => {
     it("invokes onSelect with a null idx when div is clicked", () => {
       const onSelect = jest.fn();
+      const event = {};
 
       const wrapper = mount(
         <MenuList onSelect={onSelect}>
@@ -157,9 +160,10 @@ describe("<MenuList>", () => {
       wrapper
         .find("MenuItem")
         .at(0)
-        .simulate("click");
+        .find("div")
+        .invoke("onClick")(event);
 
-      expect(onSelect).toHaveBeenLastCalledWith(0, expect.any(Object));
+      expect(onSelect).toHaveBeenLastCalledWith(0, event);
     });
   });
 

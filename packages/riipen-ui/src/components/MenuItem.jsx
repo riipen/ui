@@ -158,7 +158,7 @@ const MenuItem = ({
   );
 
   return (
-    <React.Fragment>
+    <>
       <div
         ref={ref}
         tabIndex="0"
@@ -173,7 +173,7 @@ const MenuItem = ({
         {children}
       </div>
       {linkedStyles.styles}
-    </React.Fragment>
+    </>
   );
 };
 

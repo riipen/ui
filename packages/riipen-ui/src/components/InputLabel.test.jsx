@@ -165,6 +165,22 @@ describe("<InputLabel>", () => {
     });
   });
 
+  describe("suffix prop", () => {
+    it("renders suffix inside the label and Typography element", () => {
+      const suffix = <span>Test</span>;
+
+      const wrapper = mount(<InputLabel>{suffix}</InputLabel>);
+
+      expect(
+        wrapper
+          .find("InputLabel")
+          .find("label")
+          .find("Typography")
+          .contains(suffix)
+      ).toEqual(true);
+    });
+  });
+
   describe("fontWeight prop", () => {
     it("Passes fontWeight to the underlying typography", () => {
       const fontWeight = "bold";

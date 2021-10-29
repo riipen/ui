@@ -147,7 +147,7 @@ describe("<Link>", () => {
         </Link>
       );
 
-      wrapper.simulate("focus");
+      wrapper.find("a").invoke("onFocus")({});
 
       expect(
         wrapper
@@ -164,8 +164,8 @@ describe("<Link>", () => {
         </Link>
       );
 
-      wrapper.simulate("focus");
-      wrapper.simulate("blur");
+      wrapper.find("a").invoke("onFocus")({});
+      wrapper.find("a").invoke("onBlur")();
 
       expect(
         wrapper

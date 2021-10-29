@@ -6,6 +6,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Accordion from "riipen-ui/components/Accordion";
 import AccordionDetails from "riipen-ui/components/AccordionDetails";
 import AccordionSummary from "riipen-ui/components/AccordionSummary";
+import Typography from "riipen-ui/components/Typography";
 import ThemeContext from "riipen-ui/styles/ThemeContext";
 
 import Link from "src/modules/components/Link";
@@ -54,7 +55,9 @@ const Menu = () => {
           <li key={i}>
             <Accordion {...parent.props}>
               <AccordionSummary icon={Icon} iconProps={{ size: "small" }}>
-                {parent.name}
+                <Typography color="initial" fontWeight="bold" variant="h5">
+                  {parent.name}
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <ul>{getLinks(parent)}</ul>
@@ -82,6 +85,11 @@ const Menu = () => {
         }
         li {
           padding: ${theme.spacing(1)}px;
+        }
+        @media (max-width: ${theme.breakpoints.md}px) {
+          div {
+            width: 100%;
+          }
         }
       `}</style>
     </div>

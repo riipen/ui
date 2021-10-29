@@ -179,7 +179,7 @@ class TableGenerator extends React.Component {
     const rowCount = data.length;
 
     return (
-      <React.Fragment>
+      <>
         {this.renderTableHeader()}
         <TableBody>
           {data.map((row, i) => {
@@ -226,7 +226,7 @@ class TableGenerator extends React.Component {
             );
           })}
         </TableBody>
-      </React.Fragment>
+      </>
     );
   }
 
@@ -334,14 +334,14 @@ class TableGenerator extends React.Component {
     const linkedStyles = this.getLinkedStyles();
 
     return (
-      <React.Fragment>
+      <>
         <div className={clsx("container", linkedStyles.className, classes)}>
           <Table>{isMobile ? this.renderMobile() : this.renderDefault()}</Table>
           {loading}
           {!loading && data.length === 0 && empty}
         </div>
         {linkedStyles.styles}
-      </React.Fragment>
+      </>
     );
   }
 }

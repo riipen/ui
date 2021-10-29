@@ -553,7 +553,7 @@ class Editor extends React.Component {
       : "controlContainer";
 
     return (
-      <React.Fragment>
+      <>
         <div className={clsx(linkedStyles.className, controlContainerClasses)}>
           <div className={clsx(linkedStyles.className, "stylingControls")}>
             <EditorBlockStyleControls
@@ -585,7 +585,7 @@ class Editor extends React.Component {
               ))}
           </div>
         </div>
-      </React.Fragment>
+      </>
     );
   };
 
@@ -631,7 +631,7 @@ class Editor extends React.Component {
     );
 
     return (
-      <React.Fragment>
+      <>
         <div className={wrapperClasses} onClick={this.forceFocus}>
           {controlPosition === "top" && this.renderControls()}
           <div className={editorClasses} style={style}>
@@ -654,7 +654,7 @@ class Editor extends React.Component {
           {controlPosition === "bottom" && this.renderControls()}
         </div>
         {linkedStyles.styles}
-      </React.Fragment>
+      </>
     );
   }
 }

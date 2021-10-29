@@ -131,13 +131,15 @@ describe("<Accordion>", () => {
 
       const wrapper = mount(
         <Accordion defaultExpanded={defaultExpanded}>
-          <AccordionSummary>summary</AccordionSummary>
+          <AccordionSummary id="test-summary">summary</AccordionSummary>
           <AccordionDetails>hello</AccordionDetails>
         </Accordion>
       );
 
-      wrapper.find("AccordionSummary").simulate("click");
-
+      wrapper
+        .find("#test-summary")
+        .at(1)
+        .invoke("onClick")();
       expect(
         wrapper
           .find("Accordion")
@@ -151,12 +153,15 @@ describe("<Accordion>", () => {
 
       const wrapper = mount(
         <Accordion defaultExpanded={defaultExpanded}>
-          <AccordionSummary>summary</AccordionSummary>
+          <AccordionSummary id="test-summary">summary</AccordionSummary>
           <AccordionDetails>hello</AccordionDetails>
         </Accordion>
       );
 
-      wrapper.find("AccordionSummary").simulate("click");
+      wrapper
+        .find("#test-summary")
+        .at(1)
+        .invoke("onClick")();
 
       expect(wrapper.find("Collapse").props().in).toEqual(!defaultExpanded);
     });

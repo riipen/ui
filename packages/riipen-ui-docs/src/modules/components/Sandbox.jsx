@@ -13,9 +13,7 @@ class Sandbox extends React.Component {
 
     return (
       <ErrorBoundary>
-        <React.Fragment>
-          <Component />
-        </React.Fragment>
+        <Component />
       </ErrorBoundary>
     );
   }

@@ -5,21 +5,18 @@ import withClasses from "../utils/withClasses";
 
 import Grid from "./Grid";
 import GridItem from "./GridItem";
-import VerticalProgressBarItem from "./VerticalProgressBarItem";
 
-const VerticalProgressBar = ({ progresses }) => {
-  const renderProgress = () => {
-    return progresses.map((progress, index) => (
+const VerticalProgressBar = ({ children, classes }) => (
+  <Grid classes={classes} spacing={0}>
+    {React.Children.map(children, (child, index) => (
       <GridItem key={`progress-${index}`}>
-        <VerticalProgressBarItem
-          progress={{ ...progress, noBar: index >= progresses.length - 1 }}
-        />
+        {index === children.length - 1
+          ? React.cloneElement(child, { bar: false })
+          : child}
       </GridItem>
-    ));
-  };
-
-  return <Grid spacing={0}>{renderProgress()}</Grid>;
-};
+    ))}
+  </Grid>
+);
 
 VerticalProgressBar.propTypes = {
   // external
@@ -27,33 +24,17 @@ VerticalProgressBar.propTypes = {
   /**
    * The progresses to display.
    */
-  progresses: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * The progress icon.
-       */
-      icon: PropTypes.object,
+  children: PropTypes.node,
 
-      /**
-       * The content to render inside.
-       */
-      children: PropTypes.node,
-
-      /**
-       * The colour of the progress icon.
-       */
-      color: PropTypes.string,
-
-      /**
-       * Whether to not have bar.
-       */
-      noBar: PropTypes.bool
-    })
-  )
+  /**
+   * Additional classes to style with.
+   */
+  classes: PropTypes.array
 };
 
 VerticalProgressBar.defaultProps = {
-  progresses: []
+  children: [],
+  classes: []
 };
 
 export default withClasses(VerticalProgressBar);

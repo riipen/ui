@@ -65,9 +65,9 @@ describe("<Tooltip>", () => {
       const wrapper = mount(<Tooltip click={click} onOpen={onOpen} />);
 
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("click");
+        .find("div")
+        .at(0)
+        .invoke("onClick")();
 
       expect(onOpen).toHaveBeenCalledTimes(1);
     });
@@ -125,9 +125,9 @@ describe("<Tooltip>", () => {
       const wrapper = mount(<Tooltip />);
 
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseEnter");
+        .find("div")
+        .at(0)
+        .invoke("onMouseEnter")();
 
       expect(wrapper.find("Popover").props().isOpen).toBe(true);
     });
@@ -136,13 +136,13 @@ describe("<Tooltip>", () => {
       const wrapper = mount(<Tooltip />);
 
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseEnter");
+        .find("div")
+        .at(0)
+        .invoke("onMouseEnter")();
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseLeave");
+        .find("div")
+        .at(0)
+        .invoke("onMouseLeave")();
 
       expect(wrapper.find("Popover").props().isOpen).toBe(false);
     });
@@ -151,11 +151,12 @@ describe("<Tooltip>", () => {
       const hover = false;
       const wrapper = mount(<Tooltip hover={hover} />);
 
-      wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseEnter");
-
+      expect(
+        wrapper
+          .find("div")
+          .at(0)
+          .props().onMouseEnter
+      ).toBeNull();
       expect(wrapper.find("Popover").props().isOpen).toBe(false);
     });
 
@@ -165,14 +166,16 @@ describe("<Tooltip>", () => {
       const wrapper = mount(<Tooltip click={click} hover={hover} />);
 
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("click");
-      wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseLeave");
+        .find("div")
+        .at(0)
+        .invoke("onClick")();
 
+      expect(
+        wrapper
+          .find("div")
+          .at(0)
+          .props().onMouseLeave
+      ).toBeNull();
       expect(wrapper.find("Popover").props().isOpen).toBe(true);
     });
   });
@@ -186,9 +189,9 @@ describe("<Tooltip>", () => {
       );
 
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseEnter");
+        .find("div")
+        .at(0)
+        .invoke("onMouseEnter")();
 
       expect(wrapper.find("Popover").props().isOpen).toBe(false);
     });
@@ -201,9 +204,9 @@ describe("<Tooltip>", () => {
       );
 
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseLeave");
+        .find("div")
+        .at(0)
+        .invoke("onMouseLeave")();
 
       expect(wrapper.find("Popover").props().isOpen).toBe(true);
     });
@@ -217,14 +220,16 @@ describe("<Tooltip>", () => {
       );
 
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseEnter");
-      wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseLeave");
+        .find("div")
+        .at(0)
+        .invoke("onMouseEnter")();
 
+      expect(
+        wrapper
+          .find("div")
+          .at(0)
+          .props().onMouseLeave
+      ).toBeNull();
       expect(wrapper.find("Popover").props().isOpen).toBe(true);
     });
   });
@@ -235,9 +240,9 @@ describe("<Tooltip>", () => {
       const wrapper = mount(<Tooltip onClose={onClose} />);
 
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseLeave");
+        .find("div")
+        .at(0)
+        .invoke("onMouseLeave")();
 
       expect(onClose).toHaveBeenCalledTimes(1);
     });
@@ -249,13 +254,13 @@ describe("<Tooltip>", () => {
 
       // open and close tooltip
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("click");
+        .find("div")
+        .at(0)
+        .invoke("onClick")();
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("click");
+        .find("div")
+        .at(0)
+        .invoke("onClick")();
 
       expect(onClose).toHaveBeenCalledTimes(1);
     });
@@ -276,9 +281,9 @@ describe("<Tooltip>", () => {
       const wrapper = mount(<Tooltip onOpen={onOpen} />);
 
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("mouseEnter");
+        .find("div")
+        .at(0)
+        .invoke("onMouseEnter")();
 
       expect(onOpen).toHaveBeenCalledTimes(1);
     });
@@ -289,9 +294,9 @@ describe("<Tooltip>", () => {
       const wrapper = mount(<Tooltip click={click} onOpen={onOpen} />);
 
       wrapper
-        .find("Tooltip")
-        .childAt(0)
-        .simulate("click");
+        .find("div")
+        .at(0)
+        .invoke("onClick")();
 
       expect(onOpen).toHaveBeenCalledTimes(1);
     });
@@ -372,7 +377,7 @@ describe("<Tooltip>", () => {
         wrapper
           .find("Tooltip")
           .find("Popover")
-          .props().children.props.children
+          .props().children
       ).toBe(tooltip);
     });
   });

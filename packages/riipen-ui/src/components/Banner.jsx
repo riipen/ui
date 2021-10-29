@@ -52,7 +52,7 @@ class Banner extends React.Component {
     const className = clsx("banner", tint, classes);
 
     return (
-      <React.Fragment>
+      <>
         <div className={className}>{children}</div>
         <style jsx>{`
           .banner {
@@ -93,7 +93,7 @@ class Banner extends React.Component {
             background-color: ${theme.palette.negative.main};
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

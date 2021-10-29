@@ -52,7 +52,7 @@ const Button = props => {
   if (component) Component = component;
 
   return (
-    <React.Fragment>
+    <>
       <Component
         ref={ref}
         className={className}
@@ -410,7 +410,7 @@ const Button = props => {
           width: 100%;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

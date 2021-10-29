@@ -74,7 +74,7 @@ describe("<ClickAway>", () => {
       wrapper
         .find("ClickAway")
         .find("div")
-        .simulate("click");
+        .invoke("onClick")();
 
       expect(onClickAway).toHaveBeenCalledTimes(1);
     });
@@ -82,18 +82,21 @@ describe("<ClickAway>", () => {
     it("does not invoke onClickAway when children node is clicked", () => {
       const child = <span>cheesecakes</span>;
       const onClickAway = jest.fn();
-
+      const event = {
+        preventDefault: jest.fn(),
+        stopPropagation: jest.fn()
+      };
       const wrapper = mount(
         <ClickAway onClickAway={onClickAway}>{child}</ClickAway>
       );
 
       wrapper
         .find("ClickAway")
-        .find("div")
-        .childAt(0)
-        .simulate("click");
+        .find("span")
+        .invoke("onClick")(event);
 
       expect(onClickAway).not.toHaveBeenCalled();
+      expect(event.stopPropagation).toHaveBeenCalledTimes(1);
     });
   });
 });

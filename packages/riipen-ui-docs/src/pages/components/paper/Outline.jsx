@@ -8,7 +8,7 @@ export default function Outline() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Paper
         style={{
           display: "inline-block",
@@ -25,6 +25,6 @@ export default function Outline() {
           width: "100px"
         }}
       />
-    </React.Fragment>
+    </>
   );
 }

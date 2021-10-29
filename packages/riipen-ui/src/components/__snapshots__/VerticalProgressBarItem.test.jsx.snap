@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
+<withClasses(VerticalProgressBarItem)>
+  <VerticalProgressBarItem
+    bar={true}
+    classes={
+      Array [
+        "riipen",
+        "riipen-verticalprogressbaritem",
+      ]
+    }
+  >
+    <div
+      className="jsx-1821936519 progress riipen riipen-verticalprogressbaritem"
+    >
+      <withClasses(Grid)
+        classes={
+          Array [
+            "jsx-358841745",
+            "wrapper",
+          ]
+        }
+        spacing={0}
+      >
+        <Grid
+          alignItems="flex-start"
+          classes={
+            Array [
+              "riipen",
+              "riipen-grid",
+              "jsx-358841745",
+              "wrapper",
+            ]
+          }
+          flexDirection="row"
+          flexGrow={1}
+          flexShrink={1}
+          flexWrap="wrap"
+          justifyContent="flex-start"
+          onResize={[Function]}
+          spacing={0}
+        >
+          <div
+            className="jsx-2773517404 riipen riipen-grid jsx-358841745 wrapper md"
+          >
+            <withClasses(GridItem)
+              key=".0"
+              lg="auto"
+              size="md"
+              spacing={0}
+            >
+              <GridItem
+                alignItems="stretch"
+                classes={
+                  Array [
+                    "riipen",
+                    "riipen-griditem",
+                  ]
+                }
+                flexDirection="column"
+                flexGrow={0}
+                flexShrink={0}
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                lg="auto"
+                size="md"
+                spacing={0}
+              >
+                <div
+                  className="jsx-2183797102 riipen riipen-griditem lg"
+                >
+                  <div
+                    className="jsx-1821936519 iconWrapper"
+                  />
+                </div>
+                <JSXStyle
+                  dynamic={
+                    Array [
+                      "stretch",
+                      "flex",
+                      "auto",
+                      "column",
+                      0,
+                      0,
+                      "wrap",
+                      "flex-start",
+                      0,
+                      0,
+                    ]
+                  }
+                  id="1025619962"
+                />
+              </GridItem>
+            </withClasses(GridItem)>
+            <withClasses(GridItem)
+              flexGrow={1}
+              flexShrink={1}
+              key=".1"
+              lg={10}
+              size="md"
+              spacing={0}
+            >
+              <GridItem
+                alignItems="stretch"
+                classes={
+                  Array [
+                    "riipen",
+                    "riipen-griditem",
+                  ]
+                }
+                flexDirection="column"
+                flexGrow={1}
+                flexShrink={1}
+                flexWrap="wrap"
+                justifyContent="flex-start"
+                lg={10}
+                size="md"
+                spacing={0}
+              >
+                <div
+                  className="jsx-4088224518 riipen riipen-griditem lg"
+                />
+                <JSXStyle
+                  dynamic={
+                    Array [
+                      "stretch",
+                      "flex",
+                      "83.33333333333334%",
+                      "column",
+                      1,
+                      1,
+                      "wrap",
+                      "flex-start",
+                      0,
+                      0,
+                    ]
+                  }
+                  id="1025619962"
+                />
+              </GridItem>
+            </withClasses(GridItem)>
+          </div>
+          <JSXStyle
+            dynamic={
+              Array [
+                "flex-start",
+                "row",
+                1,
+                1,
+                "wrap",
+                "flex-start",
+                0,
+                0,
+              ]
+            }
+            id="3466573101"
+          />
+        </Grid>
+      </withClasses(Grid)>
+      <JSXStyle
+        dynamic={
+          Array [
+            "#dddddd",
+            "#4cc88d",
+            "#febb46",
+            15,
+            "#dddddd",
+            "#4cc88d",
+            "#febb46",
+            35,
+            25,
+          ]
+        }
+        id="3229497486"
+      />
+      <JSXStyle
+        dynamic={
+          Array [
+            "#fff",
+            2,
+          ]
+        }
+        id="3174789173"
+      />
+    </div>
+  </VerticalProgressBarItem>
+</withClasses(VerticalProgressBarItem)>
+`;

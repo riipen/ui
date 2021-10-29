@@ -144,7 +144,7 @@ const Form = ({
   }
 
   return (
-    <React.Fragment>
+    <>
       {(errorRenderer || errorsRenderer) && (
         <div
           className={clsx(linkedStyles.className, "errorContainer")}
@@ -173,7 +173,7 @@ const Form = ({
         }
       `}</style>
       {linkedStyles.styles}
-    </React.Fragment>
+    </>
   );
 };
 

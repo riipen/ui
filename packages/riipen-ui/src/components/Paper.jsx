@@ -28,7 +28,7 @@ const Paper = props => {
   );
 
   return (
-    <React.Fragment>
+    <>
       <Component className={className} {...other}>
         {children}
       </Component>
@@ -50,7 +50,7 @@ const Paper = props => {
           border-radius: ${theme.shape.borderRadius.md};
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 };
 

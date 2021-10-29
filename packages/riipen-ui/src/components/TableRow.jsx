@@ -56,7 +56,7 @@ class TableRow extends React.Component {
     const theme = this.context;
 
     return (
-      <React.Fragment>
+      <>
         <tr className={clsx(classes, forceHover && "forceHover")} {...other}>
           {children}
         </tr>
@@ -82,7 +82,7 @@ class TableRow extends React.Component {
               : ""}
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

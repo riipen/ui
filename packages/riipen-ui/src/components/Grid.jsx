@@ -179,7 +179,7 @@ class Grid extends React.Component {
     });
 
     return (
-      <React.Fragment>
+      <>
         <div ref={this.resizeRef} className={className}>
           {childrenWithProps}
         </div>
@@ -198,7 +198,7 @@ class Grid extends React.Component {
             position: relative;
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }

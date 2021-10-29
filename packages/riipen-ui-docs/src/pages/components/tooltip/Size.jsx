@@ -13,7 +13,7 @@ export default function Component() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <div className="container">
         <div className="half">
           <Form>
@@ -63,6 +63,6 @@ export default function Component() {
           justify-content: center;
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 }

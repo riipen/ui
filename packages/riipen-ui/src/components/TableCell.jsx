@@ -64,7 +64,7 @@ class TableCell extends React.Component {
     const theme = this.context;
 
     return (
-      <React.Fragment>
+      <>
         <td
           className={clsx(classes)}
           colSpan={colSpan}
@@ -84,7 +84,7 @@ class TableCell extends React.Component {
             text-align: ${textAlign};
           }
         `}</style>
-      </React.Fragment>
+      </>
     );
   }
 }
