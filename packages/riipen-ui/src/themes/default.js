@@ -140,7 +140,7 @@ export default {
       letterSpacing: "0.00938em",
       mobile: {
         fontSize: "14px",
-        lineHeight: "20px",
+        lineHeight: "20px"
       }
     },
     body2: {
@@ -151,7 +151,7 @@ export default {
       letterSpacing: "0.01071em",
       mobile: {
         fontSize: "12px",
-        lineHeight: "16px",
+        lineHeight: "16px"
       }
     },
     body3: {
@@ -162,7 +162,7 @@ export default {
       letterSpacing: "0.01071em",
       mobile: {
         fontSize: "11px",
-        lineHeight: "16px",
+        lineHeight: "16px"
       }
     },
     button: {
@@ -187,7 +187,7 @@ export default {
       letterSpacing: "-0.01562em",
       mobile: {
         fontSize: "30px",
-        lineHeight: "44px",
+        lineHeight: "44px"
       }
     },
     h2: {
@@ -198,7 +198,7 @@ export default {
       letterSpacing: "-0.00833em",
       mobile: {
         fontSize: "22px",
-        lineHeight: "32px",
+        lineHeight: "32px"
       }
     },
     h3: {
@@ -209,7 +209,7 @@ export default {
       letterSpacing: "0em",
       mobile: {
         fontSize: "18px",
-        lineHeight: "28px",
+        lineHeight: "28px"
       }
     },
     h4: {
@@ -220,7 +220,7 @@ export default {
       letterSpacing: "-0.00735em",
       mobile: {
         fontSize: "16px",
-        lineHeight: "24px",
+        lineHeight: "24px"
       }
     },
     h5: {
@@ -231,9 +231,9 @@ export default {
       letterSpacing: "0rem",
       mobile: {
         fontSize: "14px",
-        lineHeight: "20px",
+        lineHeight: "20px"
       }
-    },
+    }
   },
   zIndex: {
     zero: 0,
