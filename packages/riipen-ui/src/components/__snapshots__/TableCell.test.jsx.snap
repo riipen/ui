@@ -60,7 +60,7 @@ exports[`<TableCell> renders correct snapshot 1`] = `
                         textAlign="left"
                       >
                         <td
-                          className="jsx-1050854348 riipen riipen-tablecell"
+                          className="jsx-2965072238 riipen riipen-tablecell"
                           colSpan={1}
                           rowSpan={1}
                         />
@@ -68,10 +68,10 @@ exports[`<TableCell> renders correct snapshot 1`] = `
                           dynamic={
                             Array [
                               "Roboto, Helvetica, Arial, sans-serif",
-                              "12px",
+                              "14px",
                               400,
                               "0.01071em",
-                              "17px",
+                              "20px",
                               15,
                               "left",
                             ]
