@@ -26,12 +26,13 @@ exports[`<Breadcrumbs> renders correct snapshot 1`] = `
         component="nav"
         display="initial"
         gutter={false}
+        mobileBreakpoint="sm"
         textAlign="inherit"
         textTransform="inherit"
         variant="body1"
       >
         <nav
-          className="jsx-1194261709 root color-inherit initial body1 align-inherit transform-inherit riipen riipen-typography"
+          className="jsx-2087479458 root color-inherit initial mobile body1 align-inherit transform-inherit riipen riipen-typography"
         >
           <ol
             className="jsx-2183045356 riipen riipen-breadcrumbs"
@@ -52,20 +53,20 @@ exports[`<Breadcrumbs> renders correct snapshot 1`] = `
               "#424242",
               "Roboto, Helvetica, Arial, sans-serif",
               400,
-              "14px",
-              "20px",
+              "16px",
+              "24px",
               "0.00938em",
               "#424242",
               "Roboto, Helvetica, Arial, sans-serif",
               400,
-              "12px",
-              "17px",
+              "14px",
+              "20px",
               "0.01071em",
               "#424242",
               "Roboto, Helvetica, Arial, sans-serif",
               400,
-              "10px",
-              "14px",
+              "12px",
+              "16px",
               "0.01071em",
               "#373737",
               "Roboto, Helvetica, Arial, sans-serif",
@@ -77,7 +78,7 @@ exports[`<Breadcrumbs> renders correct snapshot 1`] = `
               "Roboto, Helvetica, Arial, sans-serif",
               500,
               "30px",
-              "42px",
+              "44px",
               "-0.00833em",
               "#373737",
               "Roboto, Helvetica, Arial, sans-serif",
@@ -89,13 +90,13 @@ exports[`<Breadcrumbs> renders correct snapshot 1`] = `
               "Roboto, Helvetica, Arial, sans-serif",
               400,
               "20px",
-              "30px",
+              "28px",
               "-0.00735em",
               "#373737",
               "Roboto, Helvetica, Arial, sans-serif",
               400,
               "16px",
-              "23px",
+              "24px",
               "0rem",
               "#000",
               "#cccbcb",
@@ -114,9 +115,26 @@ exports[`<Breadcrumbs> renders correct snapshot 1`] = `
               300,
               500,
               400,
+              600,
+              "14px",
+              "20px",
+              "12px",
+              "16px",
+              "11px",
+              "16px",
+              "30px",
+              "44px",
+              "22px",
+              "32px",
+              "18px",
+              "28px",
+              "16px",
+              "24px",
+              "14px",
+              "20px",
             ]
           }
-          id="3194901921"
+          id="585098619"
         />
       </Typography>
     </withClasses(Typography)>

@@ -133,31 +133,43 @@ exports[`<InputHint> renders correct snapshot 1`] = `
         "typography": Object {
           "body1": Object {
             "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
-            "fontSize": "14px",
+            "fontSize": "16px",
             "fontWeight": 400,
             "letterSpacing": "0.00938em",
-            "lineHeight": "20px",
+            "lineHeight": "24px",
+            "mobile": Object {
+              "fontSize": "14px",
+              "lineHeight": "20px",
+            },
           },
           "body2": Object {
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": 400,
+            "letterSpacing": "0.01071em",
+            "lineHeight": "20px",
+            "mobile": Object {
+              "fontSize": "12px",
+              "lineHeight": "16px",
+            },
+          },
+          "body3": Object {
             "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
             "fontSize": "12px",
             "fontWeight": 400,
             "letterSpacing": "0.01071em",
-            "lineHeight": "17px",
-          },
-          "body3": Object {
-            "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
-            "fontSize": "10px",
-            "fontWeight": 400,
-            "letterSpacing": "0.01071em",
-            "lineHeight": "14px",
+            "lineHeight": "16px",
+            "mobile": Object {
+              "fontSize": "11px",
+              "lineHeight": "16px",
+            },
           },
           "button": Object {
             "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
-            "fontSize": "14px",
+            "fontSize": "13px",
             "fontWeight": 500,
             "letterSpacing": "0.02857em",
-            "lineHeight": 1.75,
+            "lineHeight": "20px",
           },
           "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
           "fontWeight": Object {
@@ -172,13 +184,21 @@ exports[`<InputHint> renders correct snapshot 1`] = `
             "fontWeight": 500,
             "letterSpacing": "-0.01562em",
             "lineHeight": "56px",
+            "mobile": Object {
+              "fontSize": "30px",
+              "lineHeight": "44px",
+            },
           },
           "h2": Object {
             "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
             "fontSize": "30px",
             "fontWeight": 500,
             "letterSpacing": "-0.00833em",
-            "lineHeight": "42px",
+            "lineHeight": "44px",
+            "mobile": Object {
+              "fontSize": "22px",
+              "lineHeight": "32px",
+            },
           },
           "h3": Object {
             "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
@@ -186,20 +206,32 @@ exports[`<InputHint> renders correct snapshot 1`] = `
             "fontWeight": 500,
             "letterSpacing": "0em",
             "lineHeight": "32px",
+            "mobile": Object {
+              "fontSize": "18px",
+              "lineHeight": "28px",
+            },
           },
           "h4": Object {
             "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
             "fontSize": "20px",
             "fontWeight": 400,
             "letterSpacing": "-0.00735em",
-            "lineHeight": "30px",
+            "lineHeight": "28px",
+            "mobile": Object {
+              "fontSize": "16px",
+              "lineHeight": "24px",
+            },
           },
           "h5": Object {
             "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
             "fontSize": "16px",
             "fontWeight": 400,
             "letterSpacing": "0rem",
-            "lineHeight": "23px",
+            "lineHeight": "24px",
+            "mobile": Object {
+              "fontSize": "14px",
+              "lineHeight": "20px",
+            },
           },
         },
         "zIndex": Object {
@@ -352,31 +384,43 @@ exports[`<InputHint> renders correct snapshot 1`] = `
           "typography": Object {
             "body1": Object {
               "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
-              "fontSize": "14px",
+              "fontSize": "16px",
               "fontWeight": 400,
               "letterSpacing": "0.00938em",
-              "lineHeight": "20px",
+              "lineHeight": "24px",
+              "mobile": Object {
+                "fontSize": "14px",
+                "lineHeight": "20px",
+              },
             },
             "body2": Object {
+              "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": 400,
+              "letterSpacing": "0.01071em",
+              "lineHeight": "20px",
+              "mobile": Object {
+                "fontSize": "12px",
+                "lineHeight": "16px",
+              },
+            },
+            "body3": Object {
               "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
               "fontSize": "12px",
               "fontWeight": 400,
               "letterSpacing": "0.01071em",
-              "lineHeight": "17px",
-            },
-            "body3": Object {
-              "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
-              "fontSize": "10px",
-              "fontWeight": 400,
-              "letterSpacing": "0.01071em",
-              "lineHeight": "14px",
+              "lineHeight": "16px",
+              "mobile": Object {
+                "fontSize": "11px",
+                "lineHeight": "16px",
+              },
             },
             "button": Object {
               "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
-              "fontSize": "14px",
+              "fontSize": "13px",
               "fontWeight": 500,
               "letterSpacing": "0.02857em",
-              "lineHeight": 1.75,
+              "lineHeight": "20px",
             },
             "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
             "fontWeight": Object {
@@ -391,13 +435,21 @@ exports[`<InputHint> renders correct snapshot 1`] = `
               "fontWeight": 500,
               "letterSpacing": "-0.01562em",
               "lineHeight": "56px",
+              "mobile": Object {
+                "fontSize": "30px",
+                "lineHeight": "44px",
+              },
             },
             "h2": Object {
               "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
               "fontSize": "30px",
               "fontWeight": 500,
               "letterSpacing": "-0.00833em",
-              "lineHeight": "42px",
+              "lineHeight": "44px",
+              "mobile": Object {
+                "fontSize": "22px",
+                "lineHeight": "32px",
+              },
             },
             "h3": Object {
               "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
@@ -405,20 +457,32 @@ exports[`<InputHint> renders correct snapshot 1`] = `
               "fontWeight": 500,
               "letterSpacing": "0em",
               "lineHeight": "32px",
+              "mobile": Object {
+                "fontSize": "18px",
+                "lineHeight": "28px",
+              },
             },
             "h4": Object {
               "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
               "fontSize": "20px",
               "fontWeight": 400,
               "letterSpacing": "-0.00735em",
-              "lineHeight": "30px",
+              "lineHeight": "28px",
+              "mobile": Object {
+                "fontSize": "16px",
+                "lineHeight": "24px",
+              },
             },
             "h5": Object {
               "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
               "fontSize": "16px",
               "fontWeight": 400,
               "letterSpacing": "0rem",
-              "lineHeight": "23px",
+              "lineHeight": "24px",
+              "mobile": Object {
+                "fontSize": "14px",
+                "lineHeight": "20px",
+              },
             },
           },
           "zIndex": Object {
@@ -450,12 +514,13 @@ exports[`<InputHint> renders correct snapshot 1`] = `
             color="inherit"
             display="initial"
             gutter={false}
+            mobileBreakpoint="sm"
             textAlign="inherit"
             textTransform="inherit"
             variant="body2"
           >
             <p
-              className="jsx-1194261709 root color-inherit initial body2 align-inherit transform-inherit riipen riipen-typography"
+              className="jsx-2087479458 root color-inherit initial mobile body2 align-inherit transform-inherit riipen riipen-typography"
             />
             <JSXStyle
               dynamic={
@@ -463,20 +528,20 @@ exports[`<InputHint> renders correct snapshot 1`] = `
                   "#424242",
                   "Roboto, Helvetica, Arial, sans-serif",
                   400,
-                  "14px",
-                  "20px",
+                  "16px",
+                  "24px",
                   "0.00938em",
                   "#424242",
                   "Roboto, Helvetica, Arial, sans-serif",
                   400,
-                  "12px",
-                  "17px",
+                  "14px",
+                  "20px",
                   "0.01071em",
                   "#424242",
                   "Roboto, Helvetica, Arial, sans-serif",
                   400,
-                  "10px",
-                  "14px",
+                  "12px",
+                  "16px",
                   "0.01071em",
                   "#373737",
                   "Roboto, Helvetica, Arial, sans-serif",
@@ -488,7 +553,7 @@ exports[`<InputHint> renders correct snapshot 1`] = `
                   "Roboto, Helvetica, Arial, sans-serif",
                   500,
                   "30px",
-                  "42px",
+                  "44px",
                   "-0.00833em",
                   "#373737",
                   "Roboto, Helvetica, Arial, sans-serif",
@@ -500,13 +565,13 @@ exports[`<InputHint> renders correct snapshot 1`] = `
                   "Roboto, Helvetica, Arial, sans-serif",
                   400,
                   "20px",
-                  "30px",
+                  "28px",
                   "-0.00735em",
                   "#373737",
                   "Roboto, Helvetica, Arial, sans-serif",
                   400,
                   "16px",
-                  "23px",
+                  "24px",
                   "0rem",
                   "#000",
                   "#cccbcb",
@@ -525,9 +590,26 @@ exports[`<InputHint> renders correct snapshot 1`] = `
                   300,
                   500,
                   400,
+                  600,
+                  "14px",
+                  "20px",
+                  "12px",
+                  "16px",
+                  "11px",
+                  "16px",
+                  "30px",
+                  "44px",
+                  "22px",
+                  "32px",
+                  "18px",
+                  "28px",
+                  "16px",
+                  "24px",
+                  "14px",
+                  "20px",
                 ]
               }
-              id="3194901921"
+              id="585098619"
             />
           </Typography>
         </withClasses(Typography)>

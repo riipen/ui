@@ -11,7 +11,7 @@ exports[`<MenuItem> renders correct snapshot 1`] = `
     }
   >
     <div
-      className="menu-item jsx-547246353 riipen riipen-menuitem"
+      className="menu-item jsx-1822691031 riipen riipen-menuitem"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -24,10 +24,10 @@ exports[`<MenuItem> renders correct snapshot 1`] = `
         Array [
           "#747474",
           "Roboto, Helvetica, Arial, sans-serif",
-          "14px",
+          "16px",
           400,
           "0.00938em",
-          "20px",
+          "24px",
           10,
           20,
           "#1f71ae",
