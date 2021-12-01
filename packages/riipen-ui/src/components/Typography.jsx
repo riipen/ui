@@ -77,6 +77,11 @@ class Typography extends React.Component {
     gutter: PropTypes.bool,
 
     /**
+     * Screen size to render font from desktop to mobile.
+     */
+    mobileBreakpoint: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
+
+    /**
      * Set the text-align on the component.
      */
     textAlign: PropTypes.oneOf([
@@ -119,6 +124,7 @@ class Typography extends React.Component {
     color: "inherit",
     display: "initial",
     gutter: false,
+    mobileBreakpoint: "sm",
     textAlign: "inherit",
     textTransform: "inherit",
     variant: "body1"
@@ -135,6 +141,7 @@ class Typography extends React.Component {
       display,
       fontWeight,
       gutter,
+      mobileBreakpoint,
       textAlign,
       textTransform,
       variant
@@ -148,6 +155,7 @@ class Typography extends React.Component {
       display,
       fontWeight,
       gutter ? "gutter" : null,
+      mobileBreakpoint ? "mobile" : null,
       variant,
       `align-${textAlign}`,
       `transform-${textTransform}`,
@@ -317,6 +325,41 @@ class Typography extends React.Component {
           }
           .transform-lowercase {
             text-transform: lowercase;
+          }
+
+          @media (max-width: ${theme.breakpoints[mobileBreakpoint]}px) {
+            .body1.mobile {
+              font-size: ${theme.typography.body1.mobile.fontSize};
+              line-height: ${theme.typography.body1.mobile.lineHeight};
+            }
+            .body2.mobile {
+              font-size: ${theme.typography.body2.mobile.fontSize};
+              line-height: ${theme.typography.body2.mobile.lineHeight};
+            }
+            .body3.mobile {
+              font-size: ${theme.typography.body3.mobile.fontSize};
+              line-height: ${theme.typography.body3.mobile.lineHeight};
+            }
+            .h1.mobile {
+              font-size: ${theme.typography.h1.mobile.fontSize};
+              line-height: ${theme.typography.h1.mobile.lineHeight};
+            }
+            .h2.mobile {
+              font-size: ${theme.typography.h2.mobile.fontSize};
+              line-height: ${theme.typography.h2.mobile.lineHeight};
+            }
+            .h3.mobile {
+              font-size: ${theme.typography.h3.mobile.fontSize};
+              line-height: ${theme.typography.h3.mobile.lineHeight};
+            }
+            .h4.mobile {
+              font-size: ${theme.typography.h4.mobile.fontSize};
+              line-height: ${theme.typography.h4.mobile.lineHeight};
+            }
+            .h5.mobile {
+              font-size: ${theme.typography.h5.mobile.fontSize};
+              line-height: ${theme.typography.h5.mobile.lineHeight};
+            }
           }
         `}</style>
       </>

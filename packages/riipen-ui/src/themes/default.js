@@ -135,29 +135,41 @@ export default {
     body1: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 400,
-      fontSize: "14px",
-      lineHeight: "20px",
-      letterSpacing: "0.00938em"
+      fontSize: "16px",
+      lineHeight: "24px",
+      letterSpacing: "0.00938em",
+      mobile: {
+        fontSize: "14px",
+        lineHeight: "20px",
+      }
     },
     body2: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 400,
-      fontSize: "12px",
-      lineHeight: "17px",
-      letterSpacing: "0.01071em"
+      fontSize: "14px",
+      lineHeight: "20px",
+      letterSpacing: "0.01071em",
+      mobile: {
+        fontSize: "12px",
+        lineHeight: "16px",
+      }
     },
     body3: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 400,
-      fontSize: "10px",
-      lineHeight: "14px",
-      letterSpacing: "0.01071em"
+      fontSize: "12px",
+      lineHeight: "16px",
+      letterSpacing: "0.01071em",
+      mobile: {
+        fontSize: "11px",
+        lineHeight: "16px",
+      }
     },
     button: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 500,
-      fontSize: "14px",
-      lineHeight: 1.75,
+      fontSize: "13px",
+      lineHeight: "20px",
       letterSpacing: "0.02857em"
     },
     fontFamily: "Roboto, Helvetica, Arial, sans-serif",
@@ -172,36 +184,56 @@ export default {
       fontWeight: 500,
       fontSize: "40px",
       lineHeight: "56px",
-      letterSpacing: "-0.01562em"
+      letterSpacing: "-0.01562em",
+      mobile: {
+        fontSize: "30px",
+        lineHeight: "44px",
+      }
     },
     h2: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 500,
       fontSize: "30px",
-      lineHeight: "42px",
-      letterSpacing: "-0.00833em"
+      lineHeight: "44px",
+      letterSpacing: "-0.00833em",
+      mobile: {
+        fontSize: "22px",
+        lineHeight: "32px",
+      }
     },
     h3: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 500,
       fontSize: "22px",
       lineHeight: "32px",
-      letterSpacing: "0em"
+      letterSpacing: "0em",
+      mobile: {
+        fontSize: "18px",
+        lineHeight: "28px",
+      }
     },
     h4: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 400,
       fontSize: "20px",
-      lineHeight: "30px",
-      letterSpacing: "-0.00735em"
+      lineHeight: "28px",
+      letterSpacing: "-0.00735em",
+      mobile: {
+        fontSize: "16px",
+        lineHeight: "24px",
+      }
     },
     h5: {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif",
       fontWeight: 400,
       fontSize: "16px",
-      lineHeight: "23px",
-      letterSpacing: "0rem"
-    }
+      lineHeight: "24px",
+      letterSpacing: "0rem",
+      mobile: {
+        fontSize: "14px",
+        lineHeight: "20px",
+      }
+    },
   },
   zIndex: {
     zero: 0,
