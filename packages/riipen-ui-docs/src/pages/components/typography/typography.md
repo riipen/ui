@@ -7,7 +7,7 @@ set of type sizes that work well together along with the layout grid.
 
 ## General
 
-The *Roboto* font will **not** be automatically loaded by Riipen-UI.
+The _Roboto_ font will **not** be automatically loaded by Riipen-UI.
 The developer is responsible for loading all fonts used in their application.
 
 ## Roboto Font CDN
@@ -15,7 +15,10 @@ The developer is responsible for loading all fonts used in their application.
 Shown below is a sample link markup used to load the Roboto font from a CDN:
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+/>
 ```
 
 ## Component
@@ -36,15 +39,21 @@ You can also use the CSS native "inherit" for a wider range of colors.
 
 {{"demo": "pages/components/typography/TextTransform.js"}}
 
+## Word Break
+
+{{"demo": "pages/components/typography/WordBreak.js"}}
+
 ## Changing the semantic element
 
 You can change the underlying element for a one time occasion with the `component` property:
 
 ```jsx
-{/* There is already an h1 in the page, let's not duplicate it. */}
+{
+  /* There is already an h1 in the page, let's not duplicate it. */
+}
 <Typography variant="h1" component="h2">
   h1. Heading
-</Typography>
+</Typography>;
 ```
 
 ## Accessibility

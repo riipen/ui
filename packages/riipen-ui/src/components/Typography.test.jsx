@@ -309,4 +309,28 @@ describe("<Typography>", () => {
       expect(errors).toHaveBeenCalled();
     });
   });
+
+  describe("wordBreak prop", () => {
+    it("sets wordBreak class given a valid wordBreak prop", () => {
+      const wordBreak = "normal";
+
+      const wrapper = mount(<Typography wordBreak={wordBreak} />);
+
+      expect(
+        wrapper
+          .find("Typography")
+          .childAt(0)
+          .hasClass(`word-break-${wordBreak}`)
+      ).toEqual(true);
+    });
+
+    it("gives an error given an invalid wordBreak prop", () => {
+      const wordBreak = "invalid";
+      const errors = jest.spyOn(console, "error").mockImplementation();
+
+      mount(<Typography wordBreak={wordBreak} />);
+
+      expect(errors).toHaveBeenCalled();
+    });
+  });
 });
