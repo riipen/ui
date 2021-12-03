@@ -518,10 +518,9 @@ exports[`<InputHint> renders correct snapshot 1`] = `
             textAlign="inherit"
             textTransform="inherit"
             variant="body2"
-            wordBreak="normal"
           >
             <p
-              className="jsx-2345121370 root color-inherit initial mobile body2 align-inherit transform-inherit word-break-normal riipen riipen-typography"
+              className="jsx-2345121370 root color-inherit initial mobile body2 align-inherit transform-inherit riipen riipen-typography"
             />
             <JSXStyle
               dynamic={

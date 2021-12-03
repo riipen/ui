@@ -559,10 +559,9 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                       textAlign="inherit"
                       textTransform="inherit"
                       variant="body1"
-                      wordBreak="normal"
                     >
                       <span
-                        className="jsx-2345121370 root color-inherit initial mobile body1 align-inherit transform-inherit word-break-normal riipen riipen-typography"
+                        className="jsx-2345121370 root color-inherit initial mobile body1 align-inherit transform-inherit riipen riipen-typography"
                       >
                         <span
                           className="jsx-4157259141 content"

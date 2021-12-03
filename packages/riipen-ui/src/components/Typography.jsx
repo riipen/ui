@@ -132,8 +132,7 @@ class Typography extends React.Component {
     mobileBreakpoint: "sm",
     textAlign: "inherit",
     textTransform: "inherit",
-    variant: "body1",
-    wordBreak: "normal"
+    variant: "body1"
   };
 
   static contextType = ThemeContext;
@@ -166,7 +165,7 @@ class Typography extends React.Component {
       variant,
       `align-${textAlign}`,
       `transform-${textTransform}`,
-      `word-break-${wordBreak}`,
+      wordBreak ? `word-break-${wordBreak}` : null,
       classes
     );
 
