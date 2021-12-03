@@ -116,7 +116,12 @@ class Typography extends React.Component {
       "body2",
       "body3",
       "inherit"
-    ])
+    ]),
+
+    /**
+     * Set the word break on the component.
+     */
+    wordBreak: PropTypes.oneOf(["break-all", "break-word", "normal"])
   };
 
   static defaultProps = {
@@ -127,7 +132,8 @@ class Typography extends React.Component {
     mobileBreakpoint: "sm",
     textAlign: "inherit",
     textTransform: "inherit",
-    variant: "body1"
+    variant: "body1",
+    wordBreak: "normal"
   };
 
   static contextType = ThemeContext;
@@ -144,7 +150,8 @@ class Typography extends React.Component {
       mobileBreakpoint,
       textAlign,
       textTransform,
-      variant
+      variant,
+      wordBreak
     } = this.props;
 
     const theme = this.context;
@@ -159,6 +166,7 @@ class Typography extends React.Component {
       variant,
       `align-${textAlign}`,
       `transform-${textTransform}`,
+      `word-break-${wordBreak}`,
       classes
     );
 
@@ -325,6 +333,16 @@ class Typography extends React.Component {
           }
           .transform-lowercase {
             text-transform: lowercase;
+          }
+
+          .word-break-break-all {
+            word-break: break-all;
+          }
+          .word-break-break-word {
+            word-break: break-word;
+          }
+          .word-break-normal {
+            word-break: normal;
           }
 
           @media (max-width: ${theme.breakpoints[mobileBreakpoint]}px) {
