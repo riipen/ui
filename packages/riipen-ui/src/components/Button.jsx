@@ -408,6 +408,7 @@ const Button = props => {
           text-align: center;
           text-transform: uppercase;
           width: 100%;
+          word-break: normal;
         }
       `}</style>
     </>

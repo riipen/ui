@@ -254,14 +254,14 @@ exports[`<Button> renders correct snapshot 1`] = `
     variant="text"
   >
     <button
-      className="jsx-1041018105 root medium text text-default"
+      className="jsx-2127774853 root medium text text-default"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
       type="button"
     >
       <span
-        className="jsx-1041018105 label"
+        className="jsx-2127774853 label"
       />
     </button>
     <JSXStyle
@@ -354,7 +354,7 @@ exports[`<Button> renders correct snapshot 1`] = `
           500,
         ]
       }
-      id="656570656"
+      id="2404831170"
     />
   </Button>
 </Component>
