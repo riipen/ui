@@ -7,6 +7,7 @@ exports[`<Button> renders correct snapshot 1`] = `
     color="default"
     disabled={false}
     fullWidth={false}
+    mobileBreakpoint="sm"
     size="medium"
     theme={
       Object {
@@ -254,14 +255,14 @@ exports[`<Button> renders correct snapshot 1`] = `
     variant="text"
   >
     <button
-      className="jsx-2127774853 root medium text text-default"
+      className="jsx-4068761811 root medium text text-default"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
       type="button"
     >
       <span
-        className="jsx-2127774853 label"
+        className="jsx-4068761811 label"
       />
     </button>
     <JSXStyle
@@ -352,9 +353,12 @@ exports[`<Button> renders correct snapshot 1`] = `
           "#e95353",
           "Roboto, Helvetica, Arial, sans-serif",
           500,
+          600,
+          5,
+          5,
         ]
       }
-      id="2404831170"
+      id="3124330143"
     />
   </Button>
 </Component>
