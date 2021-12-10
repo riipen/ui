@@ -106,9 +106,9 @@ const Tab = props => {
         .label {
           font-family: ${theme.typography.fontFamily};
           font-weight: ${theme.typography.fontWeight.regular};
-          font-size: 14px;
+          font-size: ${theme.typography.body2.fontSize};
           letter-spacing: 2px;
-          line-height: 20px;
+          line-height: ${theme.typography.body2.lineHeight};
           text-decoration: none;
           text-transform: uppercase;
           width: 100%;
@@ -170,7 +170,7 @@ const Tab = props => {
           .breakpoint > * {
             font-size: ${theme.typography.body2.mobile.fontSize};
             letter-spacing: 1px;
-            line-height: 16px;
+            line-height: ${theme.typography.body2.mobile.lineHeight};
             padding: ${theme.spacing(1)}px ${theme.spacing(3)}px;
           }
         }

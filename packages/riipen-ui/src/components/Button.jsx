@@ -401,11 +401,11 @@ const Button = props => {
           align-items: center;
           display: flex;
           font-family: ${theme.typography.fontFamily};
-          font-size: 13px;
+          font-size: ${theme.typography.button.fontSize};
           font-weight: ${theme.typography.fontWeight.medium};
           justify-content: center;
           letter-spacing: 1px;
-          line-height: 20px;
+          line-height: ${theme.typography.button.lineHeight};
           text-align: center;
           text-transform: uppercase;
           width: 100%;
@@ -414,7 +414,7 @@ const Button = props => {
 
         @media (max-width: ${theme.breakpoints[mobileBreakpoint]}px) {
           .icon {
-            font-size: 12px;
+            font-size: ${theme.typography.button.mobile.fontSize};
           }
 
           .icon-end {
@@ -426,8 +426,8 @@ const Button = props => {
           }
 
           .label {
-            font-size: 12px;
-            line-height: 16px;
+            font-size: ${theme.typography.button.mobile.fontSize};
+            line-height: ${theme.typography.button.mobile.lineHeight};
           }
         }
       `}</style>
