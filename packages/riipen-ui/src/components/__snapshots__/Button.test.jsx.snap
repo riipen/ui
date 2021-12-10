@@ -176,6 +176,10 @@ exports[`<Button> renders correct snapshot 1`] = `
             "fontWeight": 500,
             "letterSpacing": "0.02857em",
             "lineHeight": "20px",
+            "mobile": Object {
+              "fontSize": "12px",
+              "lineHeight": "16px",
+            },
           },
           "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
           "fontWeight": Object {
@@ -255,14 +259,14 @@ exports[`<Button> renders correct snapshot 1`] = `
     variant="text"
   >
     <button
-      className="jsx-4068761811 root medium text text-default"
+      className="jsx-700914616 root medium text text-default"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
       type="button"
     >
       <span
-        className="jsx-4068761811 label"
+        className="jsx-700914616 label"
       />
     </button>
     <JSXStyle
@@ -352,13 +356,18 @@ exports[`<Button> renders correct snapshot 1`] = `
           "#fff",
           "#e95353",
           "Roboto, Helvetica, Arial, sans-serif",
+          "13px",
           500,
+          "20px",
           600,
+          "12px",
           5,
           5,
+          "12px",
+          "16px",
         ]
       }
-      id="3124330143"
+      id="2080284680"
     />
   </Button>
 </Component>

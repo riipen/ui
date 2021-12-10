@@ -178,6 +178,10 @@ exports[`<Tab> renders correct snapshot 1`] = `
             "fontWeight": 500,
             "letterSpacing": "0.02857em",
             "lineHeight": "20px",
+            "mobile": Object {
+              "fontSize": "12px",
+              "lineHeight": "16px",
+            },
           },
           "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
           "fontWeight": Object {
@@ -258,7 +262,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
     <div
       aria-disabled={false}
       aria-pressed={false}
-      className="jsx-888558939 root breakpoint secondary horizontal"
+      className="jsx-1041406911 root breakpoint secondary horizontal"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -275,6 +279,8 @@ exports[`<Tab> renders correct snapshot 1`] = `
           10,
           "Roboto, Helvetica, Arial, sans-serif",
           400,
+          "14px",
+          "20px",
           NaN,
           25,
           "#fafafa",
@@ -291,11 +297,12 @@ exports[`<Tab> renders correct snapshot 1`] = `
           30,
           -5,
           "12px",
+          "16px",
           5,
           15,
         ]
       }
-      id="4124360245"
+      id="2611317325"
     />
   </Tab>
 </Component>
