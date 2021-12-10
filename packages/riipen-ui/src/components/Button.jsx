@@ -492,7 +492,7 @@ Button.propTypes = {
   iconStart: PropTypes.oneOfType([PropTypes.elementType, PropTypes.node]),
 
   /**
-   * The breakpoint to display the mobile button styling..
+   * The breakpoint to display the mobile button styling.
    */
   mobileBreakpoint: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
 
