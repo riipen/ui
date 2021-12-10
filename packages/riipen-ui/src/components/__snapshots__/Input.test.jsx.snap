@@ -173,6 +173,10 @@ exports[`<Input> renders correct snapshot 1`] = `
             "fontWeight": 500,
             "letterSpacing": "0.02857em",
             "lineHeight": "20px",
+            "mobile": Object {
+              "fontSize": "12px",
+              "lineHeight": "16px",
+            },
           },
           "fontFamily": "Roboto, Helvetica, Arial, sans-serif",
           "fontWeight": Object {

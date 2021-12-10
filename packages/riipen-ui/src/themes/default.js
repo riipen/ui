@@ -170,7 +170,11 @@ export default {
       fontWeight: 500,
       fontSize: "13px",
       lineHeight: "20px",
-      letterSpacing: "0.02857em"
+      letterSpacing: "0.02857em",
+      mobile: {
+        fontSize: "12px",
+        lineHeight: "16px"
+      }
     },
     fontFamily: "Roboto, Helvetica, Arial, sans-serif",
     fontWeight: {

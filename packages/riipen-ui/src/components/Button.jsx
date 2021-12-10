@@ -16,6 +16,7 @@ const Button = props => {
     fullWidth,
     iconEnd: IconEnd,
     iconStart: IconStart,
+    mobileBreakpoint,
     size,
     type,
     variant,
@@ -400,15 +401,34 @@ const Button = props => {
           align-items: center;
           display: flex;
           font-family: ${theme.typography.fontFamily};
-          font-size: 13px;
+          font-size: ${theme.typography.button.fontSize};
           font-weight: ${theme.typography.fontWeight.medium};
           justify-content: center;
           letter-spacing: 1px;
-          line-height: 15px;
+          line-height: ${theme.typography.button.lineHeight};
           text-align: center;
           text-transform: uppercase;
           width: 100%;
           word-break: normal;
+        }
+
+        @media (max-width: ${theme.breakpoints[mobileBreakpoint]}px) {
+          .icon {
+            font-size: ${theme.typography.button.mobile.fontSize};
+          }
+
+          .icon-end {
+            margin-left: ${theme.spacing(1)}px;
+          }
+          
+          .icon-start {
+            margin-right: ${theme.spacing(1)}px;
+          }
+
+          .label {
+            font-size: ${theme.typography.button.mobile.fontSize};
+            line-height: ${theme.typography.button.mobile.lineHeight};
+          }
         }
       `}</style>
     </>
@@ -472,6 +492,11 @@ Button.propTypes = {
   iconStart: PropTypes.oneOfType([PropTypes.elementType, PropTypes.node]),
 
   /**
+   * The breakpoint to display the mobile button styling.
+   */
+  mobileBreakpoint: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
+
+  /**
    * The size of the chip.
    */
   size: PropTypes.oneOf(["small", "medium", "large"]),
@@ -498,6 +523,7 @@ Button.defaultProps = {
   color: "default",
   disabled: false,
   fullWidth: false,
+  mobileBreakpoint: "sm",
   size: "medium",
   type: "button",
   variant: "text"
