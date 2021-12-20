@@ -119,14 +119,14 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
                 spacing={0}
               >
                 <div
-                  className="jsx-4088224518 riipen riipen-griditem lg"
+                  className="jsx-1889417006 riipen riipen-griditem lg"
                 />
                 <JSXStyle
                   dynamic={
                     Array [
                       "stretch",
                       "flex",
-                      "83.33333333333334%",
+                      "41.66666666666667%",
                       "column",
                       1,
                       1,

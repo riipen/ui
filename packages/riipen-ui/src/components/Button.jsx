@@ -420,7 +420,7 @@ const Button = props => {
           .icon-end {
             margin-left: ${theme.spacing(1)}px;
           }
-          
+
           .icon-start {
             margin-right: ${theme.spacing(1)}px;
           }

@@ -6,7 +6,7 @@ import _JSXStyle from "styled-jsx/style";
 import ThemeContext from "../styles/ThemeContext";
 import withClasses from "../utils/withClasses";
 
-const COLUMNS = 12;
+const COLUMNS = 24;
 const SPACINGS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 class GridItem extends React.Component {
@@ -127,7 +127,7 @@ class GridItem extends React.Component {
   static defaultProps = {
     alignItems: "stretch",
     classes: [],
-    lg: 12,
+    lg: 24,
     spacing: 3,
     flexGrow: 0,
     flexShrink: 0,
