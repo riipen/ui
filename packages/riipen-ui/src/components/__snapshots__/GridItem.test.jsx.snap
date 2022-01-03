@@ -15,7 +15,7 @@ exports[`<GridItem> renders correct snapshot 1`] = `
     flexShrink={0}
     flexWrap="wrap"
     justifyContent="flex-start"
-    lg={12}
+    lg={24}
     size="lg"
     spacing={3}
   >
