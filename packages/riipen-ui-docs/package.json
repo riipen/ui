@@ -11,7 +11,7 @@
   "repository": "https://github.com/riipen/ui/packages/riipen-ui-docs",
   "private": true,
   "engines": {
-    "npm": ">=7.0.0"
+    "npm": "^8"
   },
   "scripts": {
     "build": "npm run build:api && npm run build:next",
