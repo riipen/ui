@@ -15,11 +15,11 @@ A monorepository containing the Riipen UI kit and its documentation.
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.37.2/install.sh | bash
 ```
 
-2. Install `node 14.x.x` (currently latest LTS, we keep our servers on LTS):
+2. Install `node 16` (currently latest LTS, we keep our servers on LTS):
 
 ```bash
-nvm install --lts
-nvm use --lts
+nvm install
+nvm use
 ```
 
 4. Upgrade npm:
