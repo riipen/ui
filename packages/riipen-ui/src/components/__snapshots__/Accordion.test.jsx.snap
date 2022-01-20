@@ -5,6 +5,7 @@ exports[`<Accordion> renders correct snapshot 1`] = `
   classes={Array []}
   defaultExpanded={false}
   disabled={false}
+  provideContextToChildren={false}
 >
   <div
     className="jsx-839250457 root"
