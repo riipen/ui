@@ -107,7 +107,7 @@ export default {
       xl: "8px"
     }
   },
-  spacing: factor => 5 * factor,
+  spacing: factor => 4 * factor,
   transitions: {
     create: (properties = [], options = {}) =>
       properties
