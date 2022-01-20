@@ -19,7 +19,7 @@ exports[`<Grid> renders correct snapshot 1`] = `
     spacing={3}
   >
     <div
-      className="jsx-738249180 riipen riipen-grid md"
+      className="jsx-3934494268 riipen riipen-grid md"
     />
     <JSXStyle
       dynamic={
@@ -30,8 +30,8 @@ exports[`<Grid> renders correct snapshot 1`] = `
           1,
           "wrap",
           "flex-start",
-          15,
-          15,
+          12,
+          12,
         ]
       }
       id="3466573101"

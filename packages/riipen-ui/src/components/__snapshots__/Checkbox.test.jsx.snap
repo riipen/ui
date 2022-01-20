@@ -257,10 +257,10 @@ exports[`<Checkbox> renders correct snapshot 1`] = `
     }
   >
     <div
-      className="jsx-1775705211 "
+      className="jsx-4032343330 "
     >
       <label
-        className="jsx-1775705211"
+        className="jsx-4032343330"
       >
         <withClasses(Typography)>
           <Typography
@@ -374,7 +374,7 @@ exports[`<Checkbox> renders correct snapshot 1`] = `
         </withClasses(Typography)>
         <input
           checked={false}
-          className="jsx-1775705211 checkbox"
+          className="jsx-4032343330 checkbox"
           disabled={false}
           onBlur={[Function]}
           onFocus={[Function]}
@@ -383,7 +383,7 @@ exports[`<Checkbox> renders correct snapshot 1`] = `
           type="checkbox"
         />
         <span
-          className="jsx-1775705211 checkmark"
+          className="jsx-4032343330 checkmark"
         />
       </label>
       <JSXStyle
@@ -399,7 +399,7 @@ exports[`<Checkbox> renders correct snapshot 1`] = `
             "#f58632",
             "#dddddd",
             "#dddddd",
-            10,
+            8,
           ]
         }
         id="3340623778"

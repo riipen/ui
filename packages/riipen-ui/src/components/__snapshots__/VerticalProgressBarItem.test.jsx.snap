@@ -12,7 +12,7 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
     }
   >
     <div
-      className="jsx-1821936519 progress riipen riipen-verticalprogressbaritem"
+      className="jsx-2710072169 progress riipen riipen-verticalprogressbaritem"
     >
       <withClasses(Grid)
         classes={
@@ -71,7 +71,7 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
                   className="jsx-2183797102 riipen riipen-griditem lg"
                 >
                   <div
-                    className="jsx-1821936519 iconWrapper"
+                    className="jsx-2710072169 iconWrapper"
                   />
                 </div>
                 <JSXStyle
@@ -164,12 +164,12 @@ exports[`<VerticalProgressBarItem> renders correct snapshot 1`] = `
             "#dddddd",
             "#4cc88d",
             "#febb46",
-            15,
+            12,
             "#dddddd",
             "#4cc88d",
             "#febb46",
-            35,
-            25,
+            28,
+            20,
           ]
         }
         id="3229497486"

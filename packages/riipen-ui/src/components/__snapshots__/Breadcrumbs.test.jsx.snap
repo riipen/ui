@@ -35,10 +35,10 @@ exports[`<Breadcrumbs> renders correct snapshot 1`] = `
           className="jsx-2345121370 root color-inherit initial mobile body1 align-inherit transform-inherit riipen riipen-typography"
         >
           <ol
-            className="jsx-2183045356 riipen riipen-breadcrumbs"
+            className="jsx-3779353429 riipen riipen-breadcrumbs"
           >
             <li
-              className="jsx-2183045356"
+              className="jsx-3779353429"
               key="child-0/.0"
             >
               <h1>
@@ -141,7 +141,7 @@ exports[`<Breadcrumbs> renders correct snapshot 1`] = `
     <JSXStyle
       dynamic={
         Array [
-          10,
+          8,
         ]
       }
       id="2237344651"

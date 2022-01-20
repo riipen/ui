@@ -12,14 +12,14 @@ exports[`<Notice> renders correct snapshot 1`] = `
     color="primary"
   >
     <div
-      className="jsx-2692547272 primary riipen riipen-notice"
+      className="jsx-1564512948 primary riipen riipen-notice"
     />
     <JSXStyle
       dynamic={
         Array [
           "4px",
-          10,
-          20,
+          8,
+          16,
           "#2c8ddc",
           "#1f71ae",
           "#f5bf95",

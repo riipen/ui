@@ -16,14 +16,14 @@ exports[`<Radio> renders correct snapshot 1`] = `
     readOnly={true}
   >
     <div
-      className="jsx-741275437 riipen riipen-radio"
+      className="jsx-23639528 riipen riipen-radio"
     >
       <label
-        className="jsx-741275437"
+        className="jsx-23639528"
       >
         <input
           checked={false}
-          className="jsx-741275437 jsx-835554889"
+          className="jsx-23639528 jsx-835554889"
           disabled={false}
           readOnly={true}
           type="radio"
@@ -159,14 +159,14 @@ exports[`<Radio> renders correct snapshot 1`] = `
           </Typography>
         </withClasses(Typography)>
         <span
-          className="jsx-741275437 checkmark"
+          className="jsx-23639528 checkmark"
         />
       </label>
       <JSXStyle
         dynamic={
           Array [
             "#747474",
-            25,
+            20,
             "#fff",
             "#cccbcb",
             "#1f71ae",

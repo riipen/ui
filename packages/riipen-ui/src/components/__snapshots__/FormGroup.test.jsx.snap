@@ -11,17 +11,17 @@ exports[`<FormGroup> renders correct snapshot 1`] = `
     }
   >
     <fieldset
-      className="jsx-552593341 riipen riipen-formgroup"
+      className="jsx-4007682781 riipen riipen-formgroup"
     >
       <div
-        className="jsx-552593341 children"
+        className="jsx-4007682781 children"
       />
     </fieldset>
     <JSXStyle
       dynamic={
         Array [
-          40,
-          20,
+          32,
+          16,
         ]
       }
       id="925181449"

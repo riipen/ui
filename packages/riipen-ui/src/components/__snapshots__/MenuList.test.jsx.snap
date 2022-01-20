@@ -28,7 +28,7 @@ exports[`<MenuList> renders correct snapshot 1`] = `
           selected={false}
         >
           <div
-            className="menu-item jsx-1822691031 riipen riipen-menuitem"
+            className="menu-item jsx-150584715 riipen riipen-menuitem"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -45,8 +45,8 @@ exports[`<MenuList> renders correct snapshot 1`] = `
                 400,
                 "0.00938em",
                 "24px",
-                10,
-                20,
+                8,
+                16,
                 "#1f71ae",
                 "#f5f5f5",
                 "#fafafa",

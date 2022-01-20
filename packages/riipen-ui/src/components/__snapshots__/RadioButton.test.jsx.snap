@@ -13,13 +13,13 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
     size="medium"
   >
     <div
-      className="jsx-4157259141 riipen riipen-radiobutton default root medium"
+      className="jsx-2643708452 riipen riipen-radiobutton default root medium"
     >
       <label
-        className="jsx-4157259141 "
+        className="jsx-2643708452 "
       >
         <input
-          className="jsx-4157259141 "
+          className="jsx-2643708452 "
           type="radio"
         />
         <withClasses(Typography)
@@ -46,7 +46,7 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
               className="jsx-2345121370 root color-inherit initial mobile body1 align-inherit transform-inherit riipen riipen-typography"
             >
               <span
-                className="jsx-4157259141 content"
+                className="jsx-2643708452 content"
               />
             </span>
             <JSXStyle
@@ -144,7 +144,7 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
       <JSXStyle
         dynamic={
           Array [
-            5,
+            4,
             "#dddddd",
             "#dddddd",
             "#747474",

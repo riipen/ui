@@ -506,7 +506,7 @@ exports[`<InputHint> renders correct snapshot 1`] = `
       }
     >
       <div
-        className="jsx-524485705 riipen riipen-inputhint"
+        className="jsx-3983083248 riipen riipen-inputhint"
       >
         <withClasses(Typography)
           color="inherit"
@@ -626,7 +626,7 @@ exports[`<InputHint> renders correct snapshot 1`] = `
         dynamic={
           Array [
             "#747474",
-            10,
+            8,
           ]
         }
         id="3631052581"

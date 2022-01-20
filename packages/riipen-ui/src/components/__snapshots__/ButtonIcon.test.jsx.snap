@@ -509,13 +509,13 @@ exports[`<ButtonIcon> renders correct snapshot 1`] = `
       variant="icon"
     >
       <button
-        className="jsx-1007541181 root medium icon icon-default riipen riipen-buttonicon"
+        className="jsx-1898483940 root medium icon icon-default riipen riipen-buttonicon"
         disabled={false}
         onBlur={[Function]}
         onFocus={[Function]}
       >
         <span
-          className="jsx-1007541181 label icon-medium font-medium"
+          className="jsx-1898483940 label icon-medium font-medium"
         >
           children
         </span>
@@ -523,7 +523,7 @@ exports[`<ButtonIcon> renders correct snapshot 1`] = `
       <JSXStyle
         dynamic={
           Array [
-            10,
+            8,
             300,
             "#747474",
             "#747474",
