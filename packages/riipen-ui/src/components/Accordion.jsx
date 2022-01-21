@@ -14,7 +14,6 @@ const Accordion = props => {
     classes,
     defaultExpanded,
     disabled,
-    provideContextToChildren,
     ...other
   } = props;
 
@@ -49,26 +48,8 @@ const Accordion = props => {
       )}
       {...other}
     >
-      {provideContextToChildren && (
-        <AccordionContext.Provider value={contextValue}>
-          {summary}
-          <Collapse in={expanded}>
-            <div
-              aria-labelledby={summary.props.id}
-              id={summary.props["aria-controls"]}
-            >
-              {children}
-            </div>
-          </Collapse>
-        </AccordionContext.Provider>
-      )}
-
-      {!provideContextToChildren && (
-        <AccordionContext.Provider value={contextValue}>
-          {summary}
-        </AccordionContext.Provider>
-      )}
-      {!provideContextToChildren && (
+      <AccordionContext.Provider value={contextValue}>
+        {summary}
         <Collapse in={expanded}>
           <div
             aria-labelledby={summary.props.id}
@@ -77,7 +58,7 @@ const Accordion = props => {
             {children}
           </div>
         </Collapse>
-      )}
+      </AccordionContext.Provider>
 
       <style jsx>{`
         .root {
@@ -130,19 +111,13 @@ Accordion.propTypes = {
   /**
    * If `true`, the accordion will be displayed in a disabled state.
    */
-  disabled: PropTypes.bool,
-
-  /**
-   * If `true`, the accordion will wrap its children in the AccordionContext, so that the children have access to the context.
-   */
-  provideContextToChildren: PropTypes.bool
+  disabled: PropTypes.bool
 };
 
 Accordion.defaultProps = {
   classes: [],
   defaultExpanded: false,
-  disabled: false,
-  provideContextToChildren: false
+  disabled: false
 };
 
 Accordion.displayName = "Accordion";
