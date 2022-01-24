@@ -2,6 +2,8 @@ import { mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import React from "react";
 
+import defaultTheme from "../themes/default";
+
 import ListItem from "./ListItem";
 
 describe("<ListItem>", () => {
@@ -70,7 +72,9 @@ describe("<ListItem>", () => {
 
       const wrapper = mount(<ListItem spacing={spacing} />);
 
-      expect(wrapper.find("JSXStyle").props().dynamic).toContain(25);
+      expect(wrapper.find("JSXStyle").props().dynamic).toContain(
+        defaultTheme.spacing(spacing)
+      );
     });
   });
 

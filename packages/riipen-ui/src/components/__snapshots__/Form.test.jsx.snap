@@ -22,9 +22,9 @@ exports[`<Form> renders correct snapshot 1`] = `
     <JSXStyle
       dynamic={
         Array [
-          25,
-          15,
-          10,
+          20,
+          12,
+          8,
         ]
       }
       id="3642758217"

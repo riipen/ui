@@ -60,7 +60,7 @@ exports[`<TableCell> renders correct snapshot 1`] = `
                         textAlign="left"
                       >
                         <td
-                          className="jsx-2965072238 riipen riipen-tablecell"
+                          className="jsx-3771758953 riipen riipen-tablecell"
                           colSpan={1}
                           rowSpan={1}
                         />
@@ -72,7 +72,7 @@ exports[`<TableCell> renders correct snapshot 1`] = `
                               400,
                               "0.01071em",
                               "20px",
-                              15,
+                              12,
                               "left",
                             ]
                           }

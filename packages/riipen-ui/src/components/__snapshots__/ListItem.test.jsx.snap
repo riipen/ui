@@ -507,13 +507,13 @@ exports[`<ListItem> renders correct snapshot 1`] = `
       variant="vertical"
     >
       <li
-        className="jsx-104000867 list-item vertical riipen riipen-listitem"
+        className="jsx-2372023299 list-item vertical riipen riipen-listitem"
       />
       <JSXStyle
         dynamic={
           Array [
-            10,
-            10,
+            8,
+            8,
           ]
         }
         id="4198676004"

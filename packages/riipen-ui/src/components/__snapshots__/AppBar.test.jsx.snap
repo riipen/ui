@@ -13,13 +13,13 @@ exports[`<AppBar> renders correct snapshot 1`] = `
     position="fixed"
   >
     <div
-      className="jsx-138222299 riipen riipen-appbar primary fixed"
+      className="jsx-1377706300 riipen riipen-appbar primary fixed"
     />
     <JSXStyle
       dynamic={
         Array [
           "0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12)",
-          15,
+          12,
           2,
           "#1f71ae",
           "#fff",

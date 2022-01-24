@@ -259,14 +259,14 @@ exports[`<Button> renders correct snapshot 1`] = `
     variant="text"
   >
     <button
-      className="jsx-587009148 root medium text text-default"
+      className="jsx-3415447448 root medium text text-default"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
       type="button"
     >
       <span
-        className="jsx-587009148 label"
+        className="jsx-3415447448 label"
       />
     </button>
     <JSXStyle
@@ -275,16 +275,16 @@ exports[`<Button> renders correct snapshot 1`] = `
           "#dddddd",
           "4px",
           "#373737",
-          10,
-          15,
+          8,
+          12,
           300,
           "#cccbcb",
-          10,
-          10,
-          5,
-          10,
-          15,
-          25,
+          8,
+          8,
+          4,
+          8,
+          12,
+          20,
           "#1f71ae",
           "#fff",
           "#254364",
@@ -361,8 +361,8 @@ exports[`<Button> renders correct snapshot 1`] = `
           "20px",
           600,
           "12px",
-          5,
-          5,
+          4,
+          4,
           "12px",
           "16px",
         ]

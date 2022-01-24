@@ -12,14 +12,14 @@ exports[`<Divider> renders correct snapshot 1`] = `
     variant="fullWidth"
   >
     <div
-      className="jsx-1411329934 fullWidth riipen riipen-divider"
+      className="jsx-1596250350 fullWidth riipen riipen-divider"
     />
     <JSXStyle
       dynamic={
         Array [
           "#ddd",
-          10,
-          10,
+          8,
+          8,
         ]
       }
       id="3816656998"
