@@ -50,15 +50,15 @@ const Accordion = props => {
     >
       <AccordionContext.Provider value={contextValue}>
         {summary}
+        <Collapse in={expanded}>
+          <div
+            aria-labelledby={summary.props.id}
+            id={summary.props["aria-controls"]}
+          >
+            {children}
+          </div>
+        </Collapse>
       </AccordionContext.Provider>
-      <Collapse in={expanded}>
-        <div
-          aria-labelledby={summary.props.id}
-          id={summary.props["aria-controls"]}
-        >
-          {children}
-        </div>
-      </Collapse>
 
       <style jsx>{`
         .root {
