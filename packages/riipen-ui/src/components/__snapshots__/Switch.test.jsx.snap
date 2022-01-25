@@ -9,11 +9,11 @@ exports[`<Switch> renders correct snapshot 1`] = `
   size="medium"
 >
   <span
-    className="jsx-2614455360 "
+    className="jsx-977208202 "
   >
     <input
       checked={false}
-      className="jsx-2614455360 secondary read-only medium"
+      className="jsx-977208202 secondary read-only medium"
       readOnly={true}
       type="checkbox"
     />
@@ -25,8 +25,8 @@ exports[`<Switch> renders correct snapshot 1`] = `
           "#747474",
           "transform 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1)",
           "#9a9a9a",
-          "#747474",
-          "#424242",
+          "#eeeeee",
+          "#cccbcb",
           "#2c8ddc",
           "#254364",
           "#f5bf95",
@@ -39,7 +39,7 @@ exports[`<Switch> renders correct snapshot 1`] = `
           "#1b965c",
         ]
       }
-      id="3454303973"
+      id="2441136838"
     />
   </span>
 </Switch>
