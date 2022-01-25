@@ -69,12 +69,12 @@ const Switch = props => {
 
         input:disabled,
         input:checked:disabled {
-          background-color: ${theme.palette.grey[600]};
+          background-color: ${theme.palette.grey[200]};
           pointer-events: none;
         }
         input:disabled:before,
         input:disabled:checked:before {
-          background-color: ${theme.palette.grey[800]};
+          background-color: ${theme.palette.disabled};
         }
 
         .medium {
