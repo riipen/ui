@@ -42,6 +42,12 @@ You can set the breakpoint to display the horizontal tab mobile styling with the
 
 {{"demo": "pages/components/tabs/Breakpoint.js"}}
 
+## Text Transform
+
+You can set the tab label casing with the `textTransform` prop.
+
+{{"demo": "pages/components/tabs/TextTransform.js"}}
+
 ## Forcing Active Display
 
 Tabs can be forced to display active with the `displayActive` tab prop.

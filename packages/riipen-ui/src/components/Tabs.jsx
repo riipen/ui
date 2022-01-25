@@ -49,6 +49,16 @@ class Tabs extends React.Component {
     orientation: PropTypes.oneOf(["horizontal", "vertical"]),
 
     /**
+     * Set the text-transform on the tabs.
+     */
+    textTransform: PropTypes.oneOf([
+      "inherit",
+      "capitalize",
+      "uppercase",
+      "lowercase"
+    ]),
+
+    /**
      * The value of the currently selected `Tab`.
      */
     value: PropTypes.any,
@@ -68,6 +78,7 @@ class Tabs extends React.Component {
     color: "secondary",
     component: "div",
     orientation: "horizontal",
+    textTransform: "uppercase",
     variant: "standard"
   };
 
@@ -87,6 +98,7 @@ class Tabs extends React.Component {
       color,
       component: Component,
       orientation,
+      textTransform,
       value,
       variant
     } = this.props;
@@ -104,7 +116,8 @@ class Tabs extends React.Component {
         color,
         fullWidth: variant === "fullWidth",
         onClick: this.handleChange,
-        orientation
+        orientation,
+        textTransform
       });
     });
 
