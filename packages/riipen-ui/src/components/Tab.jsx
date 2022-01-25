@@ -18,6 +18,7 @@ const Tab = props => {
     label,
     onClick,
     orientation,
+    textTransform,
     theme,
     value
   } = props;
@@ -110,7 +111,7 @@ const Tab = props => {
           letter-spacing: 2px;
           line-height: ${theme.typography.body2.lineHeight};
           text-decoration: none;
-          text-transform: uppercase;
+          text-transform: ${textTransform};
           width: 100%;
         }
 
@@ -185,7 +186,8 @@ Tab.defaultProps = {
   color: "secondary",
   disabled: false,
   fullWidth: false,
-  orientation: "horizontal"
+  orientation: "horizontal",
+  textTransform: "uppercase"
 };
 
 Tab.propTypes = {
@@ -246,6 +248,16 @@ Tab.propTypes = {
    * The indicator orientation.
    */
   orientation: PropTypes.oneOf(["horizontal", "vertical"]),
+
+  /**
+   * Set the text-transform on the tabs.
+   */
+  textTransform: PropTypes.oneOf([
+    "inherit",
+    "capitalize",
+    "uppercase",
+    "lowercase"
+  ]),
 
   /**
    * @ignore

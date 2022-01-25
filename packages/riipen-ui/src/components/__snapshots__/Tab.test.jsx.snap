@@ -11,6 +11,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
     disabled={false}
     fullWidth={false}
     orientation="horizontal"
+    textTransform="uppercase"
     theme={
       Object {
         "breakpoints": Object {
@@ -262,7 +263,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
     <div
       aria-disabled={false}
       aria-pressed={false}
-      className="jsx-3946002139 root breakpoint secondary horizontal"
+      className="jsx-275678284 root breakpoint secondary horizontal"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -281,6 +282,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
           400,
           "14px",
           "20px",
+          "uppercase",
           NaN,
           20,
           "#fafafa",
@@ -302,7 +304,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
           12,
         ]
       }
-      id="2611317325"
+      id="1046851272"
     />
   </Tab>
 </Component>

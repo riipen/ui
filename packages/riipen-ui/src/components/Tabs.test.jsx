@@ -223,6 +223,25 @@ describe("<Tabs>", () => {
     });
   });
 
+  describe("textTransform prop", () => {
+    it("sets textTransform in children nodes", () => {
+      const textTransform = "lowercase";
+      const child = <Tab label="Item one" value="one" />;
+
+      const wrapper = mount(<Tabs textTransform={textTransform}>{child}</Tabs>);
+
+      expect(wrapper.find("Tab").props().textTransform).toEqual("lowercase");
+    });
+
+    it("gives an error with invalid textTransform", () => {
+      const errors = jest.spyOn(console, "error").mockImplementation();
+
+      mount(<Tabs textTransform="invalid" />);
+
+      expect(errors).toHaveBeenCalled();
+    });
+  });
+
   describe("variant prop", () => {
     it("sets fullWidth to be true in children nodes when variant is fullWidth", () => {
       const variant = "fullWidth";
