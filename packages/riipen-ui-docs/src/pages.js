@@ -122,6 +122,10 @@ const pages = [
         pathname: "/components/vertical-progress-bar"
       },
       {
+        name: "Vertical Divider",
+        pathname: "/components/vertical-divider"
+      },
+      {
         name: "Radio",
         pathname: "/components/radio"
       },
@@ -266,6 +270,10 @@ const pages = [
       {
         name: "Vertical Progress Bar",
         pathname: "/components-api/vertical-progress-bar"
+      },
+      {
+        name: "Vertical Divider",
+        pathname: "/components-api/vertical-divider"
       },
       {
         name: "Rich Text Editor",
