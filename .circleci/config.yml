@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-cli: circleci/aws-cli@0.1.4
+  aws-cli: circleci/aws-cli@2.0.3
   code-climate: travelaudience/code-climate@0.1.2
 
 test_branches: &test_branches
@@ -114,10 +114,7 @@ jobs:
         <<: *docker-auth
 
     steps:
-      - aws-cli/install
-      - aws-cli/configure:
-          aws-access-key-id: $AWS_ACCESS_KEY_ID
-          aws-region: $AWS_REGION
+      - aws-cli/setup
 
       - attach_workspace:
           at: ~/
