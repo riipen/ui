@@ -31,6 +31,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">label</span> | <span class="prop-type">node</span> |  | The label element. |
 | <span class="prop-name">onClick</span> | <span class="prop-type">func</span> |  | Callback fired when the tab is clicked.<br><br>**Signature:**<br>`function(event: object, value: any) => void`<br>*event:* The event source of the callback.<br>*value:* We default to the index of the child (number). |
 | <span class="prop-name">orientation</span> | <span class="prop-type">"horizontal"<br>&#124;&nbsp;"vertical"</span> | <span class="prop-default">"horizontal"</span> | The indicator orientation. |
+| <span class="prop-name">textTransform</span> | <span class="prop-type">"inherit"<br>&#124;&nbsp;"capitalize"<br>&#124;&nbsp;"uppercase"<br>&#124;&nbsp;"lowercase"</span> | <span class="prop-default">"uppercase"</span> | Set the text-transform on the tabs. |
 | <span class="prop-name required">value&nbsp;*</span> | <span class="prop-type">any</span> |  | The value provided when a click event is dispatched. |
 
 
