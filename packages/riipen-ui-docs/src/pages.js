@@ -42,6 +42,10 @@ const pages = [
         pathname: "/components/banner"
       },
       {
+        name: "BannerCopy",
+        pathname: "/components/bannerCopy"
+      },
+      {
         name: "Breadcrumbs",
         pathname: "/components/breadcrumbs"
       },
