@@ -27,6 +27,7 @@ You can learn more about the difference by [reading this guide](/guides/bundle-s
 | <span class="prop-name">component</span> | <span class="prop-type">elementType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">onChange</span> | <span class="prop-type">func</span> |  | Callback fired when the value changes.<br><br>**Signature:**<br>`function(event: object, value: any) => void`<br>*event:* The event source of the callback<br>*value:* The value of the tab. |
 | <span class="prop-name">orientation</span> | <span class="prop-type">"horizontal"<br>&#124;&nbsp;"vertical"</span> | <span class="prop-default">"horizontal"</span> | The tabs orientation (layout flow direction). |
+| <span class="prop-name">textTransform</span> | <span class="prop-type">"inherit"<br>&#124;&nbsp;"capitalize"<br>&#124;&nbsp;"uppercase"<br>&#124;&nbsp;"lowercase"</span> | <span class="prop-default">"uppercase"</span> | Set the text-transform on the tabs. |
 | <span class="prop-name">value</span> | <span class="prop-type">any</span> |  | The value of the currently selected `Tab`. |
 | <span class="prop-name">variant</span> | <span class="prop-type">"standard"<br>&#124;&nbsp;"fullWidth"</span> | <span class="prop-default">"standard"</span> | Determines additional display behavior of the tabs:<br> - `standard` will render the default state.  -`fullWidth` will make the tabs grow to use all the available space,  which should be used for small views, like on mobile. |
 
