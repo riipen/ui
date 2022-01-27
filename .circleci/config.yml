@@ -119,9 +119,6 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      - run: sudo apt-get update
-      - run: sudo apt-get install -y python-pip libpython-dev
-
       - run: $(npm bin)/lerna run --scope riipen-ui-docs build
       - run: $(npm bin)/lerna run --scope riipen-ui-docs export
 
