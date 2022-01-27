@@ -6,11 +6,11 @@ exports[`<InputHint> renders correct snapshot 1`] = `
     theme={
       Object {
         "breakpoints": Object {
-          "lg": 1380,
+          "lg": 1440,
           "md": 960,
-          "sm": 600,
+          "sm": 480,
           "xl": 1920,
-          "xs": 0,
+          "xs": 320,
         },
         "palette": Object {
           "background": Object {
@@ -261,11 +261,11 @@ exports[`<InputHint> renders correct snapshot 1`] = `
       theme={
         Object {
           "breakpoints": Object {
-            "lg": 1380,
+            "lg": 1440,
             "md": 960,
-            "sm": 600,
+            "sm": 480,
             "xl": 1920,
-            "xs": 0,
+            "xs": 320,
           },
           "palette": Object {
             "background": Object {
@@ -528,7 +528,7 @@ exports[`<InputHint> renders correct snapshot 1`] = `
             variant="body2"
           >
             <p
-              className="jsx-2345121370 root color-inherit initial mobile body2 align-inherit transform-inherit riipen riipen-typography"
+              className="jsx-358467856 root color-inherit initial mobile body2 align-inherit transform-inherit riipen riipen-typography"
             />
             <JSXStyle
               dynamic={
@@ -598,7 +598,7 @@ exports[`<InputHint> renders correct snapshot 1`] = `
                   300,
                   500,
                   400,
-                  600,
+                  480,
                   "14px",
                   "20px",
                   "12px",

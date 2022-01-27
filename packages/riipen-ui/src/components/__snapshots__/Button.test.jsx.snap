@@ -12,11 +12,11 @@ exports[`<Button> renders correct snapshot 1`] = `
     theme={
       Object {
         "breakpoints": Object {
-          "lg": 1380,
+          "lg": 1440,
           "md": 960,
-          "sm": 600,
+          "sm": 480,
           "xl": 1920,
-          "xs": 0,
+          "xs": 320,
         },
         "palette": Object {
           "background": Object {
@@ -259,14 +259,14 @@ exports[`<Button> renders correct snapshot 1`] = `
     variant="text"
   >
     <button
-      className="jsx-3415447448 root medium text text-default"
+      className="jsx-2404896786 root medium text text-default"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
       type="button"
     >
       <span
-        className="jsx-3415447448 label"
+        className="jsx-2404896786 label"
       />
     </button>
     <JSXStyle
@@ -359,7 +359,7 @@ exports[`<Button> renders correct snapshot 1`] = `
           "13px",
           500,
           "20px",
-          600,
+          480,
           "12px",
           4,
           4,
