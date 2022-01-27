@@ -119,8 +119,6 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      - run: sudo apt-get update
-
       - run: $(npm bin)/lerna run --scope riipen-ui-docs build
       - run: $(npm bin)/lerna run --scope riipen-ui-docs export
 
