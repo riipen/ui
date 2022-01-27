@@ -125,7 +125,7 @@ jobs:
       - run:
           name: S3 Static Host Deploy
           command: |
-            aws s3 sync --delete packages/riipen-ui-docs/out s3://ui-${CIRCLE_BRANCH}-docs
+            aws s3 sync --delete packages/riipen-ui-docs/out s3://ui-production-docs
   test:
     resource_class: large
 
