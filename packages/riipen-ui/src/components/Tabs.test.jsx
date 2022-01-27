@@ -146,6 +146,25 @@ describe("<Tabs>", () => {
     });
   });
 
+  describe("letterSpacing prop", () => {
+    it("sets letterSpacing in children nodes", () => {
+      const letterSpacing = 5;
+      const child = <Tab label="Item one" value="one" />;
+
+      const wrapper = mount(<Tabs letterSpacing={letterSpacing}>{child}</Tabs>);
+
+      expect(wrapper.find("Tab").props().letterSpacing).toEqual(5);
+    });
+
+    it("gives an error with invalid letterSpacing", () => {
+      const errors = jest.spyOn(console, "error").mockImplementation();
+
+      mount(<Tabs letterSpacing="invalid" />);
+
+      expect(errors).toHaveBeenCalled();
+    });
+  });
+
   describe("onChange prop", () => {
     it("sets onClick prop of children nodes", () => {
       const child = <Tab label="Item one" value="one" />;

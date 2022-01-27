@@ -10,6 +10,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
     color="secondary"
     disabled={false}
     fullWidth={false}
+    letterSpacing={2}
     orientation="horizontal"
     textTransform="uppercase"
     theme={
@@ -281,6 +282,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
           "Roboto, Helvetica, Arial, sans-serif",
           400,
           "14px",
+          2,
           "20px",
           "uppercase",
           NaN,
@@ -304,7 +306,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
           12,
         ]
       }
-      id="1046851272"
+      id="2118809873"
     />
   </Tab>
 </Component>

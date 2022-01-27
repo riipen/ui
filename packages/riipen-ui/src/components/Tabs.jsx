@@ -36,6 +36,11 @@ class Tabs extends React.Component {
     component: PropTypes.elementType,
 
     /**
+     * Spacing to apply to letters to the Tab.
+     */
+    letterSpacing: PropTypes.number,
+
+    /**
      * Callback fired when the value changes.
      *
      * @param {object} event The event source of the callback
@@ -97,6 +102,7 @@ class Tabs extends React.Component {
       classes,
       color,
       component: Component,
+      letterSpacing,
       orientation,
       textTransform,
       value,
@@ -115,6 +121,7 @@ class Tabs extends React.Component {
         breakpoint,
         color,
         fullWidth: variant === "fullWidth",
+        letterSpacing,
         onClick: this.handleChange,
         orientation,
         textTransform

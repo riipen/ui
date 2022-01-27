@@ -16,6 +16,7 @@ const Tab = props => {
     fullWidth,
     icon: Icon,
     label,
+    letterSpacing,
     onClick,
     orientation,
     textTransform,
@@ -108,7 +109,7 @@ const Tab = props => {
           font-family: ${theme.typography.fontFamily};
           font-weight: ${theme.typography.fontWeight.regular};
           font-size: ${theme.typography.body2.fontSize};
-          letter-spacing: 2px;
+          letter-spacing: ${letterSpacing}px;
           line-height: ${theme.typography.body2.lineHeight};
           text-decoration: none;
           text-transform: ${textTransform};
@@ -186,6 +187,7 @@ Tab.defaultProps = {
   color: "secondary",
   disabled: false,
   fullWidth: false,
+  letterSpacing: 2,
   orientation: "horizontal",
   textTransform: "uppercase"
 };
@@ -235,6 +237,11 @@ Tab.propTypes = {
    * The label element.
    */
   label: PropTypes.node,
+
+  /**
+   * Spacing to apply to letters. Is always 1px at screen sizes smaller `breakpoint` prop.
+   */
+  letterSpacing: PropTypes.number,
 
   /**
    * Callback fired when the tab is clicked.
