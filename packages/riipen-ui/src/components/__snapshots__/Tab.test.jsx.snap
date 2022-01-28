@@ -264,7 +264,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
     <div
       aria-disabled={false}
       aria-pressed={false}
-      className="jsx-363881862 root breakpoint secondary horizontal"
+      className="jsx-4026516279 root breakpoint secondary horizontal"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
