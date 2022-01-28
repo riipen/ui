@@ -37,6 +37,7 @@ describe("<Tab>", () => {
       expect(wrapper.find("Tab").props().color).toEqual("secondary");
       expect(wrapper.find("Tab").props().disabled).toEqual(false);
       expect(wrapper.find("Tab").props().fullWidth).toEqual(false);
+      expect(wrapper.find("Tab").props().letterSpacing).toEqual(2);
       expect(wrapper.find("Tab").props().orientation).toEqual("horizontal");
       expect(wrapper.find("Tab").props().textTransform).toEqual("uppercase");
     });
@@ -374,6 +375,17 @@ describe("<Tab>", () => {
           .childAt(0)
           .hasClass("focusVisible")
       ).toBeFalsy();
+    });
+  });
+
+  describe("letterSpacing prop", () => {
+    it("gives an error when given an invalid letterSpacing", () => {
+      const errors = jest.spyOn(console, "error").mockImplementation();
+      const letterSpacing = "invalid";
+
+      mount(<Tab letterSpacing={letterSpacing} value />);
+
+      expect(errors).toHaveBeenCalledTimes(1);
     });
   });
 

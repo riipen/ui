@@ -42,6 +42,12 @@ You can set the breakpoint to display the horizontal tab mobile styling with the
 
 {{"demo": "pages/components/tabs/Breakpoint.js"}}
 
+## Letter Spacing
+
+You can set the tab label letter spacing with the `letterSpacing` prop.
+
+{{"demo": "pages/components/tabs/LetterSpacing.js"}}
+
 ## Text Transform
 
 You can set the tab label casing with the `textTransform` prop.
