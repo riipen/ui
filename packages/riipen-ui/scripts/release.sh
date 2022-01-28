@@ -2,6 +2,7 @@
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 SEMANTIC_VERSION=$1
+DOCS_BRANCH="docs"
 
 if [[ "$BRANCH" != "master" ]]; then
   echo "Must be on branch master to release"
@@ -13,6 +14,15 @@ if [[ $1 -eq 0 ]]; then
   echo "Usage: ./scripts/release.sh 0.4.xx"
   exit 1;
 fi
+
+# Update UI docs page first
+git checkout $DOCS_BRANCH
+git pull origin $DOCS_BRANCH
+git merge origin/master
+git push origin $DOCS_BRANCH
+
+# Switch back to master branch
+git checkout $BRANCH
 
 NPM_VERSION=$(npm version $SEMANTIC_VERSION)
 
