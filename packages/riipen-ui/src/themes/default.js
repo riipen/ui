@@ -1,9 +1,9 @@
 export default {
   breakpoints: {
-    xs: 0,
-    sm: 600,
+    xs: 320,
+    sm: 480,
     md: 960,
-    lg: 1380,
+    lg: 1440,
     xl: 1920
   },
   palette: {

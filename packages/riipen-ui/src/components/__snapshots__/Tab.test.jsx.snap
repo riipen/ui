@@ -15,11 +15,11 @@ exports[`<Tab> renders correct snapshot 1`] = `
     theme={
       Object {
         "breakpoints": Object {
-          "lg": 1380,
+          "lg": 1440,
           "md": 960,
-          "sm": 600,
+          "sm": 480,
           "xl": 1920,
-          "xs": 0,
+          "xs": 320,
         },
         "palette": Object {
           "background": Object {
@@ -263,7 +263,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
     <div
       aria-disabled={false}
       aria-pressed={false}
-      className="jsx-275678284 root breakpoint secondary horizontal"
+      className="jsx-363881862 root breakpoint secondary horizontal"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -292,7 +292,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
           "#f58632",
           "#f58632",
           "#f58632",
-          600,
+          480,
           4,
           8,
           "#ddd",
