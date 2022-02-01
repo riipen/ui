@@ -75,7 +75,11 @@ const Tab = props => {
         onFocus={handleFocus}
         onBlur={handleBlur}
       >
-        {Icon && <Icon className={clsx("icon")} />}
+        {Icon && (
+          <span className={clsx("icon")}>
+            {typeof Icon === "function" ? <Icon /> : Icon}
+          </span>
+        )}
         {label && <div className={clsx("label")}>{label}</div>}
       </div>
       <style jsx>{`
@@ -102,7 +106,7 @@ const Tab = props => {
         }
 
         .icon {
-          margin-bottom: 1px;
+          display: flex;
         }
 
         .label {
@@ -231,7 +235,7 @@ Tab.propTypes = {
   /**
    * The icon element.
    */
-  icon: PropTypes.elementType,
+  icon: PropTypes.oneOfType([PropTypes.elementType, PropTypes.node]),
 
   /**
    * The label element.
