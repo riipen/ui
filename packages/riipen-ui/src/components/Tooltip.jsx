@@ -183,7 +183,9 @@ const Tooltip = ({
       .popover.bottom-right::after {
         border-bottom-color: var(--after-color);
         border-left: none;
+        border-width: ${theme.spacing(2)}px;
         left: 0;
+        margin-top: calc(${theme.spacing(-4)}px + 1px);
       }
 
       .popover.bottom-center::before {
@@ -212,6 +214,8 @@ const Tooltip = ({
       .popover.bottom-left::after {
         border-bottom-color: var(--after-color);
         border-right: none;
+        border-width: ${theme.spacing(2)}px;
+        margin-top: calc(${theme.spacing(-4)}px + 1px);
         right: 0;
       }
 
