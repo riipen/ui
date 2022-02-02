@@ -244,6 +244,12 @@ describe("<Tab>", () => {
           .hasClass("icon")
       ).toEqual(true);
     });
+
+    it("renders icon when icon is node", () => {
+      const wrapper = mount(<Tab icon={"bob"} value />);
+
+      expect(wrapper.text()).toEqual("bob");
+    });
   });
 
   describe("label prop", () => {
