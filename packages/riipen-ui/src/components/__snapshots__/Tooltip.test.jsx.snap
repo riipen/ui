@@ -35,7 +35,7 @@ exports[`<Tooltip> renders correct snapshot 1`] = `
         Array [
           "riipen",
           "riipen-tooltip",
-          "jsx-3467638454",
+          "jsx-755575304",
           "popover",
           "default",
           "bottom-center",
@@ -69,7 +69,7 @@ exports[`<Tooltip> renders correct snapshot 1`] = `
             "riipen-popover",
             "riipen",
             "riipen-tooltip",
-            "jsx-3467638454",
+            "jsx-755575304",
             "popover",
             "default",
             "bottom-center",
@@ -144,7 +144,11 @@ exports[`<Tooltip> renders correct snapshot 1`] = `
           12,
           -16,
           8,
+          -16,
           8,
+          8,
+          8,
+          -16,
           8,
           -16,
           8,
@@ -166,7 +170,7 @@ exports[`<Tooltip> renders correct snapshot 1`] = `
           8,
         ]
       }
-      id="4063941441"
+      id="918424231"
     />
   </Tooltip>
 </withClasses(Tooltip)>
