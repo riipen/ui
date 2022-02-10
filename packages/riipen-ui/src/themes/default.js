@@ -3,7 +3,7 @@ export default {
     xs: 320,
     sm: 480,
     md: 960,
-    lg: 1440,
+    lg: 1280,
     xl: 1920
   },
   palette: {
