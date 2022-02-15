@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AsButton component renders correct snapshot 1`] = `
+<AsButton
+  ariaLabel="click to be cool"
+  classes={Array []}
+  clearButtonStyle={true}
+  type="button"
+>
+  <button
+    aria-label="click to be cool"
+    className="jsx-3335534469 button clearButtonStyle"
+    type="button"
+  >
+    <div>
+      A child
+    </div>
+  </button>
+  <JSXStyle
+    id="3335534469"
+  />
+</AsButton>
+`;
