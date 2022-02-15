@@ -30,6 +30,10 @@ const pages = [
         pathname: "/components/app-bar"
       },
       {
+        name: "As Button",
+        pathname: "/components/as-button"
+      },
+      {
         name: "Avatar",
         pathname: "/components/avatar"
       },
@@ -166,6 +170,10 @@ const pages = [
       {
         name: "App Bar",
         pathname: "/components-api/app-bar"
+      },
+      {
+        name: "As Button",
+        pathname: "/components-api/as-button"
       },
       {
         name: "Avatar",
