@@ -42,16 +42,16 @@ const pages = [
         pathname: "/components/banner"
       },
       {
-        name: "Button Base",
-        pathname: "/components/button-base"
-      },
-      {
         name: "Breadcrumbs",
         pathname: "/components/breadcrumbs"
       },
       {
         name: "Button",
         pathname: "/components/button"
+      },
+      {
+        name: "Button Base",
+        pathname: "/components/button-base"
       },
       {
         name: "Checkbox",
@@ -172,10 +172,6 @@ const pages = [
         pathname: "/components-api/app-bar"
       },
       {
-        name: "Button Base",
-        pathname: "/components-api/button-base"
-      },
-      {
         name: "Avatar",
         pathname: "/components-api/avatar"
       },
@@ -186,6 +182,10 @@ const pages = [
       {
         name: "Banner",
         pathname: "/components-api/banner"
+      },
+      {
+        name: "Button Base",
+        pathname: "/components-api/button-base"
       },
       {
         name: "Click Away",

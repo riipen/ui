@@ -14,6 +14,7 @@ describe("ButtonBase component", () => {
       ariaLabel: "click to be cool"
     };
   });
+
   it("renders without errors", () => {
     let error;
 
@@ -67,7 +68,7 @@ describe("ButtonBase component", () => {
 
   describe("variant prop", () => {
     it("applies variant class", () => {
-      props.variant = "basic";
+      props.variant = "default";
 
       const wrapper = mount(<ButtonBase {...props}>{children}</ButtonBase>);
 

@@ -5,8 +5,8 @@ import _JSXStyle from "styled-jsx/style";
 
 const ButtonBase = ({
   ariaLabel,
-  classes,
   children,
+  classes,
   type,
   variant,
   ...other
@@ -23,9 +23,6 @@ const ButtonBase = ({
         {children}
       </button>
       <style jsx>{`
-        .basic {
-        }
-
         .button {
           cursor: pointer;
         }
@@ -65,7 +62,7 @@ ButtonBase.propTypes = {
   /**
    * The variant for the button. Default clears normal html button styles.
    */
-  variant: PropTypes.oneOf(["default", "basic"]),
+  variant: PropTypes.oneOf(["default"]),
 
   /**
    * Whether traditional button styles (border, background) should be cleared

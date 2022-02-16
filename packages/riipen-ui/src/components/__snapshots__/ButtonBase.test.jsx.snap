@@ -9,7 +9,7 @@ exports[`ButtonBase component renders correct snapshot 1`] = `
 >
   <button
     aria-label="click to be cool"
-    className="jsx-1152527745 button default"
+    className="jsx-509404678 button default"
     type="button"
   >
     <div>
@@ -17,7 +17,7 @@ exports[`ButtonBase component renders correct snapshot 1`] = `
     </div>
   </button>
   <JSXStyle
-    id="1152527745"
+    id="509404678"
   />
 </ButtonBase>
 `;
