@@ -3,13 +3,13 @@ import React from "react";
 import MarkdownPage from "src/modules/components/MarkdownPage";
 
 const req = require.context(
-  "src/pages/components/as-button",
+  "src/pages/components/button-base",
   false,
   /\.(md|js|jsx)$/
 );
 
 const reqSource = require.context(
-  "!raw-loader!../../src/pages/components/as-button",
+  "!raw-loader!../../src/pages/components/button-base",
   false,
   /\.(js|jsx)$/
 );
@@ -17,7 +17,7 @@ const reqSource = require.context(
 export default function Page() {
   return (
     <MarkdownPage
-      path="pages/components/as-button"
+      path="pages/components/button-base"
       req={req}
       reqSource={reqSource}
       title="As Button"
