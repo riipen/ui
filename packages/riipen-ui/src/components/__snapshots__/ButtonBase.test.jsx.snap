@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AsButton component renders correct snapshot 1`] = `
-<AsButton
+exports[`ButtonBase component renders correct snapshot 1`] = `
+<ButtonBase
   ariaLabel="click to be cool"
   classes={Array []}
   type="button"
@@ -19,5 +19,5 @@ exports[`AsButton component renders correct snapshot 1`] = `
   <JSXStyle
     id="1152527745"
   />
-</AsButton>
+</ButtonBase>
 `;

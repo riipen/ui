@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import AsButton from "riipen-ui/components/AsButton";
+import ButtonBase from "riipen-ui/components/ButtonBase";
 
 export default function Form() {
   const [formState, setFormState] = useState({});
@@ -36,7 +36,7 @@ export default function Form() {
     <>
       <form onSubmit={handleSubmit}>
         {entities.map(entity => (
-          <AsButton
+          <ButtonBase
             ariaLabel={`Click to select ${entity.title} and submit the form`}
             key={entity.id}
             onClick={() => handleClick(entity)}
@@ -46,7 +46,7 @@ export default function Form() {
               <h3>{entity.title}</h3>
               <p>{entity.details}</p>
             </div>
-          </AsButton>
+          </ButtonBase>
         ))}
       </form>
       <p>{message}</p>

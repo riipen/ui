@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import _JSXStyle from "styled-jsx/style";
 
-const AsButton = ({
+const ButtonBase = ({
   ariaLabel,
   classes,
   children,
@@ -44,7 +44,7 @@ const AsButton = ({
   );
 };
 
-AsButton.propTypes = {
+ButtonBase.propTypes = {
   // external
 
   /**
@@ -73,12 +73,12 @@ AsButton.propTypes = {
   type: PropTypes.oneOf(["button", "submit", "reset"])
 };
 
-AsButton.defaultProps = {
+ButtonBase.defaultProps = {
   classes: [],
   variant: "default",
   type: "button"
 };
 
-AsButton.displayName = "AsButton";
+ButtonBase.displayName = "ButtonBase";
 
-export default AsButton;
+export default ButtonBase;
