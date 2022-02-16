@@ -58,7 +58,7 @@ AsButton.propTypes = {
   /**
    * List of additional classes to apply to this component.
    */
-  classes: PropTypes.array,
+  classes: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 
   /**
    * Whether traditional button styles (border, background) should be cleared

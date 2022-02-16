@@ -5,12 +5,20 @@ import React from "react";
 import AsButton from "./AsButton";
 
 describe("AsButton component", () => {
-  const child = <div>A child</div>;
+  let props;
+  let children;
+
+  beforeEach(() => {
+    children = <div>A child</div>;
+    props = {
+      ariaLabel: "click to be cool"
+    };
+  });
   it("renders without errors", () => {
     let error;
 
     try {
-      mount(<AsButton ariaLabel="click to be cool">{child}</AsButton>);
+      mount(<AsButton {...props}>{children}</AsButton>);
     } catch (theError) {
       error = theError;
     }
@@ -19,18 +27,14 @@ describe("AsButton component", () => {
   });
 
   it("renders correct snapshot", () => {
-    const wrapper = mount(
-      <AsButton ariaLabel="click to be cool">{child}</AsButton>
-    );
+    const wrapper = mount(<AsButton {...props}>{children}</AsButton>);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   describe("default props", () => {
     it("sets correct default props", () => {
-      const wrapper = mount(
-        <AsButton ariaLabel="click to be cool">{child}</AsButton>
-      );
+      const wrapper = mount(<AsButton {...props}>{children}</AsButton>);
 
       expect(wrapper.find("AsButton").props().classes).toEqual([]);
       expect(wrapper.find("AsButton").props().clearButtonStyle).toEqual(true);
@@ -40,48 +44,35 @@ describe("AsButton component", () => {
 
   describe("children prop", () => {
     it("displays given children", () => {
-      const wrapper = mount(
-        <AsButton ariaLabel="click to be cool">{child}</AsButton>
-      );
+      const wrapper = mount(<AsButton {...props}>{children}</AsButton>);
 
-      expect(wrapper.containsMatchingElement(child)).toBeTruthy();
+      expect(wrapper.containsMatchingElement(children)).toBeTruthy();
     });
   });
 
   describe("classes prop", () => {
     it("sets custom class", () => {
-      const classVariant = ["newClass"];
+      props.classes = "newClass";
 
-      const wrapper = mount(
-        <AsButton ariaLabel="click to be cool" classes={classVariant}>
-          {child}
-        </AsButton>
-      );
+      const wrapper = mount(<AsButton {...props}>{children}</AsButton>);
 
       expect(
         wrapper
           .find("AsButton")
           .childAt(0)
-          .hasClass(classVariant[0])
+          .hasClass(props.classes)
       ).toEqual(true);
     });
   });
 
   describe("clearButtonStyle prop", () => {
-    it("Does not apply clearButtonStyle class when clearButtonStyle prop is false", () => {
-      const clearButtonStyle = false;
+    it("does not apply clearButtonStyle class when clearButtonStyle prop is false", () => {
+      props.clearButtonStyle = false;
 
-      const wrapper = mount(
-        <AsButton
-          ariaLabel="click to be cool"
-          clearButtonStyle={clearButtonStyle}
-        >
-          {child}
-        </AsButton>
-      );
+      const wrapper = mount(<AsButton {...props}>{children}</AsButton>);
 
       expect(wrapper.find("AsButton").props().clearButtonStyle).toEqual(
-        clearButtonStyle
+        props.clearButtonStyle
       );
       expect(
         wrapper
@@ -91,10 +82,8 @@ describe("AsButton component", () => {
       ).toEqual(false);
     });
 
-    it("Applies clearButtonStyle class when clearButtonStyle prop is true", () => {
-      const wrapper = mount(
-        <AsButton ariaLabel="click to be cool">{child}</AsButton>
-      );
+    it("applies clearButtonStyle class when clearButtonStyle prop is true", () => {
+      const wrapper = mount(<AsButton {...props}>{children}</AsButton>);
 
       expect(wrapper.find("AsButton").props().clearButtonStyle).toEqual(true);
       expect(
@@ -107,12 +96,12 @@ describe("AsButton component", () => {
   });
 
   describe("type prop", () => {
-    it("Applies type to button", () => {
+    it("applies type to button", () => {
       const type = "submit";
 
       const wrapper = mount(
-        <AsButton ariaLabel="click to be cool" type={type}>
-          {child}
+        <AsButton {...props} type={type}>
+          {children}
         </AsButton>
       );
 
@@ -121,12 +110,14 @@ describe("AsButton component", () => {
   });
 
   describe("ariaLabel prop", () => {
-    it("Applies ariaLabel to button", () => {
-      const ariaLabel = "cool";
+    it("applies ariaLabel to button", () => {
+      props.ariaLabel = "cool";
 
-      const wrapper = mount(<AsButton ariaLabel={ariaLabel}>{child}</AsButton>);
+      const wrapper = mount(<AsButton {...props}>{children}</AsButton>);
 
-      expect(wrapper.find("AsButton").props().ariaLabel).toEqual(ariaLabel);
+      expect(wrapper.find("AsButton").props().ariaLabel).toEqual(
+        props.ariaLabel
+      );
       expect(wrapper.find("button[aria-label='cool']")).toHaveLength(1);
     });
   });
