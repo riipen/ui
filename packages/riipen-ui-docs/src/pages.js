@@ -50,6 +50,10 @@ const pages = [
         pathname: "/components/button"
       },
       {
+        name: "Button Base",
+        pathname: "/components/button-base"
+      },
+      {
         name: "Checkbox",
         pathname: "/components/checkbox"
       },
@@ -178,6 +182,10 @@ const pages = [
       {
         name: "Banner",
         pathname: "/components-api/banner"
+      },
+      {
+        name: "Button Base",
+        pathname: "/components-api/button-base"
       },
       {
         name: "Click Away",

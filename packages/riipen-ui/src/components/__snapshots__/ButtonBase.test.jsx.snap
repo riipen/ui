@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonBase component renders correct snapshot 1`] = `
+<ButtonBase
+  ariaLabel="click to be cool"
+  classes={Array []}
+  type="button"
+  variant="default"
+>
+  <button
+    aria-label="click to be cool"
+    className="jsx-509404678 button default"
+    type="button"
+  >
+    <div>
+      A child
+    </div>
+  </button>
+  <JSXStyle
+    id="509404678"
+  />
+</ButtonBase>
+`;
