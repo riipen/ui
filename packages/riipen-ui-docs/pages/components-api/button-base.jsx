@@ -13,7 +13,7 @@ export default function Page() {
     <MarkdownPage
       path="pages/components-api/button-base"
       req={req}
-      title="As Button API"
+      title="Button Base API"
     />
   );
 }

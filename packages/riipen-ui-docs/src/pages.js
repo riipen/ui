@@ -172,7 +172,7 @@ const pages = [
         pathname: "/components-api/app-bar"
       },
       {
-        name: "As Button",
+        name: "Button Base",
         pathname: "/components-api/button-base"
       },
       {
