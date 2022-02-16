@@ -37,7 +37,7 @@ describe("AsButton component", () => {
       const wrapper = mount(<AsButton {...props}>{children}</AsButton>);
 
       expect(wrapper.find("AsButton").props().classes).toEqual([]);
-      expect(wrapper.find("AsButton").props().clearButtonStyle).toEqual(true);
+      expect(wrapper.find("AsButton").props().variant).toEqual("default");
       expect(wrapper.find("AsButton").props().type).toEqual("button");
     });
   });
@@ -65,32 +65,18 @@ describe("AsButton component", () => {
     });
   });
 
-  describe("clearButtonStyle prop", () => {
-    it("does not apply clearButtonStyle class when clearButtonStyle prop is false", () => {
-      props.clearButtonStyle = false;
+  describe("variant prop", () => {
+    it("applies variant class", () => {
+      props.variant = "basic";
 
       const wrapper = mount(<AsButton {...props}>{children}</AsButton>);
 
-      expect(wrapper.find("AsButton").props().clearButtonStyle).toEqual(
-        props.clearButtonStyle
-      );
+      expect(wrapper.find("AsButton").props().variant).toEqual(props.variant);
       expect(
         wrapper
           .find("AsButton")
           .find("button")
-          .hasClass("clearButtonStyle")
-      ).toEqual(false);
-    });
-
-    it("applies clearButtonStyle class when clearButtonStyle prop is true", () => {
-      const wrapper = mount(<AsButton {...props}>{children}</AsButton>);
-
-      expect(wrapper.find("AsButton").props().clearButtonStyle).toEqual(true);
-      expect(
-        wrapper
-          .find("AsButton")
-          .find("button")
-          .hasClass("clearButtonStyle")
+          .hasClass(props.variant)
       ).toEqual(true);
     });
   });
