@@ -111,6 +111,10 @@ const Chip = ({
         .label {
           align-items: center;
           display: flex;
+          font-family: ${theme.typography.fontFamily};
+          font-size: ${theme.typography.body2.fontSize};
+          font-weight: ${theme.typography.fontWeight.regular};
+          line-height: ${theme.typography.body2.lineHeight};
           white-space: nowrap;
         }
 
@@ -302,6 +306,14 @@ const Chip = ({
           background-color: ${theme.palette.grey[300]};
           border-color: ${theme.palette.grey[300]};
           color: ${theme.palette.text.secondary};
+        }
+
+
+        @media (max-width: ${theme.breakpoints.sm}px) {
+          .label {
+            font-size: ${theme.typography.body2.mobile.fontSize};
+            line-height: ${theme.typography.body2.mobile.lineHeight};
+          }
         }
       `}</style>
     </>
