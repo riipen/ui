@@ -191,7 +191,7 @@ Tab.defaultProps = {
   color: "secondary",
   disabled: false,
   fullWidth: false,
-  letterSpacing: 2,
+  letterSpacing: 1,
   orientation: "horizontal",
   textTransform: "uppercase"
 };
