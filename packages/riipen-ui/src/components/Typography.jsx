@@ -79,7 +79,7 @@ class Typography extends React.Component {
     /**
      * Custom spacing to apply to letters to the Typography.
      */
-    letterSpacing: PropTypes.oneOf([1, 2]),
+    letterSpacing: PropTypes.number,
 
     /**
      * Screen size to render font from desktop to mobile.
@@ -167,7 +167,7 @@ class Typography extends React.Component {
       display,
       fontWeight,
       gutter ? "gutter" : null,
-      letterSpacing ? `letter-spacing-${letterSpacing}` : null,
+      letterSpacing ? 'letter-spacing' : null,
       mobileBreakpoint ? "mobile" : null,
       variant,
       `align-${textAlign}`,
@@ -331,11 +331,8 @@ class Typography extends React.Component {
             font-weight: ${theme.typography.fontWeight.regular};
           }
 
-          .letter-spacing-1 {
-            letter-spacing: 1px;
-          }
-          .letter-spacing-2 {
-            letter-spacing: 2px;
+          .letter-spacing {
+            letter-spacing: ${letterSpacing}px;
           }
 
           .transform-capitalize {
