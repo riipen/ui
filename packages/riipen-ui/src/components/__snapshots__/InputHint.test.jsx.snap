@@ -528,7 +528,7 @@ exports[`<InputHint> renders correct snapshot 1`] = `
             variant="body2"
           >
             <p
-              className="jsx-358467856 root color-inherit initial mobile body2 align-inherit transform-inherit riipen riipen-typography"
+              className="jsx-2216482402 root color-inherit initial mobile body2 align-inherit transform-inherit riipen riipen-typography"
             />
             <JSXStyle
               dynamic={
@@ -598,6 +598,7 @@ exports[`<InputHint> renders correct snapshot 1`] = `
                   300,
                   500,
                   400,
+                  undefined,
                   480,
                   "14px",
                   "20px",
@@ -617,7 +618,7 @@ exports[`<InputHint> renders correct snapshot 1`] = `
                   "20px",
                 ]
               }
-              id="3367936398"
+              id="172326200"
             />
           </Typography>
         </withClasses(Typography)>

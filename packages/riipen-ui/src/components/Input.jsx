@@ -169,7 +169,7 @@ const Input = ({
           color: ${theme.palette.text.primary};
           font-family: ${theme.typography.fontFamily};
           font-size: ${theme.typography.body1.fontSize};
-          line-height: 1;
+          line-height: ${theme.typography.body1.lineHeight};
           outline: none;
           padding: ${theme.spacing(2)}px;
           position: relative;
@@ -234,6 +234,14 @@ const Input = ({
 
         .wrapper {
           position: relative;
+        }
+
+        @media (max-width: ${theme.breakpoints.sm}px) {
+          input,
+          textarea {
+            font-size: ${theme.typography.body1.mobile.fontSize};
+            line-height: ${theme.typography.body1.mobile.lineHeight};
+          }
         }
       `}</style>
     </div>

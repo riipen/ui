@@ -109,6 +109,13 @@ const MenuItem = ({
         background-color: ${theme.palette.grey[50]};
         border-color: transparent;
       }
+
+      @media (max-width: ${theme.breakpoints.sm}px) {
+        .menu-item {
+          font-size: ${theme.typography.body1.mobile.fontSize};
+          line-height: ${theme.typography.body1.mobile.lineHeight};
+        }
+      }
     `;
   };
 

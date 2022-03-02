@@ -258,6 +258,17 @@ class Badge extends React.Component {
             transform: scale(1) translate(-50%, 50%);
             transform-origin: 0% 100%;
           }
+
+          @media (max-width: ${theme.breakpoints.sm}px) {
+            .badge.medium {
+              font-size: ${theme.typography.body2.mobile.fontSize};
+              line-height: ${theme.typography.body2.mobile.lineHeight};
+            }
+            .badge.small {
+              font-size: ${theme.typography.body3.mobile.fontSize};
+              line-height: ${theme.typography.body3.mobile.lineHeight};
+            }
+          }
         `}</style>
       </>
     );

@@ -37,7 +37,7 @@ describe("<Tab>", () => {
       expect(wrapper.find("Tab").props().color).toEqual("secondary");
       expect(wrapper.find("Tab").props().disabled).toEqual(false);
       expect(wrapper.find("Tab").props().fullWidth).toEqual(false);
-      expect(wrapper.find("Tab").props().letterSpacing).toEqual(2);
+      expect(wrapper.find("Tab").props().letterSpacing).toEqual(1);
       expect(wrapper.find("Tab").props().orientation).toEqual("horizontal");
       expect(wrapper.find("Tab").props().textTransform).toEqual("uppercase");
     });
