@@ -225,6 +225,23 @@ describe("<Typography>", () => {
     });
   });
 
+  describe("letterSpacing prop", () => {
+    it("sets custom letterSpacing when provided", () => {
+      const letterSpacing = 1;
+      const wrapper = mount(<Typography letterSpacing={letterSpacing} />);
+
+      expect(wrapper.find("Typography").props().letterSpacing).toEqual(1);
+    });
+
+    it("gives an error with invalid letterSpacing", () => {
+      const errors = jest.spyOn(console, "error").mockImplementation();
+
+      mount(<Typography letterSpacing="invalid" />);
+
+      expect(errors).toHaveBeenCalled();
+    });
+  });
+
   describe("textAlign prop", () => {
     it("sets textAlign class given a valid textAlign prop", () => {
       const textAlign = "justify";
