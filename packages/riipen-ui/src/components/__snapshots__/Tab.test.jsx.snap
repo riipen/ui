@@ -264,7 +264,7 @@ exports[`<Tab> renders correct snapshot 1`] = `
     <div
       aria-disabled={false}
       aria-pressed={false}
-      className="jsx-2285103972 root breakpoint secondary horizontal"
+      className="jsx-1146669324 root breakpoint secondary horizontal"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -300,13 +300,15 @@ exports[`<Tab> renders correct snapshot 1`] = `
           "#ddd",
           24,
           -4,
-          "12px",
-          "16px",
           4,
           12,
+          "12px",
+          "16px",
+          8,
+          20,
         ]
       }
-      id="575242985"
+      id="1274470273"
     />
   </Tab>
 </Component>
