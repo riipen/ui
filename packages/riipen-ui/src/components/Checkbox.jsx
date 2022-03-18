@@ -145,9 +145,9 @@ const Checkbox = props => {
         /* Style the checkmark/indicator */
         label .checkmark:after {
           border: solid white;
-          border-width: 0 3px 3px 0;
-          height: 10px;
-          left: 6px;
+          border-width: 0 2px 2px 0;
+          height: 11px;
+          left: 7px;
           top: 2px;
           transform: rotate(45deg);
           width: 5px;
