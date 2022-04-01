@@ -6,7 +6,7 @@ exports[`<Chip> renders correct snapshot 1`] = `
     theme={
       Object {
         "breakpoints": Object {
-          "lg": 1440,
+          "lg": 1280,
           "md": 960,
           "sm": 480,
           "xl": 1920,
@@ -265,7 +265,7 @@ exports[`<Chip> renders correct snapshot 1`] = `
       theme={
         Object {
           "breakpoints": Object {
-            "lg": 1440,
+            "lg": 1280,
             "md": 960,
             "sm": 480,
             "xl": 1920,
