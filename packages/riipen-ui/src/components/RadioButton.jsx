@@ -22,9 +22,11 @@ const RadioButton = ({
   const theme = React.useContext(ThemeContext);
 
   let typographyVariant;
-  if (size === "small") {
+  if (size === "medium") {
+    typographyVariant = "body2";
+  } else if(size === "small"){
     typographyVariant = "body3";
-  } else if (size === "large") {
+  }else if (size === "large") {
     typographyVariant = "h5";
   }
 
@@ -85,19 +87,19 @@ const RadioButton = ({
         .small label {
           min-width: 100px;
           padding: 4px;
-          width: 100px;
+          width: 100%;
         }
 
         .medium label {
           min-width: 150px;
-          padding: 8px;
-          width: 150px;
+          padding: 6px 12px;
+          width: 100%;
         }
 
         .large label {
           min-width: 200px;
           padding: 10px;
-          width: 200px;
+          width: 100%;
         }
 
         /* Colors */
