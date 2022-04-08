@@ -26,7 +26,7 @@ const RadioButton = ({
     typographyVariant = "body2";
   } else if(size === "small"){
     typographyVariant = "body3";
-  }else if (size === "large") {
+  } else if (size === "large") {
     typographyVariant = "h5";
   }
 
