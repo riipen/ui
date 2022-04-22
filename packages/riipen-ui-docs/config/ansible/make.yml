@@ -14,4 +14,4 @@
           AcmArn: "{{aws_acm_arn}}"
           Enabled: "{{enabled}}"
           Environment: "{{environment_name}}"
-          RootStackName: plt-{{environment_name}}
+          PlatformStackName: plt-{{environment_name}}

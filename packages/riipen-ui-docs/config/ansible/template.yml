@@ -2,15 +2,11 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: >
   Riipen UI Documentation stack.
 Parameters:
-  Environment:
+  ACLId:
     Type: String
     Description: >
-      The environment which to launch the service in
-    Default: staging
-  RootStackName:
-    Type: String
-    Description: >
-      Name of the CloudFormation stack to insert this service in
+      A unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution.
+    Default: ""
   AcmArn:
     Type: String
     Description: >
@@ -20,11 +16,16 @@ Parameters:
     Description: >
       Whether or not the site is live.
     Default: false
-  ACLId:
+  Environment:
     Type: String
     Description: >
-      A unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution.
-    Default: ""
+      The environment which to launch the service in
+    Default: staging
+  PlatformStackName:
+    Type: String
+    Description: >
+      Name of the platform api CloudFormation stack
+    Default: plt-staging
 Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
@@ -60,7 +61,7 @@ Resources:
           - !Sub
             - ui.${DomainName}
             - DomainName:
-                Fn::ImportValue: !Sub ${RootStackName}-domain
+                Fn::ImportValue: !Sub ${PlatformStackName}-domain
         Comment: !Sub ui-${Environment}-docs hosting
         DefaultCacheBehavior:
           AllowedMethods:
@@ -107,7 +108,7 @@ Resources:
       Name: !Sub
         - ui.${DomainName}
         - DomainName:
-            Fn::ImportValue: !Sub ${RootStackName}-domain
+            Fn::ImportValue: !Sub ${PlatformStackName}-domain
       Type: A
 
 
