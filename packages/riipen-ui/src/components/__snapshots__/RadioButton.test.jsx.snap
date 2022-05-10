@@ -11,6 +11,7 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
     }
     color="default"
     size="medium"
+    wrapperProps={Object {}}
   >
     <div
       className="jsx-2262169576 riipen riipen-radiobutton default root medium"
