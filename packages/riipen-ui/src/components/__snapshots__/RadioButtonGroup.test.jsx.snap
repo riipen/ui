@@ -535,6 +535,7 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
               color="default"
               onChange={[Function]}
               size="medium"
+              wrapperProps={Object {}}
             >
               <div
                 className="jsx-2262169576 riipen riipen-radiobutton jsx-1527667869 radioButton default checked root medium"

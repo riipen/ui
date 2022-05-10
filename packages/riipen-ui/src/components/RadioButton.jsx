@@ -13,11 +13,11 @@ const RadioButton = ({
   classes,
   color,
   disabled,
-  id,
   label,
   prefix,
   size,
   suffix,
+  wrapperProps,
   ...other
 }) => {
   const theme = React.useContext(ThemeContext);
@@ -41,7 +41,7 @@ const RadioButton = ({
         "root",
         size
       )}
-      id={id}
+      {...wrapperProps}
     >
       <label className={clsx(checked && "checked", disabled && "disabled")}>
         <input checked={checked} disabled={disabled} type="radio" {...other} />
@@ -189,11 +189,6 @@ RadioButton.propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * An ID to set on the wrapper div of this component.
-   */
-  id: PropTypes.string,
-
-  /**
    * Label text to display for the radio.
    */
   label: PropTypes.node,
@@ -211,12 +206,18 @@ RadioButton.propTypes = {
   /**
    * The component to render after the label text.
    */
-  suffix: PropTypes.node
+  suffix: PropTypes.node,
+
+  /**
+   * Props to apply to div wrapper.
+   */
+  wrapperProps: PropTypes.object
 };
 
 RadioButton.defaultProps = {
   size: "medium",
-  color: "default"
+  color: "default",
+  wrapperProps: {}
 };
 
 RadioButton.displayName = "RadioButton";
