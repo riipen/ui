@@ -131,6 +131,21 @@ describe("<RadioButton>", () => {
     expect(wrapper.find("input").props().disabled).toEqual(disabled);
   });
 
+  describe("id prop", () => {
+    it("sets the id", () => {
+      const id = "pikachu";
+
+      const wrapper = mount(<RadioButton id={id} />);
+
+      expect(
+        wrapper
+          .find("RadioButton")
+          .childAt(0)
+          .prop("id")
+      ).toEqual(id);
+    });
+  });
+
   describe("label prop", () => {
     it("sets custom label", () => {
       const label = "Test";

@@ -13,6 +13,7 @@ const RadioButton = ({
   classes,
   color,
   disabled,
+  id,
   label,
   prefix,
   size,
@@ -24,7 +25,7 @@ const RadioButton = ({
   let typographyVariant;
   if (size === "medium") {
     typographyVariant = "body2";
-  } else if(size === "small"){
+  } else if (size === "small") {
     typographyVariant = "body3";
   } else if (size === "large") {
     typographyVariant = "h5";
@@ -40,6 +41,7 @@ const RadioButton = ({
         "root",
         size
       )}
+      id={id}
     >
       <label className={clsx(checked && "checked", disabled && "disabled")}>
         <input checked={checked} disabled={disabled} type="radio" {...other} />
@@ -185,6 +187,11 @@ RadioButton.propTypes = {
    * If `true`, the radio will be disabled.
    */
   disabled: PropTypes.bool,
+
+  /**
+   * An ID to set on the wrapper div of this component.
+   */
+  id: PropTypes.string,
 
   /**
    * Label text to display for the radio.
