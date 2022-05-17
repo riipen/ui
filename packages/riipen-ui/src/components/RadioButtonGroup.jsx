@@ -14,6 +14,7 @@ import Typography from "./Typography";
 const RadioButtonGroup = ({
   children,
   error,
+  fullWidth,
   hint,
   id,
   label,
@@ -37,12 +38,20 @@ const RadioButtonGroup = ({
       border-bottom-right-radius: ${theme.shape.borderRadius.md};
     }
 
-    .connected..radioButtons .radioButton:not(:first-child) {
+    .connected.radioButtons .radioButton:not(:first-child) {
       border-left-color: transparent;
     }
 
     .connected.radioButtons .radioButton:not(:first-child .checked):hover {
       border-left-color: inherit;
+    }
+
+    .fullWidth {
+      display: flex;
+    }
+
+    .fullWidth > * {
+      flex: 1 1 ${100 / (React.Children.count || 1)}%;
     }
 
     .separate.radioButtons .radioButton {
@@ -91,7 +100,14 @@ const RadioButtonGroup = ({
           </InputLabel>
         )}
 
-        <div className={clsx("radioButtons", variant, linkedStyles.className)}>
+        <div
+          className={clsx(
+            "radioButtons",
+            fullWidth && "fullWidth",
+            variant,
+            linkedStyles.className
+          )}
+        >
           {childrenWithProps}
         </div>
 
@@ -140,6 +156,11 @@ RadioButtonGroup.propTypes = {
    * An ID to set on this component.
    */
   id: PropTypes.string,
+
+  /**
+   * If `true`, will make the radio button group grow to use all the available space.
+   */
+  fullWidth: PropTypes.bool,
 
   /**
    * Label text to display for the input.

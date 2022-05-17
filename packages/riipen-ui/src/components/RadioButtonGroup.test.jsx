@@ -57,6 +57,23 @@ describe("<RadioButtonGroup>", () => {
     });
   });
 
+  describe("fullWidth prop", () => {
+    it("has correct classes", () => {
+      const child = <RadioButton id="one" />;
+
+      const wrapper = mount(
+        <RadioButtonGroup fullWidth>{child}</RadioButtonGroup>
+      );
+
+      expect(
+        wrapper
+          .find("fieldset")
+          .childAt(0)
+          .hasClass("fullWidth")
+      ).toBeTruthy();
+    });
+  });
+
   describe("hint prop", () => {
     it("renders InputLabel when hint is provided", () => {
       const hint = "it's a hint";
