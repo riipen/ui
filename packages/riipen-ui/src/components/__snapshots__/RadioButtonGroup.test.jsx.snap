@@ -506,16 +506,16 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
       variant="connected"
     >
       <fieldset
-        className="jsx-3241897731"
+        className="jsx-3241897731 jsx-849752549"
       >
         <div
-          className="jsx-3241897731 radioButtons connected jsx-1527667869"
+          className="jsx-3241897731 radioButtons connected jsx-849752549"
         >
           <withClasses(RadioButton)
             checked={true}
             classes={
               Array [
-                "jsx-1527667869",
+                "jsx-849752549",
                 "radioButton",
               ]
             }
@@ -528,7 +528,7 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                 Array [
                   "riipen",
                   "riipen-radiobutton",
-                  "jsx-1527667869",
+                  "jsx-849752549",
                   "radioButton",
                 ]
               }
@@ -538,7 +538,7 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
               wrapperProps={Object {}}
             >
               <div
-                className="jsx-2262169576 riipen riipen-radiobutton jsx-1527667869 radioButton default checked root medium"
+                className="jsx-2262169576 riipen riipen-radiobutton jsx-849752549 radioButton default checked root medium"
               >
                 <label
                   className="jsx-2262169576 checked"
@@ -716,11 +716,12 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
             "4px",
             "4px",
             "4px",
+            100,
             "4px",
             16,
           ]
         }
-        id="4053215710"
+        id="1823270956"
       />
       <JSXStyle
         id="3241897731"
