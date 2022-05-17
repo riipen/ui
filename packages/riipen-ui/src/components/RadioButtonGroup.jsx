@@ -46,12 +46,16 @@ const RadioButtonGroup = ({
       border-left-color: inherit;
     }
 
-    .fullWidth {
+    fieldset.fullWidth {
+      width: 100%;
+    }
+
+    div.fullWidth {
       display: flex;
     }
 
-    .fullWidth > * {
-      flex: 1 1 ${100 / (React.Children.count || 1)}%;
+    div.fullWidth > * {
+      flex: 1 1 ${100 / (React.Children.count(children) || 1)}%;
     }
 
     .separate.radioButtons .radioButton {
@@ -88,7 +92,10 @@ const RadioButtonGroup = ({
 
   return (
     <>
-      <fieldset id={id}>
+      <fieldset
+        className={clsx(fullWidth && "fullWidth", linkedStyles.className)}
+        id={id}
+      >
         {(label || hint) && (
           <InputLabel
             hint={hint}
