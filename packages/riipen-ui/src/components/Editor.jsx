@@ -84,6 +84,11 @@ class Editor extends React.Component {
     error: PropTypes.any,
 
     /**
+     * Whether or not to force the editor to focus on click.
+     */
+    forceFocus: PropTypes.bool,
+
+    /**
      * Whether or not to hide the controls + control row when on smaller screens.
      */
     mobileControlRow: PropTypes.bool,
@@ -128,6 +133,7 @@ class Editor extends React.Component {
   static defaultProps = {
     actionControls: [],
     controlPosition: "top",
+    forceFocus: true,
     maxHeight: "auto",
     mobileControlRow: false,
     stylingControls: []
@@ -370,9 +376,12 @@ class Editor extends React.Component {
     return getDefaultKeyBinding(e);
   };
 
-  focus = forceFocus => {
-    const { autoFocus } = this.props;
-    if ((this.editor && this.editor.current && autoFocus) || forceFocus) {
+  focus = force => {
+    const { autoFocus, forceFocus } = this.props;
+    if (
+      (this.editor && this.editor.current && autoFocus) ||
+      (forceFocus && force)
+    ) {
       this.editor.current.focus();
     }
   };
@@ -593,6 +602,7 @@ class Editor extends React.Component {
     const {
       ariaLabelledBy,
       controlPosition,
+      forceFocus,
       disabled,
       error,
       onBlur,
@@ -632,7 +642,10 @@ class Editor extends React.Component {
 
     return (
       <>
-        <div className={wrapperClasses} onClick={this.forceFocus}>
+        <div
+          className={wrapperClasses}
+          onClick={forceFocus ? this.forceFocus : null}
+        >
           {controlPosition === "top" && this.renderControls()}
           <div className={editorClasses} style={style}>
             <DraftJsEditor
