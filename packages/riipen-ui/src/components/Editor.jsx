@@ -160,6 +160,14 @@ class Editor extends React.Component {
     this.onChange(editorState, false);
   }
 
+  componentDidUpdate(prevProps) {
+    const { autoFocus } = this.props;
+
+    if (autoFocus && prevProps.autoFocus !== autoFocus) {
+      this.forceFocus();
+    }
+  }
+
   onChange = (editorState, propagate = true) => {
     this.setState({ editorState }, () => {
       const html = this.getHtml();
