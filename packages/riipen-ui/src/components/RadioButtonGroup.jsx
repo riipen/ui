@@ -79,6 +79,7 @@ const RadioButtonGroup = ({
       child &&
       React.cloneElement(child, {
         checked: value === child.props.value,
+        fullWidth,
         onChange: handleChange,
         ...other,
         ...child.props,

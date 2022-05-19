@@ -538,14 +538,14 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
               wrapperProps={Object {}}
             >
               <div
-                className="jsx-2262169576 riipen riipen-radiobutton jsx-849752549 radioButton default checked root medium"
+                className="jsx-3721005054 riipen riipen-radiobutton jsx-849752549 radioButton default checked root medium"
               >
                 <label
-                  className="jsx-2262169576 checked"
+                  className="jsx-3721005054 checked"
                 >
                   <input
                     checked={true}
-                    className="jsx-2262169576 "
+                    className="jsx-3721005054 "
                     onChange={[Function]}
                     type="radio"
                   />
@@ -574,7 +574,7 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                         className="jsx-2216482402 root color-inherit initial mobile body2 align-inherit transform-inherit riipen riipen-typography"
                       >
                         <span
-                          className="jsx-2262169576 content"
+                          className="jsx-3721005054 content"
                         />
                       </span>
                       <JSXStyle
@@ -675,6 +675,9 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                     Array [
                       4,
                       "#dddddd",
+                      "100px",
+                      "150px",
+                      "200px",
                       "#dddddd",
                       "#747474",
                       "#747474",
@@ -702,7 +705,7 @@ exports[`<RadioButtonGroup> renders correct snapshot 1`] = `
                       "#eeeeee",
                     ]
                   }
-                  id="10583402"
+                  id="4294560361"
                 />
               </div>
             </RadioButton>

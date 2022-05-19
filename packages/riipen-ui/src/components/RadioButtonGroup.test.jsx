@@ -72,6 +72,16 @@ describe("<RadioButtonGroup>", () => {
           .hasClass("fullWidth")
       ).toBeTruthy();
     });
+
+    it("passes through fullWidth to children", () => {
+      const child = <RadioButton id="one" />;
+
+      const wrapper = mount(
+        <RadioButtonGroup fullWidth>{child}</RadioButtonGroup>
+      );
+
+      expect(wrapper.find("RadioButton").prop("fullWidth")).toBeTruthy();
+    });
   });
 
   describe("hint prop", () => {

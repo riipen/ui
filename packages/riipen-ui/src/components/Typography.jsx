@@ -167,7 +167,7 @@ class Typography extends React.Component {
       display,
       fontWeight,
       gutter ? "gutter" : null,
-      letterSpacing ? 'letter-spacing' : null,
+      letterSpacing ? "letter-spacing" : null,
       mobileBreakpoint ? "mobile" : null,
       variant,
       `align-${textAlign}`,

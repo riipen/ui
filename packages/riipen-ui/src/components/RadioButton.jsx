@@ -13,6 +13,7 @@ const RadioButton = ({
   classes,
   color,
   disabled,
+  fullWidth,
   label,
   prefix,
   size,
@@ -87,19 +88,19 @@ const RadioButton = ({
         /* Sizes */
 
         .small label {
-          min-width: 100px;
+          min-width: ${fullWidth ? "100%" : "100px"};
           padding: 4px;
           width: 100%;
         }
 
         .medium label {
-          min-width: 150px;
+          min-width: ${fullWidth ? "100%" : "150px"};
           padding: 6px 12px;
           width: 100%;
         }
 
         .large label {
-          min-width: 200px;
+          min-width: ${fullWidth ? "100%" : "200px"};
           padding: 10px;
           width: 100%;
         }
@@ -187,6 +188,11 @@ RadioButton.propTypes = {
    * If `true`, the radio will be disabled.
    */
   disabled: PropTypes.bool,
+
+  /**
+   * If `true`, will make the radio button grow to use all the available space.
+   */
+  fullWidth: PropTypes.bool,
 
   /**
    * Label text to display for the radio.
