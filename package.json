@@ -45,6 +45,6 @@
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-test-renderer": "16.14.0",
-    "styled-jsx": "3.4.1"
+    "styled-jsx": "5.1.0"
   }
 }
