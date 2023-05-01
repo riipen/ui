@@ -15,7 +15,7 @@ exports[`<Hidden> renders correct snapshot 1`] = `
     size="sm"
   >
     <div
-      className="jsx-3239942441 sm-down"
+      className="jsx-3216341865 sm-down"
     />
     <JSXStyle
       dynamic={
@@ -26,8 +26,8 @@ exports[`<Hidden> renders correct snapshot 1`] = `
           480,
           960,
           960,
-          1440,
-          1440,
+          1280,
+          1280,
           1920,
           1920,
         ]

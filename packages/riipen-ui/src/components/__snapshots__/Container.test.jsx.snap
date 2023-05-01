@@ -12,14 +12,14 @@ exports[`<Container> renders correct snapshot 1`] = `
     maxWidth="lg"
   >
     <div
-      className="jsx-140395240 root riipen riipen-container"
+      className="jsx-1579358696 root riipen riipen-container"
     >
       <JSXStyle
         dynamic={
           Array [
-            "1440px",
+            "1280px",
             24,
-            1440,
+            1280,
             20,
             960,
             12,

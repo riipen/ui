@@ -11,7 +11,7 @@ exports[`<MenuItem> renders correct snapshot 1`] = `
     }
   >
     <div
-      className="menu-item jsx-150584715 riipen riipen-menuitem"
+      className="menu-item jsx-2949149877 riipen riipen-menuitem"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -47,9 +47,12 @@ exports[`<MenuItem> renders correct snapshot 1`] = `
           "#fafafa",
           300,
           "#fafafa",
+          480,
+          "14px",
+          "20px",
         ]
       }
-      id="3234018680"
+      id="3701199905"
     />
   </MenuItem>
 </withClasses(MenuItem)>

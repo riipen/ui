@@ -13,16 +13,20 @@ const RadioButton = ({
   classes,
   color,
   disabled,
+  fullWidth,
   label,
   prefix,
   size,
   suffix,
+  wrapperProps,
   ...other
 }) => {
   const theme = React.useContext(ThemeContext);
 
   let typographyVariant;
-  if (size === "small") {
+  if (size === "medium") {
+    typographyVariant = "body2";
+  } else if (size === "small") {
     typographyVariant = "body3";
   } else if (size === "large") {
     typographyVariant = "h5";
@@ -38,6 +42,7 @@ const RadioButton = ({
         "root",
         size
       )}
+      {...wrapperProps}
     >
       <label className={clsx(checked && "checked", disabled && "disabled")}>
         <input checked={checked} disabled={disabled} type="radio" {...other} />
@@ -83,21 +88,21 @@ const RadioButton = ({
         /* Sizes */
 
         .small label {
-          min-width: 100px;
+          min-width: ${fullWidth ? "100%" : "100px"};
           padding: 4px;
-          width: 100px;
+          width: 100%;
         }
 
         .medium label {
-          min-width: 150px;
-          padding: 8px;
-          width: 150px;
+          min-width: ${fullWidth ? "100%" : "150px"};
+          padding: 6px 12px;
+          width: 100%;
         }
 
         .large label {
-          min-width: 200px;
+          min-width: ${fullWidth ? "100%" : "200px"};
           padding: 10px;
-          width: 200px;
+          width: 100%;
         }
 
         /* Colors */
@@ -185,6 +190,11 @@ RadioButton.propTypes = {
   disabled: PropTypes.bool,
 
   /**
+   * If `true`, will make the radio button grow to use all the available space.
+   */
+  fullWidth: PropTypes.bool,
+
+  /**
    * Label text to display for the radio.
    */
   label: PropTypes.node,
@@ -202,12 +212,18 @@ RadioButton.propTypes = {
   /**
    * The component to render after the label text.
    */
-  suffix: PropTypes.node
+  suffix: PropTypes.node,
+
+  /**
+   * Props to apply to div wrapper.
+   */
+  wrapperProps: PropTypes.object
 };
 
 RadioButton.defaultProps = {
   size: "medium",
-  color: "default"
+  color: "default",
+  wrapperProps: {}
 };
 
 RadioButton.displayName = "RadioButton";

@@ -66,7 +66,7 @@ workflows:
 jobs:
   checkout:
     docker:
-      - image: circleci/node:16.13-bullseye
+      - image: cimg/node:16.13
         <<: *docker-auth
 
     steps:
@@ -96,7 +96,7 @@ jobs:
 
   lint:
     docker:
-      - image: circleci/node:16.13-bullseye
+      - image: cimg/node:16.13
         <<: *docker-auth
 
     steps:
@@ -110,7 +110,7 @@ jobs:
     resource_class: large
 
     docker:
-      - image: circleci/node:16.13-bullseye
+      - image: cimg/node:16.13
         <<: *docker-auth
 
     steps:
@@ -130,7 +130,7 @@ jobs:
     resource_class: large
 
     docker:
-      - image: circleci/node:16.13-bullseye
+      - image: cimg/node:16.13
         <<: *docker-auth
 
     steps:
@@ -147,7 +147,7 @@ jobs:
 
   coverage:
     docker:
-      - image: circleci/node:16.13-bullseye
+      - image: cimg/node:16.13
         <<: *docker-auth
 
     environment:

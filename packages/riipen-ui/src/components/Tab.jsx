@@ -174,10 +174,17 @@ const Tab = props => {
           }
 
           .breakpoint > * {
+            padding: ${theme.spacing(1)}px ${theme.spacing(3)}px;
+          }
+
+          .label {
             font-size: ${theme.typography.body2.mobile.fontSize};
             letter-spacing: 1px;
             line-height: ${theme.typography.body2.mobile.lineHeight};
-            padding: ${theme.spacing(1)}px ${theme.spacing(3)}px;
+          }
+
+          .vertical {
+            padding: ${theme.spacing(2)}px ${theme.spacing(5)}px;
           }
         }
       `}</style>
@@ -191,7 +198,7 @@ Tab.defaultProps = {
   color: "secondary",
   disabled: false,
   fullWidth: false,
-  letterSpacing: 2,
+  letterSpacing: 1,
   orientation: "horizontal",
   textTransform: "uppercase"
 };

@@ -9,7 +9,7 @@ exports[`<Input> renders correct snapshot 1`] = `
     theme={
       Object {
         "breakpoints": Object {
-          "lg": 1440,
+          "lg": 1280,
           "md": 960,
           "sm": 480,
           "xl": 1920,
@@ -255,11 +255,11 @@ exports[`<Input> renders correct snapshot 1`] = `
     variant="default"
   >
     <div
-      className="jsx-258832184 wrapper"
+      className="jsx-2542791905 wrapper"
     >
       <input
         aria-disabled={false}
-        className="jsx-258832184 default medium"
+        className="jsx-2542791905 default medium"
         disabled={false}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -280,6 +280,7 @@ exports[`<Input> renders correct snapshot 1`] = `
             "#373737",
             "Roboto, Helvetica, Arial, sans-serif",
             "16px",
+            "24px",
             8,
             300,
             "#3caabb",
@@ -290,9 +291,12 @@ exports[`<Input> renders correct snapshot 1`] = `
             36,
             44,
             "#febb46",
+            480,
+            "14px",
+            "20px",
           ]
         }
-        id="2428254620"
+        id="3742724510"
       />
     </div>
   </Input>

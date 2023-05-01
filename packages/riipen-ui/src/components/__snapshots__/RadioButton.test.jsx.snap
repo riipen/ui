@@ -11,20 +11,22 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
     }
     color="default"
     size="medium"
+    wrapperProps={Object {}}
   >
     <div
-      className="jsx-2643708452 riipen riipen-radiobutton default root medium"
+      className="jsx-3721005054 riipen riipen-radiobutton default root medium"
     >
       <label
-        className="jsx-2643708452 "
+        className="jsx-3721005054 "
       >
         <input
-          className="jsx-2643708452 "
+          className="jsx-3721005054 "
           type="radio"
         />
         <withClasses(Typography)
           color="inherit"
           component="span"
+          variant="body2"
         >
           <Typography
             classes={
@@ -40,13 +42,13 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
             mobileBreakpoint="sm"
             textAlign="inherit"
             textTransform="inherit"
-            variant="body1"
+            variant="body2"
           >
             <span
-              className="jsx-358467856 root color-inherit initial mobile body1 align-inherit transform-inherit riipen riipen-typography"
+              className="jsx-2216482402 root color-inherit initial mobile body2 align-inherit transform-inherit riipen riipen-typography"
             >
               <span
-                className="jsx-2643708452 content"
+                className="jsx-3721005054 content"
               />
             </span>
             <JSXStyle
@@ -117,6 +119,7 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
                   300,
                   500,
                   400,
+                  undefined,
                   480,
                   "14px",
                   "20px",
@@ -136,7 +139,7 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
                   "20px",
                 ]
               }
-              id="3367936398"
+              id="172326200"
             />
           </Typography>
         </withClasses(Typography)>
@@ -146,6 +149,9 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
           Array [
             4,
             "#dddddd",
+            "100px",
+            "150px",
+            "200px",
             "#dddddd",
             "#747474",
             "#747474",
@@ -173,7 +179,7 @@ exports[`<RadioButton> renders correct snapshot 1`] = `
             "#eeeeee",
           ]
         }
-        id="2108214458"
+        id="4294560361"
       />
     </div>
   </RadioButton>

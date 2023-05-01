@@ -191,4 +191,19 @@ describe("<RadioButton>", () => {
       ).toEqual(true);
     });
   });
+
+  describe("wrapperProps prop", () => {
+    it("passes given wrapperProps attributes", () => {
+      const wrapperProps = { id: "yo" };
+
+      const wrapper = mount(<RadioButton wrapperProps={wrapperProps} />);
+
+      expect(
+        wrapper
+          .find("div")
+          .at(0)
+          .props().id
+      ).toEqual("yo");
+    });
+  });
 });
