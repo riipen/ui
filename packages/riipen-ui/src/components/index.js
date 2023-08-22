@@ -16,15 +16,11 @@ export { default as Container } from "./Container";
 export { default as Divider } from "./Divider";
 export { default as Drawer } from "./Drawer";
 export { default as Editor } from "./Editor";
-export {
-  default as EditorBlockStyleControls
-} from "./EditorBlockStyleControls";
+export { default as EditorBlockStyleControls } from "./EditorBlockStyleControls";
 export { default as EditorControlButton } from "./EditorControlButton";
 export { default as EditorDecorator } from "./EditorDecorator";
 export { default as EditorImage } from "./EditorImage";
-export {
-  default as EditorInlineStyleControls
-} from "./EditorInlineStyleControls";
+export { default as EditorInlineStyleControls } from "./EditorInlineStyleControls";
 export { default as EditorLink } from "./EditorLink";
 export { default as EditorUtils } from "./EditorUtils";
 export { default as Form } from "./Form";
